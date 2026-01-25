@@ -10,13 +10,16 @@ while not exit_game:
             exit_game = True
 
         elif event.type == pygame.MOUSEWHEEL:
-            zoom_factor = 1.1 if event.y < 0 else 0.9
+            zoom_factor = 1.1 if event.y > 0 else 0.9
 
             screen_config.adjust_zoom(
                 mouse_position=pygame.mouse.get_pos(), zoom_factor=zoom_factor
             )
 
-        elif event.type == pygame.MOUSEBUTTONDOWN:
+        elif (
+            event.type == pygame.MOUSEBUTTONDOWN
+            and pygame.key.get_mods() & pygame.KMOD_LCTRL
+        ):
             if event.button == 1:
                 mouse_position_on_pan_start = pygame.mouse.get_pos()
                 screen_config.pannig = True
