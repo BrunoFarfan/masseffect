@@ -1,0 +1,1 @@
+DARK_BACKGROUND = (30, 30, 30)
