@@ -1,4 +1,4 @@
-from pygame import display, Surface, Rect, transform
+from pygame import display, Rect
 from constants import DARK_BACKGROUND
 
 
@@ -6,116 +6,89 @@ class ScreenConfig:
     def __init__(self) -> None:
         display.set_caption("Mass Effect")
 
-        self.physical_display = display.set_mode()
+        self.screen_display = display.set_mode()
+        self.reset_screen()
 
-        self.virtual_display = Surface(self.physical_display.get_size())
-        self.virtual_display.fill(DARK_BACKGROUND)
-
-        self.pannig = False
+        self.panning = False
 
         self.zoom = 1
-        self.zoomed_virtual_origin = (0, 0)
+        self.view_window_world_origin = (0, 0)
 
         self.scaled_surface = None
 
     @property
-    def physical_size(self) -> tuple[int, int]:
-        return self.physical_display.get_size()
+    def screen_size(self) -> tuple[int, int]:
+        return self.screen_display.get_size()
 
     @property
-    def physical_size_center(self) -> tuple[int, int]:
-        return tuple[int, int](self.physical_size[i] // 2 for i in range(2))
+    def screen_size_center(self) -> tuple[int, int]:
+        return tuple[int, int](self.screen_size[i] // 2 for i in range(2))
 
     @property
-    def virtual_size(self) -> tuple[int, int]:
-        return self.virtual_display.get_size()
-
-    @property
-    def virtual_size_center(self) -> tuple[int, int]:
-        return tuple[int, int](self.virtual_size[i] // 2 for i in range(2))
-
-    @property
-    def view_size(self) -> tuple[int, int]:
-        return tuple[int, int](
-            round(self.physical_size[i] / self.zoom) for i in range(2)
+    def view_window(self) -> Rect:
+        return Rect(
+            self.view_window_world_origin[0],
+            self.view_window_world_origin[1],
+            self.screen_size[0] / self.zoom,
+            self.screen_size[1] / self.zoom,
         )
 
-    def _clamp_zoomed_virtual_origin(self) -> None:
-        self.zoomed_virtual_origin = tuple[float, float](
-            max(
-                0,
-                min(
-                    self.zoomed_virtual_origin[i],
-                    self.virtual_size[i] - self.view_size[i],
-                ),
+    def _world_to_screen_coordinates(
+        self, coordinates: tuple[int, int]
+    ) -> tuple[float, float]:
+        return (
+            (coordinates[0] - self.view_window_world_origin[0]) * self.zoom,
+            (
+                self.view_window_world_origin[1]
+                + self.view_window.height
+                - coordinates[1]
             )
-            for i in range(2)
+            * self.zoom,
         )
 
-    def _virtual_to_physical_coordinates(
+    def _screen_to_world_coordinates(
         self, coordinates: tuple[int, int]
     ) -> tuple[float, float]:
-        return tuple[float, float](
-            ((coordinates[i] - self.zoomed_virtual_origin[i]) * self.zoom)
-            for i in range(2)
+        return (
+            coordinates[0] / self.zoom + self.view_window_world_origin[0],
+            self.view_window_world_origin[1]
+            + self.view_window.height
+            - coordinates[1] / self.zoom,
         )
 
-    def _physical_to_virtual_coordinates(
-        self, coordinates: tuple[int, int]
-    ) -> tuple[float, float]:
-        return tuple[float, float](
-            ((coordinates[i] / self.zoom) + self.zoomed_virtual_origin[i])
-            for i in range(2)
-        )
-
-    def adjust_camera(self):
-        self._clamp_zoomed_virtual_origin()
-
-        view_rect = Rect(*self.zoomed_virtual_origin, *self.view_size)
-
-        sub_surface = self.virtual_display.subsurface(view_rect)
-        self.scaled_surface = transform.scale(sub_surface, self.physical_size)
-
-        self.update_physical_display()
+    def _world_to_screen_size(self, size: float) -> float:
+        return size * self.zoom
 
     def pan_camera(
         self,
         mouse_original_position: tuple[int, int],
         mouse_current_position: tuple[int, int],
     ) -> None:
-        zoomed_virtual_origin_mutable = list(self.zoomed_virtual_origin)
-        for i in range(2):
-            zoomed_virtual_origin_mutable[i] -= (
-                mouse_current_position[i] - mouse_original_position[i]
-            ) / self.zoom
+        dx = (mouse_current_position[0] - mouse_original_position[0]) / self.zoom
+        dy = (mouse_current_position[1] - mouse_original_position[1]) / self.zoom
 
-        self.zoomed_virtual_origin = tuple[float, float](zoomed_virtual_origin_mutable)
-
-        self.adjust_camera()
-
-    def adjust_zoom(
-        self, mouse_position: tuple[int, int], zoom_factor: float | int | None = None
-    ) -> None:
-        mouse_virtual = self._physical_to_virtual_coordinates(mouse_position)
-        if zoom_factor is not None:
-            self.zoom = max(1, self.zoom * zoom_factor)
-
-        self.zoomed_virtual_origin = tuple[float, float](
-            (mouse_virtual[i] - mouse_position[i] / self.zoom) for i in range(2)
+        self.view_window_world_origin = (
+            self.view_window_world_origin[0] - dx,
+            self.view_window_world_origin[1] + dy,
         )
 
-        self.adjust_camera()
+    def adjust_zoom(
+        self, mouse_screen: tuple[int, int], zoom_factor: float | int | None = None
+    ) -> None:
+        mouse_world = self._screen_to_world_coordinates(mouse_screen)
 
-    def blit(self, source) -> None:
-        self.physical_display.blit(source, (0, 0))
+        if zoom_factor is not None:
+            self.zoom *= zoom_factor
 
-    def update_physical_display(self):
-        if self.scaled_surface is None:
-            self.blit(self.virtual_display)
+        self.view_window_world_origin = (
+            mouse_world[0] - mouse_screen[0] / self.zoom,
+            mouse_world[1] - self.view_window.height + mouse_screen[1] / self.zoom,
+        )
 
-        else:
-            self.blit(self.scaled_surface)
+    def reset_screen(self) -> None:
+        self.screen_display.fill(DARK_BACKGROUND)
 
+    def update_screen(self) -> None:
         display.update()
 
 
