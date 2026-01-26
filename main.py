@@ -9,6 +9,7 @@ TEST_SQUARE_SIZE = 100
 
 while not exit_game:
     screen_config.reset_screen()
+    mouse_screen_position = pygame.mouse.get_pos()
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -18,7 +19,7 @@ while not exit_game:
             zoom_factor = 1.1 if event.y > 0 else 0.9
 
             screen_config.adjust_zoom(
-                mouse_screen=pygame.mouse.get_pos(), zoom_factor=zoom_factor
+                mouse_screen=mouse_screen_position, zoom_factor=zoom_factor
             )
 
         elif (
@@ -26,7 +27,7 @@ while not exit_game:
             and pygame.key.get_mods() & pygame.KMOD_LCTRL
         ):
             if event.button == 1:
-                mouse_position_on_pan_start = pygame.mouse.get_pos()
+                mouse_position_on_pan_start = mouse_screen_position
                 screen_config.panning = True
 
         elif event.type == pygame.MOUSEBUTTONUP:
@@ -34,7 +35,7 @@ while not exit_game:
                 screen_config.panning = False
 
     if screen_config.panning:
-        mouse_current_position = pygame.mouse.get_pos()
+        mouse_current_position = mouse_screen_position
 
         screen_config.pan_camera(
             mouse_original_position=mouse_position_on_pan_start,
@@ -44,12 +45,14 @@ while not exit_game:
         mouse_position_on_pan_start = mouse_current_position
 
     center_screen = screen_config._world_to_screen_coordinates(TEST_SQUARE_CENTER)
-    screen_size = screen_config._world_to_screen_size(TEST_SQUARE_SIZE)
+    screen_size = screen_config._world_to_screen_size(12742)
 
-    pygame.draw.rect(
-        screen_config.screen_display,
-        (255, 255, 255),
-        (*center_screen, screen_size, screen_size),
+    screen_config.print_mouse_world_coordinates(
+        screen_coordinates=mouse_screen_position
+    )
+
+    pygame.draw.circle(
+        screen_config.screen_display, (255, 255, 255), center_screen, screen_size
     )
 
     screen_config.update_screen()

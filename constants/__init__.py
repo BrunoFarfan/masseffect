@@ -1,3 +1,3 @@
-from .pygame import DARK_BACKGROUND
+from .pygame import COLOR_WHITE, DARK_BACKGROUND
 
-all = [DARK_BACKGROUND]
+all = [DARK_BACKGROUND, COLOR_WHITE]
