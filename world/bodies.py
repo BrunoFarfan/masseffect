@@ -9,4 +9,3 @@ class Body:
         self.velocity = velocity
         self.mass = mass
         self.radius = radius
-
