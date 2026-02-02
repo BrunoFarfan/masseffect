@@ -1,3 +1,19 @@
-from .pygame import COLOR_WHITE, DARK_BACKGROUND
+from .pygame import (
+    COLOR_WHITE,
+    DARK_BACKGROUND,
+    FOCAL_LENGTH,
+    GRID_COLOR,
+    GRID_EXTENT,
+    GRID_SPACING,
+    NEAR_PLANE,
+)
 
-all = [DARK_BACKGROUND, COLOR_WHITE]
+all = [
+    DARK_BACKGROUND,
+    COLOR_WHITE,
+    FOCAL_LENGTH,
+    GRID_COLOR,
+    GRID_EXTENT,
+    GRID_SPACING,
+    NEAR_PLANE,
+]

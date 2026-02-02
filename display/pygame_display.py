@@ -10,16 +10,15 @@ class ScreenConfig:
 
         self.reset_screen()
 
+        self.rotating = False
+
     @property
     def screen_size(self) -> tuple[int, int]:
         return self.screen_display.get_size()
 
     @property
-    def screen_size_center(self) -> tuple[int, int]:
+    def screen_center(self) -> tuple[int, int]:
         return tuple[int, int](self.screen_size[i] // 2 for i in range(2))
-
-    def _world_to_screen_size(self, size: float, z_camera_coordinate: float) -> float:
-        return size / z_camera_coordinate
 
     def reset_screen(self) -> None:
         self.screen_display.fill(DARK_BACKGROUND)
