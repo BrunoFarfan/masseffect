@@ -17,8 +17,11 @@ objects = [
 ]
 
 
-def draw_reference_grid(screen_config: ScreenConfig, camera: Camera):
-    color = GRID_COLOR
+def create_reference_grid(screen_config: ScreenConfig, camera: Camera):
+    """Create a reference grid at y = 0.
+
+    Returns a grid of lines that can be later drawn to the screen.
+    """
     scaled_height = abs(camera.position[1]) // 100
     spacing = max(int(GRID_SPACING * scaled_height), GRID_SPACING)
     extent = max(int(GRID_EXTENT * scaled_height), GRID_EXTENT)
@@ -26,6 +29,7 @@ def draw_reference_grid(screen_config: ScreenConfig, camera: Camera):
     base_x = (camera.position[0] // spacing) * spacing
     base_z = (camera.position[2] // spacing) * spacing
 
+    grid_lines = []
     for x in range(-extent, extent + 1, spacing):
         p1 = np.array((base_x + x, 0, base_z - extent))
         p2 = np.array((base_x + x, 0, base_z + extent))
@@ -35,14 +39,11 @@ def draw_reference_grid(screen_config: ScreenConfig, camera: Camera):
 
         if camera.is_point_visible(c1) or camera.is_point_visible(c2):
             c1, c2 = camera.clip_to_near_plane(c1, c2)
-
             s1 = camera.project_to_screen(c1, screen_config.screen_size)
             s2 = camera.project_to_screen(c2, screen_config.screen_size)
 
             if s1 is not None and s2 is not None:
-                pygame.draw.line(
-                    screen_config.screen_display, color, tuple(s1), tuple(s2), 1
-                )
+                grid_lines.append((tuple(s1), tuple(s2)))
 
     for z in range(-extent, extent + 1, spacing):
         p1 = np.array((base_x - extent, 0, base_z + z))
@@ -53,39 +54,73 @@ def draw_reference_grid(screen_config: ScreenConfig, camera: Camera):
 
         if camera.is_point_visible(c1) or camera.is_point_visible(c2):
             c1, c2 = camera.clip_to_near_plane(c1, c2)
-
             s1 = camera.project_to_screen(c1, screen_config.screen_size)
             s2 = camera.project_to_screen(c2, screen_config.screen_size)
 
-        if s1 is not None and s2 is not None:
-            pygame.draw.line(
-                screen_config.screen_display, color, tuple(s1), tuple(s2), 1
-            )
+            if s1 is not None and s2 is not None:
+                grid_lines.append((tuple(s1), tuple(s2)))
+
+    return grid_lines
+
+
+def sort_bodies_for_display(objects: list, camera_position: np.ndarray) -> list:
+    return sorted(
+        objects, key=lambda x: np.linalg.norm(x["pos"] - camera_position), reverse=True
+    )
+
+
+def display_objects_with_grid_lines(
+    objects: list, grid_lines: list, camera_position: np.ndarray
+):
+    above_objects = [obj for obj in objects if obj["pos"][1] >= 0]
+    below_objects = [obj for obj in objects if obj["pos"][1] < 0]
+
+    above_objects = sort_bodies_for_display(above_objects, camera_position)
+    above_objects = [[obj, "circle"] for obj in above_objects]
+
+    below_objects = sort_bodies_for_display(below_objects, camera_position)
+    below_objects = [[obj, "circle"] for obj in below_objects]
+
+    grid_lines = [[grid_line, "line"] for grid_line in grid_lines]
+
+    camera_above = camera.position[1] >= 0
+
+    if camera_above:
+        all_objects = below_objects + grid_lines + above_objects
+    else:
+        all_objects = above_objects + grid_lines + below_objects
+
+    return all_objects
 
 
 while not exit_game:
     screen_config.reset_screen()
     mouse_screen_position = np.array(pygame.mouse.get_pos())
 
-    for obj in objects:
-        camera_position = camera.world_to_camera(obj["pos"])
-        screen_position = camera.project_to_screen(
-            camera_position, screen_config.screen_size
-        )
+    grid_lines = create_reference_grid(screen_config, camera)
 
-        if screen_position is None:
-            continue
+    all_objects = display_objects_with_grid_lines(objects, grid_lines, camera.position)
 
-        screen_size = obj["r"] * camera.focal_length / camera_position[2]
+    for obj, obj_type in all_objects:
+        if obj_type == "circle":
+            camera_position = camera.world_to_camera(obj["pos"])
+            screen_position = camera.project_to_screen(
+                camera_position, screen_config.screen_size
+            )
 
-        pygame.draw.circle(
-            screen_config.screen_display,
-            obj["color"],
-            tuple(screen_position),
-            screen_size,
-        )
+            if screen_position is None:
+                continue
 
-    draw_reference_grid(screen_config, camera)
+            screen_size_radius = obj["r"] * camera.focal_length / camera_position[2]
+
+            pygame.draw.circle(
+                screen_config.screen_display,
+                obj["color"],
+                tuple(screen_position),
+                screen_size_radius,
+            )
+        elif obj_type == "line":
+            pygame.draw.line(screen_config.screen_display, GRID_COLOR, obj[0], obj[1])
 
     for event in pygame.event.get():
         keys = pygame.key.get_pressed()
