@@ -37,6 +37,10 @@ asset's SHA-256 hash and MIME type, security headers, and that repository-only f
 return 404. The preview has `X-Robots-Tag: noindex, nofollow`; it is **public**, not
 access-controlled. Production has no indexing restriction.
 
+Cloudflare's existing managed `robots.txt` policy is preserved. The smoke check
+recognizes its delimited production-only prefix, then verifies our original robots
+content's exact hash. All other assets are hashed without normalization.
+
 The existing `bruni.to` Cloudflare Web Analytics setting can inject its beacon into
 production HTML for browser requests. Production CSP permits only its documented
 `static.cloudflareinsights.com` script and `cloudflareinsights.com` collection

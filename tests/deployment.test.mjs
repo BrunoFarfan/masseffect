@@ -12,6 +12,46 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { createHash } from "node:crypto";
 import { buildSite } from "../scripts/build.mjs";
+import { originalAssetBytes } from "../scripts/published-asset.mjs";
+
+test("only the recognized production robots prefix is excluded from source hashing", () => {
+  const original = Buffer.from("User-agent: *\nAllow: /\n");
+  const managed = Buffer.from(
+    "# Preamble\n# BEGIN Cloudflare Managed content\nUser-agent: *\nAllow: /\n# END Cloudflare Managed Content\n\n" +
+      original,
+  );
+  assert.deepEqual(
+    originalAssetBytes("robots.txt", managed, "production"),
+    original,
+  );
+  assert.deepEqual(
+    originalAssetBytes("robots.txt", original, "production"),
+    original,
+  );
+  assert.deepEqual(
+    originalAssetBytes("robots.txt", managed, "preview"),
+    managed,
+  );
+  assert.deepEqual(
+    originalAssetBytes("index.html", managed, "production"),
+    managed,
+  );
+  const broken = Buffer.from("# END Cloudflare Managed Content\n\n" + original);
+  assert.deepEqual(
+    originalAssetBytes("robots.txt", broken, "production"),
+    broken,
+  );
+  const changed = Buffer.from(
+    managed
+      .toString()
+      .replace("Allow: /\n", "Disallow: /\n")
+      .replace(/Allow: \/\n$/, "Disallow: /\n"),
+  );
+  assert.notDeepEqual(
+    originalAssetBytes("robots.txt", changed, "production"),
+    original,
+  );
+});
 
 test("static build publishes only browser assets, hashes them and removes stale output", async () => {
   const temp = await mkdtemp(join(tmpdir(), "masseffect-build-"));
