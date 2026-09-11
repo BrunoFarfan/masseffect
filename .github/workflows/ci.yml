@@ -1,0 +1,90 @@
+name: CI and deploy
+
+on:
+  push:
+    branches: [staging, production]
+  pull_request:
+    branches: [staging, production]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    name: checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: 22
+          cache: npm
+      - uses: extractions/setup-just@f8a3cce218d9f83db3a2ecd90e41ac3de6cdfd9b # v3
+      - run: npm ci
+      - run: just check
+      - run: just test
+      - run: just deploy-check preview
+
+  promotion-source:
+    name: production promotion source
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Require staging for production pull requests
+        env:
+          EVENT: ${{ github.event_name }}
+          BASE: ${{ github.base_ref }}
+          HEAD: ${{ github.head_ref }}
+          SOURCE_REPO: ${{ github.event.pull_request.head.repo.full_name }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          if [[ "$EVENT" == pull_request && "$BASE" == production ]]; then
+            [[ "$HEAD" == staging && "$SOURCE_REPO" == "$REPOSITORY" ]] || {
+              echo 'Production must be promoted by a staging -> production PR from this repository.'
+              exit 1
+            }
+          fi
+
+  deploy:
+    name: deploy ${{ github.ref_name == 'production' && 'production' || 'preview' }}
+    needs: [checks, promotion-source]
+    if: >-
+      github.event_name != 'pull_request' &&
+      (github.ref_name == 'staging' || github.ref_name == 'production')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: ${{ github.ref_name == 'production' && 'production' || 'preview' }}
+      url: ${{ github.ref_name == 'production' && 'https://masseffect.bruni.to' || 'https://masseffect-preview.bruno-farfan-miquel.workers.dev' }}
+    concurrency:
+      group: deploy-${{ github.ref_name }}
+      cancel-in-progress: ${{ github.ref_name != 'production' }}
+    env:
+      DEPLOY_ENV: ${{ github.ref_name == 'production' && 'production' || 'preview' }}
+      DEPLOY_URL: ${{ github.ref_name == 'production' && 'https://masseffect.bruni.to' || 'https://masseffect-preview.bruno-farfan-miquel.workers.dev' }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      WRANGLER_SEND_METRICS: "false"
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: 22
+          cache: npm
+      - uses: extractions/setup-just@f8a3cce218d9f83db3a2ecd90e41ac3de6cdfd9b # v3
+      - name: Check deployment credential
+        run: |
+          if [[ -z "$CLOUDFLARE_API_TOKEN" ]]; then
+            echo '::error::Add CLOUDFLARE_API_TOKEN to repository Actions secrets. Never use local Wrangler OAuth credentials.'
+            exit 1
+          fi
+      - run: npm ci
+      - run: just deploy "$DEPLOY_ENV"
+      - name: Verify deployed revision, assets and headers
+        run: |
+          for attempt in 1 2 3 4 5 6; do
+            if just smoke "$DEPLOY_URL" "$DEPLOY_ENV" "$GITHUB_SHA"; then exit 0; fi
+            sleep 10
+          done
+          exit 1
