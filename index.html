@@ -1,17 +1,63 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" prefix="og: https://ogp.me/ns#">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="theme-color" content="#10151e" />
+    <meta name="color-scheme" content="dark" />
+    <meta
+      name="description"
+      content="Explore a living Solar System. Create planets and stars, bend orbits, and watch gravity unfold in a free, desktop-first 3D orbital sandbox."
+    />
     <title>Mass Effect — orbital sandbox</title>
+    <link rel="canonical" href="https://masseffect.bruni.to/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Mass Effect" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content="Mass Effect — orbital sandbox" />
+    <meta
+      property="og:description"
+      content="A small universe. Yours to disturb. Explore the Solar System, create new worlds, and see where gravity takes them."
+    />
+    <meta property="og:url" content="https://masseffect.bruni.to/" />
+    <meta
+      property="og:image"
+      content="https://masseffect.bruni.to/assets/social-preview.png"
+    />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Mass Effect: a warm Sun and pastel planets tracing gentle paths across a dark sky."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Mass Effect — orbital sandbox" />
+    <meta
+      name="twitter:description"
+      content="A small universe. Yours to disturb. A free, desktop-first orbital sandbox."
+    />
+    <meta
+      name="twitter:image"
+      content="https://masseffect.bruni.to/assets/social-preview.png"
+    />
+    <meta
+      name="twitter:image:alt"
+      content="Mass Effect: a warm Sun and pastel planets tracing gentle paths across a dark sky."
+    />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
     <link
-      rel="icon"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='10' fill='%23edcf96'/%3E%3C/svg%3E"
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/assets/apple-touch-icon.png"
     />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body data-mode="ready">
+    <noscript
+      >Mass Effect needs JavaScript to simulate gravity and draw the Solar
+      System. Enable JavaScript and reload to explore.</noscript
+    >
     <canvas
       id="space"
       tabindex="0"

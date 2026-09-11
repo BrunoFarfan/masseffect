@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <radialGradient id="sky" cx="72%" cy="45%" r="75%"><stop stop-color="#1e2938"/><stop offset="1" stop-color="#10151e"/></radialGradient>
+    <radialGradient id="glow"><stop stop-color="#edcf96" stop-opacity=".14"/><stop offset="1" stop-color="#edcf96" stop-opacity="0"/></radialGradient>
+    <radialGradient id="sun" cx="32%" cy="28%"><stop stop-color="#ffe5b1"/><stop offset="1" stop-color="#e7c58d"/></radialGradient>
+    <radialGradient id="earth" cx="30%" cy="24%"><stop stop-color="#b9dad0"/><stop offset="1" stop-color="#709995"/></radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#sky)"/>
+  <g fill="#9aabb9" opacity=".28">
+    <circle cx="97" cy="96" r="1"/><circle cx="601" cy="77" r="1"/><circle cx="1130" cy="102" r="1.2"/>
+    <circle cx="508" cy="527" r="1"/><circle cx="1043" cy="537" r="1"/><circle cx="721" cy="570" r=".8"/>
+    <circle cx="967" cy="73" r=".8"/><circle cx="1159" cy="387" r="1"/><circle cx="568" cy="389" r="1"/>
+  </g>
+  <circle cx="840" cy="300" r="185" fill="url(#glow)"/>
+  <g fill="none" stroke-linecap="round">
+    <path d="M750 209C793 170 878 175 929 219" stroke="#ad9fae" stroke-width="1.6" opacity=".55"/>
+    <path d="M1094 302C1086 401 934 454 777 424C725 414 679 393 649 366" stroke="#99c7be" stroke-width="2" opacity=".5"/>
+    <path d="M613 249C631 165 781 106 930 135C995 148 1046 174 1078 210" stroke="#e2c490" stroke-width="1.5" opacity=".4"/>
+    <path d="M967 473C1075 453 1142 401 1153 341" stroke="#d7a598" stroke-width="1.5" opacity=".35"/>
+  </g>
+  <circle cx="840" cy="300" r="41" fill="url(#sun)"/>
+  <circle cx="929" cy="219" r="8" fill="#b5a5b8"/>
+  <circle cx="649" cy="366" r="18" fill="url(#earth)"/>
+  <circle cx="624" cy="380" r="4" fill="#c6c9d0"/>
+  <circle cx="1078" cy="210" r="12" fill="#e2c490"/>
+  <circle cx="967" cy="473" r="11" fill="#d7a598"/>
+  <text x="72" y="180" fill="#9bacb8" font-family="monospace" font-size="15" letter-spacing="3">AN ORBITAL SANDBOX</text>
+  <text x="68" y="268" fill="#d3e2d7" font-family="Georgia,serif" font-size="76" letter-spacing="-3">Mass Effect<tspan fill="#edcf96"> ·</tspan></text>
+  <text x="72" y="330" fill="#c2cbd2" font-family="Georgia,serif" font-size="29">A small universe.</text>
+  <text x="72" y="372" fill="#c2cbd2" font-family="Georgia,serif" font-size="29">Yours to disturb.</text>
+  <text x="72" y="558" fill="#8697a5" font-family="monospace" font-size="16">masseffect.bruni.to</text>
+</svg>

@@ -21,7 +21,10 @@ if (revision)
 assert.match(release.revision, /^[a-f0-9]{40}$/);
 assert.ok(Object.keys(release.files).length >= 3);
 for (const [file, hash] of Object.entries(release.files)) {
-  assert.match(file, /^(index\.html|style\.css|src\/[a-z-]+\.js)$/);
+  assert.match(
+    file,
+    /^(index\.html|style\.css|robots\.txt|sitemap\.xml|assets\/[a-z-]+\.(svg|png)|src\/[a-z-]+\.js)$/,
+  );
   const asset = await get(`/${file}`);
   assert.equal(asset.status, 200, file);
   assert.match(
@@ -30,7 +33,15 @@ for (const [file, hash] of Object.entries(release.files)) {
       ? /javascript/
       : file.endsWith(".css")
         ? /text\/css/
-        : /text\/html/,
+        : file.endsWith(".png")
+          ? /image\/png/
+          : file.endsWith(".svg")
+            ? /image\/svg\+xml/
+            : file.endsWith(".txt")
+              ? /text\/plain/
+              : file.endsWith(".xml")
+                ? /(?:application|text)\/xml/
+                : /text\/html/,
   );
   assert.equal(
     createHash("sha256")
@@ -42,9 +53,22 @@ for (const [file, hash] of Object.entries(release.files)) {
 }
 const home = await get("/");
 assert.equal(home.status, 200);
-assert.match(await home.text(), /Mass Effect — orbital sandbox/);
+const html = await home.text();
+assert.match(html, /Mass Effect — orbital sandbox/);
+assert.match(html, /rel="canonical" href="https:\/\/masseffect\.bruni\.to\/"/);
+assert.match(html, /property="og:image"/);
+assert.match(html, /name="twitter:card" content="summary_large_image"/);
+assert.match(
+  html,
+  /https:\/\/masseffect\.bruni\.to\/assets\/social-preview\.png/,
+);
 assert.equal(home.headers.get("x-content-type-options"), "nosniff");
 assert.match(home.headers.get("content-security-policy"), /script-src 'self'/);
+if (environment === "production")
+  assert.match(
+    home.headers.get("content-security-policy"),
+    /https:\/\/static\.cloudflareinsights\.com; connect-src 'self' https:\/\/cloudflareinsights\.com;/,
+  );
 if (environment === "preview")
   assert.match(home.headers.get("x-robots-tag"), /noindex/);
 else assert.equal(home.headers.get("x-robots-tag"), null);

@@ -32,6 +32,11 @@ export async function buildSite(destination, environment = "preview") {
   const files = [
     "index.html",
     "style.css",
+    "robots.txt",
+    "sitemap.xml",
+    "assets/favicon.svg",
+    "assets/apple-touch-icon.png",
+    "assets/social-preview.png",
     ...modules.map((name) => `src/${name}`),
   ];
   for (const file of files)
@@ -44,6 +49,7 @@ export async function buildSite(destination, environment = "preview") {
   // Only this generated output is replaced; source and local QA artifacts stay intact.
   await rm(destination, { recursive: true, force: true });
   await mkdir(resolve(destination, "src"), { recursive: true });
+  await mkdir(resolve(destination, "assets"), { recursive: true });
   const hashes = {};
   for (const file of files) {
     await cp(resolve(root, file), resolve(destination, file));
@@ -63,7 +69,9 @@ export async function buildSite(destination, environment = "preview") {
       "  Referrer-Policy: strict-origin-when-cross-origin",
       "  X-Frame-Options: DENY",
       "  Cache-Control: public, max-age=0, must-revalidate",
-      "  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'",
+      // bruni.to injects Cloudflare Web Analytics at the edge for browser requests.
+      // Permit its two documented origins in production, not arbitrary scripts.
+      `  Content-Security-Policy: default-src 'self'; script-src 'self'${environment === "production" ? " https://static.cloudflareinsights.com" : ""}; connect-src 'self'${environment === "production" ? " https://cloudflareinsights.com" : ""}; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'`,
       ...(environment === "preview"
         ? ["  X-Robots-Tag: noindex, nofollow"]
         : []),
