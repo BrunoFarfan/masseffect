@@ -45,6 +45,11 @@ assert.equal(home.status, 200);
 assert.match(await home.text(), /Mass Effect — orbital sandbox/);
 assert.equal(home.headers.get("x-content-type-options"), "nosniff");
 assert.match(home.headers.get("content-security-policy"), /script-src 'self'/);
+if (environment === "production")
+  assert.match(
+    home.headers.get("content-security-policy"),
+    /https:\/\/static\.cloudflareinsights\.com; connect-src 'self' https:\/\/cloudflareinsights\.com;/,
+  );
 if (environment === "preview")
   assert.match(home.headers.get("x-robots-tag"), /noindex/);
 else assert.equal(home.headers.get("x-robots-tag"), null);

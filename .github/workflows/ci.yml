@@ -26,6 +26,7 @@ jobs:
       - run: just check
       - run: just test
       - run: just deploy-check preview
+      - run: just deploy-check production
 
   promotion-source:
     name: production promotion source

@@ -63,7 +63,9 @@ export async function buildSite(destination, environment = "preview") {
       "  Referrer-Policy: strict-origin-when-cross-origin",
       "  X-Frame-Options: DENY",
       "  Cache-Control: public, max-age=0, must-revalidate",
-      "  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'",
+      // bruni.to injects Cloudflare Web Analytics at the edge for browser requests.
+      // Permit its two documented origins in production, not arbitrary scripts.
+      `  Content-Security-Policy: default-src 'self'; script-src 'self'${environment === "production" ? " https://static.cloudflareinsights.com" : ""}; connect-src 'self'${environment === "production" ? " https://cloudflareinsights.com" : ""}; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'`,
       ...(environment === "preview"
         ? ["  X-Robots-Tag: noindex, nofollow"]
         : []),

@@ -23,6 +23,10 @@ test("static build publishes only browser assets, hashes them and removes stale 
       await readFile(join(dist, "_headers"), "utf8"),
       /X-Robots-Tag: noindex/,
     );
+    assert.doesNotMatch(
+      await readFile(join(dist, "_headers"), "utf8"),
+      /cloudflareinsights/,
+    );
     for (const [file, hash] of Object.entries(first.files)) {
       assert.equal(
         createHash("sha256")
@@ -45,6 +49,10 @@ test("static build publishes only browser assets, hashes them and removes stale 
     assert.doesNotMatch(
       await readFile(join(dist, "_headers"), "utf8"),
       /noindex/,
+    );
+    assert.match(
+      await readFile(join(dist, "_headers"), "utf8"),
+      /script-src 'self' https:\/\/static\.cloudflareinsights\.com; connect-src 'self' https:\/\/cloudflareinsights\.com;/,
     );
     assert.ok(!(await readdir(dist)).includes("stale.txt"));
   } finally {

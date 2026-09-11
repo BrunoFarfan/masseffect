@@ -37,6 +37,12 @@ asset's SHA-256 hash and MIME type, security headers, and that repository-only f
 return 404. The preview has `X-Robots-Tag: noindex, nofollow`; it is **public**, not
 access-controlled. Production has no indexing restriction.
 
+The existing `bruni.to` Cloudflare Web Analytics setting can inject its beacon into
+production HTML for browser requests. Production CSP permits only its documented
+`static.cloudflareinsights.com` script and `cloudflareinsights.com` collection
+origins in addition to same-origin game assets. Preview remains same-origin-only.
+This does not add an analytics dependency to the game or change zone-wide settings.
+
 ## Local commands
 
 Install Node.js 22+ and just, then `npm ci` to install the pinned deployment tooling.
