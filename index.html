@@ -2,245 +2,283 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="theme-color" content="#10151e" />
-    <meta
-      name="description"
-      content="A quiet, playful Solar System. Explore space, change time, and introduce a little chaos."
-    />
-    <title>Mass Effect — a little space to play</title>
+    <title>Mass Effect — orbital sandbox</title>
     <link
       rel="icon"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='11' fill='%23f5d9a0'/%3E%3Cellipse cx='20' cy='20' rx='19' ry='7' fill='none' stroke='%23a4cfca' transform='rotate(-30 20 20)'/%3E%3C/svg%3E"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='10' fill='%23edcf96'/%3E%3C/svg%3E"
     />
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body>
+  <body data-mode="ready">
     <canvas
       id="space"
-      aria-label="Three-dimensional Solar System. Select planets with the body menu, or click them in space."
       tabindex="0"
+      aria-label="Orbital sandbox. Click to capture mouse. Escape releases the cursor."
     ></canvas>
     <header>
-      <div class="identity">
-        <span class="eyebrow">AN ORBITAL PLAYGROUND</span>
-        <h1>Mass Effect<span class="title-dot">.</span></h1>
-        <p>A little space to play.</p>
-      </div>
-      <nav aria-label="View controls">
-        <button id="home" title="Return to the inner system (H)">
-          Inner system</button
-        ><button id="outer">Whole system</button
-        ><button id="help" aria-label="Navigation help">?</button>
+      <span class="wordmark">Mass Effect<span>·</span></span>
+      <span id="scenario-name"></span>
+      <nav class="ui-only">
+        <button id="catalog">Bodies</button><button id="add">Add body</button
+        ><button id="scenes">Scenarios</button
+        ><button id="settings">View</button>
       </nav>
+      <button id="navigate">Click to explore</button>
     </header>
-    <aside class="inspector" aria-label="Selected body">
-      <label class="eyebrow" for="body-select">EXPLORING</label>
-      <select id="body-select" aria-label="Select a body"></select>
-      <details id="body-details" open>
-        <summary>Body details</summary>
-        <div id="properties"></div>
-      </details>
-      <button id="focus">↗ Follow body</button>
-      <p id="camera-mode" class="quiet">Free camera</p>
-    </aside>
-    <div class="experiment">
-      <div class="spawn-actions">
-        <button class="primary" id="quick-add">＋ Surprise me</button
-        ><button
-          id="add"
-          aria-label="Configure a new body"
-          title="Configure position, velocity, mass and radius"
-        >
-          Customize
-        </button>
-      </div>
-      <span>Make a small disturbance.</span>
+    <div id="crosshair" aria-hidden="true">+</div>
+    <div id="welcome">
+      <button id="begin">Enter space ↗</button>
+      <p>Mouse to look · WASD to move · Esc for controls</p>
     </div>
-    <div id="toast" role="status" aria-live="polite"></div>
-    <button id="locator" hidden title="Bring the selected body into view">
+    <section id="selection" hidden>
+      <div>
+        <span id="selected-name"></span><span id="selected-context"></span>
+      </div>
+      <div class="ui-only selection-actions">
+        <button id="focus">Focus</button><button id="approach">Go closer</button
+        ><button id="details">Details</button
+        ><button id="clear-selection" aria-label="Clear selection">×</button>
+      </div>
+    </section>
+    <aside id="inspector" hidden>
+      <div class="sheet-heading">
+        <h2 id="detail-name">Body</h2>
+        <button id="close-details" aria-label="Close details">×</button>
+      </div>
+      <dl id="properties"></dl>
+      <p class="quiet">
+        Temperatures are idealized radiative estimates, not climate or stellar
+        evolution.
+      </p>
+      <button id="unfollow">Release follow</button>
+    </aside>
+    <button id="locator" hidden>
       <span id="locator-arrow">→</span><span id="locator-label"></span>
     </button>
     <footer>
+      <span id="clock">Day 0</span>
       <div class="time-controls">
-        <button
-          id="play"
-          aria-label="Pause simulation"
-          title="Pause or play (Space)"
-        >
-          Ⅱ
-        </button>
-        <div>
-          <span class="eyebrow" id="clock">DAY 0</span
-          ><label for="speed" class="sr-only">Simulation speed</label
-          ><select id="speed">
-            <option value="86400">1 day / sec</option>
-            <option value="604800" selected>1 week / sec</option>
-            <option value="2592000">1 month / sec</option>
-            <option value="31557600">1 year / sec</option>
-          </select>
-        </div>
-        <span id="running" class="status">Running</span>
+        <button id="reverse" aria-label="Rewind recorded history">«</button
+        ><button id="play" aria-label="Pause simulation">Ⅱ</button
+        ><button id="forward" hidden aria-label="Play forward">›</button
+        ><select id="speed" aria-label="Simulation speed">
+          <option value="1">1× real time</option>
+          <option value="3600">1 hour / sec</option>
+          <option value="86400" selected>1 day / sec</option>
+          <option value="604800">Up to 1 week / sec</option>
+          <option value="2592000">Up to 1 month / sec</option>
+          <option value="31557600">Up to 1 year / sec</option></select
+        ><span id="running"></span>
       </div>
-      <div class="display-controls">
-        <button id="trails" aria-pressed="true">Trails</button
-        ><button id="reference" aria-pressed="true">Orbit guides</button
-        ><button id="labels" aria-pressed="true">Labels</button
-        ><button id="reset" title="Reset bodies and time">Reset</button>
-      </div>
+      <span id="hint">Esc · controls</span>
     </footer>
-    <div class="navigation-hint">
-      DRAG TO LOOK <i>·</i> SCROLL TO TRAVEL <i>·</i> WASD TO MOVE
+    <div id="history-strip" class="ui-only" hidden>
+      <span id="history-start"></span>
+      <input
+        id="history-position"
+        type="range"
+        min="0"
+        max="1"
+        step="any"
+        aria-label="Recorded time"
+      />
+      <span id="history-end"></span>
     </div>
-    <div class="scale-note">TRUE DISTANCES <i>·</i> ENLARGED BODIES</div>
+    <div id="toast" role="status" aria-live="polite"></div>
+    <dialog id="catalog-dialog">
+      <div class="sheet-heading">
+        <h2>Explore</h2>
+        <button data-close aria-label="Close body list">×</button>
+      </div>
+      <select id="body-select" size="18" aria-label="Select a body"></select>
+      <div class="actions">
+        <button id="catalog-focus">Focus system ↗</button
+        ><button id="catalog-approach">Go closer ↗</button>
+      </div>
+    </dialog>
+    <dialog id="view-dialog">
+      <div class="sheet-heading">
+        <h2>A different view</h2>
+        <button data-close aria-label="Close view settings">×</button>
+      </div>
+      <div class="menu-list">
+        <button id="home">Inner system</button
+        ><button id="outer">Whole system</button
+        ><button id="trails" aria-pressed="true">Trails</button
+        ><button id="labels" aria-pressed="true">Names</button
+        ><button id="reset">Reset Solar System</button>
+      </div>
+      <details>
+        <summary>Controls & scale</summary>
+        <p>
+          Mouse looks. WASD moves, Q/E rises and falls. Scroll travels. Shift
+          moves faster. Click a body to select. F focuses, G approaches, H
+          returns home. Space pauses. Escape releases the cursor; click Explore
+          to return.
+        </p>
+        <p>
+          Distances and physics use real SI quantities. Small bodies are
+          enlarged for visibility. Trails record actual motion, never predicted
+          ellipses.
+        </p>
+        <p>
+          « rewinds; Ⅱ pauses either direction; › resumes forward. History
+          is bounded, and trails clear during rewind. Merges can be restored
+          from recordings, not analytically reversed. Fast playback may reach
+          the history boundary quickly.
+        </p>
+      </details>
+    </dialog>
     <dialog id="create-dialog">
       <form id="create-form">
-        <div class="dialog-heading">
-          <span class="eyebrow">INTRODUCE A LITTLE CHAOS</span
-          ><button
-            type="button"
-            class="close"
-            data-close
-            aria-label="Close body creation"
-          >
+        <div class="sheet-heading">
+          <h2>A new arrival</h2>
+          <button type="button" data-close aria-label="Close body creation">
             ×
           </button>
         </div>
-        <h2>A new arrival.</h2>
-        <p>Give it a starting point. Gravity takes it from there.</p>
-        <div class="form-pair">
+        <label>Body<select id="preset"></select></label>
+        <label>Place around<select id="primary"></select></label>
+        <div class="pair">
           <label
-            >Name<input
-              name="name"
-              value="Visitor"
-              maxlength="24"
+            >Distance<input
+              id="distance"
+              type="number"
+              min="0.000001"
+              step="any"
+              value="1"
               required /></label
           ><label
-            >Mass · kg<input
-              name="mass"
-              type="number"
-              value="5.972e24"
-              min="1"
-              max="1e32"
-              step="any"
-              required
-          /></label>
+            >Unit<select id="distance-unit">
+              <option value="149597870700">AU</option>
+              <option value="1000">km</option>
+            </select></label
+          >
         </div>
         <label
-          >Physical radius · m<input
-            name="radius"
-            type="number"
-            value="6.371e6"
-            min="1"
-            max="1e11"
-            step="any"
-            required
+          >Initial motion<select id="motion">
+            <option value="circular">Approximate circular orbit</option>
+            <option value="stationary">Stationary relative to target</option>
+            <option value="random">Random orbital velocity</option>
+          </select></label
+        >
+        <label
+          >Inclination <output id="inclination-value">0°</output
+          ><input id="inclination" type="range" min="-180" max="180" value="0"
         /></label>
-        <fieldset>
-          <legend>Position · m <span>X / Y / Z</span></legend>
-          <div class="vector">
-            <input
-              aria-label="Position X in meters"
-              name="px"
-              type="number"
-              value="2e11"
-              min="-1e16"
-              max="1e16"
-              step="any"
-              required
-            /><input
-              aria-label="Position Y in meters"
-              name="py"
-              type="number"
-              value="2e10"
-              min="-1e16"
-              max="1e16"
-              step="any"
-              required
-            /><input
-              aria-label="Position Z in meters"
-              name="pz"
-              type="number"
-              value="0"
-              min="-1e16"
-              max="1e16"
-              step="any"
-              required
-            />
-          </div>
-        </fieldset>
-        <fieldset>
-          <legend>Velocity · m/s <span>X / Y / Z</span></legend>
-          <div class="vector">
-            <input
-              aria-label="Velocity X in meters per second"
-              name="vx"
-              type="number"
-              value="0"
-              min="-1e7"
-              max="1e7"
-              step="any"
-              required
-            /><input
-              aria-label="Velocity Y in meters per second"
-              name="vy"
-              type="number"
-              value="2000"
-              min="-1e7"
-              max="1e7"
-              step="any"
-              required
-            /><input
-              aria-label="Velocity Z in meters per second"
-              name="vz"
-              type="number"
-              value="26000"
-              min="-1e7"
-              max="1e7"
-              step="any"
-              required
-            />
-          </div>
-        </fieldset>
-        <p class="quiet">
-          Coordinates are relative to the system origin. Y is above the orbital
-          plane. Time pauses while you create.
+        <button type="button" id="placement-angle">
+          Try another position ↻
+        </button>
+        <details id="advanced">
+          <summary>Advanced · exact SI state</summary>
+          <fieldset id="advanced-fields" disabled>
+            <label
+              >Name<input name="name" value="Visitor" maxlength="24" required
+            /></label>
+            <div class="pair">
+              <label
+                >Mass · kg<input
+                  name="mass"
+                  type="number"
+                  value="5.972e24"
+                  min="1"
+                  max="1e32"
+                  step="any"
+                  required /></label
+              ><label
+                >Radius · m<input
+                  name="radius"
+                  type="number"
+                  value="6.371e6"
+                  min="1"
+                  max="1e11"
+                  step="any"
+                  required
+              /></label>
+            </div>
+            <fieldset>
+              <legend>Position · m</legend>
+              <div class="vector">
+                <input
+                  name="px"
+                  aria-label="Position X"
+                  value="2e11"
+                  type="number"
+                  min="-1e16"
+                  max="1e16"
+                  step="any"
+                  required
+                /><input
+                  name="py"
+                  aria-label="Position Y"
+                  value="2e10"
+                  type="number"
+                  min="-1e16"
+                  max="1e16"
+                  step="any"
+                  required
+                /><input
+                  name="pz"
+                  aria-label="Position Z"
+                  value="0"
+                  type="number"
+                  min="-1e16"
+                  max="1e16"
+                  step="any"
+                  required
+                />
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>Velocity · m/s</legend>
+              <div class="vector">
+                <input
+                  name="vx"
+                  aria-label="Velocity X"
+                  value="0"
+                  type="number"
+                  min="-1e7"
+                  max="1e7"
+                  step="any"
+                  required
+                /><input
+                  name="vy"
+                  aria-label="Velocity Y"
+                  value="2000"
+                  type="number"
+                  min="-1e7"
+                  max="1e7"
+                  step="any"
+                  required
+                /><input
+                  name="vz"
+                  aria-label="Velocity Z"
+                  value="26000"
+                  type="number"
+                  min="-1e7"
+                  max="1e7"
+                  step="any"
+                  required
+                />
+              </div>
+            </fieldset>
+          </fieldset>
+        </details>
+        <p id="creation-error" role="alert"></p>
+        <p class="quiet" id="creation-note">
+          Time pauses while placing. The arrow shows initial relative velocity.
         </p>
-        <div class="dialog-actions">
-          <button type="button" id="randomize">↻ Randomize</button
-          ><button type="submit" class="primary">Release body ↗</button>
-        </div>
+        <button class="primary" type="submit">Release body ↗</button>
       </form>
     </dialog>
-    <dialog id="help-dialog">
-      <div class="dialog-heading">
-        <span class="eyebrow">FIND YOUR WAY</span
-        ><button class="close" data-close aria-label="Close navigation help">
-          ×
-        </button>
+    <dialog id="scenario-dialog">
+      <div class="sheet-heading">
+        <h2>Starting points</h2>
+        <button data-close aria-label="Close scenarios">×</button>
       </div>
-      <h2>Room to wander.</h2>
-      <dl class="help-list">
-        <dt>Drag</dt>
-        <dd>Look around, without rolling</dd>
-        <dt>Scroll</dt>
-        <dd>Travel forward / backward</dd>
-        <dt>W A S D</dt>
-        <dd>Move forward, left, back, right</dd>
-        <dt>Q / E</dt>
-        <dd>Move down / up</dd>
-        <dt>Shift</dt>
-        <dd>Travel four times faster</dd>
-        <dt>Click / double-click</dt>
-        <dd>Select / follow a body</dd>
-        <dt>Space / H</dt>
-        <dd>Pause / return to the inner system</dd>
-      </dl>
-      <p class="quiet">
-        Distances are true to scale. Body sizes are enlarged for visibility.
-        Faint orbit guides show starting orbits; bright trails record actual
-        motion. Collisions merge bodies.
-      </p>
+      <div id="scenario-list"></div>
     </dialog>
     <script type="module" src="src/main.js"></script>
   </body>

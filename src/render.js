@@ -1,10 +1,12 @@
 import { length, sub } from "./math.js";
+import { SphereSurface } from "./sphere.js";
 
 export class Renderer {
   constructor(canvas) {
     this.canvas = canvas;
     this.ctx = canvas.getContext("2d");
     this.hits = [];
+    this.surface = new SphereSurface();
     this.resize();
   }
   resize() {
@@ -60,55 +62,71 @@ export class Renderer {
         ctx.fillRect(star.x, star.y, i % 4 ? 0.9 : 1.4, i % 4 ? 0.9 : 1.4);
       }
     }
-    if (options.reference) {
-      const extent = 10 ** Math.floor(Math.log10(length(camera.position) || 1));
-      this.path(
-        [
-          [-extent * 3, 0, 0],
-          [extent * 3, 0, 0],
-        ],
-        camera,
-        "#bdc3c312",
-        1,
-        true,
+    const resolved = (b) => {
+      if (!b.parentId || b.id === selected) return true;
+      const parent = sim.bodies.find((p) => p.id === b.parentId),
+        p = this.project(b.position);
+      return (
+        !parent ||
+        (p && length(sub(b.position, parent.position)) * p.scale > 18)
       );
-      this.path(
-        [
-          [0, 0, -extent * 3],
-          [0, 0, extent * 3],
-        ],
-        camera,
-        "#bdc3c312",
-        1,
-        true,
-      );
-      for (const b of sim.bodies)
-        if (b.orbit) this.path(b.orbit, camera, b.color + "27");
-    }
-    if (options.trails)
-      for (const b of sim.bodies)
-        if (b.trail.length > 1) {
-          for (let section = 0; section < 5; section++) {
-            const start = Math.floor(((b.trail.length - 1) * section) / 5),
-              end = Math.floor(((b.trail.length - 1) * (section + 1)) / 5) + 1;
-            this.path(
-              b.trail.slice(start, end),
-              camera,
-              b.color + ["18", "30", "50", "80", "bb"][section],
-              1.4,
-            );
-          }
-          this.path([b.trail.at(-1), b.position], camera, b.color + "cc", 1.4);
+    };
+    const followed = sim.bodies.find((b) => b.id === camera.followId);
+    const hasChildren = (body) =>
+      body && sim.bodies.some((b) => b.parentId === body.id);
+    const reference = hasChildren(followed)
+      ? followed
+      : sim.bodies.find((b) => b.id === followed?.parentId);
+    const local =
+      reference &&
+      hasChildren(reference) &&
+      reference.kind !== "Star" &&
+      length(sub(camera.position, reference.position)) <
+        reference.radius * 5000;
+    options.trailReference = local ? reference.name : null;
+    const nearestSurfaceRatio = Math.min(
+      ...sim.bodies.map(
+        (b) => length(sub(camera.position, b.position)) / b.radius,
+      ),
+    );
+    const trailAlpha = Math.max(0, Math.min(1, (nearestSurfaceRatio - 3) / 9));
+    ctx.globalAlpha = trailAlpha;
+    if (options.trails && trailAlpha > 0)
+      for (const b of sim.bodies) {
+        if (!resolved(b)) continue;
+        if (local && b.parentId !== reference.id) continue;
+        const points = local
+          ? (b.relativeTrail || []).map((p) =>
+              p.map((v, k) => v + reference.position[k]),
+            )
+          : b.trail;
+        if (points.length < 2) continue;
+        for (let section = 0; section < 5; section++) {
+          const start = Math.floor(((points.length - 1) * section) / 5),
+            end = Math.floor(((points.length - 1) * (section + 1)) / 5) + 1;
+          this.path(
+            points.slice(start, end),
+            camera,
+            b.color + ["18", "30", "50", "80", "bb"][section],
+            1.4,
+          );
         }
+        this.path([points.at(-1), b.position], camera, b.color + "cc", 1.4);
+      }
+    ctx.globalAlpha = 1;
     this.hits = [];
+    const close = sim.bodies.filter(
+      (b) => length(sub(camera.position, b.position)) < b.radius * 12,
+    );
     const visible = sim.bodies
+      .filter(resolved)
       .map((b) => ({ b, p: this.project(b.position) }))
       .filter(
         ({ p }) =>
           p && p.x > -100 && p.x < w + 100 && p.y > -100 && p.y < h + 100,
       )
       .sort((a, b) => b.p.z - a.p.z);
-    const sun = sim.bodies.find((b) => b.id === "sun");
+    const sun = sim.bodies.find((b) => b.kind === "Star");
     for (const { b, p } of visible) {
       const separation = sun
         ? length(sub(b.position, sun.position)) * p.scale
@@ -125,7 +143,7 @@ export class Renderer {
         Math.max(minimum, b.radius * p.scale),
         Math.max(w, h) * 2,
       );
-      if (b.id === "sun") {
+      if (b.kind === "Star") {
         const glow = ctx.createRadialGradient(
           p.x,
           p.y,
@@ -155,24 +173,32 @@ export class Renderer {
         ctx.ellipse(p.x, p.y, r * 1.9, r * 0.48, -0.35, 0, Math.PI * 2);
         ctx.stroke();
       }
-      const shade = ctx.createRadialGradient(
-        p.x - r * 0.3,
-        p.y - r * 0.35,
-        r * 0.1,
-        p.x,
-        p.y,
-        r * 1.3,
-      );
-      shade.addColorStop(0, b.color);
-      shade.addColorStop(0.55, b.color);
-      shade.addColorStop(1, b.id === "sun" ? "#b38350" : "#343945");
-      ctx.fillStyle = shade;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
-      ctx.fill();
+      if (close.includes(b)) {
+        this.surface.draw(ctx, b, camera, w, h, sun?.id === b.id ? null : sun);
+      } else {
+        const shade = ctx.createRadialGradient(
+          p.x - r * 0.3,
+          p.y - r * 0.35,
+          r * 0.1,
+          p.x,
+          p.y,
+          r * 1.3,
+        );
+        shade.addColorStop(0, b.color);
+        shade.addColorStop(0.55, b.color);
+        shade.addColorStop(1, b.id === "sun" ? "#b38350" : "#343945");
+        ctx.fillStyle = shade;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
+        ctx.fill();
+      }
       this.hits.push({ id: b.id, x: p.x, y: p.y, r: Math.max(13, r + 6) });
       p.radius = r;
     }
+    // A near surface can intersect the viewport even with its center behind it.
+    for (const b of close)
+      if (!visible.some((v) => v.b === b))
+        this.surface.draw(ctx, b, camera, w, h, sun?.id === b.id ? null : sun);
     if (options.labels) {
       ctx.font = '11px "Trebuchet MS", sans-serif';
       const occupied = visible.map(({ p }) => ({
@@ -191,7 +217,9 @@ export class Renderer {
         (a, b) =>
           (b.b.id === selected) - (a.b.id === selected) || b.b.mass - a.b.mass,
       )) {
-        const width = ctx.measureText(b.name).width + 8,
+        const labelName =
+          b.kind === "Fragment" ? b.name.replace(" fragment ", " · ") : b.name;
+        const width = ctx.measureText(labelName).width + 8,
           r = p.radius;
         const candidates = [
           { x: p.x + r + 8, y: p.y - 7 },
@@ -220,18 +248,60 @@ export class Renderer {
             occupied.push({ x: x - 4, y: y - 13, w: width + 8, h: 20 });
             ctx.strokeStyle = "#10151e";
             ctx.lineWidth = 4;
-            ctx.strokeText(b.name, x, y);
+            ctx.strokeText(labelName, x, y);
             ctx.fillStyle = b.color;
-            ctx.fillText(b.name, x, y);
+            ctx.fillText(labelName, x, y);
           }
           continue;
         }
         occupied.push(label);
         ctx.fillStyle = b.id === selected ? "#f1ece4" : "#adb4bf";
-        ctx.fillText(b.name, label.x + 4, label.y + 12);
+        ctx.fillText(labelName, label.x + 4, label.y + 12);
       }
     }
-    // A local scale bar: exact at the plane through the selected body (or origin).
+    if (options.preview) {
+      const b = options.preview,
+        p = this.project(b.position),
+        primary = sim.bodies.find((p) => p.id === b.parentId);
+      if (p && primary) {
+        const velocity = sub(b.velocity, primary.velocity),
+          duration =
+            (length(sub(b.position, primary.position)) /
+              Math.max(length(velocity), 1)) *
+            0.3;
+        const end = this.project(
+          b.position.map((v, k) => v + velocity[k] * duration),
+        );
+        ctx.strokeStyle = b.color;
+        ctx.lineWidth = 1.5;
+        ctx.setLineDash([4, 5]);
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 12, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.setLineDash([]);
+        if (end && length(velocity) > 0) {
+          const angle = Math.atan2(end.y - p.y, end.x - p.x);
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(end.x, end.y);
+          ctx.lineTo(
+            end.x - 9 * Math.cos(angle - 0.4),
+            end.y - 9 * Math.sin(angle - 0.4),
+          );
+          ctx.moveTo(end.x, end.y);
+          ctx.lineTo(
+            end.x - 9 * Math.cos(angle + 0.4),
+            end.y - 9 * Math.sin(angle + 0.4),
+          );
+          ctx.stroke();
+        }
+        ctx.font = '12px "Trebuchet MS",sans-serif';
+        ctx.fillStyle = b.color;
+        ctx.fillText(b.name + " · preview", p.x + 18, p.y - 16);
+      }
+    }
+    // Contextual ruler only, not a permanent overlay.
+    if (!selected) return;
     const target = sim.bodies.find((b) => b.id === selected)?.position || [
       0, 0, 0,
     ];

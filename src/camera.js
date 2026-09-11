@@ -47,9 +47,15 @@ export class Camera {
       this.transition = null;
     }
   }
-  focus(body) {
-    const distance =
-      body.id === "sun" ? 6.5e11 : Math.max(body.radius * 24, 1e5);
+  focus(body, bodies = null) {
+    const distance = bodies
+      ? Math.max(
+          body.radius * 24,
+          ...bodies
+            .filter((b) => b.parentId === body.id)
+            .map((b) => length(sub(b.position, body.position)) * 3.2),
+        )
+      : body.radius * 3;
     this.transition = {
       start: [...this.position],
       end: sub(body.position, mul(this.forward, distance)),
@@ -63,6 +69,14 @@ export class Camera {
     this.followId = null;
     this.previousTarget = null;
     this.transition = null;
+  }
+  followSurvivors(events, bodies) {
+    let id = this.followId;
+    for (const event of events) if (id === event.removed) id = event.survivor;
+    if (id === this.followId) return;
+    const body = bodies.find((b) => b.id === id);
+    if (body) this.focus(body);
+    else this.release();
   }
   update(dt, bodies, keys) {
     const body = bodies.find((b) => b.id === this.followId);
@@ -96,39 +110,69 @@ export class Camera {
     ])
       if (keys.has(key)) direction = add(direction, mul(axis, sign));
     if (length(direction) > 0) {
-      this.release();
-      this.position = add(
-        this.position,
+      this.transition = null;
+      this.move(
         mul(
           unit(direction),
           this.speed(bodies) * dt * (keys.has("shift") ? 4 : 1),
         ),
+        bodies,
       );
     }
+    this.keepOutside(bodies);
   }
   speed(bodies) {
     return clamp(
       Math.min(
         ...bodies.map((b) =>
-          Math.max(b.radius, length(sub(this.position, b.position)) - b.radius),
+          Math.max(
+            b.radius * 0.0005,
+            length(sub(this.position, b.position)) - b.radius,
+          ),
         ),
       ) * 0.6,
-      1e6,
+      0.1,
       3e13,
     );
   }
   travel(amount, bodies) {
     this.transition = null;
-    this.position = add(
-      this.position,
-      mul(this.forward, amount * this.speed(bodies)),
-    );
+    this.move(mul(this.forward, amount * this.speed(bodies)), bodies);
+  }
+  move(delta, bodies) {
+    let fraction = 1;
+    const a = dot(delta, delta);
+    for (const b of bodies) {
+      const r = b.radius + Math.max(1, b.radius * 0.0001),
+        p = sub(this.position, b.position),
+        along = dot(p, delta),
+        c = dot(p, p) - r * r,
+        disc = along * along - a * c;
+      if (a > 0 && along < 0 && c > 0 && disc >= 0)
+        fraction = Math.min(
+          fraction,
+          Math.max(0, c / (-along + Math.sqrt(disc)) - 0.00001),
+        );
+    }
+    this.position = add(this.position, mul(delta, fraction));
+    this.keepOutside(bodies);
+  }
+  keepOutside(bodies) {
+    for (const b of bodies) {
+      const d = sub(this.position, b.position),
+        r = b.radius + Math.max(1, b.radius * 0.0001);
+      if (length(d) < r)
+        this.position = add(
+          b.position,
+          mul(length(d) > 0 ? unit(d) : [0, 1, 0], r),
+        );
+    }
   }
   rotate(dx, dy) {
     this.transition = null;
-    this.yaw -= dx * 0.004;
+    this.yaw += dx * 0.002;
     this.pitch = clamp(
-      this.pitch + dy * 0.004,
+      this.pitch + dy * 0.002,
       -Math.PI / 2 + 0.02,
       Math.PI / 2 - 0.02,
     );
@@ -148,10 +192,11 @@ export class Camera {
         y = position[1] - origin[1],
         z = position[2] - origin[2];
       const depth = x * forward[0] + y * forward[1] + z * forward[2];
-      if (depth < 1e4) return null;
+      if (depth < 0.01) return null;
       return {
         x:
           width / 2 +
+          (this.screenOffsetX || 0) +
           ((x * right[0] + y * right[1] + z * right[2]) * focal) / depth,
         y: height / 2 - ((x * up[0] + y * up[1] + z * up[2]) * focal) / depth,
         z: depth,

@@ -1,3 +1,7 @@
+import { accelerations, safeStep, firstContact } from "./forces.js";
+import { stellarColor } from "./thermal.js";
+import { fragmentImpact } from "./impacts.js";
+export { accelerations, safeStep } from "./forces.js";
 // Every state vector and calculation is SI: m, kg, s, m/s, m/s².
 // The force evaluator is deliberately separate from the integrator.
 export const G = 6.6743e-11;
@@ -15,8 +19,47 @@ function mergePair(bodies, a, b) {
   );
   a.radius = Math.cbrt(a.radius ** 3 + b.radius ** 3);
   a.mass = mass;
+  a.fragmentGeneration = Math.max(
+    a.fragmentGeneration || 0,
+    b.fragmentGeneration || 0,
+  );
+  if (a.kind === "Star" || b.kind === "Star") {
+    // Toy merger: retain incoming radiative power and make R, L and T agree.
+    // This does not model stellar evolution, fusion or collision heating.
+    const luminosity = (body) =>
+      Number.isFinite(body.luminosity) && body.luminosity >= 0
+        ? body.luminosity
+        : 0;
+    a.luminosity = luminosity(a) + luminosity(b);
+    a.kind = "Star";
+    if (a.luminosity > 0) {
+      a.effectiveTemperature = Math.pow(
+        a.luminosity / (4 * Math.PI * 5.670374419e-8 * a.radius ** 2),
+        0.25,
+      );
+      a.color = stellarColor(a.effectiveTemperature);
+    } else delete a.effectiveTemperature;
+  }
+  if (a.parentId === b.id) a.parentId = b.parentId;
+  for (const body of bodies) {
+    if (body !== a && body.parentId === b.id) body.parentId = a.id;
+    if (body.parentId === a.id) body.relativeTrail = [];
+  }
+  // A heavier descendant can absorb an ancestor. Detach the survivor if the
+  // inherited hierarchy would lead back to itself, or to a removed body.
+  const ancestors = new Set([a.id]);
+  let parentId = a.parentId;
+  while (parentId) {
+    const parent = bodies.find((body) => body.id === parentId && body !== b);
+    if (!parent || ancestors.has(parentId)) {
+      delete a.parentId;
+      break;
+    }
+    ancestors.add(parentId);
+    parentId = parent.parentId;
+  }
   a.trail = [];
-  a.orbit = null;
+  a.relativeTrail = [];
   bodies.splice(bodies.indexOf(b), 1);
   return {
     survivor: a.id,
@@ -25,25 +68,35 @@ function mergePair(bodies, a, b) {
   };
 }
 
-export function accelerations(bodies) {
-  const result = bodies.map(() => [0, 0, 0]);
-  for (let i = 0; i < bodies.length; i++)
-    for (let j = i + 1; j < bodies.length; j++) {
-      const a = bodies[i],
-        b = bodies[j];
-      const d = b.position.map((v, k) => v - a.position[k]);
-      // Overlaps are merged before integrating. A 1 m floor guards coincident input.
-      const r2 = Math.max(
-        1,
-        d.reduce((s, v) => s + v * v, 0),
-      );
-      const factor = G / (r2 * Math.sqrt(r2));
-      for (let k = 0; k < 3; k++) {
-        result[i][k] += d[k] * factor * b.mass;
-        result[j][k] -= d[k] * factor * a.mass;
-      }
+function resolveContact(bodies, a, b) {
+  const fragments = fragmentImpact(a, b, {
+    bodyCount: bodies.length,
+    maxBodies: MAX_BODIES,
+  });
+  if (!fragments) return mergePair(bodies, a, b);
+  const survivor = fragments[0].id,
+    removed = survivor === a.id ? b.id : a.id;
+  for (const body of bodies) {
+    if (
+      body !== a &&
+      body !== b &&
+      (body.parentId === a.id || body.parentId === b.id)
+    ) {
+      delete body.parentId;
+      body.relativeTrail = [];
     }
-  return result;
+  }
+  for (const fragment of fragments)
+    if (!bodies.some((p) => p !== a && p !== b && p.id === fragment.parentId))
+      delete fragment.parentId;
+  bodies.splice(bodies.indexOf(a), 1);
+  bodies.splice(bodies.indexOf(b), 1);
+  bodies.push(...fragments);
+  return {
+    survivor,
+    removed,
+    text: `${a.name} and ${b.name} dispersed into four fragments`,
+  };
 }
 
 export function mergeCollisions(bodies) {
@@ -56,38 +109,20 @@ export function mergeCollisions(bodies) {
         const a = bodies[i],
           b = bodies[j];
         if (
-          Math.hypot(...a.position.map((v, k) => v - b.position[k])) >
+          Math.hypot(
+            a.position[0] - b.position[0],
+            a.position[1] - b.position[1],
+            a.position[2] - b.position[2],
+          ) >
           a.radius + b.radius
         )
           continue;
-        events.push(mergePair(bodies, a, b));
+        events.push(resolveContact(bodies, a, b));
         changed = true;
         break outer;
       }
   }
   return events;
-}
-
-// Tight encounters use smaller power-of-two steps. With a fixed step, Verlet is
-// symplectic; changing steps near encounters sacrifices strict symplecticity.
-export function safeStep(bodies, maximum = BASE_STEP) {
-  let limit = maximum;
-  for (let i = 0; i < bodies.length; i++)
-    for (let j = i + 1; j < bodies.length; j++) {
-      const a = bodies[i],
-        b = bodies[j];
-      const r = Math.hypot(...a.position.map((v, k) => v - b.position[k]));
-      const speed = Math.hypot(...a.velocity.map((v, k) => v - b.velocity[k]));
-      limit = Math.min(
-        limit,
-        0.025 * Math.sqrt(r ** 3 / (G * (a.mass + b.mass))),
-        (0.1 * r) / Math.max(speed, 1),
-      );
-    }
-  return (
-    maximum /
-    2 ** Math.max(0, Math.ceil(Math.log2(maximum / Math.max(0.01, limit))))
-  );
 }
 
 export function step(bodies, dt) {
@@ -102,29 +137,12 @@ export function step(bodies, dt) {
   // This catches fast spheres even when both step endpoints miss the collision.
   let remaining = dt;
   while (remaining > 0) {
-    let contact = null,
-      travel = remaining;
-    for (let i = 0; i < bodies.length; i++)
-      for (let j = i + 1; j < bodies.length; j++) {
-        const a = bodies[i],
-          b = bodies[j];
-        const p = a.position.map((v, k) => v - b.position[k]);
-        const v = a.velocity.map((v, k) => v - b.velocity[k]);
-        const A = v.reduce((s, x) => s + x * x, 0),
-          B = p.reduce((s, x, k) => s + x * v[k], 0);
-        const C = p.reduce((s, x) => s + x * x, 0) - (a.radius + b.radius) ** 2;
-        const discriminant = B * B - A * C;
-        if (C > 0 && (B >= 0 || A === 0 || discriminant < 0)) continue;
-        const time = C <= 0 ? 0 : C / (-B + Math.sqrt(discriminant));
-        if (time >= 0 && time <= travel) {
-          travel = time;
-          contact = [a, b];
-        }
-      }
+    const contact = firstContact(bodies, remaining);
+    const travel = contact?.time ?? remaining;
     for (const body of bodies)
       for (let k = 0; k < 3; k++) body.position[k] += body.velocity[k] * travel;
     remaining -= travel;
-    if (contact) events.push(mergePair(bodies, ...contact));
+    if (contact) events.push(resolveContact(bodies, contact.a, contact.b));
     else break;
   }
   const after = accelerations(bodies);
@@ -155,6 +173,14 @@ export function recordTrails(bodies, time) {
     if (time - (body.lastTrailTime ?? 0) < (body.trailInterval ?? 21600))
       continue;
     body.trail.push([...body.position]);
+    const parent = bodies.find((b) => b.id === body.parentId);
+    if (parent) {
+      body.relativeTrail ??= [];
+      body.relativeTrail.push(
+        body.position.map((v, k) => v - parent.position[k]),
+      );
+      if (body.relativeTrail.length > 600) body.relativeTrail.shift();
+    }
     if (body.trail.length > 600) body.trail.shift();
     body.lastTrailTime = time;
   }
@@ -173,15 +199,20 @@ export class Simulation {
     // excessive, instead of increasing the physics step and destabilizing orbits.
     this.pending += Math.min(realSeconds, 0.1) * timeScale;
     const start = performance.now();
+    // Low requested rates use a fixed one-second ceiling. Render cadence and
+    // accumulated debt never choose the physical step size.
+    const maximum = timeScale <= 3600 ? 1 : BASE_STEP;
     let count = 0,
       exhausted = false;
     while (this.pending > 0) {
       this.events.push(...mergeCollisions(this.bodies));
-      const dt = safeStep(this.bodies);
-      if (this.pending < dt) break;
+      const dt = safeStep(this.bodies, maximum);
+      // Accumulating fractional frame durations can miss a quantum by a few
+      // floating-point ulps. Consume that quantum without retaining negative debt.
+      if (this.pending + dt * 1e-12 < dt) break;
       this.events.push(...step(this.bodies, dt));
       this.time += dt;
-      this.pending -= dt;
+      this.pending = Math.max(0, this.pending - dt);
       recordTrails(this.bodies, this.time);
       count++;
       if (count >= 2048 || performance.now() - start >= budgetMs) {
@@ -189,7 +220,8 @@ export class Simulation {
         break;
       }
     }
-    this.limited = exhausted && this.pending >= safeStep(this.bodies);
+    const nextStep = safeStep(this.bodies, maximum);
+    this.limited = exhausted && this.pending + nextStep * 1e-12 >= nextStep;
     if (this.limited) this.pending = Math.min(this.pending, BASE_STEP);
   }
 }

@@ -96,7 +96,7 @@ test("collisions conserve mass, momentum, volume and center of mass", () => {
   assert.ok(Math.abs(bodies[0].radius ** 3 - 9) < 1e-12);
 });
 test("canonical system stays finite with bounded energy error for ten years", () => {
-  const bodies = solarSystem(),
+  const bodies = solarSystem().filter((b) => b.kind !== "Moon"),
     initial = energy(bodies);
   for (let t = 0; t < 315576000; t += 1800) step(bodies, 1800);
   assert.equal(bodies.length, 9);
@@ -118,10 +118,25 @@ test("camera has orthonormal basis, correct right movement and stable poles", ()
   assert.ok(c.project([1e8, 0, 0], 1000, 700).x > 500);
   assert.equal(c.project([0, 0, 2e10], 1000, 700), null);
 });
+test("camera cannot tunnel through or remain inside a physical sphere", () => {
+  const c = new Camera(),
+    b = { radius: 6e6, position: [0, 0, 0] };
+  c.position = [0, 0, 2e7];
+  c.move([0, 0, -4e7], [b]);
+  assert.ok(c.position[2] > b.radius);
+  c.position = [0, 0, 0];
+  c.keepOutside([b]);
+  assert.ok(length(c.position) > b.radius);
+  assert.ok(
+    c.project([0, 0, 0], 1440, 900) === null ||
+      Number.isFinite(c.project([0, 0, 0], 1440, 900).x),
+  );
+});
 test("frame budget caps debt while keeping the integrator timestep independent", () => {
   const sim = new Simulation(solarSystem());
+  const expected = safeStep(sim.bodies);
   sim.advance(0.1, 31557600, 0);
-  assert.equal(sim.time, 1800);
+  assert.equal(sim.time, expected);
   assert.ok(sim.pending <= 1800);
   assert.equal(sim.limited, true);
 });
@@ -233,4 +248,23 @@ test("trail cadence follows orbital timescale and memory remains bounded", () =>
   assert.equal(neptune.trail.length, 600);
   assert.deepEqual(neptune.trail.at(-1), neptune.position);
   assert.notEqual(neptune.trail.at(-1), neptune.position);
+});
+test("camera follows the final survivor of chained same-step mergers", () => {
+  const bodies = [1, 2, 4].map((mass, id) => ({
+    id: String(id),
+    name: String(id),
+    mass,
+    radius: 2,
+    position: [0, 0, 0],
+    velocity: [0, 0, 0],
+    trail: [],
+  }));
+  const camera = new Camera();
+  camera.focus(bodies[0]);
+  const events = mergeCollisions(bodies);
+  assert.equal(events.length, 2);
+  camera.followSurvivors(events, bodies);
+  assert.equal(camera.followId, "2");
+  camera.update(0.1, bodies, new Set());
+  assert.ok(camera.position.every(Number.isFinite));
 });

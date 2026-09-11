@@ -5,13 +5,7 @@ test:
     node --test tests/*.test.mjs
 
 check:
-    node --check src/main.js
-    node --check src/render.js
-    node --check src/camera.js
-    node --check src/physics.js
-    node --check src/solar.js
-    node --check src/math.js
-    node --check scripts/serve.mjs
+    for file in src/*.js scripts/*.mjs tests/*.mjs; do node --check "$file" || exit 1; done
 
 format:
-    npx --yes prettier@3.6.2 --write src scripts tests index.html style.css package.json README.md ITERATIONS.md
+    npx --yes prettier@3.6.2 --write src scripts tests index.html style.css package.json README.md ITERATIONS.md EXPANSION.md

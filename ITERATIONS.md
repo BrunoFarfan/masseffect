@@ -36,16 +36,16 @@ Desktop and no-card priorities retained. Final evaluation should exercise recove
 
 Final validation: **11/11 tests pass**, all module/server syntax checks pass, and `git diff --check` is clean. The independent evaluator exercised the actual desktop browser: paused time stayed fixed, manually configured SI values were preserved, a 180° look-away showed a directional recovery control, and clicking it restored the selected body. No browser warnings or errors. A local 128-body, high-time-scale test measured median 16.7 ms / p95 16.8 ms over 100 frames, with achieved time correctly reported when below the requested rate. This is a bounded local measurement, not a hardware-wide guarantee.
 
-| Final category | Score / 10 |
-| --- | ---: |
-| Physics / orbital credibility | 7.8 |
-| Camera and navigation | 7.9 |
-| Visual quality | 8.0 |
-| Interaction clarity | 8.1 |
-| Sense of scale and orientation | 7.6 |
-| Performance and stability | 8.1 |
-| Code simplicity / maintainability | 8.3 |
-| Overall coherence with the intended product | 8.1 |
+| Final category                              | Score / 10 |
+| ------------------------------------------- | ---------: |
+| Physics / orbital credibility               |        7.8 |
+| Camera and navigation                       |        7.9 |
+| Visual quality                              |        8.0 |
+| Interaction clarity                         |        8.1 |
+| Sense of scale and orientation              |        7.6 |
+| Performance and stability                   |        8.1 |
+| Code simplicity / maintainability           |        8.3 |
+| Overall coherence with the intended product |        8.1 |
 
 **Final overall score: 8.0/10. Stop after three iterations**, on the independent evaluator's recommendation. Progression: 6.6 → 7.5 → 8.0. No material regressions found.
 

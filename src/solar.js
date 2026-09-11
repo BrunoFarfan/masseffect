@@ -1,8 +1,10 @@
 import { G } from "./physics.js";
 import { add, mul, sub } from "./math.js";
+import { addMoons } from "./moons.js";
 
 // JPL approximate J2000 elements, rounded; semimajor axes are stored in METERS.
-// Earth uses the approximate Earth-Moon barycenter orbit; moons are omitted.
+// https://ssd.jpl.nasa.gov/planets/approx_pos.html
+// Planet states approximate subsystem barycenters; moons are added below.
 // name, kg, radius m, color, a m, e, inclination°, mean longitude°, perihelion°, node°
 const planets = [
   [
@@ -137,9 +139,6 @@ function orbitalState(a, e, inclination, longitude, perihelion, node, mass) {
     ),
     trailInterval:
       (2 * Math.PI * Math.sqrt(a ** 3 / (G * (1.98847e30 + mass)))) / 500,
-    orbit: Array.from({ length: 181 }, (_, k) =>
-      point((k / 180) * Math.PI * 2),
-    ),
   };
 }
 
@@ -150,6 +149,10 @@ export function solarSystem() {
       name: "Sun",
       mass: 1.98847e30,
       radius: 6.957e8,
+      // IAU nominal solar values, W and K (data only; no radiative dynamics).
+      // https://arxiv.org/abs/1510.07674 (IAU 2015 Resolution B3).
+      luminosity: 3.828e26,
+      effectiveTemperature: 5772,
       color: "#f5d9a0",
       position: [0, 0, 0],
       velocity: [0, 0, 0],
@@ -169,6 +172,7 @@ export function solarSystem() {
       kind: "Planet",
     });
   }
+  addMoons(bodies);
   const mass = bodies.reduce((s, b) => s + b.mass, 0);
   const center = mul(
     bodies.reduce((s, b) => add(s, mul(b.position, b.mass)), [0, 0, 0]),
@@ -181,33 +185,7 @@ export function solarSystem() {
   for (const b of bodies) {
     b.position = sub(b.position, center);
     b.velocity = sub(b.velocity, velocity);
-    if (b.orbit) b.orbit = b.orbit.map((p) => sub(p, center));
     b.trail.push([...b.position]);
   }
   return bodies;
-}
-
-export function randomBody(index) {
-  const angle = Math.random() * Math.PI * 2,
-    r = 7e10 + Math.random() * 4e11;
-  const speed = Math.sqrt((G * 1.98847e30) / r) * (0.65 + Math.random() * 0.95);
-  return {
-    id: `visitor-${index}`,
-    name: `Visitor ${index}`,
-    kind: "Visitor",
-    color: "#c4b4df",
-    mass: 10 ** (20 + Math.random() * 7),
-    radius: 2e6 + Math.random() * 8e6,
-    position: [
-      Math.cos(angle) * r,
-      (Math.random() - 0.5) * r * 0.55,
-      Math.sin(angle) * r,
-    ],
-    velocity: [
-      -Math.sin(angle) * speed,
-      (Math.random() - 0.5) * speed * 0.5,
-      Math.cos(angle) * speed,
-    ],
-    trail: [],
-  };
 }
