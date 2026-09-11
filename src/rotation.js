@@ -1,25 +1,25 @@
 import { add, sub, mul, dot, cross, length, unit, clamp } from "./math.js";
 
 // Unit quaternions [x,y,z,w] are dimensionless. Angular velocities are rad/s;
-// periods are seconds. Rounded NASA fact-sheet periods/tilts, not pole ephemerides.
-// https://nssdc.gsfc.nasa.gov/planetary/factsheet/
-const SPINS = {
-  sun: [2192832, 7.25],
-  mercury: [5067014.4, 0.034],
-  venus: [20996755.2, 177.36],
-  earth: [86164.1, 23.44],
-  mars: [88642.7, 25.19],
-  jupiter: [35730, 3.13],
-  saturn: [38520, 26.73],
-  uranus: [62064, 97.77],
-  neptune: [57996, 28.32],
-};
-// IAU/JPL J2000 north-pole RA/Dec for the two retrograde planets. A physical
-// angular velocity is a pseudovector: the X,Y,Z -> X,Z,Y reflection contributes
-// one minus sign, and retrograde spin contributes the second. No double reversal.
+// periods are seconds. Signed periods encode prograde/retrograde rotation;
+// body.rotationPeriod stores the positive magnitude. RA/Dec are J2000 degrees.
+// Fixed J2000 IAU poles, not a time-dependent precession/prime-meridian ephemeris.
+// Mars/Neptune include the PCK periodic pole terms evaluated at J2000 (see tests).
 // https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/pck00011.tpc
-const RETROGRADE_POLES = { venus: [272.76, 67.16], uranus: [257.311, -15.175] };
-function retrogradePole([ra, dec]) {
+const SPINS = {
+  sun: [2192832, 286.13, 63.87],
+  mercury: [5067014.4, 281.0103, 61.4155],
+  venus: [-20996755.2, 272.76, 67.16],
+  earth: [86164.1, 0, 90],
+  mars: [88642.7, 317.680854, 52.886439],
+  jupiter: [35730, 268.056595, 64.495303],
+  saturn: [38520, 40.589, 83.537],
+  uranus: [-62064, 257.311, -15.175],
+  neptune: [57478.68, 299.333739, 42.950359],
+};
+// A geometric direction, shared with moon reference planes. Angular velocity
+// needs an EXTRA minus sign under this X,Y,Z -> X,Z,Y reflection (pseudovector).
+export function equatorialPole(ra, dec) {
   ra *= Math.PI / 180;
   dec *= Math.PI / 180;
   const e = (23.4392911 * Math.PI) / 180;
@@ -95,23 +95,22 @@ export function synchronize(body, parent) {
     z = unit(cross(x, y));
   body.orientation = fromAxes(x, y, z);
   body.angularVelocity = mul(h, 1 / r2);
+  body.rotationPeriod = (2 * Math.PI * r2) / length(h);
   return true;
 }
 export function initializeRotations(bodies) {
   for (const body of bodies) {
     if (body.orientation && body.angularVelocity) continue;
-    const [period, tilt] = SPINS[body.id] ||
-      SPINS[body.name?.toLowerCase()] || [86400, 0];
-    body.rotationPeriod ??= period;
-    const angle = (tilt * Math.PI) / 180;
-    // The existing ecliptic-to-world mapping has prograde angular momentum -Y.
-    const measured =
-      RETROGRADE_POLES[body.id] || RETROGRADE_POLES[body.name?.toLowerCase()];
-    const pole = measured
-      ? retrogradePole(measured)
-      : [Math.sin(angle), -Math.cos(angle), 0];
+    const spin = SPINS[body.id] || SPINS[body.name?.toLowerCase()];
+    body.rotationPeriod ??= Math.abs(spin?.[0] ?? 86400);
+    const pole = spin
+      ? mul(equatorialPole(spin[1], spin[2]), -Math.sign(spin[0]))
+      : [0, -1, 0];
     body.orientation ??= between([0, 1, 0], pole);
-    body.angularVelocity ??= mul(pole, (2 * Math.PI) / body.rotationPeriod);
+    body.angularVelocity ??=
+      body.rotationPeriod > 0
+        ? mul(pole, (2 * Math.PI) / body.rotationPeriod)
+        : [0, 0, 0];
     if (body.kind === "Moon" && body.parentId)
       body.rotationModel ??= "synchronous";
     body.rotationModel ??= "free";

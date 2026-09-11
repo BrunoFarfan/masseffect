@@ -1,5 +1,6 @@
 import { G } from "./physics.js";
 import { add, sub, mul, cross, unit } from "./math.js";
+import { equatorialPole } from "./rotation.js";
 
 // NASA/JPL: https://ssd.jpl.nasa.gov/sats/phys_par/ and /sats/elem/.
 // GM is converted to m³/s² here, and mass = GM/G; radii and separations are m.
@@ -167,17 +168,9 @@ const rad = (degrees) => (degrees * Math.PI) / 180;
 
 function referencePole(pole) {
   if (!pole) return [0, 0, 1];
-  const [ra, dec] = pole.map(rad),
-    epsilon = rad(23.4392911);
-  const x = Math.cos(dec) * Math.cos(ra),
-    y = Math.cos(dec) * Math.sin(ra),
-    z = Math.sin(dec);
-  // Equatorial -> ecliptic, still conventional right-handed XYZ.
-  return [
-    x,
-    y * Math.cos(epsilon) + z * Math.sin(epsilon),
-    z * Math.cos(epsilon) - y * Math.sin(epsilon),
-  ];
+  const [x, y, z] = equatorialPole(...pole);
+  // Construct the orbit in conventional right-handed ecliptic XYZ.
+  return [x, z, y];
 }
 
 function relativeState(

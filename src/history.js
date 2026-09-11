@@ -54,7 +54,17 @@ function compatible(a, b) {
   if (later.size !== b.bodies.length) return false;
   return a.bodies.every((body) => {
     const other = later.get(body.id);
-    return other && FIELDS.every((key) => body[key] === other[key]);
+    return (
+      other &&
+      FIELDS.every(
+        (key) =>
+          // A locked moon's period is derived from its changing orbit, not an edit.
+          (key === "rotationPeriod" &&
+            body.rotationModel === "synchronous" &&
+            other.rotationModel === "synchronous") ||
+          body[key] === other[key],
+      )
+    );
   });
 }
 

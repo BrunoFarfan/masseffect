@@ -1,6 +1,7 @@
 import { length, sub, dot, mul } from "./math.js";
 import { SphereSurface, sphereRasterWidth } from "./sphere.js";
 import { ImpactView } from "./impact-view.js";
+import { projectSaturnRings, drawRingFaces } from "./rings.js";
 
 // Hide labels/picks whose sightline enters a nearer physical surface. Otherwise
 // a planet below the local horizon can still appear as a floating text label.
@@ -169,8 +170,12 @@ export class Renderer {
     );
     for (const { b, p } of drawOrder) {
       ctx.globalAlpha = b.visualAlpha ?? 1;
+      const rings =
+        b.id === "saturn" ? projectSaturnRings(b, camera, w, h) : null;
+      if (rings) drawRingFaces(ctx, rings.back);
       if (!p) {
         this.surface.draw(ctx, b, camera, w, h, sun?.id === b.id ? null : sun);
+        if (rings) drawRingFaces(ctx, rings.front);
         continue;
       }
       const separation = sun
@@ -217,13 +222,6 @@ export class Renderer {
         ctx.arc(p.x, p.y, r + 6, 0, Math.PI * 2);
         ctx.stroke();
       }
-      if (b.id === "saturn") {
-        ctx.strokeStyle = b.color + "90";
-        ctx.lineWidth = 2.6;
-        ctx.beginPath();
-        ctx.ellipse(p.x, p.y, r * 1.9, r * 0.48, -0.35, 0, Math.PI * 2);
-        ctx.stroke();
-      }
       const surfaceBlend = Math.max(
         0,
         Math.min(1, (b.radius * p.scale - 12) / 12),
@@ -249,6 +247,8 @@ export class Renderer {
         ctx.globalAlpha = (b.visualAlpha ?? 1) * surfaceBlend;
         this.surface.draw(ctx, b, camera, w, h, sun?.id === b.id ? null : sun);
       }
+      ctx.globalAlpha = b.visualAlpha ?? 1;
+      if (rings) drawRingFaces(ctx, rings.front);
       if (!b.ghost && !p.occluded)
         this.hits.push({ id: b.id, x: p.x, y: p.y, r: Math.max(13, r + 6) });
       p.radius = r;
