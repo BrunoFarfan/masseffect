@@ -4,7 +4,7 @@ A small desktop-first orbital sandbox. Newtonian gravity in three dimensions, a 
 
 ## Run
 
-Node.js 22+: `just run` (or `npm start`), then open **http://127.0.0.1:5173**. `just test` runs numerical regressions; `just check` checks syntax. The app is static: deploy `index.html`, `style.css`, and `src/` to any static host.
+Node.js 22+: `just run` (or `npm start`), then open **http://127.0.0.1:5173**. `just test` runs numerical regressions; `just check` checks syntax. The app is static. [Deployment](docs/deployment.md) documents Cloudflare hosting and the staging → production GitHub workflow.
 
 ## Explore
 
@@ -58,7 +58,7 @@ Saturn's C/B/A rings are thin world-space annuli aligned with its rotating equat
 
 ## Small architecture
 
-Plain ES modules and Canvas 2D, no engine, build pipeline or downloaded assets. The original Python/Pygame prototype was run and inspected in the previous cycle: it had three static arbitrary-unit spheres, an unstable camera and no gravity. The browser replacement retained the useful 3D-to-screen concept; the retired version is recoverable in Git history. The focused three-pass rotation/collision follow-up is documented in [surface-impact-loop.md](docs/surface-impact-loop.md).
+Plain ES modules and Canvas 2D, no engine, bundler or downloaded assets. The original Python/Pygame prototype was run and inspected in the previous cycle: it had three static arbitrary-unit spheres, an unstable camera and no gravity. The browser replacement retained the useful 3D-to-screen concept; the retired version is recoverable in Git history. The focused three-pass rotation/collision follow-up is documented in [surface-impact-loop.md](docs/surface-impact-loop.md).
 
 - `forces.js`, `physics.js`: exact forces, encounter stepping, integration and merging.
 - `impacts.js`: glancing impulses, angular momentum and bounded fragmentation.

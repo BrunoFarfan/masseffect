@@ -2,6 +2,10 @@
 node_modules/
 output/
 .playwright-cli/
+dist/
+.wrangler/
+.dev.vars*
+.env*
 # Leftover local caches from the retired prototype
 .venv/
 .ruff_cache/
