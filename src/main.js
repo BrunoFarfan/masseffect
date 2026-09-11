@@ -29,6 +29,10 @@ let rateWindow = 0,
   windowLimited = false;
 const keys = new Set(),
   options = { trails: true, labels: true };
+function clearMovement() {
+  keys.clear();
+  camera.stop();
+}
 const locked = () => document.pointerLockElement === canvas,
   modal = () => document.querySelector("dialog[open]");
 camera.aspect = innerWidth / innerHeight;
@@ -136,11 +140,6 @@ function inspect() {
           : "";
   $("running").title =
     `Requested ${Number($("speed").value) / 86400} days/s; achieved ${(actualRate / 86400).toFixed(2)}. Physics slows under load.`;
-  $("navigate").textContent = locked()
-    ? "Esc · controls"
-    : entered
-      ? "Explore ↗"
-      : "Click to explore";
   $("hint").textContent = locked() ? "Esc · controls" : "Click space · explore";
   $("locator").hidden = true;
   if (b) {
@@ -207,11 +206,11 @@ async function navigate() {
   try {
     await canvas.requestPointerLock();
   } catch {
-    toast("Click Explore again to capture the mouse.");
+    toast("Click empty space again to capture the mouse.");
   }
 }
 document.addEventListener("pointerlockchange", () => {
-  keys.clear();
+  clearMovement();
   if (locked()) {
     entered = true;
     $("welcome").hidden = true;
@@ -221,14 +220,14 @@ document.addEventListener("pointerlockchange", () => {
   inspect();
 });
 document.addEventListener("pointerlockerror", () =>
-  toast("Click Explore to enable mouse-look."),
+  toast("Click empty space to enable mouse-look."),
 );
 document.addEventListener("mousemove", (e) => {
   if (locked()) camera.rotate(e.movementX, -e.movementY);
 });
-$("begin").onclick = $("navigate").onclick = navigate;
+$("begin").onclick = navigate;
 function open(id) {
-  keys.clear();
+  clearMovement();
   if (locked()) document.exitPointerLock();
   $(id).showModal();
   inspect();
@@ -243,6 +242,7 @@ function focus(close = false) {
 }
 $("catalog").onclick = () => open("catalog-dialog");
 $("settings").onclick = () => open("view-dialog");
+$("keybindings").onclick = () => open("keys-dialog");
 $("add").onclick = () => {
   prepareCreation();
   open("create-dialog");
@@ -265,18 +265,20 @@ $("unfollow").onclick = () => {
   inspect();
 };
 $("play").onclick = () => setPlaying(!playing);
-$("forward").onclick = () => {
+function playForward() {
   reversing = false;
   setPlaying(true);
-};
-$("reverse").onclick = () => {
+}
+function rewind() {
   if (sim.time <= history.oldestTime) return;
   clearToast();
   if (!reversing) history.capture(sim);
   reversing = true;
   sim.pending = 0;
   setPlaying(true);
-};
+}
+$("forward").onclick = playForward;
+$("reverse").onclick = rewind;
 function restoredSelection() {
   if (!sim.bodies.some((b) => b.id === selected)) select(null);
   if (!sim.bodies.some((b) => b.id === camera.followId)) camera.release();
@@ -295,6 +297,16 @@ $("speed").onchange = () => {
   sim.pending = 0;
   resetRate();
 };
+function changeSpeed(direction) {
+  const speed = $("speed");
+  speed.selectedIndex = clamp(
+    speed.selectedIndex + direction,
+    0,
+    speed.options.length - 1,
+  );
+  speed.onchange();
+  inspect();
+}
 $("home").onclick = () => {
   camera.home(false, true);
   if (modal()) modal().close();
@@ -326,7 +338,7 @@ for (const b of document.querySelectorAll("[data-close]"))
   b.onclick = () => b.closest("dialog").close();
 for (const d of document.querySelectorAll("dialog"))
   d.addEventListener("close", () => {
-    keys.clear();
+    clearMovement();
     resetRate();
     inspect();
   });
@@ -562,37 +574,52 @@ canvas.addEventListener(
     e.preventDefault();
     camera.travel(
       clamp(-e.deltaY * (e.deltaMode === 1 ? 16 : 1) * 0.002, -0.5, 0.5),
-      sim.bodies,
     );
   },
   { passive: false },
 );
 window.addEventListener("keydown", (e) => {
   if (e.key === "Escape") {
-    keys.clear();
-    if (locked()) document.exitPointerLock();
-    else if (!modal() && entered) navigate();
+    e.preventDefault();
+    if (locked()) {
+      clearMovement();
+      document.exitPointerLock();
+    }
     return;
   }
   if (
     modal() ||
+    e.metaKey ||
+    e.ctrlKey ||
+    e.altKey ||
+    document.activeElement?.isContentEditable ||
     ["INPUT", "SELECT", "TEXTAREA"].includes(document.activeElement?.tagName)
   )
     return;
   const k = e.key.toLowerCase();
-  if (["w", "a", "s", "d", "q", "e", "shift", " ", "h", "f", "g"].includes(k))
+  if (
+    /^(Key[WASDQE]|ShiftLeft|ShiftRight)$/.test(e.code) ||
+    [" ", "h", "f", "g"].includes(k) ||
+    ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(e.code)
+  )
     e.preventDefault();
-  if (locked()) keys.add(k);
+  // Physical key identities remain stable across layout/modifier changes and
+  // repeats. Each held key is independent, so releasing one preserves the rest.
+  if (locked()) keys.add(e.code);
   if (e.repeat) return;
   if (k === " ") setPlaying(!playing);
   if (k === "h") camera.home(false, true);
   if (k === "f") focus();
   if (k === "g") focus(true);
+  if (e.code === "ArrowLeft") rewind();
+  if (e.code === "ArrowRight") playForward();
+  if (e.code === "ArrowDown") changeSpeed(-1);
+  if (e.code === "ArrowUp") changeSpeed(1);
 });
-window.addEventListener("keyup", (e) => keys.delete(e.key.toLowerCase()));
-window.addEventListener("blur", () => keys.clear());
+window.addEventListener("keyup", (e) => keys.delete(e.code));
+window.addEventListener("blur", clearMovement);
 document.addEventListener("visibilitychange", () => {
-  keys.clear();
+  clearMovement();
   last = 0;
   resetRate();
 });

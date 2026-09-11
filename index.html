@@ -23,14 +23,15 @@
       <nav class="ui-only">
         <button id="catalog">Bodies</button><button id="add">Add body</button
         ><button id="scenes">Scenarios</button
-        ><button id="settings">View</button>
+        ><button id="settings">View</button
+        ><button id="keybindings">Keys</button>
       </nav>
-      <button id="navigate">Click to explore</button>
     </header>
     <div id="crosshair" aria-hidden="true">+</div>
     <div id="welcome">
       <button id="begin">Enter space ↗</button>
-      <p>Mouse to look · WASD to move · Esc for controls</p>
+      <p>Mouse to look · WASD to move · Esc to release</p>
+      <p>Arrows control time · Space pauses · Keys above for help</p>
     </div>
     <section id="selection" hidden>
       <div>
@@ -111,25 +112,61 @@
         ><button id="reset">Reset Solar System</button>
       </div>
       <details>
-        <summary>Controls & scale</summary>
-        <p>
-          Mouse looks. WASD moves, Q/E rises and falls. Scroll travels. Shift
-          moves faster. Click a body to select. F focuses, G approaches, H
-          returns home. Space pauses. Escape releases the cursor; click Explore
-          to return.
-        </p>
+        <summary>Scale & history</summary>
         <p>
           Distances and physics use real SI quantities. Small bodies are
           enlarged for visibility. Trails record actual motion, never predicted
           ellipses.
         </p>
         <p>
-          « rewinds; Ⅱ pauses either direction; › resumes forward. History
-          is bounded, and trails clear during rewind. Merges can be restored
-          from recordings, not analytically reversed. Fast playback may reach
-          the history boundary quickly.
+          « rewinds; Ⅱ pauses either direction; › resumes forward. History is
+          bounded, and trails clear during rewind. Merges can be restored from
+          recordings, not analytically reversed. Fast playback may reach the
+          history boundary quickly.
         </p>
       </details>
+    </dialog>
+    <dialog id="keys-dialog" aria-labelledby="keys-heading">
+      <div class="sheet-heading">
+        <h2 id="keys-heading">Keys & movement</h2>
+        <button data-close aria-label="Close keybindings">×</button>
+      </div>
+      <h3>Navigation</h3>
+      <dl class="key-list">
+        <dt>Mouse</dt>
+        <dd>Look around</dd>
+        <dt>W A S D</dt>
+        <dd>Move, including diagonally</dd>
+        <dt>Q / E</dt>
+        <dd>Down / up</dd>
+        <dt>Shift</dt>
+        <dd>Move faster</dd>
+        <dt>Scroll</dt>
+        <dd>Travel forward / backward</dd>
+        <dt>Click a body</dt>
+        <dd>Select</dd>
+        <dt>F / G</dt>
+        <dd>Focus system / go closer</dd>
+        <dt>H</dt>
+        <dd>Inner-system view</dd>
+        <dt>Esc</dt>
+        <dd>Leave mouse-look only</dd>
+      </dl>
+      <h3>Time</h3>
+      <dl class="key-list">
+        <dt>Space</dt>
+        <dd>Play / pause</dd>
+        <dt>←</dt>
+        <dd>Rewind recorded history</dd>
+        <dt>→</dt>
+        <dd>Play forward</dd>
+        <dt>↑ / ↓</dt>
+        <dd>Faster / slower</dd>
+      </dl>
+      <p class="quiet">
+        Click empty space to enter mouse-look. Escape does nothing in normal
+        cursor mode. Shortcuts are inactive in open sheets and text fields.
+      </p>
     </dialog>
     <dialog id="create-dialog">
       <form id="create-form">

@@ -30,6 +30,7 @@ export class Camera {
     this.yaw = Math.atan2(d[0], -d[2]);
   }
   home(outer = false, animate = false) {
+    this.stop();
     const scale = (outer ? 1.12e13 : 6.5e11) * Math.max(1, 1.3 / this.aspect);
     const end = [scale * 0.18, scale * 0.64, scale * 0.78];
     this.followId = null;
@@ -48,6 +49,7 @@ export class Camera {
     }
   }
   focus(body, bodies = null) {
+    this.stop();
     const distance = bodies
       ? Math.max(
           body.radius * 24,
@@ -66,9 +68,14 @@ export class Camera {
     this.previousTarget = [...body.position];
   }
   release() {
+    this.stop();
     this.followId = null;
     this.previousTarget = null;
     this.transition = null;
+  }
+  stop() {
+    this.motion = [0, 0, 0];
+    this.wheelMotion = 0;
   }
   followSurvivors(events, bodies) {
     let id = this.followId;
@@ -101,23 +108,36 @@ export class Camera {
     }
     let direction = [0, 0, 0];
     for (const [key, axis, sign] of [
-      ["w", this.forward, 1],
-      ["s", this.forward, -1],
-      ["a", this.right, -1],
-      ["d", this.right, 1],
-      ["q", [0, 1, 0], -1],
-      ["e", [0, 1, 0], 1],
+      ["KeyW", this.forward, 1],
+      ["KeyS", this.forward, -1],
+      ["KeyA", this.right, -1],
+      ["KeyD", this.right, 1],
+      ["KeyQ", [0, 1, 0], -1],
+      ["KeyE", [0, 1, 0], 1],
     ])
       if (keys.has(key)) direction = add(direction, mul(axis, sign));
-    if (length(direction) > 0) {
-      this.transition = null;
-      this.move(
-        mul(
-          unit(direction),
-          this.speed(bodies) * dt * (keys.has("shift") ? 4 : 1),
-        ),
-        bodies,
-      );
+    const moving = length(direction) > 0;
+    if (moving) this.transition = null;
+    if (!this.transition && dt > 0) {
+      // Smooth intent, not astronomical coordinates. Integrating the exponential
+      // exactly keeps acceleration/braking consistent across render framerates.
+      const boost = keys.has("ShiftLeft") || keys.has("ShiftRight") ? 4 : 1,
+        target = mul(unit(direction), boost),
+        tau = moving ? 0.1 : 0.065,
+        decay = Math.exp(-dt / tau),
+        wheelDecay = Math.exp(-dt / 0.14),
+        delta = add(
+          add(
+            mul(target, dt),
+            mul(sub(this.motion, target), tau * (1 - decay)),
+          ),
+          mul(this.forward, this.wheelMotion * 0.14 * (1 - wheelDecay)),
+        );
+      this.motion = add(target, mul(sub(this.motion, target), decay));
+      this.wheelMotion *= wheelDecay;
+      if (!moving && length(this.motion) < 1e-5) this.motion = [0, 0, 0];
+      if (Math.abs(this.wheelMotion) < 1e-5) this.wheelMotion = 0;
+      this.move(mul(delta, this.speed(bodies)), bodies);
     }
     this.keepOutside(bodies);
   }
@@ -135,26 +155,43 @@ export class Camera {
       3e13,
     );
   }
-  travel(amount, bodies) {
+  travel(amount) {
     this.transition = null;
-    this.move(mul(this.forward, amount * this.speed(bodies)), bodies);
+    this.wheelMotion = clamp(this.wheelMotion + amount / 0.14, -6, 6);
   }
   move(delta, bodies) {
-    let fraction = 1;
-    const a = dot(delta, delta);
-    for (const b of bodies) {
-      const r = b.radius + Math.max(1, b.radius * 0.0001),
-        p = sub(this.position, b.position),
-        along = dot(p, delta),
-        c = dot(p, p) - r * r,
-        disc = along * along - a * c;
-      if (a > 0 && along < 0 && c > 0 && disc >= 0)
-        fraction = Math.min(
-          fraction,
-          Math.max(0, c / (-along + Math.sqrt(disc)) - 0.00001),
-        );
+    this.keepOutside(bodies);
+    // Sweep to first contact, then retain tangential travel. Pushing forward
+    // into a surface must not prevent simultaneous strafing or vertical motion.
+    for (let pass = 0; pass < 4 && length(delta) > 0; pass++) {
+      let fraction = 1,
+        hit = null;
+      const a = dot(delta, delta);
+      for (const b of bodies) {
+        const r = b.radius + Math.max(1, b.radius * 0.0001),
+          p = sub(this.position, b.position),
+          along = dot(p, delta),
+          c = Math.max(0, dot(p, p) - r * r),
+          disc = along * along - a * c;
+        if (along < 0 && disc >= 0) {
+          const contact = c / (-along + Math.sqrt(disc));
+          if (contact < fraction) {
+            fraction = Math.max(0, contact);
+            hit = b;
+          }
+        }
+      }
+      this.position = add(this.position, mul(delta, fraction));
+      if (!hit) break;
+      const normal = unit(sub(this.position, hit.position));
+      delta = mul(delta, 1 - fraction);
+      delta = sub(delta, mul(normal, Math.min(0, dot(delta, normal))));
+      this.motion = sub(
+        this.motion,
+        mul(normal, Math.min(0, dot(this.motion, normal))),
+      );
+      this.keepOutside(bodies);
     }
-    this.position = add(this.position, mul(delta, fraction));
     this.keepOutside(bodies);
   }
   keepOutside(bodies) {
