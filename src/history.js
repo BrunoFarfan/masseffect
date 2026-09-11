@@ -40,10 +40,15 @@ function snapshot(sim) {
     );
   if (sim.bodies.length > MAX_BODY_RECORDS)
     throw new Error("There are too many bodies to record a history snapshot.");
-  return { time: sim.time, bodies: sim.bodies.map(cloneBody) };
+  return {
+    time: sim.time,
+    bodies: sim.bodies.map(cloneBody),
+    fragmentLimit: sim.collisionLimit ?? 4,
+  };
 }
 
 function compatible(a, b) {
+  if (a.fragmentLimit !== b.fragmentLimit) return false;
   if (a.bodies.length !== b.bodies.length) return false;
   const later = new Map(b.bodies.map((body) => [body.id, body]));
   if (later.size !== b.bodies.length) return false;
@@ -54,7 +59,11 @@ function compatible(a, b) {
 }
 
 function reconstruct(before, target) {
-  const restored = { time: before.time, bodies: before.bodies.map(cloneBody) };
+  const restored = {
+    time: before.time,
+    bodies: before.bodies.map(cloneBody),
+    fragmentLimit: before.fragmentLimit ?? 4,
+  };
   // Re-run ordinary forward physics from a known state. Linear interpolation
   // across a sparsely sampled moon orbit can cut through the parent planet.
   for (
@@ -64,7 +73,7 @@ function reconstruct(before, target) {
   ) {
     const dt = Math.min(safeStep(restored.bodies), target - restored.time);
     if (!(dt > 0) || restored.time + dt <= restored.time) break;
-    step(restored.bodies, dt);
+    step(restored.bodies, dt, { fragmentLimit: restored.fragmentLimit });
     restored.time += dt;
   }
   // The cap reports the time actually reached, never a fabricated target time.
@@ -162,6 +171,7 @@ export class History {
     // Across a creation/merge/metadata change, use the earlier recorded time as
     // well as its state. Never invent a continuous path through a body edit.
     sim.time = restored.time;
+    sim.collisionLimit = restored.fragmentLimit ?? 4;
     sim.bodies = restored.bodies.map((body) => ({
       ...cloneBody(body),
       trail: [],

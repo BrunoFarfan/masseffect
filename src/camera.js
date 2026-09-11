@@ -53,9 +53,9 @@ export class Camera {
   }
   home(outer = false, animate = false) {
     this.stop();
-    if (!animate) this.frameRotation = [...IDENTITY];
+    this.levelFrame(animate);
+    this.surfaceBlockedId = animate ? this.surface?.id || this.followId : null;
     this.surface = null;
-    this.surfaceBlockedId = null;
     const scale = (outer ? 1.12e13 : 6.5e11) * Math.max(1, 1.3 / this.aspect);
     const end = [scale * 0.18, scale * 0.64, scale * 0.78];
     this.followId = null;
@@ -66,7 +66,6 @@ export class Camera {
         end,
         target: [0, 0, 0],
         elapsed: 0,
-        startFrame: [...this.frameRotation],
       };
     else {
       this.position = end;
@@ -76,8 +75,9 @@ export class Camera {
   }
   focus(body, bodies = null) {
     this.stop();
+    this.levelFrame();
+    this.surfaceBlockedId = this.surface?.id || this.followId;
     this.surface = null;
-    this.surfaceBlockedId = null;
     const distance = bodies
       ? Math.max(
           body.radius * 24,
@@ -97,6 +97,7 @@ export class Camera {
   }
   release() {
     this.stop();
+    this.levelFrame();
     this.surfaceBlockedId = this.surface?.id || this.followId;
     this.surface = null;
     this.followId = null;
@@ -106,6 +107,27 @@ export class Camera {
   stop() {
     this.motion = [0, 0, 0];
     this.wheelMotion = 0;
+  }
+  levelFrame(animate = true) {
+    this.leveling = animate
+      ? { start: [...this.frameRotation], elapsed: 0 }
+      : null;
+    if (!animate) this.frameRotation = [...IDENTITY];
+  }
+  updateLevel(dt) {
+    if (!this.leveling || this.surface) return;
+    const view = this.forward,
+      t = this.leveling;
+    t.elapsed += dt;
+    const x = clamp(t.elapsed / 0.65, 0, 1),
+      ease = x * x * (3 - 2 * x);
+    this.frameRotation = blendRotation(t.start, 1 - ease);
+    // Level the horizon without turning the view. This continues even when
+    // mouse look, wheel or movement interrupts the separate travel animation.
+    this.lookAt(
+      add(this.position, mul(view, Math.max(1, length(this.position) * 0.001))),
+    );
+    if (x === 1) this.leveling = null;
   }
   updateSurface(dt, bodies) {
     const blocked = bodies.find((b) => b.id === this.surfaceBlockedId);
@@ -124,6 +146,7 @@ export class Camera {
         this.previousTarget = null;
       }
       this.surface = null;
+      this.levelFrame();
       body = null;
     }
     if (!this.surface && !this.transition) {
@@ -141,6 +164,7 @@ export class Camera {
             length(sub(this.position, b.position)) / b.radius,
         )[0];
       if (body) {
+        this.leveling = null;
         this.surface = {
           id: body.id,
           orientation: [...body.orientation],
@@ -166,7 +190,7 @@ export class Camera {
     this.motion = rotateVector(change, this.motion);
     this.surface.orientation = [...body.orientation];
     // Gradually make the local vertical radial. Preserve the viewing direction;
-    // only the horizon rolls into alignment. Free flight retains its last frame.
+    // only the horizon rolls into alignment. Departure levels back to system up.
     const forward = this.forward,
       up = rotateVector(this.frameRotation, [0, 1, 0]);
     const align = blendRotation(
@@ -189,6 +213,7 @@ export class Camera {
     // Rebase the follow anchor, never teleport the observer with a changed COM.
     // A vanished surface no longer owns the camera's orientation.
     this.surface = null;
+    this.levelFrame();
     this.surfaceBlockedId = id;
     this.transition = null;
     this.stop();
@@ -211,13 +236,12 @@ export class Camera {
       this.previousTarget = [...body.position];
     }
     this.updateSurface(dt, bodies);
+    this.updateLevel(dt);
     if (this.transition) {
       const t = this.transition;
       t.elapsed += dt;
       const x = clamp(t.elapsed / 0.8, 0, 1),
         ease = x * x * (3 - 2 * x);
-      if (t.startFrame)
-        this.frameRotation = blendRotation(t.startFrame, 1 - ease);
       this.position = add(t.start, mul(sub(t.end, t.start), ease));
       this.lookAt(t.target);
       if (x === 1) this.transition = null;

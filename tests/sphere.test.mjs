@@ -1,8 +1,35 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { SphereSurface, sphereRasterBounds } from "../src/sphere.js";
+import {
+  SphereSurface,
+  sphereRasterBounds,
+  sphereRasterWidth,
+} from "../src/sphere.js";
 import { Camera } from "../src/camera.js";
 import { add, mul, sub, dot } from "../src/math.js";
+
+test("dense near-field spheres share shading work without reducing single-surface detail", () => {
+  const camera = {
+    position: [0, 0, 0],
+    forward: [0, 0, 1],
+    right: [1, 0, 0],
+    up: [0, 1, 0],
+  };
+  const body = { position: [0, 0, 1.01e6], radius: 1e6 };
+  assert.equal(sphereRasterWidth(camera, [body], 1440, 900), 960);
+  assert.ok(sphereRasterWidth(camera, Array(64).fill(body), 1440, 900) <= 192);
+  const behind = { ...body, position: [0, 0, -3e6] };
+  assert.equal(
+    sphereRasterWidth(camera, Array(64).fill(behind), 1440, 900),
+    960,
+  );
+  assert.deepEqual(sphereRasterBounds(0, 0, -3e6, 1e6, 960, 600, 570), {
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+  });
+});
 
 test("sampled sphere surfaces stay inside analytic bounds off-axis, at poles and with screen offsets", () => {
   const width = 960,
@@ -122,7 +149,7 @@ test("bounds retain every ray hit and antialiased edge pixel from the original f
 });
 
 test("camera-plane crossings retain full coverage and bounded raster pixel counts shrink", (t) => {
-  for (const depth of [-2, 0, 1])
+  for (const depth of [-1, 0, 1])
     assert.deepEqual(sphereRasterBounds(4, 2, depth, 1, 960, 600, 570, 150), {
       left: 0,
       right: 960,
@@ -142,6 +169,8 @@ test("camera-plane crossings retain full coverage and bounded raster pixel count
 
 test("moving a bounded sphere offscreen clears old pixel alpha everywhere", () => {
   const savedDocument = globalThis.document;
+  const uploads = [],
+    draws = [];
   globalThis.document = {
     createElement: () => ({
       width: 0,
@@ -150,13 +179,20 @@ test("moving a bounded sphere offscreen clears old pixel alpha everywhere", () =
         createImageData: (width, height) => ({
           data: new Uint8ClampedArray(width * height * 4),
         }),
-        putImageData() {},
+        putImageData(...args) {
+          uploads.push(args);
+        },
+        clearRect() {},
       }),
     }),
   };
   try {
     const surface = new SphereSurface(),
-      ctx = { drawImage() {} };
+      ctx = {
+        drawImage(...args) {
+          draws.push(args);
+        },
+      };
     const camera = {
       position: [0, 0, 0],
       forward: [0, 0, 1],
@@ -171,11 +207,17 @@ test("moving a bounded sphere offscreen clears old pixel alpha everywhere", () =
       kind: "Planet",
     };
     surface.draw(ctx, body, camera, 160, 100, null);
+    assert.equal(uploads.length, 1);
+    assert.equal(draws[0].length, 9);
+    assert.ok(draws[0][3] * draws[0][4] < 160 * 100);
+    assert.deepEqual(uploads[0].slice(3), draws[0].slice(1, 5));
     assert.ok(
       surface.pixels.data.some((value, index) => index % 4 === 3 && value > 0),
     );
     body.position = [100, 0, 3];
     surface.draw(ctx, body, camera, 160, 100, null);
+    assert.equal(uploads.length, 1, "offscreen disks do not upload or blit");
+    assert.equal(draws.length, 1);
     assert.ok(
       surface.pixels.data.every(
         (value, index) => index % 4 !== 3 || value === 0,

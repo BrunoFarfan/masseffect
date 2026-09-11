@@ -6,7 +6,7 @@ import { add, sub, mul, dot, cross, length, unit, clamp } from "./math.js";
 const SPINS = {
   sun: [2192832, 7.25],
   mercury: [5067014.4, 0.034],
-  venus: [20997360, 177.36],
+  venus: [20996755.2, 177.36],
   earth: [86164.1, 23.44],
   mars: [88642.7, 25.19],
   jupiter: [35730, 3.13],
@@ -14,6 +14,24 @@ const SPINS = {
   uranus: [62064, 97.77],
   neptune: [57996, 28.32],
 };
+// IAU/JPL J2000 north-pole RA/Dec for the two retrograde planets. A physical
+// angular velocity is a pseudovector: the X,Y,Z -> X,Z,Y reflection contributes
+// one minus sign, and retrograde spin contributes the second. No double reversal.
+// https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/pck00011.tpc
+const RETROGRADE_POLES = { venus: [272.76, 67.16], uranus: [257.311, -15.175] };
+function retrogradePole([ra, dec]) {
+  ra *= Math.PI / 180;
+  dec *= Math.PI / 180;
+  const e = (23.4392911 * Math.PI) / 180;
+  const x = Math.cos(dec) * Math.cos(ra),
+    y = Math.cos(dec) * Math.sin(ra),
+    z = Math.sin(dec);
+  return [
+    x,
+    z * Math.cos(e) - y * Math.sin(e),
+    y * Math.cos(e) + z * Math.sin(e),
+  ];
+}
 export const IDENTITY = [0, 0, 0, 1];
 export const conjugate = (q) => [-q[0], -q[1], -q[2], q[3]];
 export function multiply(a, b) {
@@ -87,7 +105,11 @@ export function initializeRotations(bodies) {
     body.rotationPeriod ??= period;
     const angle = (tilt * Math.PI) / 180;
     // The existing ecliptic-to-world mapping has prograde angular momentum -Y.
-    const pole = [Math.sin(angle), -Math.cos(angle), 0];
+    const measured =
+      RETROGRADE_POLES[body.id] || RETROGRADE_POLES[body.name?.toLowerCase()];
+    const pole = measured
+      ? retrogradePole(measured)
+      : [Math.sin(angle), -Math.cos(angle), 0];
     body.orientation ??= between([0, 1, 0], pole);
     body.angularVelocity ??= mul(pole, (2 * Math.PI) / body.rotationPeriod);
     if (body.kind === "Moon" && body.parentId)

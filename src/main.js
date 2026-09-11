@@ -8,6 +8,7 @@ import { SCENARIOS, createScenario } from "./scenarios.js";
 import { History } from "./history.js";
 import { equilibriumTemperature, stellarColor } from "./thermal.js";
 import { initializeRotations, rotateVector, between } from "./rotation.js";
+import { FRAGMENT_LIMITS } from "./fragment-budget.js";
 import {
   MouseLook,
   mousePreferences,
@@ -29,7 +30,15 @@ try {
   /* Storage can be disabled; defaults remain usable. */
 }
 mouseLook.sensitivity = mouseSettings.sensitivity;
-let sim = new Simulation(solarSystem()),
+let fragmentLimit = 32;
+try {
+  const saved = Number(localStorage.getItem("mass-effect.fragment-limit"));
+  if (FRAGMENT_LIMITS.includes(saved)) fragmentLimit = saved;
+} catch {
+  /* Storage is optional. */
+}
+$("fragment-limit").value = String(fragmentLimit);
+let sim = new Simulation(solarSystem(), { fragmentLimit }),
   selected = null,
   playing = true,
   visitor = 0,
@@ -119,6 +128,9 @@ function select(id) {
 function inspect() {
   const b = sim.bodies.find((b) => b.id === selected),
     editing = !!modal();
+  const effective = sim.fragmentBudget.limit(fragmentLimit, sim.bodies.length);
+  $("fragment-status").textContent =
+    `Up to ${Math.min(fragmentLimit, effective)} per impact now · 128 bodies total. CPU, available slots and minimum fragment size can lower this. Existing debris is never removed to meet a budget.`;
   $("selection").hidden = !b;
   $("reverse").disabled = sim.time <= history.oldestTime;
   $("reverse").setAttribute("aria-pressed", reversing);
@@ -386,7 +398,7 @@ for (const n of ["trails", "labels"])
   };
 $("reset").onclick = () => {
   renderer.impacts.clear();
-  sim = new Simulation(solarSystem());
+  sim = new Simulation(solarSystem(), { fragmentLimit });
   history.clear(sim);
   reversing = false;
   setPlaying(true);
@@ -586,7 +598,7 @@ function loadScenario(id) {
   renderer.impacts.clear();
   camera.home();
   const state = createScenario(id);
-  sim = new Simulation(state.bodies);
+  sim = new Simulation(state.bodies, { fragmentLimit });
   for (const b of sim.bodies)
     if (b.kind === "Star" && b.effectiveTemperature)
       b.color = stellarColor(b.effectiveTemperature);
@@ -777,13 +789,28 @@ function frame(now) {
   camera.update(dt, sim.bodies, keys);
   options.effectDt =
     playing && !reversing && !modal() && !document.hidden ? dt : 0;
+  const drawStart = performance.now();
   renderer.draw(sim, camera, placing ? null : selected, options);
+  sim.fragmentBudget.observeDraw(
+    performance.now() - drawStart,
+    sim.bodies.length,
+  );
   if (now - uiTime > 120) {
     inspect();
     uiTime = now;
   }
   requestAnimationFrame(frame);
 }
+$("fragment-limit").onchange = () => {
+  fragmentLimit = Number($("fragment-limit").value);
+  sim.fragmentLimit = fragmentLimit;
+  try {
+    localStorage.setItem("mass-effect.fragment-limit", String(fragmentLimit));
+  } catch {
+    /* Optional. */
+  }
+  inspect();
+};
 populate();
 inspect();
 requestAnimationFrame(frame);

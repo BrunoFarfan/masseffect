@@ -180,7 +180,15 @@ function referencePole(pole) {
   ];
 }
 
-function relativeState(parentMass, mass, separation, inclination, pole, index) {
+function relativeState(
+  parentMass,
+  mass,
+  separation,
+  inclination,
+  pole,
+  index,
+  retrograde = false,
+) {
   const normal = referencePole(pole);
   const xAxis = unit(cross([0, 1, 0], normal));
   const yAxis = cross(normal, xAxis);
@@ -201,7 +209,10 @@ function relativeState(parentMass, mass, separation, inclination, pole, index) {
       mul(add(mul(p, Math.cos(phase)), mul(q, Math.sin(phase))), separation),
     ),
     velocity: toWorld(
-      mul(add(mul(p, -Math.sin(phase)), mul(q, Math.cos(phase))), speed),
+      mul(
+        add(mul(p, -Math.sin(phase)), mul(q, Math.cos(phase))),
+        speed * (retrograde ? -1 : 1),
+      ),
     ),
     trailInterval: (2 * Math.PI * separation) / speed / 500,
   };
@@ -233,6 +244,7 @@ export function addMoons(bodies) {
               inclination,
               pole,
               index,
+              parentId === "uranus",
             ),
           };
         },

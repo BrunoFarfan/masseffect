@@ -18,6 +18,7 @@ export function sphereRasterBounds(
   // D > -0.5 m² even outside a tiny sphere; this conservative culling radius
   // retains that halo without changing the radius used for ray intersections.
   radius = Math.hypot(radius, Math.SQRT1_2);
+  if (depth < -radius) return { left: 0, right: 0, top: 0, bottom: 0 };
   // A sphere touching/crossing the camera plane can cover the whole viewport.
   if (!(depth > radius)) return full;
   const denominator = depth * depth - radius * radius;
@@ -40,6 +41,37 @@ export function sphereRasterBounds(
   };
 }
 
+// Share a raster-work budget across overlapping close spheres. Canonical single
+// surfaces retain full detail; dense debris lowers shading resolution, never
+// physical size or body count. Quantized sizes avoid reallocating on every frame.
+export function sphereRasterWidth(camera, bodies, width, height) {
+  const w = Math.min(width, 960),
+    h = Math.round((w * height) / width);
+  const f = camera.forward,
+    right = camera.right,
+    up = camera.up;
+  let pixels = 0;
+  for (const body of bodies) {
+    const c = sub(body.position, camera.position);
+    const bounds = sphereRasterBounds(
+      dot(c, right),
+      dot(c, up),
+      dot(c, f),
+      body.radius,
+      w,
+      h,
+      h * 0.95,
+      ((camera.screenOffsetX || 0) * w) / width,
+    );
+    pixels += (bounds.right - bounds.left) * (bounds.bottom - bounds.top);
+  }
+  if (pixels <= 600000) return w;
+  return Math.min(
+    w,
+    Math.max(128, Math.floor((w * Math.sqrt(600000 / pixels)) / 64) * 64),
+  );
+}
+
 // A single, low-cost ray/sphere surface for close approaches. No terrain or mesh.
 // Rays and intersections remain in world meters; only the image is screen space.
 export class SphereSurface {
@@ -48,7 +80,7 @@ export class SphereSurface {
     this.ctx = this.canvas.getContext("2d");
   }
   draw(ctx, body, camera, width, height, light) {
-    const w = Math.min(width, 960),
+    const w = Math.min(width, this.rasterWidth || 960),
       h = Math.round((w * height) / width);
     if (this.canvas.width !== w || this.canvas.height !== h) {
       this.canvas.width = w;
@@ -146,7 +178,24 @@ export class SphereSurface {
         pixels[index + 2] = rgb[2] * shade * (pattern + detail);
         pixels[index + 3] = 255 * coverage;
       }
-    this.ctx.putImageData(this.pixels, 0, 0);
-    ctx.drawImage(this.canvas, 0, 0, width, height);
+    const bw = bounds.right - bounds.left,
+      bh = bounds.bottom - bounds.top;
+    if (bw === 0 || bh === 0) return;
+    // Upload/composite only the disk's bounds, not a full viewport per fragment.
+    // Bilinear upscaling can sample a neighboring source pixel at crop edges.
+    // Clear that border so the preceding sphere cannot leave a rectangular seam.
+    this.ctx.clearRect(bounds.left - 1, bounds.top - 1, bw + 2, bh + 2);
+    this.ctx.putImageData(this.pixels, 0, 0, bounds.left, bounds.top, bw, bh);
+    ctx.drawImage(
+      this.canvas,
+      bounds.left,
+      bounds.top,
+      bw,
+      bh,
+      (bounds.left * width) / w,
+      (bounds.top * height) / h,
+      (bw * width) / w,
+      (bh * height) / h,
+    );
   }
 }

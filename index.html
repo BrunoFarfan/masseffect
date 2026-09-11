@@ -155,6 +155,18 @@
           history boundary quickly.
         </p>
       </details>
+      <details>
+        <summary>Impact detail</summary>
+        <label for="fragment-limit">Maximum fragments per impact</label>
+        <select id="fragment-limit" aria-describedby="fragment-status">
+          <option value="4">4 · minimal</option>
+          <option value="8">8</option>
+          <option value="16">16</option>
+          <option value="32" selected>32 · standard</option>
+          <option value="64">64 · high</option>
+        </select>
+        <p id="fragment-status" role="status"></p>
+      </details>
     </dialog>
     <dialog id="keys-dialog" aria-labelledby="keys-heading">
       <div class="sheet-heading">

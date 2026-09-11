@@ -4,6 +4,9 @@ run:
 test:
     node --test tests/*.test.mjs
 
+benchmark-fragments:
+    node scripts/benchmark-fragments.mjs
+
 check:
     for file in src/*.js scripts/*.mjs tests/*.mjs; do node --check "$file" || exit 1; done
 

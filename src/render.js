@@ -1,5 +1,5 @@
 import { length, sub, dot, mul } from "./math.js";
-import { SphereSurface } from "./sphere.js";
+import { SphereSurface, sphereRasterWidth } from "./sphere.js";
 import { ImpactView } from "./impact-view.js";
 
 // Hide labels/picks whose sightline enters a nearer physical surface. Otherwise
@@ -144,6 +144,7 @@ export class Renderer {
         length(sub(camera.position, b.position)) < b.radius * 12 ||
         b.radius * (this.project(b.position)?.scale || 0) > 12,
     );
+    this.surface.rasterWidth = sphereRasterWidth(camera, close, w, h);
     const visible = drawnBodies
       .filter(resolved)
       .map((b) => ({ b, p: this.project(b.position) }))
@@ -271,7 +272,13 @@ export class Renderer {
         (a, b) =>
           (b.b.id === selected) - (a.b.id === selected) || b.b.mass - a.b.mass,
       )) {
-        if (b.ghost || p.occluded || (b.visualAlpha ?? 1) < 0.6) continue;
+        if (
+          b.ghost ||
+          p.occluded ||
+          (b.visualAlpha ?? 1) < 0.6 ||
+          (b.kind === "Fragment" && b.id !== selected && sim.bodies.length > 8)
+        )
+          continue;
         const labelName =
           b.kind === "Fragment" ? b.name.replace(" fragment ", " · ") : b.name;
         const width = ctx.measureText(labelName).width + 8,

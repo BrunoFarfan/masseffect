@@ -3,6 +3,7 @@ import { stellarColor } from "./thermal.js";
 import { fragmentImpact, hitAndRun, angularMomentum } from "./impacts.js";
 import { length, mul } from "./math.js";
 import { initializeRotations, advanceRotations } from "./rotation.js";
+import { FragmentBudget } from "./fragment-budget.js";
 export { accelerations, safeStep } from "./forces.js";
 // Every state vector and calculation is SI: m, kg, s, m/s, m/s².
 // The force evaluator is deliberately separate from the integrator.
@@ -77,7 +78,7 @@ function mergePair(bodies, a, b) {
   };
 }
 
-function resolveContact(bodies, a, b, allowBounce = true) {
+function resolveContact(bodies, a, b, allowBounce = true, fragmentLimit = 4) {
   const before = [a, b].map(
     ({
       id,
@@ -110,6 +111,7 @@ function resolveContact(bodies, a, b, allowBounce = true) {
   const fragments = fragmentImpact(a, b, {
     bodyCount: bodies.length,
     maxBodies: MAX_BODIES,
+    fragmentLimit,
   });
   if (!fragments) {
     const event = mergePair(bodies, a, b);
@@ -139,11 +141,11 @@ function resolveContact(bodies, a, b, allowBounce = true) {
     afterIds: fragments.map((f) => f.id),
     survivor,
     removed,
-    text: `${a.name} and ${b.name} dispersed into four fragments`,
+    text: `${a.name} and ${b.name} dispersed into ${fragments.length === 4 ? "four" : fragments.length} fragments`,
   };
 }
 
-export function mergeCollisions(bodies) {
+export function mergeCollisions(bodies, { fragmentLimit = 4 } = {}) {
   const events = [];
   let changed = true;
   while (changed) {
@@ -162,7 +164,13 @@ export function mergeCollisions(bodies) {
         )
           continue;
         events.push(
-          resolveContact(bodies, a, b, events.length < MAX_BODIES * 4),
+          resolveContact(
+            bodies,
+            a,
+            b,
+            events.length < MAX_BODIES * 4,
+            fragmentLimit,
+          ),
         );
         changed = true;
         break outer;
@@ -171,9 +179,9 @@ export function mergeCollisions(bodies) {
   return events;
 }
 
-export function step(bodies, dt) {
+export function step(bodies, dt, { fragmentLimit = 4 } = {}) {
   initializeRotations(bodies);
-  const events = mergeCollisions(bodies);
+  const events = mergeCollisions(bodies, { fragmentLimit });
   const before = accelerations(bodies);
   for (let i = 0; i < bodies.length; i++)
     for (let k = 0; k < 3; k++) {
@@ -197,6 +205,7 @@ export function step(bodies, dt) {
           contact.a,
           contact.b,
           events.length < MAX_BODIES * 4,
+          fragmentLimit,
         ),
       );
       initializeRotations(bodies);
@@ -207,7 +216,7 @@ export function step(bodies, dt) {
     for (let k = 0; k < 3; k++) {
       bodies[i].velocity[k] += (after[i][k] * dt) / 2;
     }
-  events.push(...mergeCollisions(bodies));
+  events.push(...mergeCollisions(bodies, { fragmentLimit }));
   initializeRotations(bodies);
   advanceRotations(bodies, 0);
   return events;
@@ -247,13 +256,16 @@ export function recordTrails(bodies, time) {
 }
 
 export class Simulation {
-  constructor(bodies) {
+  constructor(bodies, { fragmentLimit = 4 } = {}) {
     initializeRotations(bodies);
     this.bodies = bodies;
     this.time = 0;
     this.pending = 0;
     this.limited = false;
     this.events = [];
+    this.fragmentLimit = fragmentLimit;
+    this.collisionLimit = fragmentLimit;
+    this.fragmentBudget = new FragmentBudget();
   }
   advance(realSeconds, timeScale, budgetMs = 9) {
     // No hidden-tab catch-up or unbounded debt. Slow simulated time when work is
@@ -265,13 +277,21 @@ export class Simulation {
     const maximum = timeScale <= 3600 ? 1 : BASE_STEP;
     let count = 0,
       exhausted = false;
+    this.collisionLimit = this.fragmentBudget.limit(
+      this.fragmentLimit,
+      this.bodies.length,
+    );
+    const collisions = { fragmentLimit: this.collisionLimit };
     while (this.pending > 0) {
-      this.events.push(...mergeCollisions(this.bodies));
+      this.events.push(...mergeCollisions(this.bodies, collisions));
       const dt = safeStep(this.bodies, maximum);
       // Accumulating fractional frame durations can miss a quantum by a few
       // floating-point ulps. Consume that quantum without retaining negative debt.
       if (this.pending + dt * 1e-12 < dt) break;
-      this.events.push(...step(this.bodies, dt));
+      const stepStart = performance.now(),
+        bodyCount = this.bodies.length;
+      this.events.push(...step(this.bodies, dt, collisions));
+      this.fragmentBudget.observeStep(performance.now() - stepStart, bodyCount);
       this.time += dt;
       this.pending = Math.max(0, this.pending - dt);
       recordTrails(this.bodies, this.time);
