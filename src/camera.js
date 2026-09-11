@@ -1,4 +1,16 @@
 import { add, sub, mul, dot, length, unit, cross, clamp } from "./math.js";
+import {
+  IDENTITY,
+  rotateVector,
+  multiply,
+  conjugate,
+  between,
+  blendRotation,
+} from "./rotation.js";
+
+// Two meters above ordinary surfaces; increase only to exceed coordinate ulps.
+const clearance = (body) =>
+  Math.max(2, ...body.position.map((v) => Math.abs(v) * Number.EPSILON * 32));
 
 export class Camera {
   constructor() {
@@ -9,28 +21,41 @@ export class Camera {
     this.previousTarget = null;
     this.transition = null;
     this.aspect = 1.6;
+    this.frameRotation = [...IDENTITY];
+    this.surface = null;
+    this.surfaceBlockedId = null;
     this.home();
   }
   get forward() {
-    return [
+    return rotateVector(this.frameRotation, [
       Math.sin(this.yaw) * Math.cos(this.pitch),
       Math.sin(this.pitch),
       -Math.cos(this.yaw) * Math.cos(this.pitch),
-    ];
+    ]);
   }
   get right() {
-    return [Math.cos(this.yaw), 0, Math.sin(this.yaw)];
+    return rotateVector(this.frameRotation, [
+      Math.cos(this.yaw),
+      0,
+      Math.sin(this.yaw),
+    ]);
   }
   get up() {
     return cross(this.right, this.forward);
   }
   lookAt(target) {
-    const d = unit(sub(target, this.position));
-    this.pitch = Math.asin(clamp(d[1], -0.9999, 0.9999));
+    const d = rotateVector(
+      conjugate(this.frameRotation),
+      unit(sub(target, this.position)),
+    );
+    this.pitch = Math.asin(clamp(d[1], -1, 1));
     this.yaw = Math.atan2(d[0], -d[2]);
   }
   home(outer = false, animate = false) {
     this.stop();
+    if (!animate) this.frameRotation = [...IDENTITY];
+    this.surface = null;
+    this.surfaceBlockedId = null;
     const scale = (outer ? 1.12e13 : 6.5e11) * Math.max(1, 1.3 / this.aspect);
     const end = [scale * 0.18, scale * 0.64, scale * 0.78];
     this.followId = null;
@@ -41,6 +66,7 @@ export class Camera {
         end,
         target: [0, 0, 0],
         elapsed: 0,
+        startFrame: [...this.frameRotation],
       };
     else {
       this.position = end;
@@ -50,6 +76,8 @@ export class Camera {
   }
   focus(body, bodies = null) {
     this.stop();
+    this.surface = null;
+    this.surfaceBlockedId = null;
     const distance = bodies
       ? Math.max(
           body.radius * 24,
@@ -69,6 +97,8 @@ export class Camera {
   }
   release() {
     this.stop();
+    this.surfaceBlockedId = this.surface?.id || this.followId;
+    this.surface = null;
     this.followId = null;
     this.previousTarget = null;
     this.transition = null;
@@ -77,13 +107,96 @@ export class Camera {
     this.motion = [0, 0, 0];
     this.wheelMotion = 0;
   }
+  updateSurface(dt, bodies) {
+    const blocked = bodies.find((b) => b.id === this.surfaceBlockedId);
+    if (
+      !blocked ||
+      length(sub(this.position, blocked.position)) > blocked.radius * 1.7
+    )
+      this.surfaceBlockedId = null;
+    let body = bodies.find((b) => b.id === this.surface?.id);
+    if (
+      this.surface &&
+      (!body || length(sub(this.position, body.position)) > body.radius * 1.7)
+    ) {
+      if (this.followId === this.surface.id) {
+        this.followId = null;
+        this.previousTarget = null;
+      }
+      this.surface = null;
+      body = null;
+    }
+    if (!this.surface && !this.transition) {
+      body = bodies
+        .filter(
+          (b) =>
+            b.kind !== "Star" &&
+            b.orientation &&
+            b.id !== this.surfaceBlockedId,
+        )
+        .filter((b) => length(sub(this.position, b.position)) < b.radius * 1.35)
+        .sort(
+          (a, b) =>
+            length(sub(this.position, a.position)) / a.radius -
+            length(sub(this.position, b.position)) / b.radius,
+        )[0];
+      if (body) {
+        this.surface = {
+          id: body.id,
+          orientation: [...body.orientation],
+          blend: 0,
+        };
+        this.followId = body.id;
+        this.previousTarget = [...body.position];
+      }
+    }
+    if (!this.surface || !body) return;
+    const relative = sub(this.position, body.position),
+      ratio = length(relative) / body.radius;
+    const target = clamp((1.5 - ratio) / 0.3, 0, 1);
+    this.surface.blend +=
+      (target - this.surface.blend) * (1 - Math.exp(-dt / 0.18));
+    if (target === 1 && this.surface.blend > 0.9999) this.surface.blend = 1;
+    const change = blendRotation(
+      multiply(body.orientation, conjugate(this.surface.orientation)),
+      this.surface.blend,
+    );
+    this.position = add(body.position, rotateVector(change, relative));
+    this.frameRotation = unit(multiply(change, this.frameRotation));
+    this.motion = rotateVector(change, this.motion);
+    this.surface.orientation = [...body.orientation];
+    // Gradually make the local vertical radial. Preserve the viewing direction;
+    // only the horizon rolls into alignment. Free flight retains its last frame.
+    const forward = this.forward,
+      up = rotateVector(this.frameRotation, [0, 1, 0]);
+    const align = blendRotation(
+      between(up, unit(sub(this.position, body.position))),
+      this.surface.blend * (1 - Math.exp(-dt / 0.25)),
+    );
+    this.frameRotation = unit(multiply(align, this.frameRotation));
+    this.lookAt(add(this.position, mul(forward, Math.max(1, body.radius))));
+  }
   followSurvivors(events, bodies) {
     let id = this.followId;
     for (const event of events) if (id === event.removed) id = event.survivor;
-    if (id === this.followId) return;
+    const changed =
+      id !== this.followId ||
+      events.some(
+        (e) =>
+          e.kind !== "bounce" && e.before?.some((b) => b.id === this.followId),
+      );
+    if (!changed) return;
+    // Rebase the follow anchor, never teleport the observer with a changed COM.
+    // A vanished surface no longer owns the camera's orientation.
+    this.surface = null;
+    this.surfaceBlockedId = id;
+    this.transition = null;
+    this.stop();
     const body = bodies.find((b) => b.id === id);
-    if (body) this.focus(body);
-    else this.release();
+    if (body) {
+      this.followId = id;
+      this.previousTarget = [...body.position];
+    } else this.release();
   }
   update(dt, bodies, keys) {
     const body = bodies.find((b) => b.id === this.followId);
@@ -97,11 +210,14 @@ export class Camera {
       }
       this.previousTarget = [...body.position];
     }
+    this.updateSurface(dt, bodies);
     if (this.transition) {
       const t = this.transition;
       t.elapsed += dt;
       const x = clamp(t.elapsed / 0.8, 0, 1),
         ease = x * x * (3 - 2 * x);
+      if (t.startFrame)
+        this.frameRotation = blendRotation(t.startFrame, 1 - ease);
       this.position = add(t.start, mul(sub(t.end, t.start), ease));
       this.lookAt(t.target);
       if (x === 1) this.transition = null;
@@ -112,8 +228,8 @@ export class Camera {
       ["KeyS", this.forward, -1],
       ["KeyA", this.right, -1],
       ["KeyD", this.right, 1],
-      ["KeyQ", [0, 1, 0], -1],
-      ["KeyE", [0, 1, 0], 1],
+      ["KeyQ", rotateVector(this.frameRotation, [0, 1, 0]), -1],
+      ["KeyE", rotateVector(this.frameRotation, [0, 1, 0]), 1],
     ])
       if (keys.has(key)) direction = add(direction, mul(axis, sign));
     const moving = length(direction) > 0;
@@ -146,7 +262,7 @@ export class Camera {
       Math.min(
         ...bodies.map((b) =>
           Math.max(
-            b.radius * 0.0005,
+            Math.max(3, Math.sqrt(b.radius) * 0.005),
             length(sub(this.position, b.position)) - b.radius,
           ),
         ),
@@ -168,7 +284,7 @@ export class Camera {
         hit = null;
       const a = dot(delta, delta);
       for (const b of bodies) {
-        const r = b.radius + Math.max(1, b.radius * 0.0001),
+        const r = b.radius + clearance(b),
           p = sub(this.position, b.position),
           along = dot(p, delta),
           c = Math.max(0, dot(p, p) - r * r),
@@ -197,7 +313,7 @@ export class Camera {
   keepOutside(bodies) {
     for (const b of bodies) {
       const d = sub(this.position, b.position),
-        r = b.radius + Math.max(1, b.radius * 0.0001);
+        r = b.radius + clearance(b);
       if (length(d) < r)
         this.position = add(
           b.position,

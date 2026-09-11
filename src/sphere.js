@@ -1,4 +1,5 @@
 import { sub, unit, dot } from "./math.js";
+import { rotateVector, IDENTITY } from "./rotation.js";
 
 // Conservative, half-open raster bounds of a perspective-projected sphere.
 // Inputs are camera-space meters and raster pixels (including the focal length).
@@ -79,6 +80,10 @@ export class SphereSurface {
       offsetX,
     );
     const rgb = body.color.match(/[0-9a-f]{2}/gi).map((v) => parseInt(v, 16));
+    const orientation = body.orientation || IDENTITY,
+      localX = rotateVector(orientation, [1, 0, 0]),
+      localY = rotateVector(orientation, [0, 1, 0]),
+      localZ = rotateVector(orientation, [0, 0, 1]);
     // The projected bounds can shrink or move between frames. Clear every old
     // alpha value, including pixels outside the new bounds, before rasterizing.
     pixels.fill(0);
@@ -116,17 +121,29 @@ export class SphereSurface {
                 );
         // Subtle illustrative gas bands give giants identity, without terrain.
         const gas = body.radius > 2e7 && body.kind !== "Star";
+        const lx = nx * localX[0] + ny * localX[1] + nz * localX[2],
+          ly = nx * localY[0] + ny * localY[1] + nz * localY[2],
+          lz = nx * localZ[0] + ny * localZ[1] + nz * localZ[2];
         const pattern = gas
-          ? 0.94 + 0.06 * Math.sin(ny * 36 + 2 * Math.sin(nx * 5))
+          ? 0.92 + 0.08 * Math.sin(ly * 36 + 2 * Math.sin(lx * 5))
           : body.kind === "Star"
             ? 1
-            : 0.96 +
-              0.025 *
-                Math.sin(nx * 23 + Math.sin(nz * 17)) *
-                Math.sin(ny * 31 + nz * 7);
-        pixels[index] = rgb[0] * shade * pattern;
-        pixels[index + 1] = rgb[1] * shade * pattern;
-        pixels[index + 2] = rgb[2] * shade * pattern;
+            : 0.95 +
+              0.045 *
+                Math.sin(lx * 6 + 2 * Math.sin(lz * 4)) *
+                Math.sin(ly * 7 + lz * 3);
+        // Meter-scale albedo variation, not geometry. Suppress unresolved detail
+        // using the ray footprint so gravel never becomes a distant moiré pattern.
+        const detail =
+          body.kind !== "Star" && !gas && t < focal * 3
+            ? 0.035 *
+              Math.max(0, 1 - t / (focal * 3)) *
+              Math.sin((lx + lz * 0.6) * radius * 0.8) *
+              Math.sin((ly - lz * 0.3) * radius * 1.1)
+            : 0;
+        pixels[index] = rgb[0] * shade * (pattern + detail);
+        pixels[index + 1] = rgb[1] * shade * (pattern + detail);
+        pixels[index + 2] = rgb[2] * shade * (pattern + detail);
         pixels[index + 3] = 255 * coverage;
       }
     this.ctx.putImageData(this.pixels, 0, 0);

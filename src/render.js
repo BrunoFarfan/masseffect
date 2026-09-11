@@ -1,5 +1,27 @@
-import { length, sub } from "./math.js";
+import { length, sub, dot, mul } from "./math.js";
 import { SphereSurface } from "./sphere.js";
+import { ImpactView } from "./impact-view.js";
+
+// Hide labels/picks whose sightline enters a nearer physical surface. Otherwise
+// a planet below the local horizon can still appear as a floating text label.
+export function occluded(body, origin, blockers) {
+  const delta = sub(body.position, origin),
+    distance = length(delta);
+  if (!distance) return false;
+  const direction = mul(delta, 1 / distance);
+  return blockers.some((other) => {
+    if (other.id === body.id || other.ghost) return false;
+    const r = sub(other.position, origin),
+      along = dot(r, direction);
+    if (along <= 0) return false;
+    const perpendicular2 = Math.max(0, dot(r, r) - along ** 2);
+    return (
+      perpendicular2 < other.radius ** 2 &&
+      along - Math.sqrt(other.radius ** 2 - perpendicular2) <
+        distance - body.radius
+    );
+  });
+}
 
 export class Renderer {
   constructor(canvas) {
@@ -7,6 +29,7 @@ export class Renderer {
     this.ctx = canvas.getContext("2d");
     this.hits = [];
     this.surface = new SphereSurface();
+    this.impacts = new ImpactView();
     this.resize();
   }
   resize() {
@@ -115,10 +138,13 @@ export class Renderer {
       }
     ctx.globalAlpha = 1;
     this.hits = [];
-    const close = sim.bodies.filter(
-      (b) => length(sub(camera.position, b.position)) < b.radius * 12,
+    const drawnBodies = this.impacts.bodies(sim.bodies, options.effectDt || 0);
+    const close = drawnBodies.filter(
+      (b) =>
+        length(sub(camera.position, b.position)) < b.radius * 12 ||
+        b.radius * (this.project(b.position)?.scale || 0) > 12,
     );
-    const visible = sim.bodies
+    const visible = drawnBodies
       .filter(resolved)
       .map((b) => ({ b, p: this.project(b.position) }))
       .filter(
@@ -127,11 +153,29 @@ export class Renderer {
       )
       .sort((a, b) => b.p.z - a.p.z);
     const sun = sim.bodies.find((b) => b.kind === "Star");
-    for (const { b, p } of visible) {
+    for (const { b, p } of visible)
+      p.occluded = occluded(b, camera.position, close);
+    const drawOrder = [
+      ...visible,
+      ...close
+        .filter((b) => !visible.some((v) => v.b === b))
+        .map((b) => ({ b, p: null })),
+    ].sort(
+      (a, b) =>
+        length(sub(camera.position, b.b.position)) -
+        b.b.radius -
+        (length(sub(camera.position, a.b.position)) - a.b.radius),
+    );
+    for (const { b, p } of drawOrder) {
+      ctx.globalAlpha = b.visualAlpha ?? 1;
+      if (!p) {
+        this.surface.draw(ctx, b, camera, w, h, sun?.id === b.id ? null : sun);
+        continue;
+      }
       const separation = sun
         ? length(sub(b.position, sun.position)) * p.scale
         : 100;
-      const minimum =
+      const distantMinimum =
         b.id === "sun"
           ? 17
           : b.radius > 5e7
@@ -139,6 +183,12 @@ export class Renderer {
             : b.radius > 1e7
               ? 7
               : Math.min(4.5, Math.max(1.5, separation / 10));
+      // On a surface, apparent angular sizes matter (the Sun must not dwarf
+      // Earth in the lunar sky). Retain only a tiny point floor for distant dots.
+      const minimum =
+        1.5 +
+        (distantMinimum - 1.5) *
+          Math.max(0, Math.min(1, (nearestSurfaceRatio - 1.5) / 4));
       const r = Math.min(
         Math.max(minimum, b.radius * p.scale),
         Math.max(w, h) * 2,
@@ -173,9 +223,11 @@ export class Renderer {
         ctx.ellipse(p.x, p.y, r * 1.9, r * 0.48, -0.35, 0, Math.PI * 2);
         ctx.stroke();
       }
-      if (close.includes(b)) {
-        this.surface.draw(ctx, b, camera, w, h, sun?.id === b.id ? null : sun);
-      } else {
+      const surfaceBlend = Math.max(
+        0,
+        Math.min(1, (b.radius * p.scale - 12) / 12),
+      );
+      if (surfaceBlend < 1) {
         const shade = ctx.createRadialGradient(
           p.x - r * 0.3,
           p.y - r * 0.35,
@@ -192,13 +244,15 @@ export class Renderer {
         ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
         ctx.fill();
       }
-      this.hits.push({ id: b.id, x: p.x, y: p.y, r: Math.max(13, r + 6) });
+      if (surfaceBlend > 0) {
+        ctx.globalAlpha = (b.visualAlpha ?? 1) * surfaceBlend;
+        this.surface.draw(ctx, b, camera, w, h, sun?.id === b.id ? null : sun);
+      }
+      if (!b.ghost && !p.occluded)
+        this.hits.push({ id: b.id, x: p.x, y: p.y, r: Math.max(13, r + 6) });
       p.radius = r;
     }
-    // A near surface can intersect the viewport even with its center behind it.
-    for (const b of close)
-      if (!visible.some((v) => v.b === b))
-        this.surface.draw(ctx, b, camera, w, h, sun?.id === b.id ? null : sun);
+    ctx.globalAlpha = 1;
     if (options.labels) {
       ctx.font = '11px "Trebuchet MS", sans-serif';
       const occupied = visible.map(({ p }) => ({
@@ -217,6 +271,7 @@ export class Renderer {
         (a, b) =>
           (b.b.id === selected) - (a.b.id === selected) || b.b.mass - a.b.mass,
       )) {
+        if (b.ghost || p.occluded || (b.visualAlpha ?? 1) < 0.6) continue;
         const labelName =
           b.kind === "Fragment" ? b.name.replace(" fragment ", " · ") : b.name;
         const width = ctx.measureText(labelName).width + 8,
@@ -301,7 +356,7 @@ export class Renderer {
       }
     }
     // Contextual ruler only, not a permanent overlay.
-    if (!selected) return;
+    if (!selected || camera.surface?.id === selected) return;
     const target = sim.bodies.find((b) => b.id === selected)?.position || [
       0, 0, 0,
     ];

@@ -1,6 +1,8 @@
 import { accelerations, safeStep, firstContact } from "./forces.js";
 import { stellarColor } from "./thermal.js";
-import { fragmentImpact } from "./impacts.js";
+import { fragmentImpact, hitAndRun, angularMomentum } from "./impacts.js";
+import { length, mul } from "./math.js";
+import { initializeRotations, advanceRotations } from "./rotation.js";
 export { accelerations, safeStep } from "./forces.js";
 // Every state vector and calculation is SI: m, kg, s, m/s, m/s².
 // The force evaluator is deliberately separate from the integrator.
@@ -11,6 +13,7 @@ export const MAX_BODIES = 128;
 function mergePair(bodies, a, b) {
   if (b.mass > a.mass) [a, b] = [b, a];
   const mass = a.mass + b.mass;
+  const angular = angularMomentum(a, b);
   a.position = a.position.map(
     (v, k) => (v * a.mass + b.position[k] * b.mass) / mass,
   );
@@ -19,6 +22,12 @@ function mergePair(bodies, a, b) {
   );
   a.radius = Math.cbrt(a.radius ** 3 + b.radius ** 3);
   a.mass = mass;
+  a.angularVelocity = mul(angular, 1 / (0.4 * mass * a.radius ** 2));
+  a.rotationPeriod =
+    length(a.angularVelocity) > 0
+      ? (2 * Math.PI) / length(a.angularVelocity)
+      : 0;
+  a.rotationModel = "free";
   a.fragmentGeneration = Math.max(
     a.fragmentGeneration || 0,
     b.fragmentGeneration || 0,
@@ -68,12 +77,44 @@ function mergePair(bodies, a, b) {
   };
 }
 
-function resolveContact(bodies, a, b) {
+function resolveContact(bodies, a, b, allowBounce = true) {
+  const before = [a, b].map(
+    ({
+      id,
+      name,
+      kind,
+      mass,
+      radius,
+      position,
+      velocity,
+      color,
+      orientation,
+    }) => ({
+      id,
+      name,
+      kind,
+      mass,
+      radius,
+      position: [...position],
+      velocity: [...velocity],
+      color,
+      orientation: orientation && [...orientation],
+    }),
+  );
+  if (allowBounce && hitAndRun(a, b))
+    return {
+      kind: "bounce",
+      before,
+      text: `${a.name} and ${b.name} glanced apart`,
+    };
   const fragments = fragmentImpact(a, b, {
     bodyCount: bodies.length,
     maxBodies: MAX_BODIES,
   });
-  if (!fragments) return mergePair(bodies, a, b);
+  if (!fragments) {
+    const event = mergePair(bodies, a, b);
+    return { ...event, kind: "merge", before, afterIds: [event.survivor] };
+  }
   const survivor = fragments[0].id,
     removed = survivor === a.id ? b.id : a.id;
   for (const body of bodies) {
@@ -93,6 +134,9 @@ function resolveContact(bodies, a, b) {
   bodies.splice(bodies.indexOf(b), 1);
   bodies.push(...fragments);
   return {
+    kind: "fragment",
+    before,
+    afterIds: fragments.map((f) => f.id),
     survivor,
     removed,
     text: `${a.name} and ${b.name} dispersed into four fragments`,
@@ -117,7 +161,9 @@ export function mergeCollisions(bodies) {
           a.radius + b.radius
         )
           continue;
-        events.push(resolveContact(bodies, a, b));
+        events.push(
+          resolveContact(bodies, a, b, events.length < MAX_BODIES * 4),
+        );
         changed = true;
         break outer;
       }
@@ -126,6 +172,7 @@ export function mergeCollisions(bodies) {
 }
 
 export function step(bodies, dt) {
+  initializeRotations(bodies);
   const events = mergeCollisions(bodies);
   const before = accelerations(bodies);
   for (let i = 0; i < bodies.length; i++)
@@ -141,16 +188,29 @@ export function step(bodies, dt) {
     const travel = contact?.time ?? remaining;
     for (const body of bodies)
       for (let k = 0; k < 3; k++) body.position[k] += body.velocity[k] * travel;
+    advanceRotations(bodies, travel);
     remaining -= travel;
-    if (contact) events.push(resolveContact(bodies, contact.a, contact.b));
-    else break;
+    if (contact) {
+      events.push(
+        resolveContact(
+          bodies,
+          contact.a,
+          contact.b,
+          events.length < MAX_BODIES * 4,
+        ),
+      );
+      initializeRotations(bodies);
+    } else break;
   }
   const after = accelerations(bodies);
   for (let i = 0; i < bodies.length; i++)
     for (let k = 0; k < 3; k++) {
       bodies[i].velocity[k] += (after[i][k] * dt) / 2;
     }
-  return events.concat(mergeCollisions(bodies));
+  events.push(...mergeCollisions(bodies));
+  initializeRotations(bodies);
+  advanceRotations(bodies, 0);
+  return events;
 }
 
 export function energy(bodies) {
@@ -188,6 +248,7 @@ export function recordTrails(bodies, time) {
 
 export class Simulation {
   constructor(bodies) {
+    initializeRotations(bodies);
     this.bodies = bodies;
     this.time = 0;
     this.pending = 0;

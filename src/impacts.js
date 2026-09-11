@@ -1,4 +1,59 @@
+import { add, sub, mul, dot, cross, length, unit } from "./math.js";
 const G = 6.6743e-11;
+export function angularMomentum(a, b) {
+  const mass = a.mass + b.mass;
+  const orbital = mul(
+    cross(sub(a.position, b.position), sub(a.velocity, b.velocity)),
+    a.mass * (b.mass / mass),
+  );
+  return [a, b].reduce(
+    (sum, body) =>
+      add(
+        sum,
+        mul(
+          body.angularVelocity || [0, 0, 0],
+          0.4 * body.mass * body.radius ** 2,
+        ),
+      ),
+    orbital,
+  );
+}
+
+// A frictionless, inelastic normal impulse for unbound grazing encounters.
+// Deep initial overlaps and bound contacts still coalesce. Spent fragments may
+// rebound, but cannot trigger another generation of disruption.
+export function hitAndRun(a, b) {
+  if (!a.kind || !b.kind || a.kind === "Star" || b.kind === "Star")
+    return false;
+  const r = sub(b.position, a.position),
+    distance = length(r),
+    radius = a.radius + b.radius;
+  if (distance < radius * 0.99) return false;
+  const n = unit(r),
+    relative = sub(b.velocity, a.velocity),
+    normal = dot(relative, n),
+    speed2 = dot(relative, relative);
+  if (normal >= 0 || speed2 === 0) return false;
+  const spent = a.fragmentGeneration >= 1 || b.fragmentGeneration >= 1;
+  if (!spent && normal ** 2 / speed2 > 0.35) return false;
+  const restitution = 0.4,
+    mass = a.mass + b.mass;
+  const afterSpeed2 = speed2 - (1 - restitution ** 2) * normal ** 2;
+  if (afterSpeed2 <= (2 * G * mass) / radius) return false;
+  a.velocity = add(
+    a.velocity,
+    mul(n, ((1 + restitution) * normal * b.mass) / mass),
+  );
+  b.velocity = sub(
+    b.velocity,
+    mul(n, ((1 + restitution) * normal * a.mass) / mass),
+  );
+  // Mass-weighted separation avoids a zero-time repeat in swept contact tests.
+  const gap = Math.max(1e-3, radius * 1e-6) + Math.max(0, radius - distance);
+  a.position = sub(a.position, mul(n, (gap * b.mass) / mass));
+  b.position = add(b.position, mul(n, (gap * a.mass) / mass));
+  return true;
+}
 const TETRAHEDRON = [
   [1, 1, 1],
   [1, -1, -1],
@@ -23,9 +78,9 @@ const validBody = (body) =>
 
 // Conservative eligibility for a deliberately approximate disruption model.
 // The caller supplies an actual contacting pair and validates any external parent.
-// Four displaced spheres preserve mass, volume, COM and linear momentum. Their
-// placement changes gravitational energy; spin/angular momentum and impact heat
-// are not modeled. This is neither material fracture nor stellar evolution.
+// Four compact spheres preserve mass, volume, COM and linear momentum. A shared
+// spin carries angular momentum where the ejection budget permits it. Placement
+// changes gravitational energy; this is not material fracture or stellar evolution.
 export function fragmentImpact(a, b, { bodyCount, maxBodies = 128 } = {}) {
   if (
     !validBody(a) ||
@@ -67,8 +122,21 @@ export function fragmentImpact(a, b, { bodyCount, maxBodies = 128 } = {}) {
   )
     return null;
   const ejectionEnergy = 0.25 * (relativeEnergy - threshold);
-  const componentSpeed = Math.sqrt((2 * ejectionEnergy) / totalMass / 3);
-  const componentOffset = Math.sqrt(3) * radius; // radial distance = 3 radii
+  const componentOffset = radius * Math.SQRT1_2 * 1.02;
+  const inertia = totalMass * (2 * componentOffset ** 2 + 0.4 * radius ** 2);
+  const angular = angularMomentum(a, b);
+  const spinEnergy = dot(angular, angular) / (2 * inertia);
+  // Bound rotational energy rather than inventing energy for extreme input spins.
+  const spinFraction =
+    spinEnergy > 0
+      ? Math.min(1, Math.sqrt((ejectionEnergy * 0.8) / spinEnergy))
+      : 1;
+  const omega = mul(angular, spinFraction / inertia);
+  const componentSpeed = Math.sqrt(
+    (2 * Math.max(0, ejectionEnergy - spinEnergy * spinFraction ** 2)) /
+      totalMass /
+      3,
+  );
   const center = a.position.map(
     (value, k) =>
       value * (a.mass / totalMass) + b.position[k] * (b.mass / totalMass),
@@ -99,7 +167,14 @@ export function fragmentImpact(a, b, { bodyCount, maxBodies = 128 } = {}) {
     ...(Number.isFinite(a.albedo) ? { albedo: a.albedo } : {}),
     fragmentGeneration: 1,
     position: direction.map((sign, k) => center[k] + sign * componentOffset),
-    velocity: direction.map((sign, k) => velocity[k] + sign * componentSpeed),
+    velocity: add(
+      direction.map((sign, k) => velocity[k] + sign * componentSpeed),
+      cross(omega, mul(direction, componentOffset)),
+    ),
+    orientation: [...(a.orientation || [0, 0, 0, 1])],
+    angularVelocity: [...omega],
+    rotationModel: "free",
+    rotationPeriod: length(omega) > 0 ? (2 * Math.PI) / length(omega) : 0,
     trail: [],
     relativeTrail: [],
     trailInterval: 100,

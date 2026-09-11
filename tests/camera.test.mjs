@@ -118,9 +118,9 @@ test("surface sweeps block tunneling and keep finite state after large diagonal 
     bodies = [{ radius: 6e6, position: [0, 0, 0] }];
   c.position = [0, 0, 2e7];
   c.move([0, 0, -4e7], bodies);
-  assert.ok(c.position[2] >= 6000600);
+  assert.ok(c.position[2] >= 6000002 - 1e-8);
   c.move([2e7, 1e7, -4e7], bodies);
   assert.ok(c.position.every(Number.isFinite));
-  assert.ok(length(c.position) >= 6000600);
+  assert.ok(length(c.position) >= 6000002 - 1e-8);
   assert.ok(c.position[0] > 1e7);
 });

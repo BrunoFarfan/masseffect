@@ -7,6 +7,7 @@ import { PRESETS, createPlacedBody, randomPlacement } from "./presets.js";
 import { SCENARIOS, createScenario } from "./scenarios.js";
 import { History } from "./history.js";
 import { equilibriumTemperature, stellarColor } from "./thermal.js";
+import { initializeRotations, rotateVector, between } from "./rotation.js";
 import {
   MouseLook,
   mousePreferences,
@@ -163,13 +164,21 @@ function inspect() {
   if (b) {
     $("selected-name").textContent = b.name;
     $("selected-context").textContent =
-      `${camera.followId ? `${sim.bodies.find((p) => p.id === camera.followId)?.name || "Body"} frame · ` : ""}${formatDistance(Math.max(0, length(sub(camera.position, b.position)) - b.radius))} above surface`;
+      `${camera.surface ? `${sim.bodies.find((p) => p.id === camera.surface.id)?.name || "Body"} surface · ` : camera.followId ? `${sim.bodies.find((p) => p.id === camera.followId)?.name || "Body"} frame · ` : ""}${formatDistance(Math.max(0, length(sub(camera.position, b.position)) - b.radius))} above ${b.name}`;
     if (!$("inspector").hidden) {
       $("detail-name").textContent = b.name;
       $("properties").innerHTML = [
         ["Mass", `${b.mass.toExponential(2)} kg`],
         ["Radius", formatDistance(b.radius)],
         ["Speed", `${(length(b.velocity) / 1000).toFixed(2)} km/s`],
+        [
+          "Rotation",
+          b.rotationModel === "synchronous"
+            ? "Synchronous with primary"
+            : b.rotationPeriod === 0
+              ? "No axial spin"
+              : `${((b.rotationPeriod ?? 86400) / 3600).toFixed(2)} h`,
+        ],
         ...(b.kind === "Star"
           ? [
               ["Luminosity", `${(b.luminosity || 0).toExponential(2)} W`],
@@ -189,7 +198,7 @@ function inspect() {
         .join("");
     }
     const t = camera.locator(b.position, innerWidth, innerHeight);
-    if (t && !editing) {
+    if (t && !editing && camera.surface?.id !== b.id) {
       $("locator").hidden = false;
       $("locator").style.left = `${t.x}px`;
       $("locator").style.top = `${t.y}px`;
@@ -325,6 +334,7 @@ function playForward() {
 function rewind() {
   if (sim.time <= history.oldestTime) return;
   clearToast();
+  renderer.impacts.clear();
   if (!reversing) history.capture(sim);
   reversing = true;
   sim.pending = 0;
@@ -340,6 +350,7 @@ function restoredSelection() {
 $("history-position").oninput = (e) => {
   const target = Number(e.target.value);
   clearToast();
+  renderer.impacts.clear();
   reversing = true;
   setPlaying(false);
   history.seek(sim, target);
@@ -374,6 +385,7 @@ for (const n of ["trails", "labels"])
     $(n).setAttribute("aria-pressed", options[n]);
   };
 $("reset").onclick = () => {
+  renderer.impacts.clear();
   sim = new Simulation(solarSystem());
   history.clear(sim);
   reversing = false;
@@ -406,6 +418,7 @@ function releaseBody(b) {
   if (b.kind === "Star" && b.effectiveTemperature)
     b.color = stellarColor(b.effectiveTemperature);
   sim.bodies.push(b);
+  initializeRotations(sim.bodies);
   history.capture(sim);
   reversing = false;
   populate();
@@ -570,6 +583,8 @@ $("create-form").onsubmit = (e) => {
 };
 function loadScenario(id) {
   clearToast();
+  renderer.impacts.clear();
+  camera.home();
   const state = createScenario(id);
   sim = new Simulation(state.bodies);
   for (const b of sim.bodies)
@@ -582,10 +597,17 @@ function loadScenario(id) {
   visitor = 0;
   populate();
   select(state.focusId);
-  if (![...$("speed").options].some((o) => Number(o.value) === state.timeScale))
+  if (
+    ![...$("speed").options].some((o) => Number(o.value) === state.timeScale)
+  ) {
+    const next = [...$("speed").options].find(
+      (o) => Number(o.value) > state.timeScale,
+    );
     $("speed").add(
       new Option(timeSpan(state.timeScale) + " / s", state.timeScale),
+      next || null,
     );
+  }
   $("speed").value = String(state.timeScale);
   setPlaying(true);
   const b = sim.bodies.find((b) => b.id === state.focusId);
@@ -596,6 +618,19 @@ function loadScenario(id) {
   camera.lookAt(b.position);
   camera.followId = b.id;
   camera.previousTarget = [...b.position];
+  if (state.surfaceView) {
+    const local = state.surfaceView.normal;
+    const normal = rotateVector(b.orientation, local);
+    camera.position = b.position.map(
+      (v, k) => v + normal[k] * (b.radius + state.surfaceView.altitude),
+    );
+    camera.frameRotation = between([0, 1, 0], normal);
+    camera.lookAt(
+      sim.bodies.find((p) => p.id === state.surfaceView.lookAt).position,
+    );
+    camera.updateSurface(0, sim.bodies);
+    if (camera.surface) camera.surface.blend = 1;
+  }
   if (modal()) modal().close();
   $("welcome").hidden = true;
   entered = true;
@@ -721,6 +756,7 @@ function frame(now) {
     }
   }
   if (sim.events.length) {
+    renderer.impacts.capture(sim.events);
     for (const e of sim.events) {
       if (selected === e.removed) selected = e.survivor;
       toast(e.text);
@@ -739,6 +775,8 @@ function frame(now) {
   const [lookX, lookY] = mouseLook.consume();
   if (locked() && (lookX || lookY)) camera.rotate(lookX, -lookY);
   camera.update(dt, sim.bodies, keys);
+  options.effectDt =
+    playing && !reversing && !modal() && !document.hidden ? dt : 0;
   renderer.draw(sim, camera, placing ? null : selected, options);
   if (now - uiTime > 120) {
     inspect();

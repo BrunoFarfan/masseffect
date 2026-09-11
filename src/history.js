@@ -15,6 +15,8 @@ const FIELDS = [
   "albedo",
   "trailInterval",
   "fragmentGeneration",
+  "rotationModel",
+  "rotationPeriod",
 ];
 const MAX_SNAPSHOTS = 900;
 const MAX_BODY_RECORDS = 32000;
@@ -26,6 +28,8 @@ function cloneBody(body) {
     if (body[key] !== undefined) result[key] = body[key];
   result.position = [...body.position];
   result.velocity = [...body.velocity];
+  if (body.orientation) result.orientation = [...body.orientation];
+  if (body.angularVelocity) result.angularVelocity = [...body.angularVelocity];
   return result;
 }
 

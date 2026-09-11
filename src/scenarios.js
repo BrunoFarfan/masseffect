@@ -20,6 +20,12 @@ export const SCENARIOS = Object.freeze(
       description: "The Sun, eight planets and 17 moons.",
     },
     {
+      id: "lunar-lookout",
+      name: "Lunar lookout",
+      description:
+        "Earth above the Moon’s horizon. Rise to leave the rotating surface.",
+    },
+    {
       id: "binary-stars",
       name: "Binary stars",
       description:
@@ -83,6 +89,18 @@ function barycenter(bodies) {
 
 export function createScenario(id) {
   if (id === "planetary-impact") return impactScenario();
+  if (id === "lunar-lookout")
+    return {
+      bodies: solarSystem(),
+      focusId: "moon",
+      cameraDistance: 1.74e6,
+      timeScale: 21600,
+      surfaceView: {
+        normal: [0.25, Math.sqrt(1 - 0.25 ** 2), 0],
+        altitude: 2,
+        lookAt: "earth",
+      },
+    };
   if (id === "solar-system")
     return {
       bodies: solarSystem(),
