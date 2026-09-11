@@ -32,6 +32,11 @@ export async function buildSite(destination, environment = "preview") {
   const files = [
     "index.html",
     "style.css",
+    "robots.txt",
+    "sitemap.xml",
+    "assets/favicon.svg",
+    "assets/apple-touch-icon.png",
+    "assets/social-preview.png",
     ...modules.map((name) => `src/${name}`),
   ];
   for (const file of files)
@@ -44,6 +49,7 @@ export async function buildSite(destination, environment = "preview") {
   // Only this generated output is replaced; source and local QA artifacts stay intact.
   await rm(destination, { recursive: true, force: true });
   await mkdir(resolve(destination, "src"), { recursive: true });
+  await mkdir(resolve(destination, "assets"), { recursive: true });
   const hashes = {};
   for (const file of files) {
     await cp(resolve(root, file), resolve(destination, file));

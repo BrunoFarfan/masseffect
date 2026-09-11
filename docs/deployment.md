@@ -56,8 +56,9 @@ just deploy-check production
 ```
 
 `just build preview` or `just build production` replaces only generated `dist/`.
-The build explicitly includes `index.html`, `style.css` and `src/*.js`, plus generated
-security headers and `release.json`. Tests, docs, dependencies, local screenshots
+The build explicitly includes `index.html`, `style.css`, `src/*.js`, `robots.txt`,
+`sitemap.xml`, and the three sharing/favicon assets, plus generated security headers
+and `release.json`. Tests, docs, dependencies, local screenshots
 and credentials are never uploaded. There is no bundling or minification.
 
 For authorized manual recovery/bootstrap, authenticate using `npx wrangler login`
@@ -73,6 +74,22 @@ Cloudflare provisions DNS and TLS through the configured Worker Custom Domain;
 do not create a competing CNAME. Asset responses revalidate so unchanged module
 URLs do not keep an old release in the browser cache. Reload existing open tabs
 after a release to load its code.
+
+## Link previews and search
+
+The HTML contains description, canonical, Open Graph and Twitter large-image metadata;
+crawlers do not need JavaScript. All canonical and sharing URLs use the production
+domain, including on preview. The one-page sitemap advertises only the production
+homepage. Preview retains its `noindex` response header; robots are allowed to read
+that header rather than blocked from discovering it.
+
+The social image is a 1200 × 630 PNG; bookmark artwork includes an SVG favicon and
+a 180 × 180 Apple touch icon. Editable artwork is `docs/social-preview.svg` and
+`assets/favicon.svg`. To regenerate the PNGs, open the corresponding SVG from the
+local server in a desktop browser at exactly 1200 × 630 or 180 × 180 CSS pixels and
+capture the viewport at 1× scale. Use an opaque `#10151e` background for the touch
+icon. Commit the resulting PNGs; CI needs no image tools.
+Tests verify image dimensions, metadata and inclusion in the public build.
 
 To revert a release, revert the change on staging, check it on preview, and promote
 the revert through another production PR. Keep staging current with production's
