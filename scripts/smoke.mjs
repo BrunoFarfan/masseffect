@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
+import { originalAssetBytes } from "./published-asset.mjs";
 
 const [base, environment = "preview", revision] = process.argv.slice(2);
 assert.ok(base, "Usage: smoke.mjs <url> <preview|production> [revision]");
@@ -45,7 +46,13 @@ for (const [file, hash] of Object.entries(release.files)) {
   );
   assert.equal(
     createHash("sha256")
-      .update(Buffer.from(await asset.arrayBuffer()))
+      .update(
+        originalAssetBytes(
+          file,
+          Buffer.from(await asset.arrayBuffer()),
+          environment,
+        ),
+      )
       .digest("hex"),
     hash,
     file,
