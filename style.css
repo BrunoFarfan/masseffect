@@ -291,6 +291,9 @@ dialog::backdrop {
   text-transform: uppercase;
   color: var(--muted);
 }
+#mouse-sensitivity {
+  accent-color: var(--mint);
+}
 .sheet-heading {
   display: flex;
   justify-content: space-between;

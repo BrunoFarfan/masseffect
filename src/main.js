@@ -7,10 +7,27 @@ import { PRESETS, createPlacedBody, randomPlacement } from "./presets.js";
 import { SCENARIOS, createScenario } from "./scenarios.js";
 import { History } from "./history.js";
 import { equilibriumTemperature, stellarColor } from "./thermal.js";
+import {
+  MouseLook,
+  mousePreferences,
+  preferRawMouse,
+  requestMouseLock,
+} from "./mouse-look.js";
 const $ = (id) => document.getElementById(id),
   canvas = $("space"),
   camera = new Camera(),
   renderer = new Renderer(canvas);
+const mouseLook = new MouseLook();
+let mouseSettings = mousePreferences(),
+  requestingMouseLock = false;
+try {
+  mouseSettings = mousePreferences(
+    JSON.parse(localStorage.getItem("mass-effect.mouse-look")),
+  );
+} catch {
+  /* Storage can be disabled; defaults remain usable. */
+}
+mouseLook.sensitivity = mouseSettings.sensitivity;
 let sim = new Simulation(solarSystem()),
   selected = null,
   playing = true,
@@ -32,6 +49,7 @@ const keys = new Set(),
 function clearMovement() {
   keys.clear();
   camera.stop();
+  mouseLook.clear();
 }
 const locked = () => document.pointerLockElement === canvas,
   modal = () => document.querySelector("dialog[open]");
@@ -202,11 +220,20 @@ function setPlaying(v) {
   inspect();
 }
 async function navigate() {
+  if (requestingMouseLock || locked()) return;
   if (modal()) modal().close();
+  requestingMouseLock = true;
   try {
-    await canvas.requestPointerLock();
+    $("mouse-status").textContent = await requestMouseLock(
+      canvas,
+      preferRawMouse(mouseSettings.mode, navigator.userAgent),
+    );
   } catch {
+    $("mouse-status").textContent =
+      "Mouse capture failed. Click empty space to retry.";
     toast("Click empty space again to capture the mouse.");
+  } finally {
+    requestingMouseLock = false;
   }
 }
 document.addEventListener("pointerlockchange", () => {
@@ -219,12 +246,38 @@ document.addEventListener("pointerlockchange", () => {
   } else document.body.dataset.mode = "ui";
   inspect();
 });
-document.addEventListener("pointerlockerror", () =>
-  toast("Click empty space to enable mouse-look."),
-);
-document.addEventListener("mousemove", (e) => {
-  if (locked()) camera.rotate(e.movementX, -e.movementY);
+document.addEventListener("pointerlockerror", () => {
+  // Promise rejections handle errors (including a supported system fallback).
+  if (!requestingMouseLock) toast("Click empty space to enable mouse-look.");
 });
+document.addEventListener("mousemove", (e) => {
+  if (locked()) mouseLook.add(e.movementX, e.movementY);
+});
+$("mouse-mode").value = mouseSettings.mode;
+$("mouse-sensitivity").value = mouseSettings.sensitivity;
+$("mouse-sensitivity-value").textContent =
+  `${mouseSettings.sensitivity.toFixed(2)}×`;
+function updateMouseSettings() {
+  mouseSettings = mousePreferences({
+    mode: $("mouse-mode").value,
+    sensitivity: Number($("mouse-sensitivity").value),
+  });
+  mouseLook.sensitivity = mouseSettings.sensitivity;
+  mouseLook.clear();
+  $("mouse-sensitivity-value").textContent =
+    `${mouseSettings.sensitivity.toFixed(2)}×`;
+  $("mouse-status").textContent = "Applies on your next click into space.";
+  try {
+    localStorage.setItem(
+      "mass-effect.mouse-look",
+      JSON.stringify(mouseSettings),
+    );
+  } catch {
+    /* Preferences still work for this session. */
+  }
+}
+$("mouse-mode").onchange = updateMouseSettings;
+$("mouse-sensitivity").oninput = updateMouseSettings;
 $("begin").onclick = navigate;
 function open(id) {
   clearMovement();
@@ -683,6 +736,8 @@ function frame(now) {
   camera.screenOffsetX =
     (camera.screenOffsetX || 0) +
     (offset - (camera.screenOffsetX || 0)) * Math.min(1, dt * 12);
+  const [lookX, lookY] = mouseLook.consume();
+  if (locked() && (lookX || lookY)) camera.rotate(lookX, -lookY);
   camera.update(dt, sim.bodies, keys);
   renderer.draw(sim, camera, placing ? null : selected, options);
   if (now - uiTime > 120) {

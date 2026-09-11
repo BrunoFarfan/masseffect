@@ -12,6 +12,10 @@ Click **Enter space** once to permit browser mouse capture. Mouse movement then 
 
 Click a body at the crosshair, or use **Bodies**. **Focus / F** frames its moons; **Go closer / G** approaches its surface. **H** returns to the inner system; View also offers the outer-system overview. Body properties appear only in Details.
 
+**View → Mouse look** adjusts sensitivity and selects Auto, System / trackpad, or Raw mouse input. Auto requests raw input on Firefox/Linux while preserving system acceleration on macOS and other browsers. Unsupported raw requests fall back to system input; legacy browsers that cannot confirm support are labeled accordingly. These two preferences are saved locally in this browser. Both mouse axes and fractional deltas are accumulated without rounding or axis snapping and consumed once per rendered frame; Escape/blur clears pending motion.
+
+Firefox added raw pointer-lock input in [version 152](https://www.firefox.com/en-US/firefox/152.0/releasenotes/). Firefox/Wayland also has [reported high-polling-rate motion loss](https://bugzilla.mozilla.org/show_bug.cgi?id=2026316). Raw input is a compatibility option, not a guarantee that compositor/browser bugs are fixed: the app cannot reconstruct deltas the browser never delivers. Validation on macOS and synthetic event regressions do not replace testing on the affected Linux machine.
+
 **Add body** offers planetary, small-body and stellar presets. Choose a target, distance (AU or km for display), inclination and initial relative motion. A ghost and arrow preview the arrival and its relative velocity. **Advanced** exposes exact SI position, velocity, mass and radius; Y is up. Compact scientific displays retain full precision unless edited. **Scenarios** offers seven ordinary initial states, including binary stars, a deliberately unstable second Sun and a planetary impact. Opening a sheet pauses simulation.
 
 **Keys** in the top bar opens the full keybinding reference. **Space** toggles play/pause; **←** rewinds recorded history, **→** plays forward, and **↑ / ↓** selects a faster/slower time multiplier. Shortcuts are inactive in open sheets and input fields. The time selector sets a requested multiplier, not a promise to skip physics. When CPU work saturates, an achieved-rate label reports the actual speed. Short-period moons make the full Solar System much more demanding than a two-star experiment.
@@ -51,6 +55,7 @@ Plain ES modules and Canvas 2D, no engine, build pipeline or downloaded assets. 
 - `history.js`: bounded recorded rewind and physically reconstructed branches.
 - `thermal.js`: multistar equilibrium temperature and restrained stellar colors.
 - `camera.js`: world-space navigation, follow and surface guards.
+- `mouse-look.js`: two-axis input accumulation, sensitivity and raw-input fallback.
 - `render.js`, `sphere.js`: projection, actual trails, picking and close surfaces.
 - `main.js`: explicit application state and sparse controls.
 
