@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "generatedBy": "scripts/prepare-ariel-surface.mjs",
+  "body": "ariel",
+  "referenceRadiusMeters": 578900,
+  "bodyrefSIradius": 578900,
+  "sourceType": "mapped-voyager-appearance-plus-explicit-procedural-height",
+  "sourceOrganization": "NASA/JPL-Caltech / USGS Astrogeology Science Center",
+  "coordinateConvention": "Runtime samples u=(east longitude + pi)/(2 pi), v=(pi/2 - planetocentric latitude)/pi; pixel centers; source prime-meridian and east-west alignment are unverified",
+  "coordinates": {
+    "longitude": "runtime east-positive -180..180 convention; source alignment unverified",
+    "latitude": "runtime planetocentric convention; source alignment unverified",
+    "projection": "2:1 image texture supplied for NASA 3-D resource; exact source projection metadata is not published",
+    "northAtTop": "unverified from source metadata",
+    "pixelRegistration": "pixel-centered derivative convention",
+    "sourceCoverage": "Voyager 2 mapped southern hemisphere; unmapped regions remain explicit source/approximation gaps"
+  },
+  "heightPolicy": "No global measured Ariel DEM is available. Deterministic restrained relief is generated from a seamless 3D direction-vector field independent of color; it is an appearance approximation, not measured Ariel topography or image-brightness inference.",
+  "provenance": {
+    "citation": "NASA Uranus–Ariel 3-D resource, USGS mosaic using Voyager imagery; credit USGS/Tammy Becker and JPL/Caltech",
+    "source": {
+      "file": "ariel-voyager-texture.webp",
+      "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/3d/resources/image/uranus---ariel/preview.webp?w=2048",
+      "sha256": "f7b83b95e4f52502e3104e0a11c5ae9ae2bfd2ae78bb2b80bd0ad237a1ce10c4",
+      "dimensions": "2048x1024 WebP, 8-bit sRGB, 3-channel"
+    },
+    "sourceMetadata": "https://science.nasa.gov/3d-resources/uranus-ariel/",
+    "missionReference": "https://www.jpl.nasa.gov/images/pia00041-ariel-highest-resolution-color-picture/",
+    "coverage": "Voyager 2's mapped coverage is concentrated in the encountered southern hemisphere; the official texture's unmapped/low-confidence regions are retained rather than replaced with invented imagery.",
+    "license": "NASA/JPL/Caltech and USGS public mission imagery; retain attribution.",
+    "processing": "Pinned 2048x1024 NASA WebP; verified 8-bit sRGB 3-channel metadata; resized without reprojection to 512x256, 1024x512 and native 2048x1024 JPEG derivatives; color is never used to derive height.",
+    "orientationEvidence": "NASA labels this asset an image texture for 3D models, but the published source metadata does not specify prime meridian, east/west sign, or pole orientation. The script validates dimensions/channels and preserves the supplied pixel order without a flip or rotate; alignment is explicitly unverified.",
+    "proceduralHeight": "Seamless direction-vector field, little-endian uint16, height = -500 + sample x 1 m; bounded range is recorded per level; synthetic approximation only.",
+    "canonicalRadiusMeters": 578900,
+    "sourceReferenceRadiusMeters": null
+  },
+  "levels": {
+    "preview": {
+      "color": "/assets/surfaces/ariel-preview.jpg",
+      "width": 512,
+      "height": 256,
+      "colorSha256": "c9a1b972ffbf520494064a60b4ab26ce7ffe9286e789887730debcfd86b5f9f8",
+      "colorKind": "NASA/JPL/USGS Voyager 2 mapped appearance"
+    },
+    "medium": {
+      "color": "/assets/surfaces/ariel-medium.jpg",
+      "width": 1024,
+      "height": 512,
+      "colorSha256": "9d963182158605955d8dd464a764502aa6041e818fa8e24356a993c903722cfb",
+      "colorKind": "NASA/JPL/USGS Voyager 2 mapped appearance",
+      "heightUrl": "/assets/surfaces/ariel-medium.height.bin",
+      "heightWidth": 1024,
+      "heightHeight": 512,
+      "heightSha256": "5d42a69ab1f81b1954f3e5778ded6bef227a8abe701867af711116d248432ee9",
+      "heightEncoding": "little-endian uint16; radial height = heightOffsetMeters + sample * heightScaleMeters",
+      "heightOffsetMeters": -500,
+      "heightScaleMeters": 1,
+      "minElevationMeters": -147,
+      "maxElevationMeters": 147
+    },
+    "near": {
+      "color": "/assets/surfaces/ariel-near.jpg",
+      "width": 2048,
+      "height": 1024,
+      "colorSha256": "1ddf85901425116efae444e8bddf4e7e79aeadc2b6823c789c22ab7dfed53406",
+      "colorKind": "NASA/JPL/USGS Voyager 2 mapped appearance",
+      "heightUrl": "/assets/surfaces/ariel-near.height.bin",
+      "heightWidth": 2048,
+      "heightHeight": 1024,
+      "heightSha256": "96532094bfe5f0ea4e9e932d91130379331ecc6a761abf4e1f60f1b5531a174c",
+      "heightEncoding": "little-endian uint16; radial height = heightOffsetMeters + sample * heightScaleMeters",
+      "heightOffsetMeters": -500,
+      "heightScaleMeters": 1,
+      "minElevationMeters": -147,
+      "maxElevationMeters": 147
+    }
+  }
+}
