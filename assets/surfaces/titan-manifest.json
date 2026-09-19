@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "generatedBy": "scripts/prepare-titan-surface.mjs",
+  "body": "titan",
+  "referenceRadiusMeters": 2575000,
+  "bodyrefSIradius": 2575000,
+  "sourceType": "real-cassini-topography-corlies-2017-with-cassini-iss-appearance",
+  "sourceOrganization": "NASA Cassini / Cornell / USGS Astrogeology",
+  "coordinateConvention": "u=(east longitude + pi)/(2 pi), v=(pi/2 - planetocentric latitude)/pi; pixel centers; north at top",
+  "coordinates": {
+    "longitude": "east-positive -180..180",
+    "latitude": "planetocentric",
+    "projection": "equirectangular",
+    "northAtTop": true,
+    "pixelRegistration": "pixel-centered",
+    "sourceDimensions": "1440x720 at 4 pixels/degree",
+    "sourceGeotransform": {
+      "upperLeftCornerMeters": [
+        -8083983.3044639,
+        4039182.762967
+      ],
+      "pixelResolutionMeters": 11235.557059713
+    },
+    "sourceCoverage": "global grid; sparse Cassini observations interpolated across unsampled regions"
+  },
+  "heightPolicy": "Corlies et al. (2017) Cassini altimetry, SARtopo and stereophotogrammetry product; the published grid is an interpolation of sparse observations and is not uniformly measured terrain. Never infer height from image brightness.",
+  "provenance": {
+    "citation": "Corlies et al. 2017, Titan's Topography and Shape at the End of the Cassini Mission, Geophysical Research Letters",
+    "source": {
+      "file": "titan-topo-corlies.zip",
+      "url": "https://data.astro.cornell.edu/titan_topo_corlies/titan_topo_corlies.zip",
+      "sha256": "b398841e75c879240d4aaeabf3156478fcc2ef1342d449b36975644380ad2659",
+      "extractedFile": "titan-topo_4PPD_interp.cub",
+      "extractedSha256": "f0399e3010c73e10b5582d1e73114e46a24304923d446b6f88029928ac6c0ddd"
+    },
+    "sourceMetadata": "https://astrogeology.usgs.gov/search/map/lorenz_et_al_2013_titan_topographic_map_of_titan",
+    "sourceProduct": "topo_4PPD_interp.cub; Corlies archive 4 pixels/degree, 1440x720, float32 little-endian",
+    "verticalDatum": "height relative to a 2575 km spherical datum",
+    "interpolation": "Corlies radial-basis-function interpolation of sparse Cassini altimetry, SARtopo and stereophotogrammetry; global coverage does not imply global measurement",
+    "sourceCoverage": "approximately 9% of Titan area directly constrained according to Corlies et al.; broad interpolated regions should not be read as resolved local relief",
+    "processing": "Validated ISIS cube header and dimensions; sampled north-up east-positive grid with longitude seam wrap; bilinear resampling to 1024x512 and 2048x1024; uint16 little-endian at 0.05 m steps; JPEG appearance kept independent",
+    "noData": "Corlies interpolated grid contains finite values across the global raster; underlying sparse-measurement coverage remains explicitly qualified"
+  },
+  "appearance": {
+    "source": {
+      "file": "titan-iss-global.jpg",
+      "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/09/p/i/a/PIA22770-1.jpg?crop=faces%2Cfocalpoint&fit=clip&h=2880&w=5760",
+      "sha256": "0afa5f3a7b2fe5534762824225954339e3714912adef37ff4a3bf3fb39358b33"
+    },
+    "metadata": "https://science.nasa.gov/resource/titan-mosaic-the-surface-under-the-haze/",
+    "instrument": "Cassini Imaging Science Subsystem",
+    "wavelengthNm": 938,
+    "coverage": "global mapped near-infrared mosaic",
+    "atmosphericTreatment": "NASA states haze/radiative-transfer correction was applied; residual atmospheric appearance is separate from terrain",
+    "license": "NASA/JPL-Caltech/University of Arizona public mission imagery; retain attribution"
+  },
+  "levels": {
+    "preview": {
+      "color": "/assets/surfaces/titan-preview.jpg",
+      "width": 512,
+      "height": 256,
+      "colorSha256": "a3509333cf670e9b63ada274ecf6846293efd051c588975cdb50351bd748475a",
+      "colorKind": "Cassini ISS 938-nm near-infrared mapped surface mosaic"
+    },
+    "medium": {
+      "color": "/assets/surfaces/titan-medium.jpg",
+      "width": 1024,
+      "height": 512,
+      "colorSha256": "93d7f4f4b1082d4486389537d98c79854dcd1fd66de6b80c08320c1290fe80be",
+      "colorKind": "Cassini ISS 938-nm near-infrared mapped surface mosaic",
+      "heightUrl": "/assets/surfaces/titan-medium.height.bin",
+      "heightWidth": 1024,
+      "heightHeight": 512,
+      "heightSha256": "2de9ec6e2b91ad22fe5cc2bbbacc22d000994bb3d1de2c9d61244e6dcdf265c7",
+      "heightEncoding": "little-endian uint16; elevation = heightOffsetMeters + sample * heightScaleMeters",
+      "heightOffsetMeters": -1800,
+      "heightScaleMeters": 0.05,
+      "minElevationMeters": -1610.9,
+      "maxElevationMeters": 744.75,
+      "sourceSampleRangeMeters": [
+        -1763.6611328125,
+        819.6270751953125
+      ]
+    },
+    "near": {
+      "color": "/assets/surfaces/titan-near.jpg",
+      "width": 2048,
+      "height": 1024,
+      "colorSha256": "4dd2f0b67152b71f301879f9b69970e25c0f3beea398497cb48c6be09496d48d",
+      "colorKind": "Cassini ISS 938-nm near-infrared mapped surface mosaic",
+      "heightUrl": "/assets/surfaces/titan-near.height.bin",
+      "heightWidth": 2048,
+      "heightHeight": 1024,
+      "heightSha256": "ba41fca2bc2f05c0cb894da1eca159124dcff1d2cda631992c0071817061d0bc",
+      "heightEncoding": "little-endian uint16; elevation = heightOffsetMeters + sample * heightScaleMeters",
+      "heightOffsetMeters": -1800,
+      "heightScaleMeters": 0.05,
+      "minElevationMeters": -1757.55,
+      "maxElevationMeters": 736.7000000000003,
+      "sourceSampleRangeMeters": [
+        -1763.6611328125,
+        819.6270751953125
+      ]
+    }
+  }
+}

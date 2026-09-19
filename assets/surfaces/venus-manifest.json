@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "generatedBy": "scripts/prepare-venus-surface.mjs",
+  "body": "venus",
+  "referenceRadiusMeters": 6051800,
+  "bodyrefSIradius": 6051800,
+  "sourceType": "real-magellan-altimetry-with-separate-radar-appearance",
+  "coordinates": {
+    "longitude": "east-positive -180..180",
+    "latitude": "planetocentric",
+    "projection": "simple cylindrical / equirectangular",
+    "northAtTop": true,
+    "pixelRegistration": "pixel-centered",
+    "sourceOriginMeters": [
+      -19009777.2544,
+      9504888.6272
+    ],
+    "sourceResolutionMeters": [
+      4641.0589,
+      -4641.0589
+    ],
+    "sourceCoverage": "global; NoData where unmeasured"
+  },
+  "heightPolicy": "Measured Magellan altimetry elevations; NoData is encoded as zero only outside measured samples. Height is never inferred from image brightness.",
+  "provenance": {
+    "source": {
+      "file": "venus-dem.tif",
+      "url": "https://planetarymaps.usgs.gov/mosaic/Venus_Magellan_Topography_Global_4641m_v02.tif",
+      "sha256": "92dd2c8850b128f9dcceb400f1367e3df96229f5309840fee4275b74f192ea11"
+    },
+    "sourceMetadata": "https://astrogeology.usgs.gov/search/map/venus_magellan_global_topography_4641m",
+    "sourceGeoTIFF": {
+      "dimensions": "8192x4096",
+      "nodata": -32768,
+      "geotransform": "origin (-19009777.2544, 9504888.6272), pixel spacing (4641.0589, -4641.0589) m",
+      "projection": "Simple Cylindrical centered 0 degrees; planetocentric Venus sphere"
+    },
+    "verticalDatum": "Venus mean-radius datum; source page describes elevation in meters relative to radius 6051800 m; radius = 6051800 + elevation",
+    "license": "USGS Astrogeology / NASA Magellan public-domain product; retain mission and product attribution",
+    "processing": "GeoTIFF geotransform and GeoKeys validated; north-up eastward source rows decoded and resampled directly to runtime east-positive -180..180; no eye-balled flip; uint16 height encoding with 0.5 m steps",
+    "coverage": "Global map with source NoData gaps; source measured elevation range -2951..11687 m"
+  },
+  "radar": {
+    "url": "/assets/surfaces/venus-radar.jpg",
+    "source": {
+      "file": "venus-radar.jpg",
+      "url": "https://astrogeology.usgs.gov/ckan/dataset/dbef2da4-5ed3-4d99-b7bb-5391ee8d5f10/resource/433a4e88-fcf7-47c5-8c3b-9b8b608a98c9/download/full.jpg",
+      "sha256": "5c5f4a18143bcc26fe0ab92bd9270d2549cb5c8b30c8d39743b74a7574566f4d"
+    },
+    "sourceMetadata": "https://astrogeology.usgs.gov/search/map/venus_magellan_sar_fmap_left_look_global_mosaic_75m",
+    "dimensions": "1024x467 grayscale JPEG browse sample",
+    "sha256": "5c5f4a18143bcc26fe0ab92bd9270d2549cb5c8b30c8d39743b74a7574566f4d",
+    "appearance": "Magellan SAR radar backscatter; not visible color, not albedo, not height; black areas are source coverage gaps",
+    "license": "USGS Astrogeology / NASA Magellan public-domain product"
+  },
+  "levels": {
+    "preview": {
+      "color": "/assets/surfaces/venus-preview.jpg",
+      "width": 512,
+      "height": 256,
+      "colorSha256": "53203fe765a7a4bdbcfce17920a0f34c6964a4afac3062884ea9dee815b817d2",
+      "colorKind": "constant illustrative ochre ground, not measured visible color or radar backscatter"
+    },
+    "medium": {
+      "color": "/assets/surfaces/venus-medium.jpg",
+      "width": 1024,
+      "height": 512,
+      "colorSha256": "46e040fc7dc6c9ad0f31fda314d700cc0ea98576b19e6e31400225eaaf214875",
+      "colorKind": "constant illustrative ochre ground, not measured visible color or radar backscatter",
+      "heightUrl": "/assets/surfaces/venus-medium.height.bin",
+      "heightWidth": 1024,
+      "heightHeight": 512,
+      "heightSha256": "4418dbe85404283eccbdc04141300c9164840abe62cf8133cdddbb0f54c1f3a7",
+      "heightEncoding": "little-endian uint16; elevation = heightOffsetMeters + sample * heightScaleMeters",
+      "heightOffsetMeters": -4000,
+      "heightScaleMeters": 0.5,
+      "minElevationMeters": -2458,
+      "maxElevationMeters": 11107
+    },
+    "near": {
+      "color": "/assets/surfaces/venus-near.jpg",
+      "width": 2048,
+      "height": 1024,
+      "colorSha256": "3c9c4aaa09d1a04c6a2988a580d1487a1a57bfc5ab2515013f0d7d9e2c93efcf",
+      "colorKind": "constant illustrative ochre ground, not measured visible color or radar backscatter",
+      "heightUrl": "/assets/surfaces/venus-near.height.bin",
+      "heightWidth": 2048,
+      "heightHeight": 1024,
+      "heightSha256": "74f93d125075f78411707418eb76c9022c7b9f9c20685bf5550298032c232c7f",
+      "heightEncoding": "little-endian uint16; elevation = heightOffsetMeters + sample * heightScaleMeters",
+      "heightOffsetMeters": -4000,
+      "heightScaleMeters": 0.5,
+      "minElevationMeters": -2886,
+      "maxElevationMeters": 11162
+    }
+  }
+}

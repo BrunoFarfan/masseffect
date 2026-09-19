@@ -22,7 +22,8 @@ test("all four WASD diagonals move on both axes without a speed bonus", () => {
     for (const sideways of ["KeyA", "KeyD"]) {
       const c = camera();
       advance(c, 1, [forward, sideways]);
-      assert.equal(Math.sign(c.position[0]), sideways === "KeyA" ? -1 : 1);
+      // In the reflected world, screen-right at yaw=0 points toward -X.
+      assert.equal(Math.sign(c.position[0]), sideways === "KeyA" ? 1 : -1);
       assert.equal(Math.sign(c.position[2]), forward === "KeyW" ? -1 : 1);
       assert.ok(
         Math.abs(length(c.position) - length(straight.position)) < 1e-9,
@@ -44,7 +45,7 @@ test("releasing one diagonal key preserves the remaining direction", () => {
 test("three-axis movement is normalized; opposing keys cancel; either Shift boosts", () => {
   const c = camera();
   advance(c, 1, ["KeyW", "KeyD", "KeyE"]);
-  assert.ok(c.position[0] > 0 && c.position[1] > 0 && c.position[2] < 0);
+  assert.ok(c.position[0] < 0 && c.position[1] > 0 && c.position[2] < 0);
   assert.ok(length(c.motion) <= 1);
   for (const shift of ["ShiftLeft", "ShiftRight"]) {
     const boosted = camera();

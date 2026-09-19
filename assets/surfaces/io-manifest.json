@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "generatedBy": "scripts/prepare-io-surface.mjs",
+  "body": "io",
+  "referenceRadiusMeters": 1821460,
+  "bodyrefSIradius": 1821460,
+  "sourceType": "mapped-imagery-plus-explicit-procedural-height",
+  "coordinates": {
+    "longitude": "east-positive -180..180",
+    "latitude": "planetocentric",
+    "sourceLongitude": "positive west -180..180",
+    "projection": "simple cylindrical",
+    "northAtTop": true,
+    "operation": "metadata-derived horizontal flip from positive-west source; no visual rotation"
+  },
+  "heightPolicy": "Procedural bounded relief is independent of imagery and is not Io topography; no brightness/albedo inference.",
+  "provenance": {
+    "citation": "USGS Astrogeology / NASA Galileo SSI Voyager-Galileo false-color global mosaic",
+    "source": {
+      "file": "io-usgs-full.jpg",
+      "url": "https://astrogeology.usgs.gov/ckan/dataset/3072a685-011c-40c3-9a7b-fdd121e80308/resource/825edaa2-f3fc-4d1d-85b0-33153260ea4d/download/full.jpg",
+      "sha256": "f7a0661d04046f10a903c2d6fe2d179f47b3d02d3d87be5e41824321a6766b6a",
+      "dimensions": "1024x512 RGB JPEG sample; source metadata 11445x5723"
+    },
+    "sourceMetadata": "https://astrogeology.usgs.gov/search/map/io_voyager_galileo_ssi_false_color_global_mosaic_1km",
+    "license": "USGS/NASA public-domain planetary imagery; retain product and mission attribution.",
+    "orientationReference": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/pck00011.tpc",
+    "processing": "Pinned 1024px sample; decode; metadata-derived positive-west to east-positive horizontal flip; resize to 512 and 1024 only; JPEG quality 88.",
+    "proceduralHeight": "Deterministic sinusoidal synthetic field, 0.5 m encoding, -64..63.5 m range; not measured relief and not derived from image pixels."
+  },
+  "levels": {
+    "preview": {
+      "color": "/assets/surfaces/io-preview.jpg",
+      "width": 512,
+      "height": 256,
+      "colorSha256": "d7be79202a0b9c229fde2dceafb7e6c80690b4171c8455f4eac760cabbcf120a",
+      "heightUrl": "/assets/surfaces/io-preview.height.bin",
+      "heightWidth": 512,
+      "heightHeight": 256,
+      "heightSha256": "1ff2890a794deaca173b2a8d682559eb02477394bbef8ebdc77c9a91a75c1730",
+      "heightOffsetMeters": -64,
+      "heightScaleMeters": 0.5,
+      "minElevationMeters": -64,
+      "maxElevationMeters": 63.5
+    },
+    "medium": {
+      "color": "/assets/surfaces/io-medium.jpg",
+      "width": 1024,
+      "height": 512,
+      "colorSha256": "8b0fb0006f61f1ea1845857799ddd9f8ad954b4a1e3d46a528408385501e9228",
+      "heightUrl": "/assets/surfaces/io-medium.height.bin",
+      "heightWidth": 1024,
+      "heightHeight": 512,
+      "heightSha256": "3a057c7e8892f515812482733bfa04b7c7851d8ff34a7eac45f324fed5758ea0",
+      "heightOffsetMeters": -64,
+      "heightScaleMeters": 0.5,
+      "minElevationMeters": -64,
+      "maxElevationMeters": 63.5
+    },
+    "near": {
+      "color": "/assets/surfaces/io-near.jpg",
+      "width": 1024,
+      "height": 512,
+      "colorSha256": "8b0fb0006f61f1ea1845857799ddd9f8ad954b4a1e3d46a528408385501e9228",
+      "heightUrl": "/assets/surfaces/io-near.height.bin",
+      "heightWidth": 1024,
+      "heightHeight": 512,
+      "heightSha256": "3a057c7e8892f515812482733bfa04b7c7851d8ff34a7eac45f324fed5758ea0",
+      "heightOffsetMeters": -64,
+      "heightScaleMeters": 0.5,
+      "minElevationMeters": -64,
+      "maxElevationMeters": 63.5
+    }
+  }
+}

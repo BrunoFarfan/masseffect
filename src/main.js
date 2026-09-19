@@ -2,7 +2,13 @@ import { Simulation, MAX_BODIES } from "./physics.js";
 import { solarSystem } from "./solar.js";
 import { Camera } from "./camera.js";
 import { Renderer, formatDistance } from "./render.js";
-import { sub, length, clamp } from "./math.js";
+import { sub, length, clamp, add, mul, unit, cross } from "./math.js";
+import { surfaceFrame, isCanonicalSurfaceBody } from "./surface-definition.js";
+import {
+  SURFACE_LANDMARKS as SURFACE_SITES,
+  landmarkDirection,
+} from "./landmarks.js";
+import { rankSearch } from "./search.js";
 import { PRESETS, createPlacedBody, randomPlacement } from "./presets.js";
 import { SCENARIOS, createScenario } from "./scenarios.js";
 import { History } from "./history.js";
@@ -19,6 +25,7 @@ const $ = (id) => document.getElementById(id),
   canvas = $("space"),
   camera = new Camera(),
   renderer = new Renderer(canvas);
+camera.terrain = renderer.surfaces;
 const mouseLook = new MouseLook();
 let mouseSettings = mousePreferences(),
   requestingMouseLock = false;
@@ -123,7 +130,18 @@ function select(id) {
   $("selection").hidden = !selected;
   if (selected) $("body-select").value = selected;
   else $("inspector").hidden = true;
+  const landmarks = surfaceSites(selected);
+  $("surface-site").replaceChildren(
+    ...landmarks.map((s, i) => new Option(s.name, i)),
+  );
   inspect();
+}
+function surfaceSites(id) {
+  const product = renderer.surfaces.manifest?.bodies[id];
+  if (SURFACE_SITES[id]) return SURFACE_SITES[id];
+  return product && (product.levels?.near?.heightUrl || product.geometry)
+    ? [{ name: "Equator · prime meridian", latitude: 0, longitude: 0 }]
+    : [];
 }
 function inspect() {
   const b = sim.bodies.find((b) => b.id === selected),
@@ -176,12 +194,24 @@ function inspect() {
   if (b) {
     $("selected-name").textContent = b.name;
     $("selected-context").textContent =
-      `${camera.surface ? `${sim.bodies.find((p) => p.id === camera.surface.id)?.name || "Body"} surface · ` : camera.followId ? `${sim.bodies.find((p) => p.id === camera.followId)?.name || "Body"} frame · ` : ""}${formatDistance(Math.max(0, length(sub(camera.position, b.position)) - b.radius))} above ${b.name}`;
+      `${camera.surface ? `${sim.bodies.find((p) => p.id === camera.surface.id)?.name || "Body"} surface · ` : camera.followId ? `${sim.bodies.find((p) => p.id === camera.followId)?.name || "Body"} frame · ` : ""}${formatDistance(Math.max(0, length(sub(camera.position, b.position)) - renderer.surfaces.radiusAt(b, camera.position)))} above ${b.name}`;
     if (!$("inspector").hidden) {
+      const sites = surfaceSites(b.id);
+      if ($("surface-site").options.length !== sites.length)
+        $("surface-site").replaceChildren(
+          ...sites.map((s, i) => new Option(s.name, i)),
+        );
+      $("surface-controls").hidden =
+        !sites.length || !isCanonicalSurfaceBody(b);
+      $("surface-visit").disabled =
+        !renderer.surfaces.manifest ||
+        !!renderer.terrain.error ||
+        !renderer.terrain.gl;
       $("detail-name").textContent = b.name;
       $("properties").innerHTML = [
         ["Mass", `${b.mass.toExponential(2)} kg`],
         ["Radius", formatDistance(b.radius)],
+        ["Surface", renderer.surfaces.description(b)],
         ["Speed", `${(length(b.velocity) / 1000).toFixed(2)} km/s`],
         [
           "Rotation",
@@ -222,11 +252,24 @@ function inspect() {
   options.occlusions = [
     document.querySelector("header"),
     document.querySelector("footer"),
+    $("welcome"),
+    $("selection"),
+    $("history-strip"),
+    $("toast"),
     ...(!$("inspector").hidden ? [$("inspector")] : []),
-  ].map((e) => {
-    const r = e.getBoundingClientRect();
-    return { x: r.x, y: r.y, w: r.width, h: r.height };
-  });
+  ]
+    .filter(
+      (e) =>
+        e &&
+        !e.hidden &&
+        getComputedStyle(e).display !== "none" &&
+        getComputedStyle(e).visibility !== "hidden" &&
+        (e.id !== "toast" || e.classList.contains("visible")),
+    )
+    .map((e) => {
+      const r = e.getBoundingClientRect();
+      return { x: r.x, y: r.y, w: r.width, h: r.height };
+    });
 }
 function setPlaying(v) {
   // Include the current forward state, even between regular capture ticks.
@@ -314,6 +357,102 @@ function focus(close = false) {
     if (modal()) modal().close();
   }
 }
+const searchDialog = $("search-dialog"),
+  searchInput = $("search-input"),
+  searchResults = $("search-results");
+let searchItems = [],
+  searchActive = 0;
+function renderSearch() {
+  searchItems = rankSearch(searchInput.value, sim.bodies, SURFACE_SITES);
+  searchActive = Math.min(searchActive, Math.max(0, searchItems.length - 1));
+  searchResults.replaceChildren(
+    ...searchItems.map((result, index) => {
+      const button = document.createElement("button");
+      button.className = "search-result";
+      button.type = "button";
+      button.setAttribute("role", "option");
+      button.id = `search-option-${index}`;
+      button.setAttribute("aria-selected", String(index === searchActive));
+      button.dataset.index = String(index);
+      const name = document.createElement("span"),
+        kind = document.createElement("small");
+      name.textContent = result.name;
+      kind.textContent = result.type === "body" ? "body" : result.bodyId;
+      button.append(name, kind);
+      return button;
+    }),
+  );
+  if (searchItems.length)
+    searchInput.setAttribute(
+      "aria-activedescendant",
+      `search-option-${searchActive}`,
+    );
+  else {
+    searchInput.removeAttribute("aria-activedescendant");
+    const empty = document.createElement("p");
+    empty.textContent = "No matching bodies or landmarks";
+    searchResults.append(empty);
+  }
+}
+function closeSearch() {
+  if (searchDialog.open) searchDialog.close();
+}
+function chooseSearch(index = searchActive) {
+  const result = searchItems[index];
+  if (!result) return;
+  closeSearch();
+  if (result.type === "body") {
+    select(result.id);
+    focus(true);
+    return;
+  }
+  $("inspector").hidden = false;
+  select(result.bodyId);
+  $("surface-site").value = String(result.siteIndex);
+  $("surface-visit").click();
+}
+function openSearch() {
+  if (searchDialog.open) {
+    searchInput.focus();
+    return;
+  }
+  if (modal() && modal() !== searchDialog) modal().close();
+  clearMovement();
+  if (locked()) document.exitPointerLock();
+  searchInput.value = "";
+  searchActive = 0;
+  renderSearch();
+  searchDialog.showModal();
+  searchInput.focus();
+}
+searchInput.addEventListener("input", () => {
+  searchActive = 0;
+  renderSearch();
+});
+searchInput.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    event.preventDefault();
+    closeSearch();
+    return;
+  }
+  if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+    event.preventDefault();
+    searchActive =
+      (searchActive +
+        (event.key === "ArrowDown" ? 1 : -1) +
+        searchItems.length) %
+      Math.max(1, searchItems.length);
+    renderSearch();
+  } else if (event.key === "Enter") {
+    event.preventDefault();
+    chooseSearch();
+  }
+});
+searchResults.addEventListener("click", (event) => {
+  const button = event.target.closest("button[data-index]");
+  if (button) chooseSearch(Number(button.dataset.index));
+});
+$("search-close").onclick = closeSearch;
 $("catalog").onclick = () => open("catalog-dialog");
 $("settings").onclick = () => open("view-dialog");
 $("keybindings").onclick = () => open("keys-dialog");
@@ -333,6 +472,101 @@ $("details").onclick = () => {
   inspect();
 };
 $("close-details").onclick = () => ($("inspector").hidden = true);
+$("surface-relief").onchange = () => {
+  renderer.surfaces.exaggeration = Number($("surface-relief").value);
+};
+let surfaceVisit = 0;
+let preparingSurface = false;
+// A deferred asset load must never override a newer navigation/UI intent.
+for (const type of ["pointerdown", "keydown", "wheel", "click"])
+  document.addEventListener(
+    type,
+    () => {
+      surfaceVisit++;
+      if (preparingSurface) {
+        preparingSurface = false;
+        clearToast();
+      }
+    },
+    { capture: true, passive: true },
+  );
+$("surface-visit").onclick = async () => {
+  const visit = ++surfaceVisit;
+  const b = sim.bodies.find((body) => body.id === selected);
+  const site = surfaceSites(b?.id)[Number($("surface-site").value)];
+  if (!b || !site) return;
+  $("welcome").hidden = true;
+  entered = true;
+  let frame = surfaceFrame(b, sim.time);
+  const lat = (site.latitude * Math.PI) / 180,
+    lon = (site.longitude * Math.PI) / 180;
+  let radial = add(
+    mul(frame.north, Math.sin(lat)),
+    add(
+      mul(frame.prime, Math.cos(lat) * Math.cos(lon)),
+      mul(frame.east, Math.cos(lat) * Math.sin(lon)),
+    ),
+  );
+  camera.release();
+  camera.surfaceBlockedId = null;
+  camera.followId = b.id;
+  camera.previousTarget = [...b.position];
+  // Stage safely outside the complete DEM shell while the near asset loads.
+  camera.position = add(
+    b.position,
+    mul(radial, b.radius + Math.max(60000, b.radius * 0.1)),
+  );
+  camera.frameRotation = between([0, 1, 0], radial);
+  camera.leveling = null;
+  $("inspector").hidden = true;
+  preparingSurface = true;
+  toast(`${site.name} · preparing terrain`);
+  const start = performance.now();
+  while (performance.now() - start < 12000) {
+    if (visit !== surfaceVisit || selected !== b.id || !sim.bodies.includes(b))
+      return;
+    renderer.surfaces.prepare(sim, camera, innerHeight);
+    const state = renderer.surfaces.state(b);
+    if (state?.asset?.shape || (state?.level === "near" && state.blend === 1))
+      break;
+    if (state?.failed || renderer.surfaces.error) break;
+    await new Promise(requestAnimationFrame);
+  }
+  if (visit !== surfaceVisit || selected !== b.id || !sim.bodies.includes(b))
+    return;
+  if (!renderer.surfaces.has(b)) {
+    preparingSurface = false;
+    toast("Terrain unavailable · remaining safely above the surface");
+    return;
+  }
+  // Olympus rises above 20km relative to the reference sphere. Use loaded
+  // local relief, not canonical radius, for the requested viewing altitude.
+  camera.stop();
+  // The system may have advanced while assets loaded. Resolve the same
+  // body-fixed landmark at the current epoch rather than pausing the universe.
+  frame = surfaceFrame(b, sim.time);
+  radial = landmarkDirection(frame, site);
+  renderer.surfaces.prepare(sim, camera, innerHeight);
+  const destination = add(b.position, mul(radial, b.radius + 60000));
+  camera.position = add(
+    b.position,
+    mul(radial, renderer.surfaces.radiusAt(b, destination) + 15000),
+  );
+  camera.frameRotation = between([0, 1, 0], radial);
+  camera.leveling = null;
+  // Look across the landscape, not straight into it. The landmark direction
+  // remains fixed in the same frame used by maps and terrain clearance.
+  const east = unit(cross(radial, frame.north));
+  camera.lookAt(
+    add(camera.position, mul(unit(add(east, mul(radial, -0.22))), b.radius)),
+  );
+  camera.update(0, sim.bodies, new Set());
+  if (camera.surface) camera.surface.blend = 1;
+  preparingSurface = false;
+  toast(
+    `${site.name} · 15 km above terrain${playing ? " · following" : " · paused"}`,
+  );
+};
 $("clear-selection").onclick = () => select(null);
 $("unfollow").onclick = () => {
   camera.release();
@@ -679,8 +913,22 @@ canvas.addEventListener(
   { passive: false },
 );
 window.addEventListener("keydown", (e) => {
+  if (
+    e.key.toLowerCase() === "k" &&
+    (e.metaKey || e.ctrlKey) &&
+    !e.altKey &&
+    !e.shiftKey
+  ) {
+    e.preventDefault();
+    openSearch();
+    return;
+  }
   if (e.key === "Escape") {
     e.preventDefault();
+    if (searchDialog.open) {
+      closeSearch();
+      return;
+    }
     if (locked()) {
       clearMovement();
       document.exitPointerLock();
@@ -786,6 +1034,13 @@ function frame(now) {
     (offset - (camera.screenOffsetX || 0)) * Math.min(1, dt * 12);
   const [lookX, lookY] = mouseLook.consume();
   if (locked() && (lookX || lookY)) camera.rotate(lookX, -lookY);
+  renderer.surfaces.enabled =
+    !!renderer.terrain.gl && !renderer.terrain.error && !renderer.terrain.lost;
+  renderer.surfaces.shapeEnabled = !!renderer.shapes.program;
+  // Rebase with the followed body's orbital translation BEFORE measuring LOD.
+  // At accelerated time it can travel thousands of radii in a single frame.
+  camera.followTranslation(sim.bodies);
+  renderer.surfaces.prepare(sim, camera, innerHeight, now);
   camera.update(dt, sim.bodies, keys);
   options.effectDt =
     playing && !reversing && !modal() && !document.hidden ? dt : 0;
@@ -814,3 +1069,9 @@ $("fragment-limit").onchange = () => {
 populate();
 inspect();
 requestAnimationFrame(frame);
+
+// Used by the local surface benchmark to position deterministic camera cases.
+// No diagnostic loop runs or assets load until explicitly requested.
+export function inspectSandbox() {
+  return { sim, camera, renderer, select, pause: () => setPlaying(false) };
+}

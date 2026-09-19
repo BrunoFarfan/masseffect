@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "generatedBy": "scripts/prepare-callisto-surface.mjs",
+  "coordinateConvention": "u=(east longitude + pi)/(2 pi), v=(pi/2 - planetocentric latitude)/pi; pixel centers; north at top",
+  "bodies": {
+    "callisto": {
+      "body": "callisto",
+      "referenceRadiusMeters": 2410300,
+      "bodyrefSIradius": 2410300,
+      "sourceType": "mapped-imagery-plus-explicit-procedural-height",
+      "sourceOrganization": "USGS Astrogeology Science Center / NASA Voyager and Galileo SSI",
+      "coordinates": {
+        "longitude": "east-positive -180..180",
+        "latitude": "planetocentric",
+        "projection": "equirectangular (normalized from source Simple Cylindrical)",
+        "northAtTop": true,
+        "pixelRegistration": "pixel-centered",
+        "sourceLongitude": "positive-west 0..360",
+        "sourcePrimeCenter": "180W; source raster seam shifted to runtime -180E before reversal",
+        "geotransformNote": "Source label upper-left projected origin and pixel resolution are retained in provenance; normalized output is generated from that metadata, not eyeballed."
+      },
+      "heightPolicy": "Deterministic bounded procedural relief is independent of imagery and is not Callisto topography; no brightness/albedo inference.",
+      "provenance": {
+        "citation": "USGS Astrogeology / NASA Voyager and Galileo SSI Callisto Galileo/Voyager Global Mosaic 1km",
+        "source": {
+          "file": "callisto-usgs-full.tif",
+          "url": "https://planetarymaps.usgs.gov/mosaic/Callisto_Voyager_GalileoSSI_global_mosaic_1km.tif",
+          "sha256": "e1f0bd2e0e05de605d067d6b5f5ededddaf31ca6c064562a1ca770f15a7dbaa3",
+          "dimensions": "15138x7569 8-bit single-band GeoTIFF; 1000.0051966711 m/pixel"
+        },
+        "sourceLabel": {
+          "file": "callisto-usgs-full.lbl",
+          "url": "https://planetarymaps.usgs.gov/mosaic/Callisto_Voyager_GalileoSSI_global_mosaic_1km.lbl",
+          "sha256": "208aa459c0a28f8f5104bfabcc8cd642a3a4fc53f5a74d00b66d9a4d8dd43080",
+          "projection": "SimpleCylindrical",
+          "longitudeDirection": "PositiveWest",
+          "longitudeDomain": "0..360",
+          "centerLongitude": 180,
+          "latitudeType": "Planetocentric",
+          "upperLeftCornerMeters": [
+            -7569039.3336036,
+            3784519.6668018
+          ],
+          "pixelResolutionMeters": 1000.0051966711,
+          "sourceRadiusMeters": 2409300.0488
+        },
+        "sourceMetadata": "https://astrogeology.usgs.gov/search/map/callisto_galileo_voyager_global_mosaic_1km",
+        "license": "USGS/NASA public-domain planetary imagery; retain product and mission attribution.",
+        "processing": "Pinned full GeoTIFF; decode 8-bit single-band raster; metadata-derived positive-west 0..360 to east-positive -180..180 reversal plus half-raster seam shift; north-up; Lanczos resize to 512/1024/2048; JPEG quality 88 with no legend or map decoration.",
+        "proceduralHeight": "Deterministic direction-vector 3D trigonometric field, little-endian uint16 with height = -256 + sample x 0.5 m; bounded decoded range is recorded per level; not measured relief and not derived from image pixels.",
+        "canonicalRadiusMeters": 2410300,
+        "sourceMetadataRadiusMeters": 2409300.0488,
+        "radiusDifferenceMeters": 999.9512
+      },
+      "levels": {
+        "preview": {
+          "color": "/assets/surfaces/callisto-preview.jpg",
+          "width": 512,
+          "height": 256,
+          "colorSha256": "524e2873cc634f7f6fe00b9e17d67fde111532fb33de391c96f01108eb08fe95"
+        },
+        "medium": {
+          "color": "/assets/surfaces/callisto-medium.jpg",
+          "width": 1024,
+          "height": 512,
+          "colorSha256": "6ea53f4672cf788be072d6644333da42adb4503accc2f852a5febee983891b34",
+          "heightUrl": "/assets/surfaces/callisto-medium.height.bin",
+          "heightWidth": 1024,
+          "heightHeight": 512,
+          "heightSha256": "fca11bc9da0963a2ae2f6aed17491a37bb67ad00b367a8f7e47456051f7152fd",
+          "heightOffsetMeters": -256,
+          "heightScaleMeters": 0.5,
+          "minElevationMeters": -106,
+          "maxElevationMeters": 106
+        },
+        "near": {
+          "color": "/assets/surfaces/callisto-near.jpg",
+          "width": 2048,
+          "height": 1024,
+          "colorSha256": "d08da06fca16c74f897976f275314ae7d1b64a98b7337b4ebcbd41e0b991354a",
+          "heightUrl": "/assets/surfaces/callisto-near.height.bin",
+          "heightWidth": 2048,
+          "heightHeight": 1024,
+          "heightSha256": "030355d35d2e20172760d9d83b6bf9665598cc890bf383451696b0fc668bca95",
+          "heightOffsetMeters": -256,
+          "heightScaleMeters": 0.5,
+          "minElevationMeters": -106,
+          "maxElevationMeters": 106
+        }
+      }
+    }
+  }
+}

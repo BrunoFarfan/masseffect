@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "generatedBy": "scripts/prepare-earth-surface.mjs",
+  "body": "earth",
+  "referenceRadiusMeters": 6371000,
+  "bodyrefSIradius": 6371000,
+  "sourceType": "NASA cloud-free mapped imagery + NOAA ETOPO measured radial height",
+  "sourceOrganization": "NASA Earth Observatory / NOAA NCEI",
+  "coordinates": {
+    "longitude": "east-positive -180..180",
+    "latitude": "planetocentric",
+    "sourceLatitude": "geodetic",
+    "projection": "equirectangular",
+    "northAtTop": true,
+    "pixelRegistration": "pixel-centered",
+    "operation": "sample geodetic sources at planetocentric target latitude; longitude wrap at ±180"
+  },
+  "baseRadiiMeters": [
+    6378137,
+    6356752.314245,
+    6378137
+  ],
+  "waterSurface": true,
+  "heightPolicy": "ETOPO orthometric heights are treated as an explicit datum approximation to radial relief; bathymetry is retained in the height asset. Visible ocean surface uses the reference ellipsoid, not a spherical sea or exposed seabed. Geoid undulations remain omitted.",
+  "provenance": {
+    "sources": [
+      {
+        "file": "earth-etopo60s-stride10.csv",
+        "url": "https://oceanwatch.pifsc.noaa.gov/erddap/griddap/ETOPO_2022_v1_60s.csv?z[0:10:10799][0:10:21599]",
+        "sha256": "efac6cf1798875d2dd175fb2a73d32bd25832f0e1aad2db74701b8ddafec3690",
+        "dimensions": "2160 longitude samples × 1080 latitude samples; 1/6-degree stride of 60-arcsecond source centers"
+      },
+      {
+        "file": "earth-bmng-january.jpg",
+        "url": "https://assets.science.nasa.gov/content/dam/science/esd/eo/images/bmng/bmng-base/january/world.200401.3x5400x2700.jpg",
+        "sha256": "99f5faad74efe985fbf1714c8be7296ca9999759a1215b65f99b7f1df278dde5",
+        "dimensions": "5400×2700 RGB JPEG; Blue Marble Next Generation January 2004"
+      }
+    ],
+    "metadata": "/output/surface-originals/earth-etopo.das and /output/surface-originals/earth-color-source.html",
+    "datum": "ETOPO z is EGM2008 orthometric height (EPSG:3855). Geoid undulations were not downloaded, so this product intentionally ignores the geoid-to-ellipsoid correction (approximately 100 m).",
+    "ellipsoid": {
+      "semiMajorAxisMeters": 6378137,
+      "semiMinorAxisMeters": 6356752.314245,
+      "inverseFlattening": 298.257223563
+    },
+    "canonicalReference": "WGS84 ellipsoid radial surface relative to canonical simulation radius 6371000 m; z added as a bounded datum approximation.",
+    "processing": "Stream CSV; bilinear DEM sampling; geodetic-to-planetocentric latitude conversion; Blue Marble bilinear color sampling; JPEG quality 88; little-endian uint16 heights at 1 m/sample with -30000 m offset; reject rather than clamp out-of-range elevations.",
+    "validationSamples": {
+      "everest": 5539.120928466797,
+      "andes": 5361.027662270793,
+      "pacific": -4429.655937500024
+    },
+    "license": "NASA public-domain imagery and NOAA NCEI ETOPO data; retain source attribution and caveat that ETOPO is not intended for legal use."
+  },
+  "levels": {
+    "preview": {
+      "color": "/assets/surfaces/earth-preview.jpg",
+      "width": 512,
+      "height": 256,
+      "colorSha256": "2833791eb44cb78fc755b140ce225cd9ea162d3bd41d1a6e96b91036e6091667",
+      "heightUrl": "/assets/surfaces/earth-preview.height.bin",
+      "heightWidth": 512,
+      "heightHeight": 256,
+      "heightSha256": "7e297529ff20872c9e691e8de25ed5481bd618362c52fd1693868be5e9161a3f",
+      "heightOffsetMeters": -30000,
+      "heightScaleMeters": 1,
+      "minElevationMeters": -19149,
+      "maxElevationMeters": 11131
+    },
+    "medium": {
+      "color": "/assets/surfaces/earth-medium.jpg",
+      "width": 1024,
+      "height": 512,
+      "colorSha256": "a67b14b9364e94ba5c9f5e03f31d259927f0da4b663921653b2577eaa5b7791a",
+      "heightUrl": "/assets/surfaces/earth-medium.height.bin",
+      "heightWidth": 1024,
+      "heightHeight": 512,
+      "heightSha256": "796caff0d48a2431aeb409da5b89e4ebc31f2d71f7db00fc25eb61262dd500d0",
+      "heightOffsetMeters": -30000,
+      "heightScaleMeters": 1,
+      "minElevationMeters": -19230,
+      "maxElevationMeters": 11482
+    },
+    "near": {
+      "color": "/assets/surfaces/earth-near.jpg",
+      "width": 2048,
+      "height": 1024,
+      "colorSha256": "b865fb04b0346ffc693c7ce6ff4827a7c486fad6aa924a8d5b7d334d6fb2ed33",
+      "heightUrl": "/assets/surfaces/earth-near.height.bin",
+      "heightWidth": 2048,
+      "heightHeight": 1024,
+      "heightSha256": "1a84e8a096522cfd628cd2c694267dc3b0714458ba0e996e129d23e262e2074d",
+      "heightOffsetMeters": -30000,
+      "heightScaleMeters": 1,
+      "minElevationMeters": -19396,
+      "maxElevationMeters": 11798
+    }
+  }
+}

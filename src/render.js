@@ -2,16 +2,28 @@ import { length, sub, dot, mul } from "./math.js";
 import { SphereSurface, sphereRasterWidth } from "./sphere.js";
 import { ImpactView } from "./impact-view.js";
 import { projectSaturnRings, drawRingFaces } from "./rings.js";
+import { TerrainGPU } from "./terrain-gpu.js";
+import { ShapeGPU } from "./shape-gpu.js";
+import { Surfaces } from "./surfaces.js";
+import {
+  SURFACE_LANDMARKS,
+  landmarkPoint,
+  landmarkVisibility,
+} from "./landmarks.js";
 
 // Hide labels/picks whose sightline enters a nearer physical surface. Otherwise
 // a planet below the local horizon can still appear as a floating text label.
-export function occluded(body, origin, blockers) {
+export function occluded(body, origin, blockers, surfaces = null) {
   const delta = sub(body.position, origin),
     distance = length(delta);
   if (!distance) return false;
   const direction = mul(delta, 1 / distance);
   return blockers.some((other) => {
     if (other.id === body.id || other.ghost) return false;
+    if (surfaces?.has(other)) {
+      const hit = surfaces.contact(other, origin, delta, 0);
+      return hit !== null && hit < 1 - body.radius / distance;
+    }
     const r = sub(other.position, origin),
       along = dot(r, direction);
     if (along <= 0) return false;
@@ -30,8 +42,25 @@ export class Renderer {
     this.ctx = canvas.getContext("2d");
     this.hits = [];
     this.surface = new SphereSurface();
+    this.surfaces = new Surfaces();
+    this.terrain = new TerrainGPU();
+    this.shapes = new ShapeGPU();
     this.impacts = new ImpactView();
     this.resize();
+  }
+  drawSurface(ctx, body, camera, width, height, light) {
+    const state = this.surfaces.state(body);
+    if (
+      state?.asset?.shape &&
+      this.shapes.draw(ctx, body, camera, width, height, light, state)
+    )
+      return;
+    if (
+      state?.asset?.color &&
+      this.terrain.draw(ctx, body, camera, width, height, light, state)
+    )
+      return;
+    this.surface.draw(ctx, body, camera, width, height, light);
   }
   resize() {
     this.width = innerWidth;
@@ -66,6 +95,8 @@ export class Renderer {
     ctx.setLineDash([]);
   }
   draw(sim, camera, selected, options) {
+    this.terrain.retain(new Set(this.surfaces.states.keys()));
+    this.shapes.retain(new Set(this.surfaces.states.keys()));
     const ctx = this.ctx,
       w = this.width,
       h = this.height;
@@ -156,7 +187,7 @@ export class Renderer {
       .sort((a, b) => b.p.z - a.p.z);
     const sun = sim.bodies.find((b) => b.kind === "Star");
     for (const { b, p } of visible)
-      p.occluded = occluded(b, camera.position, close);
+      p.occluded = occluded(b, camera.position, close, this.surfaces);
     const drawOrder = [
       ...visible,
       ...close
@@ -174,7 +205,7 @@ export class Renderer {
         b.id === "saturn" ? projectSaturnRings(b, camera, w, h) : null;
       if (rings) drawRingFaces(ctx, rings.back);
       if (!p) {
-        this.surface.draw(ctx, b, camera, w, h, sun?.id === b.id ? null : sun);
+        this.drawSurface(ctx, b, camera, w, h, sun?.id === b.id ? null : sun);
         if (rings) drawRingFaces(ctx, rings.front);
         continue;
       }
@@ -215,7 +246,7 @@ export class Renderer {
         ctx.arc(p.x, p.y, r * 5, 0, Math.PI * 2);
         ctx.fill();
       }
-      if (b.id === selected) {
+      if (b.id === selected && !this.surfaces.state(b)?.asset?.shape) {
         ctx.strokeStyle = b.color + "70";
         ctx.lineWidth = 1;
         ctx.beginPath();
@@ -245,7 +276,7 @@ export class Renderer {
       }
       if (surfaceBlend > 0) {
         ctx.globalAlpha = (b.visualAlpha ?? 1) * surfaceBlend;
-        this.surface.draw(ctx, b, camera, w, h, sun?.id === b.id ? null : sun);
+        this.drawSurface(ctx, b, camera, w, h, sun?.id === b.id ? null : sun);
       }
       ctx.globalAlpha = b.visualAlpha ?? 1;
       if (rings) drawRingFaces(ctx, rings.front);
@@ -263,6 +294,7 @@ export class Renderer {
         h: 2 * p.radius + 6,
       }));
       occupied.push(...(options.occlusions || []));
+      const bodyLabelRects = [];
       const overlaps = (a, b) =>
         a.x < b.x + b.w &&
         a.x + a.w > b.x &&
@@ -308,6 +340,7 @@ export class Renderer {
               ),
               y = Math.max(165, Math.min(h - 145, p.y - 14));
             occupied.push({ x: x - 4, y: y - 13, w: width + 8, h: 20 });
+            bodyLabelRects.push({ x: x - 4, y: y - 13, w: width + 8, h: 20 });
             ctx.strokeStyle = "#10151e";
             ctx.lineWidth = 4;
             ctx.strokeText(labelName, x, y);
@@ -317,8 +350,90 @@ export class Renderer {
           continue;
         }
         occupied.push(label);
+        bodyLabelRects.push(label);
         ctx.fillStyle = b.id === selected ? "#f1ece4" : "#adb4bf";
         ctx.fillText(labelName, label.x + 4, label.y + 12);
+      }
+      // Contextual, non-clickable landmark annotations. Body disks remain
+      // occupied for body labels but intentionally do not block these labels.
+      const landmarkBody = sim.bodies.find((b) => b.id === selected);
+      const landmarkState =
+        landmarkBody &&
+        (landmarkBody.id === "moon" || landmarkBody.id === "mars")
+          ? this.surfaces.state(landmarkBody)
+          : null;
+      if (
+        landmarkBody &&
+        this.surfaces.enabled &&
+        landmarkState?.asset?.height &&
+        SURFACE_LANDMARKS[landmarkBody.id]
+      ) {
+        const sampleState = {
+          ...landmarkState,
+          sample: (direction) => this.surfaces.sample(landmarkState, direction),
+        };
+        const landmarkOccupied = [
+          ...bodyLabelRects,
+          ...(options.occlusions || []),
+        ];
+        for (const site of SURFACE_LANDMARKS[landmarkBody.id].slice(0, 4)) {
+          const point = landmarkPoint(landmarkBody, sampleState, site, 50);
+          if (
+            occluded(
+              { id: landmarkBody.id, position: point.position, radius: 0 },
+              camera.position,
+              sim.bodies,
+            )
+          )
+            continue;
+          const visibility = landmarkVisibility(
+            camera.position,
+            landmarkBody,
+            sampleState,
+            point,
+            {
+              width: w,
+              height: h,
+              project: this.project,
+            },
+          );
+          if (!visibility.visible || visibility.alpha <= 0) continue;
+          const p = visibility.projected;
+          const width = ctx.measureText(site.name).width + 8;
+          const candidates = [
+            { x: p.x + 9, y: p.y - 8 },
+            { x: p.x - width - 9, y: p.y - 8 },
+            { x: p.x - width / 2, y: p.y - 22 },
+            { x: p.x - width / 2, y: p.y + 10 },
+          ].map((candidate) => ({ ...candidate, w: width, h: 17 }));
+          const label = candidates.find(
+            (rect) =>
+              rect.x > 10 &&
+              rect.x + rect.w < w - 10 &&
+              rect.y > 15 &&
+              rect.y + rect.h < h - 90 &&
+              !landmarkOccupied.some((other) => overlaps(rect, other)),
+          );
+          if (!label) continue;
+          landmarkOccupied.push(label);
+          ctx.globalAlpha = visibility.alpha;
+          ctx.strokeStyle = "#10151e";
+          ctx.lineWidth = 3;
+          ctx.strokeText(site.name, label.x + 4, label.y + 12);
+          ctx.fillStyle = "#c7cdd5";
+          ctx.fillText(site.name, label.x + 4, label.y + 12);
+          ctx.strokeStyle = "#10151e99";
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(label.x + 4, label.y + 8);
+          ctx.stroke();
+          ctx.fillStyle = "#e6d39c";
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, 1.7, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.globalAlpha = 1;
+        }
       }
     }
     if (options.preview) {

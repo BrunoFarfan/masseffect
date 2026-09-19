@@ -115,7 +115,7 @@ test("camera has orthonormal basis, correct right movement and stable poles", ()
   c.position = [0, 0, 1e10];
   c.yaw = 0;
   c.pitch = 0;
-  assert.ok(c.project([1e8, 0, 0], 1000, 700).x > 500);
+  assert.ok(c.project([-1e8, 0, 0], 1000, 700).x > 500);
   assert.equal(c.project([0, 0, 2e10], 1000, 700), null);
 });
 test("camera cannot tunnel through or remain inside a physical sphere", () => {

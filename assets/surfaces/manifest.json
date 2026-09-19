@@ -1,0 +1,2106 @@
+{
+  "schemaVersion": 1,
+  "coordinateConvention": "u=(east longitude + pi)/(2 pi), v=(pi/2 - planetocentric latitude)/pi; pixel centers; north at top",
+  "generatedBy": "scripts/prepare-surfaces.mjs",
+  "bodies": {
+    "moon": {
+      "referenceRadiusMeters": 1737400,
+      "sourceType": "NASA LROC color + LOLA DEM",
+      "body": "moon",
+      "sourceOrganization": "NASA GSFC / LROC ASU / LOLA",
+      "license": "US government scientific imagery; retain source attribution; no endorsement implied",
+      "coordinates": {
+        "longitude": "east-positive -180..180",
+        "latitude": "planetocentric",
+        "projection": "equirectangular",
+        "northAtTop": true,
+        "pixelRegistration": "area-centered"
+      },
+      "proceduralDetail": "Deterministic micro-normal and grain approximation; not measured relief; does not displace geometry",
+      "provenance": {
+        "citation": "NASA Scientific Visualization Studio, CGI Moon Kit (4720); LRO LROC WAC color mosaic and LOLA DEM",
+        "sources": [
+          {
+            "url": "https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004720/lroc_color_poles_4k.tif",
+            "sha256": "918649a7f8ed2f1329b2cd95bb0d25483befdcb60ae1a66db681a637cc21344f",
+            "dimensions": "4096x2048 RGB TIFF",
+            "operations": "decode; Lanczos resize to 512/2048/4096; JPEG quality 88"
+          },
+          {
+            "url": "https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004720/ldem_16_uint.tif",
+            "sha256": "45a2b32d56e81ed30db07fead8abc842b249b6511219d9ca2c53f81bc2dc5d62",
+            "dimensions": "5760x2880 unsigned 16-bit TIFF",
+            "operations": "decode pinned uncompressed uint16 strip; area-average resize to 1024/2048; round to half-meter; little-endian uint16 export"
+          },
+          {
+            "url": "https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004720/ldem_64_uint.tif",
+            "sha256": "0939469ef9247e0f98c5a2107463882566b53f10fa8eba1e6aff9f322cf83dbf",
+            "checksumScope": "HTTP byte-range extraction, not full original TIFF",
+            "byteRange": [
+              371589128,
+              412876807
+            ],
+            "stripOffsetsSha256": "37b193b79c4d983e38b393fdb14c45fd7cea325281cea29bae1977a7a2f44c49",
+            "stripOffsetsByteRange": [
+              530887938,
+              530934017
+            ],
+            "dimensions": "23040x11520 original; 23040x896 extracted row band; 896x896 prepared crop",
+            "operations": "verify row strip offsets; extract rows8064..8959, columns10368..11263; no resampling; little-endian uint16 half-meter samples; blend outer8% into global LOLA at runtime",
+            "coverage": "east longitude -18..-4, planetocentric latitude -50..-36",
+            "citation": "NASA SVS CGI Moon Kit4720; LOLA science team; Ernie Wright(USRA), Noah Petro(NASA/GSFC)"
+          }
+        ],
+        "datum": "LOLA sphere radius 1,737,400 m; planetocentric east-positive cylindrical map"
+      },
+      "levels": {
+        "preview": {
+          "width": 512,
+          "height": 256,
+          "color": "/assets/surfaces/moon-preview.jpg",
+          "colorSha256": "bc013e030da19185f5506fbfa8e6d0fcd5503c18982af5a30652060a92602384"
+        },
+        "medium": {
+          "width": 2048,
+          "height": 1024,
+          "color": "/assets/surfaces/moon-medium.jpg",
+          "colorSha256": "9bb49af5e1e9459423abfd7ec609fe03541ebffdfb1dd046ea8b8289f63ff446",
+          "heightUrl": "/assets/surfaces/moon-medium.height.bin",
+          "heightWidth": 1024,
+          "heightHeight": 512,
+          "heightSha256": "3a5d73f5fbec306f94c1ae4d36c46e60f51be875f96d1589ffc1318060eec3f0",
+          "heightOffsetMeters": -10000,
+          "heightScaleMeters": 0.5,
+          "minElevationMeters": -8453,
+          "maxElevationMeters": 9971
+        },
+        "near": {
+          "width": 4096,
+          "height": 2048,
+          "color": "/assets/surfaces/moon-near.jpg",
+          "colorSha256": "64d4e92f753cc604de84de381296c1aba0bfb8b9c5b56b10c1bdead10564b0da",
+          "heightUrl": "/assets/surfaces/moon-near.height.bin",
+          "heightWidth": 2048,
+          "heightHeight": 1024,
+          "heightSha256": "b8db90d2bcbb99cc7d7d0cda897713b4a19bf8bb75b9cfd5b5457bf83d1ee470",
+          "heightOffsetMeters": -10000,
+          "heightScaleMeters": 0.5,
+          "minElevationMeters": -8697.5,
+          "maxElevationMeters": 10513,
+          "region": {
+            "name": "Tycho LOLA64 regional relief",
+            "heightUrl": "/assets/surfaces/moon-tycho.height.bin",
+            "heightSha256": "2705ca243cdbb9cd866de43ce4c1f969976fe70e53969570cebd1226b927b3ad",
+            "width": 896,
+            "height": 896,
+            "heightScaleMeters": 0.5,
+            "heightOffsetMeters": -10000,
+            "uvBounds": [
+              0.45,
+              0.7,
+              0.4888888888888889,
+              0.7777777777777778
+            ],
+            "blendBorder": 0.08,
+            "minElevationMeters": -5387,
+            "maxElevationMeters": 2095.5
+          }
+        }
+      }
+    },
+    "mars": {
+      "referenceRadiusMeters": 3389500,
+      "sourceType": "NASA/USGS Viking colorized imagery + MOLA MEGDR radial shape",
+      "body": "mars",
+      "sourceOrganization": "NASA Ames / JPL / USGS / NASA PDS",
+      "license": "US government scientific imagery; retain source attribution; no endorsement implied",
+      "coordinates": {
+        "longitude": "east-positive -180..180",
+        "latitude": "planetocentric",
+        "projection": "equirectangular",
+        "northAtTop": true,
+        "pixelRegistration": "area-centered"
+      },
+      "proceduralDetail": "Deterministic micro-normal and grain approximation; not measured relief; does not displace geometry",
+      "provenance": {
+        "citation": "NASA PDS MGS MOLA MEGDR product v2.0 (MEGR90N000EB), 16 pixels/degree",
+        "sources": [
+          {
+            "url": "https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-megdr-l3-v1/mgsl_300x/meg016/megr90n000eb.img",
+            "sha256": "976cb28c7a6561d1c3f7b4281e035e0c1dd02d387375e4a4aba5010b7064a8d0",
+            "labelUrl": "https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-megdr-l3-v1/mgsl_300x/meg016/megr90n000eb.lbl",
+            "labelSha256": "39caa45880c19cb3df1bd8dce0ff33a64d14eee844b03419f84ce30c24d7849c",
+            "dimensions": "5760x2880 signed big-endian int16 IMG; PDS OFFSET 3396000 m",
+            "operations": "decode planetary radius; subtract canonical 3389500 m; roll longitude 180 degrees from 0..360 to -180..180; encode with -20000 m offset; area-average resize; little-endian uint16 export"
+          },
+          {
+            "url": "https://astrogeology.usgs.gov/ckan/dataset/7131d503-cdc9-45a5-8f83-5126c0fd397e/resource/5ea881c6-01b3-41fa-a7af-42d2131b54f1/download/mars_viking_mdim21_clrmosaic_1km.jpg",
+            "sha256": "fdfcd335559c3dc67052b7e8a9565d850e336ac0d1f3ea7f5eb7826ffb44ecb2",
+            "labelUrl": "https://astrogeology.usgs.gov/ckan/dataset/7131d503-cdc9-45a5-8f83-5126c0fd397e/resource/69f3953f-9791-4d92-bffe-ebe24945eb95/download/mars_viking_mdim21_clrmosaic_1km.jpg.aux.xml",
+            "labelSha256": "027a2ff4e0e169ca4f03b417eb4e8e88d29d80d78031549ba5674fe1c26445bc",
+            "dimensions": "21339x10670 RGB JPEG",
+            "operations": "JPEG shrink-on-load to 4096px; bilinear reprojection using pinned PAM geotransform to east-positive planetocentric exact global raster; edge clamp <1 source pixel; JPEG quality88"
+          },
+          {
+            "url": "https://pds-geosciences.wustl.edu/mgs/urn-nasa-pds-mgs_mola_topography_derived/meg128/megr44n180hb.img",
+            "labelUrl": "https://pds-geosciences.wustl.edu/mgs/urn-nasa-pds-mgs_mola_topography_derived/meg128/megr44n180hb.xml",
+            "sha256": "3e2c8fe236f1988a88abf1d10b253fae46450e4957f9944310f97cbcf2040b93",
+            "labelSha256": "761e02350cf424b6a5791f30c406169fb80d824c36aa163ac707beeba4ffcef6",
+            "dimensions": "5632x11520 source tile; 1024x1024 derived crop",
+            "byteRange": [
+              64880640,
+              88473599
+            ],
+            "checksumScope": "HTTP byte-range extraction, not full original tile",
+            "operations": "verify SignedMSB2 rows 2816..3839; extract columns 5376..6399; convert radius offset 3396000 to canonical 3389500 radial elevation; little-endian uint16 export with -20000 m offset",
+            "coverage": "planetocentric 222..230E, 14..22N; MOLA128 IAU2000_MARS"
+          }
+        ],
+        "datum": "MOLA MEGDR mean planetary-radius shape; planetocentric, east-positive 0-360 degrees; runtime reference radius 3,389,500 m",
+        "colorNote": "Viking MDIM2.1 colorized imagery by NASA Ames/USGS; baked illumination and acquisition seams remain; not a calibrated albedo product."
+      },
+      "levels": {
+        "preview": {
+          "width": 512,
+          "height": 256,
+          "color": "/assets/surfaces/mars-preview.jpg",
+          "colorSha256": "5ede58403b2c719d4eec240b8c93256e0ea2d2ed41ff9fea899925793fa8d20c"
+        },
+        "medium": {
+          "width": 2048,
+          "height": 1024,
+          "color": "/assets/surfaces/mars-medium.jpg",
+          "colorSha256": "aa942a1a433e4b01531813b0e6835cc02cbdb234c108e0453c8c0603bfba3567",
+          "heightUrl": "/assets/surfaces/mars-medium.height.bin",
+          "heightWidth": 1024,
+          "heightHeight": 512,
+          "heightSha256": "653dd940ad9513c0831b32c59fc39e00e22d9097a1e472114a53c8808c9eafbf",
+          "heightOffsetMeters": -20000,
+          "heightScaleMeters": 1,
+          "minElevationMeters": -16334,
+          "maxElevationMeters": 27712
+        },
+        "near": {
+          "width": 4096,
+          "height": 2048,
+          "color": "/assets/surfaces/mars-near.jpg",
+          "colorSha256": "0bc761f59246d73294c61e050e94fda891c5b84f201c9aa26f7363ac3646cc8b",
+          "heightUrl": "/assets/surfaces/mars-near.height.bin",
+          "heightWidth": 2048,
+          "heightHeight": 1024,
+          "heightSha256": "6ecfd79bec645a5db18dd8fb85c5b86761d9eab65adf4040f332bb54814f1a8c",
+          "heightOffsetMeters": -20000,
+          "heightScaleMeters": 1,
+          "minElevationMeters": -16498,
+          "maxElevationMeters": 27747,
+          "region": {
+            "name": "Olympus MOLA128 regional radial shape",
+            "heightUrl": "/assets/surfaces/mars-olympus.height.bin",
+            "heightSha256": "a1c12a9ac833e8e82f03bb9a317128a53761fd71a8927c0e4952f0529e255b55",
+            "width": 1024,
+            "height": 1024,
+            "heightScaleMeters": 1,
+            "heightOffsetMeters": -20000,
+            "uvBounds": [
+              0.1166666666666667,
+              0.37777777777777777,
+              0.13888888888888884,
+              0.4222222222222222
+            ],
+            "blendBorder": 0.08,
+            "minElevationMeters": 2918,
+            "maxElevationMeters": 27862
+          }
+        }
+      }
+    },
+    "ariel": {
+      "schemaVersion": 1,
+      "generatedBy": "scripts/prepare-ariel-surface.mjs",
+      "body": "ariel",
+      "referenceRadiusMeters": 578900,
+      "bodyrefSIradius": 578900,
+      "sourceType": "mapped-voyager-appearance-plus-explicit-procedural-height",
+      "sourceOrganization": "NASA/JPL-Caltech / USGS Astrogeology Science Center",
+      "coordinateConvention": "Runtime samples u=(east longitude + pi)/(2 pi), v=(pi/2 - planetocentric latitude)/pi; pixel centers; source prime-meridian and east-west alignment are unverified",
+      "coordinates": {
+        "longitude": "runtime east-positive -180..180 convention; source alignment unverified",
+        "latitude": "runtime planetocentric convention; source alignment unverified",
+        "projection": "2:1 image texture supplied for NASA 3-D resource; exact source projection metadata is not published",
+        "northAtTop": "unverified from source metadata",
+        "pixelRegistration": "pixel-centered derivative convention",
+        "sourceCoverage": "Voyager 2 mapped southern hemisphere; unmapped regions remain explicit source/approximation gaps"
+      },
+      "heightPolicy": "No global measured Ariel DEM is available. Deterministic restrained relief is generated from a seamless 3D direction-vector field independent of color; it is an appearance approximation, not measured Ariel topography or image-brightness inference.",
+      "provenance": {
+        "citation": "NASA Uranus–Ariel 3-D resource, USGS mosaic using Voyager imagery; credit USGS/Tammy Becker and JPL/Caltech",
+        "source": {
+          "file": "ariel-voyager-texture.webp",
+          "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/3d/resources/image/uranus---ariel/preview.webp?w=2048",
+          "sha256": "f7b83b95e4f52502e3104e0a11c5ae9ae2bfd2ae78bb2b80bd0ad237a1ce10c4",
+          "dimensions": "2048x1024 WebP, 8-bit sRGB, 3-channel"
+        },
+        "sourceMetadata": "https://science.nasa.gov/3d-resources/uranus-ariel/",
+        "missionReference": "https://www.jpl.nasa.gov/images/pia00041-ariel-highest-resolution-color-picture/",
+        "coverage": "Voyager 2's mapped coverage is concentrated in the encountered southern hemisphere; the official texture's unmapped/low-confidence regions are retained rather than replaced with invented imagery.",
+        "license": "NASA/JPL/Caltech and USGS public mission imagery; retain attribution.",
+        "processing": "Pinned 2048x1024 NASA WebP; verified 8-bit sRGB 3-channel metadata; resized without reprojection to 512x256, 1024x512 and native 2048x1024 JPEG derivatives; color is never used to derive height.",
+        "orientationEvidence": "NASA labels this asset an image texture for 3D models, but the published source metadata does not specify prime meridian, east/west sign, or pole orientation. The script validates dimensions/channels and preserves the supplied pixel order without a flip or rotate; alignment is explicitly unverified.",
+        "proceduralHeight": "Seamless direction-vector field, little-endian uint16, height = -500 + sample x 1 m; bounded range is recorded per level; synthetic approximation only.",
+        "canonicalRadiusMeters": 578900,
+        "sourceReferenceRadiusMeters": null
+      },
+      "levels": {
+        "preview": {
+          "color": "/assets/surfaces/ariel-preview.jpg",
+          "width": 512,
+          "height": 256,
+          "colorSha256": "c9a1b972ffbf520494064a60b4ab26ce7ffe9286e789887730debcfd86b5f9f8",
+          "colorKind": "NASA/JPL/USGS Voyager 2 mapped appearance"
+        },
+        "medium": {
+          "color": "/assets/surfaces/ariel-medium.jpg",
+          "width": 1024,
+          "height": 512,
+          "colorSha256": "9d963182158605955d8dd464a764502aa6041e818fa8e24356a993c903722cfb",
+          "colorKind": "NASA/JPL/USGS Voyager 2 mapped appearance",
+          "heightUrl": "/assets/surfaces/ariel-medium.height.bin",
+          "heightWidth": 1024,
+          "heightHeight": 512,
+          "heightSha256": "5d42a69ab1f81b1954f3e5778ded6bef227a8abe701867af711116d248432ee9",
+          "heightEncoding": "little-endian uint16; radial height = heightOffsetMeters + sample * heightScaleMeters",
+          "heightOffsetMeters": -500,
+          "heightScaleMeters": 1,
+          "minElevationMeters": -147,
+          "maxElevationMeters": 147
+        },
+        "near": {
+          "color": "/assets/surfaces/ariel-near.jpg",
+          "width": 2048,
+          "height": 1024,
+          "colorSha256": "1ddf85901425116efae444e8bddf4e7e79aeadc2b6823c789c22ab7dfed53406",
+          "colorKind": "NASA/JPL/USGS Voyager 2 mapped appearance",
+          "heightUrl": "/assets/surfaces/ariel-near.height.bin",
+          "heightWidth": 2048,
+          "heightHeight": 1024,
+          "heightSha256": "96532094bfe5f0ea4e9e932d91130379331ecc6a761abf4e1f60f1b5531a174c",
+          "heightEncoding": "little-endian uint16; radial height = heightOffsetMeters + sample * heightScaleMeters",
+          "heightOffsetMeters": -500,
+          "heightScaleMeters": 1,
+          "minElevationMeters": -147,
+          "maxElevationMeters": 147
+        }
+      },
+      "canonicalRadiusMeters": 578900,
+      "canonicalMassKg": 1.2510675276808056e+21
+    },
+    "callisto": {
+      "body": "callisto",
+      "referenceRadiusMeters": 2410300,
+      "bodyrefSIradius": 2410300,
+      "sourceType": "mapped-imagery-plus-explicit-procedural-height",
+      "sourceOrganization": "USGS Astrogeology Science Center / NASA Voyager and Galileo SSI",
+      "coordinates": {
+        "longitude": "east-positive -180..180",
+        "latitude": "planetocentric",
+        "projection": "equirectangular (normalized from source Simple Cylindrical)",
+        "northAtTop": true,
+        "pixelRegistration": "pixel-centered",
+        "sourceLongitude": "positive-west 0..360",
+        "sourcePrimeCenter": "180W; source raster seam shifted to runtime -180E before reversal",
+        "geotransformNote": "Source label upper-left projected origin and pixel resolution are retained in provenance; normalized output is generated from that metadata, not eyeballed."
+      },
+      "heightPolicy": "Deterministic bounded procedural relief is independent of imagery and is not Callisto topography; no brightness/albedo inference.",
+      "provenance": {
+        "citation": "USGS Astrogeology / NASA Voyager and Galileo SSI Callisto Galileo/Voyager Global Mosaic 1km",
+        "source": {
+          "file": "callisto-usgs-full.tif",
+          "url": "https://planetarymaps.usgs.gov/mosaic/Callisto_Voyager_GalileoSSI_global_mosaic_1km.tif",
+          "sha256": "e1f0bd2e0e05de605d067d6b5f5ededddaf31ca6c064562a1ca770f15a7dbaa3",
+          "dimensions": "15138x7569 8-bit single-band GeoTIFF; 1000.0051966711 m/pixel"
+        },
+        "sourceLabel": {
+          "file": "callisto-usgs-full.lbl",
+          "url": "https://planetarymaps.usgs.gov/mosaic/Callisto_Voyager_GalileoSSI_global_mosaic_1km.lbl",
+          "sha256": "208aa459c0a28f8f5104bfabcc8cd642a3a4fc53f5a74d00b66d9a4d8dd43080",
+          "projection": "SimpleCylindrical",
+          "longitudeDirection": "PositiveWest",
+          "longitudeDomain": "0..360",
+          "centerLongitude": 180,
+          "latitudeType": "Planetocentric",
+          "upperLeftCornerMeters": [
+            -7569039.3336036,
+            3784519.6668018
+          ],
+          "pixelResolutionMeters": 1000.0051966711,
+          "sourceRadiusMeters": 2409300.0488
+        },
+        "sourceMetadata": "https://astrogeology.usgs.gov/search/map/callisto_galileo_voyager_global_mosaic_1km",
+        "license": "USGS/NASA public-domain planetary imagery; retain product and mission attribution.",
+        "processing": "Pinned full GeoTIFF; decode 8-bit single-band raster; metadata-derived positive-west 0..360 to east-positive -180..180 reversal plus half-raster seam shift; north-up; Lanczos resize to 512/1024/2048; JPEG quality 88 with no legend or map decoration.",
+        "proceduralHeight": "Deterministic direction-vector 3D trigonometric field, little-endian uint16 with height = -256 + sample x 0.5 m; bounded decoded range is recorded per level; not measured relief and not derived from image pixels.",
+        "canonicalRadiusMeters": 2410300,
+        "sourceMetadataRadiusMeters": 2409300.0488,
+        "radiusDifferenceMeters": 999.9512
+      },
+      "levels": {
+        "preview": {
+          "color": "/assets/surfaces/callisto-preview.jpg",
+          "width": 512,
+          "height": 256,
+          "colorSha256": "524e2873cc634f7f6fe00b9e17d67fde111532fb33de391c96f01108eb08fe95"
+        },
+        "medium": {
+          "color": "/assets/surfaces/callisto-medium.jpg",
+          "width": 1024,
+          "height": 512,
+          "colorSha256": "6ea53f4672cf788be072d6644333da42adb4503accc2f852a5febee983891b34",
+          "heightUrl": "/assets/surfaces/callisto-medium.height.bin",
+          "heightWidth": 1024,
+          "heightHeight": 512,
+          "heightSha256": "fca11bc9da0963a2ae2f6aed17491a37bb67ad00b367a8f7e47456051f7152fd",
+          "heightOffsetMeters": -256,
+          "heightScaleMeters": 0.5,
+          "minElevationMeters": -106,
+          "maxElevationMeters": 106
+        },
+        "near": {
+          "color": "/assets/surfaces/callisto-near.jpg",
+          "width": 2048,
+          "height": 1024,
+          "colorSha256": "d08da06fca16c74f897976f275314ae7d1b64a98b7337b4ebcbd41e0b991354a",
+          "heightUrl": "/assets/surfaces/callisto-near.height.bin",
+          "heightWidth": 2048,
+          "heightHeight": 1024,
+          "heightSha256": "030355d35d2e20172760d9d83b6bf9665598cc890bf383451696b0fc668bca95",
+          "heightOffsetMeters": -256,
+          "heightScaleMeters": 0.5,
+          "minElevationMeters": -106,
+          "maxElevationMeters": 106
+        }
+      },
+      "canonicalRadiusMeters": 2410300,
+      "canonicalMassKg": 1.075660878294353e+23
+    },
+    "deimos": {
+      "schemaVersion": 1,
+      "bodyId": "deimos",
+      "sourceType": "measured-irregular-shape",
+      "geometry": "deimos-shape.json",
+      "units": "m",
+      "coordinateFrame": "Deimos body-fixed planetocentric; +X longitude 0, +Y north, +Z east-positive longitude 90",
+      "vertexCount": 1226,
+      "triangleCount": 2448,
+      "artifactSha256": "052547c868f4caeb6ad28220684bc9fb9296f9ec9b3db0b235f283377175ff6b",
+      "source": {
+        "product": "NASA PDS Small Body Optical Shape Models Bundle V1.0",
+        "logicalId": "urn:nasa:pds:ast-sat.thomas.shape-models:data:m2deimos_tab",
+        "citation": "Thomas et al. (2021), https://doi.org/10.26033/g5e0-kh52; Thomas (1993), https://doi.org/10.1006/icar.1993.1130",
+        "sourceUrl": "https://sbnarchive.psi.edu/pds4/non_mission/ast-sat.thomas.shape-models_V1_0/data/m2deimos.tab",
+        "sourceFile": "m2deimos.tab",
+        "sourceLabel": "m2deimos.xml",
+        "sourceSha256": "9a4dbc132c7546acb2ef26a386d306f155519f0988c8052acb2276ddeb7ca2fd",
+        "sourceLabelSha256": "74b4c557e6827940430b2d670ec972d9a5d5dc63ef0a95b2b6ebd141ab78f634",
+        "sourceSampling": "5 degree planetocentric latitude/longitude grid; radius in kilometers"
+      },
+      "reduction": {
+        "latitudeStepDegrees": 10,
+        "longitudeStepDegrees": 5,
+        "method": "Measured source vertices sampled on a bounded regular subset; duplicated source pole longitudes collapsed to one vertex; no fitted ellipsoid or invented relief"
+      },
+      "canonicalRadiusMeters": 6200,
+      "canonicalMassKg": 1441349654645431,
+      "referenceRadiusMeters": 6200,
+      "levels": {
+        "preview": {
+          "geometry": "/assets/surfaces/deimos-shape.json"
+        },
+        "medium": {
+          "geometry": "/assets/surfaces/deimos-shape.json"
+        },
+        "near": {
+          "geometry": "/assets/surfaces/deimos-shape.json"
+        }
+      }
+    },
+    "earth": {
+      "schemaVersion": 1,
+      "generatedBy": "scripts/prepare-earth-surface.mjs",
+      "body": "earth",
+      "referenceRadiusMeters": 6371000,
+      "bodyrefSIradius": 6371000,
+      "sourceType": "NASA cloud-free mapped imagery + NOAA ETOPO measured radial height",
+      "sourceOrganization": "NASA Earth Observatory / NOAA NCEI",
+      "coordinates": {
+        "longitude": "east-positive -180..180",
+        "latitude": "planetocentric",
+        "sourceLatitude": "geodetic",
+        "projection": "equirectangular",
+        "northAtTop": true,
+        "pixelRegistration": "pixel-centered",
+        "operation": "sample geodetic sources at planetocentric target latitude; longitude wrap at ±180"
+      },
+      "baseRadiiMeters": [
+        6378137,
+        6356752.314245,
+        6378137
+      ],
+      "waterSurface": true,
+      "heightPolicy": "ETOPO orthometric heights are treated as an explicit datum approximation to radial relief; bathymetry is retained in the height asset. Visible ocean surface uses the reference ellipsoid, not a spherical sea or exposed seabed. Geoid undulations remain omitted.",
+      "provenance": {
+        "sources": [
+          {
+            "file": "earth-etopo60s-stride10.csv",
+            "url": "https://oceanwatch.pifsc.noaa.gov/erddap/griddap/ETOPO_2022_v1_60s.csv?z[0:10:10799][0:10:21599]",
+            "sha256": "efac6cf1798875d2dd175fb2a73d32bd25832f0e1aad2db74701b8ddafec3690",
+            "dimensions": "2160 longitude samples × 1080 latitude samples; 1/6-degree stride of 60-arcsecond source centers"
+          },
+          {
+            "file": "earth-bmng-january.jpg",
+            "url": "https://assets.science.nasa.gov/content/dam/science/esd/eo/images/bmng/bmng-base/january/world.200401.3x5400x2700.jpg",
+            "sha256": "99f5faad74efe985fbf1714c8be7296ca9999759a1215b65f99b7f1df278dde5",
+            "dimensions": "5400×2700 RGB JPEG; Blue Marble Next Generation January 2004"
+          }
+        ],
+        "metadata": "/output/surface-originals/earth-etopo.das and /output/surface-originals/earth-color-source.html",
+        "datum": "ETOPO z is EGM2008 orthometric height (EPSG:3855). Geoid undulations were not downloaded, so this product intentionally ignores the geoid-to-ellipsoid correction (approximately 100 m).",
+        "ellipsoid": {
+          "semiMajorAxisMeters": 6378137,
+          "semiMinorAxisMeters": 6356752.314245,
+          "inverseFlattening": 298.257223563
+        },
+        "canonicalReference": "WGS84 ellipsoid radial surface relative to canonical simulation radius 6371000 m; z added as a bounded datum approximation.",
+        "processing": "Stream CSV; bilinear DEM sampling; geodetic-to-planetocentric latitude conversion; Blue Marble bilinear color sampling; JPEG quality 88; little-endian uint16 heights at 1 m/sample with -30000 m offset; reject rather than clamp out-of-range elevations.",
+        "validationSamples": {
+          "everest": 5539.120928466797,
+          "andes": 5361.027662270793,
+          "pacific": -4429.655937500024
+        },
+        "license": "NASA public-domain imagery and NOAA NCEI ETOPO data; retain source attribution and caveat that ETOPO is not intended for legal use."
+      },
+      "levels": {
+        "preview": {
+          "color": "/assets/surfaces/earth-preview.jpg",
+          "width": 512,
+          "height": 256,
+          "colorSha256": "2833791eb44cb78fc755b140ce225cd9ea162d3bd41d1a6e96b91036e6091667",
+          "heightUrl": "/assets/surfaces/earth-preview.height.bin",
+          "heightWidth": 512,
+          "heightHeight": 256,
+          "heightSha256": "7e297529ff20872c9e691e8de25ed5481bd618362c52fd1693868be5e9161a3f",
+          "heightOffsetMeters": -30000,
+          "heightScaleMeters": 1,
+          "minElevationMeters": -19149,
+          "maxElevationMeters": 11131
+        },
+        "medium": {
+          "color": "/assets/surfaces/earth-medium.jpg",
+          "width": 1024,
+          "height": 512,
+          "colorSha256": "a67b14b9364e94ba5c9f5e03f31d259927f0da4b663921653b2577eaa5b7791a",
+          "heightUrl": "/assets/surfaces/earth-medium.height.bin",
+          "heightWidth": 1024,
+          "heightHeight": 512,
+          "heightSha256": "796caff0d48a2431aeb409da5b89e4ebc31f2d71f7db00fc25eb61262dd500d0",
+          "heightOffsetMeters": -30000,
+          "heightScaleMeters": 1,
+          "minElevationMeters": -19230,
+          "maxElevationMeters": 11482
+        },
+        "near": {
+          "color": "/assets/surfaces/earth-near.jpg",
+          "width": 2048,
+          "height": 1024,
+          "colorSha256": "b865fb04b0346ffc693c7ce6ff4827a7c486fad6aa924a8d5b7d334d6fb2ed33",
+          "heightUrl": "/assets/surfaces/earth-near.height.bin",
+          "heightWidth": 2048,
+          "heightHeight": 1024,
+          "heightSha256": "1a84e8a096522cfd628cd2c694267dc3b0714458ba0e996e129d23e262e2074d",
+          "heightOffsetMeters": -30000,
+          "heightScaleMeters": 1,
+          "minElevationMeters": -19396,
+          "maxElevationMeters": 11798
+        }
+      },
+      "canonicalRadiusMeters": 6371000,
+      "canonicalMassKg": 5.97217e+24
+    },
+    "enceladus": {
+      "schemaVersion": 1,
+      "generatedBy": "scripts/prepare-enceladus-surface.mjs",
+      "body": "enceladus",
+      "referenceRadiusMeters": 252100,
+      "bodyrefSIradius": 252100,
+      "sourceType": "real-cassini-dem-with-explicit-radial-height-conversion",
+      "coordinates": {
+        "longitude": "east-positive -180..180",
+        "latitude": "planetocentric",
+        "projection": "simple cylindrical / equirectangular",
+        "northAtTop": true,
+        "pixelRegistration": "pixel-centered",
+        "sourceLongitude": "east-positive 0..360 centered at 180 degrees; output columns half-raster shifted to -180..180"
+      },
+      "baseRadiiMeters": [
+        256200,
+        248600,
+        251400
+      ],
+      "heightPolicy": "Measured Schenk 2024 DEM elevations relative to the Thomas et al. 2016 triaxial ellipsoid, converted to physical radial height as ellipsoidRadius(direction) + DEM elevation - runtime canonical radius. Source NoData is explicitly filled and labeled; no color or brightness inference.",
+      "provenance": {
+        "source": {
+          "file": "enceladus-dem.tif",
+          "url": "https://asc-astropedia.s3.us-west-2.amazonaws.com/Enceladus/Cassini/Enceladus_Cassini_DEM_global_200m_schenk2024.tif",
+          "metadataUrl": "https://astrogeology.usgs.gov/search/map/enceladus-cassini-global-dem-200m-schenk",
+          "sha256": "7c08c46238cde6528c9143f0c667d42cd3bc6ac60c572595a7e6cad2d6775f91",
+          "dimensions": "8049x4025 32-bit floating-point GeoTIFF; 200 m/pixel"
+        },
+        "sourceGeoTIFF": {
+          "dimensions": "8049x4025",
+          "sampleType": "32-bit IEEE floating point",
+          "gdalNoData": -3.4028226550889045e+38,
+          "gdalScale": "absent (1.0 implied)",
+          "gdalOffset": "absent (0.0 implied)",
+          "originMeters": [
+            -805000,
+            402600
+          ],
+          "resolutionMeters": [
+            200,
+            -200
+          ],
+          "elevationUnits": "kilometres"
+        },
+        "referenceShape": {
+          "model": "Thomas et al. 2016 triaxial ellipsoid",
+          "semiAxesMeters": {
+            "a": 256200,
+            "b": 251400,
+            "c": 248600
+          },
+          "radialFormula": "R=1/sqrt((x/a)^2+(y/b)^2+(z/c)^2) for unit direction (x,y,z)"
+        },
+        "runtimeDatum": "canonical spherical radius 252100 m",
+        "processing": "Validated GeoTIFF tags/georeferencing; converted source km to metres; computed triaxial radial surface radius by pixel direction; shifted source 0..360 seam by half raster; encoded radial heights as uint16 little-endian at 0.5 m steps; filled NoData with reference triaxial ellipsoid (zero relief) and labeled it.",
+        "attribution": "USGS Astrogeology Science Center / NASA Cassini / Lunar and Planetary Institute; Schenk and McKinnon (2024); Thomas et al. (2016)"
+      },
+      "levels": {
+        "preview": {
+          "color": "/assets/surfaces/enceladus-preview.jpg",
+          "width": 512,
+          "height": 256,
+          "colorSha256": "e3d2b3e705ad7f69331c52c0a6f0aeb2a5fca405fdebb76323df718767ab7aa2",
+          "colorKind": "constant soft-ice fallback; no mapped color source was downloaded"
+        },
+        "medium": {
+          "color": "/assets/surfaces/enceladus-medium.jpg",
+          "width": 1024,
+          "height": 512,
+          "colorSha256": "f6284e192e783472be8316397d5c4520ecf17671208a80abc390e322fe21b390",
+          "colorKind": "constant soft-ice fallback; no mapped color source was downloaded",
+          "heightUrl": "/assets/surfaces/enceladus-medium.height.bin",
+          "heightWidth": 1024,
+          "heightHeight": 512,
+          "heightSha256": "62f872d732d13d06348d6da2ea3bf3d149833c99584bcaf842c6dcf8db007b0c",
+          "heightEncoding": "little-endian uint16; radial height = heightOffsetMeters + sample * heightScaleMeters",
+          "heightOffsetMeters": -5000,
+          "heightScaleMeters": 0.5,
+          "minElevationMeters": -4607.5,
+          "maxElevationMeters": 5444,
+          "noDataPolicy": "Source NoData is filled with the reference triaxial ellipsoid (zero relief); filled samples are not measured terrain.",
+          "validSampleFraction": 0.9970722198486328
+        },
+        "near": {
+          "color": "/assets/surfaces/enceladus-near.jpg",
+          "width": 2048,
+          "height": 1024,
+          "colorSha256": "5f8c2992470d56625a24d61fb0fcb7c5d0ae7afcb10e0a5c2e4ed1b158a19868",
+          "colorKind": "constant soft-ice fallback; no mapped color source was downloaded",
+          "heightUrl": "/assets/surfaces/enceladus-near.height.bin",
+          "heightWidth": 2048,
+          "heightHeight": 1024,
+          "heightSha256": "f4a5623589a2b662696d369626660ce55733a16b2f7798affac46dce00228939",
+          "heightEncoding": "little-endian uint16; radial height = heightOffsetMeters + sample * heightScaleMeters",
+          "heightOffsetMeters": -5000,
+          "heightScaleMeters": 0.5,
+          "minElevationMeters": -4610.5,
+          "maxElevationMeters": 5659.5,
+          "noDataPolicy": "Source NoData is filled with the reference triaxial ellipsoid (zero relief); filled samples are not measured terrain.",
+          "validSampleFraction": 0.9985356330871582
+        }
+      },
+      "canonicalRadiusMeters": 252100,
+      "canonicalMassKg": 108031853527710780000
+    },
+    "europa": {
+      "body": "europa",
+      "referenceRadiusMeters": 1560800,
+      "bodyrefSIradius": 1560800,
+      "sourceType": "mapped-imagery-plus-explicit-procedural-height",
+      "sourceOrganization": "USGS Astrogeology Science Center / NASA Voyager and Galileo SSI",
+      "coordinates": {
+        "longitude": "east-positive -180..180",
+        "latitude": "planetocentric",
+        "projection": "equirectangular (normalized from source Simple Cylindrical)",
+        "northAtTop": true,
+        "pixelRegistration": "pixel-centered",
+        "sourceLongitude": "positive-west 0..360",
+        "sourcePrimeCenter": "180W; source raster seam is shifted to runtime -180E before reversal"
+      },
+      "heightPolicy": "Deterministic bounded procedural relief is independent of imagery and is not Europa topography; no brightness/albedo inference.",
+      "provenance": {
+        "citation": "USGS Astrogeology / NASA Voyager and Galileo SSI Europa Voyager-Galileo SSI Global Mosaic 500m",
+        "source": {
+          "file": "europa-usgs-full.tif",
+          "url": "https://planetarymaps.usgs.gov/mosaic/Europa_Voyager_GalileoSSI_global_mosaic_500m.tif",
+          "sha256": "a323f0c9ccb47d5af9902ea8297fe81f9a9708795645b80801f103c3f7c9a624",
+          "dimensions": "19631x9816 8-bit single-band GeoTIFF; 499.97456657942 m/pixel"
+        },
+        "sourceMetadata": "https://astrogeology.usgs.gov/search/map/europa_voyager_galileo_ssi_global_mosaic_500m",
+        "sourceLabel": {
+          "url": "https://astrogeology.usgs.gov/ckan/dataset/4080036f-afc5-422e-abe9-1c0c8e4f98ea/resource/db62f55a-9d03-474e-a349-1fd7d8f0d5fc/download/europa_voyager_galileossi_global_mosaic_500m.lbl",
+          "projection": "SimpleCylindrical",
+          "longitudeDirection": "PositiveWest",
+          "longitudeDomain": "0..360",
+          "centerLongitude": 180,
+          "latitudeType": "Planetocentric",
+          "upperLeftCornerMeters": [
+            -4907750.3455436,
+            2453875.1727718
+          ],
+          "pixelResolutionMeters": 499.97456657942,
+          "radiusMeters": 1562089.9658
+        },
+        "license": "USGS/NASA public-domain planetary imagery; retain product and mission attribution.",
+        "processing": "Pinned full GeoTIFF; decode 8-bit single-band raster; map source positive-west 0..360 with 180W prime center to east-positive -180..180 using reversal plus half-raster seam shift; Lanczos resize to 512/1024/2048; JPEG quality 88.",
+        "proceduralHeight": "Deterministic sinusoidal synthetic field, 0.5 m encoding, -96..95.5 m range; not measured relief and not derived from image pixels."
+      },
+      "levels": {
+        "preview": {
+          "color": "/assets/surfaces/europa-preview.jpg",
+          "width": 512,
+          "height": 256,
+          "colorSha256": "a45c9df6fdecac345e5ef292b11f5bd194c7465d7baf8b28651e3bf6646adea6",
+          "heightUrl": "/assets/surfaces/europa-preview.height.bin",
+          "heightWidth": 512,
+          "heightHeight": 256,
+          "heightSha256": "20d9b6f0c501b41fda1de0e0a90d34a423575d238663fb9f1627616b13cee948",
+          "heightOffsetMeters": -96,
+          "heightScaleMeters": 0.5,
+          "minElevationMeters": -42.5,
+          "maxElevationMeters": 42.5
+        },
+        "medium": {
+          "color": "/assets/surfaces/europa-medium.jpg",
+          "width": 1024,
+          "height": 512,
+          "colorSha256": "e651ab88e1dc04fbc4c6679807732f3edc2dc3b7a24bc7a537264bb9d52666b8",
+          "heightUrl": "/assets/surfaces/europa-medium.height.bin",
+          "heightWidth": 1024,
+          "heightHeight": 512,
+          "heightSha256": "4dacda799a5659f3d5977937d517a7da35a21804642573c1d665820e0e202a02",
+          "heightOffsetMeters": -96,
+          "heightScaleMeters": 0.5,
+          "minElevationMeters": -43,
+          "maxElevationMeters": 42.5
+        },
+        "near": {
+          "color": "/assets/surfaces/europa-near.jpg",
+          "width": 2048,
+          "height": 1024,
+          "colorSha256": "3e30734524a0a4822dae900d8e878944bec526eb9595f29610c5faf752493afd",
+          "heightUrl": "/assets/surfaces/europa-near.height.bin",
+          "heightWidth": 2048,
+          "heightHeight": 1024,
+          "heightSha256": "63b9abb9b042a7ffc35b0fcbc7bac26064e2c57ccfd7ccfc17c3439c282e2bb5",
+          "heightOffsetMeters": -96,
+          "heightScaleMeters": 0.5,
+          "minElevationMeters": -43,
+          "maxElevationMeters": 43
+        }
+      },
+      "canonicalRadiusMeters": 1560800,
+      "canonicalMassKg": 4.7985737830184444e+22
+    },
+    "ganymede": {
+      "body": "ganymede",
+      "referenceRadiusMeters": 2631200,
+      "bodyrefSIradius": 2631200,
+      "sourceType": "mapped-imagery-plus-explicit-procedural-height",
+      "sourceOrganization": "USGS Astrogeology Science Center / NASA Voyager and Galileo SSI",
+      "coordinates": {
+        "longitude": "east-positive -180..180",
+        "latitude": "planetocentric",
+        "projection": "equirectangular (normalized from source Simple Cylindrical)",
+        "northAtTop": true,
+        "pixelRegistration": "pixel-centered",
+        "sourceLongitude": "positive-west 0..360",
+        "sourcePrimeCenter": "180W; source raster seam shifted to runtime -180E before reversal"
+      },
+      "heightPolicy": "Deterministic bounded procedural relief is independent of imagery and is not Ganymede topography; no brightness/albedo inference.",
+      "provenance": {
+        "citation": "USGS Astrogeology / NASA Voyager and Galileo SSI Ganymede Voyager-Galileo SSI Global Mosaic 1km",
+        "source": {
+          "file": "ganymede-usgs-full.tif",
+          "url": "https://planetarymaps.usgs.gov/mosaic/Ganymede_Voyager_GalileoSSI_global_mosaic_1km.tif",
+          "sha256": "c2c8d9506b8cf8f7a0a90d823d9052e91c8d9885cf7267fdce8de8216f4df888",
+          "dimensions": "16539x8270 8-bit single-band GeoTIFF; 1000.067192 m/pixel"
+        },
+        "sourceLabel": {
+          "file": "ganymede-usgs-full.lbl",
+          "url": "https://planetarymaps.usgs.gov/mosaic/Ganymede_Voyager_GalileoSSI_global_mosaic_1km.lbl",
+          "sha256": "4a9a2acc66ab9e5586ba97e8f8fa828c216333eea8ac910c8bf68b0afb96a599",
+          "projection": "SimpleCylindrical",
+          "longitudeDirection": "PositiveWest",
+          "longitudeDomain": "0..360",
+          "centerLongitude": 180,
+          "latitudeType": "Planetocentric",
+          "upperLeftCornerMeters": [
+            -8270555.675418,
+            4135277.837709
+          ],
+          "pixelResolutionMeters": 1000.067192,
+          "sourceRadiusMeters": 2632344.9707
+        },
+        "sourceMetadata": "https://astrogeology.usgs.gov/search/map/ganymede_voyager_galileo_ssi_global_mosaic_1km",
+        "license": "USGS/NASA public-domain planetary imagery; retain product and mission attribution.",
+        "processing": "Pinned full GeoTIFF; decode 8-bit single-band raster; metadata-derived positive-west 0..360 to east-positive -180..180 reversal plus half-raster seam shift; north-up; Lanczos resize to 512/1024/2048; JPEG quality 88.",
+        "proceduralHeight": "Deterministic direction-vector 3D trigonometric field, little-endian uint16 with height = -192 + sample x 0.5 m, -192..191.5 m; not measured relief and not derived from image pixels."
+      },
+      "levels": {
+        "preview": {
+          "color": "/assets/surfaces/ganymede-preview.jpg",
+          "width": 512,
+          "height": 256,
+          "colorSha256": "7b1df3cf1193e97ba0fbe4686fc40106cbb2125d2caa68081bbe1908fa9de625",
+          "heightUrl": "/assets/surfaces/ganymede-preview.height.bin",
+          "heightWidth": 512,
+          "heightHeight": 256,
+          "heightSha256": "0fe8a11cf006fdae9ba390d87be30a4dc6b5d9c02111b8f9373f2e44b407b44b",
+          "heightOffsetMeters": -192,
+          "heightScaleMeters": 0.5,
+          "minElevationMeters": -78.5,
+          "maxElevationMeters": 78.5
+        },
+        "medium": {
+          "color": "/assets/surfaces/ganymede-medium.jpg",
+          "width": 1024,
+          "height": 512,
+          "colorSha256": "2e8e3703cb6bb24b032c05f89d2187fa7562f25fb76c0ede7162dee2fa6bc649",
+          "heightUrl": "/assets/surfaces/ganymede-medium.height.bin",
+          "heightWidth": 1024,
+          "heightHeight": 512,
+          "heightSha256": "4054b9a39a549eb4b6b1819fe82663def33d4466fba61039c009012cd0081376",
+          "heightOffsetMeters": -192,
+          "heightScaleMeters": 0.5,
+          "minElevationMeters": -78.5,
+          "maxElevationMeters": 78.5
+        },
+        "near": {
+          "color": "/assets/surfaces/ganymede-near.jpg",
+          "width": 2048,
+          "height": 1024,
+          "colorSha256": "46e8438edb19e45bb92902daa0efd53e1ced7c1346020a3cec870828baa78219",
+          "heightUrl": "/assets/surfaces/ganymede-near.height.bin",
+          "heightWidth": 2048,
+          "heightHeight": 1024,
+          "heightSha256": "b6532869f2a93bded3442e8a88b3dc0216eff7165346799c1a4a583f8374300e",
+          "heightOffsetMeters": -192,
+          "heightScaleMeters": 0.5,
+          "minElevationMeters": -78.5,
+          "maxElevationMeters": 78.5
+        }
+      },
+      "canonicalRadiusMeters": 2631200,
+      "canonicalMassKg": 1.4814786194806948e+23
+    },
+    "iapetus": {
+      "body": "iapetus",
+      "referenceRadiusMeters": 734300,
+      "bodyrefSIradius": 734300,
+      "sourceType": "mapped-imagery-plus-explicit-procedural-height",
+      "sourceOrganization": "USGS Astrogeology Science Center / NASA Cassini and Voyager",
+      "coordinates": {
+        "longitude": "east-positive -180..180",
+        "latitude": "planetocentric",
+        "projection": "equirectangular (normalized from source Simple Cylindrical)",
+        "northAtTop": true,
+        "pixelRegistration": "pixel-centered",
+        "sourceLongitude": "positive-west -180..180",
+        "sourcePrimeCenter": "0 degrees",
+        "sourceGeotransform": {
+          "upperLeftCornerMeters": [
+            -2312212.193042,
+            1156106.096521
+          ],
+          "pixelResolutionMeters": 802.851456
+        }
+      },
+      "heightPolicy": "No reliable complete global Iapetus DEM is bundled. Deterministic bounded relief is generated from a seamless 3D direction-vector field independent of color; it is synthetic and not brightness inference or measured Iapetus topography.",
+      "provenance": {
+        "citation": "USGS Astrogeology Science Center, Iapetus Cassini-Voyager Global Mosaic 803m; imagery from NASA Cassini and Voyager",
+        "source": {
+          "file": "iapetus-usgs-full.tif",
+          "url": "https://planetarymaps.usgs.gov/mosaic/Iapetus_Cassini_Voyager_mosaic_global_783m.tif",
+          "sha256": "eb8acdbed3af495102b6ec6d3efce1f03dc6bc39bb43323c23231ce590494d6e",
+          "dimensions": "5760x2880 unsigned 8-bit single-band GeoTIFF; 802.851456 m/pixel"
+        },
+        "sourceLabel": {
+          "file": "iapetus-usgs-full.lbl",
+          "url": "https://planetarymaps.usgs.gov/mosaic/Iapetus_Cassini_Voyager_mosaic_global_783m.lbl",
+          "sha256": "18bcb9ada17a7e44432a4535afcc027efb46c5e226be1b03caba5b49cfcc6abd",
+          "projection": "SimpleCylindrical",
+          "longitudeDirection": "PositiveWest",
+          "longitudeDomain": "-180..180",
+          "centerLongitude": 0,
+          "latitudeType": "Planetocentric",
+          "upperLeftCornerMeters": [
+            -2312212.193042,
+            1156106.096521
+          ],
+          "pixelResolutionMeters": 802.851456,
+          "sourceRadiusMeters": 736000
+        },
+        "sourceMetadata": "https://astrogeology.usgs.gov/search/map/iapetus_cassini_voyager_global_mosaic_803m",
+        "coverage": "Global mapped mosaic; poles are filled by Voyager imagery and coverage is not a global DEM.",
+        "license": "USGS/NASA public-domain planetary imagery; retain product and mission attribution.",
+        "processing": "Validated 5760x2880 unsigned-8-bit raster and ISIS label metadata; reversed source positive-west longitude into east-positive -180..180 using pixel-center seam wrap; north-up; Lanczos resize to 512/1024/2048; JPEG quality 88 with no legend or map decoration.",
+        "proceduralHeight": "Seamless deterministic 3D direction-vector field, little-endian uint16, height = -256 + sample x 0.5 m; not measured relief and not derived from image pixels.",
+        "canonicalRadiusMeters": 734300,
+        "sourceMetadataRadiusMeters": 736000,
+        "radiusDifferenceMeters": -1700
+      },
+      "levels": {
+        "preview": {
+          "color": "/assets/surfaces/iapetus-preview.jpg",
+          "width": 512,
+          "height": 256,
+          "colorSha256": "bf2ec854151ac83cae8185d0959cf5b4fb84157cefccd2aa341579b9e0993ea1",
+          "colorKind": "USGS Cassini/Voyager grayscale mapped imagery"
+        },
+        "medium": {
+          "color": "/assets/surfaces/iapetus-medium.jpg",
+          "width": 1024,
+          "height": 512,
+          "colorSha256": "62860b438906d6df4d479668192f3400c561b095bfc81d9146b6666b0b340cae",
+          "colorKind": "USGS Cassini/Voyager grayscale mapped imagery",
+          "heightUrl": "/assets/surfaces/iapetus-medium.height.bin",
+          "heightWidth": 1024,
+          "heightHeight": 512,
+          "heightSha256": "ed614b8a13e91ff9d6b2a4d44b86802a773ad541904756f436c86de606f18cbf",
+          "heightEncoding": "little-endian uint16; radial height = heightOffsetMeters + sample * heightScaleMeters",
+          "heightOffsetMeters": -256,
+          "heightScaleMeters": 0.5,
+          "minElevationMeters": -156,
+          "maxElevationMeters": 156
+        },
+        "near": {
+          "color": "/assets/surfaces/iapetus-near.jpg",
+          "width": 2048,
+          "height": 1024,
+          "colorSha256": "aaca75aa66a6c918cbcfdd17a063ba4041f6dff80912aa64ac8cbb8134ee27ae",
+          "colorKind": "USGS Cassini/Voyager grayscale mapped imagery",
+          "heightUrl": "/assets/surfaces/iapetus-near.height.bin",
+          "heightWidth": 2048,
+          "heightHeight": 1024,
+          "heightSha256": "3360ebf6b19b8944c2a0fee0e1e78a01ba5e2e469607abdb76a93b477c901b67",
+          "heightEncoding": "little-endian uint16; radial height = heightOffsetMeters + sample * heightScaleMeters",
+          "heightOffsetMeters": -256,
+          "heightScaleMeters": 0.5,
+          "minElevationMeters": -156,
+          "maxElevationMeters": 156
+        }
+      },
+      "canonicalRadiusMeters": 734300,
+      "canonicalMassKg": 1.805659170250064e+21
+    },
+    "io": {
+      "schemaVersion": 1,
+      "generatedBy": "scripts/prepare-io-surface.mjs",
+      "body": "io",
+      "referenceRadiusMeters": 1821460,
+      "bodyrefSIradius": 1821460,
+      "sourceType": "mapped-imagery-plus-explicit-procedural-height",
+      "coordinates": {
+        "longitude": "east-positive -180..180",
+        "latitude": "planetocentric",
+        "sourceLongitude": "positive west -180..180",
+        "projection": "simple cylindrical",
+        "northAtTop": true,
+        "operation": "metadata-derived horizontal flip from positive-west source; no visual rotation"
+      },
+      "heightPolicy": "Procedural bounded relief is independent of imagery and is not Io topography; no brightness/albedo inference.",
+      "provenance": {
+        "citation": "USGS Astrogeology / NASA Galileo SSI Voyager-Galileo false-color global mosaic",
+        "source": {
+          "file": "io-usgs-full.jpg",
+          "url": "https://astrogeology.usgs.gov/ckan/dataset/3072a685-011c-40c3-9a7b-fdd121e80308/resource/825edaa2-f3fc-4d1d-85b0-33153260ea4d/download/full.jpg",
+          "sha256": "f7a0661d04046f10a903c2d6fe2d179f47b3d02d3d87be5e41824321a6766b6a",
+          "dimensions": "1024x512 RGB JPEG sample; source metadata 11445x5723"
+        },
+        "sourceMetadata": "https://astrogeology.usgs.gov/search/map/io_voyager_galileo_ssi_false_color_global_mosaic_1km",
+        "license": "USGS/NASA public-domain planetary imagery; retain product and mission attribution.",
+        "orientationReference": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/pck00011.tpc",
+        "processing": "Pinned 1024px sample; decode; metadata-derived positive-west to east-positive horizontal flip; resize to 512 and 1024 only; JPEG quality 88.",
+        "proceduralHeight": "Deterministic sinusoidal synthetic field, 0.5 m encoding, -64..63.5 m range; not measured relief and not derived from image pixels."
+      },
+      "levels": {
+        "preview": {
+          "color": "/assets/surfaces/io-preview.jpg",
+          "width": 512,
+          "height": 256,
+          "colorSha256": "d7be79202a0b9c229fde2dceafb7e6c80690b4171c8455f4eac760cabbcf120a",
+          "heightUrl": "/assets/surfaces/io-preview.height.bin",
+          "heightWidth": 512,
+          "heightHeight": 256,
+          "heightSha256": "1ff2890a794deaca173b2a8d682559eb02477394bbef8ebdc77c9a91a75c1730",
+          "heightOffsetMeters": -64,
+          "heightScaleMeters": 0.5,
+          "minElevationMeters": -64,
+          "maxElevationMeters": 63.5
+        },
+        "medium": {
+          "color": "/assets/surfaces/io-medium.jpg",
+          "width": 1024,
+          "height": 512,
+          "colorSha256": "8b0fb0006f61f1ea1845857799ddd9f8ad954b4a1e3d46a528408385501e9228",
+          "heightUrl": "/assets/surfaces/io-medium.height.bin",
+          "heightWidth": 1024,
+          "heightHeight": 512,
+          "heightSha256": "3a057c7e8892f515812482733bfa04b7c7851d8ff34a7eac45f324fed5758ea0",
+          "heightOffsetMeters": -64,
+          "heightScaleMeters": 0.5,
+          "minElevationMeters": -64,
+          "maxElevationMeters": 63.5
+        },
+        "near": {
+          "color": "/assets/surfaces/io-near.jpg",
+          "width": 1024,
+          "height": 512,
+          "colorSha256": "8b0fb0006f61f1ea1845857799ddd9f8ad954b4a1e3d46a528408385501e9228",
+          "heightUrl": "/assets/surfaces/io-near.height.bin",
+          "heightWidth": 1024,
+          "heightHeight": 512,
+          "heightSha256": "3a057c7e8892f515812482733bfa04b7c7851d8ff34a7eac45f324fed5758ea0",
+          "heightOffsetMeters": -64,
+          "heightScaleMeters": 0.5,
+          "minElevationMeters": -64,
+          "maxElevationMeters": 63.5
+        }
+      },
+      "canonicalRadiusMeters": 1821490,
+      "canonicalMassKg": 8.929648757173038e+22
+    },
+    "jupiter": {
+      "schemaVersion": 1,
+      "generatedBy": "scripts/prepare-jupiter-surface.mjs",
+      "body": "jupiter",
+      "referenceRadiusMeters": 69911000,
+      "bodyrefSIradius": 69911000,
+      "sourceType": "mapped-voyager-representative-atmospheric-appearance",
+      "sourceOrganization": "NASA/JPL/Caltech",
+      "coordinateConvention": "u=(east longitude + pi)/(2 pi), v=(pi/2 - planetocentric latitude)/pi; pixel centers; north at top",
+      "coordinates": {
+        "longitude": "east-positive -180..180",
+        "latitude": "planetocentric",
+        "projection": "equirectangular texture supplied for NASA 3-D resource",
+        "northAtTop": true,
+        "pixelRegistration": "pixel-centered"
+      },
+      "heightPolicy": "No height products are emitted. Jupiter is represented by color-only atmospheric appearance; cloud brightness and band structure are never interpreted as terrain or elevation.",
+      "provenance": {
+        "citation": "NASA Jupiter 3-D resource; texture from Voyager images; credit JPL & Caltech.",
+        "source": {
+          "file": "jupiter-voyager-texture.webp",
+          "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/3d/resources/image/jupiter/preview.webp?w=2048",
+          "sha256": "5e5a2dfe105f363611028abc3c6685d15be567fdfec92928df38799db7f37d48",
+          "dimensions": "2048x1024 WebP, 8-bit sRGB, 3-channel"
+        },
+        "sourceMetadata": "https://science.nasa.gov/3d-resources/jupiter/",
+        "missionReference": "https://maps.jpl.nasa.gov/tmaps/jupiter.html",
+        "alignmentStatus": "The NASA visualization resource does not publish a cartographic geotransform or prime-meridian convention. Runtime adopts north-up east-positive lookup; absolute imagery alignment is unverified, not a scientific coordinate product.",
+        "coverage": "Representative global atmospheric appearance; cloud patterns are time-variable and are not a current weather map.",
+        "license": "NASA/JPL/Caltech public mission imagery; retain NASA, JPL and Caltech attribution.",
+        "processing": "Pinned 2048x1024 NASA WebP; resized without reprojection to 512x256, 1024x512 and native-capped 2048x1024 JPEG derivatives; color only.",
+        "caution": "JPL states that gas-giant maps are representative, atmospheric dynamics change daily, and the textures should not be used for scientific analysis.",
+        "canonicalRadiusMeters": 69911000,
+        "sourceReferenceRadiusMeters": null
+      },
+      "levels": {
+        "preview": {
+          "color": "/assets/surfaces/jupiter-preview.jpg",
+          "width": 512,
+          "height": 256,
+          "colorSha256": "561b5cd3e177887410c46c1d467ea5008553fdb3b9b111fa5158731229e0a5a3",
+          "colorKind": "NASA/JPL/Caltech Voyager representative atmospheric appearance"
+        },
+        "medium": {
+          "color": "/assets/surfaces/jupiter-medium.jpg",
+          "width": 1024,
+          "height": 512,
+          "colorSha256": "aad376335ba40cfd2a3a98dbfbd39ab13bf8eaf89739c5dd9c0bbccc0a45edf3",
+          "colorKind": "NASA/JPL/Caltech Voyager representative atmospheric appearance"
+        },
+        "near": {
+          "color": "/assets/surfaces/jupiter-near.jpg",
+          "width": 2048,
+          "height": 1024,
+          "colorSha256": "11b58b54e1e8e63bce74b180f9b975e2541d1ade5c42798237f1e16e2413a795",
+          "colorKind": "NASA/JPL/Caltech Voyager representative atmospheric appearance"
+        }
+      },
+      "canonicalRadiusMeters": 69911000,
+      "canonicalMassKg": 1.898125e+27
+    },
+    "mercury": {
+      "schemaVersion": 1,
+      "body": "mercury",
+      "referenceRadiusMeters": 2439400,
+      "sourceType": "real-dem",
+      "coordinates": {
+        "longitude": "east-positive -180..180",
+        "latitude": "planetocentric",
+        "projection": "equirectangular",
+        "northAtTop": true,
+        "pixelRegistration": "area-centered",
+        "sourceLongitude": "east-positive 0..360; output columns rotated 180 degrees"
+      },
+      "colorType": "constant neutral fallback; not imagery",
+      "provenance": {
+        "url": "https://planetarymaps.usgs.gov/mosaic/Mercury_Messenger_USGS_DEM_Global_665m_v2.tif",
+        "sha256": "defce776241dcaf44cb0f081ee508c17dbea28aa5a22880bf7a5e8c25f96cbea",
+        "dimensions": "23040x11520 signed 16-bit GeoTIFF",
+        "datum": "Mercury spherical radius 2439400 m; GDAL SCALE=0.5, OFFSET=0",
+        "operations": "Verified GeoTIFF GeoKeys/origin/resolution; source 0..360 raster rotated to canonical -180..180; area-resampled signed samples exported as uint16 little-endian with scale 0.5 and offset -10000",
+        "attribution": "USGS Astrogeology Science Center / NASA MESSENGER MDIS"
+      },
+      "levels": {
+        "preview": {
+          "width": 512,
+          "height": 256,
+          "color": "/assets/surfaces/mercury-preview.jpg",
+          "colorSha256": "24395718aa829f7632c8ac63c7db1a8f2db524fd34011e7e198464b76e136523",
+          "heightUrl": "/assets/surfaces/mercury-preview.height.bin",
+          "heightWidth": 512,
+          "heightHeight": 256,
+          "heightSha256": "b482f8612872664a2df92850bc8d557c85e6df259e545da838e4e80520a09067",
+          "heightScaleMeters": 0.5,
+          "heightOffsetMeters": -10000,
+          "minElevationMeters": -5328.5,
+          "maxElevationMeters": 4415
+        },
+        "medium": {
+          "width": 1024,
+          "height": 512,
+          "color": "/assets/surfaces/mercury-medium.jpg",
+          "colorSha256": "b01496240c41bfb35f853948c28519daacfdfa1266dc84c4aebfd4d664d77545",
+          "heightUrl": "/assets/surfaces/mercury-medium.height.bin",
+          "heightWidth": 1024,
+          "heightHeight": 512,
+          "heightSha256": "b68bf2efdf9b1eeb0f3ef6ee6c2dbe2bde9e5d96a86edd309f17e3d5a761e83f",
+          "heightScaleMeters": 0.5,
+          "heightOffsetMeters": -10000,
+          "minElevationMeters": -5335.5,
+          "maxElevationMeters": 4425
+        },
+        "near": {
+          "width": 2048,
+          "height": 1024,
+          "color": "/assets/surfaces/mercury-near.jpg",
+          "colorSha256": "9aeb8d2070de90fec183bcf1a018fb5309d7e99db2e7382c95d909cfc8f1db10",
+          "heightUrl": "/assets/surfaces/mercury-near.height.bin",
+          "heightWidth": 2048,
+          "heightHeight": 1024,
+          "heightSha256": "8947cbb41cc2b50d2515ccfd94484f2972e87a42e03b1c0165714de01e6000a4",
+          "heightScaleMeters": 0.5,
+          "heightOffsetMeters": -10000,
+          "minElevationMeters": -5376,
+          "maxElevationMeters": 4425
+        }
+      },
+      "canonicalRadiusMeters": 2439400,
+      "canonicalMassKg": 3.30103e+23
+    },
+    "miranda": {
+      "schemaVersion": 1,
+      "generatedBy": "scripts/prepare-miranda-surface.mjs",
+      "body": "miranda",
+      "referenceRadiusMeters": 235800,
+      "bodyrefSIradius": 235800,
+      "sourceType": "mapped-voyager-appearance-plus-explicit-procedural-height",
+      "sourceOrganization": "NASA/JPL-Caltech / USGS Astrogeology Science Center",
+      "coordinateConvention": "u=(east longitude + pi)/(2 pi), v=(pi/2 - planetocentric latitude)/pi; pixel centers; north at top; source longitude registration is not independently verified",
+      "coordinates": {
+        "longitude": "east-positive -180..180 (runtime normalization; scientific source alignment unverified)",
+        "latitude": "planetocentric",
+        "projection": "equirectangular texture supplied for NASA 3-D resource",
+        "northAtTop": true,
+        "pixelRegistration": "pixel-centered",
+        "sourceCoverage": "Voyager 2 mapped a limited portion of Miranda; unmapped regions are retained as source gaps/approximate appearance"
+      },
+      "sourceAlignment": {
+        "longitudeVerified": false,
+        "latitudeVerified": false,
+        "poleOrientationVerified": false,
+        "basis": "NASA resource supplies a rendered texture but does not publish a longitude/latitude registration, prime-meridian label alignment, or control-point metadata; do not infer scientific longitude from pixels."
+      },
+      "heightPolicy": "No reliable global Miranda DEM is available. Deterministic restrained relief is generated from a seamless 3D direction-vector field independent of color; it is an appearance approximation, not measured Miranda topography or image-brightness inference.",
+      "provenance": {
+        "citation": "NASA Uranus–Miranda 3-D resource, mosaicked with Voyager imagery; credit USGS/Tammy Becker and JPL/Caltech",
+        "source": {
+          "file": "miranda-voyager-texture.webp",
+          "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/3d/resources/image/uranus---miranda/preview.webp?w=2048",
+          "sha256": "c1827aec1d5ccd4318c9c71d24c7fbfe5d5a984e867d32744573a8d814c69085",
+          "dimensions": "2048x1024 WebP, 8-bit sRGB, 3-channel"
+        },
+        "sourceMetadata": "https://science.nasa.gov/3d-resources/uranus-miranda/",
+        "missionReference": "https://pds-imaging.jpl.nasa.gov/volumes/voyager.html",
+        "mapCatalog": "https://maps.jpl.nasa.gov/tmaps/",
+        "coverage": "Voyager 2 coverage is limited and strongest over Miranda's observed hemisphere; unobserved or weakly constrained regions remain explicitly approximate and are not presented as measured mapping.",
+        "license": "NASA/JPL/Caltech and USGS public mission imagery; retain attribution.",
+        "processing": "Pinned 2048x1024 NASA WebP; resized without reprojection to 512x256, 1024x512 and native 2048x1024 JPEG derivatives; color is never used to derive height.",
+        "proceduralHeight": "Seamless direction-vector field, little-endian uint16, height = -100 + sample x 0.5 m; bounded range is recorded per level; synthetic approximation only.",
+        "canonicalRadiusMeters": 235800,
+        "sourceReferenceRadiusMeters": null
+      },
+      "levels": {
+        "preview": {
+          "color": "/assets/surfaces/miranda-preview.jpg",
+          "width": 512,
+          "height": 256,
+          "colorSha256": "22d3ff7058d4a98420c265d53db6b246577cc054fbdb11dbf55618757ddf4c98",
+          "colorKind": "NASA/JPL/USGS Voyager 2 mapped appearance"
+        },
+        "medium": {
+          "color": "/assets/surfaces/miranda-medium.jpg",
+          "width": 1024,
+          "height": 512,
+          "colorSha256": "107f6ac9698bb6c0144b065283d59a093d69407b776c636fd92be8dab435cbc2",
+          "colorKind": "NASA/JPL/USGS Voyager 2 mapped appearance",
+          "heightUrl": "/assets/surfaces/miranda-medium.height.bin",
+          "heightWidth": 1024,
+          "heightHeight": 512,
+          "heightSha256": "2b03c644a3b7b7b66cf9fd8105ab780dc4c36bb1aac8ca87454a2e85e099063c",
+          "heightEncoding": "little-endian uint16; radial height = heightOffsetMeters + sample * heightScaleMeters",
+          "heightOffsetMeters": -100,
+          "heightScaleMeters": 0.5,
+          "minElevationMeters": -52.5,
+          "maxElevationMeters": 52.5
+        },
+        "near": {
+          "color": "/assets/surfaces/miranda-near.jpg",
+          "width": 2048,
+          "height": 1024,
+          "colorSha256": "65855b238ae8b8cb59435209abcc97ac1ad3bd877d67699297a44435ced25752",
+          "colorKind": "NASA/JPL/USGS Voyager 2 mapped appearance",
+          "heightUrl": "/assets/surfaces/miranda-near.height.bin",
+          "heightWidth": 2048,
+          "heightHeight": 1024,
+          "heightSha256": "56e5584ce801ea60442970b951a1cb56264675b27112df627ed57c47812ea78f",
+          "heightEncoding": "little-endian uint16; radial height = heightOffsetMeters + sample * heightScaleMeters",
+          "heightOffsetMeters": -100,
+          "heightScaleMeters": 0.5,
+          "minElevationMeters": -52.5,
+          "maxElevationMeters": 52.5
+        }
+      },
+      "canonicalRadiusMeters": 235800,
+      "canonicalMassKg": 64426231964400770000
+    },
+    "neptune": {
+      "schemaVersion": 1,
+      "generatedBy": "scripts/prepare-neptune-surface.mjs",
+      "body": "neptune",
+      "referenceRadiusMeters": 24622000,
+      "bodyrefSIradius": 24622000,
+      "sourceType": "mapped-representative-atmospheric-appearance",
+      "sourceOrganization": "NASA/JPL-Caltech",
+      "coordinateConvention": "Runtime samples the supplied 2:1 texture with east-positive -180..180 and north-at-top conventions; source longitude alignment and prime meridian are unverified.",
+      "coordinates": {
+        "longitude": "east-positive -180..180; source alignment unverified",
+        "latitude": "planetocentric; source alignment unverified",
+        "projection": "2:1 image texture; exact source projection metadata is not published",
+        "northAtTop": "unverified from source metadata",
+        "pixelRegistration": "pixel-centered derivative convention"
+      },
+      "heightPolicy": "Neptune is a gas giant: no solid terrain or height files are emitted. Cloud-top brightness is atmospheric appearance, never elevation.",
+      "provenance": {
+        "citation": "NASA Neptune 3-D resource; representative texture from NASA/JPL planetary map resources.",
+        "source": {
+          "file": "neptune-nasa-texture.webp",
+          "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/3d/resources/image/neptune/preview.webp?w=2048",
+          "sha256": "b7a227bcf7d0d38a810432d9983aed60c47f7708e547ff3c912280e40e9b7f9d",
+          "dimensions": "2048x1024 WebP, 8-bit sRGB, 3-channel"
+        },
+        "sourceMetadata": "https://science.nasa.gov/3d-resources/neptune/",
+        "mapCatalog": "https://maps.jpl.nasa.gov/tmaps/neptune.html",
+        "coverage": "Representative global-looking atmospheric cloud appearance. JPL cautions that gas-giant maps are representative atmospheric illustrations whose appearance changes daily and are not for scientific analysis.",
+        "license": "NASA/JPL-Caltech public mission imagery/resource; retain NASA/JPL attribution and representative-appearance qualification.",
+        "processing": "Pinned 2048x1024 NASA WebP; verified 8-bit sRGB 3-channel metadata; resized without reprojection to 512x256, 1024x512 and native-capped 2048x1024 JPEG derivatives; color only.",
+        "alignmentStatus": "The NASA visualization resource does not publish a cartographic geotransform or prime-meridian convention. Runtime adopts north-up east-positive lookup; absolute imagery alignment is unverified, not a scientific coordinate product.",
+        "canonicalRadiusMeters": 24622000,
+        "sourceReferenceRadiusMeters": null
+      },
+      "levels": {
+        "preview": {
+          "color": "/assets/surfaces/neptune-preview.jpg",
+          "width": 512,
+          "height": 256,
+          "colorSha256": "9a8801afb9949aaf4f74d7514f61a9c1db94c6fa3ed6a7d75c0d3122eb50950c",
+          "colorKind": "NASA/JPL representative atmospheric cloud appearance"
+        },
+        "medium": {
+          "color": "/assets/surfaces/neptune-medium.jpg",
+          "width": 1024,
+          "height": 512,
+          "colorSha256": "a7f862c882872af2addab0025ab62e8446ba2b1a84b5ac786f38a3b38a7bd250",
+          "colorKind": "NASA/JPL representative atmospheric cloud appearance"
+        },
+        "near": {
+          "color": "/assets/surfaces/neptune-near.jpg",
+          "width": 2048,
+          "height": 1024,
+          "colorSha256": "ced78196e859b1d991efb54fce091bb2e4689edf909804b590dacfe5bcee3911",
+          "colorKind": "NASA/JPL representative atmospheric cloud appearance"
+        }
+      },
+      "canonicalRadiusMeters": 24622000,
+      "canonicalMassKg": 1.024092e+26
+    },
+    "oberon": {
+      "schemaVersion": 1,
+      "generatedBy": "scripts/prepare-oberon-surface.mjs",
+      "body": "oberon",
+      "referenceRadiusMeters": 761400,
+      "bodyrefSIradius": 761400,
+      "sourceType": "mapped-voyager-appearance-plus-explicit-procedural-height",
+      "sourceOrganization": "NASA/JPL-Caltech / USGS Astrogeology Science Center",
+      "coordinateConvention": "u=(east longitude + pi)/(2 pi), v=(pi/2 - planetocentric latitude)/pi; pixel centers; north at top",
+      "coordinates": {
+        "longitude": "east-positive -180..180 (alignment unverified by source metadata)",
+        "latitude": "planetocentric (alignment unverified by source metadata)",
+        "projection": "equirectangular texture supplied for NASA 3-D resource",
+        "northAtTop": true,
+        "pixelRegistration": "pixel-centered",
+        "sourceCoverage": "Voyager 2 mapped approximately 40% of Oberon; unobserved regions are retained as source appearance gap and are not presented as measured coverage"
+      },
+      "heightPolicy": "No reliable global Oberon DEM is available. Deterministic restrained relief is generated from a seamless 3D direction-vector field independent of color; it is an appearance approximation, not measured Oberon topography or image-brightness inference.",
+      "provenance": {
+        "citation": "NASA Uranus–Oberon 3-D resource, mosaicked with Voyager imagery; credit USGS/Tammy Becker and JPL/Caltech",
+        "source": {
+          "file": "oberon-voyager-texture.webp",
+          "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/3d/resources/image/uranus---oberon/preview.webp?w=2048",
+          "sha256": "4579ddf4324669387024c0176543691d008543edac94c0c7e3195f6a65fd83b9",
+          "dimensions": "2048x1024 WebP, 8-bit sRGB, 3-channel"
+        },
+        "sourceMetadata": "https://science.nasa.gov/3d-resources/uranus-oberon/",
+        "missionReference": "https://www.jpl.nasa.gov/images/pia00036-oberon-high-resolution-color-composite/",
+        "coverage": "Voyager 2 mapped approximately 40% of Oberon during the 1986 flyby; the official texture retains unmapped/black regions rather than inventing source imagery.",
+        "license": "NASA/JPL/Caltech and USGS public mission imagery; retain attribution.",
+        "processing": "Pinned 2048x1024 NASA WebP; resized without reprojection to 512x256, 1024x512 and native 2048x1024 JPEG derivatives; color is never used to derive height.",
+        "proceduralHeight": "Seamless direction-vector field, little-endian uint16, height = -160 + sample x 0.5 m; bounded range is recorded per level; synthetic approximation only.",
+        "canonicalRadiusMeters": 761400,
+        "sourceReferenceRadiusMeters": null
+      },
+      "levels": {
+        "preview": {
+          "color": "/assets/surfaces/oberon-preview.jpg",
+          "width": 512,
+          "height": 256,
+          "colorSha256": "d3ad6780b57779032b7176a314b829fafd5e3e5893fcc4c20c923df80860e3b9",
+          "colorKind": "NASA/JPL/USGS Voyager 2 mapped appearance"
+        },
+        "medium": {
+          "color": "/assets/surfaces/oberon-medium.jpg",
+          "width": 1024,
+          "height": 512,
+          "colorSha256": "d7ff3c4db480714729e70dc420446ced90fc23ae99a5b56596cca0f2019f6e77",
+          "colorKind": "NASA/JPL/USGS Voyager 2 mapped appearance",
+          "heightUrl": "/assets/surfaces/oberon-medium.height.bin",
+          "heightWidth": 1024,
+          "heightHeight": 512,
+          "heightSha256": "0d00297ce69cb9e5c01553a60422be9f070635e57861876b79e9f72236558929",
+          "heightEncoding": "little-endian uint16; radial height = heightOffsetMeters + sample * heightScaleMeters",
+          "heightOffsetMeters": -160,
+          "heightScaleMeters": 0.5,
+          "minElevationMeters": -89.5,
+          "maxElevationMeters": 89.5
+        },
+        "near": {
+          "color": "/assets/surfaces/oberon-near.jpg",
+          "width": 2048,
+          "height": 1024,
+          "colorSha256": "3fc82cc5e59622196abaf4940419b9a6c0c5b214dc40cdd58fb7e28060a2df11",
+          "colorKind": "NASA/JPL/USGS Voyager 2 mapped appearance",
+          "heightUrl": "/assets/surfaces/oberon-near.height.bin",
+          "heightWidth": 2048,
+          "heightHeight": 1024,
+          "heightSha256": "ad9d86644c90cf8126c9f50bdf7d2fbeeba292eec0b778fee28e28c41277b8ef",
+          "heightEncoding": "little-endian uint16; radial height = heightOffsetMeters + sample * heightScaleMeters",
+          "heightOffsetMeters": -160,
+          "heightScaleMeters": 0.5,
+          "minElevationMeters": -89.5,
+          "maxElevationMeters": 89.5
+        }
+      },
+      "canonicalRadiusMeters": 761400,
+      "canonicalMassKg": 3.075978005184065e+21
+    },
+    "phobos": {
+      "schemaVersion": 1,
+      "bodyId": "phobos",
+      "sourceType": "measured-irregular-shape",
+      "geometry": "phobos-shape.json",
+      "units": "m",
+      "coordinateFrame": "Phobos body-fixed planetocentric; +X at east-positive longitude 0, +Y north, +Z east-positive longitude 90; radii are from the PDS body-centered latitude/longitude table",
+      "vertexCount": 842,
+      "triangleCount": 1680,
+      "artifactSha256": "6afd26527b03f3562e818e51a58060f76375d4758feb4d1e5cdbd5bbf35843be",
+      "source": {
+        "product": "NASA PDS Small Body Optical Shape Models Bundle V1.0",
+        "logicalId": "urn:nasa:pds:ast-sat.thomas.shape-models:data:m1phobos_tab",
+        "citation": "Thomas et al. (2021), https://doi.org/10.26033/g5e0-kh52",
+        "sourceFile": "m1phobos.tab",
+        "sourceUrl": "https://sbnarchive.psi.edu/pds4/non_mission/ast-sat.thomas.shape-models_V1_0/data/m1phobos.tab",
+        "sourceSha256": "e19d7f585d710747fa4350c078c558003a7e2122162e908d5fdd33b1970f0b1b",
+        "sourceSampling": "2 degree planetocentric latitude/longitude grid; radius in kilometers"
+      },
+      "reduction": {
+        "latitudeStepDegrees": 12,
+        "longitudeStepDegrees": 6,
+        "method": "measured source vertices sampled on a bounded regular subset; no fitted ellipsoid or invented relief"
+      },
+      "canonicalRadiusMeters": 11080,
+      "canonicalMassKg": 10618341998411820,
+      "referenceRadiusMeters": 11080,
+      "levels": {
+        "preview": {
+          "geometry": "/assets/surfaces/phobos-shape.json"
+        },
+        "medium": {
+          "geometry": "/assets/surfaces/phobos-shape.json"
+        },
+        "near": {
+          "geometry": "/assets/surfaces/phobos-shape.json"
+        }
+      }
+    },
+    "rhea": {
+      "body": "rhea",
+      "referenceRadiusMeters": 763500,
+      "bodyrefSIradius": 763500,
+      "sourceType": "mapped-imagery-plus-explicit-procedural-height",
+      "sourceOrganization": "USGS Astrogeology Science Center / NASA Voyager",
+      "coordinates": {
+        "longitude": "east-positive -180..180",
+        "latitude": "planetocentric",
+        "projection": "equirectangular (metadata-reprojected from source sinusoidal)",
+        "northAtTop": true,
+        "pixelRegistration": "pixel-centered",
+        "sourceLongitude": "positive-west -180..180",
+        "sourceOriginMeters": [
+          -2400593.43335,
+          1200505.06535
+        ],
+        "sourceResolutionMeters": 833.3947
+      },
+      "heightPolicy": "No reliable complete global Rhea DEM is bundled. Deterministic bounded relief is generated from a seamless 3D direction-vector field independent of color; it is synthetic and not brightness inference or measured Rhea topography.",
+      "provenance": {
+        "citation": "USGS Astrogeology Science Center, Rhea Voyager Global Mosaic 833m; imagery from NASA Voyager 1",
+        "source": {
+          "file": "rhea-usgs-full.tif",
+          "url": "https://planetarymaps.usgs.gov/mosaic/Rhea_Voyager_mosaic_global_833m.tif",
+          "sha256": "80a9415eab73a1b7754dc7550e2483d03bfeb0bde70f7a0fe0ad8fe40fd998f5",
+          "dimensions": "5761x2881 signed 16-bit single-band GeoTIFF; 833.3947 m/pixel"
+        },
+        "sourceLabel": {
+          "file": "rhea-usgs-full.lbl",
+          "url": "https://planetarymaps.usgs.gov/mosaic/Rhea_Voyager_mosaic_global_833m.lbl",
+          "sha256": "10ceb9f81ad25866419d8dd08a367720c3fdffdc045f8591eca2427b3db1ef36",
+          "projection": "Sinusoidal",
+          "longitudeDirection": "PositiveWest",
+          "longitudeDomain": "-180..180",
+          "centerLongitude": 0,
+          "latitudeType": "Planetocentric",
+          "upperLeftCornerMeters": [
+            -2400593.43335,
+            1200505.06535
+          ],
+          "pixelResolutionMeters": 833.3947,
+          "sourceRadiusMeters": 764000
+        },
+        "sourceMetadata": "https://astrogeology.usgs.gov/search/map/rhea_voyager_global_mosaic_833m",
+        "coverage": "Global map mosaic assembled from 25 Voyager 1 images; mapped imagery, not a complete global DEM.",
+        "license": "USGS/NASA public-domain planetary imagery; retain product and mission attribution.",
+        "processing": "Validated signed-16-bit GeoTIFF dimensions, sample format, sinusoidal projection, origin, radius, and resolution; metadata-reprojected source positive-west sinusoidal samples to east-positive -180..180 planetocentric equirectangular north-up pixel centers; grayscale high byte preserved; JPEG quality 88.",
+        "proceduralHeight": "Seamless deterministic 3D direction-vector field, little-endian uint16, height = -256 + sample x 0.5 m; not measured relief and not derived from image pixels."
+      },
+      "levels": {
+        "preview": {
+          "color": "/assets/surfaces/rhea-preview.jpg",
+          "width": 512,
+          "height": 256,
+          "colorSha256": "8734b2e61f0a6376db54bf618b3c5ff63442ccf63f67aeb68bcceb2d9c4c7cc1",
+          "colorKind": "USGS Voyager grayscale mapped imagery"
+        },
+        "medium": {
+          "color": "/assets/surfaces/rhea-medium.jpg",
+          "width": 1024,
+          "height": 512,
+          "colorSha256": "6d3e8dedff383bf8c804e0b9ef7b92d7d863398d7e6da20e73331c3c51f9d6da",
+          "colorKind": "USGS Voyager grayscale mapped imagery",
+          "heightUrl": "/assets/surfaces/rhea-medium.height.bin",
+          "heightWidth": 1024,
+          "heightHeight": 512,
+          "heightSha256": "99651e298dd5871c0b8b6243c67e442729e42456f36c6a1bf47fdf498af2716e",
+          "heightEncoding": "little-endian uint16; radial height = heightOffsetMeters + sample * heightScaleMeters",
+          "heightOffsetMeters": -256,
+          "heightScaleMeters": 0.5,
+          "minElevationMeters": -142,
+          "maxElevationMeters": 142
+        },
+        "near": {
+          "color": "/assets/surfaces/rhea-near.jpg",
+          "width": 2048,
+          "height": 1024,
+          "colorSha256": "950a4b51dc53ae3081a65d2f041459a4fe614ba67f287e85851e25d51b059df6",
+          "colorKind": "USGS Voyager grayscale mapped imagery",
+          "heightUrl": "/assets/surfaces/rhea-near.height.bin",
+          "heightWidth": 2048,
+          "heightHeight": 1024,
+          "heightSha256": "586ab238d6f52178c78b14d21b1ac1f031c63d9e79fb0a30209ea8be0ad5eb9d",
+          "heightEncoding": "little-endian uint16; radial height = heightOffsetMeters + sample * heightScaleMeters",
+          "heightOffsetMeters": -256,
+          "heightScaleMeters": 0.5,
+          "minElevationMeters": -142,
+          "maxElevationMeters": 142
+        }
+      },
+      "canonicalRadiusMeters": 763500,
+      "canonicalMassKg": 2.3064853243036725e+21
+    },
+    "saturn": {
+      "schemaVersion": 1,
+      "generatedBy": "scripts/prepare-saturn-surface.mjs",
+      "body": "saturn",
+      "referenceRadiusMeters": 58232000,
+      "bodyrefSIradius": 58232000,
+      "sourceType": "atmospheric-mapped-appearance",
+      "sourceOrganization": "NASA / JPL-Caltech Solar System Simulator",
+      "coordinateConvention": "Runtime samples the supplied 2:1 texture with east-positive -180..180 and north-at-top conventions; source longitude alignment and prime meridian are unverified.",
+      "coordinates": {
+        "longitude": "runtime east-positive -180..180; source alignment unverified",
+        "latitude": "runtime planetocentric; source alignment unverified",
+        "projection": "2:1 image texture; exact source projection metadata is not published",
+        "northAtTop": "unverified from source metadata",
+        "pixelRegistration": "pixel-centered derivative convention"
+      },
+      "heightPolicy": "Saturn is a gas giant: no solid terrain or height files are emitted. Cloud-top brightness is atmospheric appearance, never elevation.",
+      "provenance": {
+        "citation": "NASA Saturn 3-D resource; fictional representative texture from the JPL/Caltech generated planetary-map database",
+        "source": {
+          "file": "saturn-nasa-texture.webp",
+          "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/3d/resources/image/saturn/preview.webp?w=2048",
+          "sha256": "1478734cb7d6d140b15cfc8729e71fb38948583c15dd4d8ce7efbf1c4b7ca32c",
+          "dimensions": "2048x1024 WebP, 8-bit sRGB, 3-channel"
+        },
+        "sourceMetadata": "https://science.nasa.gov/3d-resources/saturn/",
+        "mapCatalog": "https://maps.jpl.nasa.gov/tmaps/",
+        "coverage": "Representative global-looking cloud appearance. JPL explicitly cautions that gas-giant maps are atmospheric illustrations whose appearance changes daily and must not be used for scientific analysis.",
+        "license": "NASA/JPL-Caltech generated planetary-map resource; retain NASA/JPL attribution and representative/fictional qualification.",
+        "processing": "Pinned 2048x1024 NASA WebP; verified 8-bit sRGB 3-channel metadata; resized without reprojection to 512x256, 1024x512, and native-capped 2048x1024 JPEG derivatives.",
+        "orientationEvidence": "NASA labels this an image texture for 3-D models, while the public source metadata does not specify prime meridian, longitude sign, or pole orientation. Pixel order is preserved without flip or rotate; alignment is explicitly unverified."
+      },
+      "levels": {
+        "preview": {
+          "color": "/assets/surfaces/saturn-preview.jpg",
+          "width": 512,
+          "height": 256,
+          "colorSha256": "8156e7ada71656a482253a9e23c72eb6bf39a7590eb8eb411f257e5a7fc82225",
+          "colorKind": "NASA/JPL representative atmospheric cloud appearance"
+        },
+        "medium": {
+          "color": "/assets/surfaces/saturn-medium.jpg",
+          "width": 1024,
+          "height": 512,
+          "colorSha256": "b917bf51e8d17f9a33eb2618fdac560a599332d569119cbae94c31130ec409ad",
+          "colorKind": "NASA/JPL representative atmospheric cloud appearance"
+        },
+        "near": {
+          "color": "/assets/surfaces/saturn-near.jpg",
+          "width": 2048,
+          "height": 1024,
+          "colorSha256": "38df61dda04b2b41fb54c0010003efe41e0e848dfc52b6c90d19f510702e5e53",
+          "colorKind": "NASA/JPL representative atmospheric cloud appearance"
+        }
+      },
+      "canonicalRadiusMeters": 58232000,
+      "canonicalMassKg": 5.68317e+26
+    },
+    "sun": {
+      "schemaVersion": 1,
+      "generatedBy": "scripts/prepare-sun-surface.mjs",
+      "body": "sun",
+      "referenceRadiusMeters": 695700000,
+      "bodyrefSIradius": 695700000,
+      "canonicalRadiusMeters": 695700000,
+      "sourceType": "procedural-emissive-approximate-photosphere",
+      "sourceOrganization": "Independent deterministic procedural preparation; no imagery source",
+      "coordinateConvention": "u=(east longitude + pi)/(2 pi), v=(pi/2 - planetocentric latitude)/pi; pixel centers; north at top",
+      "coordinates": {
+        "longitude": "east-positive -180..180 addressing convention only",
+        "latitude": "planetocentric addressing convention only",
+        "projection": "equirectangular procedural raster",
+        "northAtTop": true,
+        "pixelRegistration": "pixel-centered"
+      },
+      "heightPolicy": "Color-only emissive photosphere. No height products are emitted; brightness and sunspots are never interpreted as terrain or elevation.",
+      "emissive": true,
+      "provenance": {
+        "citation": "Procedural visual approximation informed by the qualitative appearance of solar granulation; not solar imagery or a scientific map.",
+        "source": null,
+        "sourceMetadata": "No mapped full-surface source selected: available solar imagery is observation-specific rather than a stable global photosphere texture.",
+        "alignmentStatus": "Longitude and latitude are addressing conventions only; no physical surface feature alignment is claimed.",
+        "coverage": "Seamless full-sphere appearance generated from direction-vector noise.",
+        "license": "Original repository-generated procedural output.",
+        "processing": "Deterministic 3-D direction-vector value-noise field; warm-white color-only JPEG derivatives at 512x256, 1024x512, and near capped at 1024x512; no height generation.",
+        "canonicalRadiusMeters": 695700000,
+        "sourceReferenceRadiusMeters": null
+      },
+      "levels": {
+        "preview": {
+          "color": "/assets/surfaces/sun-preview.jpg",
+          "width": 512,
+          "height": 256,
+          "colorSha256": "dec119da5ad2362477a70b0df77bbe203e0cee9d1c5de0fb1fb35b93a46dfd46",
+          "colorKind": "deterministic warm-white solar granulation with restrained sunspots"
+        },
+        "medium": {
+          "color": "/assets/surfaces/sun-medium.jpg",
+          "width": 1024,
+          "height": 512,
+          "colorSha256": "32c7ab095e0e84383f841371cab986337537ce99228db469e134591ceb50ed54",
+          "colorKind": "deterministic warm-white solar granulation with restrained sunspots"
+        },
+        "near": {
+          "color": "/assets/surfaces/sun-near.jpg",
+          "width": 1024,
+          "height": 512,
+          "colorSha256": "32c7ab095e0e84383f841371cab986337537ce99228db469e134591ceb50ed54",
+          "colorKind": "deterministic warm-white solar granulation with restrained sunspots"
+        }
+      },
+      "canonicalMassKg": 1.98847e+30
+    },
+    "titan": {
+      "schemaVersion": 1,
+      "generatedBy": "scripts/prepare-titan-surface.mjs",
+      "body": "titan",
+      "referenceRadiusMeters": 2575000,
+      "bodyrefSIradius": 2575000,
+      "sourceType": "real-cassini-topography-corlies-2017-with-cassini-iss-appearance",
+      "sourceOrganization": "NASA Cassini / Cornell / USGS Astrogeology",
+      "coordinateConvention": "u=(east longitude + pi)/(2 pi), v=(pi/2 - planetocentric latitude)/pi; pixel centers; north at top",
+      "coordinates": {
+        "longitude": "east-positive -180..180",
+        "latitude": "planetocentric",
+        "projection": "equirectangular",
+        "northAtTop": true,
+        "pixelRegistration": "pixel-centered",
+        "sourceDimensions": "1440x720 at 4 pixels/degree",
+        "sourceGeotransform": {
+          "upperLeftCornerMeters": [
+            -8083983.3044639,
+            4039182.762967
+          ],
+          "pixelResolutionMeters": 11235.557059713
+        },
+        "sourceCoverage": "global grid; sparse Cassini observations interpolated across unsampled regions"
+      },
+      "heightPolicy": "Corlies et al. (2017) Cassini altimetry, SARtopo and stereophotogrammetry product; the published grid is an interpolation of sparse observations and is not uniformly measured terrain. Never infer height from image brightness.",
+      "provenance": {
+        "citation": "Corlies et al. 2017, Titan's Topography and Shape at the End of the Cassini Mission, Geophysical Research Letters",
+        "source": {
+          "file": "titan-topo-corlies.zip",
+          "url": "https://data.astro.cornell.edu/titan_topo_corlies/titan_topo_corlies.zip",
+          "sha256": "b398841e75c879240d4aaeabf3156478fcc2ef1342d449b36975644380ad2659",
+          "extractedFile": "titan-topo_4PPD_interp.cub",
+          "extractedSha256": "f0399e3010c73e10b5582d1e73114e46a24304923d446b6f88029928ac6c0ddd"
+        },
+        "sourceMetadata": "https://astrogeology.usgs.gov/search/map/lorenz_et_al_2013_titan_topographic_map_of_titan",
+        "sourceProduct": "topo_4PPD_interp.cub; Corlies archive 4 pixels/degree, 1440x720, float32 little-endian",
+        "verticalDatum": "height relative to a 2575 km spherical datum",
+        "interpolation": "Corlies radial-basis-function interpolation of sparse Cassini altimetry, SARtopo and stereophotogrammetry; global coverage does not imply global measurement",
+        "sourceCoverage": "approximately 9% of Titan area directly constrained according to Corlies et al.; broad interpolated regions should not be read as resolved local relief",
+        "processing": "Validated ISIS cube header and dimensions; sampled north-up east-positive grid with longitude seam wrap; bilinear resampling to 1024x512 and 2048x1024; uint16 little-endian at 0.05 m steps; JPEG appearance kept independent",
+        "noData": "Corlies interpolated grid contains finite values across the global raster; underlying sparse-measurement coverage remains explicitly qualified"
+      },
+      "appearance": {
+        "source": {
+          "file": "titan-iss-global.jpg",
+          "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/09/p/i/a/PIA22770-1.jpg?crop=faces%2Cfocalpoint&fit=clip&h=2880&w=5760",
+          "sha256": "0afa5f3a7b2fe5534762824225954339e3714912adef37ff4a3bf3fb39358b33"
+        },
+        "metadata": "https://science.nasa.gov/resource/titan-mosaic-the-surface-under-the-haze/",
+        "instrument": "Cassini Imaging Science Subsystem",
+        "wavelengthNm": 938,
+        "coverage": "global mapped near-infrared mosaic",
+        "atmosphericTreatment": "NASA states haze/radiative-transfer correction was applied; residual atmospheric appearance is separate from terrain",
+        "license": "NASA/JPL-Caltech/University of Arizona public mission imagery; retain attribution"
+      },
+      "levels": {
+        "preview": {
+          "color": "/assets/surfaces/titan-preview.jpg",
+          "width": 512,
+          "height": 256,
+          "colorSha256": "a3509333cf670e9b63ada274ecf6846293efd051c588975cdb50351bd748475a",
+          "colorKind": "Cassini ISS 938-nm near-infrared mapped surface mosaic"
+        },
+        "medium": {
+          "color": "/assets/surfaces/titan-medium.jpg",
+          "width": 1024,
+          "height": 512,
+          "colorSha256": "93d7f4f4b1082d4486389537d98c79854dcd1fd66de6b80c08320c1290fe80be",
+          "colorKind": "Cassini ISS 938-nm near-infrared mapped surface mosaic",
+          "heightUrl": "/assets/surfaces/titan-medium.height.bin",
+          "heightWidth": 1024,
+          "heightHeight": 512,
+          "heightSha256": "2de9ec6e2b91ad22fe5cc2bbbacc22d000994bb3d1de2c9d61244e6dcdf265c7",
+          "heightEncoding": "little-endian uint16; elevation = heightOffsetMeters + sample * heightScaleMeters",
+          "heightOffsetMeters": -1800,
+          "heightScaleMeters": 0.05,
+          "minElevationMeters": -1610.9,
+          "maxElevationMeters": 744.75,
+          "sourceSampleRangeMeters": [
+            -1763.6611328125,
+            819.6270751953125
+          ]
+        },
+        "near": {
+          "color": "/assets/surfaces/titan-near.jpg",
+          "width": 2048,
+          "height": 1024,
+          "colorSha256": "4dd2f0b67152b71f301879f9b69970e25c0f3beea398497cb48c6be09496d48d",
+          "colorKind": "Cassini ISS 938-nm near-infrared mapped surface mosaic",
+          "heightUrl": "/assets/surfaces/titan-near.height.bin",
+          "heightWidth": 2048,
+          "heightHeight": 1024,
+          "heightSha256": "ba41fca2bc2f05c0cb894da1eca159124dcff1d2cda631992c0071817061d0bc",
+          "heightEncoding": "little-endian uint16; elevation = heightOffsetMeters + sample * heightScaleMeters",
+          "heightOffsetMeters": -1800,
+          "heightScaleMeters": 0.05,
+          "minElevationMeters": -1757.55,
+          "maxElevationMeters": 736.7000000000003,
+          "sourceSampleRangeMeters": [
+            -1763.6611328125,
+            819.6270751953125
+          ]
+        }
+      },
+      "canonicalRadiusMeters": 2574760,
+      "canonicalMassKg": 1.3451803335181219e+23
+    },
+    "titania": {
+      "schemaVersion": 1,
+      "generatedBy": "scripts/prepare-titania-surface.mjs",
+      "body": "titania",
+      "referenceRadiusMeters": 788900,
+      "bodyrefSIradius": 788900,
+      "sourceType": "mapped-voyager-appearance-plus-explicit-procedural-height",
+      "sourceOrganization": "NASA/JPL-Caltech / USGS Astrogeology Science Center",
+      "coordinateConvention": "u=(east longitude + pi)/(2 pi), v=(pi/2 - planetocentric latitude)/pi; pixel centers; north at top",
+      "coordinates": {
+        "longitude": "east-positive -180..180",
+        "latitude": "planetocentric",
+        "projection": "equirectangular texture supplied for NASA 3-D resource",
+        "northAtTop": true,
+        "pixelRegistration": "pixel-centered",
+        "sourceCoverage": "Voyager 2 mapped southern hemisphere; unobserved northern coverage is retained as source appearance gap"
+      },
+      "heightPolicy": "No reliable global Titania DEM is available. Deterministic restrained relief is generated from a seamless 3D direction-vector field independent of color; it is an appearance approximation, not measured Titania topography or image-brightness inference.",
+      "provenance": {
+        "citation": "NASA Uranus–Titania 3-D resource, mosaicked with Voyager imagery; credit USGS/Tammy Becker and JPL/Caltech",
+        "source": {
+          "file": "titania-voyager-texture.webp",
+          "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/3d/resources/image/uranus---titania/preview.webp?w=2048",
+          "sha256": "4727f174719d0a6f047d285584b073c40c73c1d18412049d696dea3ebba86862",
+          "dimensions": "2048x1024 WebP, 8-bit sRGB, 3-channel"
+        },
+        "sourceMetadata": "https://science.nasa.gov/3d-resources/uranus-titania/",
+        "alignmentStatus": "The NASA visualization resource does not publish a cartographic geotransform or prime-meridian convention. Runtime adopts north-up east-positive lookup; absolute imagery alignment is unverified, not a scientific coordinate product.",
+        "missionReference": "https://www.jpl.nasa.gov/images/pia00036-titania-high-resolution-color-composite/",
+        "coverage": "Voyager 2 observed Titania's southern hemisphere; this official texture visibly retains unmapped/black northern coverage rather than inventing source imagery.",
+        "license": "NASA/JPL/Caltech and USGS public mission imagery; retain attribution.",
+        "processing": "Pinned 2048x1024 NASA WebP; resized without reprojection to 512x256, 1024x512 and native 2048x1024 JPEG derivatives; color is never used to derive height.",
+        "proceduralHeight": "Seamless direction-vector field, little-endian uint16, height = -160 + sample x 0.5 m; bounded range is recorded per level; synthetic approximation only.",
+        "canonicalRadiusMeters": 788900,
+        "sourceReferenceRadiusMeters": null
+      },
+      "levels": {
+        "preview": {
+          "color": "/assets/surfaces/titania-preview.jpg",
+          "width": 512,
+          "height": 256,
+          "colorSha256": "a7cf7a02efc9f5afe713890c0c1994fddfa06dc325013f27c18167ee170edc88",
+          "colorKind": "NASA/JPL/USGS Voyager 2 mapped appearance"
+        },
+        "medium": {
+          "color": "/assets/surfaces/titania-medium.jpg",
+          "width": 1024,
+          "height": 512,
+          "colorSha256": "035ebe76249a6403321a03bb9dcda8c5321e190e78a976e8a385b8633e058fda",
+          "colorKind": "NASA/JPL/USGS Voyager 2 mapped appearance",
+          "heightUrl": "/assets/surfaces/titania-medium.height.bin",
+          "heightWidth": 1024,
+          "heightHeight": 512,
+          "heightSha256": "0d00297ce69cb9e5c01553a60422be9f070635e57861876b79e9f72236558929",
+          "heightEncoding": "little-endian uint16; radial height = heightOffsetMeters + sample * heightScaleMeters",
+          "heightOffsetMeters": -160,
+          "heightScaleMeters": 0.5,
+          "minElevationMeters": -89.5,
+          "maxElevationMeters": 89.5
+        },
+        "near": {
+          "color": "/assets/surfaces/titania-near.jpg",
+          "width": 2048,
+          "height": 1024,
+          "colorSha256": "12a8df277120dec116ea381600c5424a926246b3f5d9cf7b852c1ded1a8e2fc3",
+          "colorKind": "NASA/JPL/USGS Voyager 2 mapped appearance",
+          "heightUrl": "/assets/surfaces/titania-near.height.bin",
+          "heightWidth": 2048,
+          "heightHeight": 1024,
+          "heightSha256": "ad9d86644c90cf8126c9f50bdf7d2fbeeba292eec0b778fee28e28c41277b8ef",
+          "heightEncoding": "little-endian uint16; radial height = heightOffsetMeters + sample * heightScaleMeters",
+          "heightOffsetMeters": -160,
+          "heightScaleMeters": 0.5,
+          "minElevationMeters": -89.5,
+          "maxElevationMeters": 89.5
+        }
+      },
+      "canonicalRadiusMeters": 788900,
+      "canonicalMassKg": 3.3996074494703567e+21
+    },
+    "triton": {
+      "body": "triton",
+      "referenceRadiusMeters": 1352600,
+      "bodyrefSIradius": 1352600,
+      "sourceType": "mapped-imagery-plus-explicit-procedural-height",
+      "sourceOrganization": "USGS Astrogeology Science Center / NASA JPL / Lunar and Planetary Institute",
+      "coordinates": {
+        "longitude": "east-positive -180..180",
+        "latitude": "planetocentric",
+        "projection": "equirectangular",
+        "northAtTop": true,
+        "pixelRegistration": "pixel-centered",
+        "sourceLongitude": "east-positive -180..180",
+        "sourceRadiusMeters": 1350000,
+        "sourceResolutionMeters": 600
+      },
+      "heightPolicy": "No reliable complete global Triton DEM is bundled. Deterministic bounded relief is generated from a seamless 3D direction-vector field independent of color; it is synthetic and not brightness inference or measured Triton topography.",
+      "provenance": {
+        "citation": "Triton Voyager 2 Global Color Mosaic 600m, USGS Astrogeology / NASA JPL / Lunar and Planetary Institute",
+        "source": {
+          "file": "Triton_Voyager2_ClrMosaic_GlobalFill_600m.tif",
+          "url": "https://planetarymaps.usgs.gov/mosaic/Triton_Voyager2_ClrMosaic_GlobalFill_600m.tif",
+          "sha256": "f20ed332e85df469725629b81d3a73ad026897fe561ec59d6245d249a09507db",
+          "dimensions": "14138x7069 8-bit three-band GeoTIFF; 600 m/pixel"
+        },
+        "sourceMetadata": "https://astrogeology.usgs.gov/search/map/triton_voyager_2_global_color_mosaic_600m",
+        "coverage": "Global mapped color mosaic assembled from Voyager 2 imagery; gaps were filled by neighboring pixels in the official product and coverage is uneven, especially away from the encounter hemisphere.",
+        "license": "NASA/JPL/USGS/LPI public-domain planetary imagery; retain mission and product attribution.",
+        "processing": "Validated 14138x7069 8-bit RGB GeoTIFF metadata; source is already east-positive -180..180 equirectangular and north-up; Lanczos resize to 512/1024/2048; JPEG quality 88 with 4:4:4 chroma.",
+        "proceduralHeight": "Seamless deterministic 3D direction-vector field, little-endian uint16, height = -512 + sample x 1 m; not measured relief and not derived from image pixels.",
+        "canonicalRadiusMeters": 1352600,
+        "sourceMetadataRadiusMeters": 1350000,
+        "radiusDifferenceMeters": 2600
+      },
+      "levels": {
+        "preview": {
+          "color": "/assets/surfaces/triton-preview.jpg",
+          "width": 512,
+          "height": 256,
+          "colorSha256": "5021cde11bb06b8780bd5c0e97034b954a8f38e1fee52a1223caa9522b8b1e78",
+          "colorKind": "USGS/NASA Voyager 2 synthesized color mosaic"
+        },
+        "medium": {
+          "color": "/assets/surfaces/triton-medium.jpg",
+          "width": 1024,
+          "height": 512,
+          "colorSha256": "910fe71c4c29e6e3774aaebccdd34abf06f683ca0f4f6891660d11f7947439a0",
+          "colorKind": "USGS/NASA Voyager 2 synthesized color mosaic",
+          "heightUrl": "/assets/surfaces/triton-medium.height.bin",
+          "heightWidth": 1024,
+          "heightHeight": 512,
+          "heightSha256": "8495772945f31ee2c1399f4e9c8d8dfd61e6bcaa80f7e832243f20b1dc77b5eb",
+          "heightEncoding": "little-endian uint16; radial height = heightOffsetMeters + sample * heightScaleMeters",
+          "heightOffsetMeters": -512,
+          "heightScaleMeters": 1,
+          "minElevationMeters": -227,
+          "maxElevationMeters": 227
+        },
+        "near": {
+          "color": "/assets/surfaces/triton-near.jpg",
+          "width": 2048,
+          "height": 1024,
+          "colorSha256": "04316798fcc2bc38e2e414446106d684ed83c95cc01c1a87ae2945b0fd0194f0",
+          "colorKind": "USGS/NASA Voyager 2 synthesized color mosaic",
+          "heightUrl": "/assets/surfaces/triton-near.height.bin",
+          "heightWidth": 2048,
+          "heightHeight": 1024,
+          "heightSha256": "cef324eb4be94bb0a2fe57affdb6d64fb30cedbbc0fdc68fbbc2a440e39b86e8",
+          "heightEncoding": "little-endian uint16; radial height = heightOffsetMeters + sample * heightScaleMeters",
+          "heightOffsetMeters": -512,
+          "heightScaleMeters": 1,
+          "minElevationMeters": -227,
+          "maxElevationMeters": 227
+        }
+      },
+      "canonicalRadiusMeters": 1352600,
+      "canonicalMassKg": 2.1402925550244972e+22
+    },
+    "umbriel": {
+      "schemaVersion": 1,
+      "generatedBy": "scripts/prepare-umbriel-surface.mjs",
+      "body": "umbriel",
+      "referenceRadiusMeters": 584700,
+      "bodyrefSIradius": 584700,
+      "sourceType": "mapped-voyager-appearance-plus-explicit-procedural-height",
+      "sourceOrganization": "NASA/JPL-Caltech / USGS Astrogeology Science Center",
+      "coordinateConvention": "u=(east longitude + pi)/(2 pi), v=(pi/2 - planetocentric latitude)/pi; pixel centers; north at top; source longitude registration is not independently verified",
+      "coordinates": {
+        "longitude": "east-positive -180..180 (runtime normalization; scientific source alignment unverified)",
+        "latitude": "planetocentric",
+        "projection": "equirectangular texture supplied for NASA 3-D resource",
+        "northAtTop": true,
+        "pixelRegistration": "pixel-centered",
+        "sourceCoverage": "Voyager 2 mapped southern hemisphere; unmapped regions are retained as source gaps/approximate appearance"
+      },
+      "sourceAlignment": {
+        "longitudeVerified": false,
+        "latitudeVerified": false,
+        "poleOrientationVerified": false,
+        "basis": "NASA resource supplies a rendered texture but does not publish a longitude/latitude registration or control-point metadata; JPL's map catalog characterizes maps as representative/aesthetically edited rather than scientific-analysis products; do not infer scientific longitude from pixels."
+      },
+      "heightPolicy": "No reliable global Umbriel DEM is available. Deterministic restrained relief is generated from a seamless 3D direction-vector field independent of color; it is an appearance approximation, not measured Umbriel topography or image-brightness inference.",
+      "provenance": {
+        "citation": "NASA Uranus–Umbriel 3-D resource, mosaicked with Voyager imagery; credit USGS/Tammy Becker and JPL/Caltech",
+        "source": {
+          "file": "umbriel-voyager-texture.webp",
+          "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/3d/resources/image/uranus---umbriel/preview.webp?w=2048",
+          "sha256": "bc38cae37204856e174bb8474e004f0a033ecec3fda001f4752bbd64c0c6511e",
+          "dimensions": "2048x1024 WebP, 8-bit sRGB, 3-channel"
+        },
+        "sourceMetadata": "https://science.nasa.gov/3d-resources/uranus-umbriel/",
+        "missionReference": "https://pds-imaging.jpl.nasa.gov/volumes/voyager.html",
+        "mapCatalog": "https://maps.jpl.nasa.gov/tmaps/",
+        "coverage": "Voyager 2 coverage is strongest in the southern hemisphere; unobserved or weakly constrained regions remain explicitly approximate and are not presented as measured mapping.",
+        "license": "NASA/JPL/Caltech and USGS public mission imagery; retain attribution.",
+        "processing": "Pinned 2048x1024 NASA WebP; resized without reprojection to 512x256, 1024x512 and native 2048x1024 JPEG derivatives; color is never used to derive height.",
+        "proceduralHeight": "Seamless direction-vector field, little-endian uint16, height = -120 + sample x 0.5 m; bounded range is recorded per level; synthetic approximation only.",
+        "canonicalRadiusMeters": 584700,
+        "sourceReferenceRadiusMeters": null
+      },
+      "levels": {
+        "preview": {
+          "color": "/assets/surfaces/umbriel-preview.jpg",
+          "width": 512,
+          "height": 256,
+          "colorSha256": "3b3e9791b723279a2439421fc5742b3c4c89a6ba1b08905c913c424fac29cae3",
+          "colorKind": "NASA/JPL/USGS Voyager 2 mapped appearance"
+        },
+        "medium": {
+          "color": "/assets/surfaces/umbriel-medium.jpg",
+          "width": 1024,
+          "height": 512,
+          "colorSha256": "b1dd5935cbf5689c5cb2be585bfa2610830712fc4d6ff69ebffb5dcd260a8509",
+          "colorKind": "NASA/JPL/USGS Voyager 2 mapped appearance",
+          "heightUrl": "/assets/surfaces/umbriel-medium.height.bin",
+          "heightWidth": 1024,
+          "heightHeight": 512,
+          "heightSha256": "6791e179319dac73130c56f2a10239c159d671041d9b3d96c26c5f3839e617cc",
+          "heightEncoding": "little-endian uint16; radial height = heightOffsetMeters + sample * heightScaleMeters",
+          "heightOffsetMeters": -120,
+          "heightScaleMeters": 0.5,
+          "minElevationMeters": -72,
+          "maxElevationMeters": 72
+        },
+        "near": {
+          "color": "/assets/surfaces/umbriel-near.jpg",
+          "width": 2048,
+          "height": 1024,
+          "colorSha256": "249d817332820d4c6c7c97aa983696524c1f0a2f4595129914eae065d5289ee3",
+          "colorKind": "NASA/JPL/USGS Voyager 2 mapped appearance",
+          "heightUrl": "/assets/surfaces/umbriel-near.height.bin",
+          "heightWidth": 2048,
+          "heightHeight": 1024,
+          "heightSha256": "27e867eab9cf9dce2b25db874ec7ca48e76b3f6a70e2bcaf802e6d60ee95bd0a",
+          "heightEncoding": "little-endian uint16; radial height = heightOffsetMeters + sample * heightScaleMeters",
+          "heightOffsetMeters": -120,
+          "heightScaleMeters": 0.5,
+          "minElevationMeters": -72,
+          "maxElevationMeters": 72
+        }
+      },
+      "canonicalRadiusMeters": 584700,
+      "canonicalMassKg": 1.27504007910942e+21
+    },
+    "uranus": {
+      "schemaVersion": 1,
+      "generatedBy": "scripts/prepare-uranus-surface.mjs",
+      "body": "uranus",
+      "referenceRadiusMeters": 25362000,
+      "bodyrefSIradius": 25362000,
+      "sourceType": "mapped-representative-atmospheric-appearance",
+      "sourceOrganization": "NASA/JPL/Caltech Solar System Simulator",
+      "coordinateConvention": "Runtime samples the supplied 2:1 texture with east-positive -180..180 and north-at-top conventions; source longitude alignment and prime meridian are unverified.",
+      "coordinates": {
+        "longitude": "runtime east-positive -180..180; source alignment unverified",
+        "latitude": "runtime planetocentric; source alignment unverified",
+        "projection": "2:1 image texture; exact source projection metadata is not published",
+        "northAtTop": "unverified from source metadata",
+        "pixelRegistration": "pixel-centered derivative convention"
+      },
+      "heightPolicy": "Uranus is an ice giant: no solid terrain or height files are emitted. Atmospheric color and band/brightness appearance are never elevation.",
+      "provenance": {
+        "citation": "NASA/JPL/Caltech Solar System Simulator Uranus texture map; JPL identifies it as a fictional plain solid-blue representative texture.",
+        "source": {
+          "file": "uranus-jpl-texture.jpg",
+          "url": "https://maps.jpl.nasa.gov/tmaps/pix/ura0fss1.jpg",
+          "sha256": "07020f4707f67a6572f8e823c4bbb00d71028d4550be684b8297ebea8f896aa2",
+          "dimensions": "720x360 JPEG, 8-bit sRGB, 3-channel"
+        },
+        "sourceMetadata": "https://science.nasa.gov/resource/uranus-3d-model/",
+        "mapCatalog": "https://maps.jpl.nasa.gov/tmaps/uranus.html",
+        "coverage": "Global representative atmospheric appearance; JPL states that Uranus maps are representative, atmospheric dynamics change daily, and textures are not for scientific analysis.",
+        "license": "NASA/JPL/Caltech public resource; retain NASA/JPL attribution and fictional/representative qualification.",
+        "processing": "Pinned 720x360 JPL JPEG; verified 8-bit sRGB 3-channel metadata; resized without reprojection to 512x256 preview and native-capped 720x360 medium and near JPEG derivatives; color only.",
+        "orientationEvidence": "JPL publishes a rendered texture but no cartographic geotransform, prime meridian, longitude sign, or pole-orientation metadata. Pixel order is preserved without flip or rotate; absolute imagery alignment is unverified.",
+        "canonicalRadiusMeters": 25362000,
+        "sourceReferenceRadiusMeters": null
+      },
+      "levels": {
+        "preview": {
+          "color": "/assets/surfaces/uranus-preview.jpg",
+          "width": 512,
+          "height": 256,
+          "colorSha256": "8eabb1a019231344ee43c7a0d2781bdc057e9a00bbd694cfe17f9722fee3d638",
+          "colorKind": "NASA/JPL representative atmospheric appearance"
+        },
+        "medium": {
+          "color": "/assets/surfaces/uranus-medium.jpg",
+          "width": 720,
+          "height": 360,
+          "colorSha256": "ae6c69f21d5353a8176e76dff9fbecc7ad6aa05eb5d835a5ed8bb77ee32e263e",
+          "colorKind": "NASA/JPL representative atmospheric appearance"
+        },
+        "near": {
+          "color": "/assets/surfaces/uranus-near.jpg",
+          "width": 720,
+          "height": 360,
+          "colorSha256": "ae6c69f21d5353a8176e76dff9fbecc7ad6aa05eb5d835a5ed8bb77ee32e263e",
+          "colorKind": "NASA/JPL representative atmospheric appearance"
+        }
+      },
+      "canonicalRadiusMeters": 25362000,
+      "canonicalMassKg": 8.68099e+25
+    },
+    "venus": {
+      "schemaVersion": 1,
+      "generatedBy": "scripts/prepare-venus-surface.mjs",
+      "body": "venus",
+      "referenceRadiusMeters": 6051800,
+      "bodyrefSIradius": 6051800,
+      "sourceType": "real-magellan-altimetry-with-separate-radar-appearance",
+      "coordinates": {
+        "longitude": "east-positive -180..180",
+        "latitude": "planetocentric",
+        "projection": "simple cylindrical / equirectangular",
+        "northAtTop": true,
+        "pixelRegistration": "pixel-centered",
+        "sourceOriginMeters": [
+          -19009777.2544,
+          9504888.6272
+        ],
+        "sourceResolutionMeters": [
+          4641.0589,
+          -4641.0589
+        ],
+        "sourceCoverage": "global; NoData where unmeasured"
+      },
+      "heightPolicy": "Measured Magellan altimetry elevations; NoData is encoded as zero only outside measured samples. Height is never inferred from image brightness.",
+      "provenance": {
+        "source": {
+          "file": "venus-dem.tif",
+          "url": "https://planetarymaps.usgs.gov/mosaic/Venus_Magellan_Topography_Global_4641m_v02.tif",
+          "sha256": "92dd2c8850b128f9dcceb400f1367e3df96229f5309840fee4275b74f192ea11"
+        },
+        "sourceMetadata": "https://astrogeology.usgs.gov/search/map/venus_magellan_global_topography_4641m",
+        "sourceGeoTIFF": {
+          "dimensions": "8192x4096",
+          "nodata": -32768,
+          "geotransform": "origin (-19009777.2544, 9504888.6272), pixel spacing (4641.0589, -4641.0589) m",
+          "projection": "Simple Cylindrical centered 0 degrees; planetocentric Venus sphere"
+        },
+        "verticalDatum": "Venus mean-radius datum; source page describes elevation in meters relative to radius 6051800 m; radius = 6051800 + elevation",
+        "license": "USGS Astrogeology / NASA Magellan public-domain product; retain mission and product attribution",
+        "processing": "GeoTIFF geotransform and GeoKeys validated; north-up eastward source rows decoded and resampled directly to runtime east-positive -180..180; no eye-balled flip; uint16 height encoding with 0.5 m steps",
+        "coverage": "Global map with source NoData gaps; source measured elevation range -2951..11687 m"
+      },
+      "radar": {
+        "url": "/assets/surfaces/venus-radar.jpg",
+        "source": {
+          "file": "venus-radar.jpg",
+          "url": "https://astrogeology.usgs.gov/ckan/dataset/dbef2da4-5ed3-4d99-b7bb-5391ee8d5f10/resource/433a4e88-fcf7-47c5-8c3b-9b8b608a98c9/download/full.jpg",
+          "sha256": "5c5f4a18143bcc26fe0ab92bd9270d2549cb5c8b30c8d39743b74a7574566f4d"
+        },
+        "sourceMetadata": "https://astrogeology.usgs.gov/search/map/venus_magellan_sar_fmap_left_look_global_mosaic_75m",
+        "dimensions": "1024x467 grayscale JPEG browse sample",
+        "sha256": "5c5f4a18143bcc26fe0ab92bd9270d2549cb5c8b30c8d39743b74a7574566f4d",
+        "appearance": "Magellan SAR radar backscatter; not visible color, not albedo, not height; black areas are source coverage gaps",
+        "license": "USGS Astrogeology / NASA Magellan public-domain product"
+      },
+      "levels": {
+        "preview": {
+          "color": "/assets/surfaces/venus-preview.jpg",
+          "width": 512,
+          "height": 256,
+          "colorSha256": "53203fe765a7a4bdbcfce17920a0f34c6964a4afac3062884ea9dee815b817d2",
+          "colorKind": "constant illustrative ochre ground, not measured visible color or radar backscatter"
+        },
+        "medium": {
+          "color": "/assets/surfaces/venus-medium.jpg",
+          "width": 1024,
+          "height": 512,
+          "colorSha256": "46e040fc7dc6c9ad0f31fda314d700cc0ea98576b19e6e31400225eaaf214875",
+          "colorKind": "constant illustrative ochre ground, not measured visible color or radar backscatter",
+          "heightUrl": "/assets/surfaces/venus-medium.height.bin",
+          "heightWidth": 1024,
+          "heightHeight": 512,
+          "heightSha256": "4418dbe85404283eccbdc04141300c9164840abe62cf8133cdddbb0f54c1f3a7",
+          "heightEncoding": "little-endian uint16; elevation = heightOffsetMeters + sample * heightScaleMeters",
+          "heightOffsetMeters": -4000,
+          "heightScaleMeters": 0.5,
+          "minElevationMeters": -2458,
+          "maxElevationMeters": 11107
+        },
+        "near": {
+          "color": "/assets/surfaces/venus-near.jpg",
+          "width": 2048,
+          "height": 1024,
+          "colorSha256": "3c9c4aaa09d1a04c6a2988a580d1487a1a57bfc5ab2515013f0d7d9e2c93efcf",
+          "colorKind": "constant illustrative ochre ground, not measured visible color or radar backscatter",
+          "heightUrl": "/assets/surfaces/venus-near.height.bin",
+          "heightWidth": 2048,
+          "heightHeight": 1024,
+          "heightSha256": "74f93d125075f78411707418eb76c9022c7b9f9c20685bf5550298032c232c7f",
+          "heightEncoding": "little-endian uint16; elevation = heightOffsetMeters + sample * heightScaleMeters",
+          "heightOffsetMeters": -4000,
+          "heightScaleMeters": 0.5,
+          "minElevationMeters": -2886,
+          "maxElevationMeters": 11162
+        }
+      },
+      "canonicalRadiusMeters": 6051800,
+      "canonicalMassKg": 4.86731e+24
+    }
+  }
+}

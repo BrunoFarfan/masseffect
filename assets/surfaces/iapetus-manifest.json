@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "generatedBy": "scripts/prepare-iapetus-surface.mjs",
+  "coordinateConvention": "u=(east longitude + pi)/(2 pi), v=(pi/2 - planetocentric latitude)/pi; pixel centers; north at top",
+  "bodies": {
+    "iapetus": {
+      "body": "iapetus",
+      "referenceRadiusMeters": 734300,
+      "bodyrefSIradius": 734300,
+      "sourceType": "mapped-imagery-plus-explicit-procedural-height",
+      "sourceOrganization": "USGS Astrogeology Science Center / NASA Cassini and Voyager",
+      "coordinates": {
+        "longitude": "east-positive -180..180",
+        "latitude": "planetocentric",
+        "projection": "equirectangular (normalized from source Simple Cylindrical)",
+        "northAtTop": true,
+        "pixelRegistration": "pixel-centered",
+        "sourceLongitude": "positive-west -180..180",
+        "sourcePrimeCenter": "0 degrees",
+        "sourceGeotransform": {
+          "upperLeftCornerMeters": [
+            -2312212.193042,
+            1156106.096521
+          ],
+          "pixelResolutionMeters": 802.851456
+        }
+      },
+      "heightPolicy": "No reliable complete global Iapetus DEM is bundled. Deterministic bounded relief is generated from a seamless 3D direction-vector field independent of color; it is synthetic and not brightness inference or measured Iapetus topography.",
+      "provenance": {
+        "citation": "USGS Astrogeology Science Center, Iapetus Cassini-Voyager Global Mosaic 803m; imagery from NASA Cassini and Voyager",
+        "source": {
+          "file": "iapetus-usgs-full.tif",
+          "url": "https://planetarymaps.usgs.gov/mosaic/Iapetus_Cassini_Voyager_mosaic_global_783m.tif",
+          "sha256": "eb8acdbed3af495102b6ec6d3efce1f03dc6bc39bb43323c23231ce590494d6e",
+          "dimensions": "5760x2880 unsigned 8-bit single-band GeoTIFF; 802.851456 m/pixel"
+        },
+        "sourceLabel": {
+          "file": "iapetus-usgs-full.lbl",
+          "url": "https://planetarymaps.usgs.gov/mosaic/Iapetus_Cassini_Voyager_mosaic_global_783m.lbl",
+          "sha256": "18bcb9ada17a7e44432a4535afcc027efb46c5e226be1b03caba5b49cfcc6abd",
+          "projection": "SimpleCylindrical",
+          "longitudeDirection": "PositiveWest",
+          "longitudeDomain": "-180..180",
+          "centerLongitude": 0,
+          "latitudeType": "Planetocentric",
+          "upperLeftCornerMeters": [
+            -2312212.193042,
+            1156106.096521
+          ],
+          "pixelResolutionMeters": 802.851456,
+          "sourceRadiusMeters": 736000
+        },
+        "sourceMetadata": "https://astrogeology.usgs.gov/search/map/iapetus_cassini_voyager_global_mosaic_803m",
+        "coverage": "Global mapped mosaic; poles are filled by Voyager imagery and coverage is not a global DEM.",
+        "license": "USGS/NASA public-domain planetary imagery; retain product and mission attribution.",
+        "processing": "Validated 5760x2880 unsigned-8-bit raster and ISIS label metadata; reversed source positive-west longitude into east-positive -180..180 using pixel-center seam wrap; north-up; Lanczos resize to 512/1024/2048; JPEG quality 88 with no legend or map decoration.",
+        "proceduralHeight": "Seamless deterministic 3D direction-vector field, little-endian uint16, height = -256 + sample x 0.5 m; not measured relief and not derived from image pixels.",
+        "canonicalRadiusMeters": 734300,
+        "sourceMetadataRadiusMeters": 736000,
+        "radiusDifferenceMeters": -1700
+      },
+      "levels": {
+        "preview": {
+          "color": "/assets/surfaces/iapetus-preview.jpg",
+          "width": 512,
+          "height": 256,
+          "colorSha256": "bf2ec854151ac83cae8185d0959cf5b4fb84157cefccd2aa341579b9e0993ea1",
+          "colorKind": "USGS Cassini/Voyager grayscale mapped imagery"
+        },
+        "medium": {
+          "color": "/assets/surfaces/iapetus-medium.jpg",
+          "width": 1024,
+          "height": 512,
+          "colorSha256": "62860b438906d6df4d479668192f3400c561b095bfc81d9146b6666b0b340cae",
+          "colorKind": "USGS Cassini/Voyager grayscale mapped imagery",
+          "heightUrl": "/assets/surfaces/iapetus-medium.height.bin",
+          "heightWidth": 1024,
+          "heightHeight": 512,
+          "heightSha256": "ed614b8a13e91ff9d6b2a4d44b86802a773ad541904756f436c86de606f18cbf",
+          "heightEncoding": "little-endian uint16; radial height = heightOffsetMeters + sample * heightScaleMeters",
+          "heightOffsetMeters": -256,
+          "heightScaleMeters": 0.5,
+          "minElevationMeters": -156,
+          "maxElevationMeters": 156
+        },
+        "near": {
+          "color": "/assets/surfaces/iapetus-near.jpg",
+          "width": 2048,
+          "height": 1024,
+          "colorSha256": "aaca75aa66a6c918cbcfdd17a063ba4041f6dff80912aa64ac8cbb8134ee27ae",
+          "colorKind": "USGS Cassini/Voyager grayscale mapped imagery",
+          "heightUrl": "/assets/surfaces/iapetus-near.height.bin",
+          "heightWidth": 2048,
+          "heightHeight": 1024,
+          "heightSha256": "3360ebf6b19b8944c2a0fee0e1e78a01ba5e2e469607abdb76a93b477c901b67",
+          "heightEncoding": "little-endian uint16; radial height = heightOffsetMeters + sample * heightScaleMeters",
+          "heightOffsetMeters": -256,
+          "heightScaleMeters": 0.5,
+          "minElevationMeters": -156,
+          "maxElevationMeters": 156
+        }
+      }
+    }
+  }
+}

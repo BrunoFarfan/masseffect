@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "generatedBy": "scripts/prepare-europa-surface.mjs",
+  "coordinateConvention": "u=(east longitude + pi)/(2 pi), v=(pi/2 - planetocentric latitude)/pi; pixel centers; north at top",
+  "bodies": {
+    "europa": {
+      "body": "europa",
+      "referenceRadiusMeters": 1560800,
+      "bodyrefSIradius": 1560800,
+      "sourceType": "mapped-imagery-plus-explicit-procedural-height",
+      "sourceOrganization": "USGS Astrogeology Science Center / NASA Voyager and Galileo SSI",
+      "coordinates": {
+        "longitude": "east-positive -180..180",
+        "latitude": "planetocentric",
+        "projection": "equirectangular (normalized from source Simple Cylindrical)",
+        "northAtTop": true,
+        "pixelRegistration": "pixel-centered",
+        "sourceLongitude": "positive-west 0..360",
+        "sourcePrimeCenter": "180W; source raster seam is shifted to runtime -180E before reversal"
+      },
+      "heightPolicy": "Deterministic bounded procedural relief is independent of imagery and is not Europa topography; no brightness/albedo inference.",
+      "provenance": {
+        "citation": "USGS Astrogeology / NASA Voyager and Galileo SSI Europa Voyager-Galileo SSI Global Mosaic 500m",
+        "source": {
+          "file": "europa-usgs-full.tif",
+          "url": "https://planetarymaps.usgs.gov/mosaic/Europa_Voyager_GalileoSSI_global_mosaic_500m.tif",
+          "sha256": "a323f0c9ccb47d5af9902ea8297fe81f9a9708795645b80801f103c3f7c9a624",
+          "dimensions": "19631x9816 8-bit single-band GeoTIFF; 499.97456657942 m/pixel"
+        },
+        "sourceMetadata": "https://astrogeology.usgs.gov/search/map/europa_voyager_galileo_ssi_global_mosaic_500m",
+        "sourceLabel": {
+          "url": "https://astrogeology.usgs.gov/ckan/dataset/4080036f-afc5-422e-abe9-1c0c8e4f98ea/resource/db62f55a-9d03-474e-a349-1fd7d8f0d5fc/download/europa_voyager_galileossi_global_mosaic_500m.lbl",
+          "projection": "SimpleCylindrical",
+          "longitudeDirection": "PositiveWest",
+          "longitudeDomain": "0..360",
+          "centerLongitude": 180,
+          "latitudeType": "Planetocentric",
+          "upperLeftCornerMeters": [
+            -4907750.3455436,
+            2453875.1727718
+          ],
+          "pixelResolutionMeters": 499.97456657942,
+          "radiusMeters": 1562089.9658
+        },
+        "license": "USGS/NASA public-domain planetary imagery; retain product and mission attribution.",
+        "processing": "Pinned full GeoTIFF; decode 8-bit single-band raster; map source positive-west 0..360 with 180W prime center to east-positive -180..180 using reversal plus half-raster seam shift; Lanczos resize to 512/1024/2048; JPEG quality 88.",
+        "proceduralHeight": "Deterministic sinusoidal synthetic field, 0.5 m encoding, -96..95.5 m range; not measured relief and not derived from image pixels."
+      },
+      "levels": {
+        "preview": {
+          "color": "/assets/surfaces/europa-preview.jpg",
+          "width": 512,
+          "height": 256,
+          "colorSha256": "a45c9df6fdecac345e5ef292b11f5bd194c7465d7baf8b28651e3bf6646adea6",
+          "heightUrl": "/assets/surfaces/europa-preview.height.bin",
+          "heightWidth": 512,
+          "heightHeight": 256,
+          "heightSha256": "20d9b6f0c501b41fda1de0e0a90d34a423575d238663fb9f1627616b13cee948",
+          "heightOffsetMeters": -96,
+          "heightScaleMeters": 0.5,
+          "minElevationMeters": -42.5,
+          "maxElevationMeters": 42.5
+        },
+        "medium": {
+          "color": "/assets/surfaces/europa-medium.jpg",
+          "width": 1024,
+          "height": 512,
+          "colorSha256": "e651ab88e1dc04fbc4c6679807732f3edc2dc3b7a24bc7a537264bb9d52666b8",
+          "heightUrl": "/assets/surfaces/europa-medium.height.bin",
+          "heightWidth": 1024,
+          "heightHeight": 512,
+          "heightSha256": "4dacda799a5659f3d5977937d517a7da35a21804642573c1d665820e0e202a02",
+          "heightOffsetMeters": -96,
+          "heightScaleMeters": 0.5,
+          "minElevationMeters": -43,
+          "maxElevationMeters": 42.5
+        },
+        "near": {
+          "color": "/assets/surfaces/europa-near.jpg",
+          "width": 2048,
+          "height": 1024,
+          "colorSha256": "3e30734524a0a4822dae900d8e878944bec526eb9595f29610c5faf752493afd",
+          "heightUrl": "/assets/surfaces/europa-near.height.bin",
+          "heightWidth": 2048,
+          "heightHeight": 1024,
+          "heightSha256": "63b9abb9b042a7ffc35b0fcbc7bac26064e2c57ccfd7ccfc17c3439c282e2bb5",
+          "heightOffsetMeters": -96,
+          "heightScaleMeters": 0.5,
+          "minElevationMeters": -43,
+          "maxElevationMeters": 43
+        }
+      }
+    }
+  }
+}

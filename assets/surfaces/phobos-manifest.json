@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "bodyId": "phobos",
+  "sourceType": "measured-irregular-shape",
+  "geometry": "phobos-shape.json",
+  "units": "m",
+  "coordinateFrame": "Phobos body-fixed planetocentric; +X at east-positive longitude 0, +Y north, +Z east-positive longitude 90; radii are from the PDS body-centered latitude/longitude table",
+  "vertexCount": 842,
+  "triangleCount": 1680,
+  "artifactSha256": "6afd26527b03f3562e818e51a58060f76375d4758feb4d1e5cdbd5bbf35843be",
+  "source": {
+    "product": "NASA PDS Small Body Optical Shape Models Bundle V1.0",
+    "logicalId": "urn:nasa:pds:ast-sat.thomas.shape-models:data:m1phobos_tab",
+    "citation": "Thomas et al. (2021), https://doi.org/10.26033/g5e0-kh52",
+    "sourceFile": "m1phobos.tab",
+    "sourceUrl": "https://sbnarchive.psi.edu/pds4/non_mission/ast-sat.thomas.shape-models_V1_0/data/m1phobos.tab",
+    "sourceSha256": "e19d7f585d710747fa4350c078c558003a7e2122162e908d5fdd33b1970f0b1b",
+    "sourceSampling": "2 degree planetocentric latitude/longitude grid; radius in kilometers"
+  },
+  "reduction": {
+    "latitudeStepDegrees": 12,
+    "longitudeStepDegrees": 6,
+    "method": "measured source vertices sampled on a bounded regular subset; no fitted ellipsoid or invented relief"
+  }
+}

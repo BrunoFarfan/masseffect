@@ -50,7 +50,20 @@ Stars store luminosity in watts and effective temperature in kelvin, with a rest
 
 Planet initial conditions use rounded [JPL J2000 elements](https://ssd.jpl.nasa.gov/planets/approx_pos.html) and [physical parameters](https://ssd.jpl.nasa.gov/planets/phys_par.html). Moons use approximate mean circular relative states with [JPL satellite physical parameters](https://ssd.jpl.nasa.gov/sats/phys_par/) and inclined orbital planes, not an epoch-accurate ephemeris. Moon systems retain their original subsystem barycenter, then the whole system is shifted into its barycentric rest frame. All subsequent motion comes from gravity.
 
-Resolved disks blend into inexpensive ray/sphere shading, including when a close body's center leaves the viewport. Surface patterns rotate with the body; giant bands and fine surface albedo are illustrative, not measured maps or terrain. Unresolved fine detail fades to avoid aliasing. The camera cannot penetrate a physical sphere. Trails are capped at 600 samples per body.
+Resolved disks blend into textured, illuminated surfaces using a small WebGL2 pass. **Cmd/Ctrl+K** searches bodies and named Moon/Mars landmarks and travels there. In **Details**, **Visit terrain** positions you 15 km above local relief while preserving playback; the camera follows the rotating surface. Descend with Q; ascend with E. Names uses the existing Labels toggle, with no permanent landmark panel.
+
+Moon, Mars, Earth, Mercury, Venus, Enceladus and Titan use measured elevation products (Titan is sparsely measured and heavily interpolated). Phobos and Deimos use simplified measured shape meshes. Other rocky moons use mapped imagery with explicitly procedural relief; unmapped imagery and uncertain alignment are documented per body. Gas giants use atmospheric appearance, never solid terrain, and the Sun is emissive. Venus/Titan haze is a separate illustrative layer that fades for terrain inspection, not a radiative-transfer simulation. The 1×/3× relief setting affects rendering and camera clearance only, never mass, gravity, body radius or orbital collisions. Meter-scale micro-normal detail is procedural, not measured geology. Missing WebGL2 or assets falls back to the original sphere. Trails are capped at 600 samples per body.
+
+Prepared assets ship with a [provenance manifest](assets/surfaces/manifest.json).
+The [source catalog](docs/surface-sources.md) distinguishes real DEMs, imagery,
+incomplete coverage, measured shape models and explicit approximations. To reproduce them, `npm ci` then
+`just prepare-surfaces --download`; later `just prepare-surfaces` rebuilds offline
+from checksum-verified originals in ignored `output/surface-originals`. Originals
+are never deployed. The runtime lazily loads 512/1024/2048px color levels (Moon
+and Mars reach 4096px; low-resolution sources retain their native cap). Height
+remains bounded to 2048×1024 plus Tycho/Olympus regional tiles, with a 96 MiB
+decoded cache and evicts unused detailed maps. See the [surface development log](docs/surface-development.md)
+for measured performance, strict evaluation scores and known close-range limits.
 
 Close spheres share a projected-pixel shading budget. Dense clouds use lower-resolution shading instead of drawing dozens of full-resolution overlapping surfaces; ordinary single-body approaches retain full detail. Sphere uploads and compositing are restricted to their projected bounds. This affects presentation only, never physical radii or positions.
 
@@ -58,7 +71,7 @@ Saturn's C/B/A rings are thin world-space annuli aligned with its rotating equat
 
 ## Small architecture
 
-Plain ES modules and Canvas 2D, no engine, bundler or downloaded assets. The original Python/Pygame prototype was run and inspected in the previous cycle: it had three static arbitrary-unit spheres, an unstable camera and no gravity. The browser replacement retained the useful 3D-to-screen concept; the retired version is recoverable in Git history. The focused three-pass rotation/collision follow-up is documented in [surface-impact-loop.md](docs/surface-impact-loop.md).
+Plain ES modules, Canvas 2D and a focused native WebGL2 surface pass; no engine or bundler. Bounded scientific derivatives are checked in, with `sharp` used only by offline preparation. The original Python/Pygame prototype was run and inspected in the previous cycle: it had three static arbitrary-unit spheres, an unstable camera and no gravity. The browser replacement retained the useful 3D-to-screen concept; the retired version is recoverable in Git history. The focused three-pass rotation/collision follow-up is documented in [surface-impact-loop.md](docs/surface-impact-loop.md).
 
 - `forces.js`, `physics.js`: exact forces, encounter stepping, integration and merging.
 - `impacts.js`: glancing impulses, angular momentum and bounded fragmentation.

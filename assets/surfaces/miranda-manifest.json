@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "generatedBy": "scripts/prepare-miranda-surface.mjs",
+  "body": "miranda",
+  "referenceRadiusMeters": 235800,
+  "bodyrefSIradius": 235800,
+  "sourceType": "mapped-voyager-appearance-plus-explicit-procedural-height",
+  "sourceOrganization": "NASA/JPL-Caltech / USGS Astrogeology Science Center",
+  "coordinateConvention": "u=(east longitude + pi)/(2 pi), v=(pi/2 - planetocentric latitude)/pi; pixel centers; north at top; source longitude registration is not independently verified",
+  "coordinates": {
+    "longitude": "east-positive -180..180 (runtime normalization; scientific source alignment unverified)",
+    "latitude": "planetocentric",
+    "projection": "equirectangular texture supplied for NASA 3-D resource",
+    "northAtTop": true,
+    "pixelRegistration": "pixel-centered",
+    "sourceCoverage": "Voyager 2 mapped a limited portion of Miranda; unmapped regions are retained as source gaps/approximate appearance"
+  },
+  "sourceAlignment": {
+    "longitudeVerified": false,
+    "latitudeVerified": false,
+    "poleOrientationVerified": false,
+    "basis": "NASA resource supplies a rendered texture but does not publish a longitude/latitude registration, prime-meridian label alignment, or control-point metadata; do not infer scientific longitude from pixels."
+  },
+  "heightPolicy": "No reliable global Miranda DEM is available. Deterministic restrained relief is generated from a seamless 3D direction-vector field independent of color; it is an appearance approximation, not measured Miranda topography or image-brightness inference.",
+  "provenance": {
+    "citation": "NASA Uranus–Miranda 3-D resource, mosaicked with Voyager imagery; credit USGS/Tammy Becker and JPL/Caltech",
+    "source": {
+      "file": "miranda-voyager-texture.webp",
+      "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/3d/resources/image/uranus---miranda/preview.webp?w=2048",
+      "sha256": "c1827aec1d5ccd4318c9c71d24c7fbfe5d5a984e867d32744573a8d814c69085",
+      "dimensions": "2048x1024 WebP, 8-bit sRGB, 3-channel"
+    },
+    "sourceMetadata": "https://science.nasa.gov/3d-resources/uranus-miranda/",
+    "missionReference": "https://pds-imaging.jpl.nasa.gov/volumes/voyager.html",
+    "mapCatalog": "https://maps.jpl.nasa.gov/tmaps/",
+    "coverage": "Voyager 2 coverage is limited and strongest over Miranda's observed hemisphere; unobserved or weakly constrained regions remain explicitly approximate and are not presented as measured mapping.",
+    "license": "NASA/JPL/Caltech and USGS public mission imagery; retain attribution.",
+    "processing": "Pinned 2048x1024 NASA WebP; resized without reprojection to 512x256, 1024x512 and native 2048x1024 JPEG derivatives; color is never used to derive height.",
+    "proceduralHeight": "Seamless direction-vector field, little-endian uint16, height = -100 + sample x 0.5 m; bounded range is recorded per level; synthetic approximation only.",
+    "canonicalRadiusMeters": 235800,
+    "sourceReferenceRadiusMeters": null
+  },
+  "levels": {
+    "preview": {
+      "color": "/assets/surfaces/miranda-preview.jpg",
+      "width": 512,
+      "height": 256,
+      "colorSha256": "22d3ff7058d4a98420c265d53db6b246577cc054fbdb11dbf55618757ddf4c98",
+      "colorKind": "NASA/JPL/USGS Voyager 2 mapped appearance"
+    },
+    "medium": {
+      "color": "/assets/surfaces/miranda-medium.jpg",
+      "width": 1024,
+      "height": 512,
+      "colorSha256": "107f6ac9698bb6c0144b065283d59a093d69407b776c636fd92be8dab435cbc2",
+      "colorKind": "NASA/JPL/USGS Voyager 2 mapped appearance",
+      "heightUrl": "/assets/surfaces/miranda-medium.height.bin",
+      "heightWidth": 1024,
+      "heightHeight": 512,
+      "heightSha256": "2b03c644a3b7b7b66cf9fd8105ab780dc4c36bb1aac8ca87454a2e85e099063c",
+      "heightEncoding": "little-endian uint16; radial height = heightOffsetMeters + sample * heightScaleMeters",
+      "heightOffsetMeters": -100,
+      "heightScaleMeters": 0.5,
+      "minElevationMeters": -52.5,
+      "maxElevationMeters": 52.5
+    },
+    "near": {
+      "color": "/assets/surfaces/miranda-near.jpg",
+      "width": 2048,
+      "height": 1024,
+      "colorSha256": "65855b238ae8b8cb59435209abcc97ac1ad3bd877d67699297a44435ced25752",
+      "colorKind": "NASA/JPL/USGS Voyager 2 mapped appearance",
+      "heightUrl": "/assets/surfaces/miranda-near.height.bin",
+      "heightWidth": 2048,
+      "heightHeight": 1024,
+      "heightSha256": "56e5584ce801ea60442970b951a1cb56264675b27112df627ed57c47812ea78f",
+      "heightEncoding": "little-endian uint16; radial height = heightOffsetMeters + sample * heightScaleMeters",
+      "heightOffsetMeters": -100,
+      "heightScaleMeters": 0.5,
+      "minElevationMeters": -52.5,
+      "maxElevationMeters": 52.5
+    }
+  }
+}

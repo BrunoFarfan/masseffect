@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "generatedBy": "scripts/prepare-umbriel-surface.mjs",
+  "body": "umbriel",
+  "referenceRadiusMeters": 584700,
+  "bodyrefSIradius": 584700,
+  "sourceType": "mapped-voyager-appearance-plus-explicit-procedural-height",
+  "sourceOrganization": "NASA/JPL-Caltech / USGS Astrogeology Science Center",
+  "coordinateConvention": "u=(east longitude + pi)/(2 pi), v=(pi/2 - planetocentric latitude)/pi; pixel centers; north at top; source longitude registration is not independently verified",
+  "coordinates": {
+    "longitude": "east-positive -180..180 (runtime normalization; scientific source alignment unverified)",
+    "latitude": "planetocentric",
+    "projection": "equirectangular texture supplied for NASA 3-D resource",
+    "northAtTop": true,
+    "pixelRegistration": "pixel-centered",
+    "sourceCoverage": "Voyager 2 mapped southern hemisphere; unmapped regions are retained as source gaps/approximate appearance"
+  },
+  "sourceAlignment": {
+    "longitudeVerified": false,
+    "latitudeVerified": false,
+    "poleOrientationVerified": false,
+    "basis": "NASA resource supplies a rendered texture but does not publish a longitude/latitude registration or control-point metadata; JPL's map catalog characterizes maps as representative/aesthetically edited rather than scientific-analysis products; do not infer scientific longitude from pixels."
+  },
+  "heightPolicy": "No reliable global Umbriel DEM is available. Deterministic restrained relief is generated from a seamless 3D direction-vector field independent of color; it is an appearance approximation, not measured Umbriel topography or image-brightness inference.",
+  "provenance": {
+    "citation": "NASA Uranus–Umbriel 3-D resource, mosaicked with Voyager imagery; credit USGS/Tammy Becker and JPL/Caltech",
+    "source": {
+      "file": "umbriel-voyager-texture.webp",
+      "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/3d/resources/image/uranus---umbriel/preview.webp?w=2048",
+      "sha256": "bc38cae37204856e174bb8474e004f0a033ecec3fda001f4752bbd64c0c6511e",
+      "dimensions": "2048x1024 WebP, 8-bit sRGB, 3-channel"
+    },
+    "sourceMetadata": "https://science.nasa.gov/3d-resources/uranus-umbriel/",
+    "missionReference": "https://pds-imaging.jpl.nasa.gov/volumes/voyager.html",
+    "mapCatalog": "https://maps.jpl.nasa.gov/tmaps/",
+    "coverage": "Voyager 2 coverage is strongest in the southern hemisphere; unobserved or weakly constrained regions remain explicitly approximate and are not presented as measured mapping.",
+    "license": "NASA/JPL/Caltech and USGS public mission imagery; retain attribution.",
+    "processing": "Pinned 2048x1024 NASA WebP; resized without reprojection to 512x256, 1024x512 and native 2048x1024 JPEG derivatives; color is never used to derive height.",
+    "proceduralHeight": "Seamless direction-vector field, little-endian uint16, height = -120 + sample x 0.5 m; bounded range is recorded per level; synthetic approximation only.",
+    "canonicalRadiusMeters": 584700,
+    "sourceReferenceRadiusMeters": null
+  },
+  "levels": {
+    "preview": {
+      "color": "/assets/surfaces/umbriel-preview.jpg",
+      "width": 512,
+      "height": 256,
+      "colorSha256": "3b3e9791b723279a2439421fc5742b3c4c89a6ba1b08905c913c424fac29cae3",
+      "colorKind": "NASA/JPL/USGS Voyager 2 mapped appearance"
+    },
+    "medium": {
+      "color": "/assets/surfaces/umbriel-medium.jpg",
+      "width": 1024,
+      "height": 512,
+      "colorSha256": "b1dd5935cbf5689c5cb2be585bfa2610830712fc4d6ff69ebffb5dcd260a8509",
+      "colorKind": "NASA/JPL/USGS Voyager 2 mapped appearance",
+      "heightUrl": "/assets/surfaces/umbriel-medium.height.bin",
+      "heightWidth": 1024,
+      "heightHeight": 512,
+      "heightSha256": "6791e179319dac73130c56f2a10239c159d671041d9b3d96c26c5f3839e617cc",
+      "heightEncoding": "little-endian uint16; radial height = heightOffsetMeters + sample * heightScaleMeters",
+      "heightOffsetMeters": -120,
+      "heightScaleMeters": 0.5,
+      "minElevationMeters": -72,
+      "maxElevationMeters": 72
+    },
+    "near": {
+      "color": "/assets/surfaces/umbriel-near.jpg",
+      "width": 2048,
+      "height": 1024,
+      "colorSha256": "249d817332820d4c6c7c97aa983696524c1f0a2f4595129914eae065d5289ee3",
+      "colorKind": "NASA/JPL/USGS Voyager 2 mapped appearance",
+      "heightUrl": "/assets/surfaces/umbriel-near.height.bin",
+      "heightWidth": 2048,
+      "heightHeight": 1024,
+      "heightSha256": "27e867eab9cf9dce2b25db874ec7ca48e76b3f6a70e2bcaf802e6d60ee95bd0a",
+      "heightEncoding": "little-endian uint16; radial height = heightOffsetMeters + sample * heightScaleMeters",
+      "heightOffsetMeters": -120,
+      "heightScaleMeters": 0.5,
+      "minElevationMeters": -72,
+      "maxElevationMeters": 72
+    }
+  }
+}

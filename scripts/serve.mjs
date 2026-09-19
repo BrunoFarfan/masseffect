@@ -7,9 +7,14 @@ const root = fileURLToPath(new URL("../", import.meta.url));
 const mime = {
   ".html": "text/html",
   ".js": "text/javascript",
+  ".mjs": "text/javascript",
   ".css": "text/css",
   ".svg": "image/svg+xml",
   ".png": "image/png",
+  ".jpg": "image/jpeg",
+  ".webp": "image/webp",
+  ".json": "application/json",
+  ".bin": "application/octet-stream",
   ".txt": "text/plain",
   ".xml": "application/xml",
 };

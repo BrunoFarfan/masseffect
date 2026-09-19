@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "generatedBy": "scripts/prepare-titania-surface.mjs",
+  "body": "titania",
+  "referenceRadiusMeters": 788900,
+  "bodyrefSIradius": 788900,
+  "sourceType": "mapped-voyager-appearance-plus-explicit-procedural-height",
+  "sourceOrganization": "NASA/JPL-Caltech / USGS Astrogeology Science Center",
+  "coordinateConvention": "u=(east longitude + pi)/(2 pi), v=(pi/2 - planetocentric latitude)/pi; pixel centers; north at top",
+  "coordinates": {
+    "longitude": "east-positive -180..180",
+    "latitude": "planetocentric",
+    "projection": "equirectangular texture supplied for NASA 3-D resource",
+    "northAtTop": true,
+    "pixelRegistration": "pixel-centered",
+    "sourceCoverage": "Voyager 2 mapped southern hemisphere; unobserved northern coverage is retained as source appearance gap"
+  },
+  "heightPolicy": "No reliable global Titania DEM is available. Deterministic restrained relief is generated from a seamless 3D direction-vector field independent of color; it is an appearance approximation, not measured Titania topography or image-brightness inference.",
+  "provenance": {
+    "citation": "NASA Uranus–Titania 3-D resource, mosaicked with Voyager imagery; credit USGS/Tammy Becker and JPL/Caltech",
+    "source": {
+      "file": "titania-voyager-texture.webp",
+      "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/3d/resources/image/uranus---titania/preview.webp?w=2048",
+      "sha256": "4727f174719d0a6f047d285584b073c40c73c1d18412049d696dea3ebba86862",
+      "dimensions": "2048x1024 WebP, 8-bit sRGB, 3-channel"
+    },
+    "sourceMetadata": "https://science.nasa.gov/3d-resources/uranus-titania/",
+    "alignmentStatus": "The NASA visualization resource does not publish a cartographic geotransform or prime-meridian convention. Runtime adopts north-up east-positive lookup; absolute imagery alignment is unverified, not a scientific coordinate product.",
+    "missionReference": "https://www.jpl.nasa.gov/images/pia00036-titania-high-resolution-color-composite/",
+    "coverage": "Voyager 2 observed Titania's southern hemisphere; this official texture visibly retains unmapped/black northern coverage rather than inventing source imagery.",
+    "license": "NASA/JPL/Caltech and USGS public mission imagery; retain attribution.",
+    "processing": "Pinned 2048x1024 NASA WebP; resized without reprojection to 512x256, 1024x512 and native 2048x1024 JPEG derivatives; color is never used to derive height.",
+    "proceduralHeight": "Seamless direction-vector field, little-endian uint16, height = -160 + sample x 0.5 m; bounded range is recorded per level; synthetic approximation only.",
+    "canonicalRadiusMeters": 788900,
+    "sourceReferenceRadiusMeters": null
+  },
+  "levels": {
+    "preview": {
+      "color": "/assets/surfaces/titania-preview.jpg",
+      "width": 512,
+      "height": 256,
+      "colorSha256": "a7cf7a02efc9f5afe713890c0c1994fddfa06dc325013f27c18167ee170edc88",
+      "colorKind": "NASA/JPL/USGS Voyager 2 mapped appearance"
+    },
+    "medium": {
+      "color": "/assets/surfaces/titania-medium.jpg",
+      "width": 1024,
+      "height": 512,
+      "colorSha256": "035ebe76249a6403321a03bb9dcda8c5321e190e78a976e8a385b8633e058fda",
+      "colorKind": "NASA/JPL/USGS Voyager 2 mapped appearance",
+      "heightUrl": "/assets/surfaces/titania-medium.height.bin",
+      "heightWidth": 1024,
+      "heightHeight": 512,
+      "heightSha256": "0d00297ce69cb9e5c01553a60422be9f070635e57861876b79e9f72236558929",
+      "heightEncoding": "little-endian uint16; radial height = heightOffsetMeters + sample * heightScaleMeters",
+      "heightOffsetMeters": -160,
+      "heightScaleMeters": 0.5,
+      "minElevationMeters": -89.5,
+      "maxElevationMeters": 89.5
+    },
+    "near": {
+      "color": "/assets/surfaces/titania-near.jpg",
+      "width": 2048,
+      "height": 1024,
+      "colorSha256": "12a8df277120dec116ea381600c5424a926246b3f5d9cf7b852c1ded1a8e2fc3",
+      "colorKind": "NASA/JPL/USGS Voyager 2 mapped appearance",
+      "heightUrl": "/assets/surfaces/titania-near.height.bin",
+      "heightWidth": 2048,
+      "heightHeight": 1024,
+      "heightSha256": "ad9d86644c90cf8126c9f50bdf7d2fbeeba292eec0b778fee28e28c41277b8ef",
+      "heightEncoding": "little-endian uint16; radial height = heightOffsetMeters + sample * heightScaleMeters",
+      "heightOffsetMeters": -160,
+      "heightScaleMeters": 0.5,
+      "minElevationMeters": -89.5,
+      "maxElevationMeters": 89.5
+    }
+  }
+}

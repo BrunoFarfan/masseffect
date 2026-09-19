@@ -33,15 +33,22 @@ export class Camera {
       -Math.cos(this.yaw) * Math.cos(this.pitch),
     ]);
   }
+  bodyOrientation(body) {
+    return this.terrain?.orientation(body) || body.orientation;
+  }
   get right() {
+    // World is the reflected ecliptic basis [X, Z, Y]. Project it with a
+    // matching left-handed view, otherwise every surface/shape is mirrored.
+    // Keep this in the camera basis so rays, labels and strafing agree; do not
+    // flip scientific color/height assets or their east-positive coordinates.
     return rotateVector(this.frameRotation, [
-      Math.cos(this.yaw),
+      -Math.cos(this.yaw),
       0,
-      Math.sin(this.yaw),
+      -Math.sin(this.yaw),
     ]);
   }
   get up() {
-    return cross(this.right, this.forward);
+    return cross(this.forward, this.right);
   }
   lookAt(target) {
     const d = rotateVector(
@@ -167,7 +174,8 @@ export class Camera {
         this.leveling = null;
         this.surface = {
           id: body.id,
-          orientation: [...body.orientation],
+          orientation: [...this.bodyOrientation(body)],
+          terrainFrame: !!this.terrain?.orientation?.(body),
           blend: 0,
         };
         this.followId = body.id;
@@ -181,14 +189,21 @@ export class Camera {
     this.surface.blend +=
       (target - this.surface.blend) * (1 - Math.exp(-dt / 0.18));
     if (target === 1 && this.surface.blend > 0.9999) this.surface.blend = 1;
+    // Loading/losing a visual frame is not physical rotation. Rebase its last
+    // orientation without teleporting the observer when the provider changes.
+    const terrainFrame = !!this.terrain?.orientation?.(body);
+    if (this.surface.terrainFrame !== terrainFrame) {
+      this.surface.orientation = [...this.bodyOrientation(body)];
+      this.surface.terrainFrame = terrainFrame;
+    }
     const change = blendRotation(
-      multiply(body.orientation, conjugate(this.surface.orientation)),
+      multiply(this.bodyOrientation(body), conjugate(this.surface.orientation)),
       this.surface.blend,
     );
     this.position = add(body.position, rotateVector(change, relative));
     this.frameRotation = unit(multiply(change, this.frameRotation));
     this.motion = rotateVector(change, this.motion);
-    this.surface.orientation = [...body.orientation];
+    this.surface.orientation = [...this.bodyOrientation(body)];
     // Gradually make the local vertical radial. Preserve the viewing direction;
     // only the horizon rolls into alignment. Departure levels back to system up.
     const forward = this.forward,
@@ -223,7 +238,7 @@ export class Camera {
       this.previousTarget = [...body.position];
     } else this.release();
   }
-  update(dt, bodies, keys) {
+  followTranslation(bodies) {
     const body = bodies.find((b) => b.id === this.followId);
     if (body && this.previousTarget) {
       const delta = sub(body.position, this.previousTarget);
@@ -235,6 +250,9 @@ export class Camera {
       }
       this.previousTarget = [...body.position];
     }
+  }
+  update(dt, bodies, keys) {
+    this.followTranslation(bodies);
     this.updateSurface(dt, bodies);
     this.updateLevel(dt);
     if (this.transition) {
@@ -287,7 +305,8 @@ export class Camera {
         ...bodies.map((b) =>
           Math.max(
             Math.max(3, Math.sqrt(b.radius) * 0.005),
-            length(sub(this.position, b.position)) - b.radius,
+            length(sub(this.position, b.position)) -
+              (this.terrain?.radiusAt(b, this.position) ?? b.radius),
           ),
         ),
       ) * 0.6,
@@ -308,6 +327,19 @@ export class Camera {
         hit = null;
       const a = dot(delta, delta);
       for (const b of bodies) {
+        if (this.terrain?.has(b)) {
+          const contact = this.terrain.contact(
+            b,
+            this.position,
+            delta,
+            clearance(b),
+          );
+          if (contact !== null && contact < fraction) {
+            fraction = Math.max(0, contact);
+            hit = b;
+          }
+          continue;
+        }
         const r = b.radius + clearance(b),
           p = sub(this.position, b.position),
           along = dot(p, delta),
@@ -337,7 +369,8 @@ export class Camera {
   keepOutside(bodies) {
     for (const b of bodies) {
       const d = sub(this.position, b.position),
-        r = b.radius + clearance(b);
+        r =
+          (this.terrain?.radiusAt(b, this.position) ?? b.radius) + clearance(b);
       if (length(d) < r)
         this.position = add(
           b.position,
@@ -347,7 +380,7 @@ export class Camera {
   }
   rotate(dx, dy) {
     this.transition = null;
-    this.yaw += dx * 0.002;
+    this.yaw -= dx * 0.002;
     this.pitch = clamp(
       this.pitch + dy * 0.002,
       -Math.PI / 2 + 0.02,

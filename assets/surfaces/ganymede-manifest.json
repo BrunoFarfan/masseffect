@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "generatedBy": "scripts/prepare-ganymede-surface.mjs",
+  "coordinateConvention": "u=(east longitude + pi)/(2 pi), v=(pi/2 - planetocentric latitude)/pi; pixel centers; north at top",
+  "bodies": {
+    "ganymede": {
+      "body": "ganymede",
+      "referenceRadiusMeters": 2631200,
+      "bodyrefSIradius": 2631200,
+      "sourceType": "mapped-imagery-plus-explicit-procedural-height",
+      "sourceOrganization": "USGS Astrogeology Science Center / NASA Voyager and Galileo SSI",
+      "coordinates": {
+        "longitude": "east-positive -180..180",
+        "latitude": "planetocentric",
+        "projection": "equirectangular (normalized from source Simple Cylindrical)",
+        "northAtTop": true,
+        "pixelRegistration": "pixel-centered",
+        "sourceLongitude": "positive-west 0..360",
+        "sourcePrimeCenter": "180W; source raster seam shifted to runtime -180E before reversal"
+      },
+      "heightPolicy": "Deterministic bounded procedural relief is independent of imagery and is not Ganymede topography; no brightness/albedo inference.",
+      "provenance": {
+        "citation": "USGS Astrogeology / NASA Voyager and Galileo SSI Ganymede Voyager-Galileo SSI Global Mosaic 1km",
+        "source": {
+          "file": "ganymede-usgs-full.tif",
+          "url": "https://planetarymaps.usgs.gov/mosaic/Ganymede_Voyager_GalileoSSI_global_mosaic_1km.tif",
+          "sha256": "c2c8d9506b8cf8f7a0a90d823d9052e91c8d9885cf7267fdce8de8216f4df888",
+          "dimensions": "16539x8270 8-bit single-band GeoTIFF; 1000.067192 m/pixel"
+        },
+        "sourceLabel": {
+          "file": "ganymede-usgs-full.lbl",
+          "url": "https://planetarymaps.usgs.gov/mosaic/Ganymede_Voyager_GalileoSSI_global_mosaic_1km.lbl",
+          "sha256": "4a9a2acc66ab9e5586ba97e8f8fa828c216333eea8ac910c8bf68b0afb96a599",
+          "projection": "SimpleCylindrical",
+          "longitudeDirection": "PositiveWest",
+          "longitudeDomain": "0..360",
+          "centerLongitude": 180,
+          "latitudeType": "Planetocentric",
+          "upperLeftCornerMeters": [
+            -8270555.675418,
+            4135277.837709
+          ],
+          "pixelResolutionMeters": 1000.067192,
+          "sourceRadiusMeters": 2632344.9707
+        },
+        "sourceMetadata": "https://astrogeology.usgs.gov/search/map/ganymede_voyager_galileo_ssi_global_mosaic_1km",
+        "license": "USGS/NASA public-domain planetary imagery; retain product and mission attribution.",
+        "processing": "Pinned full GeoTIFF; decode 8-bit single-band raster; metadata-derived positive-west 0..360 to east-positive -180..180 reversal plus half-raster seam shift; north-up; Lanczos resize to 512/1024/2048; JPEG quality 88.",
+        "proceduralHeight": "Deterministic direction-vector 3D trigonometric field, little-endian uint16 with height = -192 + sample x 0.5 m, -192..191.5 m; not measured relief and not derived from image pixels."
+      },
+      "levels": {
+        "preview": {
+          "color": "/assets/surfaces/ganymede-preview.jpg",
+          "width": 512,
+          "height": 256,
+          "colorSha256": "7b1df3cf1193e97ba0fbe4686fc40106cbb2125d2caa68081bbe1908fa9de625",
+          "heightUrl": "/assets/surfaces/ganymede-preview.height.bin",
+          "heightWidth": 512,
+          "heightHeight": 256,
+          "heightSha256": "0fe8a11cf006fdae9ba390d87be30a4dc6b5d9c02111b8f9373f2e44b407b44b",
+          "heightOffsetMeters": -192,
+          "heightScaleMeters": 0.5,
+          "minElevationMeters": -78.5,
+          "maxElevationMeters": 78.5
+        },
+        "medium": {
+          "color": "/assets/surfaces/ganymede-medium.jpg",
+          "width": 1024,
+          "height": 512,
+          "colorSha256": "2e8e3703cb6bb24b032c05f89d2187fa7562f25fb76c0ede7162dee2fa6bc649",
+          "heightUrl": "/assets/surfaces/ganymede-medium.height.bin",
+          "heightWidth": 1024,
+          "heightHeight": 512,
+          "heightSha256": "4054b9a39a549eb4b6b1819fe82663def33d4466fba61039c009012cd0081376",
+          "heightOffsetMeters": -192,
+          "heightScaleMeters": 0.5,
+          "minElevationMeters": -78.5,
+          "maxElevationMeters": 78.5
+        },
+        "near": {
+          "color": "/assets/surfaces/ganymede-near.jpg",
+          "width": 2048,
+          "height": 1024,
+          "colorSha256": "46e8438edb19e45bb92902daa0efd53e1ced7c1346020a3cec870828baa78219",
+          "heightUrl": "/assets/surfaces/ganymede-near.height.bin",
+          "heightWidth": 2048,
+          "heightHeight": 1024,
+          "heightSha256": "b6532869f2a93bded3442e8a88b3dc0216eff7165346799c1a4a583f8374300e",
+          "heightOffsetMeters": -192,
+          "heightScaleMeters": 0.5,
+          "minElevationMeters": -78.5,
+          "maxElevationMeters": 78.5
+        }
+      }
+    }
+  }
+}

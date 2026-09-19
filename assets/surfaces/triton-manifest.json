@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "generatedBy": "scripts/prepare-triton-surface.mjs",
+  "bodies": {
+    "triton": {
+      "body": "triton",
+      "referenceRadiusMeters": 1352600,
+      "bodyrefSIradius": 1352600,
+      "sourceType": "mapped-imagery-plus-explicit-procedural-height",
+      "sourceOrganization": "USGS Astrogeology Science Center / NASA JPL / Lunar and Planetary Institute",
+      "coordinates": {
+        "longitude": "east-positive -180..180",
+        "latitude": "planetocentric",
+        "projection": "equirectangular",
+        "northAtTop": true,
+        "pixelRegistration": "pixel-centered",
+        "sourceLongitude": "east-positive -180..180",
+        "sourceRadiusMeters": 1350000,
+        "sourceResolutionMeters": 600
+      },
+      "heightPolicy": "No reliable complete global Triton DEM is bundled. Deterministic bounded relief is generated from a seamless 3D direction-vector field independent of color; it is synthetic and not brightness inference or measured Triton topography.",
+      "provenance": {
+        "citation": "Triton Voyager 2 Global Color Mosaic 600m, USGS Astrogeology / NASA JPL / Lunar and Planetary Institute",
+        "source": {
+          "file": "Triton_Voyager2_ClrMosaic_GlobalFill_600m.tif",
+          "url": "https://planetarymaps.usgs.gov/mosaic/Triton_Voyager2_ClrMosaic_GlobalFill_600m.tif",
+          "sha256": "f20ed332e85df469725629b81d3a73ad026897fe561ec59d6245d249a09507db",
+          "dimensions": "14138x7069 8-bit three-band GeoTIFF; 600 m/pixel"
+        },
+        "sourceMetadata": "https://astrogeology.usgs.gov/search/map/triton_voyager_2_global_color_mosaic_600m",
+        "coverage": "Global mapped color mosaic assembled from Voyager 2 imagery; gaps were filled by neighboring pixels in the official product and coverage is uneven, especially away from the encounter hemisphere.",
+        "license": "NASA/JPL/USGS/LPI public-domain planetary imagery; retain mission and product attribution.",
+        "processing": "Validated 14138x7069 8-bit RGB GeoTIFF metadata; source is already east-positive -180..180 equirectangular and north-up; Lanczos resize to 512/1024/2048; JPEG quality 88 with 4:4:4 chroma.",
+        "proceduralHeight": "Seamless deterministic 3D direction-vector field, little-endian uint16, height = -512 + sample x 1 m; not measured relief and not derived from image pixels.",
+        "canonicalRadiusMeters": 1352600,
+        "sourceMetadataRadiusMeters": 1350000,
+        "radiusDifferenceMeters": 2600
+      },
+      "levels": {
+        "preview": {
+          "color": "/assets/surfaces/triton-preview.jpg",
+          "width": 512,
+          "height": 256,
+          "colorSha256": "5021cde11bb06b8780bd5c0e97034b954a8f38e1fee52a1223caa9522b8b1e78",
+          "colorKind": "USGS/NASA Voyager 2 synthesized color mosaic"
+        },
+        "medium": {
+          "color": "/assets/surfaces/triton-medium.jpg",
+          "width": 1024,
+          "height": 512,
+          "colorSha256": "910fe71c4c29e6e3774aaebccdd34abf06f683ca0f4f6891660d11f7947439a0",
+          "colorKind": "USGS/NASA Voyager 2 synthesized color mosaic",
+          "heightUrl": "/assets/surfaces/triton-medium.height.bin",
+          "heightWidth": 1024,
+          "heightHeight": 512,
+          "heightSha256": "8495772945f31ee2c1399f4e9c8d8dfd61e6bcaa80f7e832243f20b1dc77b5eb",
+          "heightEncoding": "little-endian uint16; radial height = heightOffsetMeters + sample * heightScaleMeters",
+          "heightOffsetMeters": -512,
+          "heightScaleMeters": 1,
+          "minElevationMeters": -227,
+          "maxElevationMeters": 227
+        },
+        "near": {
+          "color": "/assets/surfaces/triton-near.jpg",
+          "width": 2048,
+          "height": 1024,
+          "colorSha256": "04316798fcc2bc38e2e414446106d684ed83c95cc01c1a87ae2945b0fd0194f0",
+          "colorKind": "USGS/NASA Voyager 2 synthesized color mosaic",
+          "heightUrl": "/assets/surfaces/triton-near.height.bin",
+          "heightWidth": 2048,
+          "heightHeight": 1024,
+          "heightSha256": "cef324eb4be94bb0a2fe57affdb6d64fb30cedbbc0fdc68fbbc2a440e39b86e8",
+          "heightEncoding": "little-endian uint16; radial height = heightOffsetMeters + sample * heightScaleMeters",
+          "heightOffsetMeters": -512,
+          "heightScaleMeters": 1,
+          "minElevationMeters": -227,
+          "maxElevationMeters": 227
+        }
+      }
+    }
+  }
+}

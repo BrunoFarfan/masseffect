@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "generatedBy": "scripts/prepare-uranus-surface.mjs",
+  "body": "uranus",
+  "referenceRadiusMeters": 25362000,
+  "bodyrefSIradius": 25362000,
+  "sourceType": "mapped-representative-atmospheric-appearance",
+  "sourceOrganization": "NASA/JPL/Caltech Solar System Simulator",
+  "coordinateConvention": "Runtime samples the supplied 2:1 texture with east-positive -180..180 and north-at-top conventions; source longitude alignment and prime meridian are unverified.",
+  "coordinates": {
+    "longitude": "runtime east-positive -180..180; source alignment unverified",
+    "latitude": "runtime planetocentric; source alignment unverified",
+    "projection": "2:1 image texture; exact source projection metadata is not published",
+    "northAtTop": "unverified from source metadata",
+    "pixelRegistration": "pixel-centered derivative convention"
+  },
+  "heightPolicy": "Uranus is an ice giant: no solid terrain or height files are emitted. Atmospheric color and band/brightness appearance are never elevation.",
+  "provenance": {
+    "citation": "NASA/JPL/Caltech Solar System Simulator Uranus texture map; JPL identifies it as a fictional plain solid-blue representative texture.",
+    "source": {
+      "file": "uranus-jpl-texture.jpg",
+      "url": "https://maps.jpl.nasa.gov/tmaps/pix/ura0fss1.jpg",
+      "sha256": "07020f4707f67a6572f8e823c4bbb00d71028d4550be684b8297ebea8f896aa2",
+      "dimensions": "720x360 JPEG, 8-bit sRGB, 3-channel"
+    },
+    "sourceMetadata": "https://science.nasa.gov/resource/uranus-3d-model/",
+    "mapCatalog": "https://maps.jpl.nasa.gov/tmaps/uranus.html",
+    "coverage": "Global representative atmospheric appearance; JPL states that Uranus maps are representative, atmospheric dynamics change daily, and textures are not for scientific analysis.",
+    "license": "NASA/JPL/Caltech public resource; retain NASA/JPL attribution and fictional/representative qualification.",
+    "processing": "Pinned 720x360 JPL JPEG; verified 8-bit sRGB 3-channel metadata; resized without reprojection to 512x256 preview and native-capped 720x360 medium and near JPEG derivatives; color only.",
+    "orientationEvidence": "JPL publishes a rendered texture but no cartographic geotransform, prime meridian, longitude sign, or pole-orientation metadata. Pixel order is preserved without flip or rotate; absolute imagery alignment is unverified.",
+    "canonicalRadiusMeters": 25362000,
+    "sourceReferenceRadiusMeters": null
+  },
+  "levels": {
+    "preview": {
+      "color": "/assets/surfaces/uranus-preview.jpg",
+      "width": 512,
+      "height": 256,
+      "colorSha256": "8eabb1a019231344ee43c7a0d2781bdc057e9a00bbd694cfe17f9722fee3d638",
+      "colorKind": "NASA/JPL representative atmospheric appearance"
+    },
+    "medium": {
+      "color": "/assets/surfaces/uranus-medium.jpg",
+      "width": 720,
+      "height": 360,
+      "colorSha256": "ae6c69f21d5353a8176e76dff9fbecc7ad6aa05eb5d835a5ed8bb77ee32e263e",
+      "colorKind": "NASA/JPL representative atmospheric appearance"
+    },
+    "near": {
+      "color": "/assets/surfaces/uranus-near.jpg",
+      "width": 720,
+      "height": 360,
+      "colorSha256": "ae6c69f21d5353a8176e76dff9fbecc7ad6aa05eb5d835a5ed8bb77ee32e263e",
+      "colorKind": "NASA/JPL representative atmospheric appearance"
+    }
+  }
+}

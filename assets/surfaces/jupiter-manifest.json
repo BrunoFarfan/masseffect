@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "generatedBy": "scripts/prepare-jupiter-surface.mjs",
+  "body": "jupiter",
+  "referenceRadiusMeters": 69911000,
+  "bodyrefSIradius": 69911000,
+  "sourceType": "mapped-voyager-representative-atmospheric-appearance",
+  "sourceOrganization": "NASA/JPL/Caltech",
+  "coordinateConvention": "u=(east longitude + pi)/(2 pi), v=(pi/2 - planetocentric latitude)/pi; pixel centers; north at top",
+  "coordinates": {
+    "longitude": "east-positive -180..180",
+    "latitude": "planetocentric",
+    "projection": "equirectangular texture supplied for NASA 3-D resource",
+    "northAtTop": true,
+    "pixelRegistration": "pixel-centered"
+  },
+  "heightPolicy": "No height products are emitted. Jupiter is represented by color-only atmospheric appearance; cloud brightness and band structure are never interpreted as terrain or elevation.",
+  "provenance": {
+    "citation": "NASA Jupiter 3-D resource; texture from Voyager images; credit JPL & Caltech.",
+    "source": {
+      "file": "jupiter-voyager-texture.webp",
+      "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/3d/resources/image/jupiter/preview.webp?w=2048",
+      "sha256": "5e5a2dfe105f363611028abc3c6685d15be567fdfec92928df38799db7f37d48",
+      "dimensions": "2048x1024 WebP, 8-bit sRGB, 3-channel"
+    },
+    "sourceMetadata": "https://science.nasa.gov/3d-resources/jupiter/",
+    "missionReference": "https://maps.jpl.nasa.gov/tmaps/jupiter.html",
+    "alignmentStatus": "The NASA visualization resource does not publish a cartographic geotransform or prime-meridian convention. Runtime adopts north-up east-positive lookup; absolute imagery alignment is unverified, not a scientific coordinate product.",
+    "coverage": "Representative global atmospheric appearance; cloud patterns are time-variable and are not a current weather map.",
+    "license": "NASA/JPL/Caltech public mission imagery; retain NASA, JPL and Caltech attribution.",
+    "processing": "Pinned 2048x1024 NASA WebP; resized without reprojection to 512x256, 1024x512 and native-capped 2048x1024 JPEG derivatives; color only.",
+    "caution": "JPL states that gas-giant maps are representative, atmospheric dynamics change daily, and the textures should not be used for scientific analysis.",
+    "canonicalRadiusMeters": 69911000,
+    "sourceReferenceRadiusMeters": null
+  },
+  "levels": {
+    "preview": {
+      "color": "/assets/surfaces/jupiter-preview.jpg",
+      "width": 512,
+      "height": 256,
+      "colorSha256": "561b5cd3e177887410c46c1d467ea5008553fdb3b9b111fa5158731229e0a5a3",
+      "colorKind": "NASA/JPL/Caltech Voyager representative atmospheric appearance"
+    },
+    "medium": {
+      "color": "/assets/surfaces/jupiter-medium.jpg",
+      "width": 1024,
+      "height": 512,
+      "colorSha256": "aad376335ba40cfd2a3a98dbfbd39ab13bf8eaf89739c5dd9c0bbccc0a45edf3",
+      "colorKind": "NASA/JPL/Caltech Voyager representative atmospheric appearance"
+    },
+    "near": {
+      "color": "/assets/surfaces/jupiter-near.jpg",
+      "width": 2048,
+      "height": 1024,
+      "colorSha256": "11b58b54e1e8e63bce74b180f9b975e2541d1ade5c42798237f1e16e2413a795",
+      "colorKind": "NASA/JPL/Caltech Voyager representative atmospheric appearance"
+    }
+  }
+}
