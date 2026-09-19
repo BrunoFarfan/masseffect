@@ -24,7 +24,7 @@ assert.ok(Object.keys(release.files).length >= 3);
 for (const [file, hash] of Object.entries(release.files)) {
   assert.match(
     file,
-    /^(index\.html|style\.css|robots\.txt|sitemap\.xml|assets\/[a-z-]+\.(svg|png)|src\/[a-z-]+\.js)$/,
+    /^(index\.html|style\.css|robots\.txt|sitemap\.xml|assets\/[a-z-]+\.(svg|png)|assets\/surfaces\/[a-z0-9_-]+(?:\.height)?\.(png|jpg|webp|bin|json)|src\/[a-z-]+\.js)$/,
   );
   const asset = await get(`/${file}`);
   assert.equal(asset.status, 200, file);
@@ -34,6 +34,14 @@ for (const [file, hash] of Object.entries(release.files)) {
       ? /javascript/
       : file.endsWith(".css")
         ? /text\/css/
+        : file.endsWith(".json")
+          ? /application\/json/
+          : file.endsWith(".bin")
+            ? /application\/octet-stream/
+            : file.endsWith(".jpg")
+              ? /image\/jpeg/
+              : file.endsWith(".webp")
+                ? /image\/webp/
         : file.endsWith(".png")
           ? /image\/png/
           : file.endsWith(".svg")

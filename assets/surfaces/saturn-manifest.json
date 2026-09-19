@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "generatedBy": "scripts/prepare-saturn-surface.mjs",
+  "body": "saturn",
+  "referenceRadiusMeters": 58232000,
+  "bodyrefSIradius": 58232000,
+  "sourceType": "atmospheric-mapped-appearance",
+  "sourceOrganization": "NASA / JPL-Caltech Solar System Simulator",
+  "coordinateConvention": "Runtime samples the supplied 2:1 texture with east-positive -180..180 and north-at-top conventions; source longitude alignment and prime meridian are unverified.",
+  "coordinates": {
+    "longitude": "runtime east-positive -180..180; source alignment unverified",
+    "latitude": "runtime planetocentric; source alignment unverified",
+    "projection": "2:1 image texture; exact source projection metadata is not published",
+    "northAtTop": "unverified from source metadata",
+    "pixelRegistration": "pixel-centered derivative convention"
+  },
+  "heightPolicy": "Saturn is a gas giant: no solid terrain or height files are emitted. Cloud-top brightness is atmospheric appearance, never elevation.",
+  "provenance": {
+    "citation": "NASA Saturn 3-D resource; fictional representative texture from the JPL/Caltech generated planetary-map database",
+    "source": {
+      "file": "saturn-nasa-texture.webp",
+      "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/3d/resources/image/saturn/preview.webp?w=2048",
+      "sha256": "1478734cb7d6d140b15cfc8729e71fb38948583c15dd4d8ce7efbf1c4b7ca32c",
+      "dimensions": "2048x1024 WebP, 8-bit sRGB, 3-channel"
+    },
+    "sourceMetadata": "https://science.nasa.gov/3d-resources/saturn/",
+    "mapCatalog": "https://maps.jpl.nasa.gov/tmaps/",
+    "coverage": "Representative global-looking cloud appearance. JPL explicitly cautions that gas-giant maps are atmospheric illustrations whose appearance changes daily and must not be used for scientific analysis.",
+    "license": "NASA/JPL-Caltech generated planetary-map resource; retain NASA/JPL attribution and representative/fictional qualification.",
+    "processing": "Pinned 2048x1024 NASA WebP; verified 8-bit sRGB 3-channel metadata; resized without reprojection to 512x256, 1024x512, and native-capped 2048x1024 JPEG derivatives.",
+    "orientationEvidence": "NASA labels this an image texture for 3-D models, while the public source metadata does not specify prime meridian, longitude sign, or pole orientation. Pixel order is preserved without flip or rotate; alignment is explicitly unverified."
+  },
+  "levels": {
+    "preview": {
+      "color": "/assets/surfaces/saturn-preview.jpg",
+      "width": 512,
+      "height": 256,
+      "colorSha256": "8156e7ada71656a482253a9e23c72eb6bf39a7590eb8eb411f257e5a7fc82225",
+      "colorKind": "NASA/JPL representative atmospheric cloud appearance"
+    },
+    "medium": {
+      "color": "/assets/surfaces/saturn-medium.jpg",
+      "width": 1024,
+      "height": 512,
+      "colorSha256": "b917bf51e8d17f9a33eb2618fdac560a599332d569119cbae94c31130ec409ad",
+      "colorKind": "NASA/JPL representative atmospheric cloud appearance"
+    },
+    "near": {
+      "color": "/assets/surfaces/saturn-near.jpg",
+      "width": 2048,
+      "height": 1024,
+      "colorSha256": "38df61dda04b2b41fb54c0010003efe41e0e848dfc52b6c90d19f510702e5e53",
+      "colorKind": "NASA/JPL representative atmospheric cloud appearance"
+    }
+  }
+}

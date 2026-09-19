@@ -19,6 +19,15 @@ smoke url environment="preview" revision="":
 benchmark-fragments:
     node scripts/benchmark-fragments.mjs
 
+benchmark-surfaces:
+    node scripts/benchmark-surfaces.mjs
+
+prepare-surfaces mode="--rebuild":
+    node scripts/prepare-all-surfaces.mjs {{mode}}
+
+assemble-surfaces:
+    node scripts/assemble-surfaces.mjs
+
 check:
     for file in src/*.js scripts/*.mjs tests/*.mjs; do node --check "$file" || exit 1; done
 

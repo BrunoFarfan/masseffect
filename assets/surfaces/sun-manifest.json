@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "generatedBy": "scripts/prepare-sun-surface.mjs",
+  "body": "sun",
+  "referenceRadiusMeters": 695700000,
+  "bodyrefSIradius": 695700000,
+  "canonicalRadiusMeters": 695700000,
+  "sourceType": "procedural-emissive-approximate-photosphere",
+  "sourceOrganization": "Independent deterministic procedural preparation; no imagery source",
+  "coordinateConvention": "u=(east longitude + pi)/(2 pi), v=(pi/2 - planetocentric latitude)/pi; pixel centers; north at top",
+  "coordinates": {
+    "longitude": "east-positive -180..180 addressing convention only",
+    "latitude": "planetocentric addressing convention only",
+    "projection": "equirectangular procedural raster",
+    "northAtTop": true,
+    "pixelRegistration": "pixel-centered"
+  },
+  "heightPolicy": "Color-only emissive photosphere. No height products are emitted; brightness and sunspots are never interpreted as terrain or elevation.",
+  "emissive": true,
+  "provenance": {
+    "citation": "Procedural visual approximation informed by the qualitative appearance of solar granulation; not solar imagery or a scientific map.",
+    "source": null,
+    "sourceMetadata": "No mapped full-surface source selected: available solar imagery is observation-specific rather than a stable global photosphere texture.",
+    "alignmentStatus": "Longitude and latitude are addressing conventions only; no physical surface feature alignment is claimed.",
+    "coverage": "Seamless full-sphere appearance generated from direction-vector noise.",
+    "license": "Original repository-generated procedural output.",
+    "processing": "Deterministic 3-D direction-vector value-noise field; warm-white color-only JPEG derivatives at 512x256, 1024x512, and near capped at 1024x512; no height generation.",
+    "canonicalRadiusMeters": 695700000,
+    "sourceReferenceRadiusMeters": null
+  },
+  "levels": {
+    "preview": {
+      "color": "/assets/surfaces/sun-preview.jpg",
+      "width": 512,
+      "height": 256,
+      "colorSha256": "dec119da5ad2362477a70b0df77bbe203e0cee9d1c5de0fb1fb35b93a46dfd46",
+      "colorKind": "deterministic warm-white solar granulation with restrained sunspots"
+    },
+    "medium": {
+      "color": "/assets/surfaces/sun-medium.jpg",
+      "width": 1024,
+      "height": 512,
+      "colorSha256": "32c7ab095e0e84383f841371cab986337537ce99228db469e134591ceb50ed54",
+      "colorKind": "deterministic warm-white solar granulation with restrained sunspots"
+    },
+    "near": {
+      "color": "/assets/surfaces/sun-near.jpg",
+      "width": 1024,
+      "height": 512,
+      "colorSha256": "32c7ab095e0e84383f841371cab986337537ce99228db469e134591ceb50ed54",
+      "colorKind": "deterministic warm-white solar granulation with restrained sunspots"
+    }
+  }
+}

@@ -39,6 +39,33 @@ export async function buildSite(destination, environment = "preview") {
     "assets/social-preview.png",
     ...modules.map((name) => `src/${name}`),
   ];
+  // Only prepared, manifest-listed surface products are publishable. Scientific
+  // originals and benchmark captures remain outside this explicit allowlist.
+  const surfaceManifest = JSON.parse(
+    await readFile(resolve(root, "assets/surfaces/manifest.json"), "utf8"),
+  );
+  files.push("assets/surfaces/manifest.json");
+  const surfaceFiles = new Set();
+  for (const body of Object.values(surfaceManifest.bodies)) {
+    for (const level of Object.values(body.levels || {})) {
+      for (const path of [
+        level.color,
+        level.heightUrl,
+        level.region?.heightUrl,
+        level.geometry,
+      ]) {
+        if (!path) continue;
+        if (
+          !/^\/assets\/surfaces\/[a-z0-9_-]+(?:\.height)?\.(png|jpg|webp|bin|json)$/.test(
+            path,
+          )
+        )
+          throw new Error(`Invalid prepared surface path: ${path}`);
+        surfaceFiles.add(path.slice(1));
+      }
+    }
+  }
+  files.push(...[...surfaceFiles].sort());
   for (const file of files)
     if (!(await lstat(resolve(root, file))).isFile())
       throw new Error(`Public source must be a regular file: ${file}`);
@@ -50,6 +77,7 @@ export async function buildSite(destination, environment = "preview") {
   await rm(destination, { recursive: true, force: true });
   await mkdir(resolve(destination, "src"), { recursive: true });
   await mkdir(resolve(destination, "assets"), { recursive: true });
+  await mkdir(resolve(destination, "assets/surfaces"), { recursive: true });
   const hashes = {};
   for (const file of files) {
     await cp(resolve(root, file), resolve(destination, file));

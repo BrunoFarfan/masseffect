@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "bodyId": "deimos",
+  "sourceType": "measured-irregular-shape",
+  "geometry": "deimos-shape.json",
+  "units": "m",
+  "coordinateFrame": "Deimos body-fixed planetocentric; +X longitude 0, +Y north, +Z east-positive longitude 90",
+  "vertexCount": 1226,
+  "triangleCount": 2448,
+  "artifactSha256": "052547c868f4caeb6ad28220684bc9fb9296f9ec9b3db0b235f283377175ff6b",
+  "source": {
+    "product": "NASA PDS Small Body Optical Shape Models Bundle V1.0",
+    "logicalId": "urn:nasa:pds:ast-sat.thomas.shape-models:data:m2deimos_tab",
+    "citation": "Thomas et al. (2021), https://doi.org/10.26033/g5e0-kh52; Thomas (1993), https://doi.org/10.1006/icar.1993.1130",
+    "sourceUrl": "https://sbnarchive.psi.edu/pds4/non_mission/ast-sat.thomas.shape-models_V1_0/data/m2deimos.tab",
+    "sourceFile": "m2deimos.tab",
+    "sourceLabel": "m2deimos.xml",
+    "sourceSha256": "9a4dbc132c7546acb2ef26a386d306f155519f0988c8052acb2276ddeb7ca2fd",
+    "sourceLabelSha256": "74b4c557e6827940430b2d670ec972d9a5d5dc63ef0a95b2b6ebd141ab78f634",
+    "sourceSampling": "5 degree planetocentric latitude/longitude grid; radius in kilometers"
+  },
+  "reduction": {
+    "latitudeStepDegrees": 10,
+    "longitudeStepDegrees": 5,
+    "method": "Measured source vertices sampled on a bounded regular subset; duplicated source pole longitudes collapsed to one vertex; no fitted ellipsoid or invented relief"
+  }
+}

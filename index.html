@@ -95,6 +95,20 @@
         <button id="close-details" aria-label="Close details">×</button>
       </div>
       <dl id="properties"></dl>
+      <div id="surface-controls" hidden>
+        <label for="surface-site">Terrain study</label>
+        <select id="surface-site" aria-label="Surface landmark"></select>
+        <button id="surface-visit">Visit terrain ↗</button>
+        <label for="surface-relief">Visual relief</label>
+        <select id="surface-relief">
+          <option value="1">True scale · 1×</option>
+          <option value="3">Exaggerated · 3×</option>
+        </select>
+        <p class="quiet">
+          Relief changes only the view and camera clearance, never gravity or
+          body collisions.
+        </p>
+      </div>
       <p class="quiet">
         Temperatures are idealized radiative estimates, not climate or stellar
         evolution.
@@ -134,6 +148,25 @@
       <span id="history-end"></span>
     </div>
     <div id="toast" role="status" aria-live="polite"></div>
+    <dialog id="search-dialog" aria-labelledby="search-heading">
+      <div class="sheet-heading">
+        <h2 id="search-heading">Find in space</h2>
+        <button id="search-close" aria-label="Close search">×</button>
+      </div>
+      <input
+        id="search-input"
+        type="search"
+        role="combobox"
+        aria-controls="search-results"
+        aria-expanded="true"
+        aria-autocomplete="list"
+        autocomplete="off"
+        spellcheck="false"
+        placeholder="Body or landmark"
+        aria-label="Search bodies and landmarks"
+      />
+      <div id="search-results" role="listbox" aria-label="Search results"></div>
+    </dialog>
     <dialog id="catalog-dialog">
       <div class="sheet-heading">
         <h2>Explore</h2>
@@ -237,6 +270,8 @@
         <dd>Focus system / go closer</dd>
         <dt>H</dt>
         <dd>Inner-system view</dd>
+        <dt>⌘ / Ctrl K</dt>
+        <dd>Find a body or landmark and travel there</dd>
         <dt>Esc</dt>
         <dd>Leave mouse-look only</dd>
       </dl>

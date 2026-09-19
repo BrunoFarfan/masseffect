@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "generatedBy": "scripts/prepare-rhea-surface.mjs",
+  "bodies": {
+    "rhea": {
+      "body": "rhea",
+      "referenceRadiusMeters": 763500,
+      "bodyrefSIradius": 763500,
+      "sourceType": "mapped-imagery-plus-explicit-procedural-height",
+      "sourceOrganization": "USGS Astrogeology Science Center / NASA Voyager",
+      "coordinates": {
+        "longitude": "east-positive -180..180",
+        "latitude": "planetocentric",
+        "projection": "equirectangular (metadata-reprojected from source sinusoidal)",
+        "northAtTop": true,
+        "pixelRegistration": "pixel-centered",
+        "sourceLongitude": "positive-west -180..180",
+        "sourceOriginMeters": [
+          -2400593.43335,
+          1200505.06535
+        ],
+        "sourceResolutionMeters": 833.3947
+      },
+      "heightPolicy": "No reliable complete global Rhea DEM is bundled. Deterministic bounded relief is generated from a seamless 3D direction-vector field independent of color; it is synthetic and not brightness inference or measured Rhea topography.",
+      "provenance": {
+        "citation": "USGS Astrogeology Science Center, Rhea Voyager Global Mosaic 833m; imagery from NASA Voyager 1",
+        "source": {
+          "file": "rhea-usgs-full.tif",
+          "url": "https://planetarymaps.usgs.gov/mosaic/Rhea_Voyager_mosaic_global_833m.tif",
+          "sha256": "80a9415eab73a1b7754dc7550e2483d03bfeb0bde70f7a0fe0ad8fe40fd998f5",
+          "dimensions": "5761x2881 signed 16-bit single-band GeoTIFF; 833.3947 m/pixel"
+        },
+        "sourceLabel": {
+          "file": "rhea-usgs-full.lbl",
+          "url": "https://planetarymaps.usgs.gov/mosaic/Rhea_Voyager_mosaic_global_833m.lbl",
+          "sha256": "10ceb9f81ad25866419d8dd08a367720c3fdffdc045f8591eca2427b3db1ef36",
+          "projection": "Sinusoidal",
+          "longitudeDirection": "PositiveWest",
+          "longitudeDomain": "-180..180",
+          "centerLongitude": 0,
+          "latitudeType": "Planetocentric",
+          "upperLeftCornerMeters": [
+            -2400593.43335,
+            1200505.06535
+          ],
+          "pixelResolutionMeters": 833.3947,
+          "sourceRadiusMeters": 764000
+        },
+        "sourceMetadata": "https://astrogeology.usgs.gov/search/map/rhea_voyager_global_mosaic_833m",
+        "coverage": "Global map mosaic assembled from 25 Voyager 1 images; mapped imagery, not a complete global DEM.",
+        "license": "USGS/NASA public-domain planetary imagery; retain product and mission attribution.",
+        "processing": "Validated signed-16-bit GeoTIFF dimensions, sample format, sinusoidal projection, origin, radius, and resolution; metadata-reprojected source positive-west sinusoidal samples to east-positive -180..180 planetocentric equirectangular north-up pixel centers; grayscale high byte preserved; JPEG quality 88.",
+        "proceduralHeight": "Seamless deterministic 3D direction-vector field, little-endian uint16, height = -256 + sample x 0.5 m; not measured relief and not derived from image pixels."
+      },
+      "levels": {
+        "preview": {
+          "color": "/assets/surfaces/rhea-preview.jpg",
+          "width": 512,
+          "height": 256,
+          "colorSha256": "8734b2e61f0a6376db54bf618b3c5ff63442ccf63f67aeb68bcceb2d9c4c7cc1",
+          "colorKind": "USGS Voyager grayscale mapped imagery"
+        },
+        "medium": {
+          "color": "/assets/surfaces/rhea-medium.jpg",
+          "width": 1024,
+          "height": 512,
+          "colorSha256": "6d3e8dedff383bf8c804e0b9ef7b92d7d863398d7e6da20e73331c3c51f9d6da",
+          "colorKind": "USGS Voyager grayscale mapped imagery",
+          "heightUrl": "/assets/surfaces/rhea-medium.height.bin",
+          "heightWidth": 1024,
+          "heightHeight": 512,
+          "heightSha256": "99651e298dd5871c0b8b6243c67e442729e42456f36c6a1bf47fdf498af2716e",
+          "heightEncoding": "little-endian uint16; radial height = heightOffsetMeters + sample * heightScaleMeters",
+          "heightOffsetMeters": -256,
+          "heightScaleMeters": 0.5,
+          "minElevationMeters": -142,
+          "maxElevationMeters": 142
+        },
+        "near": {
+          "color": "/assets/surfaces/rhea-near.jpg",
+          "width": 2048,
+          "height": 1024,
+          "colorSha256": "950a4b51dc53ae3081a65d2f041459a4fe614ba67f287e85851e25d51b059df6",
+          "colorKind": "USGS Voyager grayscale mapped imagery",
+          "heightUrl": "/assets/surfaces/rhea-near.height.bin",
+          "heightWidth": 2048,
+          "heightHeight": 1024,
+          "heightSha256": "586ab238d6f52178c78b14d21b1ac1f031c63d9e79fb0a30209ea8be0ad5eb9d",
+          "heightEncoding": "little-endian uint16; radial height = heightOffsetMeters + sample * heightScaleMeters",
+          "heightOffsetMeters": -256,
+          "heightScaleMeters": 0.5,
+          "minElevationMeters": -142,
+          "maxElevationMeters": 142
+        }
+      }
+    }
+  }
+}

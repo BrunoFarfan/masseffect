@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "body": "mercury",
+  "referenceRadiusMeters": 2439400,
+  "sourceType": "real-dem",
+  "coordinates": {
+    "longitude": "east-positive -180..180",
+    "latitude": "planetocentric",
+    "projection": "equirectangular",
+    "northAtTop": true,
+    "pixelRegistration": "area-centered",
+    "sourceLongitude": "east-positive 0..360; output columns rotated 180 degrees"
+  },
+  "colorType": "constant neutral fallback; not imagery",
+  "provenance": {
+    "url": "https://planetarymaps.usgs.gov/mosaic/Mercury_Messenger_USGS_DEM_Global_665m_v2.tif",
+    "sha256": "defce776241dcaf44cb0f081ee508c17dbea28aa5a22880bf7a5e8c25f96cbea",
+    "dimensions": "23040x11520 signed 16-bit GeoTIFF",
+    "datum": "Mercury spherical radius 2439400 m; GDAL SCALE=0.5, OFFSET=0",
+    "operations": "Verified GeoTIFF GeoKeys/origin/resolution; source 0..360 raster rotated to canonical -180..180; area-resampled signed samples exported as uint16 little-endian with scale 0.5 and offset -10000",
+    "attribution": "USGS Astrogeology Science Center / NASA MESSENGER MDIS"
+  },
+  "levels": {
+    "preview": {
+      "width": 512,
+      "height": 256,
+      "color": "/assets/surfaces/mercury-preview.jpg",
+      "colorSha256": "24395718aa829f7632c8ac63c7db1a8f2db524fd34011e7e198464b76e136523",
+      "heightUrl": "/assets/surfaces/mercury-preview.height.bin",
+      "heightWidth": 512,
+      "heightHeight": 256,
+      "heightSha256": "b482f8612872664a2df92850bc8d557c85e6df259e545da838e4e80520a09067",
+      "heightScaleMeters": 0.5,
+      "heightOffsetMeters": -10000,
+      "minElevationMeters": -5328.5,
+      "maxElevationMeters": 4415
+    },
+    "medium": {
+      "width": 1024,
+      "height": 512,
+      "color": "/assets/surfaces/mercury-medium.jpg",
+      "colorSha256": "b01496240c41bfb35f853948c28519daacfdfa1266dc84c4aebfd4d664d77545",
+      "heightUrl": "/assets/surfaces/mercury-medium.height.bin",
+      "heightWidth": 1024,
+      "heightHeight": 512,
+      "heightSha256": "b68bf2efdf9b1eeb0f3ef6ee6c2dbe2bde9e5d96a86edd309f17e3d5a761e83f",
+      "heightScaleMeters": 0.5,
+      "heightOffsetMeters": -10000,
+      "minElevationMeters": -5335.5,
+      "maxElevationMeters": 4425
+    },
+    "near": {
+      "width": 2048,
+      "height": 1024,
+      "color": "/assets/surfaces/mercury-near.jpg",
+      "colorSha256": "9aeb8d2070de90fec183bcf1a018fb5309d7e99db2e7382c95d909cfc8f1db10",
+      "heightUrl": "/assets/surfaces/mercury-near.height.bin",
+      "heightWidth": 2048,
+      "heightHeight": 1024,
+      "heightSha256": "8947cbb41cc2b50d2515ccfd94484f2972e87a42e03b1c0165714de01e6000a4",
+      "heightScaleMeters": 0.5,
+      "heightOffsetMeters": -10000,
+      "minElevationMeters": -5376,
+      "maxElevationMeters": 4425
+    }
+  }
+}

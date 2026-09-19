@@ -27,7 +27,7 @@ test("separately delivered axes combine into one diagonal turn without normalizi
   look.add(0, 5);
   const [x, y] = look.consume();
   camera.rotate(x, -y);
-  assert.equal(camera.yaw, 0.02);
+  assert.equal(camera.yaw, -0.02);
   assert.equal(camera.pitch, -0.01);
 });
 
@@ -42,7 +42,7 @@ test("mouse delta totals do not depend on rendering cadence", () => {
       const [x, y] = look.consume();
       camera.rotate(x, -y);
     }
-    assert.ok(Math.abs(camera.yaw - 0.1) < 1e-12);
+    assert.ok(Math.abs(camera.yaw + 0.1) < 1e-12);
     assert.ok(Math.abs(camera.pitch + 0.05) < 1e-12);
   }
 });

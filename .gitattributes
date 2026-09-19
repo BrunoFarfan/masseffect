@@ -1,0 +1,2 @@
+# Prepared uint16 elevation payloads are data, never line-oriented text.
+assets/surfaces/*.bin binary

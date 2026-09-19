@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "generatedBy": "scripts/prepare-enceladus-surface.mjs",
+  "body": "enceladus",
+  "referenceRadiusMeters": 252100,
+  "bodyrefSIradius": 252100,
+  "sourceType": "real-cassini-dem-with-explicit-radial-height-conversion",
+  "coordinates": {
+    "longitude": "east-positive -180..180",
+    "latitude": "planetocentric",
+    "projection": "simple cylindrical / equirectangular",
+    "northAtTop": true,
+    "pixelRegistration": "pixel-centered",
+    "sourceLongitude": "east-positive 0..360 centered at 180 degrees; output columns half-raster shifted to -180..180"
+  },
+  "baseRadiiMeters": [
+    256200,
+    248600,
+    251400
+  ],
+  "heightPolicy": "Measured Schenk 2024 DEM elevations relative to the Thomas et al. 2016 triaxial ellipsoid, converted to physical radial height as ellipsoidRadius(direction) + DEM elevation - runtime canonical radius. Source NoData is explicitly filled and labeled; no color or brightness inference.",
+  "provenance": {
+    "source": {
+      "file": "enceladus-dem.tif",
+      "url": "https://asc-astropedia.s3.us-west-2.amazonaws.com/Enceladus/Cassini/Enceladus_Cassini_DEM_global_200m_schenk2024.tif",
+      "metadataUrl": "https://astrogeology.usgs.gov/search/map/enceladus-cassini-global-dem-200m-schenk",
+      "sha256": "7c08c46238cde6528c9143f0c667d42cd3bc6ac60c572595a7e6cad2d6775f91",
+      "dimensions": "8049x4025 32-bit floating-point GeoTIFF; 200 m/pixel"
+    },
+    "sourceGeoTIFF": {
+      "dimensions": "8049x4025",
+      "sampleType": "32-bit IEEE floating point",
+      "gdalNoData": -3.4028226550889045e+38,
+      "gdalScale": "absent (1.0 implied)",
+      "gdalOffset": "absent (0.0 implied)",
+      "originMeters": [
+        -805000,
+        402600
+      ],
+      "resolutionMeters": [
+        200,
+        -200
+      ],
+      "elevationUnits": "kilometres"
+    },
+    "referenceShape": {
+      "model": "Thomas et al. 2016 triaxial ellipsoid",
+      "semiAxesMeters": {
+        "a": 256200,
+        "b": 251400,
+        "c": 248600
+      },
+      "radialFormula": "R=1/sqrt((x/a)^2+(y/b)^2+(z/c)^2) for unit direction (x,y,z)"
+    },
+    "runtimeDatum": "canonical spherical radius 252100 m",
+    "processing": "Validated GeoTIFF tags/georeferencing; converted source km to metres; computed triaxial radial surface radius by pixel direction; shifted source 0..360 seam by half raster; encoded radial heights as uint16 little-endian at 0.5 m steps; filled NoData with reference triaxial ellipsoid (zero relief) and labeled it.",
+    "attribution": "USGS Astrogeology Science Center / NASA Cassini / Lunar and Planetary Institute; Schenk and McKinnon (2024); Thomas et al. (2016)"
+  },
+  "levels": {
+    "preview": {
+      "color": "/assets/surfaces/enceladus-preview.jpg",
+      "width": 512,
+      "height": 256,
+      "colorSha256": "e3d2b3e705ad7f69331c52c0a6f0aeb2a5fca405fdebb76323df718767ab7aa2",
+      "colorKind": "constant soft-ice fallback; no mapped color source was downloaded"
+    },
+    "medium": {
+      "color": "/assets/surfaces/enceladus-medium.jpg",
+      "width": 1024,
+      "height": 512,
+      "colorSha256": "f6284e192e783472be8316397d5c4520ecf17671208a80abc390e322fe21b390",
+      "colorKind": "constant soft-ice fallback; no mapped color source was downloaded",
+      "heightUrl": "/assets/surfaces/enceladus-medium.height.bin",
+      "heightWidth": 1024,
+      "heightHeight": 512,
+      "heightSha256": "62f872d732d13d06348d6da2ea3bf3d149833c99584bcaf842c6dcf8db007b0c",
+      "heightEncoding": "little-endian uint16; radial height = heightOffsetMeters + sample * heightScaleMeters",
+      "heightOffsetMeters": -5000,
+      "heightScaleMeters": 0.5,
+      "minElevationMeters": -4607.5,
+      "maxElevationMeters": 5444,
+      "noDataPolicy": "Source NoData is filled with the reference triaxial ellipsoid (zero relief); filled samples are not measured terrain.",
+      "validSampleFraction": 0.9970722198486328
+    },
+    "near": {
+      "color": "/assets/surfaces/enceladus-near.jpg",
+      "width": 2048,
+      "height": 1024,
+      "colorSha256": "5f8c2992470d56625a24d61fb0fcb7c5d0ae7afcb10e0a5c2e4ed1b158a19868",
+      "colorKind": "constant soft-ice fallback; no mapped color source was downloaded",
+      "heightUrl": "/assets/surfaces/enceladus-near.height.bin",
+      "heightWidth": 2048,
+      "heightHeight": 1024,
+      "heightSha256": "f4a5623589a2b662696d369626660ce55733a16b2f7798affac46dce00228939",
+      "heightEncoding": "little-endian uint16; radial height = heightOffsetMeters + sample * heightScaleMeters",
+      "heightOffsetMeters": -5000,
+      "heightScaleMeters": 0.5,
+      "minElevationMeters": -4610.5,
+      "maxElevationMeters": 5659.5,
+      "noDataPolicy": "Source NoData is filled with the reference triaxial ellipsoid (zero relief); filled samples are not measured terrain.",
+      "validSampleFraction": 0.9985356330871582
+    }
+  }
+}
