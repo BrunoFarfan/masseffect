@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { Simulation, BASE_STEP } from "../src/physics.js";
+import { Simulation, BASE_STEP, FAST_STEP_FACTOR } from "../src/physics.js";
+import { safeStep } from "../src/forces.js";
 import { createScenario } from "../src/scenarios.js";
 
 const inert = () => [
@@ -82,4 +83,19 @@ test("budget limits preserve bounded debt and use the configured low-rate quantu
   assert.equal(slow.time, 360);
   assert.equal(slow.pending, 0);
   assert.equal(slow.limited, false);
+});
+
+test("high-rate playback uses the measured fast quantum without changing default accuracy", () => {
+  const bodies = createScenario("solar-system").bodies;
+  assert.equal(safeStep(bodies), 56.25);
+  assert.equal(safeStep(bodies, BASE_STEP, FAST_STEP_FACTOR), 112.5);
+
+  const normal = new Simulation(inert());
+  normal.advance(1 / 60, 3600, Infinity);
+  assert.equal(normal.time, 60);
+
+  const fast = new Simulation(bodies);
+  fast.advance(1 / 60, 86400, Infinity);
+  assert.equal(fast.time, 12 * 112.5);
+  assert.equal(fast.pending, 90);
 });

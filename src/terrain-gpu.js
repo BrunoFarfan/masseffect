@@ -26,6 +26,7 @@ precision highp int;
 uniform vec2 uSize;
 uniform float uFocal, uOffsetX, uRadius, uPhysicalRadius, uExaggeration, uHeightScale, uDisplacement, uBlend, uHasPreviousHeight;
 uniform float uMicroDetail, uMaxRayIterations, uDisplayExposure;
+uniform float uAtmosphericBands;
 uniform vec3 uOrigin, uDirection, uRight, uUp;
 uniform vec3 uLight;
 uniform vec3 uBaseAxes;
@@ -36,6 +37,10 @@ uniform float uAtmosphereOpacity;
 uniform float uMinHeight, uMaxHeight, uHasHeight, uOpacity;
 uniform sampler2D uColor;
 uniform sampler2D uColorPrev;
+uniform sampler2D uColorRegion;
+uniform sampler2D uPreviousColorRegion;
+uniform vec4 uColorRegionBounds, uPreviousColorRegionBounds;
+uniform float uHasColorRegion, uHasPreviousColorRegion, uColorRegionBlendBorder;
 uniform sampler2D uHeight;
 uniform sampler2D uHeightPrev;
 uniform sampler2D uRegion;
@@ -80,6 +85,14 @@ float regionalWeight(vec2 uv, vec4 bounds) {
   vec2 ru = (uv - bounds.xy) / max(bounds.zw - bounds.xy, vec2(0.000001));
   float edge = min(min(ru.x, ru.y), min(1.0 - ru.x, 1.0 - ru.y));
   return smoothstep(0.0, max(uRegionBlendBorder, 0.000001), edge);
+}
+vec3 layeredColor(sampler2D globalTex, sampler2D tileTex, vec4 bounds, float hasTile, vec2 uv) {
+  vec3 global = texture(globalTex, uv).rgb;
+  if (hasTile < 0.5 || uv.x < bounds.x || uv.y < bounds.y || uv.x > bounds.z || uv.y > bounds.w) return global;
+  vec2 localUv = (uv - bounds.xy) / max(bounds.zw - bounds.xy, vec2(0.000001));
+  float edge = min(min(localUv.x, localUv.y), min(1.0 - localUv.x, 1.0 - localUv.y));
+  float weight = smoothstep(0.0, max(uColorRegionBlendBorder, 0.000001), edge);
+  return mix(global, texture(tileTex, clamp(localUv, 0.0, 1.0)).rgb, weight);
 }
 float layeredHeight(sampler2D globalTex, ivec2 globalSize, sampler2D regionTex, ivec2 regionSize, vec4 bounds, float hasRegion, vec2 uv) {
   float global = heightAtOne(globalTex, globalSize, uv);
@@ -224,7 +237,23 @@ void main() {
   float diffuse = max(0.0, dot(normal, normalize(uLight - point)));
   float shade = uEmissive>.5 ? 1.0 : 0.12 + 0.88 * diffuse;
   vec2 colorUv = mapUv(point);
-  vec3 srgb = mix(texture(uColorPrev, colorUv).rgb, texture(uColor, colorUv).rgb, uBlend);
+  vec3 previousColor = layeredColor(uColorPrev, uPreviousColorRegion, uPreviousColorRegionBounds, uHasPreviousColorRegion, colorUv);
+  vec3 currentColor = layeredColor(uColor, uColorRegion, uColorRegionBounds, uHasColorRegion, colorUv);
+  vec3 srgb = mix(previousColor, currentColor, uBlend);
+  // Uranus has no solid terrain. This restrained, deterministic banding is
+  // an atmospheric appearance layer applied only to products that opt in;
+  // it never participates in height, clearance, or ray intersection.
+  if (uAtmosphericBands > 0.5) {
+    // JPL's representative map is nearly uniform saturated blue. Voyager's
+    // true-color disk is paler and greener, with very low cloud contrast.
+    srgb = mix(srgb, vec3(0.55, 0.79, 0.80), 0.75);
+    // Body-fixed Cartesian coordinates are continuous across the texture
+    // meridian; raw longitude UV would leave a visible cloud seam.
+    vec3 cloudPosition = normalize(point);
+    float band = sin((colorUv.y - 0.5) * 78.0 + noise3(cloudPosition * 9.0) * 1.8);
+    float turbulence = noise3(cloudPosition * vec3(10.0, 32.0, 10.0) + vec3(0.0, 0.0, 19.0)) - 0.5;
+    srgb *= 1.0 + 0.055 * band + 0.025 * turbulence;
+  }
   // Explicit illustrative haze layer: reveals the independently sampled DEM
   // below cloud altitude. Cloud brightness is never used as terrain height.
   vec3 cloud = uAtmosphereColor * (0.94 + 0.08 * noise3(normalize(point) * 12.0));
@@ -326,6 +355,7 @@ export class TerrainGPU {
         "uEllipsoidC",
         "uAtmosphereColor",
         "uAtmosphereOpacity",
+        "uAtmosphericBands",
         "uMaxRayIterations",
         "uOrigin",
         "uDirection",
@@ -339,6 +369,13 @@ export class TerrainGPU {
         "uOpacity",
         "uColor",
         "uColorPrev",
+        "uColorRegion",
+        "uPreviousColorRegion",
+        "uColorRegionBounds",
+        "uPreviousColorRegionBounds",
+        "uHasColorRegion",
+        "uHasPreviousColorRegion",
+        "uColorRegionBlendBorder",
         "uHeight",
         "uHeightPrev",
         "uRegion",
@@ -377,10 +414,11 @@ export class TerrainGPU {
     const texture = gl.createTexture();
     gl.bindTexture(gl.TEXTURE_2D, texture);
     gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, false);
-    if (kind === "color" || kind === "previousColor") {
+    if (["color", "previousColor", "colorRegion", "previousColorRegion"].includes(kind)) {
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
-      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.REPEAT);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S,
+        kind === "color" || kind === "previousColor" ? gl.REPEAT : gl.CLAMP_TO_EDGE);
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
       gl.texImage2D(
         gl.TEXTURE_2D,
@@ -437,11 +475,13 @@ export class TerrainGPU {
     if (!(radius > 0)) return false;
     const color = state.asset.color,
       heightMap = state.asset.height,
-      region = state.asset.region;
+      region = state.asset.region,
+      colorRegion = state.asset.colorRegion;
     const previous = state.previousAsset || state.asset;
     const previousColor = previous?.color || color,
       previousHeight = previous?.height || null,
-      previousRegion = previous?.region || null;
+      previousRegion = previous?.region || null,
+      previousColorRegion = previous?.colorRegion || null;
     if (!(color.data && color.width > 0 && color.height > 0)) return false;
     const displayW = Math.max(1, Math.floor(width)),
       displayH = Math.max(1, Math.floor(height));
@@ -506,9 +546,11 @@ export class TerrainGPU {
       entry.color !== color ||
       entry.height !== heightMap ||
       entry.region !== region ||
+      entry.colorRegion !== colorRegion ||
       entry.previousColor !== previousColor ||
       entry.previousHeight !== previousHeight ||
-      entry.previousRegion !== previousRegion
+      entry.previousRegion !== previousRegion ||
+      entry.previousColorRegion !== previousColorRegion
     ) {
       if (entry?.gpu && gl)
         for (const texture of Object.values(entry.gpu))
@@ -517,9 +559,11 @@ export class TerrainGPU {
         color,
         height: heightMap,
         region,
+        colorRegion,
         previousColor,
         previousHeight,
         previousRegion,
+        previousColorRegion,
         gpu: null,
         lastUsed: 0,
       };
@@ -541,6 +585,10 @@ export class TerrainGPU {
             ? this._texture(entry, "previousHeight", previousHeight)
             : null,
       regionTexture = region ? this._texture(entry, "region", region) : null,
+      colorRegionTexture = colorRegion ? this._texture(entry, "colorRegion", colorRegion) : null,
+      previousColorRegionTexture = previousColorRegion === colorRegion
+        ? colorRegionTexture
+        : previousColorRegion ? this._texture(entry, "previousColorRegion", previousColorRegion) : null,
       previousRegionTexture =
         previousRegion === region
           ? regionTexture
@@ -617,6 +665,7 @@ export class TerrainGPU {
       );
       gl.uniform3fv(u.uAtmosphereColor, state.atmosphere?.color || [0, 0, 0]);
       gl.uniform1f(u.uAtmosphereOpacity, state.atmosphereOpacity || 0);
+      gl.uniform1f(u.uAtmosphericBands, state.atmosphericBands ? 1 : 0);
       gl.uniform1f(
         u.uMaxRayIterations,
         Math.max(1, Math.min(256, Number(quality.maxRayIterations) || 256)),
@@ -648,6 +697,10 @@ export class TerrainGPU {
       gl.uniform1f(u.uHasPreviousHeight, previousHeightTexture ? 1 : 0);
       gl.uniform1f(u.uHasRegion, regionTexture ? 1 : 0);
       gl.uniform1f(u.uHasPreviousRegion, previousRegionTexture ? 1 : 0);
+      gl.uniform1f(u.uHasColorRegion, colorRegionTexture ? 1 : 0);
+      gl.uniform1f(u.uHasPreviousColorRegion, previousColorRegionTexture ? 1 : 0);
+      gl.uniform1f(u.uColorRegionBlendBorder, Math.max(0,
+        Number(colorRegion?.blendBorder ?? previousColorRegion?.blendBorder ?? 0.025)));
       gl.uniform1f(
         u.uRegionBlendBorder,
         Math.max(
@@ -685,6 +738,12 @@ export class TerrainGPU {
           colorTexture,
       );
       gl.uniform1i(u.uPreviousRegion, 5);
+      gl.activeTexture(gl.TEXTURE6);
+      gl.bindTexture(gl.TEXTURE_2D, colorRegionTexture || colorTexture);
+      gl.uniform1i(u.uColorRegion, 6);
+      gl.activeTexture(gl.TEXTURE7);
+      gl.bindTexture(gl.TEXTURE_2D, previousColorRegionTexture || previousColorTexture);
+      gl.uniform1i(u.uPreviousColorRegion, 7);
       gl.uniform2i(
         u.uHeightSize,
         heightMap?.width || 1,
@@ -706,6 +765,8 @@ export class TerrainGPU {
         u.uPreviousRegionBounds,
         ...(previousRegion?.uvBounds || [0, 0, 1, 1]),
       );
+      gl.uniform4f(u.uColorRegionBounds, ...(colorRegion?.uvBounds || [0, 0, 1, 1]));
+      gl.uniform4f(u.uPreviousColorRegionBounds, ...(previousColorRegion?.uvBounds || [0, 0, 1, 1]));
       gl.drawArrays(gl.TRIANGLES, 0, 3);
       gl.disable(gl.SCISSOR_TEST);
       ctx.drawImage(

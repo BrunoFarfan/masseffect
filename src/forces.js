@@ -26,7 +26,10 @@ export function accelerations(bodies) {
   return result;
 }
 
-export function safeStep(bodies, maximum = 1800) {
+// The default factor is intentionally conservative for ordinary integration.
+// High-rate playback may opt into a measured 2x quantum; callers must still
+// use this encounter-limited result rather than increasing the step blindly.
+export function safeStep(bodies, maximum = 1800, safetyFactor = 0.025) {
   let limit = maximum;
   for (let i = 0; i < bodies.length; i++) {
     const a = bodies[i];
@@ -44,7 +47,7 @@ export function safeStep(bodies, maximum = 1800) {
       );
       limit = Math.min(
         limit,
-        0.025 * Math.sqrt(r ** 3 / (G * (a.mass + b.mass))),
+        safetyFactor * Math.sqrt(r ** 3 / (G * (a.mass + b.mass))),
         (0.1 * r) / Math.max(speed, 1),
       );
     }

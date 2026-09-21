@@ -11,7 +11,11 @@ import { equatorialPole } from "./rotation.js";
 // Earth uses the ecliptic. Eccentricity, oblateness and tidal forces are omitted.
 // parent, name, GM, mean radius, separation, inclination°, color, pole RA/Dec
 const moons = [
-  ["earth", "Moon", 4902.8e9, 1.7374e6, 3.844e8, 5.16, "#c8c7c2", null],
+  // The illustrative circularized Moon state would orbit in 27.64 d after
+  // solar perturbation. Calibrate its initial speed to 27.32 d and give its
+  // measured sidereal spin period as an initial parameter, not a live lock.
+  ["earth", "Moon", 4902.8e9, 1.7374e6, 3.844e8, 5.16, "#c8c7c2", null,
+    { orbitalSpeedFactor: 0.9961, rotationPeriodSeconds: 27.321661 * 86400 }],
   [
     "mars",
     "Phobos",
@@ -166,6 +170,12 @@ const moons = [
 ];
 const rad = (degrees) => (degrees * Math.PI) / 180;
 
+// BODY301's J2000 PCK prime meridian projected into the existing 5.16° lunar
+// orbit plane. The lunar pole is oblique to that plane by ~6.7°, so the
+// projected prime direction is the physically attainable near-side target.
+// This replaces the generic illustrative 35° phase for the canonical Moon.
+const MOON_PCK_PHASE = rad(-141.6787335868836);
+
 function referencePole(pole) {
   if (!pole) return [0, 0, 1];
   const [x, y, z] = equatorialPole(...pole);
@@ -181,12 +191,18 @@ function relativeState(
   pole,
   index,
   retrograde = false,
+  orbitalSpeedFactor = 1,
 ) {
   const normal = referencePole(pole);
   const xAxis = unit(cross([0, 1, 0], normal));
   const yAxis = cross(normal, xAxis);
   const node = rad(index * 67),
-    phase = rad(35 + index * 137.508);
+    phase =
+      parentMass === 5.97217e24 &&
+      Math.abs(separation - 3.844e8) < 1 &&
+      Math.abs(inclination - 5.16) < 1e-9
+        ? MOON_PCK_PHASE
+        : rad(35 + index * 137.508);
   const p = add(mul(xAxis, Math.cos(node)), mul(yAxis, Math.sin(node)));
   const q = add(
     mul(
@@ -195,7 +211,7 @@ function relativeState(
     ),
     mul(normal, Math.sin(rad(inclination))),
   );
-  const speed = Math.sqrt((G * (parentMass + mass)) / separation);
+  const speed = Math.sqrt((G * (parentMass + mass)) / separation) * orbitalSpeedFactor;
   const toWorld = ([x, y, z]) => [x, z, y];
   return {
     position: toWorld(
@@ -217,7 +233,7 @@ export function addMoons(bodies) {
       .filter(([parentId]) => parentId === parent.id)
       .map(
         (
-          [parentId, name, gm, radius, separation, inclination, color, pole],
+          [parentId, name, gm, radius, separation, inclination, color, pole, spinOrbit = {}],
           index,
         ) => {
           const mass = gm / G;
@@ -229,6 +245,9 @@ export function addMoons(bodies) {
             mass,
             radius,
             color,
+            ...(spinOrbit.rotationPeriodSeconds
+              ? { rotationPeriod: spinOrbit.rotationPeriodSeconds }
+              : {}),
             trail: [],
             ...relativeState(
               parent.mass,
@@ -238,6 +257,7 @@ export function addMoons(bodies) {
               pole,
               index,
               parentId === "uranus",
+              spinOrbit.orbitalSpeedFactor ?? 1,
             ),
           };
         },

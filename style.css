@@ -501,7 +501,8 @@ summary {
   align-items: baseline;
   justify-content: space-between;
   width: 100%;
-  padding: 9px 4px;
+  gap: 12px;
+  padding: 9px 4px 9px calc(4px + var(--search-depth, 0) * 13px);
   text-align: left;
 }
 .search-result[aria-selected="true"] {

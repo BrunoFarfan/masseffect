@@ -25,6 +25,14 @@ benchmark-surfaces:
 prepare-surfaces mode="--rebuild":
     node scripts/prepare-all-surfaces.mjs {{mode}}
 
+# Optional desktop-only 64 ppd relief pack; scientific originals stay ignored.
+prepare-terrain64 body="" mode="--rebuild":
+    node scripts/prepare-terrain64.mjs {{body}} {{mode}}
+
+# Optional local 64 ppd color tiles matching the close-range relief grid.
+prepare-color64 body="" mode="--rebuild":
+    node scripts/prepare-color64.mjs {{body}} {{mode}}
+
 assemble-surfaces:
     node scripts/assemble-surfaces.mjs
 

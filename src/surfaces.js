@@ -29,7 +29,23 @@ export class Surfaces {
         if (!r.ok) throw new Error(`Surface manifest ${r.status}`);
         return r.json();
       })
-      .then((manifest) => {
+      .then(async (manifest) => {
+        // Optional desktop terrain pack. An absent pack is normal: prepared
+        // global maps remain immediately usable and web builds stay small.
+        const pack = await fetch("/assets/surfaces/terrain64/index.json")
+          .then((response) => response.ok ? response.json() : null)
+          .catch(() => null);
+        if (pack?.schemaVersion === 1)
+          for (const [id, grid] of Object.entries(pack.bodies || {}))
+            if (manifest.bodies?.[id]?.levels?.near && grid.pixelsPerDegree === 64)
+              manifest.bodies[id].levels.near.tileGrid = grid;
+        const colorPack = await fetch("/assets/surfaces/color64/index.json")
+          .then((response) => response.ok ? response.json() : null)
+          .catch(() => null);
+        if (colorPack?.schemaVersion === 1)
+          for (const [id, grid] of Object.entries(colorPack.bodies || {}))
+            if (manifest.bodies?.[id]?.levels?.near && grid.pixelsPerDegree === 64)
+              manifest.bodies[id].levels.near.colorTileGrid = grid;
         this.manifest = manifest;
         this.cache = new SurfaceAssetCache({
           manifest,
@@ -44,6 +60,8 @@ export class Surfaces {
     const matches = (asset) =>
       asset &&
       ((entry.color && asset.color === entry.color) ||
+        (entry.region && asset.region === entry.region) ||
+        (entry.colorRegion && asset.colorRegion === entry.colorRegion) ||
         (entry.shape && asset.shape === entry.shape));
     for (const [id, state] of this.states) {
       if (matches(state.asset)) this.states.delete(id);
@@ -70,7 +88,46 @@ export class Surfaces {
       const pixels = (body.radius * height * 0.95) / Math.max(1, distance);
       if (pixels < 6) continue;
       active.add(body.id);
-      const entry = this.cache.get(body, pixels, now);
+      const surfaceAxes = surfaceFrame(body, sim.time);
+      const toCamera = unit(sub(camera.position, body.position));
+      const localCamera = [
+        dot(toCamera, surfaceAxes.prime),
+        dot(toCamera, surfaceAxes.north),
+        dot(toCamera, surfaceAxes.east),
+      ];
+      const surfaceUv = {
+        u: ((Math.atan2(localCamera[2], localCamera[0]) / (Math.PI * 2) + 0.5) % 1 + 1) % 1,
+        v: 0.5 - Math.asin(clamp(localCamera[1], -1, 1)) / Math.PI,
+      };
+      // Prefer the surface beneath the center ray over the camera subpoint.
+      // At grazing angles those can be far apart, and only one regional DEM
+      // can be resident for a body at once. The subpoint still governs the
+      // finite-distance horizon test in the cache.
+      let viewUv = null;
+      const fromCenter = sub(camera.position, body.position);
+      const ray = camera.forward;
+      const b = dot(fromCenter, ray);
+      const discriminant = b * b - (dot(fromCenter, fromCenter) - body.radius * body.radius);
+      if (discriminant >= 0) {
+        const travel = -b - Math.sqrt(discriminant);
+        if (travel > 0) {
+          const hit = unit(fromCenter.map((value, i) => value + travel * ray[i]));
+          const localHit = [
+            dot(hit, surfaceAxes.prime),
+            dot(hit, surfaceAxes.north),
+            dot(hit, surfaceAxes.east),
+          ];
+          viewUv = {
+            u: ((Math.atan2(localHit[2], localHit[0]) / (Math.PI * 2) + 0.5) % 1 + 1) % 1,
+            v: 0.5 - Math.asin(clamp(localHit[1], -1, 1)) / Math.PI,
+          };
+        }
+      }
+      const entry = this.cache.get(
+        body, pixels, now, surfaceUv,
+        Math.min(1, body.radius / Math.max(distance, body.radius)),
+        viewUv,
+      );
       if (!entry?.color && !entry?.shape) continue;
       let state = this.states.get(body.id);
       if (!state) {
@@ -80,13 +137,16 @@ export class Surfaces {
       if (
         state.level !== entry.level ||
         state.asset?.color !== entry.color ||
-        state.asset?.shape !== entry.shape
+        state.asset?.shape !== entry.shape ||
+        state.asset?.region !== entry.region ||
+        state.asset?.colorRegion !== entry.colorRegion
       ) {
         state.previousAsset = state.asset;
         state.asset = {
           color: entry.color,
           height: entry.height,
           region: entry.region,
+          colorRegion: entry.colorRegion,
           shape: entry.shape,
         };
         state.level = entry.level;
@@ -94,7 +154,7 @@ export class Surfaces {
       }
       state.blend = smooth((now - state.since) / 800);
       if (state.blend === 1) state.previousAsset = null;
-      state.frame = surfaceFrame(body, sim.time);
+      state.frame = surfaceAxes;
       state.referenceRadiusMeters =
         this.manifest.bodies[body.id].referenceRadiusMeters ||
         definition.referenceRadiusMeters;
@@ -108,6 +168,8 @@ export class Surfaces {
       state.emissive = !!definition.emissive;
       const altitude = Math.max(0, distance - state.referenceRadiusMeters);
       state.atmosphere = definition.atmosphere;
+      state.atmosphericBands =
+        this.manifest.bodies[body.id].atmosphericBands === true;
       state.atmosphereOpacity = definition.atmosphere
         ? smooth(
             (altitude - definition.atmosphere.lowerAltitudeMeters) /
@@ -118,18 +180,18 @@ export class Surfaces {
       // Surface relief is subpixel from orbit. Start actual displacement before
       // the camera enters the shell and retain it all the way to the ground.
       state.displacement = smooth((0.5 - altitude / body.radius) / 0.3);
-      // Keep the reliable 256-step grazing-ray bound. Raster reduction alone
-      // supplies the close-range budget win without introducing horizon slits.
+      // Keep the reliable 256-step grazing-ray bound. Regional DEMs are most
+      // expensive in orbital horizon views; cap the offscreen raster at 85%
+      // through 25 km while retaining full source textures and CPU clearance.
       const groundAltitude = Math.max(
         0,
         distance - this.radiusAt(body, camera.position),
       );
       state.quality =
-        state.asset.region && groundAltitude < 15000
+        state.asset.region && groundAltitude < 25000
           ? {
               maxRayIterations: 256,
-              resolutionScale:
-                0.75 + 0.25 * smooth((groundAltitude - 1000) / 14000),
+              resolutionScale: 0.85,
             }
           : undefined;
       const levels = Object.values(this.manifest.bodies[body.id].levels);
@@ -141,6 +203,7 @@ export class Surfaces {
         ...levels.flatMap((l) => [
           l.minElevationMeters || 0,
           l.region?.minElevationMeters || 0,
+          l.tileGrid?.minElevationMeters || 0,
         ]),
       );
       state.maxElevationMeters = Math.max(
@@ -151,6 +214,7 @@ export class Surfaces {
         ...levels.flatMap((l) => [
           l.maxElevationMeters || 0,
           l.region?.maxElevationMeters || 0,
+          l.tileGrid?.maxElevationMeters || 0,
         ]),
       );
       state.loading = entry.loading;

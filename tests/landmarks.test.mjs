@@ -4,6 +4,7 @@ import {
   landmarkDirection,
   landmarkPoint,
   landmarkVisibility,
+  nearbyLandmarkBodies,
   SURFACE_LANDMARKS,
   terrainOccluded,
 } from "../src/landmarks.js";
@@ -20,6 +21,20 @@ const state = {
   asset: { height: { width: 4, height: 2 } },
   sample: () => 120,
 };
+
+test("landmark labels follow proximity, regardless of body selection", () => {
+  const bodies = [
+    { id: "mars", radius: 1000, position: [0, 0, 0] },
+    { id: "moon", radius: 100, position: [0, 0, 1850] },
+    { id: "earth", radius: 1000, position: [0, 0, 1000] },
+    { id: "phobos", radius: 100, position: [0, 0, 4000], ghost: true },
+  ];
+  assert.deepEqual(
+    nearbyLandmarkBodies(bodies, [0, 0, 1750]).map((body) => body.id),
+    ["moon", "mars"],
+  );
+  assert.deepEqual(nearbyLandmarkBodies(bodies, [0, 0, 5000]), []);
+});
 
 test("landmark direction rotates with the body-fixed frame and includes measured height", () => {
   const site = SURFACE_LANDMARKS.moon[0];
@@ -85,4 +100,47 @@ test("visibility alpha fades at the five-radius scope", () => {
   });
   assert.equal(result.visible, true);
   assert.ok(result.alpha > 0 && result.alpha < 1);
+});
+
+test("canonical non-Earth bodies have sparse POIs", () => {
+  const canonicalBodies = [
+    "sun",
+    "mercury",
+    "venus",
+    "mars",
+    "moon",
+    "jupiter",
+    "saturn",
+    "uranus",
+    "neptune",
+    "phobos",
+    "deimos",
+    "io",
+    "europa",
+    "ganymede",
+    "callisto",
+    "titan",
+    "enceladus",
+    "rhea",
+    "iapetus",
+    "titania",
+    "oberon",
+    "ariel",
+    "umbriel",
+    "miranda",
+    "triton",
+  ];
+  for (const id of canonicalBodies) {
+    assert.ok(SURFACE_LANDMARKS[id]?.length, `${id} should have a POI`);
+    for (const site of SURFACE_LANDMARKS[id]) {
+      assert.ok(Number.isFinite(site.latitude));
+      assert.ok(Number.isFinite(site.longitude));
+      assert.ok(site.latitude >= -90 && site.latitude <= 90);
+      assert.ok(site.longitude >= -180 && site.longitude <= 180);
+    }
+  }
+  assert.equal(SURFACE_LANDMARKS.earth, undefined);
+  assert.equal(SURFACE_LANDMARKS.triton[0].name, "South pole");
+  for (const id of ["sun", "jupiter", "saturn", "uranus", "neptune"])
+    assert.equal(SURFACE_LANDMARKS[id][0].latitude, 90);
 });

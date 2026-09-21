@@ -46,6 +46,20 @@ function rotateAround(axis, vector, angle) {
     (v, i) => v * c + cross(axis, vector)[i] * s + axis[i] * k * (1 - c),
   );
 }
+function rotateByQuaternion(q, vector) {
+  const t = cross(q.slice(0, 3), vector).map((value) => value * 2);
+  return vector.map(
+    (value, i) => value + q[3] * t[i] + cross(q.slice(0, 3), t)[i],
+  );
+}
+function multiplyQuaternion(a, b) {
+  return [
+    a[3] * b[0] + a[0] * b[3] + a[1] * b[2] - a[2] * b[1],
+    a[3] * b[1] - a[0] * b[2] + a[1] * b[3] + a[2] * b[0],
+    a[3] * b[2] + a[0] * b[1] - a[1] * b[0] + a[2] * b[3],
+    a[3] * b[3] - a[0] * b[0] - a[1] * b[1] - a[2] * b[2],
+  ];
+}
 function quaternionFromAxes(x, y, z) {
   const trace = x[0] + y[1] + z[2];
   let q;
@@ -208,6 +222,45 @@ export function surfaceFrame(bodyOrId, simulationTimeSeconds = 0) {
   const id = typeof bodyOrId === "string" ? bodyOrId : bodyOrId?.id;
   const coefficients = SURFACE_PCK[id];
   if (!coefficients) return null;
+  // The analytic PCK frame is the canonical inertial frame when called with
+  // an id. For a live body, calibrate the NAIF texture frame to its initial
+  // body orientation once, then carry geography with its freely integrated
+  // spin. A 1:1 initial spin/orbit ratio is not a per-step lock constraint.
+  if (
+    typeof bodyOrId !== "string" &&
+    (bodyOrId?.rotationModel === "period-matched" ||
+      bodyOrId?.rotationReferenceOrientation) &&
+    bodyOrId.orientation?.length === 4
+  ) {
+    const reference = surfaceFrame(id, 0),
+      referenceOrientation =
+        bodyOrId.rotationReferenceOrientation || bodyOrId.orientation,
+      inverse = [
+        -referenceOrientation[0],
+        -referenceOrientation[1],
+        -referenceOrientation[2],
+        referenceOrientation[3],
+      ],
+      offset = multiplyQuaternion(inverse, reference.quaternion);
+    const orientation = multiplyQuaternion(bodyOrId.orientation, offset),
+      frame = (axis) => norm(rotateByQuaternion(orientation, axis));
+    const prime = frame([1, 0, 0]),
+      north = frame([0, 1, 0]),
+      east = frame([0, 0, 1]);
+    return {
+      x: prime,
+      prime,
+      north,
+      y: north,
+      east,
+      quaternion: quaternionFromAxes(prime, north, east),
+      longitudeDeg: surfaceFrame(id, 0).longitudeDeg,
+      convention:
+        bodyOrId.rotationModel === "period-matched"
+          ? "initial 1:1 spin-orbit frame with fixed NAIF BODY frame texture offset"
+          : "free body frame retaining fixed NAIF BODY frame texture offset",
+    };
+  }
   const days = simulationTimeSeconds / 86400;
   const centuries = days / 36525;
   const polynomial = (terms, t) =>

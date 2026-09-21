@@ -4,11 +4,20 @@ import {
   SURFACE_DEFINITIONS,
   surfaceFrame,
 } from "../src/surface-definition.js";
+import { solarSystem } from "../src/solar.js";
+import {
+  initializeRotations,
+  synchronize,
+  rotateVector,
+} from "../src/rotation.js";
+import { sub, unit } from "../src/math.js";
+import { G, Simulation, step } from "../src/physics.js";
 
 const dot = (a, b) => a.reduce((sum, value, i) => sum + value * b[i], 0);
 const norm = (a) => Math.hypot(...a);
 const close = (a, b, epsilon = 1e-10) =>
   assert.ok(Math.abs(a - b) <= epsilon, `${a} != ${b}`);
+const inverse = (q) => [-q[0], -q[1], -q[2], q[3]];
 
 // Independent NASA NAIF WebGeocalc output, queried 2026-09-18:
 // https://wgc2.jpl.nasa.gov:8443/webgeocalc/api/info
@@ -98,4 +107,137 @@ test("analytic orientation evolves with TDB simulation time without touching phy
   assert.equal(SURFACE_DEFINITIONS.moon.orientation.includes("BODY301"), true);
   assert.equal(SURFACE_DEFINITIONS.mars.orientation.includes("BODY499"), true);
   assert.equal(SURFACE_DEFINITIONS.sun.emissive, true);
+});
+
+test("rendered Moon geography follows a seeded body orientation", () => {
+  const bodies = solarSystem();
+  initializeRotations(bodies);
+  const moon = bodies.find((body) => body.id === "moon"),
+    earth = bodies.find((body) => body.id === "earth");
+  const renderedAtEpoch = surfaceFrame(moon, 0),
+    pckAtEpoch = surfaceFrame("moon", 0);
+  assert.ok(dot(renderedAtEpoch.prime, pckAtEpoch.prime) > 1 - 1e-10);
+  const earthDirection = unit(sub(earth.position, moon.position));
+  // The PCK pole is not exactly the orbit normal, so the parent direction is
+  // within the prime meridian's projected near side, with a small latitude
+  // residual rather than an impossible exact three-axis coincidence.
+  assert.ok(dot(pckAtEpoch.prime, earthDirection) > 0.999);
+  assert.ok(Math.abs(dot(pckAtEpoch.east, earthDirection)) < 0.01);
+  assert.ok(Math.abs(dot(pckAtEpoch.north, earthDirection)) < 0.04);
+  for (let i = 0; i <= 8; i++) {
+    const angle = (i * Math.PI) / 4;
+    moon.position = earth.position.map((value, axis) => value +
+      [3.844e8 * Math.cos(angle), 0, 3.844e8 * Math.sin(angle)][axis]);
+    moon.velocity = earth.velocity.map((value, axis) => value +
+      [-1000 * Math.sin(angle), 0, 1000 * Math.cos(angle)][axis]);
+    synchronize(moon, earth);
+    const frame = surfaceFrame(moon, i * 86400),
+      towardEarth = unit(sub(earth.position, moon.position));
+    assert.ok(dot(rotateVector(moon.orientation, [1, 0, 0]), towardEarth) > 1 - 1e-12);
+    assert.ok(frame.quaternion.every(Number.isFinite));
+  }
+});
+
+test("live Moon retains approximate 1:1 facing without per-step correction", () => {
+  const bodies = solarSystem(),
+    moon = bodies.find((body) => body.id === "moon"),
+    earth = bodies.find((body) => body.id === "earth"),
+    period =
+      2 * Math.PI *
+      Math.sqrt(
+        Math.pow(3.844e8, 3) / (G * (earth.mass + moon.mass)),
+      ),
+    initialDirection = unit(sub(earth.position, moon.position)),
+    initialFrame = surfaceFrame(moon, 0),
+    pckFrame = surfaceFrame("moon", 0);
+  assert.ok(dot(initialFrame.prime, pckFrame.prime) > 1 - 1e-10);
+  let elapsed = 0,
+    maximumDrift = 0;
+  while (elapsed < 2 * period) {
+    const dt = Math.min(1800, 2 * period - elapsed);
+    step(bodies, dt);
+    elapsed += dt;
+    const direction = unit(sub(earth.position, moon.position)),
+      frame = surfaceFrame(moon, elapsed),
+      local = rotateVector(
+        [
+          -frame.quaternion[0],
+          -frame.quaternion[1],
+          -frame.quaternion[2],
+          frame.quaternion[3],
+        ],
+        direction,
+      );
+    // The PCK-calibrated prime meridian has a fixed initial offset from the
+    // parent direction, so measure drift relative to its epoch-zero value.
+    const initialLocal = rotateVector(
+      [
+        -initialFrame.quaternion[0],
+        -initialFrame.quaternion[1],
+        -initialFrame.quaternion[2],
+        initialFrame.quaternion[3],
+      ],
+      initialDirection,
+    );
+    const initialLongitude = Math.atan2(initialLocal[2], initialLocal[0]),
+      longitude = Math.atan2(local[2], local[0]);
+    maximumDrift = Math.max(
+      maximumDrift,
+      Math.abs(Math.atan2(Math.sin(longitude - initialLongitude), Math.cos(longitude - initialLongitude))),
+    );
+  }
+  // Solar and planetary perturbations now produce real free-spin libration;
+  // a point-mass model has no torque capable of correcting it.
+  assert.ok(maximumDrift < 0.25, `sub-Earth longitude drift: ${maximumDrift}`);
+});
+
+test("Moon's calibrated orbital and spin periods keep a near side over a simulated year", () => {
+  const bodies = solarSystem();
+  initializeRotations(bodies);
+  const moon = bodies.find((body) => body.id === "moon");
+  const earth = bodies.find((body) => body.id === "earth");
+  const period = moon.rotationPeriod;
+  close(period, 27.321661 * 86400, 1e-6);
+  const longitude = (elapsed) => {
+    const frame = surfaceFrame(moon, elapsed);
+    const towardEarth = unit(sub(earth.position, moon.position));
+    return Math.atan2(dot(towardEarth, frame.east), dot(towardEarth, frame.prime));
+  };
+  const initial = longitude(0);
+  let largest = 0;
+  for (let day = 1; day <= 365; day++) {
+    for (let halfHour = 0; halfHour < 48; halfHour++) step(bodies, 1800);
+    const delta = longitude(day * 86400) - initial;
+    largest = Math.max(largest,
+      Math.abs(Math.atan2(Math.sin(delta), Math.cos(delta))));
+  }
+  assert.equal(moon.rotationPeriod, period);
+  assert.ok(largest < 5 * Math.PI / 180,
+    `One-year facing drift exceeded 5 degrees: ${largest * 180 / Math.PI}`);
+});
+
+test("late first surface render and reset retain deterministic PCK geography", () => {
+  const fresh = new Simulation(solarSystem()),
+    freshMoon = fresh.bodies.find((body) => body.id === "moon"),
+    freshFrame = surfaceFrame(freshMoon, 0),
+    late = new Simulation(solarSystem());
+  for (let elapsed = 0; elapsed < 86400 * 10; elapsed += 1800)
+    step(late.bodies, 1800);
+  const lateMoon = late.bodies.find((body) => body.id === "moon"),
+    lateFrame = surfaceFrame(lateMoon, 86400 * 10),
+    freshLocalPrime = rotateVector(
+      inverse(freshMoon.orientation),
+      freshFrame.prime,
+    ),
+    lateLocalPrime = rotateVector(
+      inverse(lateMoon.orientation),
+      lateFrame.prime,
+    );
+  freshLocalPrime.forEach((value, i) =>
+    close(value, lateLocalPrime[i], 1e-10),
+  );
+  const reset = new Simulation(solarSystem()),
+    resetMoon = reset.bodies.find((body) => body.id === "moon"),
+    resetFrame = surfaceFrame(resetMoon, 0);
+  resetFrame.prime.forEach((value, i) => close(value, freshFrame.prime[i]));
 });

@@ -163,7 +163,7 @@ test("all moon orbits agree with their parent's equator or documented inclined r
   }
 });
 
-test("changing synchronous spin periods remain reconstructible through rewind", () => {
+test("seeded spin periods remain fixed and reconstructible through rewind", () => {
   const sim = new Simulation(solarSystem()),
     history = new History(sim),
     moon = sim.bodies.find((b) => b.id === "moon"),
@@ -172,7 +172,7 @@ test("changing synchronous spin periods remain reconstructible through rewind", 
     step(sim.bodies, 50);
     sim.time += 50;
   }
-  assert.notEqual(moon.rotationPeriod, initial);
+  assert.equal(moon.rotationPeriod, initial);
   history.capture(sim);
   history.seek(sim, 525);
   close(sim.time, 525);
@@ -182,7 +182,7 @@ test("changing synchronous spin periods remain reconstructible through rewind", 
   close(sim.time, 1000);
 });
 
-test("synchronous metadata follows velocity changes and a zero-spin custom body stays finite", () => {
+test("explicit spin reseeding follows the osculating period and zero-spin stays finite", () => {
   const bodies = solarSystem();
   initializeRotations(bodies);
   const m = bodies.find((b) => b.id === "moon"),
@@ -192,7 +192,7 @@ test("synchronous metadata follows velocity changes and a zero-spin custom body 
     (v, k) => p.velocity[k] + (v - p.velocity[k]) * 0.5,
   );
   synchronize(m, p);
-  close(m.rotationPeriod, before * 2);
+  assert.ok(m.rotationPeriod < before && m.rotationPeriod > 0);
   const custom = { id: "custom", rotationPeriod: 0 };
   initializeRotations([custom]);
   assert.deepEqual(custom.angularVelocity, [0, 0, 0]);

@@ -5,7 +5,7 @@ import { addMoons } from "../src/moons.js";
 import { G, energy, safeStep, step } from "../src/physics.js";
 import { sub, length, dot, cross } from "../src/math.js";
 
-test("canonical moons have SI circular relative states and no overlaps", () => {
+test("canonical moons have SI near-circular relative states and no overlaps", () => {
   const bodies = solarSystem(),
     moons = bodies.filter((b) => b.kind === "Moon");
   assert.equal(bodies.length, 26);
@@ -31,9 +31,11 @@ test("canonical moons have SI circular relative states and no overlaps", () => {
     assert.ok(
       Math.abs(
         (length(v) ** 2 * length(r)) / (G * (parent.mass + moon.mass)) - 1,
-      ) < 1e-9,
+      ) < (moon.id === "moon" ? 0.008 : 1e-9),
       moon.name,
     );
+    if (moon.id === "moon")
+      assert.equal(moon.rotationPeriod, 27.321661 * 86400);
     assert.ok(moon.trailInterval > 0);
   }
   for (let i = 0; i < bodies.length; i++) {

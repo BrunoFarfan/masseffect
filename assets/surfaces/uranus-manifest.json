@@ -4,31 +4,32 @@
   "body": "uranus",
   "referenceRadiusMeters": 25362000,
   "bodyrefSIradius": 25362000,
-  "sourceType": "mapped-representative-atmospheric-appearance",
-  "sourceOrganization": "NASA/JPL/Caltech Solar System Simulator",
-  "coordinateConvention": "Runtime samples the supplied 2:1 texture with east-positive -180..180 and north-at-top conventions; source longitude alignment and prime meridian are unverified.",
+  "sourceType": "observed-atmosphere-with-approximate-gap-fill",
+  "atmosphericBands": false,
+  "sourceOrganization": "NASA/ESA/STScI Hubble OPAL",
+  "coordinateConvention": "Runtime samples the north-at-top cylindrical mosaic; absolute longitude/prime-meridian alignment is unverified.",
   "coordinates": {
-    "longitude": "runtime east-positive -180..180; source alignment unverified",
+    "longitude": "source absolute longitude alignment unverified",
     "latitude": "runtime planetocentric; source alignment unverified",
-    "projection": "2:1 image texture; exact source projection metadata is not published",
-    "northAtTop": "unverified from source metadata",
+    "projection": "OPAL global cylindrical mosaic",
+    "northAtTop": true,
     "pixelRegistration": "pixel-centered derivative convention"
   },
   "heightPolicy": "Uranus is an ice giant: no solid terrain or height files are emitted. Atmospheric color and band/brightness appearance are never elevation.",
   "provenance": {
-    "citation": "NASA/JPL/Caltech Solar System Simulator Uranus texture map; JPL identifies it as a fictional plain solid-blue representative texture.",
+    "citation": "Hubble OPAL Uranus 2014a WFC3/UVIS F467M/F547M/F658N global color composite, NASA/ESA/STScI; southern missing coverage is synthetic approximation.",
     "source": {
-      "file": "uranus-jpl-texture.jpg",
-      "url": "https://maps.jpl.nasa.gov/tmaps/pix/ura0fss1.jpg",
-      "sha256": "07020f4707f67a6572f8e823c4bbb00d71028d4550be684b8297ebea8f896aa2",
-      "dimensions": "720x360 JPEG, 8-bit sRGB, 3-channel"
+      "file": "uranus-opal-2014a-globalmap.tif",
+      "url": "https://archive.stsci.edu/hlsps/opal/cycle22/uranus/hlsp_opal_hst_wfc3-uvis_uranus-2014a_f467m-f547m-f658n_v1_globalmap.tif",
+      "sha256": "1e7944240bb74b2e84703b7c63dcb3d95cda62e6a4a8928522b3cc28d8b927a6",
+      "dimensions": "721x361 TIFF, 8-bit RGB composite"
     },
-    "sourceMetadata": "https://science.nasa.gov/resource/uranus-3d-model/",
-    "mapCatalog": "https://maps.jpl.nasa.gov/tmaps/uranus.html",
-    "coverage": "Global representative atmospheric appearance; JPL states that Uranus maps are representative, atmospheric dynamics change daily, and textures are not for scientific analysis.",
-    "license": "NASA/JPL/Caltech public resource; retain NASA/JPL attribution and fictional/representative qualification.",
-    "processing": "Pinned 720x360 JPL JPEG; verified 8-bit sRGB 3-channel metadata; resized without reprojection to 512x256 preview and native-capped 720x360 medium and near JPEG derivatives; color only.",
-    "orientationEvidence": "JPL publishes a rendered texture but no cartographic geotransform, prime meridian, longitude sign, or pole-orientation metadata. Pixel order is preserved without flip or rotate; absolute imagery alignment is unverified.",
+    "sourceMetadata": "https://archive.stsci.edu/hlsp/opal/opal-uranus-cycle-22",
+    "mapCatalog": "https://archive.stsci.edu/hlsp/opal",
+    "coverage": "Observed northern and equatorial clouds in a global cylindrical mosaic; the unobserved southern cap is smooth approximate color/bands, not Hubble data.",
+    "license": "OPAL data use CC BY 4.0; credit NASA/ESA/STScI and the OPAL team.",
+    "processing": "Pinned 721x361 Hubble TIFF; no-data southern rows and the ragged observation edge are blended across a 65-pixel latitude band into a pale synthetic atmospheric fill. Derived JPEGs are capped at native source resolution; color only, no terrain.",
+    "orientationEvidence": "OPAL cylindrical map is used without flip or rotation; absolute prime-meridian alignment remains unverified.",
     "canonicalRadiusMeters": 25362000,
     "sourceReferenceRadiusMeters": null
   },
@@ -37,22 +38,22 @@
       "color": "/assets/surfaces/uranus-preview.jpg",
       "width": 512,
       "height": 256,
-      "colorSha256": "8eabb1a019231344ee43c7a0d2781bdc057e9a00bbd694cfe17f9722fee3d638",
-      "colorKind": "NASA/JPL representative atmospheric appearance"
+      "colorSha256": "ce6f98e1ed37f972d7f843cb42b37e85bec28bb4803a8155dd50da25825270d3",
+      "colorKind": "Hubble OPAL observed clouds, approximate southern gap fill"
     },
     "medium": {
       "color": "/assets/surfaces/uranus-medium.jpg",
       "width": 720,
       "height": 360,
-      "colorSha256": "ae6c69f21d5353a8176e76dff9fbecc7ad6aa05eb5d835a5ed8bb77ee32e263e",
-      "colorKind": "NASA/JPL representative atmospheric appearance"
+      "colorSha256": "4b21284c6c965c7db2d5028460495e10b8d91b2a84af9019c2dc0cd7b948eb8c",
+      "colorKind": "Hubble OPAL observed clouds, approximate southern gap fill"
     },
     "near": {
       "color": "/assets/surfaces/uranus-near.jpg",
       "width": 720,
       "height": 360,
-      "colorSha256": "ae6c69f21d5353a8176e76dff9fbecc7ad6aa05eb5d835a5ed8bb77ee32e263e",
-      "colorKind": "NASA/JPL representative atmospheric appearance"
+      "colorSha256": "4b21284c6c965c7db2d5028460495e10b8d91b2a84af9019c2dc0cd7b948eb8c",
+      "colorKind": "Hubble OPAL observed clouds, approximate southern gap fill"
     }
   }
 }

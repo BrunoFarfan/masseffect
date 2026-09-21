@@ -351,6 +351,41 @@ async function main() {
     regionalMax = Math.max(regionalMax, h);
   }
   await writeFile(resolve(outputDir, "moon-tycho.height.bin"), regionalBytes);
+  // Mare Orientale: retain native LOLA16 samples from the verified global
+  // DEM. This 40x40 degree crop is 16 pixels/degree, above the global near
+  // raster's ~5.7 pixels/degree and remains a bounded lazy tile.
+  const mareWidth = 641, mareHeight = 641;
+  const mareBytes = Buffer.alloc(mareWidth * mareHeight * 2);
+  for (let y = 0; y < mareHeight; y++) {
+    const sourceY = 1280 + y;
+    for (let x = 0; x < mareWidth; x++) {
+      // The LOLA16 raster is registered in the runtime's wrapped longitude
+      // convention: Mare Orientale (-100..-60E) is source columns 1280..1920.
+      const sourceX = 1280 + x;
+      moonHeight.bytes.copy(mareBytes, (y * mareWidth + x) * 2, 8 + (sourceY * 5760 + sourceX) * 2, 8 + (sourceY * 5760 + sourceX + 1) * 2);
+    }
+  }
+  await writeFile(resolve(outputDir, "moon-mare-orientale.height.bin"), mareBytes);
+  let mareMin = Infinity, mareMax = -Infinity;
+  for (let i = 0; i < mareBytes.length; i += 2) {
+    const value = mareBytes.readUInt16LE(i);
+    mareMin = Math.min(mareMin, value); mareMax = Math.max(mareMax, value);
+  }
+  // Copernicus: native LOLA16 crop (10x10 degrees, 16 samples/degree).
+  const copernicusWidth = 161, copernicusHeight = 161;
+  const copernicusBytes = Buffer.alloc(copernicusWidth * copernicusHeight * 2);
+  for (let y = 0; y < copernicusHeight; y++) for (let x = 0; x < copernicusWidth; x++) {
+    const sourceY = 1200 + y; // +15 down to +5 degrees planetocentric
+    const sourceX = 2480 + x; // -25 through -15 degrees east; crater at -20.08
+    moonHeight.bytes.copy(copernicusBytes, (y * copernicusWidth + x) * 2,
+      8 + (sourceY * 5760 + sourceX) * 2, 8 + (sourceY * 5760 + sourceX + 1) * 2);
+  }
+  await writeFile(resolve(outputDir, "moon-copernicus.height.bin"), copernicusBytes);
+  let copernicusMin = Infinity, copernicusMax = -Infinity;
+  for (let i = 0; i < copernicusBytes.length; i += 2) {
+    const value = copernicusBytes.readUInt16LE(i);
+    copernicusMin = Math.min(copernicusMin, value); copernicusMax = Math.max(copernicusMax, value);
+  }
   const marsRegionalBytes = Buffer.alloc(1024 * 1024 * 2);
   for (let y = 0; y < 1024; y++) {
     for (let x = 0; x < 1024; x++) {
@@ -372,6 +407,7 @@ async function main() {
     marsRegionalBytes,
   );
   const bodies = {};
+  const marsRaw = Buffer.from(marsEncoded.buffer);
   for (const body of ["moon", "mars"]) {
     const isMoon = body === "moon";
     const source = isMoon
@@ -451,6 +487,7 @@ async function main() {
         entry.maxElevationMeters = levelMax;
         if (isMoon && level.name === "near")
           entry.region = {
+            id: "tycho",
             name: "Tycho LOLA64 regional relief",
             heightUrl: "/assets/surfaces/moon-tycho.height.bin",
             heightSha256: sha256(regionalBytes),
@@ -463,8 +500,35 @@ async function main() {
             minElevationMeters: regionalMin,
             maxElevationMeters: regionalMax,
           };
+        if (isMoon && level.name === "near")
+          entry.regions = [
+            entry.region,
+            {
+              id: "mare-orientale",
+              name: "Mare Orientale LOLA16 regional relief",
+              heightUrl: "/assets/surfaces/moon-mare-orientale.height.bin",
+              heightSha256: sha256(mareBytes), width: mareWidth, height: mareHeight,
+              heightScaleMeters: 0.5, heightOffsetMeters: -10000,
+              uvBounds: [(-100 + 180) / 360, (90 - 10) / 180, (-60 + 180) / 360, (90 + 30) / 180],
+              blendBorder: 0.06,
+              minElevationMeters: -10000 + mareMin * 0.5,
+              maxElevationMeters: -10000 + mareMax * 0.5,
+            },
+            {
+              id: "copernicus",
+              name: "Copernicus LOLA16 regional relief",
+              heightUrl: "/assets/surfaces/moon-copernicus.height.bin",
+              heightSha256: sha256(copernicusBytes), width: copernicusWidth, height: copernicusHeight,
+              heightScaleMeters: 0.5, heightOffsetMeters: -10000,
+              uvBounds: [155 / 360, 75 / 180, 165 / 360, 85 / 180],
+              blendBorder: 0.06,
+              minElevationMeters: -10000 + copernicusMin * 0.5,
+              maxElevationMeters: -10000 + copernicusMax * 0.5,
+            },
+          ];
         if (!isMoon && level.name === "near")
           entry.region = {
+            id: "olympus",
             name: "Olympus MOLA128 regional radial shape",
             heightUrl: "/assets/surfaces/mars-olympus.height.bin",
             heightSha256: sha256(marsRegionalBytes),
@@ -482,6 +546,60 @@ async function main() {
             minElevationMeters: marsRegionalMin,
             maxElevationMeters: marsRegionalMax,
           };
+        if (!isMoon && level.name === "near") {
+          const vallesWidth = 481, vallesHeight = 481;
+          const vallesBytes = Buffer.alloc(vallesWidth * vallesHeight * 2);
+          for (let y = 0; y < vallesHeight; y++) {
+            const sourceY = 1200 + y;
+            for (let x = 0; x < vallesWidth; x++) {
+              const sourceX = 4640 + x;
+              marsRaw.copy(vallesBytes, (y * vallesWidth + x) * 2, (sourceY * marsWidth + sourceX) * 2, (sourceY * marsWidth + sourceX + 1) * 2);
+            }
+          }
+          const vallesPath = resolve(outputDir, "mars-valles.height.bin");
+          await writeFile(vallesPath, vallesBytes);
+          const vallesValues = new Uint16Array(vallesBytes.buffer, vallesBytes.byteOffset, vallesBytes.byteLength / 2);
+          let vallesMin = Infinity, vallesMax = -Infinity;
+          for (const value of vallesValues) { vallesMin = Math.min(vallesMin, value); vallesMax = Math.max(vallesMax, value); }
+          entry.regions = [
+            entry.region,
+            {
+              id: "valles-marineris",
+              name: "Valles Marineris MOLA16 regional relief",
+              heightUrl: "/assets/surfaces/mars-valles.height.bin",
+              heightSha256: sha256(vallesBytes), width: vallesWidth, height: vallesHeight,
+              heightScaleMeters: 1, heightOffsetMeters: -20000,
+              uvBounds: [110 / 360, (90 - 15) / 180, 140 / 360, (90 + 15) / 180],
+              blendBorder: 0.06,
+              minElevationMeters: vallesMin - 20000,
+              maxElevationMeters: vallesMax - 20000,
+            },
+          ];
+          const hellasWidth = 481, hellasHeight = 481;
+          const hellasBytes = Buffer.alloc(hellasWidth * hellasHeight * 2);
+          for (let y = 0; y < hellasHeight; y++) for (let x = 0; x < hellasWidth; x++) {
+            const sourceY = 1760 + y; // -20 down to -50 degrees
+            const sourceX = 960 + x; // 60 through 90 degrees east
+            marsRaw.copy(hellasBytes, (y * hellasWidth + x) * 2,
+              (sourceY * marsWidth + sourceX) * 2, (sourceY * marsWidth + sourceX + 1) * 2);
+          }
+          const hellasPath = resolve(outputDir, "mars-hellas.height.bin");
+          await writeFile(hellasPath, hellasBytes);
+          let hellasMin = Infinity, hellasMax = -Infinity;
+          for (let i = 0; i < hellasBytes.length; i += 2) {
+            const elevation = hellasBytes.readUInt16LE(i) - 20000;
+            hellasMin = Math.min(hellasMin, elevation); hellasMax = Math.max(hellasMax, elevation);
+          }
+          entry.regions.push({
+            id: "hellas",
+            name: "Hellas Planitia MOLA16 regional relief",
+            heightUrl: "/assets/surfaces/mars-hellas.height.bin",
+            heightSha256: sha256(hellasBytes), width: hellasWidth, height: hellasHeight,
+            heightScaleMeters: 1, heightOffsetMeters: -20000,
+            uvBounds: [240 / 360, (90 + 20) / 180, 270 / 360, (90 + 50) / 180],
+            blendBorder: 0.06, minElevationMeters: hellasMin, maxElevationMeters: hellasMax,
+          });
+        }
       }
       levelManifest[level.name] = entry;
     }
@@ -522,7 +640,7 @@ async function main() {
                 sha256: SOURCES.moonHeight.sha256,
                 dimensions: "5760x2880 unsigned 16-bit TIFF",
                 operations:
-                  "decode pinned uncompressed uint16 strip; area-average resize to 1024/2048; round to half-meter; little-endian uint16 export",
+                "decode pinned uncompressed uint16 strip; area-average resize to 1024/2048; retain native 16 pixels/degree Mare Orientale (40x40 degrees) and Copernicus (10x10 degrees) crops; round to half-meter; little-endian uint16 export",
               },
               {
                 url: SOURCES.moonRegionRows.url,
@@ -578,7 +696,7 @@ async function main() {
                 checksumScope:
                   "HTTP byte-range extraction, not full original tile",
                 operations:
-                  "verify SignedMSB2 rows 2816..3839; extract columns 5376..6399; convert radius offset 3396000 to canonical 3389500 radial elevation; little-endian uint16 export with -20000 m offset",
+                  "verify SignedMSB2 rows 2816..3839; extract columns 5376..6399 for Olympus, native 16 pixels/degree rows 1200..1680 columns 4640..5120 for Valles Marineris, and rows 1760..2240 columns 960..1440 for Hellas Planitia; convert radius offset 3396000 to canonical 3389500 radial elevation; little-endian uint16 export with -20000 m offset",
                 coverage:
                   "planetocentric 222..230E, 14..22N; MOLA128 IAU2000_MARS",
               },

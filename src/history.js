@@ -17,6 +17,7 @@ const FIELDS = [
   "fragmentGeneration",
   "rotationModel",
   "rotationPeriod",
+  "rotationReferenceOrientation",
 ];
 const MAX_SNAPSHOTS = 900;
 const MAX_BODY_RECORDS = 32000;
@@ -25,7 +26,8 @@ const MAX_REPLAY_STEPS = 4096;
 function cloneBody(body) {
   const result = {};
   for (const key of FIELDS)
-    if (body[key] !== undefined) result[key] = body[key];
+    if (body[key] !== undefined)
+      result[key] = Array.isArray(body[key]) ? [...body[key]] : body[key];
   result.position = [...body.position];
   result.velocity = [...body.velocity];
   if (body.orientation) result.orientation = [...body.orientation];
@@ -44,6 +46,7 @@ function snapshot(sim) {
     time: sim.time,
     bodies: sim.bodies.map(cloneBody),
     fragmentLimit: sim.collisionLimit ?? 4,
+    safetyFactor: sim.integrationSafetyFactor ?? 0.025,
   };
 }
 
@@ -58,21 +61,22 @@ function compatible(a, b) {
       other &&
       FIELDS.every(
         (key) =>
-          // A locked moon's period is derived from its changing orbit, not an edit.
-          (key === "rotationPeriod" &&
-            body.rotationModel === "synchronous" &&
-            other.rotationModel === "synchronous") ||
+          (key === "rotationReferenceOrientation" &&
+            Array.isArray(body[key]) && Array.isArray(other[key]) &&
+            body[key].length === other[key].length &&
+            body[key].every((value, i) => value === other[key][i])) ||
           body[key] === other[key],
       )
     );
   });
 }
 
-function reconstruct(before, target) {
+function reconstruct(before, target, safetyFactor = before.safetyFactor ?? 0.025) {
   const restored = {
     time: before.time,
     bodies: before.bodies.map(cloneBody),
     fragmentLimit: before.fragmentLimit ?? 4,
+    safetyFactor,
   };
   // Re-run ordinary forward physics from a known state. Linear interpolation
   // across a sparsely sampled moon orbit can cut through the parent planet.
@@ -81,7 +85,10 @@ function reconstruct(before, target) {
     count < MAX_REPLAY_STEPS && restored.time < target;
     count++
   ) {
-    const dt = Math.min(safeStep(restored.bodies), target - restored.time);
+    const dt = Math.min(
+      safeStep(restored.bodies, 1800, restored.safetyFactor),
+      target - restored.time,
+    );
     if (!(dt > 0) || restored.time + dt <= restored.time) break;
     step(restored.bodies, dt, { fragmentLimit: restored.fragmentLimit });
     restored.time += dt;
@@ -166,7 +173,9 @@ export class History {
     const before = this.#snapshots[index],
       after = this.#snapshots[index + 1];
     const replay = after && target > before.time && compatible(before, after);
-    const restored = replay ? reconstruct(before, target) : before;
+    const restored = replay
+      ? reconstruct(before, target, after.safetyFactor)
+      : before;
     if (restored.time > before.time) {
       // Retain the exact reconstructed point for future rewinds and branching.
       // It participates in both memory caps, including while playback is paused.
@@ -182,6 +191,7 @@ export class History {
     // well as its state. Never invent a continuous path through a body edit.
     sim.time = restored.time;
     sim.collisionLimit = restored.fragmentLimit ?? 4;
+    sim.integrationSafetyFactor = restored.safetyFactor ?? 0.025;
     sim.bodies = restored.bodies.map((body) => ({
       ...cloneBody(body),
       trail: [],
