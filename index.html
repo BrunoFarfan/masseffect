@@ -61,7 +61,7 @@
     <canvas
       id="space"
       tabindex="0"
-      aria-label="Orbital sandbox. Click to capture mouse. Escape releases the cursor."
+      aria-label="Orbital sandbox. Click or press N to capture mouse. Escape releases the cursor."
     ></canvas>
     <header>
       <span class="wordmark">Mass Effect<span>·</span></span>
@@ -76,7 +76,7 @@
     <div id="crosshair" aria-hidden="true">+</div>
     <div id="welcome">
       <button id="begin">Enter space ↗</button>
-      <p>Mouse to look · WASD to move · Esc to release</p>
+      <p>Mouse to look · WASD to move · Esc to release · N to return</p>
       <p>Arrows control time · Space pauses · Keys above for help</p>
     </div>
     <section id="selection" hidden>
@@ -272,8 +272,8 @@
         <dd>Inner-system view</dd>
         <dt>⌘ / Ctrl K</dt>
         <dd>Find a body or landmark and travel there</dd>
-        <dt>Esc</dt>
-        <dd>Leave mouse-look only</dd>
+        <dt>Esc / N</dt>
+        <dd>Release cursor / return to mouse-look</dd>
       </dl>
       <h3>Time</h3>
       <dl class="key-list">
@@ -287,8 +287,8 @@
         <dd>Faster / slower</dd>
       </dl>
       <p class="quiet">
-        Click empty space to enter mouse-look. Escape does nothing in normal
-        cursor mode. Near a surface you move and rotate with it; fly away to
+        Click empty space or press N to enter mouse-look. Click a body to
+        select it. Near a surface you move and rotate with it; fly away to
         release. Q/E follows the local vertical. Shortcuts are inactive in open
         sheets and text fields.
       </p>

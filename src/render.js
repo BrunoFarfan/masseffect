@@ -1,4 +1,4 @@
-import { length, sub, dot, mul } from "./math.js";
+import { length, sub, dot, mul, unit } from "./math.js";
 import { SphereSurface, sphereRasterWidth } from "./sphere.js";
 import { ImpactView } from "./impact-view.js";
 import { projectSaturnRings, drawRingFaces } from "./rings.js";
@@ -9,7 +9,9 @@ import {
   SURFACE_LANDMARKS,
   landmarkPoint,
   landmarkVisibility,
+  nearbyLandmarkBodies,
 } from "./landmarks.js";
+import { surfaceFrame } from "./surface-definition.js";
 
 // Hide labels/picks whose sightline enters a nearer physical surface. Otherwise
 // a planet below the local horizon can still appear as a floating text label.
@@ -171,6 +173,8 @@ export class Renderer {
     ctx.globalAlpha = 1;
     this.hits = [];
     const drawnBodies = this.impacts.bodies(sim.bodies, options.effectDt || 0);
+    this.pickBodies = sim.bodies.filter((body) => !body.ghost);
+    this.pickCamera = camera;
     const close = drawnBodies.filter(
       (b) =>
         length(sub(camera.position, b.position)) < b.radius * 12 ||
@@ -356,28 +360,37 @@ export class Renderer {
       }
       // Contextual, non-clickable landmark annotations. Body disks remain
       // occupied for body labels but intentionally do not block these labels.
-      const landmarkBody = sim.bodies.find((b) => b.id === selected);
-      const landmarkState =
-        landmarkBody &&
-        (landmarkBody.id === "moon" || landmarkBody.id === "mars")
-          ? this.surfaces.state(landmarkBody)
-          : null;
-      if (
-        landmarkBody &&
-        this.surfaces.enabled &&
-        landmarkState?.asset?.height &&
-        SURFACE_LANDMARKS[landmarkBody.id]
-      ) {
+      const landmarkOccupied = [
+        ...bodyLabelRects,
+        ...(options.occlusions || []),
+      ];
+      let shown = 0;
+      for (const landmarkBody of nearbyLandmarkBodies(sim.bodies, camera.position)) {
+        const landmarkState = this.surfaces.state(landmarkBody);
+        const landmarkFrame = landmarkState?.frame || surfaceFrame(landmarkBody, sim.time);
+        if (!landmarkFrame) continue;
         const sampleState = {
           ...landmarkState,
-          sample: (direction) => this.surfaces.sample(landmarkState, direction),
+          frame: landmarkFrame,
+          referenceRadiusMeters:
+            landmarkState?.referenceRadiusMeters || landmarkBody.radius,
+          sample: landmarkState
+            ? (direction) => this.surfaces.sample(landmarkState, direction)
+            : () => 0,
         };
-        const landmarkOccupied = [
-          ...bodyLabelRects,
-          ...(options.occlusions || []),
-        ];
-        for (const site of SURFACE_LANDMARKS[landmarkBody.id].slice(0, 4)) {
-          const point = landmarkPoint(landmarkBody, sampleState, site, 50);
+        const cameraRadial = unit(sub(camera.position, landmarkBody.position));
+        const horizonDot = landmarkBody.radius /
+          Math.max(landmarkBody.radius, length(sub(camera.position, landmarkBody.position)));
+        const nearbySites = SURFACE_LANDMARKS[landmarkBody.id]
+          .map((site) => ({ site, point: landmarkPoint(landmarkBody, sampleState, site, 50) }))
+          .filter(({ point }) => point && dot(point.direction, cameraRadial) >= horizonDot - 0.02)
+          .map((entry) => ({ ...entry, screen: this.project(entry.point.position) }))
+          .filter(({ screen }) => screen && screen.x >= 0 && screen.x < w && screen.y >= 0 && screen.y < h)
+          .sort((a, b) =>
+            Math.hypot(a.screen.x - w / 2, a.screen.y - h / 2) -
+            Math.hypot(b.screen.x - w / 2, b.screen.y - h / 2),
+          );
+        for (const { site, point } of nearbySites.slice(0, 16)) {
           if (
             occluded(
               { id: landmarkBody.id, position: point.position, radius: 0 },
@@ -416,6 +429,7 @@ export class Renderer {
           );
           if (!label) continue;
           landmarkOccupied.push(label);
+          shown++;
           ctx.globalAlpha = visibility.alpha;
           ctx.strokeStyle = "#10151e";
           ctx.lineWidth = 3;
@@ -433,7 +447,9 @@ export class Renderer {
           ctx.arc(p.x, p.y, 1.7, 0, Math.PI * 2);
           ctx.fill();
           ctx.globalAlpha = 1;
+          if (shown >= 8) break;
         }
+        if (shown >= 8) break;
       }
     }
     if (options.preview) {
@@ -506,10 +522,35 @@ export class Renderer {
     );
   }
   pick(x, y) {
-    return this.hits
+    const disk = this.hits
       .slice()
       .reverse()
       .find((p) => Math.hypot(x - p.x, y - p.y) < p.r)?.id;
+    if (disk) return disk;
+    // At extreme proximity the center of a planet can be behind the camera,
+    // so it has no projected disk hit. Pick the visible surface by ray instead.
+    const camera = this.pickCamera;
+    if (!camera) return null;
+    const scale = this.height * 0.95;
+    const sx = (x - this.width / 2) / scale;
+    const sy = (this.height / 2 - y) / scale;
+    const forward = camera.forward, right = camera.right, up = camera.up;
+    const direction = unit(forward.map((value, i) => value + sx * right[i] + sy * up[i]));
+    let nearest = Infinity, id = null;
+    for (const body of this.pickBodies || []) {
+      const offset = sub(camera.position, body.position);
+      const along = dot(offset, direction);
+      const discriminant = along * along - (dot(offset, offset) - body.radius ** 2);
+      if (discriminant < 0) continue;
+      const near = -along - Math.sqrt(discriminant);
+      const far = -along + Math.sqrt(discriminant);
+      const distance = near > 0 ? near : far;
+      if (distance > 0 && distance < nearest) {
+        nearest = distance;
+        id = body.id;
+      }
+    }
+    return id;
   }
 }
 export function formatDistance(meters) {

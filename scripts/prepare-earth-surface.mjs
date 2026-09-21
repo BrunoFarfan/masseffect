@@ -27,6 +27,12 @@ const colorSource = {
   sha256: "99f5faad74efe985fbf1714c8be7296ca9999759a1215b65f99b7f1df278dde5",
   dimensions: "5400×2700 RGB JPEG; Blue Marble Next Generation January 2004",
 };
+const andesRegionSource = {
+  file: "earth-etopo-andes-60s.csv",
+  url: "https://oceanwatch.pifsc.noaa.gov/erddap/griddap/ETOPO_2022_v1_60s.csv?z[3000:1:4200][17100:1:17700]",
+  sha256: "59e37f85bcdddb94bc0c018d50459f9f98d0123b64d10d6895ce544bbf7eb407",
+  dimensions: "1201 latitude samples × 601 longitude samples at 60 arc-seconds; Andes 285..295E, -40..-20N",
+};
 const levels = [
   { name: "preview", width: 512, height: 256 },
   { name: "medium", width: 1024, height: 512 },
@@ -46,6 +52,9 @@ function sha256(bytes) {
 function geocentricToGeodetic(latitude) {
   return Math.atan((Math.tan(latitude) * earthA ** 2) / earthB ** 2);
 }
+function geodeticToGeocentric(latitude) {
+  return Math.atan((Math.tan(latitude) * earthB ** 2) / earthA ** 2);
+}
 function ellipsoidRadius(planetocentricLatitude) {
   const c = Math.cos(planetocentricLatitude);
   const s = Math.sin(planetocentricLatitude);
@@ -63,6 +72,29 @@ async function verifyFile(def) {
   if (actual !== def.sha256)
     throw new Error(`${def.file} SHA-256 mismatch: ${actual}`);
   return path;
+}
+
+async function readAndesRegion(path) {
+  const rows = [];
+  const input = createInterface({ input: createReadStream(path), crlfDelay: Infinity });
+  let row = [];
+  let previousLatitude = null;
+  for await (const line of input) {
+    if (!line.trim() || line.startsWith("latitude,") || line.startsWith("degrees_")) continue;
+    const [latitudeText, longitudeText, zText] = line.split(",");
+    const latitude = Number(latitudeText), longitude = Number(longitudeText), z = Number(zText);
+    if (![latitude, longitude, z].every(Number.isFinite)) throw new Error("Malformed Andes ETOPO row");
+    if (previousLatitude !== null && latitude !== previousLatitude && row.length) {
+      rows.push(row);
+      row = [];
+    }
+    row.push({ latitude, longitude, z });
+    previousLatitude = latitude;
+  }
+  if (row.length) rows.push(row);
+  if (rows.length !== 1201 || rows.some((r) => r.length !== 601))
+    throw new Error(`Unexpected Andes ETOPO dimensions ${rows.length}x${rows[0]?.length}`);
+  return rows;
 }
 
 async function readDem(path) {
@@ -176,7 +208,9 @@ async function main() {
   }
   const demPath = await verifyFile(source);
   const colorPath = await verifyFile(colorSource);
+  const andesPath = await verifyFile(andesRegionSource);
   const dem = await readDem(demPath);
+  const andes = await readAndesRegion(andesPath);
   const color = await sharp(colorPath)
     .raw()
     .toBuffer({ resolveWithObject: true });
@@ -250,6 +284,77 @@ async function main() {
       maxElevationMeters,
     };
   }
+  const andesHeight = Buffer.alloc(601 * 1201 * 2);
+  let andesMin = Infinity, andesMax = -Infinity;
+  for (let y = 0; y < andes.length; y++) for (let x = 0; x < andes[y].length; x++) {
+    // ERDDAP returns latitude south-to-north; runtime textures are
+    // north-at-top, so reverse rows while retaining source sample spacing.
+    const samplePoint = andes[andes.length - 1 - y][x];
+    const planetocentric = Math.atan((Math.tan(samplePoint.latitude * Math.PI / 180) * earthB ** 2) / earthA ** 2);
+    const elevation = ellipsoidRadius(planetocentric) - canonicalRadius + samplePoint.z;
+    const encoded = Math.round((elevation - heightOffsetMeters) / heightScaleMeters);
+    if (encoded < 0 || encoded > 65535) throw new Error("Andes elevation exceeds uint16 encoding range");
+    andesHeight.writeUInt16LE(encoded, (y * 601 + x) * 2);
+    const radial = encoded * heightScaleMeters + heightOffsetMeters;
+    andesMin = Math.min(andesMin, radial); andesMax = Math.max(andesMax, radial);
+  }
+  const andesHeightPath = resolve(outputDir, "earth-andes.height.bin");
+  await writeFile(andesHeightPath, andesHeight);
+  // Himalaya: retain native 1/6-degree samples from the verified global
+  // ETOPO extraction. Source rows are south-to-north; export north-at-top.
+  const himalayaWidth = 181, himalayaHeight = 61;
+  const himalayaLonMin = 70, himalayaLatMin = 25, himalayaLatMax = 35;
+  const himalayaHeightBytes = Buffer.alloc(himalayaWidth * himalayaHeight * 2);
+  let himalayaMin = Infinity, himalayaMax = -Infinity;
+  for (let y = 0; y < himalayaHeight; y++) for (let x = 0; x < himalayaWidth; x++) {
+    const latitude = himalayaLatMax - y * sourceStep;
+    const longitude = himalayaLonMin + x * sourceStep;
+    const sourceY = Math.round((latitude - firstLat) / sourceStep);
+    const sourceX = Math.round((longitude - firstLon) / sourceStep);
+    if (sourceY < 0 || sourceY >= sourceHeight || sourceX < 0 || sourceX >= sourceWidth)
+      throw new Error(`Himalaya source index out of bounds ${latitude},${longitude}`);
+    const z = dem[sourceY * sourceWidth + sourceX];
+    const planetocentric = geodeticToGeocentric(latitude * Math.PI / 180);
+    const elevation = ellipsoidRadius(planetocentric) - canonicalRadius + z;
+    const encoded = Math.round((elevation - heightOffsetMeters) / heightScaleMeters);
+    if (encoded < 0 || encoded > 65535) throw new Error("Himalaya elevation exceeds uint16 encoding range");
+    himalayaHeightBytes.writeUInt16LE(encoded, (y * himalayaWidth + x) * 2);
+    const radial = encoded * heightScaleMeters + heightOffsetMeters;
+    himalayaMin = Math.min(himalayaMin, radial); himalayaMax = Math.max(himalayaMax, radial);
+  }
+  await writeFile(resolve(outputDir, "earth-himalaya.height.bin"), himalayaHeightBytes);
+  const toUv = (longitude) => (longitude + 180) / 360;
+  const toV = (latitude) => 0.5 - latitude / 180;
+  const southPlanetocentric = geodeticToGeocentric(-20 * Math.PI / 180) * 180 / Math.PI;
+  const northPlanetocentric = geodeticToGeocentric(-40 * Math.PI / 180) * 180 / Math.PI;
+  levelManifest.near.region = {
+    id: "andes",
+    name: "Andes ETOPO2022 60-arcsecond regional relief",
+    heightUrl: "/assets/surfaces/earth-andes.height.bin",
+    heightSha256: sha256(andesHeight), width: 601, height: 1201,
+    heightScaleMeters, heightOffsetMeters,
+    uvBounds: [toUv(-75), toV(southPlanetocentric), toUv(-65), toV(northPlanetocentric)],
+    blendBorder: 0.04, minElevationMeters: andesMin, maxElevationMeters: andesMax,
+  };
+  levelManifest.near.regions = [
+    levelManifest.near.region,
+    {
+      id: "himalaya",
+      name: "Himalaya ETOPO2022 native regional relief",
+      heightUrl: "/assets/surfaces/earth-himalaya.height.bin",
+      heightSha256: sha256(himalayaHeightBytes),
+      width: himalayaWidth, height: himalayaHeight,
+      heightScaleMeters, heightOffsetMeters,
+      uvBounds: [
+        toUv(himalayaLonMin),
+        toV(geodeticToGeocentric(himalayaLatMax * Math.PI / 180) * 180 / Math.PI),
+        toUv(himalayaLonMin + (himalayaWidth - 1) * sourceStep),
+        toV(geodeticToGeocentric(himalayaLatMin * Math.PI / 180) * 180 / Math.PI),
+      ],
+      blendBorder: 0.06,
+      minElevationMeters: himalayaMin, maxElevationMeters: himalayaMax,
+    },
+  ];
   const sampleChecks = {
     everest: sampleDem(
       dem,
@@ -298,8 +403,8 @@ async function main() {
     waterSurface: true,
     heightPolicy:
       "ETOPO orthometric heights are treated as an explicit datum approximation to radial relief; bathymetry is retained in the height asset. Visible ocean surface uses the reference ellipsoid, not a spherical sea or exposed seabed. Geoid undulations remain omitted.",
-    provenance: {
-      sources: [source, colorSource],
+      provenance: {
+      sources: [source, colorSource, andesRegionSource],
       metadata:
         "/output/surface-originals/earth-etopo.das and /output/surface-originals/earth-color-source.html",
       datum:
@@ -312,7 +417,7 @@ async function main() {
       canonicalReference:
         "WGS84 ellipsoid radial surface relative to canonical simulation radius 6371000 m; z added as a bounded datum approximation.",
       processing:
-        "Stream CSV; bilinear DEM sampling; geodetic-to-planetocentric latitude conversion; Blue Marble bilinear color sampling; JPEG quality 88; little-endian uint16 heights at 1 m/sample with -30000 m offset; reject rather than clamp out-of-range elevations.",
+        "Stream global and bounded regional CSVs; bilinear DEM sampling; geodetic-to-planetocentric latitude conversion; Blue Marble bilinear color sampling; JPEG quality 88; Andes regional tile retains native 60-arcsecond samples (601x1201), Himalaya tile retains native 1/6-degree ETOPO samples (181x61); little-endian uint16 heights at 1 m/sample with -30000 m offset; reject rather than clamp out-of-range elevations.",
       validationSamples: sampleChecks,
       license:
         "NASA public-domain imagery and NOAA NCEI ETOPO data; retain source attribution and caveat that ETOPO is not intended for legal use.",

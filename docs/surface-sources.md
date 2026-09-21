@@ -31,6 +31,13 @@ the global LOLA surface; GPU geometry/normals and camera clearance share it.
 Outside this rectangle the global terrain remains in use. Like other gridded
 LOLA products, the source includes interpolation between tracks.
 
+The near Moon level also carries a native LOLA16 Mare Orientale crop covering
+−100..−60° east longitude and −30..10° planetocentric latitude. Regional
+selection uses the camera surface UV and loads only the matching tile; the
+global near DEM remains the fallback during loading and outside regional
+coverage. A native LOLA16 Copernicus crop also covers −25..−15° east and
+5..15° planetocentric latitude (161×161 samples), encoded at 0.5 m/sample.
+
 ## Mars
 
 The source is the [NASA PDS MGS MOLA MEGDR archive](https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-megdr-l3-v1/mgsl_300x/meg016/),
@@ -54,7 +61,23 @@ to the runtime convention, not an eyeballed image rotation. Source illumination,
 colorization and acquisition seams remain: this is imagery, not calibrated
 albedo. The earlier round-one height-tinted fallback has been replaced.
 
+The near Mars level retains the native MOLA128 Olympus crop and adds a native
+MOLA16 Valles Marineris crop covering −70..−40° longitude and −15..15° latitude.
+Only the tile containing the camera surface point is requested; global MOLA
+remains active until the regional asset is ready. A third native MOLA16 tile
+covers Hellas Planitia (60..90°E, 50..20°S), with 481×481 source samples and
+the same PDS radial datum conversion as the global height map.
+
 ## Reproducibility and coordinates
+
+Earth's near level includes a bounded Andes tile covering 75..65°W and
+40..20°S. It is a 601×1201 native 60-arcsecond NOAA ETOPO extraction (not an
+upscaled global derivative), blended over a 4% border. The source query,
+checksum, dimensions, and processing are recorded in the Earth manifest; the
+prepared tile is about 1.4 MiB on disk and remains lazily loaded with the near
+LOD. The same verified ETOPO global extraction supplies a native 1/6-degree
+Himalaya tile (70..100°E, 25..35°N; 181×61 samples), preserving its measured
+source samples without upscaling.
 
 The preparation script verifies SHA-256 before processing. `--download` fetches
 the originals and then rebuilds; `--rebuild` is offline and only accepts local
@@ -63,7 +86,8 @@ files with the recorded checksums. It decodes the source grids, resizes to
 and little-endian raw uint16 height maps for medium/near, and records ranges,
 operations, URLs, checksums, dimensions, and datums in `manifest.json`.
 Height dimensions are independent: 1024x512 medium and 2048x1024 near,
-with one native-resolution regional tile. The decoded CPU cache is capped at96MiB.
+with bounded native-resolution regional tiles where authoritative source data
+is available. The decoded CPU cache is capped at 96 MiB.
 
 Runtime coordinates are cylindrical: east-positive longitude and
 planetocentric latitude, with `u=(longitude+π)/(2π)` and
@@ -74,6 +98,15 @@ WebGeocalc J2000-to-IAU transforms at -365.25d, J2000 and +365.25d using
 agree within the service's eight-decimal output precision. Fixtures and exact
 query conventions are in `tests/surface-orientation.test.mjs`.
 
+Venus retains measured Magellan altimetry in its medium and near height maps;
+the separate radar browse image is appearance only and is never used as
+elevation. Uranus is explicitly atmospheric: its color is now based on the
+[Hubble OPAL 2014a global cloud mosaic](https://archive.stsci.edu/hlsp/opal/opal-uranus-cycle-22),
+not the former fictional JPL blue texture. OPAL does not observe the entire
+southern cap: the offline preparer feathers that no-data area into a pale
+synthetic atmospheric fill. The manifest distinguishes observed clouds from
+this approximation. There is no terrain height asset or claimed meteorology.
+
 ## Catalog of other requested bodies
 
 The catalog below was the research starting point. Prepared products now have
@@ -82,14 +115,15 @@ manifest is the authority for what actually ships. Coverage is not uniform:
 
 | Runtime bodies | Shipped representation |
 | --- | --- |
-| Moon, Mars | LROC/LOLA and Viking/MOLA, plus native regional Tycho/Olympus DEM crops |
+| Moon, Mars | LROC/LOLA and Viking/MOLA, plus native regional Tycho/Mare Orientale and Olympus/Valles Marineris DEM crops |
 | Earth | Blue Marble imagery and ETOPO relief; WGS84 sea-level ellipsoid, omitted geoid correction documented |
 | Mercury, Venus, Enceladus | MESSENGER, Magellan, Cassini measured DEMs; constant illustrative ground color, not measured albedo |
 | Titan | Cassini ISS near-infrared appearance and Corlies 2017 sparse/interpolated topography, illustrative haze |
 | Phobos, Deimos | Simplified measured PDS Thomas shape meshes, illustrative material |
 | Io, Europa, Ganymede, Callisto, Rhea, Iapetus, Triton | Official mapped appearance and independent procedural relief, not DEMs |
 | Miranda, Ariel, Umbriel, Titania, Oberon | Partial Voyager visualization mosaics; gaps and absolute alignment uncertainty retained; procedural relief |
-| Jupiter, Saturn, Uranus, Neptune | Representative NASA/JPL cloud maps on PCK oblate shapes; no solid relief |
+| Jupiter, Saturn, Neptune | Representative NASA/JPL global cloud maps on PCK oblate shapes; no solid relief |
+| Uranus | Hubble OPAL 2014a observed clouds with documented approximate southern gap fill; no solid relief |
 | Sun | Emissive appearance, no terrain; see its product manifest for source/approximation status |
 
 Source candidates and supporting scientific holdings:

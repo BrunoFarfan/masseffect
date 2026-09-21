@@ -13,6 +13,7 @@ import { Camera } from "../src/camera.js";
 import { Simulation, step } from "../src/physics.js";
 import { History } from "../src/history.js";
 import { solarSystem } from "../src/solar.js";
+import { surfaceFrame } from "../src/surface-definition.js";
 import { add, sub, mul, length, dot, unit } from "../src/math.js";
 const near = (a, b, tolerance = 1e-8) =>
   assert.ok(length(sub(a, b)) < tolerance, `${a} != ${b}`);
@@ -32,7 +33,7 @@ test("canonical axial spin is SI, tilted and retrograde where expected", () => {
   advanceRotations([earth], earth.rotationPeriod);
   assert.ok(Math.abs(Math.abs(dot(initial, earth.orientation)) - 1) < 1e-10);
 });
-test("synchronous orientation keeps local +X pointed at the actual parent", () => {
+test("initial period-matched orientation points local +X at the parent", () => {
   const bodies = solarSystem();
   initializeRotations(bodies);
   for (const moon of bodies.filter((b) => b.kind === "Moon")) {
@@ -42,6 +43,22 @@ test("synchronous orientation keeps local +X pointed at the actual parent", () =
       unit(sub(parent.position, moon.position)),
     );
   }
+});
+test("spin-orbit facing comes from a fixed period, not live parent tracking", () => {
+  const parent = { id: "primary", mass: 5.97e24, position: [0, 0, 0], velocity: [0, 0, 0] };
+  const satellite = {
+    id: "satellite", parentId: "primary", kind: "Moon", mass: 7.35e22,
+    position: [3.84e8, 0, 0], velocity: [0, 0, 1022],
+  };
+  initializeRotations([parent, satellite]);
+  const period = satellite.rotationPeriod;
+  const omega = [...satellite.angularVelocity];
+  parent.position = [0, 0, 3.84e8];
+  advanceRotations([parent, satellite], 3600);
+  assert.equal(satellite.rotationPeriod, period);
+  near(satellite.angularVelocity, omega);
+  assert.ok(dot(rotateVector(satellite.orientation, [1, 0, 0]),
+    unit(sub(parent.position, satellite.position))) < 0.8);
 });
 test("surface frame keeps Earth fixed over a moving, rotating Moon and detaches continuously", () => {
   const earth = {
@@ -217,14 +234,17 @@ test("collision rebasing does not jump the camera when its followed ID survives 
   near(c.position, position);
   near(c.forward, view);
 });
-test("an escaped moon keeps a free spin rather than continuing an artificial tidal lock", () => {
+test("an escaped moon keeps its original spin instead of tracking its parent", () => {
   const bodies = solarSystem();
   initializeRotations(bodies);
   const moon = bodies.find((b) => b.id === "moon"),
     earth = bodies.find((b) => b.id === "earth");
   moon.velocity = add(earth.velocity, [1e5, 0, 0]);
+  const before = surfaceFrame(moon, 0);
   const omega = [...moon.angularVelocity];
   advanceRotations(bodies, 10);
-  assert.equal(moon.rotationModel, "free");
+  assert.equal(moon.rotationModel, "period-matched");
   near(moon.angularVelocity, omega);
+  const after = surfaceFrame(moon, 10);
+  assert.ok(dot(before.prime, after.prime) > 0.999);
 });

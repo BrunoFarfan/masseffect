@@ -4,12 +4,14 @@ import { fragmentImpact, hitAndRun, angularMomentum } from "./impacts.js";
 import { length, mul } from "./math.js";
 import { initializeRotations, advanceRotations } from "./rotation.js";
 import { FragmentBudget } from "./fragment-budget.js";
+import { G } from "./constants.js";
 export { accelerations, safeStep } from "./forces.js";
+export { G } from "./constants.js";
 // Every state vector and calculation is SI: m, kg, s, m/s, m/s².
 // The force evaluator is deliberately separate from the integrator.
-export const G = 6.6743e-11;
 export const BASE_STEP = 1800;
 export const MAX_BODIES = 128;
+export const FAST_STEP_FACTOR = 0.05;
 
 function mergePair(bodies, a, b) {
   if (b.mass > a.mass) [a, b] = [b, a];
@@ -261,6 +263,7 @@ export class Simulation {
     this.bodies = bodies;
     this.time = 0;
     this.pending = 0;
+    this.integrationSafetyFactor = 0.025;
     this.limited = false;
     this.events = [];
     this.fragmentLimit = fragmentLimit;
@@ -275,6 +278,8 @@ export class Simulation {
     // Low requested rates use a fixed one-second ceiling. Render cadence and
     // accumulated debt never choose the physical step size.
     const maximum = timeScale <= 3600 ? 1 : BASE_STEP;
+    const safetyFactor = timeScale >= 86400 ? FAST_STEP_FACTOR : 0.025;
+    this.integrationSafetyFactor = safetyFactor;
     let count = 0,
       exhausted = false;
     this.collisionLimit = this.fragmentBudget.limit(
@@ -284,7 +289,7 @@ export class Simulation {
     const collisions = { fragmentLimit: this.collisionLimit };
     while (this.pending > 0) {
       this.events.push(...mergeCollisions(this.bodies, collisions));
-      const dt = safeStep(this.bodies, maximum);
+      const dt = safeStep(this.bodies, maximum, safetyFactor);
       // Accumulating fractional frame durations can miss a quantum by a few
       // floating-point ulps. Consume that quantum without retaining negative debt.
       if (this.pending + dt * 1e-12 < dt) break;
@@ -301,7 +306,7 @@ export class Simulation {
         break;
       }
     }
-    const nextStep = safeStep(this.bodies, maximum);
+    const nextStep = safeStep(this.bodies, maximum, safetyFactor);
     this.limited = exhausted && this.pending + nextStep * 1e-12 >= nextStep;
     if (this.limited) this.pending = Math.min(this.pending, BASE_STEP);
   }

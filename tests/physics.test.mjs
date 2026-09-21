@@ -9,6 +9,7 @@ import {
   Simulation,
   safeStep,
   recordTrails,
+  FAST_STEP_FACTOR,
 } from "../src/physics.js";
 import { solarSystem } from "../src/solar.js";
 import { Camera } from "../src/camera.js";
@@ -134,7 +135,7 @@ test("camera cannot tunnel through or remain inside a physical sphere", () => {
 });
 test("frame budget caps debt while keeping the integrator timestep independent", () => {
   const sim = new Simulation(solarSystem());
-  const expected = safeStep(sim.bodies);
+  const expected = safeStep(sim.bodies, 1800, FAST_STEP_FACTOR);
   sim.advance(0.1, 31557600, 0);
   assert.equal(sim.time, expected);
   assert.ok(sim.pending <= 1800);

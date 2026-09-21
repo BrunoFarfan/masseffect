@@ -9,7 +9,7 @@ import {
 } from "node:fs/promises";
 import { createHash } from "node:crypto";
 import { execFileSync } from "node:child_process";
-import { basename, resolve } from "node:path";
+import { basename, dirname, resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
@@ -52,6 +52,7 @@ export async function buildSite(destination, environment = "preview") {
         level.color,
         level.heightUrl,
         level.region?.heightUrl,
+        ...(level.regions || []).map((region) => region.heightUrl),
         level.geometry,
       ]) {
         if (!path) continue;
@@ -66,6 +67,34 @@ export async function buildSite(destination, environment = "preview") {
     }
   }
   files.push(...[...surfaceFiles].sort());
+  // Publish only prepared tiles named by the provenance indexes. Scientific
+  // originals and arbitrary files under assets/surfaces remain excluded.
+  for (const pack of ["terrain64", "color64"]) {
+    const indexPath = `assets/surfaces/${pack}/index.json`;
+    const index = JSON.parse(await readFile(resolve(root, indexPath), "utf8"));
+    if (
+      index.schemaVersion !== 1 ||
+      Object.keys(index.bodies || {}).sort().join(",") !== "earth,mars,moon"
+    )
+      throw new Error(`Invalid ${pack} index`);
+    files.push(indexPath);
+    for (const [body, grid] of Object.entries(index.bodies)) {
+      if (
+        grid.baseUrl !== `/assets/surfaces/${pack}/${body}` ||
+        grid.tileCount !== 276 ||
+        Object.keys(grid.tileSha256 || {}).length !== grid.tileCount
+      )
+        throw new Error(`Invalid ${pack} grid: ${body}`);
+      for (const name of Object.keys(grid.tileSha256)) {
+        if (
+          !/^(?:[0-9]|1[01])-(?:[0-9]|1[0-9]|2[0-2])\.(?:bin\.gz|jpg)$/.test(name) ||
+          !name.endsWith(pack === "terrain64" ? ".bin.gz" : ".jpg")
+        )
+          throw new Error(`Invalid ${pack} tile: ${name}`);
+        files.push(`assets/surfaces/${pack}/${body}/${name}`);
+      }
+    }
+  }
   for (const file of files)
     if (!(await lstat(resolve(root, file))).isFile())
       throw new Error(`Public source must be a regular file: ${file}`);
@@ -80,6 +109,7 @@ export async function buildSite(destination, environment = "preview") {
   await mkdir(resolve(destination, "assets/surfaces"), { recursive: true });
   const hashes = {};
   for (const file of files) {
+    await mkdir(dirname(resolve(destination, file)), { recursive: true });
     await cp(resolve(root, file), resolve(destination, file));
     hashes[file] = createHash("sha256")
       .update(await readFile(resolve(destination, file)))

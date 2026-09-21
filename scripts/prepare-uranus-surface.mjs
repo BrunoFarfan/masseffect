@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/** Prepare JPL's representative Uranus atmospheric appearance texture. */
+/** Prepare an OPAL Uranus cloud mosaic with an explicitly approximate gap fill. */
 import { createHash } from "node:crypto";
 import { existsSync } from "node:fs";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
@@ -10,14 +10,14 @@ const root = resolve(import.meta.dirname, "..");
 const originals = resolve(root, "output/surface-originals");
 const assets = resolve(root, "assets/surfaces");
 const source = {
-  file: "uranus-jpl-texture.jpg",
-  url: "https://maps.jpl.nasa.gov/tmaps/pix/ura0fss1.jpg",
-  sha256: "07020f4707f67a6572f8e823c4bbb00d71028d4550be684b8297ebea8f896aa2",
-  dimensions: "720x360 JPEG, 8-bit sRGB, 3-channel",
+  file: "uranus-opal-2014a-globalmap.tif",
+  url: "https://archive.stsci.edu/hlsps/opal/cycle22/uranus/hlsp_opal_hst_wfc3-uvis_uranus-2014a_f467m-f547m-f658n_v1_globalmap.tif",
+  sha256: "1e7944240bb74b2e84703b7c63dcb3d95cda62e6a4a8928522b3cc28d8b927a6",
+  dimensions: "721x361 TIFF, 8-bit RGB composite",
 };
 const levels = [
   { name: "preview", width: 512, height: 256 },
-  // The source is 720x360; native cap means never upscale it.
+  // Native observation is only 721x361; never invent higher-frequency detail.
   { name: "medium", width: 720, height: 360 },
   { name: "near", width: 720, height: 360 },
 ];
@@ -44,8 +44,8 @@ async function verifySource() {
     throw new Error(`Uranus source SHA-256 mismatch: ${actual}`);
   const metadata = await sharp(path).metadata();
   if (
-    metadata.width !== 720 ||
-    metadata.height !== 360 ||
+    metadata.width !== 721 ||
+    metadata.height !== 361 ||
     metadata.channels !== 3 ||
     metadata.depth !== "uchar"
   )
@@ -58,10 +58,31 @@ async function verifySource() {
 async function rebuild() {
   const input = await verifySource();
   await mkdir(assets, { recursive: true });
+  const { data: observed, info } = await sharp(input)
+    .raw().toBuffer({ resolveWithObject: true });
+  const composited = Buffer.alloc(info.width * info.height * 3);
+  // OPAL's 2014 mosaic has an unobserved southern cap. Feather only the
+  // coverage boundary; do not interpret dark no-data pixels as dark clouds.
+  for (let y = 0; y < info.height; y++) {
+    // Feather before the ragged observation edge, which begins well above
+    // the all-black no-data rows in this particular mosaic.
+    const fade = Math.max(0, Math.min(1, (225 - y) / 65));
+    for (let x = 0; x < info.width; x++) {
+      const i = (y * info.width + x) * 3;
+      const valid = Math.min(observed[i], observed[i + 1], observed[i + 2]) > 12;
+      const blend = valid ? fade : 0;
+      const band = 4 * Math.sin(y * 0.135) + 2 * Math.sin(y * 0.043 + x * 0.009);
+      const fill = [157 + band, 195 + band, 197 + band];
+      for (let c = 0; c < 3; c++)
+        composited[i + c] = Math.max(0, Math.min(255, Math.round(
+          observed[i + c] * blend + fill[c] * (1 - blend),
+        )));
+    }
+  }
   const levelsManifest = {};
   for (const level of levels) {
     const colorPath = resolve(assets, `uranus-${level.name}.jpg`);
-    await sharp(input)
+    await sharp(composited, { raw: { width: info.width, height: info.height, channels: 3 } })
       .resize(level.width, level.height, { fit: "fill", kernel: "lanczos3" })
       .jpeg({ quality: 88, chromaSubsampling: "4:4:4" })
       .toFile(colorPath);
@@ -70,7 +91,7 @@ async function rebuild() {
       width: level.width,
       height: level.height,
       colorSha256: sha256(await readFile(colorPath)),
-      colorKind: "NASA/JPL representative atmospheric appearance",
+      colorKind: "Hubble OPAL observed clouds, approximate southern gap fill",
     };
   }
   const manifest = {
@@ -79,34 +100,31 @@ async function rebuild() {
     body: "uranus",
     referenceRadiusMeters: 25362000,
     bodyrefSIradius: 25362000,
-    sourceType: "mapped-representative-atmospheric-appearance",
-    sourceOrganization: "NASA/JPL/Caltech Solar System Simulator",
+    sourceType: "observed-atmosphere-with-approximate-gap-fill",
+    atmosphericBands: false,
+    sourceOrganization: "NASA/ESA/STScI Hubble OPAL",
     coordinateConvention:
-      "Runtime samples the supplied 2:1 texture with east-positive -180..180 and north-at-top conventions; source longitude alignment and prime meridian are unverified.",
+      "Runtime samples the north-at-top cylindrical mosaic; absolute longitude/prime-meridian alignment is unverified.",
     coordinates: {
-      longitude: "runtime east-positive -180..180; source alignment unverified",
+      longitude: "source absolute longitude alignment unverified",
       latitude: "runtime planetocentric; source alignment unverified",
-      projection:
-        "2:1 image texture; exact source projection metadata is not published",
-      northAtTop: "unverified from source metadata",
+      projection: "OPAL global cylindrical mosaic",
+      northAtTop: true,
       pixelRegistration: "pixel-centered derivative convention",
     },
     heightPolicy:
       "Uranus is an ice giant: no solid terrain or height files are emitted. Atmospheric color and band/brightness appearance are never elevation.",
     provenance: {
-      citation:
-        "NASA/JPL/Caltech Solar System Simulator Uranus texture map; JPL identifies it as a fictional plain solid-blue representative texture.",
+      citation: "Hubble OPAL Uranus 2014a WFC3/UVIS F467M/F547M/F658N global color composite, NASA/ESA/STScI; southern missing coverage is synthetic approximation.",
       source,
-      sourceMetadata: "https://science.nasa.gov/resource/uranus-3d-model/",
-      mapCatalog: "https://maps.jpl.nasa.gov/tmaps/uranus.html",
-      coverage:
-        "Global representative atmospheric appearance; JPL states that Uranus maps are representative, atmospheric dynamics change daily, and textures are not for scientific analysis.",
-      license:
-        "NASA/JPL/Caltech public resource; retain NASA/JPL attribution and fictional/representative qualification.",
+      sourceMetadata: "https://archive.stsci.edu/hlsp/opal/opal-uranus-cycle-22",
+      mapCatalog: "https://archive.stsci.edu/hlsp/opal",
+      coverage: "Observed northern and equatorial clouds in a global cylindrical mosaic; the unobserved southern cap is smooth approximate color/bands, not Hubble data.",
+      license: "OPAL data use CC BY 4.0; credit NASA/ESA/STScI and the OPAL team.",
       processing:
-        "Pinned 720x360 JPL JPEG; verified 8-bit sRGB 3-channel metadata; resized without reprojection to 512x256 preview and native-capped 720x360 medium and near JPEG derivatives; color only.",
+        "Pinned 721x361 Hubble TIFF; no-data southern rows and the ragged observation edge are blended across a 65-pixel latitude band into a pale synthetic atmospheric fill. Derived JPEGs are capped at native source resolution; color only, no terrain.",
       orientationEvidence:
-        "JPL publishes a rendered texture but no cartographic geotransform, prime meridian, longitude sign, or pole-orientation metadata. Pixel order is preserved without flip or rotate; absolute imagery alignment is unverified.",
+        "OPAL cylindrical map is used without flip or rotation; absolute prime-meridian alignment remains unverified.",
       canonicalRadiusMeters: 25362000,
       sourceReferenceRadiusMeters: null,
     },

@@ -1,4 +1,5 @@
 import { add, sub, mul, dot, cross, length, unit, clamp } from "./math.js";
+import { G } from "./constants.js";
 
 // Unit quaternions [x,y,z,w] are dimensionless. Angular velocities are rad/s;
 // periods are seconds. Signed periods encode prograde/retrograde rotation;
@@ -84,23 +85,35 @@ function fromAxes(x, y, z) {
   }
   return unit(q);
 }
-export function synchronize(body, parent) {
+// Seed a 1:1 spin-orbit resonance from the osculating two-body orbit. This is
+// an INITIAL CONDITION, not a per-step constraint or a tidal-torque model.
+// An eccentric orbit therefore shows optical libration, and perturbations can
+// gradually move the parent away from the initially facing longitude.
+export function synchronize(body, parent, configuredPeriod = null) {
   const r = sub(parent.position, body.position),
     v = sub(parent.velocity, body.velocity);
   const h = cross(r, v),
-    r2 = dot(r, r);
-  if (r2 <= 0 || length(h) === 0) return false;
+    distance = length(r),
+    mu = G * (body.mass + parent.mass),
+    energy = dot(v, v) / 2 - mu / distance;
+  if (!(distance > 0 && mu > 0 && energy < 0 && length(h) > 0)) return false;
+  const semimajorAxis = -mu / (2 * energy);
+  const meanMotion = configuredPeriod > 0
+    ? (2 * Math.PI) / configuredPeriod
+    : Math.sqrt(mu / semimajorAxis ** 3);
+  if (!Number.isFinite(meanMotion) || meanMotion <= 0) return false;
   const x = unit(r),
     y = unit(h),
     z = unit(cross(x, y));
   body.orientation = fromAxes(x, y, z);
-  body.angularVelocity = mul(h, 1 / r2);
-  body.rotationPeriod = (2 * Math.PI * r2) / length(h);
+  body.angularVelocity = mul(y, meanMotion);
+  body.rotationPeriod = (2 * Math.PI) / meanMotion;
   return true;
 }
 export function initializeRotations(bodies) {
   for (const body of bodies) {
     if (body.orientation && body.angularVelocity) continue;
+    const configuredPeriod = body.rotationPeriod;
     const spin = SPINS[body.id] || SPINS[body.name?.toLowerCase()];
     body.rotationPeriod ??= Math.abs(spin?.[0] ?? 86400);
     const pole = spin
@@ -112,35 +125,24 @@ export function initializeRotations(bodies) {
         ? mul(pole, (2 * Math.PI) / body.rotationPeriod)
         : [0, 0, 0];
     if (body.kind === "Moon" && body.parentId)
-      body.rotationModel ??= "synchronous";
+      body.rotationModel ??= "period-matched";
     body.rotationModel ??= "free";
-    if (body.rotationModel === "synchronous") {
+    if (body.rotationModel === "period-matched") {
       const parent = bodies.find((b) => b.id === body.parentId);
-      if (parent) synchronize(body, parent);
+      if (parent) {
+        synchronize(body, parent, configuredPeriod);
+        // Immutable epoch reference for visual texture calibration. This is
+        // deliberately separate from the live orientation and survives a
+        // late first render, resets, and history reconstruction.
+        body.rotationReferenceOrientation ??= [...body.orientation];
+      }
     }
   }
 }
 export function advanceRotations(bodies, dt) {
   for (const body of bodies) {
-    const parent =
-      body.rotationModel === "synchronous" &&
-      bodies.find((b) => b.id === body.parentId);
-    if (parent) {
-      const r = sub(parent.position, body.position),
-        v = sub(parent.velocity, body.velocity);
-      const bound =
-        dot(v, v) < (2 * 6.6743e-11 * (body.mass + parent.mass)) / length(r);
-      if (bound && synchronize(body, parent)) continue;
-    }
-    // An escaped moon keeps its last spin instead of magically tracking a
-    // distant primary. This is an idealized lock, not a tidal-torque solver.
-    if (body.rotationModel === "synchronous") {
-      body.rotationModel = "free";
-      body.rotationPeriod =
-        length(body.angularVelocity) > 0
-          ? (2 * Math.PI) / length(body.angularVelocity)
-          : 0;
-    }
+    // Every body follows its own stored angular velocity. Gravity acts on
+    // point masses here, so neither capture nor loss of a lock is automatic.
     const speed = length(body.angularVelocity || [0, 0, 0]);
     if (speed)
       body.orientation = unit(

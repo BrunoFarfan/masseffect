@@ -30,7 +30,7 @@
             "url": "https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004720/ldem_16_uint.tif",
             "sha256": "45a2b32d56e81ed30db07fead8abc842b249b6511219d9ca2c53f81bc2dc5d62",
             "dimensions": "5760x2880 unsigned 16-bit TIFF",
-            "operations": "decode pinned uncompressed uint16 strip; area-average resize to 1024/2048; round to half-meter; little-endian uint16 export"
+            "operations": "decode pinned uncompressed uint16 strip; area-average resize to 1024/2048; retain native 16 pixels/degree Mare Orientale (40x40 degrees) and Copernicus (10x10 degrees) crops; round to half-meter; little-endian uint16 export"
           },
           {
             "url": "https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004720/ldem_64_uint.tif",
@@ -88,6 +88,7 @@
           "minElevationMeters": -8697.5,
           "maxElevationMeters": 10513,
           "region": {
+            "id": "tycho",
             "name": "Tycho LOLA64 regional relief",
             "heightUrl": "/assets/surfaces/moon-tycho.height.bin",
             "heightSha256": "2705ca243cdbb9cd866de43ce4c1f969976fe70e53969570cebd1226b927b3ad",
@@ -104,7 +105,66 @@
             "blendBorder": 0.08,
             "minElevationMeters": -5387,
             "maxElevationMeters": 2095.5
-          }
+          },
+          "regions": [
+            {
+              "id": "tycho",
+              "name": "Tycho LOLA64 regional relief",
+              "heightUrl": "/assets/surfaces/moon-tycho.height.bin",
+              "heightSha256": "2705ca243cdbb9cd866de43ce4c1f969976fe70e53969570cebd1226b927b3ad",
+              "width": 896,
+              "height": 896,
+              "heightScaleMeters": 0.5,
+              "heightOffsetMeters": -10000,
+              "uvBounds": [
+                0.45,
+                0.7,
+                0.4888888888888889,
+                0.7777777777777778
+              ],
+              "blendBorder": 0.08,
+              "minElevationMeters": -5387,
+              "maxElevationMeters": 2095.5
+            },
+            {
+              "id": "mare-orientale",
+              "name": "Mare Orientale LOLA16 regional relief",
+              "heightUrl": "/assets/surfaces/moon-mare-orientale.height.bin",
+              "heightSha256": "af249446721c99e83bc24a41a15864d4ebfca64cdde3854ba99458f74a3f4396",
+              "width": 641,
+              "height": 641,
+              "heightScaleMeters": 0.5,
+              "heightOffsetMeters": -10000,
+              "uvBounds": [
+                0.2222222222222222,
+                0.4444444444444444,
+                0.3333333333333333,
+                0.6666666666666666
+              ],
+              "blendBorder": 0.06,
+              "minElevationMeters": -4641,
+              "maxElevationMeters": 6348
+            },
+            {
+              "id": "copernicus",
+              "name": "Copernicus LOLA16 regional relief",
+              "heightUrl": "/assets/surfaces/moon-copernicus.height.bin",
+              "heightSha256": "71813835818f5fa419238c7df9496e6af750a55ad9c8cd17db5c49ae4d543a67",
+              "width": 161,
+              "height": 161,
+              "heightScaleMeters": 0.5,
+              "heightOffsetMeters": -10000,
+              "uvBounds": [
+                0.4305555555555556,
+                0.4166666666666667,
+                0.4583333333333333,
+                0.4722222222222222
+              ],
+              "blendBorder": 0.06,
+              "minElevationMeters": -3567,
+              "maxElevationMeters": 817.5
+            }
+          ]
         }
       }
     },
@@ -152,7 +212,7 @@
               88473599
             ],
             "checksumScope": "HTTP byte-range extraction, not full original tile",
-            "operations": "verify SignedMSB2 rows 2816..3839; extract columns 5376..6399; convert radius offset 3396000 to canonical 3389500 radial elevation; little-endian uint16 export with -20000 m offset",
+            "operations": "verify SignedMSB2 rows 2816..3839; extract columns 5376..6399 for Olympus, native 16 pixels/degree rows 1200..1680 columns 4640..5120 for Valles Marineris, and rows 1760..2240 columns 960..1440 for Hellas Planitia; convert radius offset 3396000 to canonical 3389500 radial elevation; little-endian uint16 export with -20000 m offset",
             "coverage": "planetocentric 222..230E, 14..22N; MOLA128 IAU2000_MARS"
           }
         ],
@@ -194,6 +254,7 @@
           "minElevationMeters": -16498,
           "maxElevationMeters": 27747,
           "region": {
+            "id": "olympus",
             "name": "Olympus MOLA128 regional radial shape",
             "heightUrl": "/assets/surfaces/mars-olympus.height.bin",
             "heightSha256": "a1c12a9ac833e8e82f03bb9a317128a53761fd71a8927c0e4952f0529e255b55",
@@ -210,7 +271,66 @@
             "blendBorder": 0.08,
             "minElevationMeters": 2918,
             "maxElevationMeters": 27862
-          }
+          },
+          "regions": [
+            {
+              "id": "olympus",
+              "name": "Olympus MOLA128 regional radial shape",
+              "heightUrl": "/assets/surfaces/mars-olympus.height.bin",
+              "heightSha256": "a1c12a9ac833e8e82f03bb9a317128a53761fd71a8927c0e4952f0529e255b55",
+              "width": 1024,
+              "height": 1024,
+              "heightScaleMeters": 1,
+              "heightOffsetMeters": -20000,
+              "uvBounds": [
+                0.1166666666666667,
+                0.37777777777777777,
+                0.13888888888888884,
+                0.4222222222222222
+              ],
+              "blendBorder": 0.08,
+              "minElevationMeters": 2918,
+              "maxElevationMeters": 27862
+            },
+            {
+              "id": "valles-marineris",
+              "name": "Valles Marineris MOLA16 regional relief",
+              "heightUrl": "/assets/surfaces/mars-valles.height.bin",
+              "heightSha256": "c0316d47268f2edd7d2ae0e63033170fb5fd519674cd9bc3fae0db29d77ba4ab",
+              "width": 481,
+              "height": 481,
+              "heightScaleMeters": 1,
+              "heightOffsetMeters": -20000,
+              "uvBounds": [
+                0.3055555555555556,
+                0.4166666666666667,
+                0.3888888888888889,
+                0.5833333333333334
+              ],
+              "blendBorder": 0.06,
+              "minElevationMeters": -633,
+              "maxElevationMeters": 12766
+            },
+            {
+              "id": "hellas",
+              "name": "Hellas Planitia MOLA16 regional relief",
+              "heightUrl": "/assets/surfaces/mars-hellas.height.bin",
+              "heightSha256": "2363108cac9ce1670854ddda7710755b51211b859691647b93a05c31bfd3108a",
+              "width": 481,
+              "height": 481,
+              "heightScaleMeters": 1,
+              "heightOffsetMeters": -20000,
+              "uvBounds": [
+                0.6666666666666666,
+                0.6111111111111112,
+                0.75,
+                0.7777777777777778
+              ],
+              "blendBorder": 0.06,
+              "minElevationMeters": -10684,
+              "maxElevationMeters": 7058
+            }
+          ]
         }
       }
     },
@@ -460,6 +580,12 @@
             "url": "https://assets.science.nasa.gov/content/dam/science/esd/eo/images/bmng/bmng-base/january/world.200401.3x5400x2700.jpg",
             "sha256": "99f5faad74efe985fbf1714c8be7296ca9999759a1215b65f99b7f1df278dde5",
             "dimensions": "5400×2700 RGB JPEG; Blue Marble Next Generation January 2004"
+          },
+          {
+            "file": "earth-etopo-andes-60s.csv",
+            "url": "https://oceanwatch.pifsc.noaa.gov/erddap/griddap/ETOPO_2022_v1_60s.csv?z[3000:1:4200][17100:1:17700]",
+            "sha256": "59e37f85bcdddb94bc0c018d50459f9f98d0123b64d10d6895ce544bbf7eb407",
+            "dimensions": "1201 latitude samples × 601 longitude samples at 60 arc-seconds; Andes 285..295E, -40..-20N"
           }
         ],
         "metadata": "/output/surface-originals/earth-etopo.das and /output/surface-originals/earth-color-source.html",
@@ -470,7 +596,7 @@
           "inverseFlattening": 298.257223563
         },
         "canonicalReference": "WGS84 ellipsoid radial surface relative to canonical simulation radius 6371000 m; z added as a bounded datum approximation.",
-        "processing": "Stream CSV; bilinear DEM sampling; geodetic-to-planetocentric latitude conversion; Blue Marble bilinear color sampling; JPEG quality 88; little-endian uint16 heights at 1 m/sample with -30000 m offset; reject rather than clamp out-of-range elevations.",
+        "processing": "Stream global and bounded regional CSVs; bilinear DEM sampling; geodetic-to-planetocentric latitude conversion; Blue Marble bilinear color sampling; JPEG quality 88; Andes regional tile retains native 60-arcsecond samples (601x1201), Himalaya tile retains native 1/6-degree ETOPO samples (181x61); little-endian uint16 heights at 1 m/sample with -30000 m offset; reject rather than clamp out-of-range elevations.",
         "validationSamples": {
           "everest": 5539.120928466797,
           "andes": 5361.027662270793,
@@ -519,7 +645,66 @@
           "heightOffsetMeters": -30000,
           "heightScaleMeters": 1,
           "minElevationMeters": -19396,
-          "maxElevationMeters": 11798
+          "maxElevationMeters": 11798,
+          "region": {
+            "id": "andes",
+            "name": "Andes ETOPO2022 60-arcsecond regional relief",
+            "heightUrl": "/assets/surfaces/earth-andes.height.bin",
+            "heightSha256": "3815fdc492a6d768550cefc8864fd5ab3e6ee9fb06c1607b6b2a2149c14f69a4",
+            "width": 601,
+            "height": 1201,
+            "heightScaleMeters": 1,
+            "heightOffsetMeters": -30000,
+            "uvBounds": [
+              0.2916666666666667,
+              0.6104257214576313,
+              0.3194444444444444,
+              0.7211700586218157
+            ],
+            "blendBorder": 0.04,
+            "minElevationMeters": -5935,
+            "maxElevationMeters": 10239
+          },
+          "regions": [
+            {
+              "id": "andes",
+              "name": "Andes ETOPO2022 60-arcsecond regional relief",
+              "heightUrl": "/assets/surfaces/earth-andes.height.bin",
+              "heightSha256": "3815fdc492a6d768550cefc8864fd5ab3e6ee9fb06c1607b6b2a2149c14f69a4",
+              "width": 601,
+              "height": 1201,
+              "heightScaleMeters": 1,
+              "heightOffsetMeters": -30000,
+              "uvBounds": [
+                0.2916666666666667,
+                0.6104257214576313,
+                0.3194444444444444,
+                0.7211700586218157
+              ],
+              "blendBorder": 0.04,
+              "minElevationMeters": -5935,
+              "maxElevationMeters": 10239
+            },
+            {
+              "id": "himalaya",
+              "name": "Himalaya ETOPO2022 native regional relief",
+              "heightUrl": "/assets/surfaces/earth-himalaya.height.bin",
+              "heightSha256": "e6888dc24642b56d5007f574565c598a720ee2f6ec78ef952141a5596daddeda",
+              "width": 181,
+              "height": 61,
+              "heightScaleMeters": 1,
+              "heightOffsetMeters": -30000,
+              "uvBounds": [
+                0.6944444444444444,
+                0.30655895165362174,
+                0.7777777777777778,
+                0.36192826355288055
+              ],
+              "blendBorder": 0.06,
+              "minElevationMeters": 733,
+              "maxElevationMeters": 9111
+            }
+          ]
         }
       },
       "canonicalRadiusMeters": 6371000,
@@ -1949,31 +2134,32 @@
       "body": "uranus",
       "referenceRadiusMeters": 25362000,
       "bodyrefSIradius": 25362000,
-      "sourceType": "mapped-representative-atmospheric-appearance",
-      "sourceOrganization": "NASA/JPL/Caltech Solar System Simulator",
-      "coordinateConvention": "Runtime samples the supplied 2:1 texture with east-positive -180..180 and north-at-top conventions; source longitude alignment and prime meridian are unverified.",
+      "sourceType": "observed-atmosphere-with-approximate-gap-fill",
+      "atmosphericBands": false,
+      "sourceOrganization": "NASA/ESA/STScI Hubble OPAL",
+      "coordinateConvention": "Runtime samples the north-at-top cylindrical mosaic; absolute longitude/prime-meridian alignment is unverified.",
       "coordinates": {
-        "longitude": "runtime east-positive -180..180; source alignment unverified",
+        "longitude": "source absolute longitude alignment unverified",
         "latitude": "runtime planetocentric; source alignment unverified",
-        "projection": "2:1 image texture; exact source projection metadata is not published",
-        "northAtTop": "unverified from source metadata",
+        "projection": "OPAL global cylindrical mosaic",
+        "northAtTop": true,
         "pixelRegistration": "pixel-centered derivative convention"
       },
       "heightPolicy": "Uranus is an ice giant: no solid terrain or height files are emitted. Atmospheric color and band/brightness appearance are never elevation.",
       "provenance": {
-        "citation": "NASA/JPL/Caltech Solar System Simulator Uranus texture map; JPL identifies it as a fictional plain solid-blue representative texture.",
+        "citation": "Hubble OPAL Uranus 2014a WFC3/UVIS F467M/F547M/F658N global color composite, NASA/ESA/STScI; southern missing coverage is synthetic approximation.",
         "source": {
-          "file": "uranus-jpl-texture.jpg",
-          "url": "https://maps.jpl.nasa.gov/tmaps/pix/ura0fss1.jpg",
-          "sha256": "07020f4707f67a6572f8e823c4bbb00d71028d4550be684b8297ebea8f896aa2",
-          "dimensions": "720x360 JPEG, 8-bit sRGB, 3-channel"
+          "file": "uranus-opal-2014a-globalmap.tif",
+          "url": "https://archive.stsci.edu/hlsps/opal/cycle22/uranus/hlsp_opal_hst_wfc3-uvis_uranus-2014a_f467m-f547m-f658n_v1_globalmap.tif",
+          "sha256": "1e7944240bb74b2e84703b7c63dcb3d95cda62e6a4a8928522b3cc28d8b927a6",
+          "dimensions": "721x361 TIFF, 8-bit RGB composite"
         },
-        "sourceMetadata": "https://science.nasa.gov/resource/uranus-3d-model/",
-        "mapCatalog": "https://maps.jpl.nasa.gov/tmaps/uranus.html",
-        "coverage": "Global representative atmospheric appearance; JPL states that Uranus maps are representative, atmospheric dynamics change daily, and textures are not for scientific analysis.",
-        "license": "NASA/JPL/Caltech public resource; retain NASA/JPL attribution and fictional/representative qualification.",
-        "processing": "Pinned 720x360 JPL JPEG; verified 8-bit sRGB 3-channel metadata; resized without reprojection to 512x256 preview and native-capped 720x360 medium and near JPEG derivatives; color only.",
-        "orientationEvidence": "JPL publishes a rendered texture but no cartographic geotransform, prime meridian, longitude sign, or pole-orientation metadata. Pixel order is preserved without flip or rotate; absolute imagery alignment is unverified.",
+        "sourceMetadata": "https://archive.stsci.edu/hlsp/opal/opal-uranus-cycle-22",
+        "mapCatalog": "https://archive.stsci.edu/hlsp/opal",
+        "coverage": "Observed northern and equatorial clouds in a global cylindrical mosaic; the unobserved southern cap is smooth approximate color/bands, not Hubble data.",
+        "license": "OPAL data use CC BY 4.0; credit NASA/ESA/STScI and the OPAL team.",
+        "processing": "Pinned 721x361 Hubble TIFF; no-data southern rows and the ragged observation edge are blended across a 65-pixel latitude band into a pale synthetic atmospheric fill. Derived JPEGs are capped at native source resolution; color only, no terrain.",
+        "orientationEvidence": "OPAL cylindrical map is used without flip or rotation; absolute prime-meridian alignment remains unverified.",
         "canonicalRadiusMeters": 25362000,
         "sourceReferenceRadiusMeters": null
       },
@@ -1982,22 +2168,22 @@
           "color": "/assets/surfaces/uranus-preview.jpg",
           "width": 512,
           "height": 256,
-          "colorSha256": "8eabb1a019231344ee43c7a0d2781bdc057e9a00bbd694cfe17f9722fee3d638",
-          "colorKind": "NASA/JPL representative atmospheric appearance"
+          "colorSha256": "ce6f98e1ed37f972d7f843cb42b37e85bec28bb4803a8155dd50da25825270d3",
+          "colorKind": "Hubble OPAL observed clouds, approximate southern gap fill"
         },
         "medium": {
           "color": "/assets/surfaces/uranus-medium.jpg",
           "width": 720,
           "height": 360,
-          "colorSha256": "ae6c69f21d5353a8176e76dff9fbecc7ad6aa05eb5d835a5ed8bb77ee32e263e",
-          "colorKind": "NASA/JPL representative atmospheric appearance"
+          "colorSha256": "4b21284c6c965c7db2d5028460495e10b8d91b2a84af9019c2dc0cd7b948eb8c",
+          "colorKind": "Hubble OPAL observed clouds, approximate southern gap fill"
         },
         "near": {
           "color": "/assets/surfaces/uranus-near.jpg",
           "width": 720,
           "height": 360,
-          "colorSha256": "ae6c69f21d5353a8176e76dff9fbecc7ad6aa05eb5d835a5ed8bb77ee32e263e",
-          "colorKind": "NASA/JPL representative atmospheric appearance"
+          "colorSha256": "4b21284c6c965c7db2d5028460495e10b8d91b2a84af9019c2dc0cd7b948eb8c",
+          "colorKind": "Hubble OPAL observed clouds, approximate southern gap fill"
         }
       },
       "canonicalRadiusMeters": 25362000,

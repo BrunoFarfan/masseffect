@@ -59,6 +59,14 @@ test("static build publishes only browser assets, hashes them and removes stale 
     const dist = join(temp, "dist");
     const first = await buildSite(dist);
     assert.equal(first.environment, "preview");
+    assert.ok(Object.keys(first.files).length >= 1823);
+    for (const pack of ["terrain64", "color64"])
+      for (const body of ["earth", "moon", "mars"])
+        assert.ok(
+          first.files[
+            `assets/surfaces/${pack}/${body}/5-11.${pack === "terrain64" ? "bin.gz" : "jpg"}`
+          ],
+        );
     assert.match(
       await readFile(join(dist, "_headers"), "utf8"),
       /X-Robots-Tag: noindex/,

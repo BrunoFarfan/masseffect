@@ -189,7 +189,7 @@ function inspect() {
           : "";
   $("running").title =
     `Requested ${Number($("speed").value) / 86400} days/s; achieved ${(actualRate / 86400).toFixed(2)}. Physics slows under load.`;
-  $("hint").textContent = locked() ? "Esc · controls" : "Click space · explore";
+  $("hint").textContent = locked() ? "Esc · controls" : "N · navigate";
   $("locator").hidden = true;
   if (b) {
     $("selected-name").textContent = b.name;
@@ -215,8 +215,8 @@ function inspect() {
         ["Speed", `${(length(b.velocity) / 1000).toFixed(2)} km/s`],
         [
           "Rotation",
-          b.rotationModel === "synchronous"
-            ? "Synchronous with primary"
+          b.rotationModel === "period-matched"
+            ? `${(b.rotationPeriod / 86400).toFixed(2)} d · initial 1:1 spin/orbit`
             : b.rotationPeriod === 0
               ? "No axial spin"
               : `${((b.rotationPeriod ?? 86400) / 3600).toFixed(2)} h`,
@@ -373,11 +373,15 @@ function renderSearch() {
       button.setAttribute("role", "option");
       button.id = `search-option-${index}`;
       button.setAttribute("aria-selected", String(index === searchActive));
+      button.setAttribute("aria-label", result.path.join(" › "));
       button.dataset.index = String(index);
+      button.style.setProperty("--search-depth", Math.min(result.depth, 3));
       const name = document.createElement("span"),
         kind = document.createElement("small");
       name.textContent = result.name;
-      kind.textContent = result.type === "body" ? "body" : result.bodyId;
+      kind.textContent = result.type === "body"
+        ? result.body.parentId ? `${result.parentPath} · ${result.body.kind?.toLowerCase() || "body"}` : result.body.kind?.toLowerCase() || "body"
+        : result.parentPath;
       button.append(name, kind);
       return button;
     }),
@@ -432,6 +436,7 @@ searchInput.addEventListener("input", () => {
 searchInput.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
     event.preventDefault();
+    event.stopPropagation();
     closeSearch();
     return;
   }
@@ -899,7 +904,7 @@ canvas.onclick = (e) => {
     return;
   }
   const id = renderer.pick(e.clientX, e.clientY);
-  if (entered && id) select(id);
+  if (id) select(id);
   else navigate();
 };
 canvas.addEventListener(
@@ -925,14 +930,21 @@ window.addEventListener("keydown", (e) => {
   }
   if (e.key === "Escape") {
     e.preventDefault();
-    if (searchDialog.open) {
-      closeSearch();
-      return;
-    }
     if (locked()) {
       clearMovement();
       document.exitPointerLock();
-    }
+    } else if (searchDialog.open) closeSearch();
+    else if (modal()) modal().close();
+    return;
+  }
+  if (
+    e.code === "KeyN" &&
+    !e.metaKey && !e.ctrlKey && !e.altKey && !e.repeat &&
+    !document.activeElement?.isContentEditable &&
+    !["INPUT", "SELECT", "TEXTAREA"].includes(document.activeElement?.tagName)
+  ) {
+    e.preventDefault();
+    navigate();
     return;
   }
   if (

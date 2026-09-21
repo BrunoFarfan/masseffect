@@ -35,6 +35,12 @@
         "url": "https://assets.science.nasa.gov/content/dam/science/esd/eo/images/bmng/bmng-base/january/world.200401.3x5400x2700.jpg",
         "sha256": "99f5faad74efe985fbf1714c8be7296ca9999759a1215b65f99b7f1df278dde5",
         "dimensions": "5400×2700 RGB JPEG; Blue Marble Next Generation January 2004"
+      },
+      {
+        "file": "earth-etopo-andes-60s.csv",
+        "url": "https://oceanwatch.pifsc.noaa.gov/erddap/griddap/ETOPO_2022_v1_60s.csv?z[3000:1:4200][17100:1:17700]",
+        "sha256": "59e37f85bcdddb94bc0c018d50459f9f98d0123b64d10d6895ce544bbf7eb407",
+        "dimensions": "1201 latitude samples × 601 longitude samples at 60 arc-seconds; Andes 285..295E, -40..-20N"
       }
     ],
     "metadata": "/output/surface-originals/earth-etopo.das and /output/surface-originals/earth-color-source.html",
@@ -45,7 +51,7 @@
       "inverseFlattening": 298.257223563
     },
     "canonicalReference": "WGS84 ellipsoid radial surface relative to canonical simulation radius 6371000 m; z added as a bounded datum approximation.",
-    "processing": "Stream CSV; bilinear DEM sampling; geodetic-to-planetocentric latitude conversion; Blue Marble bilinear color sampling; JPEG quality 88; little-endian uint16 heights at 1 m/sample with -30000 m offset; reject rather than clamp out-of-range elevations.",
+    "processing": "Stream global and bounded regional CSVs; bilinear DEM sampling; geodetic-to-planetocentric latitude conversion; Blue Marble bilinear color sampling; JPEG quality 88; Andes regional tile retains native 60-arcsecond samples (601x1201), Himalaya tile retains native 1/6-degree ETOPO samples (181x61); little-endian uint16 heights at 1 m/sample with -30000 m offset; reject rather than clamp out-of-range elevations.",
     "validationSamples": {
       "everest": 5539.120928466797,
       "andes": 5361.027662270793,
@@ -94,7 +100,66 @@
       "heightOffsetMeters": -30000,
       "heightScaleMeters": 1,
       "minElevationMeters": -19396,
-      "maxElevationMeters": 11798
+      "maxElevationMeters": 11798,
+      "region": {
+        "id": "andes",
+        "name": "Andes ETOPO2022 60-arcsecond regional relief",
+        "heightUrl": "/assets/surfaces/earth-andes.height.bin",
+        "heightSha256": "3815fdc492a6d768550cefc8864fd5ab3e6ee9fb06c1607b6b2a2149c14f69a4",
+        "width": 601,
+        "height": 1201,
+        "heightScaleMeters": 1,
+        "heightOffsetMeters": -30000,
+        "uvBounds": [
+          0.2916666666666667,
+          0.6104257214576313,
+          0.3194444444444444,
+          0.7211700586218157
+        ],
+        "blendBorder": 0.04,
+        "minElevationMeters": -5935,
+        "maxElevationMeters": 10239
+      },
+      "regions": [
+        {
+          "id": "andes",
+          "name": "Andes ETOPO2022 60-arcsecond regional relief",
+          "heightUrl": "/assets/surfaces/earth-andes.height.bin",
+          "heightSha256": "3815fdc492a6d768550cefc8864fd5ab3e6ee9fb06c1607b6b2a2149c14f69a4",
+          "width": 601,
+          "height": 1201,
+          "heightScaleMeters": 1,
+          "heightOffsetMeters": -30000,
+          "uvBounds": [
+            0.2916666666666667,
+            0.6104257214576313,
+            0.3194444444444444,
+            0.7211700586218157
+          ],
+          "blendBorder": 0.04,
+          "minElevationMeters": -5935,
+          "maxElevationMeters": 10239
+        },
+        {
+          "id": "himalaya",
+          "name": "Himalaya ETOPO2022 native regional relief",
+          "heightUrl": "/assets/surfaces/earth-himalaya.height.bin",
+          "heightSha256": "e6888dc24642b56d5007f574565c598a720ee2f6ec78ef952141a5596daddeda",
+          "width": 181,
+          "height": 61,
+          "heightScaleMeters": 1,
+          "heightOffsetMeters": -30000,
+          "uvBounds": [
+            0.6944444444444444,
+            0.30655895165362174,
+            0.7777777777777778,
+            0.36192826355288055
+          ],
+          "blendBorder": 0.06,
+          "minElevationMeters": 733,
+          "maxElevationMeters": 9111
+        }
+      ]
     }
   }
 }
