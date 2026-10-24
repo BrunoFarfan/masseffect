@@ -1,11 +1,11 @@
-import { impactScenario } from "../src/impact-scenario.js";
+import { impactFixture } from "../tests/helpers/scenarios.mjs";
 import { fragmentImpact } from "../src/impacts.js";
 import { initializeRotations } from "../src/rotation.js";
 import { step, safeStep } from "../src/physics.js";
 
 // Real solver work, including contact scans and axial updates; milliseconds.
 for (const count of [4, 8, 16, 32, 64]) {
-  const { bodies: inputs } = impactScenario();
+  const { bodies: inputs } = impactFixture();
   inputs.forEach((b, i) => (b.position = [(i ? 1 : -1) * b.radius, 0, 0]));
   initializeRotations(inputs);
   const bodies = fragmentImpact(...inputs, {

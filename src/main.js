@@ -1,5 +1,4 @@
 import { Simulation, MAX_BODIES } from "./physics.js";
-import { solarSystem } from "./solar.js";
 import { Camera } from "./camera.js";
 import { Renderer, formatDistance } from "./render.js";
 import { sub, length, clamp, add, mul, unit, cross } from "./math.js";
@@ -10,10 +9,10 @@ import {
 } from "./landmarks.js";
 import { rankSearch } from "./search.js";
 import { PRESETS, createPlacedBody, randomPlacement } from "./presets.js";
-import { SCENARIOS, createScenario } from "./scenarios.js";
+import { createScenario } from "./scenarios.js";
 import { History } from "./history.js";
 import { equilibriumTemperature, stellarColor } from "./thermal.js";
-import { initializeRotations, rotateVector, between } from "./rotation.js";
+import { initializeRotations, between } from "./rotation.js";
 import { FRAGMENT_LIMITS } from "./fragment-budget.js";
 import {
   MouseLook,
@@ -45,7 +44,7 @@ try {
   /* Storage is optional. */
 }
 $("fragment-limit").value = String(fragmentLimit);
-let sim = new Simulation(solarSystem(), { fragmentLimit }),
+let sim = new Simulation(createScenario().bodies, { fragmentLimit }),
   selected = null,
   playing = true,
   visitor = 0,
@@ -115,21 +114,16 @@ function orderedBodies() {
   return result;
 }
 function populate() {
-  const s = $("body-select");
-  s.replaceChildren(
-    ...orderedBodies().map(
-      ({ b, depth }) =>
-        new Option("　".repeat(depth) + (depth ? "↳ " : "") + b.name, b.id),
-    ),
-  );
-  if (selected) s.value = selected;
   $("add").disabled = sim.bodies.length >= MAX_BODIES;
 }
 function select(id) {
   selected = id || null;
   $("selection").hidden = !selected;
-  if (selected) $("body-select").value = selected;
-  else $("inspector").hidden = true;
+  if (selected) {
+    entered = true;
+    $("welcome").hidden = true;
+  }
+  if (!selected) $("inspector").hidden = true;
   const landmarks = surfaceSites(selected);
   $("surface-site").replaceChildren(
     ...landmarks.map((s, i) => new Option(s.name, i)),
@@ -189,12 +183,17 @@ function inspect() {
           : "";
   $("running").title =
     `Requested ${Number($("speed").value) / 86400} days/s; achieved ${(actualRate / 86400).toFixed(2)}. Physics slows under load.`;
-  $("hint").textContent = locked() ? "Esc · controls" : "N · navigate";
+  $("hint").textContent = locked() ? "Esc · Show controls" : "N · Fly freely";
   $("locator").hidden = true;
   if (b) {
     $("selected-name").textContent = b.name;
+    const altitude = Math.max(
+      0,
+      length(sub(camera.position, b.position)) -
+        renderer.surfaces.radiusAt(b, camera.position),
+    );
     $("selected-context").textContent =
-      `${camera.surface ? `${sim.bodies.find((p) => p.id === camera.surface.id)?.name || "Body"} surface · ` : camera.followId ? `${sim.bodies.find((p) => p.id === camera.followId)?.name || "Body"} frame · ` : ""}${formatDistance(Math.max(0, length(sub(camera.position, b.position)) - renderer.surfaces.radiusAt(b, camera.position)))} above ${b.name}`;
+      `${camera.surface?.id === b.id ? "On the surface · " : camera.followId === b.id ? "Following · " : ""}${formatDistance(altitude)} ${altitude < b.radius * 10 ? "above the surface" : "away"}`;
     if (!$("inspector").hidden) {
       const sites = surfaceSites(b.id);
       if ($("surface-site").options.length !== sites.length)
@@ -350,7 +349,10 @@ function open(id) {
   inspect();
 }
 function focus(close = false) {
-  if (!selected) select($("body-select").value);
+  if (!selected)
+    select(
+      sim.bodies.find((body) => body.kind === "Star")?.id || sim.bodies[0]?.id,
+    );
   const b = sim.bodies.find((b) => b.id === selected);
   if (b) {
     camera.focus(b, close ? null : sim.bodies);
@@ -370,19 +372,30 @@ function renderSearch() {
       const button = document.createElement("button");
       button.className = "search-result";
       button.type = "button";
+      button.tabIndex = -1;
       button.setAttribute("role", "option");
       button.id = `search-option-${index}`;
       button.setAttribute("aria-selected", String(index === searchActive));
       button.setAttribute("aria-label", result.path.join(" › "));
       button.dataset.index = String(index);
       button.style.setProperty("--search-depth", Math.min(result.depth, 3));
+      const owner =
+        result.body || sim.bodies.find((body) => body.id === result.bodyId);
+      button.style.setProperty("--body-color", owner?.color || "#d5cabb");
       const name = document.createElement("span"),
         kind = document.createElement("small");
       name.textContent = result.name;
-      kind.textContent = result.type === "body"
-        ? result.body.parentId ? `${result.parentPath} · ${result.body.kind?.toLowerCase() || "body"}` : result.body.kind?.toLowerCase() || "body"
-        : result.parentPath;
-      button.append(name, kind);
+      kind.textContent =
+        result.type === "body"
+          ? result.body.parentId
+            ? `${result.parentPath} · ${result.body.kind?.toLowerCase() || "body"}`
+            : result.body.kind?.toLowerCase() || "body"
+          : result.parentPath;
+      const arrow = document.createElement("span");
+      arrow.className = "search-arrow";
+      arrow.setAttribute("aria-hidden", "true");
+      arrow.textContent = "↗";
+      button.append(name, kind, arrow);
       return button;
     }),
   );
@@ -448,6 +461,7 @@ searchInput.addEventListener("keydown", (event) => {
         searchItems.length) %
       Math.max(1, searchItems.length);
     renderSearch();
+    $(`search-option-${searchActive}`)?.scrollIntoView({ block: "nearest" });
   } else if (event.key === "Enter") {
     event.preventDefault();
     chooseSearch();
@@ -458,20 +472,16 @@ searchResults.addEventListener("click", (event) => {
   if (button) chooseSearch(Number(button.dataset.index));
 });
 $("search-close").onclick = closeSearch;
-$("catalog").onclick = () => open("catalog-dialog");
+$("catalog").onclick = openSearch;
+$("welcome-explore").onclick = openSearch;
 $("settings").onclick = () => open("view-dialog");
 $("keybindings").onclick = () => open("keys-dialog");
 $("add").onclick = () => {
   prepareCreation();
   open("create-dialog");
 };
-$("body-select").onchange = (e) => select(e.target.value);
-$("body-select").ondblclick = () => focus();
-$("catalog-focus").onclick =
-  $("focus").onclick =
-  $("locator").onclick =
-    () => focus();
-$("catalog-approach").onclick = $("approach").onclick = () => focus(true);
+$("focus").onclick = $("locator").onclick = () => focus();
+$("approach").onclick = () => focus(true);
 $("details").onclick = () => {
   $("inspector").hidden = !$("inspector").hidden;
   inspect();
@@ -637,11 +647,10 @@ for (const n of ["trails", "labels"])
   };
 $("reset").onclick = () => {
   renderer.impacts.clear();
-  sim = new Simulation(solarSystem(), { fragmentLimit });
+  sim = new Simulation(createScenario().bodies, { fragmentLimit });
   history.clear(sim);
   reversing = false;
   setPlaying(true);
-  $("scenario-name").textContent = "";
   visitor = 0;
   select(null);
   camera.home(false, true);
@@ -657,6 +666,18 @@ for (const d of document.querySelectorAll("dialog"))
     clearMovement();
     resetRate();
     inspect();
+  });
+for (const dialog of document.querySelectorAll("dialog"))
+  dialog.addEventListener("click", (event) => {
+    if (event.target !== dialog) return;
+    const bounds = dialog.getBoundingClientRect();
+    if (
+      event.clientX < bounds.left ||
+      event.clientX > bounds.right ||
+      event.clientY < bounds.top ||
+      event.clientY > bounds.bottom
+    )
+      dialog.close();
   });
 function releaseBody(b) {
   b.trailInterval ??= clamp(
@@ -832,72 +853,6 @@ $("create-form").onsubmit = (e) => {
   releaseBody(b);
   $("create-dialog").close();
 };
-function loadScenario(id) {
-  clearToast();
-  renderer.impacts.clear();
-  camera.home();
-  const state = createScenario(id);
-  sim = new Simulation(state.bodies, { fragmentLimit });
-  for (const b of sim.bodies)
-    if (b.kind === "Star" && b.effectiveTemperature)
-      b.color = stellarColor(b.effectiveTemperature);
-  history.clear(sim);
-  reversing = false;
-  $("scenario-name").textContent =
-    id === "solar-system" ? "" : SCENARIOS.find((s) => s.id === id).name;
-  visitor = 0;
-  populate();
-  select(state.focusId);
-  if (
-    ![...$("speed").options].some((o) => Number(o.value) === state.timeScale)
-  ) {
-    const next = [...$("speed").options].find(
-      (o) => Number(o.value) > state.timeScale,
-    );
-    $("speed").add(
-      new Option(timeSpan(state.timeScale) + " / s", state.timeScale),
-      next || null,
-    );
-  }
-  $("speed").value = String(state.timeScale);
-  setPlaying(true);
-  const b = sim.bodies.find((b) => b.id === state.focusId);
-  camera.transition = null;
-  camera.position = b.position.map(
-    (v, k) => v + [0.18, 0.64, 0.78][k] * state.cameraDistance,
-  );
-  camera.lookAt(b.position);
-  camera.followId = b.id;
-  camera.previousTarget = [...b.position];
-  if (state.surfaceView) {
-    const local = state.surfaceView.normal;
-    const normal = rotateVector(b.orientation, local);
-    camera.position = b.position.map(
-      (v, k) => v + normal[k] * (b.radius + state.surfaceView.altitude),
-    );
-    camera.frameRotation = between([0, 1, 0], normal);
-    camera.lookAt(
-      sim.bodies.find((p) => p.id === state.surfaceView.lookAt).position,
-    );
-    camera.updateSurface(0, sim.bodies);
-    if (camera.surface) camera.surface.blend = 1;
-  }
-  if (modal()) modal().close();
-  $("welcome").hidden = true;
-  entered = true;
-  resetRate();
-}
-$("scenes").onclick = () => open("scenario-dialog");
-for (const scene of SCENARIOS) {
-  const b = document.createElement("button"),
-    name = document.createElement("span"),
-    description = document.createElement("small");
-  name.textContent = scene.name;
-  description.textContent = scene.description;
-  b.append(name, description);
-  b.onclick = () => loadScenario(scene.id);
-  $("scenario-list").append(b);
-}
 canvas.onclick = (e) => {
   if (locked()) {
     select(renderer.pick(innerWidth / 2, innerHeight / 2));
@@ -939,7 +894,11 @@ window.addEventListener("keydown", (e) => {
   }
   if (
     e.code === "KeyN" &&
-    !e.metaKey && !e.ctrlKey && !e.altKey && !e.repeat &&
+    !modal() &&
+    !e.metaKey &&
+    !e.ctrlKey &&
+    !e.altKey &&
+    !e.repeat &&
     !document.activeElement?.isContentEditable &&
     !["INPUT", "SELECT", "TEXTAREA"].includes(document.activeElement?.tagName)
   ) {

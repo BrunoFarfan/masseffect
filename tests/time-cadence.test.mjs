@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import { Simulation, BASE_STEP, FAST_STEP_FACTOR } from "../src/physics.js";
 import { safeStep } from "../src/forces.js";
 import { createScenario } from "../src/scenarios.js";
+import { binaryStars } from "./helpers/scenarios.mjs";
 
 const inert = () => [
   {
@@ -32,7 +33,7 @@ function run(factory, rate, fps, duration = 2) {
 
 for (const [name, factory] of [
   ["inert body", inert],
-  ["binary stars", () => createScenario("binary-stars").bodies],
+  ["synthetic binary fixture", binaryStars],
 ]) {
   test(`${name}: 30/60/120 fps produce identical physical states at 1/60/3600x`, () => {
     for (const rate of [1, 60, 3600]) {

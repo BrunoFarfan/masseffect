@@ -2,8 +2,8 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { History } from "../src/history.js";
 import { mergeCollisions, Simulation, energy } from "../src/physics.js";
-import { createScenario } from "../src/scenarios.js";
 import { solarSystem } from "../src/solar.js";
+import { binaryStars } from "./helpers/scenarios.mjs";
 import { length, sub } from "../src/math.js";
 
 const body = (id = "a") => ({
@@ -158,7 +158,7 @@ test("history bounds snapshot count and body records while retaining the newest 
 });
 
 test("recorded binary motion can rewind and resume an approximately conserved trajectory", (t) => {
-  const sim = new Simulation(createScenario("binary-stars").bodies);
+  const sim = new Simulation(binaryStars());
   const history = new History(sim);
   const initialEnergy = energy(sim.bodies);
   const separation = length(

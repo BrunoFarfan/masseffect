@@ -1,7 +1,8 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { PRESETS, createPlacedBody, randomPlacement } from "../src/presets.js";
-import { SCENARIOS, createScenario } from "../src/scenarios.js";
+import { createScenario } from "../src/scenarios.js";
+import { binaryStars } from "./helpers/scenarios.mjs";
 import { G, safeStep, step } from "../src/physics.js";
 import { sub, length, dot } from "../src/math.js";
 
@@ -77,10 +78,16 @@ test("placement rejects overlaps, unknown choices and nonfinite input", () => {
     () => createPlacedBody({ ...base, speedMode: "random" }, () => NaN),
     /Random values/,
   );
-  assert.throws(() => createScenario("unknown"), /known scenario/);
+  for (const id of [
+    "unknown",
+    "binary-stars",
+    "lunar-lookout",
+    "planetary-impact",
+  ])
+    assert.throws(() => createScenario(id), /Only the Solar System/);
 });
 
-test("presets and scenarios provide fresh finite SI bodies without initial overlaps", () => {
+test("presets and the Solar System provide fresh finite SI bodies without initial overlaps", () => {
   assert.equal(
     new Set(PRESETS.map((preset) => preset.id)).size,
     PRESETS.length,
@@ -91,9 +98,9 @@ test("presets and scenarios provide fresh finite SI bodies without initial overl
     if (preset.kind === "Star")
       assert.ok(preset.luminosity > 0 && preset.effectiveTemperature > 0);
   }
-  for (const scenario of SCENARIOS) {
-    const first = createScenario(scenario.id),
-      second = createScenario(scenario.id);
+  for (const id of ["solar-system"]) {
+    const first = createScenario(id),
+      second = createScenario(id);
     assert.deepEqual(first, second);
     assert.notEqual(first.bodies, second.bodies);
     assert.equal(
@@ -109,7 +116,7 @@ test("presets and scenarios provide fresh finite SI bodies without initial overl
             0,
           ),
         ) < 1e-4,
-        scenario.id,
+        id,
       );
       assert.ok(
         Math.abs(
@@ -118,7 +125,7 @@ test("presets and scenarios provide fresh finite SI bodies without initial overl
             0,
           ),
         ) < 1e-9,
-        scenario.id,
+        id,
       );
     }
     first.bodies.forEach((body, index) => {
@@ -127,16 +134,17 @@ test("presets and scenarios provide fresh finite SI bodies without initial overl
         assert.ok(
           length(sub(body.position, other.position)) >
             body.radius + other.radius,
-          scenario.id,
+          id,
         );
     });
     first.bodies[0].position[0] += 123;
     assert.notEqual(first.bodies[0].position[0], second.bodies[0].position[0]);
   }
+  assert.deepEqual(createScenario(), createScenario("solar-system"));
 });
 
-test("binary initial conditions complete an orbit under ordinary gravity", () => {
-  const { bodies } = createScenario("binary-stars"),
+test("synthetic binary fixture completes an orbit under ordinary gravity", () => {
+  const bodies = binaryStars(),
     initial = length(sub(bodies[0].position, bodies[1].position));
   const period =
     2 *

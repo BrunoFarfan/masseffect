@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { Simulation, mergeCollisions, MAX_BODIES } from "../src/physics.js";
 import { History } from "../src/history.js";
-import { impactScenario } from "../src/impact-scenario.js";
+import { impactFixture } from "./helpers/scenarios.mjs";
 
 const state = (bodies) =>
   bodies.map(
@@ -16,7 +16,7 @@ const state = (bodies) =>
     }),
   );
 const contactPair = () => {
-  const { bodies } = impactScenario();
+  const { bodies } = impactFixture();
   bodies[0].position = [-bodies[0].radius, 0, 0];
   bodies[1].position = [bodies[1].radius, 0, 0];
   return bodies;
@@ -35,7 +35,7 @@ const bystander = (id, index, extra = {}) => ({
 });
 
 test("Simulation impact history restores two originals, seeks four fragments and branches through impact again", () => {
-  const sim = new Simulation(impactScenario().bodies);
+  const sim = new Simulation(impactFixture().bodies);
   const history = new History(sim);
   const original = structuredClone(state(sim.bodies));
   let beforeTime = 0,

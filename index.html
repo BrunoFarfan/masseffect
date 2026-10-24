@@ -64,20 +64,44 @@
       aria-label="Orbital sandbox. Click or press N to capture mouse. Escape releases the cursor."
     ></canvas>
     <header>
-      <span class="wordmark">Mass Effect<span>·</span></span>
-      <span id="scenario-name"></span>
-      <nav class="ui-only">
-        <button id="catalog">Bodies</button><button id="add">Add body</button
-        ><button id="scenes">Scenarios</button
-        ><button id="settings">View</button
-        ><button id="keybindings">Keys</button>
+      <div class="brand">
+        <span class="wordmark">Mass Effect<span>·</span></span>
+        <span class="brand-subtitle">Solar System</span>
+      </div>
+      <nav class="ui-only" aria-label="Solar System controls">
+        <button id="catalog">
+          <span class="nav-glyph" aria-hidden="true">⌕</span
+          ><span id="cataloglabel">Explore</span>
+        </button>
+        <button id="add">
+          <span class="nav-glyph" aria-hidden="true">＋</span
+          ><span id="addlabel">Add body</span>
+        </button>
+        <button id="settings">
+          <span class="nav-glyph" aria-hidden="true">◌</span
+          ><span id="settingslabel">View</span>
+        </button>
+        <button id="keybindings">
+          <span class="nav-glyph" aria-hidden="true">?</span
+          ><span id="keybindingslabel">Help</span>
+        </button>
       </nav>
     </header>
     <div id="crosshair" aria-hidden="true">+</div>
     <div id="welcome">
-      <button id="begin">Enter space ↗</button>
-      <p>Mouse to look · WASD to move · Esc to release · N to return</p>
-      <p>Arrows control time · Space pauses · Keys above for help</p>
+      <span class="eyebrow">A living model of our neighborhood</span>
+      <div class="welcome-actions">
+        <button id="welcome-explore" class="primary">
+          Explore the Solar System <span aria-hidden="true">↗</span>
+        </button>
+        <button id="begin">Fly freely</button>
+      </div>
+      <p>
+        Click a body to select it. Search by name with <kbd>⌘ / Ctrl K</kbd>.
+      </p>
+      <p>
+        Click empty space to look around · <kbd>Esc</kbd> releases the cursor
+      </p>
     </div>
     <section id="selection" hidden>
       <div>
@@ -96,7 +120,7 @@
       </div>
       <dl id="properties"></dl>
       <div id="surface-controls" hidden>
-        <label for="surface-site">Terrain study</label>
+        <label for="surface-site">Surface landmarks</label>
         <select id="surface-site" aria-label="Surface landmark"></select>
         <button id="surface-visit">Visit terrain ↗</button>
         <label for="surface-relief">Visual relief</label>
@@ -133,7 +157,7 @@
           <option value="31557600">Up to 1 year / sec</option></select
         ><span id="running"></span>
       </div>
-      <span id="hint">Esc · controls</span>
+      <span id="hint">Esc releases cursor</span>
     </footer>
     <div id="history-strip" class="ui-only" hidden>
       <span id="history-start"></span>
@@ -150,7 +174,7 @@
     <div id="toast" role="status" aria-live="polite"></div>
     <dialog id="search-dialog" aria-labelledby="search-heading">
       <div class="sheet-heading">
-        <h2 id="search-heading">Find in space</h2>
+        <h2 id="search-heading">Explore the Solar System</h2>
         <button id="search-close" aria-label="Close search">×</button>
       </div>
       <input
@@ -167,20 +191,12 @@
       />
       <div id="search-results" role="listbox" aria-label="Search results"></div>
     </dialog>
-    <dialog id="catalog-dialog">
+    <dialog id="view-dialog" aria-labelledby="view-heading">
       <div class="sheet-heading">
-        <h2>Explore</h2>
-        <button data-close aria-label="Close body list">×</button>
-      </div>
-      <select id="body-select" size="18" aria-label="Select a body"></select>
-      <div class="actions">
-        <button id="catalog-focus">Focus system ↗</button
-        ><button id="catalog-approach">Go closer ↗</button>
-      </div>
-    </dialog>
-    <dialog id="view-dialog">
-      <div class="sheet-heading">
-        <h2>A different view</h2>
+        <div>
+          <span class="eyebrow">Display & simulation</span>
+          <h2 id="view-heading">Your view</h2>
+        </div>
         <button data-close aria-label="Close view settings">×</button>
       </div>
       <div class="menu-list">
@@ -249,7 +265,10 @@
     </dialog>
     <dialog id="keys-dialog" aria-labelledby="keys-heading">
       <div class="sheet-heading">
-        <h2 id="keys-heading">Keys & movement</h2>
+        <div>
+          <span class="eyebrow">Quick reference</span>
+          <h2 id="keys-heading">Keys & movement</h2>
+        </div>
         <button data-close aria-label="Close keybindings">×</button>
       </div>
       <h3>Navigation</h3>
@@ -287,20 +306,27 @@
         <dd>Faster / slower</dd>
       </dl>
       <p class="quiet">
-        Click empty space or press N to enter mouse-look. Click a body to
-        select it. Near a surface you move and rotate with it; fly away to
-        release. Q/E follows the local vertical. Shortcuts are inactive in open
-        sheets and text fields.
+        Click empty space or press N to enter mouse-look. Click a body to select
+        it. Near a surface you move and rotate with it; fly away to release. Q/E
+        follows the local vertical. Shortcuts are inactive in open sheets and
+        text fields.
       </p>
     </dialog>
-    <dialog id="create-dialog">
+    <dialog id="create-dialog" aria-labelledby="create-heading">
       <form id="create-form">
         <div class="sheet-heading">
-          <h2>A new arrival</h2>
+          <div>
+            <span class="eyebrow">Add to the system</span>
+            <h2 id="create-heading">Add a body</h2>
+          </div>
           <button type="button" data-close aria-label="Close body creation">
             ×
           </button>
         </div>
+        <p class="form-intro">
+          Choose a body and its orbit. You can refine the placement before
+          releasing it into the simulation.
+        </p>
         <label>Body<select id="preset"></select></label>
         <label>Place around<select id="primary"></select></label>
         <div class="pair">
@@ -330,8 +356,8 @@
           >Inclination <output id="inclination-value">0°</output
           ><input id="inclination" type="range" min="-180" max="180" value="0"
         /></label>
-        <button type="button" id="placement-angle">
-          Try another position ↻
+        <button type="button" id="placement-angle" class="quiet-action">
+          <span aria-hidden="true">↻</span> Try another position
         </button>
         <details id="advanced">
           <summary>Advanced · exact SI state</summary>
@@ -432,15 +458,10 @@
         <p class="quiet" id="creation-note">
           Time pauses while placing. The arrow shows initial relative velocity.
         </p>
-        <button class="primary" type="submit">Release body ↗</button>
+        <button class="primary" type="submit">
+          Add body to the system <span aria-hidden="true">↗</span>
+        </button>
       </form>
-    </dialog>
-    <dialog id="scenario-dialog">
-      <div class="sheet-heading">
-        <h2>Starting points</h2>
-        <button data-close aria-label="Close scenarios">×</button>
-      </div>
-      <div id="scenario-list"></div>
     </dialog>
     <script type="module" src="src/main.js"></script>
   </body>

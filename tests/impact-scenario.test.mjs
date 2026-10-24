@@ -1,11 +1,11 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { impactScenario } from "../src/impact-scenario.js";
+import { impactFixture } from "./helpers/scenarios.mjs";
 import { safeStep, step } from "../src/physics.js";
 
-test("impact scenario starts with fresh, symmetric Mars-like bodies in SI", () => {
-  const first = impactScenario(),
-    second = impactScenario();
+test("synthetic impact fixture starts with fresh, symmetric Mars-like bodies in SI", () => {
+  const first = impactFixture(),
+    second = impactFixture();
   assert.deepEqual(first, second);
   assert.equal(first.focusId, "impact-a");
   assert.equal(first.timeScale, 60);
@@ -38,8 +38,8 @@ test("impact scenario starts with fresh, symmetric Mars-like bodies in SI", () =
   assert.deepEqual(second.bodies[0].trail, []);
 });
 
-test("ordinary gravity produces the impact with finite states and conserved mass/momentum", (t) => {
-  const { bodies, timeScale } = impactScenario();
+test("ordinary gravity produces the synthetic impact with finite states and conserved mass/momentum", (t) => {
+  const { bodies, timeScale } = impactFixture();
   const totalMass = bodies.reduce((sum, body) => sum + body.mass, 0);
   let time = 0,
     collisionCount = 0;
