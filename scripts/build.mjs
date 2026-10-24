@@ -74,7 +74,9 @@ export async function buildSite(destination, environment = "preview") {
     const index = JSON.parse(await readFile(resolve(root, indexPath), "utf8"));
     if (
       index.schemaVersion !== 1 ||
-      Object.keys(index.bodies || {}).sort().join(",") !== "earth,mars,moon"
+      Object.keys(index.bodies || {})
+        .sort()
+        .join(",") !== "earth,mars,moon"
     )
       throw new Error(`Invalid ${pack} index`);
     files.push(indexPath);
@@ -87,7 +89,9 @@ export async function buildSite(destination, environment = "preview") {
         throw new Error(`Invalid ${pack} grid: ${body}`);
       for (const name of Object.keys(grid.tileSha256)) {
         if (
-          !/^(?:[0-9]|1[01])-(?:[0-9]|1[0-9]|2[0-2])\.(?:bin\.gz|jpg)$/.test(name) ||
+          !/^(?:[0-9]|1[01])-(?:[0-9]|1[0-9]|2[0-2])\.(?:bin\.gz|jpg)$/.test(
+            name,
+          ) ||
           !name.endsWith(pack === "terrain64" ? ".bin.gz" : ".jpg")
         )
           throw new Error(`Invalid ${pack} tile: ${name}`);
@@ -95,6 +99,46 @@ export async function buildSite(destination, environment = "preview") {
       }
     }
   }
+  // Detailed maps have source-dependent dimensions and separate polar tiles.
+  // Only checked, indexed assets can enter the public build.
+  const detailIndexPath = "assets/surfaces/detail/index.json";
+  const detailIndex = JSON.parse(
+    await readFile(resolve(root, detailIndexPath), "utf8"),
+  );
+  if (detailIndex.schemaVersion !== 1 || !detailIndex.bodies)
+    throw new Error("Invalid detailed surface index");
+  files.push(detailIndexPath);
+  for (const [body, grid] of Object.entries(detailIndex.bodies)) {
+    if (
+      !/^[a-z]+$/.test(body) ||
+      !surfaceManifest.bodies[body] ||
+      !Array.isArray(grid.tiles)
+    )
+      throw new Error(`Invalid detailed surface body: ${body}`);
+    const ids = new Set();
+    for (const tile of grid.tiles) {
+      if (!tile.id || ids.has(tile.id))
+        throw new Error(`Duplicate detail tile: ${body}/${tile.id}`);
+      ids.add(tile.id);
+      for (const [key, suffix] of [
+        ["colorUrl", "jpg"],
+        ["heightUrl", "bin.gz"],
+      ]) {
+        const path = tile[key];
+        if (!path) continue;
+        if (
+          !new RegExp(
+            `^/assets/surfaces/detail/${body}/[a-z0-9_-]+\\.${suffix.replaceAll(".", "\\.")}$`,
+          ).test(path)
+        )
+          throw new Error(`Invalid detail tile path: ${path}`);
+        surfaceFiles.add(path.slice(1));
+      }
+    }
+  }
+  files.push(
+    ...[...surfaceFiles].filter((file) => !files.includes(file)).sort(),
+  );
   for (const file of files)
     if (!(await lstat(resolve(root, file))).isFile())
       throw new Error(`Public source must be a regular file: ${file}`);

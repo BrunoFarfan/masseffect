@@ -271,7 +271,7 @@ test("sparse high-speed moon history reconstructs the saved physical midpoint wi
   history.rewind(sim, 21600);
   const replayMs = performance.now() - start;
   assert.equal(sim.time, 21600);
-  assert.equal(sim.bodies.length, 26);
+  assert.equal(sim.bodies.length, 29);
   for (let index = 0; index < sim.bodies.length; index++) {
     assert.deepEqual(sim.bodies[index].position, midpoint[index].position);
     assert.deepEqual(sim.bodies[index].velocity, midpoint[index].velocity);
@@ -284,10 +284,10 @@ test("sparse high-speed moon history reconstructs the saved physical midpoint wi
   assert.equal(energy(sim.bodies), energy(midpoint));
   sim.advance(0.1, 18000, Infinity);
   history.capture(sim);
-  assert.equal(sim.bodies.length, 26);
+  assert.equal(sim.bodies.length, 29);
   assert.equal(sim.events.length, 0);
   t.diagnostic(
-    `Canonical 26-body midpoint replay: 384 physical steps in ${replayMs.toFixed(2)} ms; positions and velocities exactly match the saved truth.`,
+    `Canonical 29-body midpoint replay: 384 physical steps in ${replayMs.toFixed(2)} ms; positions and velocities exactly match the saved truth.`,
   );
 });
 

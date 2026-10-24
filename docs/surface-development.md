@@ -1,5 +1,11 @@
 # Planetary surfaces — implementation and evaluation log
 
+Historical log: regional Tycho and other crops described below record earlier
+implementations. Current close-range Earth, Moon, and Mars terrain uses lazy
+global 64 ppd packs; only the finer 128 ppd Olympus regional asset remains.
+See [terrain64.md](terrain64.md) for the current shipped products.
+
+
 ## Scope and workflow
 
 This cycle starts from `d9e87ea`. The scope began as a strong Moon/Mars rendering

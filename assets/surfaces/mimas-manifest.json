@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "generatedBy": "scripts/prepare-saturn-moons.mjs",
+  "bodies": {
+    "mimas": {
+      "body": "mimas",
+      "referenceRadiusMeters": 198200,
+      "bodyrefSIradius": 198200,
+      "sourceType": "mapped-imagery-ellipsoid-only",
+      "baseRadiiMeters": [
+        207800,
+        190600,
+        196700
+      ],
+      "sourceOrganization": "NASA/JPL/Space Science Institute; USGS Astrogeology",
+      "coordinates": {
+        "longitude": "east-positive -180..180",
+        "latitude": "planetocentric",
+        "projection": "equirectangular",
+        "northAtTop": true,
+        "pixelRegistration": "pixel-centered"
+      },
+      "heightPolicy": "Ellipsoid only. Measured 2025 PDS SPC global radius grids exist, but were not integrated because archive downloads returned access challenges; no synthetic height or brightness-derived terrain is generated.",
+      "provenance": {
+        "source": {
+          "file": "mimas-nasa-full.jpg",
+          "url": "https://d2pn8kiwq2w21t.cloudfront.net/original_images/jpegPIA17214.jpg",
+          "sha256": "f2d62eaa50c7864e303a13434738a7bc6db0e133f1f4b163c2506979800c1116",
+          "width": 5760,
+          "height": 2880,
+          "metersPerPixel": 216,
+          "projectionRadiusMeters": 198200,
+          "referenceRadiusMeters": 198200,
+          "metadata": "https://www.jpl.nasa.gov/images/pia17214-mimas-global-map-june-2017/",
+          "coordinateReference": {
+            "url": "https://planetarydata.jpl.nasa.gov/img/data/cassini/cassini_orbiter/coiss_3006_v3/data/images/SM_1M_0_0_SIMP.IMG",
+            "sha256": "beea77a709f49f35b6dfaf378b076971f4050badc190313c58b488819ffd2fc2",
+            "description": "Earlier PDS global map attached label: 5760x2880, 16ppd, center0, west180 at left to west-180 at right; zero projection rotation; spherical198.2km figure. Coordinate reference only, not imagery input."
+          },
+          "doi": "10.26033/y8wv-r303"
+        },
+        "sourceMetadata": "https://www.jpl.nasa.gov/images/pia17214-mimas-global-map-june-2017/",
+        "citation": "NASA Cassini ISS global mimas map; see source product metadata.",
+        "coverage": "Global mosaic footprint with spatially variable source image resolution and photometric seams; nominal map spacing does not imply uniform effective resolution.",
+        "license": "NASA/USGS public planetary imagery; retain mission and product attribution.",
+        "processing": "Native simple cylindrical north-up map, full globe -180..180 east-positive; no rotation, mirror, colorization, sharpening, or invented pixels. Projection reference radius is independent of the canonical JPL SI radius.",
+        "measuredTerrainCandidate": "https://doi.org/10.26033/y8wv-r303",
+        "terrainLimitation": "Ellipsoid only. Measured 2025 PDS SPC global radius grids exist, but were not integrated because archive downloads returned access challenges; no synthetic height or brightness-derived terrain is generated.",
+        "imagery": {
+          "sha256": "619c4524f3f3360494071a7fe4183507b1a16f44f396f367f505c27c5f0743ab",
+          "source": {
+            "file": "mimas-nasa-full.jpg",
+            "url": "https://d2pn8kiwq2w21t.cloudfront.net/original_images/jpegPIA17214.jpg",
+            "sha256": "f2d62eaa50c7864e303a13434738a7bc6db0e133f1f4b163c2506979800c1116",
+            "width": 5760,
+            "height": 2880,
+            "metersPerPixel": 216,
+            "projectionRadiusMeters": 198200,
+            "referenceRadiusMeters": 198200,
+            "metadata": "https://www.jpl.nasa.gov/images/pia17214-mimas-global-map-june-2017/",
+            "coordinateReference": {
+              "url": "https://planetarydata.jpl.nasa.gov/img/data/cassini/cassini_orbiter/coiss_3006_v3/data/images/SM_1M_0_0_SIMP.IMG",
+              "sha256": "beea77a709f49f35b6dfaf378b076971f4050badc190313c58b488819ffd2fc2",
+              "description": "Earlier PDS global map attached label: 5760x2880, 16ppd, center0, west180 at left to west-180 at right; zero projection rotation; spherical198.2km figure. Coordinate reference only, not imagery input."
+            },
+            "doi": "10.26033/y8wv-r303"
+          },
+          "coordinates": {
+            "longitude": "east-positive -180..180",
+            "latitude": "planetocentric",
+            "projection": "equirectangular",
+            "northAtTop": true,
+            "pixelRegistration": "pixel-centered"
+          },
+          "normalization": "Native simple cylindrical north-up map, full globe -180..180 east-positive; no rotation, mirror, colorization, sharpening, or invented pixels. Projection reference radius is independent of the canonical JPL SI radius."
+        }
+      },
+      "levels": {
+        "preview": {
+          "color": "/assets/surfaces/mimas-preview.jpg",
+          "width": 512,
+          "height": 256,
+          "colorSha256": "6d6f390576924e63890e483f1970ccb534203d409bbedec9db585efd9b5a712a"
+        },
+        "medium": {
+          "color": "/assets/surfaces/mimas-medium.jpg",
+          "width": 1024,
+          "height": 512,
+          "colorSha256": "19e418925c71c230ca9c9b5a8a7d9e765fe9606b767e8547ae77c09b87ffa293"
+        },
+        "near": {
+          "color": "/assets/surfaces/mimas-near.jpg",
+          "width": 2048,
+          "height": 1024,
+          "colorSha256": "950032ced57207bd486bc69bb3313842db50e54d2f988dcd956ca15f86def4aa"
+        }
+      },
+      "colorType": "Mapped spacecraft imagery; see pinned source and display processing"
+    }
+  }
+}

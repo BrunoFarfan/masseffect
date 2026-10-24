@@ -59,7 +59,12 @@ test("static build publishes only browser assets, hashes them and removes stale 
     const dist = join(temp, "dist");
     const first = await buildSite(dist);
     assert.equal(first.environment, "preview");
-    assert.ok(Object.keys(first.files).length >= 1823);
+    assert.ok(first.files["assets/surfaces/mars-olympus.height.bin"]);
+    for (const name of [
+      "earth-andes", "earth-himalaya", "moon-tycho", "moon-mare-orientale",
+      "moon-copernicus", "mars-valles", "mars-hellas",
+    ])
+      assert.equal(first.files[`assets/surfaces/${name}.height.bin`], undefined);
     for (const pack of ["terrain64", "color64"])
       for (const body of ["earth", "moon", "mars"])
         assert.ok(

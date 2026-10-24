@@ -54,22 +54,83 @@
     },
     "runtimeDatum": "canonical spherical radius 252100 m",
     "processing": "Validated GeoTIFF tags/georeferencing; converted source km to metres; computed triaxial radial surface radius by pixel direction; shifted source 0..360 seam by half raster; encoded radial heights as uint16 little-endian at 0.5 m steps; filled NoData with reference triaxial ellipsoid (zero relief) and labeled it.",
-    "attribution": "USGS Astrogeology Science Center / NASA Cassini / Lunar and Planetary Institute; Schenk and McKinnon (2024); Thomas et al. (2016)"
+    "attribution": "USGS Astrogeology Science Center / NASA Cassini / Lunar and Planetary Institute; Schenk and McKinnon (2024); Thomas et al. (2016)",
+    "imagery": {
+      "sha256": "5350b716a77e7ece0d6ec939f60207053ed19bd52d391f979f8aa0765f333d2a",
+      "width": 16098,
+      "height": 8049,
+      "source": {
+        "file": "enceladus-mosaic-100m.tif",
+        "sha256": "1738c5cf8e856c7ae262d858261af0fbb32503a68a524884d36194afb23afcc5",
+        "url": "https://asc-astropedia.s3.us-west-2.amazonaws.com/Enceladus/Cassini/Enceladus_Cassini_mosaic_global_100m_schenk2024.tif",
+        "width": 16098,
+        "height": 8049,
+        "center": 180,
+        "west": false,
+        "citation": "Schenk and McKinnon (2024), Cassini ISS global mosaic, 100 m pixels; DOI 10.1016/j.icarus.2023.115827",
+        "bytes": 518340175
+      },
+      "georeferencing": {
+        "origin": [
+          -804900,
+          402500,
+          0
+        ],
+        "resolution": [
+          100,
+          -100,
+          0
+        ],
+        "keys": {
+          "GTModelTypeGeoKey": 1,
+          "GTRasterTypeGeoKey": 1,
+          "GTCitationGeoKey": "SimpleCylindrical Enceladus",
+          "GeographicTypeGeoKey": 32767,
+          "GeogCitationGeoKey": "GCS Name = GCS_Enceladus|Datum = D_Enceladus|Ellipsoid = Enceladus|Primem = Reference_Meridian|",
+          "GeogGeodeticDatumGeoKey": 32767,
+          "GeogAngularUnitsGeoKey": 9102,
+          "GeogEllipsoidGeoKey": 32767,
+          "GeogSemiMajorAxisGeoKey": 256200,
+          "GeogSemiMinorAxisGeoKey": 256200,
+          "GeogPrimeMeridianLongGeoKey": 0,
+          "ProjectedCSTypeGeoKey": 32767,
+          "ProjectionGeoKey": 32767,
+          "ProjCoordTransGeoKey": 17,
+          "ProjLinearUnitsGeoKey": 9001,
+          "ProjStdParallel1GeoKey": 0,
+          "ProjFalseEastingGeoKey": 0,
+          "ProjFalseNorthingGeoKey": 0,
+          "ProjCenterLongGeoKey": 180,
+          "ProjCenterLatGeoKey": 0
+        }
+      },
+      "displayStretch": [
+        7507.0537109375,
+        13537.8056640625
+      ],
+      "normalization": "Pixel-centered planetocentric east-positive -180..180 north-up; source GeoTIFF origin/resolution and label longitude direction explicitly sampled; no height inferred. Source grid is downsampled at most to 64 ppd; display contrast is not calibrated albedo."
+    }
   },
   "levels": {
     "preview": {
       "color": "/assets/surfaces/enceladus-preview.jpg",
       "width": 512,
       "height": 256,
-      "colorSha256": "e3d2b3e705ad7f69331c52c0a6f0aeb2a5fca405fdebb76323df718767ab7aa2",
-      "colorKind": "constant soft-ice fallback; no mapped color source was downloaded"
+      "colorSha256": "52c6df98d6ed8f348caf02c601049919eee191bfdd2d7bc188247d616e87bba7",
+      "heightUrl": "/assets/surfaces/enceladus-preview.height.bin",
+      "heightWidth": 512,
+      "heightHeight": 256,
+      "heightSha256": "bc8e692ca55347b50a1adce44233be8ebe6d7b60bed6b919bc821d40be3545f1",
+      "heightOffsetMeters": -5000,
+      "heightScaleMeters": 0.5,
+      "minElevationMeters": -4432.5,
+      "maxElevationMeters": 5198.5
     },
     "medium": {
       "color": "/assets/surfaces/enceladus-medium.jpg",
       "width": 1024,
       "height": 512,
-      "colorSha256": "f6284e192e783472be8316397d5c4520ecf17671208a80abc390e322fe21b390",
-      "colorKind": "constant soft-ice fallback; no mapped color source was downloaded",
+      "colorSha256": "ac634fe88deb9d292f608a3bb27062c790cbd68d5c0367682ba0050284635790",
       "heightUrl": "/assets/surfaces/enceladus-medium.height.bin",
       "heightWidth": 1024,
       "heightHeight": 512,
@@ -86,8 +147,7 @@
       "color": "/assets/surfaces/enceladus-near.jpg",
       "width": 2048,
       "height": 1024,
-      "colorSha256": "5f8c2992470d56625a24d61fb0fcb7c5d0ae7afcb10e0a5c2e4ed1b158a19868",
-      "colorKind": "constant soft-ice fallback; no mapped color source was downloaded",
+      "colorSha256": "7136d1517dfbf7273ce4700ebc1e0285c15ee33ff4a9c27bc900bbe46e524a6d",
       "heightUrl": "/assets/surfaces/enceladus-near.height.bin",
       "heightWidth": 2048,
       "heightHeight": 1024,
@@ -100,5 +160,6 @@
       "noDataPolicy": "Source NoData is filled with the reference triaxial ellipsoid (zero relief); filled samples are not measured terrain.",
       "validSampleFraction": 0.9985356330871582
     }
-  }
+  },
+  "colorType": "Mapped spacecraft imagery; see pinned source and display processing"
 }

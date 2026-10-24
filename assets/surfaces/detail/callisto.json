@@ -1,0 +1,6471 @@
+{
+  "terrainKind": "procedural",
+  "effectivePixelsPerDegree": 42.05,
+  "heightEffectivePixelsPerDegree": null,
+  "tiles": [
+    {
+      "id": "e-1-0",
+      "uvBounds": [
+        0,
+        0.06666666666666667,
+        0.03333333333333333,
+        0.13333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-1-0.jpg",
+      "colorSha256": "89feebcafed5c441bc90bf089553912a41db5e9a80169d4cb73bc46a2a58ea50",
+      "colorBytes": 20379
+    },
+    {
+      "id": "e-1-1",
+      "uvBounds": [
+        0.03333333333333333,
+        0.06666666666666667,
+        0.06666666666666667,
+        0.13333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-1-1.jpg",
+      "colorSha256": "d9ef74ecb3841de94629c597747bebfe03c731e5824dc17417b179a3703f5bd7",
+      "colorBytes": 19992
+    },
+    {
+      "id": "e-1-2",
+      "uvBounds": [
+        0.06666666666666667,
+        0.06666666666666667,
+        0.1,
+        0.13333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-1-2.jpg",
+      "colorSha256": "fd805d715a41bfab3a590a59944528ea5b209294eeaec34ba3d9d71e42635e53",
+      "colorBytes": 19965
+    },
+    {
+      "id": "e-1-3",
+      "uvBounds": [
+        0.1,
+        0.06666666666666667,
+        0.13333333333333333,
+        0.13333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-1-3.jpg",
+      "colorSha256": "d6ff772954c912cfd7249ab69ad57e9bb3e44d2e1d8e264aeb0af6e9be3b439e",
+      "colorBytes": 19944
+    },
+    {
+      "id": "e-1-4",
+      "uvBounds": [
+        0.13333333333333333,
+        0.06666666666666667,
+        0.16666666666666666,
+        0.13333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-1-4.jpg",
+      "colorSha256": "38c8a65f01e9d24a1d7867bcad150ed4f60a0af47c82b27d7260f487ff144117",
+      "colorBytes": 20224
+    },
+    {
+      "id": "e-1-5",
+      "uvBounds": [
+        0.16666666666666666,
+        0.06666666666666667,
+        0.2,
+        0.13333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-1-5.jpg",
+      "colorSha256": "e2d67ace1f32710839c093683b2a830d3b65c0c7a6873e0f757f0c3398fd2f2b",
+      "colorBytes": 19453
+    },
+    {
+      "id": "e-1-6",
+      "uvBounds": [
+        0.2,
+        0.06666666666666667,
+        0.23333333333333334,
+        0.13333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-1-6.jpg",
+      "colorSha256": "9ed3cf2e80648cc60a7040eb8396489fd85e0bfe0229ba79b3e1a5702e998ae2",
+      "colorBytes": 18627
+    },
+    {
+      "id": "e-1-7",
+      "uvBounds": [
+        0.23333333333333334,
+        0.06666666666666667,
+        0.26666666666666666,
+        0.13333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-1-7.jpg",
+      "colorSha256": "f6a218b3a828275ffdc2c22fea8ac10e95ec57468d93c976917b2c742819951c",
+      "colorBytes": 16884
+    },
+    {
+      "id": "e-1-8",
+      "uvBounds": [
+        0.26666666666666666,
+        0.06666666666666667,
+        0.3,
+        0.13333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-1-8.jpg",
+      "colorSha256": "d3c4a9fce01034af8154335fb6b73be9b2cbccad501c7b5727198d7a5fa64e0c",
+      "colorBytes": 11046
+    },
+    {
+      "id": "e-1-9",
+      "uvBounds": [
+        0.3,
+        0.06666666666666667,
+        0.3333333333333333,
+        0.13333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-1-9.jpg",
+      "colorSha256": "0581d4135a8d1728f6a58317331d18e0628b020a2bd98c34f43e45bc28d1c570",
+      "colorBytes": 11333
+    },
+    {
+      "id": "e-1-10",
+      "uvBounds": [
+        0.3333333333333333,
+        0.06666666666666667,
+        0.36666666666666664,
+        0.13333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-1-10.jpg",
+      "colorSha256": "8675eb83bdc40b730d02d67759aa04733a2315951f7e51766cffc319b36e5872",
+      "colorBytes": 11890
+    },
+    {
+      "id": "e-1-11",
+      "uvBounds": [
+        0.36666666666666664,
+        0.06666666666666667,
+        0.4,
+        0.13333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-1-11.jpg",
+      "colorSha256": "cd65f76b370cb1295fc60701e0d8e45a931a3507f11bcd127fb0be7042896ce7",
+      "colorBytes": 25600
+    },
+    {
+      "id": "e-1-12",
+      "uvBounds": [
+        0.4,
+        0.06666666666666667,
+        0.43333333333333335,
+        0.13333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-1-12.jpg",
+      "colorSha256": "3886325b26a664ad1ae12b01081127bfb51c57b5a63a08bbcb09630fa4fdfd9a",
+      "colorBytes": 30731
+    },
+    {
+      "id": "e-1-13",
+      "uvBounds": [
+        0.43333333333333335,
+        0.06666666666666667,
+        0.4666666666666667,
+        0.13333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-1-13.jpg",
+      "colorSha256": "3b7833e5be581a9cbcbe707bfd0cc9f4810a4c3fdd4a46b15c5559a2a3379eb6",
+      "colorBytes": 30819
+    },
+    {
+      "id": "e-1-14",
+      "uvBounds": [
+        0.4666666666666667,
+        0.06666666666666667,
+        0.5,
+        0.13333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-1-14.jpg",
+      "colorSha256": "d2988cd58e02d140b89992941b5809abbec094cb021b866c525868d5a8e02a8e",
+      "colorBytes": 31109
+    },
+    {
+      "id": "e-1-15",
+      "uvBounds": [
+        0.5,
+        0.06666666666666667,
+        0.5333333333333333,
+        0.13333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-1-15.jpg",
+      "colorSha256": "fcb4c7433331fed5c262874cadb767b2e570c76b070eb693b75675cb01038090",
+      "colorBytes": 28668
+    },
+    {
+      "id": "e-1-16",
+      "uvBounds": [
+        0.5333333333333333,
+        0.06666666666666667,
+        0.5666666666666667,
+        0.13333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-1-16.jpg",
+      "colorSha256": "3fe764a4f856f4cc945b9caf913fbcb4ac1d9fb35b17ec22f175cf4cf76ab731",
+      "colorBytes": 33677
+    },
+    {
+      "id": "e-1-17",
+      "uvBounds": [
+        0.5666666666666667,
+        0.06666666666666667,
+        0.6,
+        0.13333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-1-17.jpg",
+      "colorSha256": "e90b5ef93a305999b59df0f848fa8453cbd84a302864ad9fb1052f354ac13b64",
+      "colorBytes": 39988
+    },
+    {
+      "id": "e-1-18",
+      "uvBounds": [
+        0.6,
+        0.06666666666666667,
+        0.6333333333333333,
+        0.13333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-1-18.jpg",
+      "colorSha256": "a3a2c500ca7be5e061fa11e00eca01bbaee8baa8a327eeee7f50fa137dd49e11",
+      "colorBytes": 45572
+    },
+    {
+      "id": "e-1-19",
+      "uvBounds": [
+        0.6333333333333333,
+        0.06666666666666667,
+        0.6666666666666666,
+        0.13333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-1-19.jpg",
+      "colorSha256": "4ab3a898e5731e69abcc4f3a8a64dd7c5114bc9ddddd24f96b67b8010e0ffedc",
+      "colorBytes": 46712
+    },
+    {
+      "id": "e-1-20",
+      "uvBounds": [
+        0.6666666666666666,
+        0.06666666666666667,
+        0.7,
+        0.13333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-1-20.jpg",
+      "colorSha256": "a40523836fdd7e470fd54b422ef43af99e457ce2eb28bfcb1b1015779e65f4c7",
+      "colorBytes": 42017
+    },
+    {
+      "id": "e-1-21",
+      "uvBounds": [
+        0.7,
+        0.06666666666666667,
+        0.7333333333333333,
+        0.13333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-1-21.jpg",
+      "colorSha256": "18342cb051aa7a92c3088364d0b162d9f660d6b344c4abd09e2fa4bfcfcb741c",
+      "colorBytes": 35972
+    },
+    {
+      "id": "e-1-22",
+      "uvBounds": [
+        0.7333333333333333,
+        0.06666666666666667,
+        0.7666666666666667,
+        0.13333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-1-22.jpg",
+      "colorSha256": "9b162c098b6bd2af8e55d990a4f5bda9301913f3a1c520e0af9dc2a8fb88b0f8",
+      "colorBytes": 36170
+    },
+    {
+      "id": "e-1-23",
+      "uvBounds": [
+        0.7666666666666667,
+        0.06666666666666667,
+        0.8,
+        0.13333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-1-23.jpg",
+      "colorSha256": "0ad6763ff94954220919d094af25224dd06c968d8a969122076673caf6036905",
+      "colorBytes": 39973
+    },
+    {
+      "id": "e-1-24",
+      "uvBounds": [
+        0.8,
+        0.06666666666666667,
+        0.8333333333333334,
+        0.13333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-1-24.jpg",
+      "colorSha256": "8a3709ae0aa48db7ad98b44eb433350380ee27eb175038f449e0ccd31217feb0",
+      "colorBytes": 41551
+    },
+    {
+      "id": "e-1-25",
+      "uvBounds": [
+        0.8333333333333334,
+        0.06666666666666667,
+        0.8666666666666667,
+        0.13333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-1-25.jpg",
+      "colorSha256": "7ddb6114642ece371bc1eeae1428f02ee5a911ffec70d6776ce4daefc6ffaffd",
+      "colorBytes": 40301
+    },
+    {
+      "id": "e-1-26",
+      "uvBounds": [
+        0.8666666666666667,
+        0.06666666666666667,
+        0.9,
+        0.13333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-1-26.jpg",
+      "colorSha256": "1ef10e2bc1fdb7ceebaecaea8072dc4ec724f9e59f0e2cfe7be8581b2454b543",
+      "colorBytes": 21787
+    },
+    {
+      "id": "e-1-27",
+      "uvBounds": [
+        0.9,
+        0.06666666666666667,
+        0.9333333333333333,
+        0.13333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-1-27.jpg",
+      "colorSha256": "5ec847520ff7651d2d599e1da73fe0a4beeae51f975530e4915e00e1b39f19a1",
+      "colorBytes": 20414
+    },
+    {
+      "id": "e-1-28",
+      "uvBounds": [
+        0.9333333333333333,
+        0.06666666666666667,
+        0.9666666666666667,
+        0.13333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-1-28.jpg",
+      "colorSha256": "b783c7d9aca28215ffb76bffec362d5458337825c1ea4928f1170af9b479d5eb",
+      "colorBytes": 20139
+    },
+    {
+      "id": "e-1-29",
+      "uvBounds": [
+        0.9666666666666667,
+        0.06666666666666667,
+        1,
+        0.13333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-1-29.jpg",
+      "colorSha256": "78f965fb5802d18f38e3ed2a2f8fcc5b287b4ca15830daf6be24d177622fcc68",
+      "colorBytes": 21356
+    },
+    {
+      "id": "e-2-0",
+      "uvBounds": [
+        0,
+        0.13333333333333333,
+        0.03333333333333333,
+        0.2
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-2-0.jpg",
+      "colorSha256": "591deaccc68ac2d34fc2cb5cf80a119b9f40a6b1c2d744874eae5374c693dcd1",
+      "colorBytes": 23865
+    },
+    {
+      "id": "e-2-1",
+      "uvBounds": [
+        0.03333333333333333,
+        0.13333333333333333,
+        0.06666666666666667,
+        0.2
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-2-1.jpg",
+      "colorSha256": "fc57ad26309576287283034bde19bd592e24f2bdedf74734c89560ce58ebfa9a",
+      "colorBytes": 22700
+    },
+    {
+      "id": "e-2-2",
+      "uvBounds": [
+        0.06666666666666667,
+        0.13333333333333333,
+        0.1,
+        0.2
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-2-2.jpg",
+      "colorSha256": "b99a9d23fd055718bc110d7eaf95b847d2e0e520f5f994e6ff9ebc6e7c010c2c",
+      "colorBytes": 23540
+    },
+    {
+      "id": "e-2-3",
+      "uvBounds": [
+        0.1,
+        0.13333333333333333,
+        0.13333333333333333,
+        0.2
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-2-3.jpg",
+      "colorSha256": "4f0c0b2a85e2638aebaba7ce01bf673bec38350d1899c7e39dc0a3e6733c1f49",
+      "colorBytes": 24600
+    },
+    {
+      "id": "e-2-4",
+      "uvBounds": [
+        0.13333333333333333,
+        0.13333333333333333,
+        0.16666666666666666,
+        0.2
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-2-4.jpg",
+      "colorSha256": "ad6de2761d344ea0da5d56c432940c21c23b2349ea989e7e5b69db22c4ea8a07",
+      "colorBytes": 25664
+    },
+    {
+      "id": "e-2-5",
+      "uvBounds": [
+        0.16666666666666666,
+        0.13333333333333333,
+        0.2,
+        0.2
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-2-5.jpg",
+      "colorSha256": "4822ddac96b9a6b6c2376751c95cd6412b5bc9f8e4a81fbe6e08861b356a1c0f",
+      "colorBytes": 24797
+    },
+    {
+      "id": "e-2-6",
+      "uvBounds": [
+        0.2,
+        0.13333333333333333,
+        0.23333333333333334,
+        0.2
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-2-6.jpg",
+      "colorSha256": "9d2643ef2aed9fa3acfbb2bc736b519c0e4cab2c984d96fcff0ec4ce570428ee",
+      "colorBytes": 23723
+    },
+    {
+      "id": "e-2-7",
+      "uvBounds": [
+        0.23333333333333334,
+        0.13333333333333333,
+        0.26666666666666666,
+        0.2
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-2-7.jpg",
+      "colorSha256": "19b38b40be57a45e2426f0b2f4ac27ebae96ea58702ded0f133988af5dfd750b",
+      "colorBytes": 21093
+    },
+    {
+      "id": "e-2-8",
+      "uvBounds": [
+        0.26666666666666666,
+        0.13333333333333333,
+        0.3,
+        0.2
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-2-8.jpg",
+      "colorSha256": "67627cc968f0070da3c7377f3a1a9e66372d9f48b9deeded27f2ea5f572a8ba0",
+      "colorBytes": 16944
+    },
+    {
+      "id": "e-2-9",
+      "uvBounds": [
+        0.3,
+        0.13333333333333333,
+        0.3333333333333333,
+        0.2
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-2-9.jpg",
+      "colorSha256": "d4a2e4f9e49ec8cda96e029b194e3fdc94529f402e333b0ee7ae94862711649a",
+      "colorBytes": 17511
+    },
+    {
+      "id": "e-2-10",
+      "uvBounds": [
+        0.3333333333333333,
+        0.13333333333333333,
+        0.36666666666666664,
+        0.2
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-2-10.jpg",
+      "colorSha256": "574fae4b711e57666431d52682227af2c93097a97cdf87df54272414125d7b0c",
+      "colorBytes": 16430
+    },
+    {
+      "id": "e-2-11",
+      "uvBounds": [
+        0.36666666666666664,
+        0.13333333333333333,
+        0.4,
+        0.2
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-2-11.jpg",
+      "colorSha256": "a7ddc2275d414f380f50ce190c670132d2ac7b795f34c6150f40930ecffd25c5",
+      "colorBytes": 33615
+    },
+    {
+      "id": "e-2-12",
+      "uvBounds": [
+        0.4,
+        0.13333333333333333,
+        0.43333333333333335,
+        0.2
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-2-12.jpg",
+      "colorSha256": "0c55257f26c85eb1c7b6c2e046e37a418c4b45652655e9d6891b91f26479c024",
+      "colorBytes": 39284
+    },
+    {
+      "id": "e-2-13",
+      "uvBounds": [
+        0.43333333333333335,
+        0.13333333333333333,
+        0.4666666666666667,
+        0.2
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-2-13.jpg",
+      "colorSha256": "4bef441b2e4c2ee3741d8fe831bd49465e99323adffac195a87afa90ecce505e",
+      "colorBytes": 43370
+    },
+    {
+      "id": "e-2-14",
+      "uvBounds": [
+        0.4666666666666667,
+        0.13333333333333333,
+        0.5,
+        0.2
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-2-14.jpg",
+      "colorSha256": "bb2b8773078eef4ef1f65400c6789444ac9ad209e83298232aa54f8046bd5773",
+      "colorBytes": 36576
+    },
+    {
+      "id": "e-2-15",
+      "uvBounds": [
+        0.5,
+        0.13333333333333333,
+        0.5333333333333333,
+        0.2
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-2-15.jpg",
+      "colorSha256": "b72ca7853b2dfd80c204f307c92a49878938b9a26cb41d9eba8320c796e3231f",
+      "colorBytes": 33942
+    },
+    {
+      "id": "e-2-16",
+      "uvBounds": [
+        0.5333333333333333,
+        0.13333333333333333,
+        0.5666666666666667,
+        0.2
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-2-16.jpg",
+      "colorSha256": "4ccd1abd794935f44be77a311f80c5ddaed3931ffb5f742309102639fcab0b91",
+      "colorBytes": 39329
+    },
+    {
+      "id": "e-2-17",
+      "uvBounds": [
+        0.5666666666666667,
+        0.13333333333333333,
+        0.6,
+        0.2
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-2-17.jpg",
+      "colorSha256": "2d2403090d25cdbf110ea84821f0762322d4e094a95f524c6c7a166387edf590",
+      "colorBytes": 46744
+    },
+    {
+      "id": "e-2-18",
+      "uvBounds": [
+        0.6,
+        0.13333333333333333,
+        0.6333333333333333,
+        0.2
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-2-18.jpg",
+      "colorSha256": "012b209baeff96139643928b62310c584d616b2b50fed2220c2c9f21db48e797",
+      "colorBytes": 53653
+    },
+    {
+      "id": "e-2-19",
+      "uvBounds": [
+        0.6333333333333333,
+        0.13333333333333333,
+        0.6666666666666666,
+        0.2
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-2-19.jpg",
+      "colorSha256": "a161936808a43c9721de3c39fd49039670581558aff0671df9b96a200a0ff57f",
+      "colorBytes": 41281
+    },
+    {
+      "id": "e-2-20",
+      "uvBounds": [
+        0.6666666666666666,
+        0.13333333333333333,
+        0.7,
+        0.2
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-2-20.jpg",
+      "colorSha256": "e52b0ce35d28bd3fe8acfda7162f2059437889f6f5f0033ed39e62e814b026c9",
+      "colorBytes": 39901
+    },
+    {
+      "id": "e-2-21",
+      "uvBounds": [
+        0.7,
+        0.13333333333333333,
+        0.7333333333333333,
+        0.2
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-2-21.jpg",
+      "colorSha256": "742b089e65276beae68ee7ddd47f58c4eefb3aebf094704a81bcae1a204aecfb",
+      "colorBytes": 38929
+    },
+    {
+      "id": "e-2-22",
+      "uvBounds": [
+        0.7333333333333333,
+        0.13333333333333333,
+        0.7666666666666667,
+        0.2
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-2-22.jpg",
+      "colorSha256": "21c55f5cc6a60f0f1f2d50b70d3a56416b20cd7cde655ece18c90773d387490d",
+      "colorBytes": 36941
+    },
+    {
+      "id": "e-2-23",
+      "uvBounds": [
+        0.7666666666666667,
+        0.13333333333333333,
+        0.8,
+        0.2
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-2-23.jpg",
+      "colorSha256": "a1089f448a0e175f1341954f912b023c97d7a1a4ee11d645656198dfc93ee024",
+      "colorBytes": 37795
+    },
+    {
+      "id": "e-2-24",
+      "uvBounds": [
+        0.8,
+        0.13333333333333333,
+        0.8333333333333334,
+        0.2
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-2-24.jpg",
+      "colorSha256": "42c26277bd3accca2314facff2dd57ed15fd5d712cea367f98b23e8184fbad3a",
+      "colorBytes": 39710
+    },
+    {
+      "id": "e-2-25",
+      "uvBounds": [
+        0.8333333333333334,
+        0.13333333333333333,
+        0.8666666666666667,
+        0.2
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-2-25.jpg",
+      "colorSha256": "dbf0b95a853aa2d69749f79f6a6f0901a8b97a9e55a554d7e09ff536f53aa45f",
+      "colorBytes": 39180
+    },
+    {
+      "id": "e-2-26",
+      "uvBounds": [
+        0.8666666666666667,
+        0.13333333333333333,
+        0.9,
+        0.2
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-2-26.jpg",
+      "colorSha256": "ccc8a5740ea6663b199d60409a52a57b19d094cc12a2b18c8d5b86185d17c6cc",
+      "colorBytes": 21661
+    },
+    {
+      "id": "e-2-27",
+      "uvBounds": [
+        0.9,
+        0.13333333333333333,
+        0.9333333333333333,
+        0.2
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-2-27.jpg",
+      "colorSha256": "7dce145e2b326b1fdb83aa42108940f4bc6c1ca1c9049ffdfb13573d4e6acc03",
+      "colorBytes": 17859
+    },
+    {
+      "id": "e-2-28",
+      "uvBounds": [
+        0.9333333333333333,
+        0.13333333333333333,
+        0.9666666666666667,
+        0.2
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-2-28.jpg",
+      "colorSha256": "3c25cdc77198243578b213e16ca23b9aa51cb3717321be0f48e815534ad59b3e",
+      "colorBytes": 22891
+    },
+    {
+      "id": "e-2-29",
+      "uvBounds": [
+        0.9666666666666667,
+        0.13333333333333333,
+        1,
+        0.2
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-2-29.jpg",
+      "colorSha256": "50b46102d1b1afce434f2b6933896d398f8d4994336d6775046c639ff9f7bc15",
+      "colorBytes": 24130
+    },
+    {
+      "id": "e-3-0",
+      "uvBounds": [
+        0,
+        0.2,
+        0.03333333333333333,
+        0.26666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-3-0.jpg",
+      "colorSha256": "03d0c8349367d44412fa827d1d42e7e4adceb095252da59fb05da54f5afa62c8",
+      "colorBytes": 29041
+    },
+    {
+      "id": "e-3-1",
+      "uvBounds": [
+        0.03333333333333333,
+        0.2,
+        0.06666666666666667,
+        0.26666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-3-1.jpg",
+      "colorSha256": "5837a4407d11be05d6e8b7f9e65606fa710e87a289ec6309cc522e516ef25650",
+      "colorBytes": 27418
+    },
+    {
+      "id": "e-3-2",
+      "uvBounds": [
+        0.06666666666666667,
+        0.2,
+        0.1,
+        0.26666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-3-2.jpg",
+      "colorSha256": "b98bf06b9a282b7e0755c78d71f0a2e0a13522ee30ec480e69485088da7d5b61",
+      "colorBytes": 26928
+    },
+    {
+      "id": "e-3-3",
+      "uvBounds": [
+        0.1,
+        0.2,
+        0.13333333333333333,
+        0.26666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-3-3.jpg",
+      "colorSha256": "89b3d64881c4e782e91156d6b952b8a42413bba1302b08bf57712b700cf674ee",
+      "colorBytes": 26655
+    },
+    {
+      "id": "e-3-4",
+      "uvBounds": [
+        0.13333333333333333,
+        0.2,
+        0.16666666666666666,
+        0.26666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-3-4.jpg",
+      "colorSha256": "99807359cf5908a1b9ca8422c357b7056c76ec6b2bf53ce51fe94de4ce1e0383",
+      "colorBytes": 28852
+    },
+    {
+      "id": "e-3-5",
+      "uvBounds": [
+        0.16666666666666666,
+        0.2,
+        0.2,
+        0.26666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-3-5.jpg",
+      "colorSha256": "19fb93dfe04960feb47682bab742410f45a8406128e7180ecc71ed852154adb9",
+      "colorBytes": 28733
+    },
+    {
+      "id": "e-3-6",
+      "uvBounds": [
+        0.2,
+        0.2,
+        0.23333333333333334,
+        0.26666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-3-6.jpg",
+      "colorSha256": "3c4bd71db861ad789abeafa46f4ee95de3ee157011f759406094464918ed5c86",
+      "colorBytes": 27135
+    },
+    {
+      "id": "e-3-7",
+      "uvBounds": [
+        0.23333333333333334,
+        0.2,
+        0.26666666666666666,
+        0.26666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-3-7.jpg",
+      "colorSha256": "dcbcf107dd710fc6584254c60d4a404d6d6ef630801f3ee38b7ce388672f6568",
+      "colorBytes": 23896
+    },
+    {
+      "id": "e-3-8",
+      "uvBounds": [
+        0.26666666666666666,
+        0.2,
+        0.3,
+        0.26666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-3-8.jpg",
+      "colorSha256": "b597a4c8dfae1d70c68c758b99b1de62bd78fe49606216858bab02b039ab924a",
+      "colorBytes": 20193
+    },
+    {
+      "id": "e-3-9",
+      "uvBounds": [
+        0.3,
+        0.2,
+        0.3333333333333333,
+        0.26666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-3-9.jpg",
+      "colorSha256": "c9b319c7a687a3a9e32f9e074038858e8fa135729863c10fd2944be1c26d6c73",
+      "colorBytes": 18754
+    },
+    {
+      "id": "e-3-10",
+      "uvBounds": [
+        0.3333333333333333,
+        0.2,
+        0.36666666666666664,
+        0.26666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-3-10.jpg",
+      "colorSha256": "bec4b9d1767ae5ab7a011c2e5e26154a86896d714206662d2e1819b2ee9b07a7",
+      "colorBytes": 17613
+    },
+    {
+      "id": "e-3-11",
+      "uvBounds": [
+        0.36666666666666664,
+        0.2,
+        0.4,
+        0.26666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-3-11.jpg",
+      "colorSha256": "0117373ea39019461cb78815a9d05d7a51e67f1e1ebffff30fb1741ad5e04d66",
+      "colorBytes": 33467
+    },
+    {
+      "id": "e-3-12",
+      "uvBounds": [
+        0.4,
+        0.2,
+        0.43333333333333335,
+        0.26666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-3-12.jpg",
+      "colorSha256": "a97e99b2c062addd1969eab780a8276a9976371db7df173805beec17f374b92a",
+      "colorBytes": 41013
+    },
+    {
+      "id": "e-3-13",
+      "uvBounds": [
+        0.43333333333333335,
+        0.2,
+        0.4666666666666667,
+        0.26666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-3-13.jpg",
+      "colorSha256": "44d1eb53a785a8464569498755eb896105374f34f940d417634b54607da45916",
+      "colorBytes": 42442
+    },
+    {
+      "id": "e-3-14",
+      "uvBounds": [
+        0.4666666666666667,
+        0.2,
+        0.5,
+        0.26666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-3-14.jpg",
+      "colorSha256": "8b367289d231ebb46bda1742d13d87c695c948b7967d189a682c24d7dada5012",
+      "colorBytes": 37735
+    },
+    {
+      "id": "e-3-15",
+      "uvBounds": [
+        0.5,
+        0.2,
+        0.5333333333333333,
+        0.26666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-3-15.jpg",
+      "colorSha256": "ae736dd8b7fba3b61168c3a552d0bc28418d6a5a17a1979b21c28c80c0a7ce27",
+      "colorBytes": 35115
+    },
+    {
+      "id": "e-3-16",
+      "uvBounds": [
+        0.5333333333333333,
+        0.2,
+        0.5666666666666667,
+        0.26666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-3-16.jpg",
+      "colorSha256": "123c8b3c87e1797f56b6b35e0fd210ea9df16840f11f5c208c90d0cc5669427d",
+      "colorBytes": 44263
+    },
+    {
+      "id": "e-3-17",
+      "uvBounds": [
+        0.5666666666666667,
+        0.2,
+        0.6,
+        0.26666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-3-17.jpg",
+      "colorSha256": "4973d23ff3b58b0eee0361f7a31750d6abae137e2370cd8996e7eca36e9b66c5",
+      "colorBytes": 43340
+    },
+    {
+      "id": "e-3-18",
+      "uvBounds": [
+        0.6,
+        0.2,
+        0.6333333333333333,
+        0.26666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-3-18.jpg",
+      "colorSha256": "7c30da2db018dd57a88b63bd6e63b016a4fd339bcecee4911843b407b9b43c53",
+      "colorBytes": 41769
+    },
+    {
+      "id": "e-3-19",
+      "uvBounds": [
+        0.6333333333333333,
+        0.2,
+        0.6666666666666666,
+        0.26666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-3-19.jpg",
+      "colorSha256": "27051b44a1e72b529f699a0f9b56cd8e662c8a05a6a5aaadf29d5230188e14bf",
+      "colorBytes": 39817
+    },
+    {
+      "id": "e-3-20",
+      "uvBounds": [
+        0.6666666666666666,
+        0.2,
+        0.7,
+        0.26666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-3-20.jpg",
+      "colorSha256": "650ce599eba0781dd194e308fbdaf8135a4bb3a2fbd937b45696b782b2532a5c",
+      "colorBytes": 39702
+    },
+    {
+      "id": "e-3-21",
+      "uvBounds": [
+        0.7,
+        0.2,
+        0.7333333333333333,
+        0.26666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-3-21.jpg",
+      "colorSha256": "f7de0f28bb0394cf8642264499b89ccc3797cc52bde8846515e0d5c073817ab7",
+      "colorBytes": 43692
+    },
+    {
+      "id": "e-3-22",
+      "uvBounds": [
+        0.7333333333333333,
+        0.2,
+        0.7666666666666667,
+        0.26666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-3-22.jpg",
+      "colorSha256": "6f48d96b10a07eee2a639edfb6607cc08ded71c8e1d7d8b1d4d29e0e47f5e612",
+      "colorBytes": 39069
+    },
+    {
+      "id": "e-3-23",
+      "uvBounds": [
+        0.7666666666666667,
+        0.2,
+        0.8,
+        0.26666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-3-23.jpg",
+      "colorSha256": "5c1009c1d74a657c4c78d5f3b87e973c8311bac27eaab570332a56f5e2761352",
+      "colorBytes": 38014
+    },
+    {
+      "id": "e-3-24",
+      "uvBounds": [
+        0.8,
+        0.2,
+        0.8333333333333334,
+        0.26666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-3-24.jpg",
+      "colorSha256": "8d490de9f638d91ebec1be9ee8ca71c04c1c597a74f70dfc316f71cca81a9311",
+      "colorBytes": 42484
+    },
+    {
+      "id": "e-3-25",
+      "uvBounds": [
+        0.8333333333333334,
+        0.2,
+        0.8666666666666667,
+        0.26666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-3-25.jpg",
+      "colorSha256": "07ccdf0af1afed0aa245a53e3c7e8216932297e4a36bc7dc0800dc2dea3fa3a3",
+      "colorBytes": 44900
+    },
+    {
+      "id": "e-3-26",
+      "uvBounds": [
+        0.8666666666666667,
+        0.2,
+        0.9,
+        0.26666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-3-26.jpg",
+      "colorSha256": "2e5555903d72bc13e79febb91f81b583aac949d39c730cfe5940e226dcf9e74d",
+      "colorBytes": 46447
+    },
+    {
+      "id": "e-3-27",
+      "uvBounds": [
+        0.9,
+        0.2,
+        0.9333333333333333,
+        0.26666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-3-27.jpg",
+      "colorSha256": "a76020ac7d82c0115a0c2a42e2930d088616d646ce88c03f324dd1796c348aa4",
+      "colorBytes": 40596
+    },
+    {
+      "id": "e-3-28",
+      "uvBounds": [
+        0.9333333333333333,
+        0.2,
+        0.9666666666666667,
+        0.26666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-3-28.jpg",
+      "colorSha256": "7d21917f936914f7a33e0f2e988edcfb7816c7b7caf47027451cfc4afe7a3461",
+      "colorBytes": 39281
+    },
+    {
+      "id": "e-3-29",
+      "uvBounds": [
+        0.9666666666666667,
+        0.2,
+        1,
+        0.26666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-3-29.jpg",
+      "colorSha256": "6ba4c73026f7c3d79887c884a7829c92409d3045a8e570abea0cc676c4257e47",
+      "colorBytes": 31914
+    },
+    {
+      "id": "e-4-0",
+      "uvBounds": [
+        0,
+        0.26666666666666666,
+        0.03333333333333333,
+        0.3333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-4-0.jpg",
+      "colorSha256": "a60a38c46062c43e3a48d78d90b6e17c7e59d07e210640740e0bc82a367244f4",
+      "colorBytes": 34097
+    },
+    {
+      "id": "e-4-1",
+      "uvBounds": [
+        0.03333333333333333,
+        0.26666666666666666,
+        0.06666666666666667,
+        0.3333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-4-1.jpg",
+      "colorSha256": "83089c8771a62393106f79d23d765ef8089ff48cfc75b1ff35dd44f0cae37689",
+      "colorBytes": 32664
+    },
+    {
+      "id": "e-4-2",
+      "uvBounds": [
+        0.06666666666666667,
+        0.26666666666666666,
+        0.1,
+        0.3333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-4-2.jpg",
+      "colorSha256": "8a5bf8d18c885cc287e572efc546602c5634e004f6f171fafbad422fbfa9e2f6",
+      "colorBytes": 32419
+    },
+    {
+      "id": "e-4-3",
+      "uvBounds": [
+        0.1,
+        0.26666666666666666,
+        0.13333333333333333,
+        0.3333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-4-3.jpg",
+      "colorSha256": "13d02fbd53da89f0a042e4150b8839a57f15dedbd0bc44ca9c450d84a01d8ff7",
+      "colorBytes": 30573
+    },
+    {
+      "id": "e-4-4",
+      "uvBounds": [
+        0.13333333333333333,
+        0.26666666666666666,
+        0.16666666666666666,
+        0.3333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-4-4.jpg",
+      "colorSha256": "c35a6a0011c8b24bc3e30a99537a631cf3b83650d266ee1593f423534410254a",
+      "colorBytes": 28997
+    },
+    {
+      "id": "e-4-5",
+      "uvBounds": [
+        0.16666666666666666,
+        0.26666666666666666,
+        0.2,
+        0.3333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-4-5.jpg",
+      "colorSha256": "88750f26cd8e7b8ef4fbaea888d3f3cfbb9c550e19a72f69ce208678f88a440d",
+      "colorBytes": 29692
+    },
+    {
+      "id": "e-4-6",
+      "uvBounds": [
+        0.2,
+        0.26666666666666666,
+        0.23333333333333334,
+        0.3333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-4-6.jpg",
+      "colorSha256": "9bc9eb84a776fc38dea7ad8128355400c1a3510c3c5d0bef7d90781da80aabc7",
+      "colorBytes": 28907
+    },
+    {
+      "id": "e-4-7",
+      "uvBounds": [
+        0.23333333333333334,
+        0.26666666666666666,
+        0.26666666666666666,
+        0.3333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-4-7.jpg",
+      "colorSha256": "8f993ac65365ced7cfccb39262b8e403d40dfced51b5a05afa2704277d9ca9d8",
+      "colorBytes": 25788
+    },
+    {
+      "id": "e-4-8",
+      "uvBounds": [
+        0.26666666666666666,
+        0.26666666666666666,
+        0.3,
+        0.3333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-4-8.jpg",
+      "colorSha256": "94804de2210d2e7ea0082e9417510cc781bbd2554f6d5d831ec67e06ffce0306",
+      "colorBytes": 23167
+    },
+    {
+      "id": "e-4-9",
+      "uvBounds": [
+        0.3,
+        0.26666666666666666,
+        0.3333333333333333,
+        0.3333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-4-9.jpg",
+      "colorSha256": "8ce5c1bcaaa12e6201be1c1073c14b72762ff8ff47ce43236fd144576d3d4320",
+      "colorBytes": 20797
+    },
+    {
+      "id": "e-4-10",
+      "uvBounds": [
+        0.3333333333333333,
+        0.26666666666666666,
+        0.36666666666666664,
+        0.3333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-4-10.jpg",
+      "colorSha256": "8321e886a6f3b61c4ce09a9a922776a0ce4bf18b9a1e9341d7f31b5fb4f1159c",
+      "colorBytes": 18091
+    },
+    {
+      "id": "e-4-11",
+      "uvBounds": [
+        0.36666666666666664,
+        0.26666666666666666,
+        0.4,
+        0.3333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-4-11.jpg",
+      "colorSha256": "2385f9b4b7bd4dc3c460ebf7c96de9748d40425472366ec8e7ae490f6266af4a",
+      "colorBytes": 31943
+    },
+    {
+      "id": "e-4-12",
+      "uvBounds": [
+        0.4,
+        0.26666666666666666,
+        0.43333333333333335,
+        0.3333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-4-12.jpg",
+      "colorSha256": "5071a13748c94d8f2257bd1359cac219aab257e21fe8b6f2937a7c1fbc125913",
+      "colorBytes": 37274
+    },
+    {
+      "id": "e-4-13",
+      "uvBounds": [
+        0.43333333333333335,
+        0.26666666666666666,
+        0.4666666666666667,
+        0.3333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-4-13.jpg",
+      "colorSha256": "2bb98bd13083f320d2fd3dbbd409df5bbd3e2bb99681b1c93ad011a8a612973d",
+      "colorBytes": 34365
+    },
+    {
+      "id": "e-4-14",
+      "uvBounds": [
+        0.4666666666666667,
+        0.26666666666666666,
+        0.5,
+        0.3333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-4-14.jpg",
+      "colorSha256": "329413ae8113e6dc05c7b21a30422c2c009183a6060be3d1f192740c09e28623",
+      "colorBytes": 34712
+    },
+    {
+      "id": "e-4-15",
+      "uvBounds": [
+        0.5,
+        0.26666666666666666,
+        0.5333333333333333,
+        0.3333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-4-15.jpg",
+      "colorSha256": "0f201e3a99716a22569e1e28358a71f2d29835e16e650d08ce41e8ef2e62bf00",
+      "colorBytes": 38083
+    },
+    {
+      "id": "e-4-16",
+      "uvBounds": [
+        0.5333333333333333,
+        0.26666666666666666,
+        0.5666666666666667,
+        0.3333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-4-16.jpg",
+      "colorSha256": "6d9be774a87d2ed6513d89aba21c48a8fab490eca504678c73e78bed51ae43be",
+      "colorBytes": 37972
+    },
+    {
+      "id": "e-4-17",
+      "uvBounds": [
+        0.5666666666666667,
+        0.26666666666666666,
+        0.6,
+        0.3333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-4-17.jpg",
+      "colorSha256": "93e84c01d1422bb351a4e72cacb8f039264f59a3fee563c2d57125764cdfbf27",
+      "colorBytes": 36640
+    },
+    {
+      "id": "e-4-18",
+      "uvBounds": [
+        0.6,
+        0.26666666666666666,
+        0.6333333333333333,
+        0.3333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-4-18.jpg",
+      "colorSha256": "d078c484aa0fa731f6812003e7eb4e9cae8012e848843cb45b36a273bbbeaf63",
+      "colorBytes": 36053
+    },
+    {
+      "id": "e-4-19",
+      "uvBounds": [
+        0.6333333333333333,
+        0.26666666666666666,
+        0.6666666666666666,
+        0.3333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-4-19.jpg",
+      "colorSha256": "ce77726129a6eec587d03594b5ccf1ea263334a214b59df74397e5af708d0cef",
+      "colorBytes": 43895
+    },
+    {
+      "id": "e-4-20",
+      "uvBounds": [
+        0.6666666666666666,
+        0.26666666666666666,
+        0.7,
+        0.3333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-4-20.jpg",
+      "colorSha256": "ffc18614fcc34aed3d2026157fbaccf81ccefe1e1d2fba0c62dc0e21b73fdaa0",
+      "colorBytes": 47154
+    },
+    {
+      "id": "e-4-21",
+      "uvBounds": [
+        0.7,
+        0.26666666666666666,
+        0.7333333333333333,
+        0.3333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-4-21.jpg",
+      "colorSha256": "2d926abf4ec64ab5cef57fc6f73ac855a7e53f7adaa5954c7e61fc999fad680f",
+      "colorBytes": 41771
+    },
+    {
+      "id": "e-4-22",
+      "uvBounds": [
+        0.7333333333333333,
+        0.26666666666666666,
+        0.7666666666666667,
+        0.3333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-4-22.jpg",
+      "colorSha256": "417360b057e19144e771efd4085ea4da567c50b963937b4e0ea45918cdcc7968",
+      "colorBytes": 41805
+    },
+    {
+      "id": "e-4-23",
+      "uvBounds": [
+        0.7666666666666667,
+        0.26666666666666666,
+        0.8,
+        0.3333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-4-23.jpg",
+      "colorSha256": "dab2e661fc3d515901651290386034ebc63a803ffd716cbc1169cc905bfcfe55",
+      "colorBytes": 39810
+    },
+    {
+      "id": "e-4-24",
+      "uvBounds": [
+        0.8,
+        0.26666666666666666,
+        0.8333333333333334,
+        0.3333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-4-24.jpg",
+      "colorSha256": "e4fb11646ab940123e9f9d2c4801da5cefc59ddbcfc5cbf88f4cb1c704c15764",
+      "colorBytes": 42273
+    },
+    {
+      "id": "e-4-25",
+      "uvBounds": [
+        0.8333333333333334,
+        0.26666666666666666,
+        0.8666666666666667,
+        0.3333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-4-25.jpg",
+      "colorSha256": "3484cf7e2a3ec2f89edb62a42378502081aeb20a4a92e877543689daa27b9acf",
+      "colorBytes": 50655
+    },
+    {
+      "id": "e-4-26",
+      "uvBounds": [
+        0.8666666666666667,
+        0.26666666666666666,
+        0.9,
+        0.3333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-4-26.jpg",
+      "colorSha256": "1bfc432ca125af9510549cd7fdd9f3f6eadcedaf2e2d03bb8d0a0a4ce984fca8",
+      "colorBytes": 54035
+    },
+    {
+      "id": "e-4-27",
+      "uvBounds": [
+        0.9,
+        0.26666666666666666,
+        0.9333333333333333,
+        0.3333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-4-27.jpg",
+      "colorSha256": "a7ba07b22adb558ee39701977144630dea4625878a7cb9f83654c5fd32e4b5c9",
+      "colorBytes": 51992
+    },
+    {
+      "id": "e-4-28",
+      "uvBounds": [
+        0.9333333333333333,
+        0.26666666666666666,
+        0.9666666666666667,
+        0.3333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-4-28.jpg",
+      "colorSha256": "68fa98801f274674021812dffeb139c5a29f2c0583698f1930d452ac4253a241",
+      "colorBytes": 42378
+    },
+    {
+      "id": "e-4-29",
+      "uvBounds": [
+        0.9666666666666667,
+        0.26666666666666666,
+        1,
+        0.3333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-4-29.jpg",
+      "colorSha256": "6a087f7a3d84ec881c9ad24bd1553b48de6d64a338ca8a153716fd198924ff1d",
+      "colorBytes": 36346
+    },
+    {
+      "id": "e-5-0",
+      "uvBounds": [
+        0,
+        0.3333333333333333,
+        0.03333333333333333,
+        0.4
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-5-0.jpg",
+      "colorSha256": "b83ba9527f88e4f3bf31021f0c4e7645734212a884733aebf6e2db6f0ca7332e",
+      "colorBytes": 36291
+    },
+    {
+      "id": "e-5-1",
+      "uvBounds": [
+        0.03333333333333333,
+        0.3333333333333333,
+        0.06666666666666667,
+        0.4
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-5-1.jpg",
+      "colorSha256": "97a382bc7e178cf07551d5900076924203e93e8887b98b39d52d5b98f8fbea74",
+      "colorBytes": 33942
+    },
+    {
+      "id": "e-5-2",
+      "uvBounds": [
+        0.06666666666666667,
+        0.3333333333333333,
+        0.1,
+        0.4
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-5-2.jpg",
+      "colorSha256": "88a319a4333c24374aae3ab2225f05c191816359789b9e3986398cc3f1e879a6",
+      "colorBytes": 33269
+    },
+    {
+      "id": "e-5-3",
+      "uvBounds": [
+        0.1,
+        0.3333333333333333,
+        0.13333333333333333,
+        0.4
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-5-3.jpg",
+      "colorSha256": "674fe7deaa6a1bcd284d3db33a19cbd785b7ce102e0a33d777ffdf38b2761fa0",
+      "colorBytes": 32662
+    },
+    {
+      "id": "e-5-4",
+      "uvBounds": [
+        0.13333333333333333,
+        0.3333333333333333,
+        0.16666666666666666,
+        0.4
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-5-4.jpg",
+      "colorSha256": "dc833c37afb65bca1908da2cd58db8dd265c02b56a36798643e0bfe4f7430936",
+      "colorBytes": 30417
+    },
+    {
+      "id": "e-5-5",
+      "uvBounds": [
+        0.16666666666666666,
+        0.3333333333333333,
+        0.2,
+        0.4
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-5-5.jpg",
+      "colorSha256": "541a749b1dc3a9956d74e290737cf2ca75bb2e4af794bb24627bf169b2e27e03",
+      "colorBytes": 29781
+    },
+    {
+      "id": "e-5-6",
+      "uvBounds": [
+        0.2,
+        0.3333333333333333,
+        0.23333333333333334,
+        0.4
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-5-6.jpg",
+      "colorSha256": "30b46ccbd1320fa05c1daf751222eef5df31cbb95c4cd2fccf886d016feddde7",
+      "colorBytes": 33713
+    },
+    {
+      "id": "e-5-7",
+      "uvBounds": [
+        0.23333333333333334,
+        0.3333333333333333,
+        0.26666666666666666,
+        0.4
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-5-7.jpg",
+      "colorSha256": "52a5301f18c2e173199fa3430e3312afd8c28f422797c7dc75c2986c3ce86dcf",
+      "colorBytes": 34093
+    },
+    {
+      "id": "e-5-8",
+      "uvBounds": [
+        0.26666666666666666,
+        0.3333333333333333,
+        0.3,
+        0.4
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-5-8.jpg",
+      "colorSha256": "9e0aaecf25318c0ea0da7b38b7aec51a9b0324589fe2f67265033debd54304bc",
+      "colorBytes": 25571
+    },
+    {
+      "id": "e-5-9",
+      "uvBounds": [
+        0.3,
+        0.3333333333333333,
+        0.3333333333333333,
+        0.4
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-5-9.jpg",
+      "colorSha256": "ccc17b734e18ec9ade090c70b1711b7d5cae9fece4a37ac97d899e7f39ffb7e1",
+      "colorBytes": 21437
+    },
+    {
+      "id": "e-5-10",
+      "uvBounds": [
+        0.3333333333333333,
+        0.3333333333333333,
+        0.36666666666666664,
+        0.4
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-5-10.jpg",
+      "colorSha256": "4a2a8a57737fda8c9217b986f22b640659587012e397ed72c5038570fcf8c838",
+      "colorBytes": 18852
+    },
+    {
+      "id": "e-5-11",
+      "uvBounds": [
+        0.36666666666666664,
+        0.3333333333333333,
+        0.4,
+        0.4
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-5-11.jpg",
+      "colorSha256": "13582990d93cf2119a99ce114ace5d43b75d6710d438d027166c626673b4f17d",
+      "colorBytes": 30645
+    },
+    {
+      "id": "e-5-12",
+      "uvBounds": [
+        0.4,
+        0.3333333333333333,
+        0.43333333333333335,
+        0.4
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-5-12.jpg",
+      "colorSha256": "c6050ea69ea5a1c24d816796f48204ce9ed9a45a75c22bbd4a11192caede9f19",
+      "colorBytes": 36036
+    },
+    {
+      "id": "e-5-13",
+      "uvBounds": [
+        0.43333333333333335,
+        0.3333333333333333,
+        0.4666666666666667,
+        0.4
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-5-13.jpg",
+      "colorSha256": "688780064414a050b97fbac04c9d499de7fcb3e74cbba6d812fa403879908705",
+      "colorBytes": 32731
+    },
+    {
+      "id": "e-5-14",
+      "uvBounds": [
+        0.4666666666666667,
+        0.3333333333333333,
+        0.5,
+        0.4
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-5-14.jpg",
+      "colorSha256": "02b4c128e87517838cfd843f91327add96b90cf9260ab9fccdf0ee1c4a53bf22",
+      "colorBytes": 35524
+    },
+    {
+      "id": "e-5-15",
+      "uvBounds": [
+        0.5,
+        0.3333333333333333,
+        0.5333333333333333,
+        0.4
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-5-15.jpg",
+      "colorSha256": "a6211470a4cc83e89c5e87ccc79ad8f7b8fdd22260f5ab1b38b6cf60ae104967",
+      "colorBytes": 35797
+    },
+    {
+      "id": "e-5-16",
+      "uvBounds": [
+        0.5333333333333333,
+        0.3333333333333333,
+        0.5666666666666667,
+        0.4
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-5-16.jpg",
+      "colorSha256": "0c704305a2481a8408602bdc2d67d13a83371f3bf4447e11ee67016a810669cd",
+      "colorBytes": 38582
+    },
+    {
+      "id": "e-5-17",
+      "uvBounds": [
+        0.5666666666666667,
+        0.3333333333333333,
+        0.6,
+        0.4
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-5-17.jpg",
+      "colorSha256": "dd56a80663dd989da1aff85a99957c8450be1c0864ecaace6f32f542b1496aa0",
+      "colorBytes": 33186
+    },
+    {
+      "id": "e-5-18",
+      "uvBounds": [
+        0.6,
+        0.3333333333333333,
+        0.6333333333333333,
+        0.4
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-5-18.jpg",
+      "colorSha256": "cec94b38ef7bcfbe852768e7118526f8cd66d7d02b6170be8efd71f1d10e30fc",
+      "colorBytes": 41539
+    },
+    {
+      "id": "e-5-19",
+      "uvBounds": [
+        0.6333333333333333,
+        0.3333333333333333,
+        0.6666666666666666,
+        0.4
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-5-19.jpg",
+      "colorSha256": "3e28c6543725bef3bc55874de0e5691219f6847c8bf607cec07568517475caa3",
+      "colorBytes": 46926
+    },
+    {
+      "id": "e-5-20",
+      "uvBounds": [
+        0.6666666666666666,
+        0.3333333333333333,
+        0.7,
+        0.4
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-5-20.jpg",
+      "colorSha256": "e7db65309382ba80a6c02d61da0ac8eb89c28cd3d10709d6d1a27dd9045d3d59",
+      "colorBytes": 45380
+    },
+    {
+      "id": "e-5-21",
+      "uvBounds": [
+        0.7,
+        0.3333333333333333,
+        0.7333333333333333,
+        0.4
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-5-21.jpg",
+      "colorSha256": "ca752f1cc7e414b7fd745159b6082d8482942903b83243c1cfa2aac6893c4c87",
+      "colorBytes": 41787
+    },
+    {
+      "id": "e-5-22",
+      "uvBounds": [
+        0.7333333333333333,
+        0.3333333333333333,
+        0.7666666666666667,
+        0.4
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-5-22.jpg",
+      "colorSha256": "f56d8d30294c904b59c44b08ddf298a9e34cdfc3222169b6c01d52b42e5b485b",
+      "colorBytes": 39675
+    },
+    {
+      "id": "e-5-23",
+      "uvBounds": [
+        0.7666666666666667,
+        0.3333333333333333,
+        0.8,
+        0.4
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-5-23.jpg",
+      "colorSha256": "0d692f89b314ead0177555a2ea6f6061a34f36d75dc8881248b82aa03b573e58",
+      "colorBytes": 37353
+    },
+    {
+      "id": "e-5-24",
+      "uvBounds": [
+        0.8,
+        0.3333333333333333,
+        0.8333333333333334,
+        0.4
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-5-24.jpg",
+      "colorSha256": "4b97bab0a100424eabd314e524bf49e6dfb7338df3a6b4946c2c4032d416be75",
+      "colorBytes": 41470
+    },
+    {
+      "id": "e-5-25",
+      "uvBounds": [
+        0.8333333333333334,
+        0.3333333333333333,
+        0.8666666666666667,
+        0.4
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-5-25.jpg",
+      "colorSha256": "12e4cba3c7b7a6f7e0e96163f102795c062f63aea162581f3766ef0af417799c",
+      "colorBytes": 56271
+    },
+    {
+      "id": "e-5-26",
+      "uvBounds": [
+        0.8666666666666667,
+        0.3333333333333333,
+        0.9,
+        0.4
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-5-26.jpg",
+      "colorSha256": "a824a29dffe80db88ba5fbb0012933949928bf9c42ab66116a72b6185ff1315e",
+      "colorBytes": 56908
+    },
+    {
+      "id": "e-5-27",
+      "uvBounds": [
+        0.9,
+        0.3333333333333333,
+        0.9333333333333333,
+        0.4
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-5-27.jpg",
+      "colorSha256": "8cedd40027aa20df88871e282c6b021e199586355d0bae60216bfcfed16568f9",
+      "colorBytes": 52443
+    },
+    {
+      "id": "e-5-28",
+      "uvBounds": [
+        0.9333333333333333,
+        0.3333333333333333,
+        0.9666666666666667,
+        0.4
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-5-28.jpg",
+      "colorSha256": "4c2df1511ef8aadc064c36ff92c8fa901b131ea5d4cec6ca34766efa08c9c746",
+      "colorBytes": 43482
+    },
+    {
+      "id": "e-5-29",
+      "uvBounds": [
+        0.9666666666666667,
+        0.3333333333333333,
+        1,
+        0.4
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-5-29.jpg",
+      "colorSha256": "c231c39b624792a2e16f91e33943707f313d41dba369ad83400c703ff74c80b1",
+      "colorBytes": 32632
+    },
+    {
+      "id": "e-6-0",
+      "uvBounds": [
+        0,
+        0.4,
+        0.03333333333333333,
+        0.4666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-6-0.jpg",
+      "colorSha256": "3bb1cea430d450ee5ee021c18c9d1e89a0299eeb4a4eb3149a219bc039ccb600",
+      "colorBytes": 39413
+    },
+    {
+      "id": "e-6-1",
+      "uvBounds": [
+        0.03333333333333333,
+        0.4,
+        0.06666666666666667,
+        0.4666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-6-1.jpg",
+      "colorSha256": "019f7f0bcc8eed42c00b7a4b9aaafe017493fdfdb472d464648ba3eec6ac54fb",
+      "colorBytes": 39698
+    },
+    {
+      "id": "e-6-2",
+      "uvBounds": [
+        0.06666666666666667,
+        0.4,
+        0.1,
+        0.4666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-6-2.jpg",
+      "colorSha256": "3a9f7fbf215ca1cc4b052757aedaaaa9912f78559f8ef042017d6b08ceac1ae1",
+      "colorBytes": 35487
+    },
+    {
+      "id": "e-6-3",
+      "uvBounds": [
+        0.1,
+        0.4,
+        0.13333333333333333,
+        0.4666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-6-3.jpg",
+      "colorSha256": "06908b80e22fa39e383845a31f67962affec29855baa1f79a47ed21391a491ea",
+      "colorBytes": 32913
+    },
+    {
+      "id": "e-6-4",
+      "uvBounds": [
+        0.13333333333333333,
+        0.4,
+        0.16666666666666666,
+        0.4666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-6-4.jpg",
+      "colorSha256": "5b1b6ca4c743132cf451ea74c5baa15364cdda53009cece32dd1455471703edc",
+      "colorBytes": 29971
+    },
+    {
+      "id": "e-6-5",
+      "uvBounds": [
+        0.16666666666666666,
+        0.4,
+        0.2,
+        0.4666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-6-5.jpg",
+      "colorSha256": "d16c16758e29d3536053f8c15745ad783932e396757749382831bb55966e2236",
+      "colorBytes": 30043
+    },
+    {
+      "id": "e-6-6",
+      "uvBounds": [
+        0.2,
+        0.4,
+        0.23333333333333334,
+        0.4666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-6-6.jpg",
+      "colorSha256": "1181a8f628709acf6495ac05d4ee5dce6d7dc1fd364a7448c9b3c975aede6cd0",
+      "colorBytes": 35515
+    },
+    {
+      "id": "e-6-7",
+      "uvBounds": [
+        0.23333333333333334,
+        0.4,
+        0.26666666666666666,
+        0.4666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-6-7.jpg",
+      "colorSha256": "a90bb945bad2f91c2a3734830a9672285e178be6bc432d8902aa02731e3eccc8",
+      "colorBytes": 35387
+    },
+    {
+      "id": "e-6-8",
+      "uvBounds": [
+        0.26666666666666666,
+        0.4,
+        0.3,
+        0.4666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-6-8.jpg",
+      "colorSha256": "a46d6e4b04b694b1f8dc39158148dbcef955b4d8c44a56ab7f210be2889dccc5",
+      "colorBytes": 25089
+    },
+    {
+      "id": "e-6-9",
+      "uvBounds": [
+        0.3,
+        0.4,
+        0.3333333333333333,
+        0.4666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-6-9.jpg",
+      "colorSha256": "10fc9a6638e2453c6487ededb2b77ef901a153b3d6decb8d9400d9ff6d1ce5d3",
+      "colorBytes": 22260
+    },
+    {
+      "id": "e-6-10",
+      "uvBounds": [
+        0.3333333333333333,
+        0.4,
+        0.36666666666666664,
+        0.4666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-6-10.jpg",
+      "colorSha256": "c8e8179b3a3e3312cf261628bb53f98cedbf5b3356e010ae8c21655f7c13c205",
+      "colorBytes": 18464
+    },
+    {
+      "id": "e-6-11",
+      "uvBounds": [
+        0.36666666666666664,
+        0.4,
+        0.4,
+        0.4666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-6-11.jpg",
+      "colorSha256": "0d35d5f06e4f0fbf936905590247e630fa427fabe4573618e2015a7fe31e2655",
+      "colorBytes": 32018
+    },
+    {
+      "id": "e-6-12",
+      "uvBounds": [
+        0.4,
+        0.4,
+        0.43333333333333335,
+        0.4666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-6-12.jpg",
+      "colorSha256": "17e36830fbc34c5461068472272629f5b2124106fecc2269f1328d98fe66edbf",
+      "colorBytes": 36497
+    },
+    {
+      "id": "e-6-13",
+      "uvBounds": [
+        0.43333333333333335,
+        0.4,
+        0.4666666666666667,
+        0.4666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-6-13.jpg",
+      "colorSha256": "4ae2469ef5e56c13fb23d9b3f60852a2c0e5e28c52499b2ac658a019fedfac0d",
+      "colorBytes": 37789
+    },
+    {
+      "id": "e-6-14",
+      "uvBounds": [
+        0.4666666666666667,
+        0.4,
+        0.5,
+        0.4666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-6-14.jpg",
+      "colorSha256": "51c6967affe4e158f2b1ba1df7519340b48076ce3ee0ec17cd82d87737ee179e",
+      "colorBytes": 32667
+    },
+    {
+      "id": "e-6-15",
+      "uvBounds": [
+        0.5,
+        0.4,
+        0.5333333333333333,
+        0.4666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-6-15.jpg",
+      "colorSha256": "b548ec240f02d57242c7da8dada0ec6305f0b690df38323ad10425007665d53a",
+      "colorBytes": 30346
+    },
+    {
+      "id": "e-6-16",
+      "uvBounds": [
+        0.5333333333333333,
+        0.4,
+        0.5666666666666667,
+        0.4666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-6-16.jpg",
+      "colorSha256": "426728359828c6c40a28f74d8a96f565b3fae2fca0fafb6f69bb36612e230c64",
+      "colorBytes": 35611
+    },
+    {
+      "id": "e-6-17",
+      "uvBounds": [
+        0.5666666666666667,
+        0.4,
+        0.6,
+        0.4666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-6-17.jpg",
+      "colorSha256": "e8fc9b15f651d974c9ef2d68eb6755bc147a2e525926b78b3e19df6b91bafa56",
+      "colorBytes": 42112
+    },
+    {
+      "id": "e-6-18",
+      "uvBounds": [
+        0.6,
+        0.4,
+        0.6333333333333333,
+        0.4666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-6-18.jpg",
+      "colorSha256": "176122042a06e2422dff18d97138c193ecc56d7f9f3671acf1e1bd05a9fcb595",
+      "colorBytes": 53320
+    },
+    {
+      "id": "e-6-19",
+      "uvBounds": [
+        0.6333333333333333,
+        0.4,
+        0.6666666666666666,
+        0.4666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-6-19.jpg",
+      "colorSha256": "a6d74e23055b425aad09537aa187aadceb0b0bbfdcf2b18d7baff4b519d143e1",
+      "colorBytes": 53682
+    },
+    {
+      "id": "e-6-20",
+      "uvBounds": [
+        0.6666666666666666,
+        0.4,
+        0.7,
+        0.4666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-6-20.jpg",
+      "colorSha256": "9778aa40832dc08dee8b6d6ca389cf2bb3a35369cfa5607263712dc54e74c0f1",
+      "colorBytes": 46255
+    },
+    {
+      "id": "e-6-21",
+      "uvBounds": [
+        0.7,
+        0.4,
+        0.7333333333333333,
+        0.4666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-6-21.jpg",
+      "colorSha256": "58b10c9a423c97fbcd40f1bb59587b92778b90764b08461cff61ffee8f5b4a9f",
+      "colorBytes": 38486
+    },
+    {
+      "id": "e-6-22",
+      "uvBounds": [
+        0.7333333333333333,
+        0.4,
+        0.7666666666666667,
+        0.4666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-6-22.jpg",
+      "colorSha256": "92ee4a6c1e060b86c0e15ac93d1f78dee7d22a97fac471f0d2a63ccade98b3fc",
+      "colorBytes": 24917
+    },
+    {
+      "id": "e-6-23",
+      "uvBounds": [
+        0.7666666666666667,
+        0.4,
+        0.8,
+        0.4666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-6-23.jpg",
+      "colorSha256": "85d266ae44e107e34b3029c844ee084d83a9f4ccc03cdb1e8150f291d1417a92",
+      "colorBytes": 14216
+    },
+    {
+      "id": "e-6-24",
+      "uvBounds": [
+        0.8,
+        0.4,
+        0.8333333333333334,
+        0.4666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-6-24.jpg",
+      "colorSha256": "dd937d8ee580870fb06e54cfb60dd9db5876f3292bf7e38394877416a12c4e75",
+      "colorBytes": 30422
+    },
+    {
+      "id": "e-6-25",
+      "uvBounds": [
+        0.8333333333333334,
+        0.4,
+        0.8666666666666667,
+        0.4666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-6-25.jpg",
+      "colorSha256": "fbf310827728a2dd7e30aef204a894a2092744f0f78a7afbbf5e3d5152a74001",
+      "colorBytes": 49982
+    },
+    {
+      "id": "e-6-26",
+      "uvBounds": [
+        0.8666666666666667,
+        0.4,
+        0.9,
+        0.4666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-6-26.jpg",
+      "colorSha256": "5cbd9f2da0a3265c763b7dea0c9ac2c1656dd0178032d8df21fd0a4d2147cb1b",
+      "colorBytes": 57003
+    },
+    {
+      "id": "e-6-27",
+      "uvBounds": [
+        0.9,
+        0.4,
+        0.9333333333333333,
+        0.4666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-6-27.jpg",
+      "colorSha256": "a636b8bdbcccd3772adf6c39aa1e0aad2600b38ab1e12d1402d0111edae939b5",
+      "colorBytes": 56345
+    },
+    {
+      "id": "e-6-28",
+      "uvBounds": [
+        0.9333333333333333,
+        0.4,
+        0.9666666666666667,
+        0.4666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-6-28.jpg",
+      "colorSha256": "53a761d43251ecfad2ca507342a18cae6903faffaeda1c15b003c6f288135b0a",
+      "colorBytes": 42654
+    },
+    {
+      "id": "e-6-29",
+      "uvBounds": [
+        0.9666666666666667,
+        0.4,
+        1,
+        0.4666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-6-29.jpg",
+      "colorSha256": "7e3db4e76105b7246fac797ec93abebbe9ba88a2b77f3d0a00ac034eec9f62ee",
+      "colorBytes": 30166
+    },
+    {
+      "id": "e-7-0",
+      "uvBounds": [
+        0,
+        0.4666666666666667,
+        0.03333333333333333,
+        0.5333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-7-0.jpg",
+      "colorSha256": "a3e24026e8fd6d93c5ac9bcea833a60e5ef3cf348d3965f197ee15e81f925d43",
+      "colorBytes": 35532
+    },
+    {
+      "id": "e-7-1",
+      "uvBounds": [
+        0.03333333333333333,
+        0.4666666666666667,
+        0.06666666666666667,
+        0.5333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-7-1.jpg",
+      "colorSha256": "766b8cb172188b367c99294df0225b0b9622ba5c89c203fa4a17ae7e5277822e",
+      "colorBytes": 40178
+    },
+    {
+      "id": "e-7-2",
+      "uvBounds": [
+        0.06666666666666667,
+        0.4666666666666667,
+        0.1,
+        0.5333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-7-2.jpg",
+      "colorSha256": "a4fb65e77e524aaea60869417909c40c6de375f5282aca288a5936b77969f01b",
+      "colorBytes": 36206
+    },
+    {
+      "id": "e-7-3",
+      "uvBounds": [
+        0.1,
+        0.4666666666666667,
+        0.13333333333333333,
+        0.5333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-7-3.jpg",
+      "colorSha256": "0d5dcd30753b224d798313c6821c25bf882b74c42ea3290e5bc78dcf02a75328",
+      "colorBytes": 33722
+    },
+    {
+      "id": "e-7-4",
+      "uvBounds": [
+        0.13333333333333333,
+        0.4666666666666667,
+        0.16666666666666666,
+        0.5333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-7-4.jpg",
+      "colorSha256": "13df560f17ea4f626d8eb41641b16910c6704d9d189aedbe0612da1760f09ea2",
+      "colorBytes": 30963
+    },
+    {
+      "id": "e-7-5",
+      "uvBounds": [
+        0.16666666666666666,
+        0.4666666666666667,
+        0.2,
+        0.5333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-7-5.jpg",
+      "colorSha256": "043e0608f6d7aaf164ad9ae8c20a04c4e7c0e084047d10d28c31a7f4041094fc",
+      "colorBytes": 28840
+    },
+    {
+      "id": "e-7-6",
+      "uvBounds": [
+        0.2,
+        0.4666666666666667,
+        0.23333333333333334,
+        0.5333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-7-6.jpg",
+      "colorSha256": "0bf0664ba3b7c8cdec8d2346fcd2379aeb2410761d065344e2e6e0715043d7bb",
+      "colorBytes": 34026
+    },
+    {
+      "id": "e-7-7",
+      "uvBounds": [
+        0.23333333333333334,
+        0.4666666666666667,
+        0.26666666666666666,
+        0.5333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-7-7.jpg",
+      "colorSha256": "43df47797023eee52582ae6c5bfc1be948f211eeb023f6a938718553e5323ed6",
+      "colorBytes": 34169
+    },
+    {
+      "id": "e-7-8",
+      "uvBounds": [
+        0.26666666666666666,
+        0.4666666666666667,
+        0.3,
+        0.5333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-7-8.jpg",
+      "colorSha256": "558cc32d14f9d02be9b7bb93f6a0b13b4416698813ec7a988a3faf2958dc6b4c",
+      "colorBytes": 23975
+    },
+    {
+      "id": "e-7-9",
+      "uvBounds": [
+        0.3,
+        0.4666666666666667,
+        0.3333333333333333,
+        0.5333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-7-9.jpg",
+      "colorSha256": "c9547a4814f4e37b9789f3a19dea9f8a72e415997381e69a7cd219105f6bdca5",
+      "colorBytes": 21746
+    },
+    {
+      "id": "e-7-10",
+      "uvBounds": [
+        0.3333333333333333,
+        0.4666666666666667,
+        0.36666666666666664,
+        0.5333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-7-10.jpg",
+      "colorSha256": "83692ec56d32768aa44394b1cfff727a35aa9b94114410209b2ec3035151bac3",
+      "colorBytes": 18699
+    },
+    {
+      "id": "e-7-11",
+      "uvBounds": [
+        0.36666666666666664,
+        0.4666666666666667,
+        0.4,
+        0.5333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-7-11.jpg",
+      "colorSha256": "aa5a4c45c612df50369f06a426a0e73b5ecd980f4c7037311f8765d372980b14",
+      "colorBytes": 31332
+    },
+    {
+      "id": "e-7-12",
+      "uvBounds": [
+        0.4,
+        0.4666666666666667,
+        0.43333333333333335,
+        0.5333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-7-12.jpg",
+      "colorSha256": "a5c92b764b2787e2d9e3903e23e66855805cc38422d3d0a6d316520b837ad8fd",
+      "colorBytes": 35362
+    },
+    {
+      "id": "e-7-13",
+      "uvBounds": [
+        0.43333333333333335,
+        0.4666666666666667,
+        0.4666666666666667,
+        0.5333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-7-13.jpg",
+      "colorSha256": "e446d9bb317c1bc4d1680d4031f6fb85960832ff74893e5c9fdf69ebd229ba1e",
+      "colorBytes": 36242
+    },
+    {
+      "id": "e-7-14",
+      "uvBounds": [
+        0.4666666666666667,
+        0.4666666666666667,
+        0.5,
+        0.5333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-7-14.jpg",
+      "colorSha256": "c75df125be32bab36563e41c1f53b7bc359b88ecedc744717e7827dcdab99f67",
+      "colorBytes": 32067
+    },
+    {
+      "id": "e-7-15",
+      "uvBounds": [
+        0.5,
+        0.4666666666666667,
+        0.5333333333333333,
+        0.5333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-7-15.jpg",
+      "colorSha256": "4acae710042e46240fe49ad85afe7a8547e5dfca9ed4d9f7435ca27068e8a22f",
+      "colorBytes": 30657
+    },
+    {
+      "id": "e-7-16",
+      "uvBounds": [
+        0.5333333333333333,
+        0.4666666666666667,
+        0.5666666666666667,
+        0.5333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-7-16.jpg",
+      "colorSha256": "67a3bb9558a2c7282949e564f6beda11037a688bd2c1a4d05f5248d99b70976d",
+      "colorBytes": 34621
+    },
+    {
+      "id": "e-7-17",
+      "uvBounds": [
+        0.5666666666666667,
+        0.4666666666666667,
+        0.6,
+        0.5333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-7-17.jpg",
+      "colorSha256": "eaf6f2ec2cd0464cce927af8050d795170b087bd6fde98daaa84049ee6c63bd9",
+      "colorBytes": 41904
+    },
+    {
+      "id": "e-7-18",
+      "uvBounds": [
+        0.6,
+        0.4666666666666667,
+        0.6333333333333333,
+        0.5333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-7-18.jpg",
+      "colorSha256": "d66c9dbb1139fd429859ba7d9ff4b3b1bf20e9263f919080b75f13208a5bbdde",
+      "colorBytes": 42337
+    },
+    {
+      "id": "e-7-19",
+      "uvBounds": [
+        0.6333333333333333,
+        0.4666666666666667,
+        0.6666666666666666,
+        0.5333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-7-19.jpg",
+      "colorSha256": "75f0004641e842c8d66439f1cd37c49d707cff419575efa8305d1d39ec96e394",
+      "colorBytes": 39003
+    },
+    {
+      "id": "e-7-20",
+      "uvBounds": [
+        0.6666666666666666,
+        0.4666666666666667,
+        0.7,
+        0.5333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-7-20.jpg",
+      "colorSha256": "34bb6d872d07546bcaee6b0589b25802b81df6cd12883ca4a8040990808651be",
+      "colorBytes": 38970
+    },
+    {
+      "id": "e-7-21",
+      "uvBounds": [
+        0.7,
+        0.4666666666666667,
+        0.7333333333333333,
+        0.5333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-7-21.jpg",
+      "colorSha256": "031f2cbf4da494484770b7e3fce1bd2b42c8230c1c43d2b516d81f3d80498c83",
+      "colorBytes": 30412
+    },
+    {
+      "id": "e-7-22",
+      "uvBounds": [
+        0.7333333333333333,
+        0.4666666666666667,
+        0.7666666666666667,
+        0.5333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-7-22.jpg",
+      "colorSha256": "6a71e308827a631e162e01d58813ed23c39788321d36c3c9f370375475237810",
+      "colorBytes": 16597
+    },
+    {
+      "id": "e-7-23",
+      "uvBounds": [
+        0.7666666666666667,
+        0.4666666666666667,
+        0.8,
+        0.5333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-7-23.jpg",
+      "colorSha256": "95ba6126a18265b614397d959146d5195bf96934c0d21222b424ad9c88930717",
+      "colorBytes": 16380
+    },
+    {
+      "id": "e-7-24",
+      "uvBounds": [
+        0.8,
+        0.4666666666666667,
+        0.8333333333333334,
+        0.5333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-7-24.jpg",
+      "colorSha256": "8a7222d9a133fc84cbb60ad101ed8707f4f5ae21dd1d6a21d4a344969bfaba28",
+      "colorBytes": 16995
+    },
+    {
+      "id": "e-7-25",
+      "uvBounds": [
+        0.8333333333333334,
+        0.4666666666666667,
+        0.8666666666666667,
+        0.5333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-7-25.jpg",
+      "colorSha256": "a6af6c84e7e97f83631755210b7f940ecc0e94ac63f7008c7cad8fb234a945df",
+      "colorBytes": 29948
+    },
+    {
+      "id": "e-7-26",
+      "uvBounds": [
+        0.8666666666666667,
+        0.4666666666666667,
+        0.9,
+        0.5333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-7-26.jpg",
+      "colorSha256": "9ad170604f5d2d30ca0b42de116d3b0e2226a5d395f56a813e1de03979ba88b9",
+      "colorBytes": 39862
+    },
+    {
+      "id": "e-7-27",
+      "uvBounds": [
+        0.9,
+        0.4666666666666667,
+        0.9333333333333333,
+        0.5333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-7-27.jpg",
+      "colorSha256": "0d960f779017e6a398330a2da11772a935f9ad2a178933065fedcebaff67f266",
+      "colorBytes": 28790
+    },
+    {
+      "id": "e-7-28",
+      "uvBounds": [
+        0.9333333333333333,
+        0.4666666666666667,
+        0.9666666666666667,
+        0.5333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-7-28.jpg",
+      "colorSha256": "13eadf245d4644ef2e3cc826bed4d3dfa93450fd89b37d1007e78531d547533b",
+      "colorBytes": 31088
+    },
+    {
+      "id": "e-7-29",
+      "uvBounds": [
+        0.9666666666666667,
+        0.4666666666666667,
+        1,
+        0.5333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-7-29.jpg",
+      "colorSha256": "3cb012c0b6e764d2a65df0933f99a71ad8de927a4b2bbb8f6b9f5a35fab73418",
+      "colorBytes": 30485
+    },
+    {
+      "id": "e-8-0",
+      "uvBounds": [
+        0,
+        0.5333333333333333,
+        0.03333333333333333,
+        0.6
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-8-0.jpg",
+      "colorSha256": "72dea2c9b035eef70fa39b70ee827948afb2baf9fb6a2948c97a8d93032249c6",
+      "colorBytes": 30648
+    },
+    {
+      "id": "e-8-1",
+      "uvBounds": [
+        0.03333333333333333,
+        0.5333333333333333,
+        0.06666666666666667,
+        0.6
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-8-1.jpg",
+      "colorSha256": "f6d53051b958346102f1da5536d777e2406f31eec963b798a8d5b4ecea08e39c",
+      "colorBytes": 39454
+    },
+    {
+      "id": "e-8-2",
+      "uvBounds": [
+        0.06666666666666667,
+        0.5333333333333333,
+        0.1,
+        0.6
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-8-2.jpg",
+      "colorSha256": "fea6a78d83a7d66cdbaad627aa31f4e7c3c1a1ad5385bf209787ad1166c22121",
+      "colorBytes": 38171
+    },
+    {
+      "id": "e-8-3",
+      "uvBounds": [
+        0.1,
+        0.5333333333333333,
+        0.13333333333333333,
+        0.6
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-8-3.jpg",
+      "colorSha256": "049fa3f804e266322fa27711f7dcb152edf04ef9ee23280f696ec0e87ad4142e",
+      "colorBytes": 35037
+    },
+    {
+      "id": "e-8-4",
+      "uvBounds": [
+        0.13333333333333333,
+        0.5333333333333333,
+        0.16666666666666666,
+        0.6
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-8-4.jpg",
+      "colorSha256": "b18f6326e28d448fec6cbcef810bae7d68a47e5f964aa11a3c3a0697a0d20b9e",
+      "colorBytes": 28345
+    },
+    {
+      "id": "e-8-5",
+      "uvBounds": [
+        0.16666666666666666,
+        0.5333333333333333,
+        0.2,
+        0.6
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-8-5.jpg",
+      "colorSha256": "94dca2271ea136c8b4af3dc39f058e9f70e26b75ba281413948e719585199869",
+      "colorBytes": 26318
+    },
+    {
+      "id": "e-8-6",
+      "uvBounds": [
+        0.2,
+        0.5333333333333333,
+        0.23333333333333334,
+        0.6
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-8-6.jpg",
+      "colorSha256": "74dd5a53483bfbed441974fa77a0b3fab2c7b80fd130ad6f3fe08285d57f8401",
+      "colorBytes": 30434
+    },
+    {
+      "id": "e-8-7",
+      "uvBounds": [
+        0.23333333333333334,
+        0.5333333333333333,
+        0.26666666666666666,
+        0.6
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-8-7.jpg",
+      "colorSha256": "2ca4ff472acb29c94d98b026fcaa48bbbc8b2b7d9578292a0531351b5fa88248",
+      "colorBytes": 34192
+    },
+    {
+      "id": "e-8-8",
+      "uvBounds": [
+        0.26666666666666666,
+        0.5333333333333333,
+        0.3,
+        0.6
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-8-8.jpg",
+      "colorSha256": "1bff0ccd07a08cce28bfeb0704b1f103c20295913ccdc3206e28c8d07bc5c4ba",
+      "colorBytes": 25291
+    },
+    {
+      "id": "e-8-9",
+      "uvBounds": [
+        0.3,
+        0.5333333333333333,
+        0.3333333333333333,
+        0.6
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-8-9.jpg",
+      "colorSha256": "d81162b5a1d02f1582d10ff32eebd8852911b5efe9b5cd6598636ca78dee2bad",
+      "colorBytes": 23167
+    },
+    {
+      "id": "e-8-10",
+      "uvBounds": [
+        0.3333333333333333,
+        0.5333333333333333,
+        0.36666666666666664,
+        0.6
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-8-10.jpg",
+      "colorSha256": "1f4813e5ad5f185f7b989c89e2d50d89856c56a7d4a731e04bd4d2d319514e60",
+      "colorBytes": 21148
+    },
+    {
+      "id": "e-8-11",
+      "uvBounds": [
+        0.36666666666666664,
+        0.5333333333333333,
+        0.4,
+        0.6
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-8-11.jpg",
+      "colorSha256": "2a11b8b404b221b2376aff2cc6231f01057ea55671c1d28986cf57e2d56100c8",
+      "colorBytes": 29234
+    },
+    {
+      "id": "e-8-12",
+      "uvBounds": [
+        0.4,
+        0.5333333333333333,
+        0.43333333333333335,
+        0.6
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-8-12.jpg",
+      "colorSha256": "370429994a1a57a08618218f279e322f660214fce544e17ea9087356c7cbd5bf",
+      "colorBytes": 34645
+    },
+    {
+      "id": "e-8-13",
+      "uvBounds": [
+        0.43333333333333335,
+        0.5333333333333333,
+        0.4666666666666667,
+        0.6
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-8-13.jpg",
+      "colorSha256": "c8c846d6c3dc386fc9a5ea0e070e5ca54674869dc4a6f387e8915bf3fea529e3",
+      "colorBytes": 31278
+    },
+    {
+      "id": "e-8-14",
+      "uvBounds": [
+        0.4666666666666667,
+        0.5333333333333333,
+        0.5,
+        0.6
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-8-14.jpg",
+      "colorSha256": "c2d9adbb34ec1e9ac0739c655b6e11080613e8c2f46f451ca459783d3ae5b395",
+      "colorBytes": 29980
+    },
+    {
+      "id": "e-8-15",
+      "uvBounds": [
+        0.5,
+        0.5333333333333333,
+        0.5333333333333333,
+        0.6
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-8-15.jpg",
+      "colorSha256": "c8e71ab4ba91fd92e6be6da7828191d5fda30178fc911320e9616073478e8bd3",
+      "colorBytes": 28356
+    },
+    {
+      "id": "e-8-16",
+      "uvBounds": [
+        0.5333333333333333,
+        0.5333333333333333,
+        0.5666666666666667,
+        0.6
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-8-16.jpg",
+      "colorSha256": "288e60c4e2aff7cd01a4ab4c2a17dae60599443584de72eea4e2761e3d40e4ca",
+      "colorBytes": 32641
+    },
+    {
+      "id": "e-8-17",
+      "uvBounds": [
+        0.5666666666666667,
+        0.5333333333333333,
+        0.6,
+        0.6
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-8-17.jpg",
+      "colorSha256": "f58e864c2797e726960ca6f29ba6e55aece56d1c716d7658aa0936f1672bce28",
+      "colorBytes": 39548
+    },
+    {
+      "id": "e-8-18",
+      "uvBounds": [
+        0.6,
+        0.5333333333333333,
+        0.6333333333333333,
+        0.6
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-8-18.jpg",
+      "colorSha256": "e336f0109ca5270f9efc6248927ff32b3897b749f3eed2e46f0c60d2cd26805d",
+      "colorBytes": 39194
+    },
+    {
+      "id": "e-8-19",
+      "uvBounds": [
+        0.6333333333333333,
+        0.5333333333333333,
+        0.6666666666666666,
+        0.6
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-8-19.jpg",
+      "colorSha256": "1e018749286e251a173fcd7c78f2e643507691eb8db3cd1f17b9c1ee06e2c5a9",
+      "colorBytes": 35676
+    },
+    {
+      "id": "e-8-20",
+      "uvBounds": [
+        0.6666666666666666,
+        0.5333333333333333,
+        0.7,
+        0.6
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-8-20.jpg",
+      "colorSha256": "138d0a7308d558e9071fecd3edeff3d2d40557e94a7965b8f5391359ef64198a",
+      "colorBytes": 32716
+    },
+    {
+      "id": "e-8-21",
+      "uvBounds": [
+        0.7,
+        0.5333333333333333,
+        0.7333333333333333,
+        0.6
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-8-21.jpg",
+      "colorSha256": "76b1c5ef29e61fc25474fc0db81b932fb1b9e247402e212d6798588821425137",
+      "colorBytes": 21308
+    },
+    {
+      "id": "e-8-22",
+      "uvBounds": [
+        0.7333333333333333,
+        0.5333333333333333,
+        0.7666666666666667,
+        0.6
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-8-22.jpg",
+      "colorSha256": "64d1568c08294be1d0162777abfcb84f447b21b5e007100a9993bd39b33f0aa2",
+      "colorBytes": 16241
+    },
+    {
+      "id": "e-8-23",
+      "uvBounds": [
+        0.7666666666666667,
+        0.5333333333333333,
+        0.8,
+        0.6
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-8-23.jpg",
+      "colorSha256": "002054282d1ff0f7f9064974507cf4a920e2dc404208a0538f24120c7e1dd66c",
+      "colorBytes": 17253
+    },
+    {
+      "id": "e-8-24",
+      "uvBounds": [
+        0.8,
+        0.5333333333333333,
+        0.8333333333333334,
+        0.6
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-8-24.jpg",
+      "colorSha256": "b1addbbc2adaa2d29446f668096e57052d2c51dc295b45809d2c7628fbe6b168",
+      "colorBytes": 16535
+    },
+    {
+      "id": "e-8-25",
+      "uvBounds": [
+        0.8333333333333334,
+        0.5333333333333333,
+        0.8666666666666667,
+        0.6
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-8-25.jpg",
+      "colorSha256": "5d7304d478400bb7e821937546c3d14cabecf7b72b292cf437263c70461b96f4",
+      "colorBytes": 15409
+    },
+    {
+      "id": "e-8-26",
+      "uvBounds": [
+        0.8666666666666667,
+        0.5333333333333333,
+        0.9,
+        0.6
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-8-26.jpg",
+      "colorSha256": "9337d61b2bff690e70ac6ed78f8ab65d3b47a1d53e4e0efb2afa7735344d7918",
+      "colorBytes": 23456
+    },
+    {
+      "id": "e-8-27",
+      "uvBounds": [
+        0.9,
+        0.5333333333333333,
+        0.9333333333333333,
+        0.6
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-8-27.jpg",
+      "colorSha256": "19a63018af668a82203a80d8dc7af2ef4594d6f8ebd813f154abf9d70e2de3a9",
+      "colorBytes": 27033
+    },
+    {
+      "id": "e-8-28",
+      "uvBounds": [
+        0.9333333333333333,
+        0.5333333333333333,
+        0.9666666666666667,
+        0.6
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-8-28.jpg",
+      "colorSha256": "91bf484df7437a33db4b65bbc31c12ef9ac3888254616952ec4c2a436fb4b7e2",
+      "colorBytes": 29486
+    },
+    {
+      "id": "e-8-29",
+      "uvBounds": [
+        0.9666666666666667,
+        0.5333333333333333,
+        1,
+        0.6
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-8-29.jpg",
+      "colorSha256": "e0223bc4619035d9e405af1bf9cf5b6c48abce79fe89aefe7b110113b08e1509",
+      "colorBytes": 30417
+    },
+    {
+      "id": "e-9-0",
+      "uvBounds": [
+        0,
+        0.6,
+        0.03333333333333333,
+        0.6666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-9-0.jpg",
+      "colorSha256": "390a3c8f11e6b0a1bde546f0486be1d35f3ed823307d992a96dabb06ce18179a",
+      "colorBytes": 25026
+    },
+    {
+      "id": "e-9-1",
+      "uvBounds": [
+        0.03333333333333333,
+        0.6,
+        0.06666666666666667,
+        0.6666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-9-1.jpg",
+      "colorSha256": "ceeb920435b5f67a555658ba6059a114eeb25ccea2240ece383935db05a7ac3d",
+      "colorBytes": 32966
+    },
+    {
+      "id": "e-9-2",
+      "uvBounds": [
+        0.06666666666666667,
+        0.6,
+        0.1,
+        0.6666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-9-2.jpg",
+      "colorSha256": "4a7ae5ab4989a89662124d37282a9cc237d205f9378c851477611d2f494ccdb9",
+      "colorBytes": 36341
+    },
+    {
+      "id": "e-9-3",
+      "uvBounds": [
+        0.1,
+        0.6,
+        0.13333333333333333,
+        0.6666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-9-3.jpg",
+      "colorSha256": "6f8f76b71f4cf69c995fbad535917726a7a368bb06eebb03def67038dbb93337",
+      "colorBytes": 30635
+    },
+    {
+      "id": "e-9-4",
+      "uvBounds": [
+        0.13333333333333333,
+        0.6,
+        0.16666666666666666,
+        0.6666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-9-4.jpg",
+      "colorSha256": "d981a00dba63e0f717a8d39b99bc5ef66b2a0f63d9e25c9caaa581065bb3af33",
+      "colorBytes": 24825
+    },
+    {
+      "id": "e-9-5",
+      "uvBounds": [
+        0.16666666666666666,
+        0.6,
+        0.2,
+        0.6666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-9-5.jpg",
+      "colorSha256": "7fd70b781802b1b2cec4a986a71d9de24e7f3b1228f0d110c924f9f664463773",
+      "colorBytes": 24283
+    },
+    {
+      "id": "e-9-6",
+      "uvBounds": [
+        0.2,
+        0.6,
+        0.23333333333333334,
+        0.6666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-9-6.jpg",
+      "colorSha256": "e578c4ea1ce4243aff1529e63558de7f8b07f7bcf871df14ff44417f75a5bb99",
+      "colorBytes": 25460
+    },
+    {
+      "id": "e-9-7",
+      "uvBounds": [
+        0.23333333333333334,
+        0.6,
+        0.26666666666666666,
+        0.6666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-9-7.jpg",
+      "colorSha256": "9fac43cee971f43172bc823fd7e65460ff2fc28394ee6232ff7a2083af703093",
+      "colorBytes": 33689
+    },
+    {
+      "id": "e-9-8",
+      "uvBounds": [
+        0.26666666666666666,
+        0.6,
+        0.3,
+        0.6666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-9-8.jpg",
+      "colorSha256": "8502dd84375723edaced4628c1bc2595db5ab098639e93fcad095b5abd343cb1",
+      "colorBytes": 26671
+    },
+    {
+      "id": "e-9-9",
+      "uvBounds": [
+        0.3,
+        0.6,
+        0.3333333333333333,
+        0.6666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-9-9.jpg",
+      "colorSha256": "c71851e698f5cb31cc242ba34ae0e1c2fe577c875da3b18fb86ef201c8fef775",
+      "colorBytes": 24955
+    },
+    {
+      "id": "e-9-10",
+      "uvBounds": [
+        0.3333333333333333,
+        0.6,
+        0.36666666666666664,
+        0.6666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-9-10.jpg",
+      "colorSha256": "42e700bdf59da09e7e62575bbd7bfe952549c4575de0ce977bf8fea98fe047a0",
+      "colorBytes": 22164
+    },
+    {
+      "id": "e-9-11",
+      "uvBounds": [
+        0.36666666666666664,
+        0.6,
+        0.4,
+        0.6666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-9-11.jpg",
+      "colorSha256": "e659d05d400cd5ab10bb41d87740d98f7e27b65d9e6c23593fe83ef0d83b8053",
+      "colorBytes": 25567
+    },
+    {
+      "id": "e-9-12",
+      "uvBounds": [
+        0.4,
+        0.6,
+        0.43333333333333335,
+        0.6666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-9-12.jpg",
+      "colorSha256": "2efb2cedc9c1f66f98373f29c07f7ce08941224b0777e3692d82f3c9ffe18fa6",
+      "colorBytes": 30496
+    },
+    {
+      "id": "e-9-13",
+      "uvBounds": [
+        0.43333333333333335,
+        0.6,
+        0.4666666666666667,
+        0.6666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-9-13.jpg",
+      "colorSha256": "598897fffa27c95726a5be8288b44e55ff5c22e4e8fdae54505a721af163d4c2",
+      "colorBytes": 29050
+    },
+    {
+      "id": "e-9-14",
+      "uvBounds": [
+        0.4666666666666667,
+        0.6,
+        0.5,
+        0.6666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-9-14.jpg",
+      "colorSha256": "0c96ddee7ff0823eaf9ff283f82f7f6bc222093c6816dc886806bf2db93c34e6",
+      "colorBytes": 28524
+    },
+    {
+      "id": "e-9-15",
+      "uvBounds": [
+        0.5,
+        0.6,
+        0.5333333333333333,
+        0.6666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-9-15.jpg",
+      "colorSha256": "fe6e2968de9fd40a47a2692d4fba9a0884602bf4acfebe10bc13593faa8e56fd",
+      "colorBytes": 28532
+    },
+    {
+      "id": "e-9-16",
+      "uvBounds": [
+        0.5333333333333333,
+        0.6,
+        0.5666666666666667,
+        0.6666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-9-16.jpg",
+      "colorSha256": "04a6d47e5d1684bb993bdcd80b5dbe1fb359ffec049fc06cdccbe5dc5cb30aa5",
+      "colorBytes": 29148
+    },
+    {
+      "id": "e-9-17",
+      "uvBounds": [
+        0.5666666666666667,
+        0.6,
+        0.6,
+        0.6666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-9-17.jpg",
+      "colorSha256": "932f2b656e8de4df3b7a13981c303f6c735a29920c172eb2afee86a464b32cb8",
+      "colorBytes": 33583
+    },
+    {
+      "id": "e-9-18",
+      "uvBounds": [
+        0.6,
+        0.6,
+        0.6333333333333333,
+        0.6666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-9-18.jpg",
+      "colorSha256": "9dbc94c8bac4754f58ad9666d6cd00d634419b1b8233b2295820128fa612bc0f",
+      "colorBytes": 33571
+    },
+    {
+      "id": "e-9-19",
+      "uvBounds": [
+        0.6333333333333333,
+        0.6,
+        0.6666666666666666,
+        0.6666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-9-19.jpg",
+      "colorSha256": "0e3c702d216cf4da53d8bc6fb6d3c489b6ae2f74cc8aaba7922481538e8a58b0",
+      "colorBytes": 41747
+    },
+    {
+      "id": "e-9-20",
+      "uvBounds": [
+        0.6666666666666666,
+        0.6,
+        0.7,
+        0.6666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-9-20.jpg",
+      "colorSha256": "40c23bfa87c453bb3f199078a5a29325139c62bfff4fe3d48f86b650fc77e8f5",
+      "colorBytes": 44409
+    },
+    {
+      "id": "e-9-21",
+      "uvBounds": [
+        0.7,
+        0.6,
+        0.7333333333333333,
+        0.6666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-9-21.jpg",
+      "colorSha256": "36606eadb24b0244075215c89ce07684a145986c6ab879eb4b02b82d090e6e93",
+      "colorBytes": 65328
+    },
+    {
+      "id": "e-9-22",
+      "uvBounds": [
+        0.7333333333333333,
+        0.6,
+        0.7666666666666667,
+        0.6666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-9-22.jpg",
+      "colorSha256": "c1018de28f19de2f82062649a281c7e470910ff91cd6e403eff465eb52007dd6",
+      "colorBytes": 27932
+    },
+    {
+      "id": "e-9-23",
+      "uvBounds": [
+        0.7666666666666667,
+        0.6,
+        0.8,
+        0.6666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-9-23.jpg",
+      "colorSha256": "3f32b550130090c6eb481cf13fb79386ffe0d2061735aac1cb5365a584b3e067",
+      "colorBytes": 16081
+    },
+    {
+      "id": "e-9-24",
+      "uvBounds": [
+        0.8,
+        0.6,
+        0.8333333333333334,
+        0.6666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-9-24.jpg",
+      "colorSha256": "f06a0162c41cdf46b121b4ef9aaa7c202b19d8a04a9df214d5c5115bc3fe4bed",
+      "colorBytes": 15962
+    },
+    {
+      "id": "e-9-25",
+      "uvBounds": [
+        0.8333333333333334,
+        0.6,
+        0.8666666666666667,
+        0.6666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-9-25.jpg",
+      "colorSha256": "e15289a9e60fdcc6b65e749c65d1a48b325021e57958880bcb76dd377df15966",
+      "colorBytes": 14898
+    },
+    {
+      "id": "e-9-26",
+      "uvBounds": [
+        0.8666666666666667,
+        0.6,
+        0.9,
+        0.6666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-9-26.jpg",
+      "colorSha256": "ae137771e67fb528d63e05ecf922d29ca8dd5d277c36d46c81d84d398a4a1d49",
+      "colorBytes": 17612
+    },
+    {
+      "id": "e-9-27",
+      "uvBounds": [
+        0.9,
+        0.6,
+        0.9333333333333333,
+        0.6666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-9-27.jpg",
+      "colorSha256": "4f675eb9c9aec8288c9d91f2d037c2e658d02cd07cad1612eb4a8abd928786b6",
+      "colorBytes": 24971
+    },
+    {
+      "id": "e-9-28",
+      "uvBounds": [
+        0.9333333333333333,
+        0.6,
+        0.9666666666666667,
+        0.6666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-9-28.jpg",
+      "colorSha256": "b16b47087d6260bb13efb21f384fa3b539a8be96d3f0ae73b04b2414ecdb478f",
+      "colorBytes": 25792
+    },
+    {
+      "id": "e-9-29",
+      "uvBounds": [
+        0.9666666666666667,
+        0.6,
+        1,
+        0.6666666666666666
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-9-29.jpg",
+      "colorSha256": "a97adc84a5f1c067f93126d531e30d1170834cb393b7b0d8528ca791639370be",
+      "colorBytes": 26117
+    },
+    {
+      "id": "e-10-0",
+      "uvBounds": [
+        0,
+        0.6666666666666666,
+        0.03333333333333333,
+        0.7333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-10-0.jpg",
+      "colorSha256": "705e1141e9e79acc69fd9ef4a16443f4edfcb4213a181058a5822ca8ed491e37",
+      "colorBytes": 23722
+    },
+    {
+      "id": "e-10-1",
+      "uvBounds": [
+        0.03333333333333333,
+        0.6666666666666666,
+        0.06666666666666667,
+        0.7333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-10-1.jpg",
+      "colorSha256": "7f64ae2109c7170f23089c10725a297853391e052a9b25a9ce707780e1138612",
+      "colorBytes": 25498
+    },
+    {
+      "id": "e-10-2",
+      "uvBounds": [
+        0.06666666666666667,
+        0.6666666666666666,
+        0.1,
+        0.7333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-10-2.jpg",
+      "colorSha256": "c584ee2d77da3a7bb035df32fc033a6d080ac38f6747fb3c9966cc742f49dee6",
+      "colorBytes": 28628
+    },
+    {
+      "id": "e-10-3",
+      "uvBounds": [
+        0.1,
+        0.6666666666666666,
+        0.13333333333333333,
+        0.7333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-10-3.jpg",
+      "colorSha256": "4e8f0c01585551d81cf8a34abf9af97b369157090e8a2be75e5b521166ef05e1",
+      "colorBytes": 25860
+    },
+    {
+      "id": "e-10-4",
+      "uvBounds": [
+        0.13333333333333333,
+        0.6666666666666666,
+        0.16666666666666666,
+        0.7333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-10-4.jpg",
+      "colorSha256": "fa13ec9fe48bd23bd126b066fb8413fbf9d2b1e466b41417dd720cc87af83bad",
+      "colorBytes": 22110
+    },
+    {
+      "id": "e-10-5",
+      "uvBounds": [
+        0.16666666666666666,
+        0.6666666666666666,
+        0.2,
+        0.7333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-10-5.jpg",
+      "colorSha256": "6905dcc02bc631c28869d6b664fa784a26008552e540962915f72d180457516c",
+      "colorBytes": 21812
+    },
+    {
+      "id": "e-10-6",
+      "uvBounds": [
+        0.2,
+        0.6666666666666666,
+        0.23333333333333334,
+        0.7333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-10-6.jpg",
+      "colorSha256": "ade3a7cb6619d9b7b905f1b6fbf6d79dcae7cce7eff82929970eb4d5eb370d46",
+      "colorBytes": 24628
+    },
+    {
+      "id": "e-10-7",
+      "uvBounds": [
+        0.23333333333333334,
+        0.6666666666666666,
+        0.26666666666666666,
+        0.7333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-10-7.jpg",
+      "colorSha256": "dc49d788a6efddeabca8bd10b37f6c45f31280cc0c04743d684a0ae3e621a231",
+      "colorBytes": 27866
+    },
+    {
+      "id": "e-10-8",
+      "uvBounds": [
+        0.26666666666666666,
+        0.6666666666666666,
+        0.3,
+        0.7333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-10-8.jpg",
+      "colorSha256": "bc4f679e5a226326414d42d9b3534f09a51ce5bbf9564b7700e933b96ef73b43",
+      "colorBytes": 27828
+    },
+    {
+      "id": "e-10-9",
+      "uvBounds": [
+        0.3,
+        0.6666666666666666,
+        0.3333333333333333,
+        0.7333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-10-9.jpg",
+      "colorSha256": "5df8c01529e472b5aa1a9e75c6b2d848d434e32efba19fb569cf419e006cc2e2",
+      "colorBytes": 24781
+    },
+    {
+      "id": "e-10-10",
+      "uvBounds": [
+        0.3333333333333333,
+        0.6666666666666666,
+        0.36666666666666664,
+        0.7333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-10-10.jpg",
+      "colorSha256": "183b1bd5fd79a8968613722f7cc96632d505e6f19ad31f6fab98c640cc02b328",
+      "colorBytes": 22396
+    },
+    {
+      "id": "e-10-11",
+      "uvBounds": [
+        0.36666666666666664,
+        0.6666666666666666,
+        0.4,
+        0.7333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-10-11.jpg",
+      "colorSha256": "fcc49328cefe7bf5b7ec780b7df02a2569cf5c80edb36590c61f5bdae77bf237",
+      "colorBytes": 20270
+    },
+    {
+      "id": "e-10-12",
+      "uvBounds": [
+        0.4,
+        0.6666666666666666,
+        0.43333333333333335,
+        0.7333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-10-12.jpg",
+      "colorSha256": "762be82af815b645eca8d1ee5aa372ae7a5539fdb07a39749150af5f7af464eb",
+      "colorBytes": 24974
+    },
+    {
+      "id": "e-10-13",
+      "uvBounds": [
+        0.43333333333333335,
+        0.6666666666666666,
+        0.4666666666666667,
+        0.7333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-10-13.jpg",
+      "colorSha256": "f2c69a6bde61e9ef162d51b4ce203f903922fc74658f91939e3e431f2c9c2973",
+      "colorBytes": 26592
+    },
+    {
+      "id": "e-10-14",
+      "uvBounds": [
+        0.4666666666666667,
+        0.6666666666666666,
+        0.5,
+        0.7333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-10-14.jpg",
+      "colorSha256": "ac4db1e55d763ec3c09ea317040148cc44693e4b99f85b4db66d226373cae5a8",
+      "colorBytes": 22589
+    },
+    {
+      "id": "e-10-15",
+      "uvBounds": [
+        0.5,
+        0.6666666666666666,
+        0.5333333333333333,
+        0.7333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-10-15.jpg",
+      "colorSha256": "f5bbbe0b8517cccfda60b3e4558568d59c5997be96e183a57f173ca332753608",
+      "colorBytes": 25272
+    },
+    {
+      "id": "e-10-16",
+      "uvBounds": [
+        0.5333333333333333,
+        0.6666666666666666,
+        0.5666666666666667,
+        0.7333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-10-16.jpg",
+      "colorSha256": "c420dbb91397d75fd7dba416be44fcbfabaf99fd00776724fcfecb1082f76de7",
+      "colorBytes": 25778
+    },
+    {
+      "id": "e-10-17",
+      "uvBounds": [
+        0.5666666666666667,
+        0.6666666666666666,
+        0.6,
+        0.7333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-10-17.jpg",
+      "colorSha256": "ab7a8a9e45c2a57672d112d0d18a19df10bf69010021750802357c4786258699",
+      "colorBytes": 32730
+    },
+    {
+      "id": "e-10-18",
+      "uvBounds": [
+        0.6,
+        0.6666666666666666,
+        0.6333333333333333,
+        0.7333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-10-18.jpg",
+      "colorSha256": "b38b228646c3aa5fc34df7e06d194df9d0ef44a1158ad437810e8c732fda4dc3",
+      "colorBytes": 34433
+    },
+    {
+      "id": "e-10-19",
+      "uvBounds": [
+        0.6333333333333333,
+        0.6666666666666666,
+        0.6666666666666666,
+        0.7333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-10-19.jpg",
+      "colorSha256": "dfec3d86b567cfed18978fe9dbf3d75e65da4ff2b3108419004b9cdf4f1f9137",
+      "colorBytes": 51109
+    },
+    {
+      "id": "e-10-20",
+      "uvBounds": [
+        0.6666666666666666,
+        0.6666666666666666,
+        0.7,
+        0.7333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-10-20.jpg",
+      "colorSha256": "7dcd080238d9a04799bdf2a9c2aa39aa0b37e6721ba1673c4110df880290cb7e",
+      "colorBytes": 64575
+    },
+    {
+      "id": "e-10-21",
+      "uvBounds": [
+        0.7,
+        0.6666666666666666,
+        0.7333333333333333,
+        0.7333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-10-21.jpg",
+      "colorSha256": "9bdda7b158fec2670247b2ffc55e2cf83995080363139649796496458bf35007",
+      "colorBytes": 69875
+    },
+    {
+      "id": "e-10-22",
+      "uvBounds": [
+        0.7333333333333333,
+        0.6666666666666666,
+        0.7666666666666667,
+        0.7333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-10-22.jpg",
+      "colorSha256": "f6dfeaab734f0fe488e4af0e6dcfe429fc519fed8ce929a7bb816fdf87d5fb3c",
+      "colorBytes": 55973
+    },
+    {
+      "id": "e-10-23",
+      "uvBounds": [
+        0.7666666666666667,
+        0.6666666666666666,
+        0.8,
+        0.7333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-10-23.jpg",
+      "colorSha256": "ad7e3944f03c0c051a911fbf6e9b2b6a86213d1a15bf4517e4f50c7163be9738",
+      "colorBytes": 25622
+    },
+    {
+      "id": "e-10-24",
+      "uvBounds": [
+        0.8,
+        0.6666666666666666,
+        0.8333333333333334,
+        0.7333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-10-24.jpg",
+      "colorSha256": "1cb0c993609e40b1653fe6cda963bd4f33888dc49428dc5d9c3af4f6c23775fa",
+      "colorBytes": 16168
+    },
+    {
+      "id": "e-10-25",
+      "uvBounds": [
+        0.8333333333333334,
+        0.6666666666666666,
+        0.8666666666666667,
+        0.7333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-10-25.jpg",
+      "colorSha256": "54d47082b4e190bd816bbe007a9105aa48dc8d571098a42388f28f2e732966b2",
+      "colorBytes": 13978
+    },
+    {
+      "id": "e-10-26",
+      "uvBounds": [
+        0.8666666666666667,
+        0.6666666666666666,
+        0.9,
+        0.7333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-10-26.jpg",
+      "colorSha256": "f440c39d6ab6a2bf0d3b444a1d6546089ccfca95df574d2e4a1b43e3c6d9cbd7",
+      "colorBytes": 12404
+    },
+    {
+      "id": "e-10-27",
+      "uvBounds": [
+        0.9,
+        0.6666666666666666,
+        0.9333333333333333,
+        0.7333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-10-27.jpg",
+      "colorSha256": "8fa2474290f08e5e0d80376f8d0607e20f2a3075928ac8e901de9b52f7a693f3",
+      "colorBytes": 20248
+    },
+    {
+      "id": "e-10-28",
+      "uvBounds": [
+        0.9333333333333333,
+        0.6666666666666666,
+        0.9666666666666667,
+        0.7333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-10-28.jpg",
+      "colorSha256": "6c8319fe7761974e375efa6ef7e8ac49f493d6d6148c5269b3112cfaf8ee9ac3",
+      "colorBytes": 22164
+    },
+    {
+      "id": "e-10-29",
+      "uvBounds": [
+        0.9666666666666667,
+        0.6666666666666666,
+        1,
+        0.7333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-10-29.jpg",
+      "colorSha256": "6c9b699cc8cad091d9317df8def9c8f8ae34a72d17f59114f315864baddb8b88",
+      "colorBytes": 22138
+    },
+    {
+      "id": "e-11-0",
+      "uvBounds": [
+        0,
+        0.7333333333333333,
+        0.03333333333333333,
+        0.8
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-11-0.jpg",
+      "colorSha256": "dfe44d7b0f850299e4accb7b5b49b0f86bc0bb3bf737d05a78352bcfb0fe118e",
+      "colorBytes": 19566
+    },
+    {
+      "id": "e-11-1",
+      "uvBounds": [
+        0.03333333333333333,
+        0.7333333333333333,
+        0.06666666666666667,
+        0.8
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-11-1.jpg",
+      "colorSha256": "fc0438ff731475b4d4b073a80ced73edfd7c63765587cd72b1d249bee8e8ee2b",
+      "colorBytes": 20668
+    },
+    {
+      "id": "e-11-2",
+      "uvBounds": [
+        0.06666666666666667,
+        0.7333333333333333,
+        0.1,
+        0.8
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-11-2.jpg",
+      "colorSha256": "f42e3f55d557bf6d1790c53c7c344d32a4ae2bdd2716a4408bbbdad34aecf013",
+      "colorBytes": 22440
+    },
+    {
+      "id": "e-11-3",
+      "uvBounds": [
+        0.1,
+        0.7333333333333333,
+        0.13333333333333333,
+        0.8
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-11-3.jpg",
+      "colorSha256": "3abfecadb8acc0966f9450f39b51ae3795ee13b62b06cede66242626eb370e4f",
+      "colorBytes": 23072
+    },
+    {
+      "id": "e-11-4",
+      "uvBounds": [
+        0.13333333333333333,
+        0.7333333333333333,
+        0.16666666666666666,
+        0.8
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-11-4.jpg",
+      "colorSha256": "34feda3cf8aaa187364ac355c3e5f465ae63480c111ed37d5c31cc3e0d199118",
+      "colorBytes": 22289
+    },
+    {
+      "id": "e-11-5",
+      "uvBounds": [
+        0.16666666666666666,
+        0.7333333333333333,
+        0.2,
+        0.8
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-11-5.jpg",
+      "colorSha256": "3a69a8748cbf24d6990e05fe618386c25fb2f8eaef23a2b575f4c5fbb4b78196",
+      "colorBytes": 20151
+    },
+    {
+      "id": "e-11-6",
+      "uvBounds": [
+        0.2,
+        0.7333333333333333,
+        0.23333333333333334,
+        0.8
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-11-6.jpg",
+      "colorSha256": "9d911889f425a3074e990e0dffb314d1589d0645bf874ea1a706985a5bab5553",
+      "colorBytes": 21312
+    },
+    {
+      "id": "e-11-7",
+      "uvBounds": [
+        0.23333333333333334,
+        0.7333333333333333,
+        0.26666666666666666,
+        0.8
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-11-7.jpg",
+      "colorSha256": "137785ac3edd8b63da0dab0a35cef855cf8cc44e3015e720389e816b4df78abd",
+      "colorBytes": 22031
+    },
+    {
+      "id": "e-11-8",
+      "uvBounds": [
+        0.26666666666666666,
+        0.7333333333333333,
+        0.3,
+        0.8
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-11-8.jpg",
+      "colorSha256": "5d01150f6c9046da9748e147d7ba79d67b156291c14866b74545011f90a0ad6f",
+      "colorBytes": 25337
+    },
+    {
+      "id": "e-11-9",
+      "uvBounds": [
+        0.3,
+        0.7333333333333333,
+        0.3333333333333333,
+        0.8
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-11-9.jpg",
+      "colorSha256": "2ec1f8057fa29cbd6bc5436aff0e382fbfa4bc6963ab55456353eb08c005fe79",
+      "colorBytes": 22843
+    },
+    {
+      "id": "e-11-10",
+      "uvBounds": [
+        0.3333333333333333,
+        0.7333333333333333,
+        0.36666666666666664,
+        0.8
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-11-10.jpg",
+      "colorSha256": "680bc4505a19d92350da9a2d049cc74ee14d6bddc8de1ba17561e4d3425ab6dc",
+      "colorBytes": 20853
+    },
+    {
+      "id": "e-11-11",
+      "uvBounds": [
+        0.36666666666666664,
+        0.7333333333333333,
+        0.4,
+        0.8
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-11-11.jpg",
+      "colorSha256": "4d710c45e0655964dfc9cb2cc98d6f13f52997f75d06d67dc2845e91a133be72",
+      "colorBytes": 16733
+    },
+    {
+      "id": "e-11-12",
+      "uvBounds": [
+        0.4,
+        0.7333333333333333,
+        0.43333333333333335,
+        0.8
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-11-12.jpg",
+      "colorSha256": "0d5d28830c733059d535c531a66848b395998f15806613fd183d6ce6984c85dd",
+      "colorBytes": 19930
+    },
+    {
+      "id": "e-11-13",
+      "uvBounds": [
+        0.43333333333333335,
+        0.7333333333333333,
+        0.4666666666666667,
+        0.8
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-11-13.jpg",
+      "colorSha256": "2489be16aa188b4a8768e4d1628750859a38770a4732cedc74edd8ebee4c10a4",
+      "colorBytes": 19959
+    },
+    {
+      "id": "e-11-14",
+      "uvBounds": [
+        0.4666666666666667,
+        0.7333333333333333,
+        0.5,
+        0.8
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-11-14.jpg",
+      "colorSha256": "1bf61e67eb7c51775009a8ae3f1795bd9026b562e4d593ce172a153972a538c3",
+      "colorBytes": 19066
+    },
+    {
+      "id": "e-11-15",
+      "uvBounds": [
+        0.5,
+        0.7333333333333333,
+        0.5333333333333333,
+        0.8
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-11-15.jpg",
+      "colorSha256": "16620f186a2014e5d8c0c63bc75e724dbf204825b2dc8a009ad1197ebbdf4df1",
+      "colorBytes": 44648
+    },
+    {
+      "id": "e-11-16",
+      "uvBounds": [
+        0.5333333333333333,
+        0.7333333333333333,
+        0.5666666666666667,
+        0.8
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-11-16.jpg",
+      "colorSha256": "e8f06dd517782e90da34a855c832e8976ac312c029d8a731dab3c9b72570286f",
+      "colorBytes": 61327
+    },
+    {
+      "id": "e-11-17",
+      "uvBounds": [
+        0.5666666666666667,
+        0.7333333333333333,
+        0.6,
+        0.8
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-11-17.jpg",
+      "colorSha256": "fd5a564a0a7c006b7d90707e702f77e831025ee337ca37b003a38111f254d73c",
+      "colorBytes": 58219
+    },
+    {
+      "id": "e-11-18",
+      "uvBounds": [
+        0.6,
+        0.7333333333333333,
+        0.6333333333333333,
+        0.8
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-11-18.jpg",
+      "colorSha256": "5e51202c959a6ef6c94d7d42cd38f6f067fd0e01eaa809e6dc803af74fc91b9d",
+      "colorBytes": 54693
+    },
+    {
+      "id": "e-11-19",
+      "uvBounds": [
+        0.6333333333333333,
+        0.7333333333333333,
+        0.6666666666666666,
+        0.8
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-11-19.jpg",
+      "colorSha256": "319cf10c65fc4ea954b9d2793e78d635be88995ad978c5ab4ab68d6a5f21f86d",
+      "colorBytes": 53155
+    },
+    {
+      "id": "e-11-20",
+      "uvBounds": [
+        0.6666666666666666,
+        0.7333333333333333,
+        0.7,
+        0.8
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-11-20.jpg",
+      "colorSha256": "c189cb517d5aa12011c54104ee4e00e2201460522eb471996c82b38c8fb90c71",
+      "colorBytes": 54859
+    },
+    {
+      "id": "e-11-21",
+      "uvBounds": [
+        0.7,
+        0.7333333333333333,
+        0.7333333333333333,
+        0.8
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-11-21.jpg",
+      "colorSha256": "d2ecaade9922cbc29c1ef8744e82727b44639c3466031331afa362beb83022ec",
+      "colorBytes": 64771
+    },
+    {
+      "id": "e-11-22",
+      "uvBounds": [
+        0.7333333333333333,
+        0.7333333333333333,
+        0.7666666666666667,
+        0.8
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-11-22.jpg",
+      "colorSha256": "847a0f8626b47ebf89ab5a4148633bcda59a2bf5c3958816596e068c267928bc",
+      "colorBytes": 60639
+    },
+    {
+      "id": "e-11-23",
+      "uvBounds": [
+        0.7666666666666667,
+        0.7333333333333333,
+        0.8,
+        0.8
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-11-23.jpg",
+      "colorSha256": "c2fd85b850cece9d60890664e132be831d1087994689385624d7343fb25d3d69",
+      "colorBytes": 65813
+    },
+    {
+      "id": "e-11-24",
+      "uvBounds": [
+        0.8,
+        0.7333333333333333,
+        0.8333333333333334,
+        0.8
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-11-24.jpg",
+      "colorSha256": "af757da25faa1250ed4e6fd63a4e33322b2ef78bcdddbfdcbdb67011ebdfcce1",
+      "colorBytes": 32493
+    },
+    {
+      "id": "e-11-25",
+      "uvBounds": [
+        0.8333333333333334,
+        0.7333333333333333,
+        0.8666666666666667,
+        0.8
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-11-25.jpg",
+      "colorSha256": "8bce3443174c4bc94352dacf452720e5e783c15624950d714997995d45caea96",
+      "colorBytes": 12347
+    },
+    {
+      "id": "e-11-26",
+      "uvBounds": [
+        0.8666666666666667,
+        0.7333333333333333,
+        0.9,
+        0.8
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-11-26.jpg",
+      "colorSha256": "a2b5f396ff44ff5a0c2500f8c920a16ed554789d6ba1d8aea334720c10c3f37d",
+      "colorBytes": 10641
+    },
+    {
+      "id": "e-11-27",
+      "uvBounds": [
+        0.9,
+        0.7333333333333333,
+        0.9333333333333333,
+        0.8
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-11-27.jpg",
+      "colorSha256": "73e527b449154a92aba5c3a4970e844d11131f9e0b79c1fc64826df0e8cc7a63",
+      "colorBytes": 14145
+    },
+    {
+      "id": "e-11-28",
+      "uvBounds": [
+        0.9333333333333333,
+        0.7333333333333333,
+        0.9666666666666667,
+        0.8
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-11-28.jpg",
+      "colorSha256": "c2b696ed53ea1562dcfd3b008dd380972364d96d6d1959f44ebf78e8b81ada79",
+      "colorBytes": 18984
+    },
+    {
+      "id": "e-11-29",
+      "uvBounds": [
+        0.9666666666666667,
+        0.7333333333333333,
+        1,
+        0.8
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-11-29.jpg",
+      "colorSha256": "a194b23fbbf3b019f0223567ef38caebe94df8bb5c56eb6611a71c6c75f77aaf",
+      "colorBytes": 19722
+    },
+    {
+      "id": "e-12-0",
+      "uvBounds": [
+        0,
+        0.8,
+        0.03333333333333333,
+        0.8666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-12-0.jpg",
+      "colorSha256": "d87ea36eb69eb9366cb286d6ff52f439e3d152bb5594adaef2328cc0e61b8af8",
+      "colorBytes": 16242
+    },
+    {
+      "id": "e-12-1",
+      "uvBounds": [
+        0.03333333333333333,
+        0.8,
+        0.06666666666666667,
+        0.8666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-12-1.jpg",
+      "colorSha256": "46e985d643d062d8afd5c4a223864176efef72c2bc33448e6fb793575c63455f",
+      "colorBytes": 15554
+    },
+    {
+      "id": "e-12-2",
+      "uvBounds": [
+        0.06666666666666667,
+        0.8,
+        0.1,
+        0.8666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-12-2.jpg",
+      "colorSha256": "38b36e14c2ce171e096d6fdadb30e2dd9bb0a13de5928365de07548b30a34b71",
+      "colorBytes": 14865
+    },
+    {
+      "id": "e-12-3",
+      "uvBounds": [
+        0.1,
+        0.8,
+        0.13333333333333333,
+        0.8666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-12-3.jpg",
+      "colorSha256": "fd74730ebc1b24845e07e4262342dfe3629a63feb6768dfc78a40197b2d8f663",
+      "colorBytes": 15399
+    },
+    {
+      "id": "e-12-4",
+      "uvBounds": [
+        0.13333333333333333,
+        0.8,
+        0.16666666666666666,
+        0.8666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-12-4.jpg",
+      "colorSha256": "5ebaec6b4c322085e0ed705f15c61b34b2cd197e9ef95c8190a0ff5d6aa5f738",
+      "colorBytes": 17530
+    },
+    {
+      "id": "e-12-5",
+      "uvBounds": [
+        0.16666666666666666,
+        0.8,
+        0.2,
+        0.8666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-12-5.jpg",
+      "colorSha256": "7d34bd081506e013eb2d7c540e0b2e406087204134b6623f1f416c3cc8084403",
+      "colorBytes": 20412
+    },
+    {
+      "id": "e-12-6",
+      "uvBounds": [
+        0.2,
+        0.8,
+        0.23333333333333334,
+        0.8666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-12-6.jpg",
+      "colorSha256": "cab4677a05045865d2e52ed00cd24f5c96707d3c0f969f9328b40899e0173443",
+      "colorBytes": 17958
+    },
+    {
+      "id": "e-12-7",
+      "uvBounds": [
+        0.23333333333333334,
+        0.8,
+        0.26666666666666666,
+        0.8666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-12-7.jpg",
+      "colorSha256": "5fd831edf82d180443420643a3f8d4cc6531bb8a4ee6556cdc8e5fab1953cd31",
+      "colorBytes": 17944
+    },
+    {
+      "id": "e-12-8",
+      "uvBounds": [
+        0.26666666666666666,
+        0.8,
+        0.3,
+        0.8666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-12-8.jpg",
+      "colorSha256": "2b999d5fac5e7eeb44a7214bab14a176e7c9452c65857857133660ff32cc25ad",
+      "colorBytes": 20204
+    },
+    {
+      "id": "e-12-9",
+      "uvBounds": [
+        0.3,
+        0.8,
+        0.3333333333333333,
+        0.8666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-12-9.jpg",
+      "colorSha256": "4473ddcdd425c64de15f3ad741796fbd4a9a6c98c265865266cf75cb46c8876d",
+      "colorBytes": 19553
+    },
+    {
+      "id": "e-12-10",
+      "uvBounds": [
+        0.3333333333333333,
+        0.8,
+        0.36666666666666664,
+        0.8666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-12-10.jpg",
+      "colorSha256": "6cd076e03bad5f7d08f661323a32a3dd12678a197275a50ba073111781fad815",
+      "colorBytes": 18533
+    },
+    {
+      "id": "e-12-11",
+      "uvBounds": [
+        0.36666666666666664,
+        0.8,
+        0.4,
+        0.8666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-12-11.jpg",
+      "colorSha256": "3553eafd13b97d4db69252e7d259a57cd39e6da8a2c7856701bd40e32f3a2aef",
+      "colorBytes": 16101
+    },
+    {
+      "id": "e-12-12",
+      "uvBounds": [
+        0.4,
+        0.8,
+        0.43333333333333335,
+        0.8666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-12-12.jpg",
+      "colorSha256": "95f471491641bea82e473cf2a4f8ce99fd34ef61cf65f8a8fc2485bf62669c20",
+      "colorBytes": 13832
+    },
+    {
+      "id": "e-12-13",
+      "uvBounds": [
+        0.43333333333333335,
+        0.8,
+        0.4666666666666667,
+        0.8666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-12-13.jpg",
+      "colorSha256": "1de46b7d0552002767896dfcb7e1333b590277fe5bc26588b85f769e873953eb",
+      "colorBytes": 17226
+    },
+    {
+      "id": "e-12-14",
+      "uvBounds": [
+        0.4666666666666667,
+        0.8,
+        0.5,
+        0.8666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-12-14.jpg",
+      "colorSha256": "01bb40ea470d823988a7c7c7adf29427a986c3f2a4e55f71f859ec87bef7da23",
+      "colorBytes": 16860
+    },
+    {
+      "id": "e-12-15",
+      "uvBounds": [
+        0.5,
+        0.8,
+        0.5333333333333333,
+        0.8666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-12-15.jpg",
+      "colorSha256": "3de03d97dc87dd7befcfbdc58c640e92795d3ad1dc56695a810d11efb9d277fa",
+      "colorBytes": 49586
+    },
+    {
+      "id": "e-12-16",
+      "uvBounds": [
+        0.5333333333333333,
+        0.8,
+        0.5666666666666667,
+        0.8666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-12-16.jpg",
+      "colorSha256": "0aaeba694b1ed1f5a245d218c2067c92685116773102f665cdb8bf4d7cbb1cf3",
+      "colorBytes": 66772
+    },
+    {
+      "id": "e-12-17",
+      "uvBounds": [
+        0.5666666666666667,
+        0.8,
+        0.6,
+        0.8666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-12-17.jpg",
+      "colorSha256": "5f60917db8ff5da6fe811d461ca87d2788f6255e37fed4179a83f46a540b8f01",
+      "colorBytes": 60163
+    },
+    {
+      "id": "e-12-18",
+      "uvBounds": [
+        0.6,
+        0.8,
+        0.6333333333333333,
+        0.8666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-12-18.jpg",
+      "colorSha256": "d8026a9b6d60633a0a30d405ee4c6a7ef475e531a2a434f64d62d33b646f8ec5",
+      "colorBytes": 60865
+    },
+    {
+      "id": "e-12-19",
+      "uvBounds": [
+        0.6333333333333333,
+        0.8,
+        0.6666666666666666,
+        0.8666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-12-19.jpg",
+      "colorSha256": "638b9ce957f23d965ecedb19b3d94f009b191f4fe04c60e27096eba7fc54e8dc",
+      "colorBytes": 58583
+    },
+    {
+      "id": "e-12-20",
+      "uvBounds": [
+        0.6666666666666666,
+        0.8,
+        0.7,
+        0.8666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-12-20.jpg",
+      "colorSha256": "42de19591fa5f9b680e7535df535e21c387e86994ce15a9798ba67c78a9e44fc",
+      "colorBytes": 52806
+    },
+    {
+      "id": "e-12-21",
+      "uvBounds": [
+        0.7,
+        0.8,
+        0.7333333333333333,
+        0.8666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-12-21.jpg",
+      "colorSha256": "b4054afde42e50d10fcf0bbdd30f79d2906a43980d28fedd16ce40f7412f58c7",
+      "colorBytes": 59129
+    },
+    {
+      "id": "e-12-22",
+      "uvBounds": [
+        0.7333333333333333,
+        0.8,
+        0.7666666666666667,
+        0.8666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-12-22.jpg",
+      "colorSha256": "3ba62f6eb720294a4a1eb81d2e4462d89f3797c44958a3b4687fb1e3de864e02",
+      "colorBytes": 55730
+    },
+    {
+      "id": "e-12-23",
+      "uvBounds": [
+        0.7666666666666667,
+        0.8,
+        0.8,
+        0.8666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-12-23.jpg",
+      "colorSha256": "15db20aaa68432bd9a6f890f7b3803258dc792162752af430d6b60ebe5ae43b3",
+      "colorBytes": 46194
+    },
+    {
+      "id": "e-12-24",
+      "uvBounds": [
+        0.8,
+        0.8,
+        0.8333333333333334,
+        0.8666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-12-24.jpg",
+      "colorSha256": "32f0ba8eabb4a190651798cc2c963135be214c53e4a998bb25d337a3fbc9590b",
+      "colorBytes": 17141
+    },
+    {
+      "id": "e-12-25",
+      "uvBounds": [
+        0.8333333333333334,
+        0.8,
+        0.8666666666666667,
+        0.8666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-12-25.jpg",
+      "colorSha256": "a0a89d2a33ae1dc209a5a0c7f049a4b812d03ef6223f6747a1e62b8ae513dfff",
+      "colorBytes": 11802
+    },
+    {
+      "id": "e-12-26",
+      "uvBounds": [
+        0.8666666666666667,
+        0.8,
+        0.9,
+        0.8666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-12-26.jpg",
+      "colorSha256": "8b9ad14939f02295ae4efbd29a88b914d8d41434882b99416a4255500f8b6a85",
+      "colorBytes": 9710
+    },
+    {
+      "id": "e-12-27",
+      "uvBounds": [
+        0.9,
+        0.8,
+        0.9333333333333333,
+        0.8666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-12-27.jpg",
+      "colorSha256": "56040ebe55f21b06a1d139c0cb3c165bedf57adf83d22430a8f0b630787ab6c1",
+      "colorBytes": 8409
+    },
+    {
+      "id": "e-12-28",
+      "uvBounds": [
+        0.9333333333333333,
+        0.8,
+        0.9666666666666667,
+        0.8666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-12-28.jpg",
+      "colorSha256": "c8c674f0c5a30accb248225ad8ba80d660f61f4c2038ba6e28740f443fdbc9ad",
+      "colorBytes": 9994
+    },
+    {
+      "id": "e-12-29",
+      "uvBounds": [
+        0.9666666666666667,
+        0.8,
+        1,
+        0.8666666666666667
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-12-29.jpg",
+      "colorSha256": "838b31cb55a108995d6a6149f7c8496efdeb8b80baa02073560f19778d44716a",
+      "colorBytes": 15099
+    },
+    {
+      "id": "e-13-0",
+      "uvBounds": [
+        0,
+        0.8666666666666667,
+        0.03333333333333333,
+        0.9333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-13-0.jpg",
+      "colorSha256": "ec33f1869f306692d61e1c44e6438a8b0d0e720147b8cc1db73796e8515d358c",
+      "colorBytes": 6425
+    },
+    {
+      "id": "e-13-1",
+      "uvBounds": [
+        0.03333333333333333,
+        0.8666666666666667,
+        0.06666666666666667,
+        0.9333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-13-1.jpg",
+      "colorSha256": "3608fa0215cb3a9fb3c605b760bca06b0664a8ff78511b0b688bb059eda4c234",
+      "colorBytes": 5487
+    },
+    {
+      "id": "e-13-2",
+      "uvBounds": [
+        0.06666666666666667,
+        0.8666666666666667,
+        0.1,
+        0.9333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-13-2.jpg",
+      "colorSha256": "ab3460a9861a1ca65af670f211120be361e1926a4f86b5ecb85bdfbbd57d3996",
+      "colorBytes": 5525
+    },
+    {
+      "id": "e-13-3",
+      "uvBounds": [
+        0.1,
+        0.8666666666666667,
+        0.13333333333333333,
+        0.9333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-13-3.jpg",
+      "colorSha256": "5a91878bb721d241ac2a29573a11d8e3845347f2800ec23a120294b55944f87e",
+      "colorBytes": 8463
+    },
+    {
+      "id": "e-13-4",
+      "uvBounds": [
+        0.13333333333333333,
+        0.8666666666666667,
+        0.16666666666666666,
+        0.9333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-13-4.jpg",
+      "colorSha256": "dfb105634cd6da21b06ab8e97572edcf028de6f528079a4a0541ba19c158d69b",
+      "colorBytes": 6896
+    },
+    {
+      "id": "e-13-5",
+      "uvBounds": [
+        0.16666666666666666,
+        0.8666666666666667,
+        0.2,
+        0.9333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-13-5.jpg",
+      "colorSha256": "c832474af56f3fd4642f6268265a73297d2715990b5ffc2004f15b74ebea612c",
+      "colorBytes": 9250
+    },
+    {
+      "id": "e-13-6",
+      "uvBounds": [
+        0.2,
+        0.8666666666666667,
+        0.23333333333333334,
+        0.9333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-13-6.jpg",
+      "colorSha256": "d9c26dfc230e3df504dc44883f975ab159282df50d2b3acc68fa481b570a6fef",
+      "colorBytes": 16527
+    },
+    {
+      "id": "e-13-7",
+      "uvBounds": [
+        0.23333333333333334,
+        0.8666666666666667,
+        0.26666666666666666,
+        0.9333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-13-7.jpg",
+      "colorSha256": "6acc998b06685cc8255db9c5d66945f791c010e8970029426437e433ebb8b915",
+      "colorBytes": 15556
+    },
+    {
+      "id": "e-13-8",
+      "uvBounds": [
+        0.26666666666666666,
+        0.8666666666666667,
+        0.3,
+        0.9333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-13-8.jpg",
+      "colorSha256": "860fa7a73710b8b7216a7205bce7afd185c158b8d0a0b98734326738992acad3",
+      "colorBytes": 15651
+    },
+    {
+      "id": "e-13-9",
+      "uvBounds": [
+        0.3,
+        0.8666666666666667,
+        0.3333333333333333,
+        0.9333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-13-9.jpg",
+      "colorSha256": "797c446d04a7c81991f23598349de32ae8856768c498f736577c9840bce37dcf",
+      "colorBytes": 15661
+    },
+    {
+      "id": "e-13-10",
+      "uvBounds": [
+        0.3333333333333333,
+        0.8666666666666667,
+        0.36666666666666664,
+        0.9333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-13-10.jpg",
+      "colorSha256": "b7a6b2acdca6d33cad1604eed48662c5d34c9508e2fbd671b28831f20b4fcf3d",
+      "colorBytes": 15132
+    },
+    {
+      "id": "e-13-11",
+      "uvBounds": [
+        0.36666666666666664,
+        0.8666666666666667,
+        0.4,
+        0.9333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-13-11.jpg",
+      "colorSha256": "58cd985bf071a6d781af1e2784e25a29f968271f18c67fc875693329102322ac",
+      "colorBytes": 14296
+    },
+    {
+      "id": "e-13-12",
+      "uvBounds": [
+        0.4,
+        0.8666666666666667,
+        0.43333333333333335,
+        0.9333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-13-12.jpg",
+      "colorSha256": "d0163d26870c16ea606f8ec03a9a94d46b3bdc72081794b7dcdc57c13c43e7dc",
+      "colorBytes": 14242
+    },
+    {
+      "id": "e-13-13",
+      "uvBounds": [
+        0.43333333333333335,
+        0.8666666666666667,
+        0.4666666666666667,
+        0.9333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-13-13.jpg",
+      "colorSha256": "0cb498dd14bf8532b02108fd0b17e4a1d86b504465ccc48f36496e2b77dd59d9",
+      "colorBytes": 15651
+    },
+    {
+      "id": "e-13-14",
+      "uvBounds": [
+        0.4666666666666667,
+        0.8666666666666667,
+        0.5,
+        0.9333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-13-14.jpg",
+      "colorSha256": "68bb2415030fbe90bea1c3c8f7d564bc6060d9777c38b97696d8a382f1a64cf0",
+      "colorBytes": 17873
+    },
+    {
+      "id": "e-13-15",
+      "uvBounds": [
+        0.5,
+        0.8666666666666667,
+        0.5333333333333333,
+        0.9333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-13-15.jpg",
+      "colorSha256": "7c676ec9e34831dc032103764eb687c2e9ab63657211753a6ce2bce70ccfd771",
+      "colorBytes": 49013
+    },
+    {
+      "id": "e-13-16",
+      "uvBounds": [
+        0.5333333333333333,
+        0.8666666666666667,
+        0.5666666666666667,
+        0.9333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-13-16.jpg",
+      "colorSha256": "d76b8714573cd21b37729241153eb96b9fa28f856446b4f7c481b96209490a62",
+      "colorBytes": 61101
+    },
+    {
+      "id": "e-13-17",
+      "uvBounds": [
+        0.5666666666666667,
+        0.8666666666666667,
+        0.6,
+        0.9333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-13-17.jpg",
+      "colorSha256": "253cceb29c6d37fe496c7c268b54012208a98cc3e7d2cb87f79dbd493906496c",
+      "colorBytes": 66846
+    },
+    {
+      "id": "e-13-18",
+      "uvBounds": [
+        0.6,
+        0.8666666666666667,
+        0.6333333333333333,
+        0.9333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-13-18.jpg",
+      "colorSha256": "7a5ac4d38afe5f135f9523cc859600dc03504df7e43a242e6b3c11f153eba18c",
+      "colorBytes": 79765
+    },
+    {
+      "id": "e-13-19",
+      "uvBounds": [
+        0.6333333333333333,
+        0.8666666666666667,
+        0.6666666666666666,
+        0.9333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-13-19.jpg",
+      "colorSha256": "a4467fbd5216638298cf55dac2d90e99cb0c502e50e09f1232fdab69f8a0cb83",
+      "colorBytes": 73332
+    },
+    {
+      "id": "e-13-20",
+      "uvBounds": [
+        0.6666666666666666,
+        0.8666666666666667,
+        0.7,
+        0.9333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-13-20.jpg",
+      "colorSha256": "3294db2abedca9a5db9f7d57ec2ce18d38ca171bb5c468c497299d24bc97e05e",
+      "colorBytes": 72793
+    },
+    {
+      "id": "e-13-21",
+      "uvBounds": [
+        0.7,
+        0.8666666666666667,
+        0.7333333333333333,
+        0.9333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-13-21.jpg",
+      "colorSha256": "f5df940e9d003b0417d450ccae00ad5e37f91da629f5b3c29878e958a36f9293",
+      "colorBytes": 73754
+    },
+    {
+      "id": "e-13-22",
+      "uvBounds": [
+        0.7333333333333333,
+        0.8666666666666667,
+        0.7666666666666667,
+        0.9333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-13-22.jpg",
+      "colorSha256": "73c98972d8b5eb58d4a270cbdc60539d53cf59c4aa470e80c51c805d0eabf149",
+      "colorBytes": 72258
+    },
+    {
+      "id": "e-13-23",
+      "uvBounds": [
+        0.7666666666666667,
+        0.8666666666666667,
+        0.8,
+        0.9333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-13-23.jpg",
+      "colorSha256": "2084e9e9821b67ececdeeab12e126214a612dd5d24b8b40c1160cebefa332e28",
+      "colorBytes": 69929
+    },
+    {
+      "id": "e-13-24",
+      "uvBounds": [
+        0.8,
+        0.8666666666666667,
+        0.8333333333333334,
+        0.9333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-13-24.jpg",
+      "colorSha256": "7cf732d6e944af6114822323ea44afe371284e85076603d74ac528b7f4c17567",
+      "colorBytes": 29042
+    },
+    {
+      "id": "e-13-25",
+      "uvBounds": [
+        0.8333333333333334,
+        0.8666666666666667,
+        0.8666666666666667,
+        0.9333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-13-25.jpg",
+      "colorSha256": "923266bb7f341cdb8f66eb7b06658ab82e201445bc8a794852509af791af4886",
+      "colorBytes": 9997
+    },
+    {
+      "id": "e-13-26",
+      "uvBounds": [
+        0.8666666666666667,
+        0.8666666666666667,
+        0.9,
+        0.9333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-13-26.jpg",
+      "colorSha256": "06779156c27e4801df3e61e435da0f711e48927d6f88a0c30050e0941417e697",
+      "colorBytes": 5944
+    },
+    {
+      "id": "e-13-27",
+      "uvBounds": [
+        0.9,
+        0.8666666666666667,
+        0.9333333333333333,
+        0.9333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-13-27.jpg",
+      "colorSha256": "07ebbb9932c614e3972e70fa9aa96b187fc9a1bce1b47b51fa73bc36825e5cb1",
+      "colorBytes": 6293
+    },
+    {
+      "id": "e-13-28",
+      "uvBounds": [
+        0.9333333333333333,
+        0.8666666666666667,
+        0.9666666666666667,
+        0.9333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-13-28.jpg",
+      "colorSha256": "7b77bacf04b10c27a9cb0f3bb77033764aa63191ac09c5ca95ce8ad3b5c10a26",
+      "colorBytes": 6966
+    },
+    {
+      "id": "e-13-29",
+      "uvBounds": [
+        0.9666666666666667,
+        0.8666666666666667,
+        1,
+        0.9333333333333333
+      ],
+      "width": 504,
+      "height": 504,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/e-13-29.jpg",
+      "colorSha256": "0ce2c533e87fd4d5bf4c0927a32a52f61b5b05be82834eb0d6a755ea62e178fb",
+      "colorBytes": 5741
+    },
+    {
+      "id": "n-0-0",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0,
+        0,
+        0.25,
+        0.25
+      ],
+      "width": 412,
+      "height": 412,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/n-0-0.jpg",
+      "colorSha256": "001fc7e7bfa32b5e05fc360a477960f582a059a134fa7357dbccbc38bc8751bd",
+      "colorBytes": 24146
+    },
+    {
+      "id": "n-0-1",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.25,
+        0,
+        0.5,
+        0.25
+      ],
+      "width": 412,
+      "height": 412,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/n-0-1.jpg",
+      "colorSha256": "1453b562a39c539f00a59201640418c09b7bc77c8dc37d946080a65554bcd74a",
+      "colorBytes": 35316
+    },
+    {
+      "id": "n-0-2",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.5,
+        0,
+        0.75,
+        0.25
+      ],
+      "width": 412,
+      "height": 412,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/n-0-2.jpg",
+      "colorSha256": "4b98a8a6492ac3d22333b0aa841e679149ce9f592582beb7107d166b00ae6e69",
+      "colorBytes": 35088
+    },
+    {
+      "id": "n-0-3",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.75,
+        0,
+        1,
+        0.25
+      ],
+      "width": 412,
+      "height": 412,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/n-0-3.jpg",
+      "colorSha256": "071e44fcc86649cb524283493cdb0d74a100ba98fea1337c1ab5ce464be7a6fb",
+      "colorBytes": 39997
+    },
+    {
+      "id": "n-1-0",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0,
+        0.25,
+        0.25,
+        0.5
+      ],
+      "width": 412,
+      "height": 412,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/n-1-0.jpg",
+      "colorSha256": "a9c9967d064ccfbd3765989f61fc57edfb16c7dee45102831624f9f4df4fe33a",
+      "colorBytes": 17931
+    },
+    {
+      "id": "n-1-1",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.25,
+        0.25,
+        0.5,
+        0.5
+      ],
+      "width": 412,
+      "height": 412,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/n-1-1.jpg",
+      "colorSha256": "38354ebbbc6f72ceb0f9dc9d8d84dc23f962a66e65b59ba04a5364fec1d8b450",
+      "colorBytes": 25265
+    },
+    {
+      "id": "n-1-2",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.5,
+        0.25,
+        0.75,
+        0.5
+      ],
+      "width": 412,
+      "height": 412,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/n-1-2.jpg",
+      "colorSha256": "19f2b1aafe8a090fa6c65c992238b715ade76d7d22f80950969151318f808b6e",
+      "colorBytes": 34513
+    },
+    {
+      "id": "n-1-3",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.75,
+        0.25,
+        1,
+        0.5
+      ],
+      "width": 412,
+      "height": 412,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/n-1-3.jpg",
+      "colorSha256": "a840b38c42e478fb3b707231c98c393b3b7158c007c4fd38b1a2234740d246a8",
+      "colorBytes": 30488
+    },
+    {
+      "id": "n-2-0",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0,
+        0.5,
+        0.25,
+        0.75
+      ],
+      "width": 412,
+      "height": 412,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/n-2-0.jpg",
+      "colorSha256": "3e47d4454ceec5d0952d1a7b56176c43c50467e44f8fa0f2d2ed4a8db6fa2d43",
+      "colorBytes": 17566
+    },
+    {
+      "id": "n-2-1",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.25,
+        0.5,
+        0.5,
+        0.75
+      ],
+      "width": 412,
+      "height": 412,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/n-2-1.jpg",
+      "colorSha256": "7f8b58a9889a7463870e909a2d6c09ada3d0303ab22dcaf9081d1d448073e97d",
+      "colorBytes": 16364
+    },
+    {
+      "id": "n-2-2",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.5,
+        0.5,
+        0.75,
+        0.75
+      ],
+      "width": 412,
+      "height": 412,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/n-2-2.jpg",
+      "colorSha256": "9fd074c8f061207dc4f98e2a0f881fa7025726c5661d1c14e3e47447a83143ff",
+      "colorBytes": 19016
+    },
+    {
+      "id": "n-2-3",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.75,
+        0.5,
+        1,
+        0.75
+      ],
+      "width": 412,
+      "height": 412,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/n-2-3.jpg",
+      "colorSha256": "e3ae170994d8711d10b2bbe6db8dfe24209adbfb83ce0f601be8adef8bd77f2b",
+      "colorBytes": 29015
+    },
+    {
+      "id": "n-3-0",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0,
+        0.75,
+        0.25,
+        1
+      ],
+      "width": 412,
+      "height": 412,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/n-3-0.jpg",
+      "colorSha256": "b4f30b14eb6c2de91c8d68a103286cded5344f2dd9f164dab83945731525801c",
+      "colorBytes": 19151
+    },
+    {
+      "id": "n-3-1",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.25,
+        0.75,
+        0.5,
+        1
+      ],
+      "width": 412,
+      "height": 412,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/n-3-1.jpg",
+      "colorSha256": "b9402a63dbcc101c02cfc4b97fdcd948548e3218fee949982775d30e690603f0",
+      "colorBytes": 17565
+    },
+    {
+      "id": "n-3-2",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.5,
+        0.75,
+        0.75,
+        1
+      ],
+      "width": 412,
+      "height": 412,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/n-3-2.jpg",
+      "colorSha256": "00414088701a1362aa33bfd5f35bf2cca4d41ec2d70bb73da19298bf6f2f691d",
+      "colorBytes": 8888
+    },
+    {
+      "id": "n-3-3",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.75,
+        0.75,
+        1,
+        1
+      ],
+      "width": 412,
+      "height": 412,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/n-3-3.jpg",
+      "colorSha256": "cf3558b6ab8928a07dfaac7219f3b817696e79c32cdee0e289bac8f69c807d14",
+      "colorBytes": 21163
+    },
+    {
+      "id": "s-0-0",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0,
+        0,
+        0.25,
+        0.25
+      ],
+      "width": 412,
+      "height": 412,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/s-0-0.jpg",
+      "colorSha256": "59704125421f9a0eec473dda4b17294caf4df811a02cd3059e5132602de7be7c",
+      "colorBytes": 7806
+    },
+    {
+      "id": "s-0-1",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.25,
+        0,
+        0.5,
+        0.25
+      ],
+      "width": 412,
+      "height": 412,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/s-0-1.jpg",
+      "colorSha256": "e3d739782e75b8fc2b1d3df82a6f003999d79b10b9ce1395edccdd75c7b7b017",
+      "colorBytes": 46280
+    },
+    {
+      "id": "s-0-2",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.5,
+        0,
+        0.75,
+        0.25
+      ],
+      "width": 412,
+      "height": 412,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/s-0-2.jpg",
+      "colorSha256": "986475e563900d8ccf7076d19ccb4c5403b48a1e8b901b09c291cfdca6a017c5",
+      "colorBytes": 65282
+    },
+    {
+      "id": "s-0-3",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.75,
+        0,
+        1,
+        0.25
+      ],
+      "width": 412,
+      "height": 412,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/s-0-3.jpg",
+      "colorSha256": "39ac0f0df291054cedf3384b9bdfcd88738c5b5e85f9c55566625d87a3e759df",
+      "colorBytes": 64828
+    },
+    {
+      "id": "s-1-0",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0,
+        0.25,
+        0.25,
+        0.5
+      ],
+      "width": 412,
+      "height": 412,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/s-1-0.jpg",
+      "colorSha256": "72b017570e5380dba064311bf1d08741a139593a2fba452250d70f97d1cfd992",
+      "colorBytes": 4406
+    },
+    {
+      "id": "s-1-1",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.25,
+        0.25,
+        0.5,
+        0.5
+      ],
+      "width": 412,
+      "height": 412,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/s-1-1.jpg",
+      "colorSha256": "271e3723b83683a55916af8ed0ec7099a2b120d981d765334c9c4a7455a7baac",
+      "colorBytes": 33563
+    },
+    {
+      "id": "s-1-2",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.5,
+        0.25,
+        0.75,
+        0.5
+      ],
+      "width": 412,
+      "height": 412,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/s-1-2.jpg",
+      "colorSha256": "997636da475fbe55ffda23b72e1994e9ac397116da67cdefc6e25b7796e38510",
+      "colorBytes": 56637
+    },
+    {
+      "id": "s-1-3",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.75,
+        0.25,
+        1,
+        0.5
+      ],
+      "width": 412,
+      "height": 412,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/s-1-3.jpg",
+      "colorSha256": "6645f98fdd51d1cba82ba708d55511bae63202eae073a2e69498897580c3edfb",
+      "colorBytes": 51739
+    },
+    {
+      "id": "s-2-0",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0,
+        0.5,
+        0.25,
+        0.75
+      ],
+      "width": 412,
+      "height": 412,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/s-2-0.jpg",
+      "colorSha256": "f4d10fc4a2463542c68236273c22fd829d440bc55c26af1fbee1fadede301d52",
+      "colorBytes": 3897
+    },
+    {
+      "id": "s-2-1",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.25,
+        0.5,
+        0.5,
+        0.75
+      ],
+      "width": 412,
+      "height": 412,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/s-2-1.jpg",
+      "colorSha256": "789672b02b656ae57975f5f6f6da7fc0f7f1bd8c93604041a5d92e28b4a09e17",
+      "colorBytes": 6855
+    },
+    {
+      "id": "s-2-2",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.5,
+        0.5,
+        0.75,
+        0.75
+      ],
+      "width": 412,
+      "height": 412,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/s-2-2.jpg",
+      "colorSha256": "f7518e35de3bec6a8c1bab8c44d3730ef8dfc5044791d07dc0f1306cbab1ff0e",
+      "colorBytes": 12177
+    },
+    {
+      "id": "s-2-3",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.75,
+        0.5,
+        1,
+        0.75
+      ],
+      "width": 412,
+      "height": 412,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/s-2-3.jpg",
+      "colorSha256": "02abc2938aa1e57832588dfe4ab9a39f8fc8a28037a35f99e916adbca79dd503",
+      "colorBytes": 12780
+    },
+    {
+      "id": "s-3-0",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0,
+        0.75,
+        0.25,
+        1
+      ],
+      "width": 412,
+      "height": 412,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/s-3-0.jpg",
+      "colorSha256": "4e505f7583da20c9660af9deb4039a6acd126efb1ae7578abf5471c33f6b9a4b",
+      "colorBytes": 8168
+    },
+    {
+      "id": "s-3-1",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.25,
+        0.75,
+        0.5,
+        1
+      ],
+      "width": 412,
+      "height": 412,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/s-3-1.jpg",
+      "colorSha256": "7d3fde70243c84a70045ab742b2402aa69b6c50eb538f49999c98570e8fd6315",
+      "colorBytes": 11064
+    },
+    {
+      "id": "s-3-2",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.5,
+        0.75,
+        0.75,
+        1
+      ],
+      "width": 412,
+      "height": 412,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/s-3-2.jpg",
+      "colorSha256": "1f339a23ffadb6e7b0ab7d338720394fa528bf210ed56500957a24f21e16b303",
+      "colorBytes": 14011
+    },
+    {
+      "id": "s-3-3",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.75,
+        0.75,
+        1,
+        1
+      ],
+      "width": 412,
+      "height": 412,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/callisto/s-3-3.jpg",
+      "colorSha256": "eb8ce13f8866f0a8b18ec4c2c326643d9ac1568c57d0c7beaed035ae91648ee2",
+      "colorBytes": 13266
+    }
+  ],
+  "totalBytes": 13056317,
+  "sourceWidth": 15138,
+  "sourceHeight": 7569,
+  "sourceBytes": 114640717,
+  "heightPolicy": "No measured DEM bundled in this detail pack; existing base shape and relief are not promoted into detail.",
+  "provenance": {
+    "citation": "USGS Astrogeology / NASA Voyager and Galileo SSI Callisto Galileo/Voyager Global Mosaic 1km",
+    "source": {
+      "file": "callisto-usgs-full.tif",
+      "url": "https://planetarymaps.usgs.gov/mosaic/Callisto_Voyager_GalileoSSI_global_mosaic_1km.tif",
+      "sha256": "e1f0bd2e0e05de605d067d6b5f5ededddaf31ca6c064562a1ca770f15a7dbaa3",
+      "dimensions": "15138x7569 8-bit single-band GeoTIFF; 1000.0051966711 m/pixel"
+    },
+    "sourceLabel": {
+      "file": "callisto-usgs-full.lbl",
+      "url": "https://planetarymaps.usgs.gov/mosaic/Callisto_Voyager_GalileoSSI_global_mosaic_1km.lbl",
+      "sha256": "208aa459c0a28f8f5104bfabcc8cd642a3a4fc53f5a74d00b66d9a4d8dd43080",
+      "projection": "SimpleCylindrical",
+      "longitudeDirection": "PositiveWest",
+      "longitudeDomain": "0..360",
+      "centerLongitude": 180,
+      "latitudeType": "Planetocentric",
+      "upperLeftCornerMeters": [
+        -7569039.3336036,
+        3784519.6668018
+      ],
+      "pixelResolutionMeters": 1000.0051966711,
+      "sourceRadiusMeters": 2409300.0488
+    },
+    "sourceMetadata": "https://astrogeology.usgs.gov/search/map/callisto_galileo_voyager_global_mosaic_1km",
+    "license": "USGS/NASA public-domain planetary imagery; retain product and mission attribution.",
+    "processing": "Pinned full GeoTIFF; decode 8-bit single-band raster; metadata-derived positive-west 0..360 to east-positive -180..180 reversal plus half-raster seam shift; north-up; Lanczos resize to 512/1024/2048; JPEG quality 88 with no legend or map decoration.",
+    "proceduralHeight": "Deterministic direction-vector 3D trigonometric field, little-endian uint16 with height = -256 + sample x 0.5 m; bounded decoded range is recorded per level; not measured relief and not derived from image pixels.",
+    "canonicalRadiusMeters": 2410300,
+    "sourceMetadataRadiusMeters": 2409300.0488,
+    "radiusDifferenceMeters": 999.9512
+  },
+  "processing": "Pixel-centered canonical east-positive imagery sampled bilinearly at native resolution (maximum 64 ppd); 512-pixel bounded JPEG tiles; 70-degree stereographic polar replacement, square equatorial ground spacing; little-endian uint16 scientific heights in lossless gzip. Polar imagery remains limited by native polar observations/fill."
+}

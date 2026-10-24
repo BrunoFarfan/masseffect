@@ -1,0 +1,3811 @@
+{
+  "terrainKind": "none",
+  "effectivePixelsPerDegree": 32,
+  "heightEffectivePixelsPerDegree": null,
+  "tiles": [
+    {
+      "id": "e-1-0",
+      "uvBounds": [
+        0,
+        0.08333333333333333,
+        0.043478260869565216,
+        0.16666666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-1-0.jpg",
+      "colorSha256": "5a5ecc835b9a04d600884d43432c8beb6946b6520019a353b73146f80f2774ae",
+      "colorBytes": 18087
+    },
+    {
+      "id": "e-1-1",
+      "uvBounds": [
+        0.043478260869565216,
+        0.08333333333333333,
+        0.08695652173913043,
+        0.16666666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-1-1.jpg",
+      "colorSha256": "9bff66c37c77f86dc65b3b714e3aa0dbe3631b25ffd35b66c9c981fd82c1fc7e",
+      "colorBytes": 17325
+    },
+    {
+      "id": "e-1-2",
+      "uvBounds": [
+        0.08695652173913043,
+        0.08333333333333333,
+        0.13043478260869565,
+        0.16666666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-1-2.jpg",
+      "colorSha256": "c332b583668a4bdc540c1887c3c22bef7c5f091d2d6b4c17e463e8d957cd3562",
+      "colorBytes": 17078
+    },
+    {
+      "id": "e-1-3",
+      "uvBounds": [
+        0.13043478260869565,
+        0.08333333333333333,
+        0.17391304347826086,
+        0.16666666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-1-3.jpg",
+      "colorSha256": "c74379be5be1a27ba38150945bd3962ce3ee56775f3f75fa678e460d369fb844",
+      "colorBytes": 19518
+    },
+    {
+      "id": "e-1-4",
+      "uvBounds": [
+        0.17391304347826086,
+        0.08333333333333333,
+        0.21739130434782608,
+        0.16666666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-1-4.jpg",
+      "colorSha256": "c3e7e1f6e67315b32dbf18a7b1845ab308b9703d0017d3a134beaf3825fb1e73",
+      "colorBytes": 29495
+    },
+    {
+      "id": "e-1-5",
+      "uvBounds": [
+        0.21739130434782608,
+        0.08333333333333333,
+        0.2608695652173913,
+        0.16666666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-1-5.jpg",
+      "colorSha256": "c109fdccb548de449c95d22d689f4063d5439557fa9dc34a86429fc31ca1f234",
+      "colorBytes": 27281
+    },
+    {
+      "id": "e-1-6",
+      "uvBounds": [
+        0.2608695652173913,
+        0.08333333333333333,
+        0.30434782608695654,
+        0.16666666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-1-6.jpg",
+      "colorSha256": "6bdfc22a1241c558894f3a3608c2c6d6a0c4d483a84d62058182fae29da0db7a",
+      "colorBytes": 28233
+    },
+    {
+      "id": "e-1-7",
+      "uvBounds": [
+        0.30434782608695654,
+        0.08333333333333333,
+        0.34782608695652173,
+        0.16666666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-1-7.jpg",
+      "colorSha256": "52416d7dc2f05fdafe1e6303f7d57ec4c0dc5e95d018b75e07f18dc29e7bee84",
+      "colorBytes": 26236
+    },
+    {
+      "id": "e-1-8",
+      "uvBounds": [
+        0.34782608695652173,
+        0.08333333333333333,
+        0.391304347826087,
+        0.16666666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-1-8.jpg",
+      "colorSha256": "8a5307890624cc4eb3b44444b783dc74176700c95ed648cab7b867f6a3a910ff",
+      "colorBytes": 25999
+    },
+    {
+      "id": "e-1-9",
+      "uvBounds": [
+        0.391304347826087,
+        0.08333333333333333,
+        0.43478260869565216,
+        0.16666666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-1-9.jpg",
+      "colorSha256": "918b0a66e3146fb163a1a68ac5e30d17abdc6aa9a306abadcc553d5bce7c0f3b",
+      "colorBytes": 29745
+    },
+    {
+      "id": "e-1-10",
+      "uvBounds": [
+        0.43478260869565216,
+        0.08333333333333333,
+        0.4782608695652174,
+        0.16666666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-1-10.jpg",
+      "colorSha256": "b9af3bc7b0fdc66d5b426532c42502fa54276731f5e37b69915fcc7881ab405a",
+      "colorBytes": 30609
+    },
+    {
+      "id": "e-1-11",
+      "uvBounds": [
+        0.4782608695652174,
+        0.08333333333333333,
+        0.5217391304347826,
+        0.16666666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-1-11.jpg",
+      "colorSha256": "da1696425cebd7aa1099f9c24aaf3cf21238492a983e3af0a523e0f15169c01c",
+      "colorBytes": 32099
+    },
+    {
+      "id": "e-1-12",
+      "uvBounds": [
+        0.5217391304347826,
+        0.08333333333333333,
+        0.5652173913043478,
+        0.16666666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-1-12.jpg",
+      "colorSha256": "fa82f75fe671b003e5f8402a1bb88edb8b4ff671c5d05494230f2889e6d90d4c",
+      "colorBytes": 34252
+    },
+    {
+      "id": "e-1-13",
+      "uvBounds": [
+        0.5652173913043478,
+        0.08333333333333333,
+        0.6086956521739131,
+        0.16666666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-1-13.jpg",
+      "colorSha256": "d52034e8579c847906bb7541f83df4fa3cf50a42dc9410b90343f4f282debea9",
+      "colorBytes": 34253
+    },
+    {
+      "id": "e-1-14",
+      "uvBounds": [
+        0.6086956521739131,
+        0.08333333333333333,
+        0.6521739130434783,
+        0.16666666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-1-14.jpg",
+      "colorSha256": "2a0dbccf6fe50ed82b23b5c91aaf7a71e4aa13406802981c87b4afa14a967b54",
+      "colorBytes": 32394
+    },
+    {
+      "id": "e-1-15",
+      "uvBounds": [
+        0.6521739130434783,
+        0.08333333333333333,
+        0.6956521739130435,
+        0.16666666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-1-15.jpg",
+      "colorSha256": "98232f9102d4cea5871834da1c7383a5d21e48fa26bd4b1e3594059897da8d65",
+      "colorBytes": 27665
+    },
+    {
+      "id": "e-1-16",
+      "uvBounds": [
+        0.6956521739130435,
+        0.08333333333333333,
+        0.7391304347826086,
+        0.16666666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-1-16.jpg",
+      "colorSha256": "c8e47f52a5056834b6b178c101b3d41073776586360113591ff4b735281d08ca",
+      "colorBytes": 23502
+    },
+    {
+      "id": "e-1-17",
+      "uvBounds": [
+        0.7391304347826086,
+        0.08333333333333333,
+        0.782608695652174,
+        0.16666666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-1-17.jpg",
+      "colorSha256": "def250b26f6d71fd42ca415afd58864b8d82288938e59bc301cf3779e0d4304e",
+      "colorBytes": 24667
+    },
+    {
+      "id": "e-1-18",
+      "uvBounds": [
+        0.782608695652174,
+        0.08333333333333333,
+        0.8260869565217391,
+        0.16666666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-1-18.jpg",
+      "colorSha256": "3afbf81af2b8bcddffac24f0730c8d672168a585a7ff8731370d50561a657db0",
+      "colorBytes": 25509
+    },
+    {
+      "id": "e-1-19",
+      "uvBounds": [
+        0.8260869565217391,
+        0.08333333333333333,
+        0.8695652173913043,
+        0.16666666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-1-19.jpg",
+      "colorSha256": "8992b84b0f2d40fed9574979d0f66ccdc756fbc583bda9cf06ff9dc6632bc07a",
+      "colorBytes": 28181
+    },
+    {
+      "id": "e-1-20",
+      "uvBounds": [
+        0.8695652173913043,
+        0.08333333333333333,
+        0.9130434782608695,
+        0.16666666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-1-20.jpg",
+      "colorSha256": "26a825c670b62a6acc501d21221c164653df340912916674528888b7ddc4e12f",
+      "colorBytes": 28623
+    },
+    {
+      "id": "e-1-21",
+      "uvBounds": [
+        0.9130434782608695,
+        0.08333333333333333,
+        0.9565217391304348,
+        0.16666666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-1-21.jpg",
+      "colorSha256": "2aad1faa640942d605dfd198f3697f8e1c2514a07eab6ab9c20468b97730f0d8",
+      "colorBytes": 18560
+    },
+    {
+      "id": "e-1-22",
+      "uvBounds": [
+        0.9565217391304348,
+        0.08333333333333333,
+        1,
+        0.16666666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-1-22.jpg",
+      "colorSha256": "2acb9c3d2495cdd228baa259d82abe6f402adfdd6dff83dae52bf4b566b4510c",
+      "colorBytes": 18670
+    },
+    {
+      "id": "e-2-0",
+      "uvBounds": [
+        0,
+        0.16666666666666666,
+        0.043478260869565216,
+        0.25
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-2-0.jpg",
+      "colorSha256": "a4ebba7a4e22aff7d26db94809bdca767fc5ee93388905e18f97e2f70da7fffe",
+      "colorBytes": 17383
+    },
+    {
+      "id": "e-2-1",
+      "uvBounds": [
+        0.043478260869565216,
+        0.16666666666666666,
+        0.08695652173913043,
+        0.25
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-2-1.jpg",
+      "colorSha256": "55da3f558dccc4e7b4e3608b0828a01510f31b0116613e9c07ab5ad252f91ecd",
+      "colorBytes": 20573
+    },
+    {
+      "id": "e-2-2",
+      "uvBounds": [
+        0.08695652173913043,
+        0.16666666666666666,
+        0.13043478260869565,
+        0.25
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-2-2.jpg",
+      "colorSha256": "6f20aa9680c692696b023827d03fad0f93d89af4d851b6c017acdd79cc1b8fab",
+      "colorBytes": 30290
+    },
+    {
+      "id": "e-2-3",
+      "uvBounds": [
+        0.13043478260869565,
+        0.16666666666666666,
+        0.17391304347826086,
+        0.25
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-2-3.jpg",
+      "colorSha256": "21903e23b7721f2a48bacd9ed2568ca01c0c641fb4c28508d2ad4b6d4578a466",
+      "colorBytes": 38511
+    },
+    {
+      "id": "e-2-4",
+      "uvBounds": [
+        0.17391304347826086,
+        0.16666666666666666,
+        0.21739130434782608,
+        0.25
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-2-4.jpg",
+      "colorSha256": "89b9d0b83fb429c4999592190281a75688cfeb5e8a12434f2a178a31a9265d3b",
+      "colorBytes": 39817
+    },
+    {
+      "id": "e-2-5",
+      "uvBounds": [
+        0.21739130434782608,
+        0.16666666666666666,
+        0.2608695652173913,
+        0.25
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-2-5.jpg",
+      "colorSha256": "575990cff835d2fdf391a8fff5273fd1a2eaf168804454478187863bc485b440",
+      "colorBytes": 40482
+    },
+    {
+      "id": "e-2-6",
+      "uvBounds": [
+        0.2608695652173913,
+        0.16666666666666666,
+        0.30434782608695654,
+        0.25
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-2-6.jpg",
+      "colorSha256": "2341f908c0b17ef2f26e2b19b892e92e21fb5b5c39be596069f8ed71f160d3a3",
+      "colorBytes": 39535
+    },
+    {
+      "id": "e-2-7",
+      "uvBounds": [
+        0.30434782608695654,
+        0.16666666666666666,
+        0.34782608695652173,
+        0.25
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-2-7.jpg",
+      "colorSha256": "1c9be4d2fdef5bbdb15c644e4896391a8860709418bd38d518411b580b4c2bf2",
+      "colorBytes": 39363
+    },
+    {
+      "id": "e-2-8",
+      "uvBounds": [
+        0.34782608695652173,
+        0.16666666666666666,
+        0.391304347826087,
+        0.25
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-2-8.jpg",
+      "colorSha256": "677291e7e0d2046ec3cd6c7886957117b3b47d050aa3f56076d9e40c0d67079c",
+      "colorBytes": 37588
+    },
+    {
+      "id": "e-2-9",
+      "uvBounds": [
+        0.391304347826087,
+        0.16666666666666666,
+        0.43478260869565216,
+        0.25
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-2-9.jpg",
+      "colorSha256": "8d0523032141e563c6997f1daada4709fa332fab73a96ae1fc1017583ceff35f",
+      "colorBytes": 37570
+    },
+    {
+      "id": "e-2-10",
+      "uvBounds": [
+        0.43478260869565216,
+        0.16666666666666666,
+        0.4782608695652174,
+        0.25
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-2-10.jpg",
+      "colorSha256": "3d62924fcfe532a04f8b5d0f0e79cc1105957efa5cfc9fc43a3f0cab414c5610",
+      "colorBytes": 50888
+    },
+    {
+      "id": "e-2-11",
+      "uvBounds": [
+        0.4782608695652174,
+        0.16666666666666666,
+        0.5217391304347826,
+        0.25
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-2-11.jpg",
+      "colorSha256": "a0286cef7d11bc6ca666e075d290d78dda485c7c628992e4eae296df993cfce0",
+      "colorBytes": 62903
+    },
+    {
+      "id": "e-2-12",
+      "uvBounds": [
+        0.5217391304347826,
+        0.16666666666666666,
+        0.5652173913043478,
+        0.25
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-2-12.jpg",
+      "colorSha256": "2ad55ceeb6dbe59e5d19526aa8f41cdb553da0380ec8298ddeadff10c650ec58",
+      "colorBytes": 66430
+    },
+    {
+      "id": "e-2-13",
+      "uvBounds": [
+        0.5652173913043478,
+        0.16666666666666666,
+        0.6086956521739131,
+        0.25
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-2-13.jpg",
+      "colorSha256": "6eba9cfbbd522acceb5848c6bb297f396c725dad10335f704aa32a1464202e7e",
+      "colorBytes": 65016
+    },
+    {
+      "id": "e-2-14",
+      "uvBounds": [
+        0.6086956521739131,
+        0.16666666666666666,
+        0.6521739130434783,
+        0.25
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-2-14.jpg",
+      "colorSha256": "544dc38d3a9c581320d5641ade9c448f953ca897aeb203bdd9533c98502ed8ed",
+      "colorBytes": 39508
+    },
+    {
+      "id": "e-2-15",
+      "uvBounds": [
+        0.6521739130434783,
+        0.16666666666666666,
+        0.6956521739130435,
+        0.25
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-2-15.jpg",
+      "colorSha256": "dd57244c2859b29e93199cdde6aad5229cfcb0eedd08655c8a2afacac50f9de5",
+      "colorBytes": 33656
+    },
+    {
+      "id": "e-2-16",
+      "uvBounds": [
+        0.6956521739130435,
+        0.16666666666666666,
+        0.7391304347826086,
+        0.25
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-2-16.jpg",
+      "colorSha256": "2b1fdd00e101ee596629b3b91c51f4d80acbc701700a3802474c0883a83f4a03",
+      "colorBytes": 35171
+    },
+    {
+      "id": "e-2-17",
+      "uvBounds": [
+        0.7391304347826086,
+        0.16666666666666666,
+        0.782608695652174,
+        0.25
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-2-17.jpg",
+      "colorSha256": "cd30267c33dc53faf3f0d44f29319bc4e85c6f5e848177d281b63b61acbf0d8c",
+      "colorBytes": 33418
+    },
+    {
+      "id": "e-2-18",
+      "uvBounds": [
+        0.782608695652174,
+        0.16666666666666666,
+        0.8260869565217391,
+        0.25
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-2-18.jpg",
+      "colorSha256": "fa2ba3c7ffe0748f7d9bb284066faabe654c5a18d6cad8636d5105f9a05123ec",
+      "colorBytes": 31864
+    },
+    {
+      "id": "e-2-19",
+      "uvBounds": [
+        0.8260869565217391,
+        0.16666666666666666,
+        0.8695652173913043,
+        0.25
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-2-19.jpg",
+      "colorSha256": "86c8313c9d252dba12f688042c2d25498271955003e4cafc577956166aa893c5",
+      "colorBytes": 31731
+    },
+    {
+      "id": "e-2-20",
+      "uvBounds": [
+        0.8695652173913043,
+        0.16666666666666666,
+        0.9130434782608695,
+        0.25
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-2-20.jpg",
+      "colorSha256": "8611caf44eabb1bb13f7a7142083fabdd9b991d5064285cd0f1c85ab4a24192f",
+      "colorBytes": 32654
+    },
+    {
+      "id": "e-2-21",
+      "uvBounds": [
+        0.9130434782608695,
+        0.16666666666666666,
+        0.9565217391304348,
+        0.25
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-2-21.jpg",
+      "colorSha256": "d3541f6b408ed3668f7a9faad9372710662befb969fcf5ef6dcd366e9ac23912",
+      "colorBytes": 30646
+    },
+    {
+      "id": "e-2-22",
+      "uvBounds": [
+        0.9565217391304348,
+        0.16666666666666666,
+        1,
+        0.25
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-2-22.jpg",
+      "colorSha256": "72734c645d3ca2d8e221d2b355a374dd0e20c098e917a49ee80ddd0456d29b29",
+      "colorBytes": 20387
+    },
+    {
+      "id": "e-3-0",
+      "uvBounds": [
+        0,
+        0.25,
+        0.043478260869565216,
+        0.3333333333333333
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-3-0.jpg",
+      "colorSha256": "276aff827234603f19d74319848679d878a9350fa24d4c0f74adad6295c5bc4c",
+      "colorBytes": 31562
+    },
+    {
+      "id": "e-3-1",
+      "uvBounds": [
+        0.043478260869565216,
+        0.25,
+        0.08695652173913043,
+        0.3333333333333333
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-3-1.jpg",
+      "colorSha256": "d47687e58e1ea30ae753d301663427bd8c81d057a8e17b911289f4d9e0d3f130",
+      "colorBytes": 30744
+    },
+    {
+      "id": "e-3-2",
+      "uvBounds": [
+        0.08695652173913043,
+        0.25,
+        0.13043478260869565,
+        0.3333333333333333
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-3-2.jpg",
+      "colorSha256": "6d89984e42b295bc6f7da5c7ec41971cc02678c5bc732ef24759c68e2672db43",
+      "colorBytes": 42076
+    },
+    {
+      "id": "e-3-3",
+      "uvBounds": [
+        0.13043478260869565,
+        0.25,
+        0.17391304347826086,
+        0.3333333333333333
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-3-3.jpg",
+      "colorSha256": "58dae05f3989be9f5fa5ac960e8ee67512158964fb0e9190b8ef93010e9318b1",
+      "colorBytes": 46486
+    },
+    {
+      "id": "e-3-4",
+      "uvBounds": [
+        0.17391304347826086,
+        0.25,
+        0.21739130434782608,
+        0.3333333333333333
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-3-4.jpg",
+      "colorSha256": "7b84a8c8cb874b767e279c19135376d5e098ad57ffb6629877dbc73d2e17baf9",
+      "colorBytes": 47394
+    },
+    {
+      "id": "e-3-5",
+      "uvBounds": [
+        0.21739130434782608,
+        0.25,
+        0.2608695652173913,
+        0.3333333333333333
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-3-5.jpg",
+      "colorSha256": "8e8ba7f7f28d2b670aedb62b939f3342fd5b700fd299e3c347e21dcccbf80059",
+      "colorBytes": 48378
+    },
+    {
+      "id": "e-3-6",
+      "uvBounds": [
+        0.2608695652173913,
+        0.25,
+        0.30434782608695654,
+        0.3333333333333333
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-3-6.jpg",
+      "colorSha256": "4096f14c5f84d29bd5fc2c4ee2075080ebf15eb14d2de596a85a3f2b12645761",
+      "colorBytes": 44594
+    },
+    {
+      "id": "e-3-7",
+      "uvBounds": [
+        0.30434782608695654,
+        0.25,
+        0.34782608695652173,
+        0.3333333333333333
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-3-7.jpg",
+      "colorSha256": "eac769666118eb57942ccd88227f7341f33a8ba902a6371420fedaa43896bf9c",
+      "colorBytes": 41850
+    },
+    {
+      "id": "e-3-8",
+      "uvBounds": [
+        0.34782608695652173,
+        0.25,
+        0.391304347826087,
+        0.3333333333333333
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-3-8.jpg",
+      "colorSha256": "b1a9dab0652cf56740016538c710b2a1d884521e3c65d9a7242048dfe475c7f7",
+      "colorBytes": 43575
+    },
+    {
+      "id": "e-3-9",
+      "uvBounds": [
+        0.391304347826087,
+        0.25,
+        0.43478260869565216,
+        0.3333333333333333
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-3-9.jpg",
+      "colorSha256": "b625e62964e85c46fddbcff081c9c9f7d8196f0e19cb1a52046699c4e20888b0",
+      "colorBytes": 52586
+    },
+    {
+      "id": "e-3-10",
+      "uvBounds": [
+        0.43478260869565216,
+        0.25,
+        0.4782608695652174,
+        0.3333333333333333
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-3-10.jpg",
+      "colorSha256": "28b3acf7b887db05fb46671abfb5f3a419f253980fcd1d6e1838d1324b88d89b",
+      "colorBytes": 70574
+    },
+    {
+      "id": "e-3-11",
+      "uvBounds": [
+        0.4782608695652174,
+        0.25,
+        0.5217391304347826,
+        0.3333333333333333
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-3-11.jpg",
+      "colorSha256": "52d901d00bcfe8162f5b97d6bd165e1268059908827b4052e96fb7e86254873d",
+      "colorBytes": 71564
+    },
+    {
+      "id": "e-3-12",
+      "uvBounds": [
+        0.5217391304347826,
+        0.25,
+        0.5652173913043478,
+        0.3333333333333333
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-3-12.jpg",
+      "colorSha256": "d33eaecd2f983301d1288a208974e85dafdc7d0b5d65dc0ff5b5cefb5bd2c851",
+      "colorBytes": 72217
+    },
+    {
+      "id": "e-3-13",
+      "uvBounds": [
+        0.5652173913043478,
+        0.25,
+        0.6086956521739131,
+        0.3333333333333333
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-3-13.jpg",
+      "colorSha256": "7b5027b27bc96ecc4d3d1ec09586b20ed1d8154069000bb1b7866258b9809f0c",
+      "colorBytes": 61871
+    },
+    {
+      "id": "e-3-14",
+      "uvBounds": [
+        0.6086956521739131,
+        0.25,
+        0.6521739130434783,
+        0.3333333333333333
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-3-14.jpg",
+      "colorSha256": "827891818275b86150fd7b60cadf8d1f19a5c7b56ae3c183b8cecff57521ed30",
+      "colorBytes": 42975
+    },
+    {
+      "id": "e-3-15",
+      "uvBounds": [
+        0.6521739130434783,
+        0.25,
+        0.6956521739130435,
+        0.3333333333333333
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-3-15.jpg",
+      "colorSha256": "8bb0fcc479b9d148b82021c48dc46113745318b1e7f8d686c62bc5bd39465f00",
+      "colorBytes": 34949
+    },
+    {
+      "id": "e-3-16",
+      "uvBounds": [
+        0.6956521739130435,
+        0.25,
+        0.7391304347826086,
+        0.3333333333333333
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-3-16.jpg",
+      "colorSha256": "0eaf21aca1130731a38ca31b497c56d601b9f5e93b2ea9daa1cd157a76624215",
+      "colorBytes": 38405
+    },
+    {
+      "id": "e-3-17",
+      "uvBounds": [
+        0.7391304347826086,
+        0.25,
+        0.782608695652174,
+        0.3333333333333333
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-3-17.jpg",
+      "colorSha256": "a7acc9ef94777ec8fa326b0e6f9b73bc71a1150491f813cf2e92f49b8f7a9064",
+      "colorBytes": 37460
+    },
+    {
+      "id": "e-3-18",
+      "uvBounds": [
+        0.782608695652174,
+        0.25,
+        0.8260869565217391,
+        0.3333333333333333
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-3-18.jpg",
+      "colorSha256": "933a5ac25343964084a73046c949bf2c8dc90556fa2e7e97562cde59de13b239",
+      "colorBytes": 35781
+    },
+    {
+      "id": "e-3-19",
+      "uvBounds": [
+        0.8260869565217391,
+        0.25,
+        0.8695652173913043,
+        0.3333333333333333
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-3-19.jpg",
+      "colorSha256": "5f60dc6337875f4f331fe308cb01d5bfd48ef2fbb478b34ee95da8e85269fd53",
+      "colorBytes": 38663
+    },
+    {
+      "id": "e-3-20",
+      "uvBounds": [
+        0.8695652173913043,
+        0.25,
+        0.9130434782608695,
+        0.3333333333333333
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-3-20.jpg",
+      "colorSha256": "7a255c82d0e8b717d5f57200e5aec80b68fa4440bda7550a09b549a7b1fe386e",
+      "colorBytes": 36378
+    },
+    {
+      "id": "e-3-21",
+      "uvBounds": [
+        0.9130434782608695,
+        0.25,
+        0.9565217391304348,
+        0.3333333333333333
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-3-21.jpg",
+      "colorSha256": "cc45179be6f58065efc4385dab03f168037d482b8c4cc0c37d9204b5072ee778",
+      "colorBytes": 32686
+    },
+    {
+      "id": "e-3-22",
+      "uvBounds": [
+        0.9565217391304348,
+        0.25,
+        1,
+        0.3333333333333333
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-3-22.jpg",
+      "colorSha256": "99703b0672407caa7ee4d50fd36c99bc654f3965be4bdfc58971f6d751b50a45",
+      "colorBytes": 30480
+    },
+    {
+      "id": "e-4-0",
+      "uvBounds": [
+        0,
+        0.3333333333333333,
+        0.043478260869565216,
+        0.4166666666666667
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-4-0.jpg",
+      "colorSha256": "7bca4c169c6409084170d77c0c2e4e01e6f4f31fdd396f21c3862d27437b8902",
+      "colorBytes": 37005
+    },
+    {
+      "id": "e-4-1",
+      "uvBounds": [
+        0.043478260869565216,
+        0.3333333333333333,
+        0.08695652173913043,
+        0.4166666666666667
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-4-1.jpg",
+      "colorSha256": "5bee8b43eff9934177867ca2eac148e883982c201e7b89ccab75f9a51c00225d",
+      "colorBytes": 39797
+    },
+    {
+      "id": "e-4-2",
+      "uvBounds": [
+        0.08695652173913043,
+        0.3333333333333333,
+        0.13043478260869565,
+        0.4166666666666667
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-4-2.jpg",
+      "colorSha256": "e85f29efda7414a0d6ecceb8aab3e1c81cb3fd147181a2074486cbf5c4016aa1",
+      "colorBytes": 48537
+    },
+    {
+      "id": "e-4-3",
+      "uvBounds": [
+        0.13043478260869565,
+        0.3333333333333333,
+        0.17391304347826086,
+        0.4166666666666667
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-4-3.jpg",
+      "colorSha256": "1a4b9b7e78d1414f9cfef2b1c1f9a7a3f6b30f2b93a6ee3c2c909e7b95ad1af9",
+      "colorBytes": 50033
+    },
+    {
+      "id": "e-4-4",
+      "uvBounds": [
+        0.17391304347826086,
+        0.3333333333333333,
+        0.21739130434782608,
+        0.4166666666666667
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-4-4.jpg",
+      "colorSha256": "85e0d9c2ab991387f1366bf390e286aeedd967aab0ab9a3c83e62b67cf4ae53a",
+      "colorBytes": 48554
+    },
+    {
+      "id": "e-4-5",
+      "uvBounds": [
+        0.21739130434782608,
+        0.3333333333333333,
+        0.2608695652173913,
+        0.4166666666666667
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-4-5.jpg",
+      "colorSha256": "890d7801e298179e8ac6a06001d9178b148af9a9f4ea37749cbc99a490aab223",
+      "colorBytes": 46602
+    },
+    {
+      "id": "e-4-6",
+      "uvBounds": [
+        0.2608695652173913,
+        0.3333333333333333,
+        0.30434782608695654,
+        0.4166666666666667
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-4-6.jpg",
+      "colorSha256": "e7b22c3062d7b576bea6005ef28b86fd3eca87505c02ddbcc3e2205cfbfa3d74",
+      "colorBytes": 43050
+    },
+    {
+      "id": "e-4-7",
+      "uvBounds": [
+        0.30434782608695654,
+        0.3333333333333333,
+        0.34782608695652173,
+        0.4166666666666667
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-4-7.jpg",
+      "colorSha256": "4bd9ec64562f4049fff03026e3ce98f8ec6b74f7c86cf1c7782e2d476fb5a593",
+      "colorBytes": 46623
+    },
+    {
+      "id": "e-4-8",
+      "uvBounds": [
+        0.34782608695652173,
+        0.3333333333333333,
+        0.391304347826087,
+        0.4166666666666667
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-4-8.jpg",
+      "colorSha256": "b417178f66a00b4e1dc1b1e294f2b0f1b6dc6239be68bdcf6428c9486d69df15",
+      "colorBytes": 43273
+    },
+    {
+      "id": "e-4-9",
+      "uvBounds": [
+        0.391304347826087,
+        0.3333333333333333,
+        0.43478260869565216,
+        0.4166666666666667
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-4-9.jpg",
+      "colorSha256": "4eaa91ce6b9cc5e3bba1231ae64cfd7aa35f75f0249d117dbef2b00bb7446af8",
+      "colorBytes": 61423
+    },
+    {
+      "id": "e-4-10",
+      "uvBounds": [
+        0.43478260869565216,
+        0.3333333333333333,
+        0.4782608695652174,
+        0.4166666666666667
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-4-10.jpg",
+      "colorSha256": "5bb3c2eab8e97bd17996544c9b5153ea87b868ebe67f854fae8b671a3b4bb261",
+      "colorBytes": 70936
+    },
+    {
+      "id": "e-4-11",
+      "uvBounds": [
+        0.4782608695652174,
+        0.3333333333333333,
+        0.5217391304347826,
+        0.4166666666666667
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-4-11.jpg",
+      "colorSha256": "e2d7f7bee43e62416f8468be2c0cec0403283ab077254437bce3f2e05687a017",
+      "colorBytes": 75126
+    },
+    {
+      "id": "e-4-12",
+      "uvBounds": [
+        0.5217391304347826,
+        0.3333333333333333,
+        0.5652173913043478,
+        0.4166666666666667
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-4-12.jpg",
+      "colorSha256": "a9ce718bddc23080ae9e05c4d349669b821ea1c8ebb9eff31364a5e83f8cd62c",
+      "colorBytes": 67014
+    },
+    {
+      "id": "e-4-13",
+      "uvBounds": [
+        0.5652173913043478,
+        0.3333333333333333,
+        0.6086956521739131,
+        0.4166666666666667
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-4-13.jpg",
+      "colorSha256": "7bc13054c499bc7d25db399270ee5a6b4a03387e4c41a1c2f498530357df408b",
+      "colorBytes": 49138
+    },
+    {
+      "id": "e-4-14",
+      "uvBounds": [
+        0.6086956521739131,
+        0.3333333333333333,
+        0.6521739130434783,
+        0.4166666666666667
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-4-14.jpg",
+      "colorSha256": "93b3a42938fb8964d249836435b1d8089f62020fec1d90a2949476757cd8c3a3",
+      "colorBytes": 44646
+    },
+    {
+      "id": "e-4-15",
+      "uvBounds": [
+        0.6521739130434783,
+        0.3333333333333333,
+        0.6956521739130435,
+        0.4166666666666667
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-4-15.jpg",
+      "colorSha256": "0792102c263d72614e83ed5369b6cc90c6a2c87b570164469f7cc179dd16d9f2",
+      "colorBytes": 40791
+    },
+    {
+      "id": "e-4-16",
+      "uvBounds": [
+        0.6956521739130435,
+        0.3333333333333333,
+        0.7391304347826086,
+        0.4166666666666667
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-4-16.jpg",
+      "colorSha256": "591edc8e289e969431683596584cd70b316e91423083f76d150f03c923c6c10e",
+      "colorBytes": 37038
+    },
+    {
+      "id": "e-4-17",
+      "uvBounds": [
+        0.7391304347826086,
+        0.3333333333333333,
+        0.782608695652174,
+        0.4166666666666667
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-4-17.jpg",
+      "colorSha256": "4cd58eb72b0c89c27ae2214a55db5dc5c6916472a1b8c7de84ff7fa66a203245",
+      "colorBytes": 40867
+    },
+    {
+      "id": "e-4-18",
+      "uvBounds": [
+        0.782608695652174,
+        0.3333333333333333,
+        0.8260869565217391,
+        0.4166666666666667
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-4-18.jpg",
+      "colorSha256": "a82563eddfd0e773949b74726a4001923a40766c889584c900374a00fdb1ac16",
+      "colorBytes": 40369
+    },
+    {
+      "id": "e-4-19",
+      "uvBounds": [
+        0.8260869565217391,
+        0.3333333333333333,
+        0.8695652173913043,
+        0.4166666666666667
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-4-19.jpg",
+      "colorSha256": "9e24b315a4ee144d2b6a23f0ef4964eefa499f3be1e55c11f6942ed87eaabfcc",
+      "colorBytes": 36367
+    },
+    {
+      "id": "e-4-20",
+      "uvBounds": [
+        0.8695652173913043,
+        0.3333333333333333,
+        0.9130434782608695,
+        0.4166666666666667
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-4-20.jpg",
+      "colorSha256": "96c15952298c32f603f4c690d853cd82a1f3f375209f91469fde539ddb056538",
+      "colorBytes": 37088
+    },
+    {
+      "id": "e-4-21",
+      "uvBounds": [
+        0.9130434782608695,
+        0.3333333333333333,
+        0.9565217391304348,
+        0.4166666666666667
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-4-21.jpg",
+      "colorSha256": "4bf202b8e2c9cd174600eaf988170acd690a44a138b0af6ae13b418a2e8034a9",
+      "colorBytes": 31068
+    },
+    {
+      "id": "e-4-22",
+      "uvBounds": [
+        0.9565217391304348,
+        0.3333333333333333,
+        1,
+        0.4166666666666667
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-4-22.jpg",
+      "colorSha256": "01aef688f5dda9d299d0bd1eeb8916693beed3eab2582d561887a93c49f6348c",
+      "colorBytes": 35113
+    },
+    {
+      "id": "e-5-0",
+      "uvBounds": [
+        0,
+        0.4166666666666667,
+        0.043478260869565216,
+        0.5
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-5-0.jpg",
+      "colorSha256": "1d9aa89100b2430e64ff9445e8d074cba6d5d063262b69c9756320670966dd0d",
+      "colorBytes": 37206
+    },
+    {
+      "id": "e-5-1",
+      "uvBounds": [
+        0.043478260869565216,
+        0.4166666666666667,
+        0.08695652173913043,
+        0.5
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-5-1.jpg",
+      "colorSha256": "c046071183ed56e340d97be4e3b9dd56431ca972dc566d599354c99830287ac1",
+      "colorBytes": 36276
+    },
+    {
+      "id": "e-5-2",
+      "uvBounds": [
+        0.08695652173913043,
+        0.4166666666666667,
+        0.13043478260869565,
+        0.5
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-5-2.jpg",
+      "colorSha256": "06b2d67a4871af308cea7ec75cbbbd138595daf3abebf959f7ed86a527bafcbb",
+      "colorBytes": 45515
+    },
+    {
+      "id": "e-5-3",
+      "uvBounds": [
+        0.13043478260869565,
+        0.4166666666666667,
+        0.17391304347826086,
+        0.5
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-5-3.jpg",
+      "colorSha256": "193928d0c042bbd43703c2c89e8e4b0c539facbe3d2f34ac43d80d89c12eaad0",
+      "colorBytes": 51164
+    },
+    {
+      "id": "e-5-4",
+      "uvBounds": [
+        0.17391304347826086,
+        0.4166666666666667,
+        0.21739130434782608,
+        0.5
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-5-4.jpg",
+      "colorSha256": "10094569553cab688731e5166c5c1d730cbf75a8b2b57419b9ae4c77e6cd7a58",
+      "colorBytes": 47985
+    },
+    {
+      "id": "e-5-5",
+      "uvBounds": [
+        0.21739130434782608,
+        0.4166666666666667,
+        0.2608695652173913,
+        0.5
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-5-5.jpg",
+      "colorSha256": "7b2ffaaeb854b92618264285365c4865fe1046a8eecd3ccc5b1fdb51b8b94303",
+      "colorBytes": 41745
+    },
+    {
+      "id": "e-5-6",
+      "uvBounds": [
+        0.2608695652173913,
+        0.4166666666666667,
+        0.30434782608695654,
+        0.5
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-5-6.jpg",
+      "colorSha256": "08cd1a2feeb1440fa055c5d05a1f71da1df4bad0d1812bede544c86024d6a334",
+      "colorBytes": 40135
+    },
+    {
+      "id": "e-5-7",
+      "uvBounds": [
+        0.30434782608695654,
+        0.4166666666666667,
+        0.34782608695652173,
+        0.5
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-5-7.jpg",
+      "colorSha256": "143ae0aea53b62ad28691a45f77ca71a3839debcea9a878cbd56e5b079a1c306",
+      "colorBytes": 43451
+    },
+    {
+      "id": "e-5-8",
+      "uvBounds": [
+        0.34782608695652173,
+        0.4166666666666667,
+        0.391304347826087,
+        0.5
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-5-8.jpg",
+      "colorSha256": "2b25350694e04097264b80f182abc8f0f5f036fae91c32b2373f8d187e292eeb",
+      "colorBytes": 43112
+    },
+    {
+      "id": "e-5-9",
+      "uvBounds": [
+        0.391304347826087,
+        0.4166666666666667,
+        0.43478260869565216,
+        0.5
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-5-9.jpg",
+      "colorSha256": "b81712ebb1e3971423d742b31e98b3a296793bf09877983c3e469639f0586da6",
+      "colorBytes": 68607
+    },
+    {
+      "id": "e-5-10",
+      "uvBounds": [
+        0.43478260869565216,
+        0.4166666666666667,
+        0.4782608695652174,
+        0.5
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-5-10.jpg",
+      "colorSha256": "e60f0492d2e78972bdbd6f677a55d7598e9e996ff78d449a1ff753188ec58939",
+      "colorBytes": 68744
+    },
+    {
+      "id": "e-5-11",
+      "uvBounds": [
+        0.4782608695652174,
+        0.4166666666666667,
+        0.5217391304347826,
+        0.5
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-5-11.jpg",
+      "colorSha256": "5fe016839d2609edd8ce14b066bb7d32d18c9cab141cc4d7003bb0a687c5d3ab",
+      "colorBytes": 65301
+    },
+    {
+      "id": "e-5-12",
+      "uvBounds": [
+        0.5217391304347826,
+        0.4166666666666667,
+        0.5652173913043478,
+        0.5
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-5-12.jpg",
+      "colorSha256": "6ab32d495a7e5746ee7032d69138afced902353bcd7752a041d34b9f9077a994",
+      "colorBytes": 43819
+    },
+    {
+      "id": "e-5-13",
+      "uvBounds": [
+        0.5652173913043478,
+        0.4166666666666667,
+        0.6086956521739131,
+        0.5
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-5-13.jpg",
+      "colorSha256": "9b9dada73f5c24edd363fbc05da232c7fb3cbdb4b0169a99210b90fa445918df",
+      "colorBytes": 36947
+    },
+    {
+      "id": "e-5-14",
+      "uvBounds": [
+        0.6086956521739131,
+        0.4166666666666667,
+        0.6521739130434783,
+        0.5
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-5-14.jpg",
+      "colorSha256": "ced35c7e9566d2e4a1e4c88da078a79f82d5a6339bfcdceaa4148d418f971d08",
+      "colorBytes": 43908
+    },
+    {
+      "id": "e-5-15",
+      "uvBounds": [
+        0.6521739130434783,
+        0.4166666666666667,
+        0.6956521739130435,
+        0.5
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-5-15.jpg",
+      "colorSha256": "6ccfafdda97cfa078d7ded071ac88a7b04df76d7f7d6b436b022741b0913cbd8",
+      "colorBytes": 43972
+    },
+    {
+      "id": "e-5-16",
+      "uvBounds": [
+        0.6956521739130435,
+        0.4166666666666667,
+        0.7391304347826086,
+        0.5
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-5-16.jpg",
+      "colorSha256": "2529ae82da7c2f8e4316973b5dcf4d631c57b316928fcf2184a40644cbf5260c",
+      "colorBytes": 34679
+    },
+    {
+      "id": "e-5-17",
+      "uvBounds": [
+        0.7391304347826086,
+        0.4166666666666667,
+        0.782608695652174,
+        0.5
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-5-17.jpg",
+      "colorSha256": "072c5751da035a7f72b2da37614d9823cc408b13d83ec3d2833a79ebe6489c7a",
+      "colorBytes": 37937
+    },
+    {
+      "id": "e-5-18",
+      "uvBounds": [
+        0.782608695652174,
+        0.4166666666666667,
+        0.8260869565217391,
+        0.5
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-5-18.jpg",
+      "colorSha256": "3b99cc1a3fd58ed7d214f12df0fb998efb1315ad224670ae6f1d247695096ca7",
+      "colorBytes": 41201
+    },
+    {
+      "id": "e-5-19",
+      "uvBounds": [
+        0.8260869565217391,
+        0.4166666666666667,
+        0.8695652173913043,
+        0.5
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-5-19.jpg",
+      "colorSha256": "8811c4e85ac588f399ac1591cf3a5c42dc25a87ef53c695e6a288da7dcd77f34",
+      "colorBytes": 37299
+    },
+    {
+      "id": "e-5-20",
+      "uvBounds": [
+        0.8695652173913043,
+        0.4166666666666667,
+        0.9130434782608695,
+        0.5
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-5-20.jpg",
+      "colorSha256": "6c6d216ec290b83200c38da4b48c16c5ab6e53e98f46df31e4de7251a0b3a333",
+      "colorBytes": 32991
+    },
+    {
+      "id": "e-5-21",
+      "uvBounds": [
+        0.9130434782608695,
+        0.4166666666666667,
+        0.9565217391304348,
+        0.5
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-5-21.jpg",
+      "colorSha256": "938ed984169bbdc1d0694802db002926f784e0d8bdb0e4996e91f249f5a7ea20",
+      "colorBytes": 29728
+    },
+    {
+      "id": "e-5-22",
+      "uvBounds": [
+        0.9565217391304348,
+        0.4166666666666667,
+        1,
+        0.5
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-5-22.jpg",
+      "colorSha256": "08e0c72e5c37b25199ce5e98347f9974131151674b035f3886264ec46c3da501",
+      "colorBytes": 37094
+    },
+    {
+      "id": "e-6-0",
+      "uvBounds": [
+        0,
+        0.5,
+        0.043478260869565216,
+        0.5833333333333334
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-6-0.jpg",
+      "colorSha256": "23d9d7fe9d40e0c24cb98dc35388bf13b919d0860c28b274dfba8b8719027971",
+      "colorBytes": 35816
+    },
+    {
+      "id": "e-6-1",
+      "uvBounds": [
+        0.043478260869565216,
+        0.5,
+        0.08695652173913043,
+        0.5833333333333334
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-6-1.jpg",
+      "colorSha256": "cdcb95b5f1b17b2b5d13c39057b4b33985e54465e96215ce1f331464646d0cd0",
+      "colorBytes": 34735
+    },
+    {
+      "id": "e-6-2",
+      "uvBounds": [
+        0.08695652173913043,
+        0.5,
+        0.13043478260869565,
+        0.5833333333333334
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-6-2.jpg",
+      "colorSha256": "0e098ea47d0150fa58af4972a9485262c593b303a1a6ad5167c24a91fe4dba3d",
+      "colorBytes": 39228
+    },
+    {
+      "id": "e-6-3",
+      "uvBounds": [
+        0.13043478260869565,
+        0.5,
+        0.17391304347826086,
+        0.5833333333333334
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-6-3.jpg",
+      "colorSha256": "3d72120d354b1b9459e165e808a37b68ca1311ab1c87b2ef7e3801ea30243b45",
+      "colorBytes": 53153
+    },
+    {
+      "id": "e-6-4",
+      "uvBounds": [
+        0.17391304347826086,
+        0.5,
+        0.21739130434782608,
+        0.5833333333333334
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-6-4.jpg",
+      "colorSha256": "d6af666bb1a44ae830eec6e0c4116754463553f4863c261a7ef1d7f98874aa5a",
+      "colorBytes": 46215
+    },
+    {
+      "id": "e-6-5",
+      "uvBounds": [
+        0.21739130434782608,
+        0.5,
+        0.2608695652173913,
+        0.5833333333333334
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-6-5.jpg",
+      "colorSha256": "1729e663deb296c2e37b9048a0bddb066ba72451d5566a49d1b58f542313b61b",
+      "colorBytes": 40872
+    },
+    {
+      "id": "e-6-6",
+      "uvBounds": [
+        0.2608695652173913,
+        0.5,
+        0.30434782608695654,
+        0.5833333333333334
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-6-6.jpg",
+      "colorSha256": "96556fe86179ab20442540c3aa250fea454a60968cdd8ec09df0e89f52bbf5ac",
+      "colorBytes": 38401
+    },
+    {
+      "id": "e-6-7",
+      "uvBounds": [
+        0.30434782608695654,
+        0.5,
+        0.34782608695652173,
+        0.5833333333333334
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-6-7.jpg",
+      "colorSha256": "6bacd9fb26a60727c1c38905a21f85cf4bcdf9e9ca8e15a7351d539d9a609610",
+      "colorBytes": 38853
+    },
+    {
+      "id": "e-6-8",
+      "uvBounds": [
+        0.34782608695652173,
+        0.5,
+        0.391304347826087,
+        0.5833333333333334
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-6-8.jpg",
+      "colorSha256": "36ef293c3db1aaaa03fed7f8d5c586eebc6f5d0df28a89cf2bc42bbe04929b6d",
+      "colorBytes": 42697
+    },
+    {
+      "id": "e-6-9",
+      "uvBounds": [
+        0.391304347826087,
+        0.5,
+        0.43478260869565216,
+        0.5833333333333334
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-6-9.jpg",
+      "colorSha256": "9729530e189c703bce38cd01d6c1e8e9900770a81754e1a6327e38a2bf088ed9",
+      "colorBytes": 55238
+    },
+    {
+      "id": "e-6-10",
+      "uvBounds": [
+        0.43478260869565216,
+        0.5,
+        0.4782608695652174,
+        0.5833333333333334
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-6-10.jpg",
+      "colorSha256": "8717ca3d3ef18b4d5c1e59a07567881ebf041e31a41034d74bd6ce6063d20915",
+      "colorBytes": 48825
+    },
+    {
+      "id": "e-6-11",
+      "uvBounds": [
+        0.4782608695652174,
+        0.5,
+        0.5217391304347826,
+        0.5833333333333334
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-6-11.jpg",
+      "colorSha256": "f8884da0c0693456816e08e0a2db9d2cf18fbf34a9a2850f8bcd0dcca4a93671",
+      "colorBytes": 44941
+    },
+    {
+      "id": "e-6-12",
+      "uvBounds": [
+        0.5217391304347826,
+        0.5,
+        0.5652173913043478,
+        0.5833333333333334
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-6-12.jpg",
+      "colorSha256": "46f839b34e3c345df839d8242a13f20798a449ee620b2580d51d90b82745b4cb",
+      "colorBytes": 34850
+    },
+    {
+      "id": "e-6-13",
+      "uvBounds": [
+        0.5652173913043478,
+        0.5,
+        0.6086956521739131,
+        0.5833333333333334
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-6-13.jpg",
+      "colorSha256": "fd2e33a7315defa134ad85bfe464a4f4529e60bdbb337ad97757e0cde34c09c3",
+      "colorBytes": 40169
+    },
+    {
+      "id": "e-6-14",
+      "uvBounds": [
+        0.6086956521739131,
+        0.5,
+        0.6521739130434783,
+        0.5833333333333334
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-6-14.jpg",
+      "colorSha256": "6a21534f0ebdd20e7370bcf402161b1d2aac03bc94460156498c375498c3cf25",
+      "colorBytes": 40602
+    },
+    {
+      "id": "e-6-15",
+      "uvBounds": [
+        0.6521739130434783,
+        0.5,
+        0.6956521739130435,
+        0.5833333333333334
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-6-15.jpg",
+      "colorSha256": "6538ea2d06e49a31419bcd6e09dd50fe1f95df636b7fea2bb593d4c2bf673ed2",
+      "colorBytes": 39888
+    },
+    {
+      "id": "e-6-16",
+      "uvBounds": [
+        0.6956521739130435,
+        0.5,
+        0.7391304347826086,
+        0.5833333333333334
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-6-16.jpg",
+      "colorSha256": "1184d96a784f40bc0bffe577bd1cc43d9b2d464fd271bcaf98f0e4789b902587",
+      "colorBytes": 34176
+    },
+    {
+      "id": "e-6-17",
+      "uvBounds": [
+        0.7391304347826086,
+        0.5,
+        0.782608695652174,
+        0.5833333333333334
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-6-17.jpg",
+      "colorSha256": "c3c8f08a2f4fd217735e031f1c8c6324196dbd01307c8001b548c8b58ac9e150",
+      "colorBytes": 37919
+    },
+    {
+      "id": "e-6-18",
+      "uvBounds": [
+        0.782608695652174,
+        0.5,
+        0.8260869565217391,
+        0.5833333333333334
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-6-18.jpg",
+      "colorSha256": "48dfcfdba76f14f917fe0d56deb7bffa3cdd6eb07ff9766a281c8435399cab60",
+      "colorBytes": 43181
+    },
+    {
+      "id": "e-6-19",
+      "uvBounds": [
+        0.8260869565217391,
+        0.5,
+        0.8695652173913043,
+        0.5833333333333334
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-6-19.jpg",
+      "colorSha256": "fd550fcfb88dfc55bfe48d0becb0110860041490723bc50a4008efa12a9d49df",
+      "colorBytes": 38066
+    },
+    {
+      "id": "e-6-20",
+      "uvBounds": [
+        0.8695652173913043,
+        0.5,
+        0.9130434782608695,
+        0.5833333333333334
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-6-20.jpg",
+      "colorSha256": "5e339f25314fceaf93657deca0e78d356935417f53a2a27d97a53cbdc62b6b53",
+      "colorBytes": 32020
+    },
+    {
+      "id": "e-6-21",
+      "uvBounds": [
+        0.9130434782608695,
+        0.5,
+        0.9565217391304348,
+        0.5833333333333334
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-6-21.jpg",
+      "colorSha256": "4646c0bc64e95fe26b6daeeb18ab2f9e82584abb326c51c6ac4ae318c8e6b3a3",
+      "colorBytes": 29033
+    },
+    {
+      "id": "e-6-22",
+      "uvBounds": [
+        0.9565217391304348,
+        0.5,
+        1,
+        0.5833333333333334
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-6-22.jpg",
+      "colorSha256": "a9fd249c8fe72d539168f428f6ba28a6b1a59af395624101b616d8513a9fcf11",
+      "colorBytes": 37692
+    },
+    {
+      "id": "e-7-0",
+      "uvBounds": [
+        0,
+        0.5833333333333334,
+        0.043478260869565216,
+        0.6666666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-7-0.jpg",
+      "colorSha256": "53dd5f1fa3393b80c712879aba2293718f74b253046e51262e3c3883be810e8b",
+      "colorBytes": 33424
+    },
+    {
+      "id": "e-7-1",
+      "uvBounds": [
+        0.043478260869565216,
+        0.5833333333333334,
+        0.08695652173913043,
+        0.6666666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-7-1.jpg",
+      "colorSha256": "627486a0379e4af03459a63b210d23006a851fc4110c81f165690f9b943e36d0",
+      "colorBytes": 33830
+    },
+    {
+      "id": "e-7-2",
+      "uvBounds": [
+        0.08695652173913043,
+        0.5833333333333334,
+        0.13043478260869565,
+        0.6666666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-7-2.jpg",
+      "colorSha256": "bb0b4bd2aa4c929c3f5fe7818a2500beb74c4e90e5935ba05a68c9b54bed70bd",
+      "colorBytes": 34409
+    },
+    {
+      "id": "e-7-3",
+      "uvBounds": [
+        0.13043478260869565,
+        0.5833333333333334,
+        0.17391304347826086,
+        0.6666666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-7-3.jpg",
+      "colorSha256": "3566c8765f42f2ef98b6db5ecbfd4818580599ad4e714d4552a3a62dd2fb7c5e",
+      "colorBytes": 52207
+    },
+    {
+      "id": "e-7-4",
+      "uvBounds": [
+        0.17391304347826086,
+        0.5833333333333334,
+        0.21739130434782608,
+        0.6666666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-7-4.jpg",
+      "colorSha256": "497ad7b95b2d40500b36c7d7940024b38e8b050ad59b046352cf440fa7a60df1",
+      "colorBytes": 45724
+    },
+    {
+      "id": "e-7-5",
+      "uvBounds": [
+        0.21739130434782608,
+        0.5833333333333334,
+        0.2608695652173913,
+        0.6666666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-7-5.jpg",
+      "colorSha256": "75b108287b17ae5a6a62d89b63c235d441b76ebbce943a02da10fef6aed92264",
+      "colorBytes": 36993
+    },
+    {
+      "id": "e-7-6",
+      "uvBounds": [
+        0.2608695652173913,
+        0.5833333333333334,
+        0.30434782608695654,
+        0.6666666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-7-6.jpg",
+      "colorSha256": "2163ee9df99da239f804479e7fb0e26aca046dcfc38434a009bc595abcb9578e",
+      "colorBytes": 31652
+    },
+    {
+      "id": "e-7-7",
+      "uvBounds": [
+        0.30434782608695654,
+        0.5833333333333334,
+        0.34782608695652173,
+        0.6666666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-7-7.jpg",
+      "colorSha256": "33017d03dbf5a06e8358ddfcf7a4a2d9191f4330fd39792fd0e7b58858941caf",
+      "colorBytes": 35288
+    },
+    {
+      "id": "e-7-8",
+      "uvBounds": [
+        0.34782608695652173,
+        0.5833333333333334,
+        0.391304347826087,
+        0.6666666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-7-8.jpg",
+      "colorSha256": "e5f2a8bbadb311f5484bda017083f287cfbedc40ba2f61ed0ec29a3099f4a8c9",
+      "colorBytes": 39454
+    },
+    {
+      "id": "e-7-9",
+      "uvBounds": [
+        0.391304347826087,
+        0.5833333333333334,
+        0.43478260869565216,
+        0.6666666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-7-9.jpg",
+      "colorSha256": "1647cd6099905d3a7ca72c482a267809e00c7e6130f5087d88479aec213dea4e",
+      "colorBytes": 40641
+    },
+    {
+      "id": "e-7-10",
+      "uvBounds": [
+        0.43478260869565216,
+        0.5833333333333334,
+        0.4782608695652174,
+        0.6666666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-7-10.jpg",
+      "colorSha256": "30edc3e14cf9cc19270253124b2c6286f242eed37d066ff965e920a09e2feba9",
+      "colorBytes": 36804
+    },
+    {
+      "id": "e-7-11",
+      "uvBounds": [
+        0.4782608695652174,
+        0.5833333333333334,
+        0.5217391304347826,
+        0.6666666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-7-11.jpg",
+      "colorSha256": "648fcff6bd725e487c63e945da7d7af9e253378947f5f4b64ee8e12752d38a5e",
+      "colorBytes": 36265
+    },
+    {
+      "id": "e-7-12",
+      "uvBounds": [
+        0.5217391304347826,
+        0.5833333333333334,
+        0.5652173913043478,
+        0.6666666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-7-12.jpg",
+      "colorSha256": "b8367a97f9fbbb968eb4b4e1f7ad8b74db1fb0d05217a29d0d36ecca13921714",
+      "colorBytes": 37992
+    },
+    {
+      "id": "e-7-13",
+      "uvBounds": [
+        0.5652173913043478,
+        0.5833333333333334,
+        0.6086956521739131,
+        0.6666666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-7-13.jpg",
+      "colorSha256": "c807e2066d429160d48faa201d352e528255eef4d36b677ddc516c3fc94e5972",
+      "colorBytes": 42164
+    },
+    {
+      "id": "e-7-14",
+      "uvBounds": [
+        0.6086956521739131,
+        0.5833333333333334,
+        0.6521739130434783,
+        0.6666666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-7-14.jpg",
+      "colorSha256": "960fe16c55e87f216f09795e7a035ba4b0679278c528fbda903b0fd8a99e9322",
+      "colorBytes": 44090
+    },
+    {
+      "id": "e-7-15",
+      "uvBounds": [
+        0.6521739130434783,
+        0.5833333333333334,
+        0.6956521739130435,
+        0.6666666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-7-15.jpg",
+      "colorSha256": "59def75c80c5b807479b24f825d58b4e3c040fcfffc8416c70318a823d0602a2",
+      "colorBytes": 40581
+    },
+    {
+      "id": "e-7-16",
+      "uvBounds": [
+        0.6956521739130435,
+        0.5833333333333334,
+        0.7391304347826086,
+        0.6666666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-7-16.jpg",
+      "colorSha256": "281b8d248446178ebfe5a6f946f47071c5501e646e8b7b26a0523abd4fa23c70",
+      "colorBytes": 42635
+    },
+    {
+      "id": "e-7-17",
+      "uvBounds": [
+        0.7391304347826086,
+        0.5833333333333334,
+        0.782608695652174,
+        0.6666666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-7-17.jpg",
+      "colorSha256": "d9ba834d35dd9ae5117d89053fddfaccb000129173ce721c6f05002e8e35fe6c",
+      "colorBytes": 40645
+    },
+    {
+      "id": "e-7-18",
+      "uvBounds": [
+        0.782608695652174,
+        0.5833333333333334,
+        0.8260869565217391,
+        0.6666666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-7-18.jpg",
+      "colorSha256": "0819e215ee8fcb328f363f602504d468925125fcf99f3ca2ad838c1c7ffd75d2",
+      "colorBytes": 41016
+    },
+    {
+      "id": "e-7-19",
+      "uvBounds": [
+        0.8260869565217391,
+        0.5833333333333334,
+        0.8695652173913043,
+        0.6666666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-7-19.jpg",
+      "colorSha256": "1674194abd5c0cee0600095dfb9a6905df2046a42d36986246d340d6e9986bc4",
+      "colorBytes": 40051
+    },
+    {
+      "id": "e-7-20",
+      "uvBounds": [
+        0.8695652173913043,
+        0.5833333333333334,
+        0.9130434782608695,
+        0.6666666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-7-20.jpg",
+      "colorSha256": "482837019c372e1c28ea2a1d37fd481ea843eb0b3fe7d87c8531d75abba3952d",
+      "colorBytes": 33756
+    },
+    {
+      "id": "e-7-21",
+      "uvBounds": [
+        0.9130434782608695,
+        0.5833333333333334,
+        0.9565217391304348,
+        0.6666666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-7-21.jpg",
+      "colorSha256": "a1f6257380836e2008d4aa3b8572f241ddc96975350192e8ed58d1447051c73c",
+      "colorBytes": 30313
+    },
+    {
+      "id": "e-7-22",
+      "uvBounds": [
+        0.9565217391304348,
+        0.5833333333333334,
+        1,
+        0.6666666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-7-22.jpg",
+      "colorSha256": "49599a0d1450e9511cac737c71552e9feafe3de0556df3612e0689adaec8249f",
+      "colorBytes": 37157
+    },
+    {
+      "id": "e-8-0",
+      "uvBounds": [
+        0,
+        0.6666666666666666,
+        0.043478260869565216,
+        0.75
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-8-0.jpg",
+      "colorSha256": "3fdf30adc5fd14fa1f505b68d63a2bdaa6888cd0df0ab22106d742df3d60fe3e",
+      "colorBytes": 31293
+    },
+    {
+      "id": "e-8-1",
+      "uvBounds": [
+        0.043478260869565216,
+        0.6666666666666666,
+        0.08695652173913043,
+        0.75
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-8-1.jpg",
+      "colorSha256": "421a0b101314fc9ec86d4ea697f10b7b636c1c60b62a87177a38fbf26ffcbe28",
+      "colorBytes": 36213
+    },
+    {
+      "id": "e-8-2",
+      "uvBounds": [
+        0.08695652173913043,
+        0.6666666666666666,
+        0.13043478260869565,
+        0.75
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-8-2.jpg",
+      "colorSha256": "d3d2338d35b20500c516b5715e9f6a3e47bb12e1299c83c53fdfa70df9ed1cb8",
+      "colorBytes": 37849
+    },
+    {
+      "id": "e-8-3",
+      "uvBounds": [
+        0.13043478260869565,
+        0.6666666666666666,
+        0.17391304347826086,
+        0.75
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-8-3.jpg",
+      "colorSha256": "f4b5073e0bf3f84567a86d24ffc8d13f33940e9c78e8763a7445229aac0a3ad8",
+      "colorBytes": 46762
+    },
+    {
+      "id": "e-8-4",
+      "uvBounds": [
+        0.17391304347826086,
+        0.6666666666666666,
+        0.21739130434782608,
+        0.75
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-8-4.jpg",
+      "colorSha256": "974991ead57b27f305e74605bb55819bfebb9a9d9f23b371787a67975b28d648",
+      "colorBytes": 43971
+    },
+    {
+      "id": "e-8-5",
+      "uvBounds": [
+        0.21739130434782608,
+        0.6666666666666666,
+        0.2608695652173913,
+        0.75
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-8-5.jpg",
+      "colorSha256": "96e8b9442787f2063b3cacbecdeb8248379c9769df685b4ff0274d910ed04794",
+      "colorBytes": 32938
+    },
+    {
+      "id": "e-8-6",
+      "uvBounds": [
+        0.2608695652173913,
+        0.6666666666666666,
+        0.30434782608695654,
+        0.75
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-8-6.jpg",
+      "colorSha256": "410a01f46a3bbfd7cb8c4cb4e1bdd9f262122ab1e7203dcf4b0c2f4e42792e36",
+      "colorBytes": 32845
+    },
+    {
+      "id": "e-8-7",
+      "uvBounds": [
+        0.30434782608695654,
+        0.6666666666666666,
+        0.34782608695652173,
+        0.75
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-8-7.jpg",
+      "colorSha256": "1ad7246755732358980b3e61a069f92444cc5cf8e8b24568b15b0b1c17670ab6",
+      "colorBytes": 35233
+    },
+    {
+      "id": "e-8-8",
+      "uvBounds": [
+        0.34782608695652173,
+        0.6666666666666666,
+        0.391304347826087,
+        0.75
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-8-8.jpg",
+      "colorSha256": "e94cc3fc4fca6fd702f8ff603d6a0cf50d472a0e29b9b4fe9dab40dd14327fd3",
+      "colorBytes": 37441
+    },
+    {
+      "id": "e-8-9",
+      "uvBounds": [
+        0.391304347826087,
+        0.6666666666666666,
+        0.43478260869565216,
+        0.75
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-8-9.jpg",
+      "colorSha256": "a428def4d045e6d189f45ec0beaefa1d274d1adcc7d1ddda51075fd2e8e0d2f5",
+      "colorBytes": 39995
+    },
+    {
+      "id": "e-8-10",
+      "uvBounds": [
+        0.43478260869565216,
+        0.6666666666666666,
+        0.4782608695652174,
+        0.75
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-8-10.jpg",
+      "colorSha256": "620203e66616ce8c7642d860c5e3d50c7c5696e76f3f6600409dafed215f7f06",
+      "colorBytes": 44147
+    },
+    {
+      "id": "e-8-11",
+      "uvBounds": [
+        0.4782608695652174,
+        0.6666666666666666,
+        0.5217391304347826,
+        0.75
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-8-11.jpg",
+      "colorSha256": "fb2cf8d4cd5a0467addcdb6c466d99f3cc01b420eda353b72d83f788235e574b",
+      "colorBytes": 45920
+    },
+    {
+      "id": "e-8-12",
+      "uvBounds": [
+        0.5217391304347826,
+        0.6666666666666666,
+        0.5652173913043478,
+        0.75
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-8-12.jpg",
+      "colorSha256": "7a691829527c06f0f5b7ba77182dee32178083c8a358408ec29172d471300497",
+      "colorBytes": 50579
+    },
+    {
+      "id": "e-8-13",
+      "uvBounds": [
+        0.5652173913043478,
+        0.6666666666666666,
+        0.6086956521739131,
+        0.75
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-8-13.jpg",
+      "colorSha256": "123106ca629c9028bc6b48f5d5dbbfa5f9a18fb4d8cb615b70759fc8c8c95f36",
+      "colorBytes": 54930
+    },
+    {
+      "id": "e-8-14",
+      "uvBounds": [
+        0.6086956521739131,
+        0.6666666666666666,
+        0.6521739130434783,
+        0.75
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-8-14.jpg",
+      "colorSha256": "df9c4ddafc0679c779b658a0a8a945d6b370c680c9ee4deff47b53ada19922fc",
+      "colorBytes": 50667
+    },
+    {
+      "id": "e-8-15",
+      "uvBounds": [
+        0.6521739130434783,
+        0.6666666666666666,
+        0.6956521739130435,
+        0.75
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-8-15.jpg",
+      "colorSha256": "67405b659dbcf64b852a5d28b626e99ec3bb1a77e4116549dc6dbe4b952f5f36",
+      "colorBytes": 43458
+    },
+    {
+      "id": "e-8-16",
+      "uvBounds": [
+        0.6956521739130435,
+        0.6666666666666666,
+        0.7391304347826086,
+        0.75
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-8-16.jpg",
+      "colorSha256": "12bf7b61ea335e2f1c06e020d29f2591fa0276ee92c0d75ec317f57e63664423",
+      "colorBytes": 42002
+    },
+    {
+      "id": "e-8-17",
+      "uvBounds": [
+        0.7391304347826086,
+        0.6666666666666666,
+        0.782608695652174,
+        0.75
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-8-17.jpg",
+      "colorSha256": "490e0c31f47e50cf28e3785c80dff253b04fa8caa453c9f5642d65f07516bbc1",
+      "colorBytes": 42519
+    },
+    {
+      "id": "e-8-18",
+      "uvBounds": [
+        0.782608695652174,
+        0.6666666666666666,
+        0.8260869565217391,
+        0.75
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-8-18.jpg",
+      "colorSha256": "ea2bcef64dcd27b7434a95c83f37d741bf70838dc8cd371b4cc6c10d7d1c3121",
+      "colorBytes": 36436
+    },
+    {
+      "id": "e-8-19",
+      "uvBounds": [
+        0.8260869565217391,
+        0.6666666666666666,
+        0.8695652173913043,
+        0.75
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-8-19.jpg",
+      "colorSha256": "0cc6c52213ec86529eccf4c072f2ee1b2c82061e2b5e86756f3bc6ecb3395aa5",
+      "colorBytes": 37270
+    },
+    {
+      "id": "e-8-20",
+      "uvBounds": [
+        0.8695652173913043,
+        0.6666666666666666,
+        0.9130434782608695,
+        0.75
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-8-20.jpg",
+      "colorSha256": "970a2f23d3574b0e2932a55d1f776c2f2190656924467947d22e2fe084fe7aa0",
+      "colorBytes": 33416
+    },
+    {
+      "id": "e-8-21",
+      "uvBounds": [
+        0.9130434782608695,
+        0.6666666666666666,
+        0.9565217391304348,
+        0.75
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-8-21.jpg",
+      "colorSha256": "f0d8bcf74ecea9da346e55b53b81f91112f8b4cdc464bf594140874442f868da",
+      "colorBytes": 31546
+    },
+    {
+      "id": "e-8-22",
+      "uvBounds": [
+        0.9565217391304348,
+        0.6666666666666666,
+        1,
+        0.75
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-8-22.jpg",
+      "colorSha256": "2f7685effcd8de595643d63681f29372e4a0b29afcba7324e41d9df4ebb58ce1",
+      "colorBytes": 34155
+    },
+    {
+      "id": "e-9-0",
+      "uvBounds": [
+        0,
+        0.75,
+        0.043478260869565216,
+        0.8333333333333334
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-9-0.jpg",
+      "colorSha256": "aeb631330e3476686dff8d285604a1299008446723d656708e05c6e429a4b637",
+      "colorBytes": 31962
+    },
+    {
+      "id": "e-9-1",
+      "uvBounds": [
+        0.043478260869565216,
+        0.75,
+        0.08695652173913043,
+        0.8333333333333334
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-9-1.jpg",
+      "colorSha256": "904afdaf5ea86395adfc3595d51904e2a2777cabbe16cf993eaeffde57dee238",
+      "colorBytes": 38760
+    },
+    {
+      "id": "e-9-2",
+      "uvBounds": [
+        0.08695652173913043,
+        0.75,
+        0.13043478260869565,
+        0.8333333333333334
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-9-2.jpg",
+      "colorSha256": "1c210d96de627b055bf2c9f577a2b890ede4842b6757751409499b69c148da40",
+      "colorBytes": 39209
+    },
+    {
+      "id": "e-9-3",
+      "uvBounds": [
+        0.13043478260869565,
+        0.75,
+        0.17391304347826086,
+        0.8333333333333334
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-9-3.jpg",
+      "colorSha256": "f183d7e14571dabdcd4b09509bd4a39ee1605f285da1e3bc0fb100dd01bd1277",
+      "colorBytes": 40752
+    },
+    {
+      "id": "e-9-4",
+      "uvBounds": [
+        0.17391304347826086,
+        0.75,
+        0.21739130434782608,
+        0.8333333333333334
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-9-4.jpg",
+      "colorSha256": "08fb2fa946d128ee715c7e55163e72f646250cebe1e907b249bb046d42569692",
+      "colorBytes": 42549
+    },
+    {
+      "id": "e-9-5",
+      "uvBounds": [
+        0.21739130434782608,
+        0.75,
+        0.2608695652173913,
+        0.8333333333333334
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-9-5.jpg",
+      "colorSha256": "1a2e5411d40ba496f9822e305f9ca80aed29af9370bde5c0fd0f91a3f803a4bf",
+      "colorBytes": 37339
+    },
+    {
+      "id": "e-9-6",
+      "uvBounds": [
+        0.2608695652173913,
+        0.75,
+        0.30434782608695654,
+        0.8333333333333334
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-9-6.jpg",
+      "colorSha256": "709bd61b4183789cad51e4e784dc507d5240ea88f33878b6b21388ed082ed355",
+      "colorBytes": 34506
+    },
+    {
+      "id": "e-9-7",
+      "uvBounds": [
+        0.30434782608695654,
+        0.75,
+        0.34782608695652173,
+        0.8333333333333334
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-9-7.jpg",
+      "colorSha256": "79bab3a61b209740f860cd2ec5afa21d20a619db93101a4754193789e002c3ca",
+      "colorBytes": 34190
+    },
+    {
+      "id": "e-9-8",
+      "uvBounds": [
+        0.34782608695652173,
+        0.75,
+        0.391304347826087,
+        0.8333333333333334
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-9-8.jpg",
+      "colorSha256": "53c434bf44217ebb0851274326f18fd588b0dbe39a340a2ff04725566e182dc2",
+      "colorBytes": 33497
+    },
+    {
+      "id": "e-9-9",
+      "uvBounds": [
+        0.391304347826087,
+        0.75,
+        0.43478260869565216,
+        0.8333333333333334
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-9-9.jpg",
+      "colorSha256": "5f9d4aac4256905066699357db3b58738b3e56a92ff10d8d273af5c90d6654ef",
+      "colorBytes": 37442
+    },
+    {
+      "id": "e-9-10",
+      "uvBounds": [
+        0.43478260869565216,
+        0.75,
+        0.4782608695652174,
+        0.8333333333333334
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-9-10.jpg",
+      "colorSha256": "2b856b275369735b61ceaa8bc28c992d6b8d89c155dccf296ee7567050a25883",
+      "colorBytes": 49844
+    },
+    {
+      "id": "e-9-11",
+      "uvBounds": [
+        0.4782608695652174,
+        0.75,
+        0.5217391304347826,
+        0.8333333333333334
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-9-11.jpg",
+      "colorSha256": "97afd2815e10087280b447fefe323ae2d00cf117e70b23ca5aea139cca85eea6",
+      "colorBytes": 46878
+    },
+    {
+      "id": "e-9-12",
+      "uvBounds": [
+        0.5217391304347826,
+        0.75,
+        0.5652173913043478,
+        0.8333333333333334
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-9-12.jpg",
+      "colorSha256": "10799f091f42d7aabc84f0fec40ac247aeda1ee193a8d0a03af7832e65696f88",
+      "colorBytes": 49596
+    },
+    {
+      "id": "e-9-13",
+      "uvBounds": [
+        0.5652173913043478,
+        0.75,
+        0.6086956521739131,
+        0.8333333333333334
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-9-13.jpg",
+      "colorSha256": "8173182ed78e6dc0d35617c03cc18d17c2e5df28014a04060023d7daabe5a158",
+      "colorBytes": 50566
+    },
+    {
+      "id": "e-9-14",
+      "uvBounds": [
+        0.6086956521739131,
+        0.75,
+        0.6521739130434783,
+        0.8333333333333334
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-9-14.jpg",
+      "colorSha256": "996d86195dcefa99d77757f2ee0e9460e16cb193502613c9551635f10e92b010",
+      "colorBytes": 50983
+    },
+    {
+      "id": "e-9-15",
+      "uvBounds": [
+        0.6521739130434783,
+        0.75,
+        0.6956521739130435,
+        0.8333333333333334
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-9-15.jpg",
+      "colorSha256": "8dac38659e84fa10a2fe92e04f0067b40a9d3f7558341d14cbeba07236dd4d8c",
+      "colorBytes": 38715
+    },
+    {
+      "id": "e-9-16",
+      "uvBounds": [
+        0.6956521739130435,
+        0.75,
+        0.7391304347826086,
+        0.8333333333333334
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-9-16.jpg",
+      "colorSha256": "0beb03a81f55fb7438f798929f141b598f890bf18fdee0456efbcce442cac421",
+      "colorBytes": 40951
+    },
+    {
+      "id": "e-9-17",
+      "uvBounds": [
+        0.7391304347826086,
+        0.75,
+        0.782608695652174,
+        0.8333333333333334
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-9-17.jpg",
+      "colorSha256": "5c180e75085c10de6b28c1c9aa632bf9333ca3e5a58ced9069fb5dbd7a12f835",
+      "colorBytes": 38409
+    },
+    {
+      "id": "e-9-18",
+      "uvBounds": [
+        0.782608695652174,
+        0.75,
+        0.8260869565217391,
+        0.8333333333333334
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-9-18.jpg",
+      "colorSha256": "6d55425e1ed1db27982b3b90841682fddef66b42e218d8c390ccc07829d03953",
+      "colorBytes": 29032
+    },
+    {
+      "id": "e-9-19",
+      "uvBounds": [
+        0.8260869565217391,
+        0.75,
+        0.8695652173913043,
+        0.8333333333333334
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-9-19.jpg",
+      "colorSha256": "83c4ca52c31e00c6f2c9f4c2c16a3924a2047cb2ee513f8209210a546d457872",
+      "colorBytes": 33561
+    },
+    {
+      "id": "e-9-20",
+      "uvBounds": [
+        0.8695652173913043,
+        0.75,
+        0.9130434782608695,
+        0.8333333333333334
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-9-20.jpg",
+      "colorSha256": "60ed3ec235df198bf20ab35544cf48b6885475f904a7fe697b4d268351038950",
+      "colorBytes": 29598
+    },
+    {
+      "id": "e-9-21",
+      "uvBounds": [
+        0.9130434782608695,
+        0.75,
+        0.9565217391304348,
+        0.8333333333333334
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-9-21.jpg",
+      "colorSha256": "6df903ad3862d887a3c02090339e34174e8096f9ac53568d54e70fdc77412bc4",
+      "colorBytes": 29969
+    },
+    {
+      "id": "e-9-22",
+      "uvBounds": [
+        0.9565217391304348,
+        0.75,
+        1,
+        0.8333333333333334
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-9-22.jpg",
+      "colorSha256": "94ae3db70f18aa67a36ef5614ad92037d109225864cb75eb2372f2d1bfa770d4",
+      "colorBytes": 30714
+    },
+    {
+      "id": "e-10-0",
+      "uvBounds": [
+        0,
+        0.8333333333333334,
+        0.043478260869565216,
+        0.9166666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-10-0.jpg",
+      "colorSha256": "d49d8c08ae156a9b9edefc8e4c86b5268428012ff3ceff4b493a36a0c9c7a535",
+      "colorBytes": 28263
+    },
+    {
+      "id": "e-10-1",
+      "uvBounds": [
+        0.043478260869565216,
+        0.8333333333333334,
+        0.08695652173913043,
+        0.9166666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-10-1.jpg",
+      "colorSha256": "6b1d367119a534b5f8b499fb841d175d402710aa802e95fd0b070b3cf9611412",
+      "colorBytes": 31973
+    },
+    {
+      "id": "e-10-2",
+      "uvBounds": [
+        0.08695652173913043,
+        0.8333333333333334,
+        0.13043478260869565,
+        0.9166666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-10-2.jpg",
+      "colorSha256": "b90cf716af984ee608570c937e70fff2bec561dd3a85dad1af573dbc055d6c47",
+      "colorBytes": 36353
+    },
+    {
+      "id": "e-10-3",
+      "uvBounds": [
+        0.13043478260869565,
+        0.8333333333333334,
+        0.17391304347826086,
+        0.9166666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-10-3.jpg",
+      "colorSha256": "fe29de363f2979b733fc7a3f1a4fb3d3aff5f93813077d163e8a776724d7bea4",
+      "colorBytes": 35345
+    },
+    {
+      "id": "e-10-4",
+      "uvBounds": [
+        0.17391304347826086,
+        0.8333333333333334,
+        0.21739130434782608,
+        0.9166666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-10-4.jpg",
+      "colorSha256": "a4483749ad9c8b8a7eb56c18dca9015c71d39bdf671faa1df956f4421b876378",
+      "colorBytes": 35543
+    },
+    {
+      "id": "e-10-5",
+      "uvBounds": [
+        0.21739130434782608,
+        0.8333333333333334,
+        0.2608695652173913,
+        0.9166666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-10-5.jpg",
+      "colorSha256": "7b08d18865c1e7b69957507f48a4365983c2cc1f4eea87d2a5099368667fa2ba",
+      "colorBytes": 33456
+    },
+    {
+      "id": "e-10-6",
+      "uvBounds": [
+        0.2608695652173913,
+        0.8333333333333334,
+        0.30434782608695654,
+        0.9166666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-10-6.jpg",
+      "colorSha256": "6de3c2a4cb5dbf3e80267cab7ec486529f35d2da550036b88401f7473b298311",
+      "colorBytes": 31117
+    },
+    {
+      "id": "e-10-7",
+      "uvBounds": [
+        0.30434782608695654,
+        0.8333333333333334,
+        0.34782608695652173,
+        0.9166666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-10-7.jpg",
+      "colorSha256": "646f0efc5eae8e729a06ba68a32fd2ec2e8d61dba0f64f06ea1324866c7f2f26",
+      "colorBytes": 33245
+    },
+    {
+      "id": "e-10-8",
+      "uvBounds": [
+        0.34782608695652173,
+        0.8333333333333334,
+        0.391304347826087,
+        0.9166666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-10-8.jpg",
+      "colorSha256": "ce6b3e228ef5a1d96ffcfbc1ccbdffe314e0bcddd3daaf7f2a0b1e5dbf726207",
+      "colorBytes": 30249
+    },
+    {
+      "id": "e-10-9",
+      "uvBounds": [
+        0.391304347826087,
+        0.8333333333333334,
+        0.43478260869565216,
+        0.9166666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-10-9.jpg",
+      "colorSha256": "9d4b2c058f832a0ae6df97715267165aaed9aa05174c23c0643a9054bc434afc",
+      "colorBytes": 30533
+    },
+    {
+      "id": "e-10-10",
+      "uvBounds": [
+        0.43478260869565216,
+        0.8333333333333334,
+        0.4782608695652174,
+        0.9166666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-10-10.jpg",
+      "colorSha256": "a38a98c96dede87313a16f353b7f5f8f2e61b9d4d4c10c6cbba100ae5fddf0b5",
+      "colorBytes": 39711
+    },
+    {
+      "id": "e-10-11",
+      "uvBounds": [
+        0.4782608695652174,
+        0.8333333333333334,
+        0.5217391304347826,
+        0.9166666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-10-11.jpg",
+      "colorSha256": "ae4a2ec0f701f41adb3a596e2d506a5aeed1d4976df7ee28873bc13ac2b4bbec",
+      "colorBytes": 39992
+    },
+    {
+      "id": "e-10-12",
+      "uvBounds": [
+        0.5217391304347826,
+        0.8333333333333334,
+        0.5652173913043478,
+        0.9166666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-10-12.jpg",
+      "colorSha256": "72638e14e918853d318308726ded95bbeb46dc8a66b41c02ac3254628850dce4",
+      "colorBytes": 41845
+    },
+    {
+      "id": "e-10-13",
+      "uvBounds": [
+        0.5652173913043478,
+        0.8333333333333334,
+        0.6086956521739131,
+        0.9166666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-10-13.jpg",
+      "colorSha256": "18e4bb7370a0a80638c53401f4f0d1471748439f4c68abd30dac941c84addf6a",
+      "colorBytes": 39842
+    },
+    {
+      "id": "e-10-14",
+      "uvBounds": [
+        0.6086956521739131,
+        0.8333333333333334,
+        0.6521739130434783,
+        0.9166666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-10-14.jpg",
+      "colorSha256": "3a21501ce8ce97dd9acecd7946965255c1d5cc5be9f793c412cdd4b23f95e717",
+      "colorBytes": 34494
+    },
+    {
+      "id": "e-10-15",
+      "uvBounds": [
+        0.6521739130434783,
+        0.8333333333333334,
+        0.6956521739130435,
+        0.9166666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-10-15.jpg",
+      "colorSha256": "95f3cc4d72ff8f40bd4683f42051a6b37ddf58389334bd8cc7a0becfd3531cdd",
+      "colorBytes": 37957
+    },
+    {
+      "id": "e-10-16",
+      "uvBounds": [
+        0.6956521739130435,
+        0.8333333333333334,
+        0.7391304347826086,
+        0.9166666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-10-16.jpg",
+      "colorSha256": "5d8a87cd4d7316610e7571e5820b08c6d3f68f1e3f2841e5c8e83b56b5c69ae4",
+      "colorBytes": 36940
+    },
+    {
+      "id": "e-10-17",
+      "uvBounds": [
+        0.7391304347826086,
+        0.8333333333333334,
+        0.782608695652174,
+        0.9166666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-10-17.jpg",
+      "colorSha256": "999d6db1fe72ce0881a1bd1c532459880dbefe4fcb41161e9e7562ce626871f9",
+      "colorBytes": 33149
+    },
+    {
+      "id": "e-10-18",
+      "uvBounds": [
+        0.782608695652174,
+        0.8333333333333334,
+        0.8260869565217391,
+        0.9166666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-10-18.jpg",
+      "colorSha256": "020ef9d77540a9af0f62252f6b7744d00de15078f83630b1d36f29dd5ae2992c",
+      "colorBytes": 22775
+    },
+    {
+      "id": "e-10-19",
+      "uvBounds": [
+        0.8260869565217391,
+        0.8333333333333334,
+        0.8695652173913043,
+        0.9166666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-10-19.jpg",
+      "colorSha256": "9832dacb92f4056f1e8efbec0f092741f5826d63ae3b6192323219e33b3451f2",
+      "colorBytes": 26587
+    },
+    {
+      "id": "e-10-20",
+      "uvBounds": [
+        0.8695652173913043,
+        0.8333333333333334,
+        0.9130434782608695,
+        0.9166666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-10-20.jpg",
+      "colorSha256": "6c0a63a452c0752f13dff75eae48ecdf9eee070424f5f259c255bd1a61579567",
+      "colorBytes": 26731
+    },
+    {
+      "id": "e-10-21",
+      "uvBounds": [
+        0.9130434782608695,
+        0.8333333333333334,
+        0.9565217391304348,
+        0.9166666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-10-21.jpg",
+      "colorSha256": "1ece3fab739b6e494e40fc577a120df1ba63670b07b90eec1b4cd1891bc2ef44",
+      "colorBytes": 28663
+    },
+    {
+      "id": "e-10-22",
+      "uvBounds": [
+        0.9565217391304348,
+        0.8333333333333334,
+        1,
+        0.9166666666666666
+      ],
+      "width": 500,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/e-10-22.jpg",
+      "colorSha256": "39bc3910a4c99809e464892ab988bf9ae5757169c4438a04962f0068bf72ef49",
+      "colorBytes": 25727
+    },
+    {
+      "id": "n-0-0",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0,
+        0,
+        0.3333333333333333,
+        0.3333333333333333
+      ],
+      "width": 418,
+      "height": 418,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/n-0-0.jpg",
+      "colorSha256": "7ea157a527cf73d0533cd3e49ee1889df65427bb8c5e779bc3388da3fbc73bb1",
+      "colorBytes": 22587
+    },
+    {
+      "id": "n-0-1",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.3333333333333333,
+        0,
+        0.6666666666666666,
+        0.3333333333333333
+      ],
+      "width": 418,
+      "height": 418,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/n-0-1.jpg",
+      "colorSha256": "895063d2051b2aa4f6e176a2bfb910330a2a2f0b88698ec17f21d9a82d3c850b",
+      "colorBytes": 18985
+    },
+    {
+      "id": "n-0-2",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.6666666666666666,
+        0,
+        1,
+        0.3333333333333333
+      ],
+      "width": 418,
+      "height": 418,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/n-0-2.jpg",
+      "colorSha256": "0d51ca977013f91042ab387963ee6f14acbf28df5a00bd0e904e8ef1fbaf6105",
+      "colorBytes": 27688
+    },
+    {
+      "id": "n-1-0",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0,
+        0.3333333333333333,
+        0.3333333333333333,
+        0.6666666666666666
+      ],
+      "width": 418,
+      "height": 418,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/n-1-0.jpg",
+      "colorSha256": "7a8a070c218a3b1c95b120b74535166b8cb92233e83d28b924a79905630ff4c8",
+      "colorBytes": 16155
+    },
+    {
+      "id": "n-1-1",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.3333333333333333,
+        0.3333333333333333,
+        0.6666666666666666,
+        0.6666666666666666
+      ],
+      "width": 418,
+      "height": 418,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/n-1-1.jpg",
+      "colorSha256": "c54aa8e1dba9f7f65731a3a66a23969009de249d4ec7b3724acf30b6ec9383e2",
+      "colorBytes": 15614
+    },
+    {
+      "id": "n-1-2",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.6666666666666666,
+        0.3333333333333333,
+        1,
+        0.6666666666666666
+      ],
+      "width": 418,
+      "height": 418,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/n-1-2.jpg",
+      "colorSha256": "db1eafca187e3e9a0b830813e0bbf52230d962fddbecef5b0691855a07f1d2fd",
+      "colorBytes": 25438
+    },
+    {
+      "id": "n-2-0",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0,
+        0.6666666666666666,
+        0.3333333333333333,
+        1
+      ],
+      "width": 418,
+      "height": 418,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/n-2-0.jpg",
+      "colorSha256": "4f194861a3b599226af36f3f879a7580c53bf2020d81c2864196475cba2760a1",
+      "colorBytes": 15320
+    },
+    {
+      "id": "n-2-1",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.3333333333333333,
+        0.6666666666666666,
+        0.6666666666666666,
+        1
+      ],
+      "width": 418,
+      "height": 418,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/n-2-1.jpg",
+      "colorSha256": "9c0df917a9812c29a54a5b15b2dd1d80e3ef9b130b2058760e7d7141c19e3dce",
+      "colorBytes": 18134
+    },
+    {
+      "id": "n-2-2",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.6666666666666666,
+        0.6666666666666666,
+        1,
+        1
+      ],
+      "width": 418,
+      "height": 418,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/n-2-2.jpg",
+      "colorSha256": "952ffce2c6079aea6a2fc7866aedc16460081da34629d7e4ca223ecb3f8f5c33",
+      "colorBytes": 21813
+    },
+    {
+      "id": "s-0-0",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0,
+        0,
+        0.3333333333333333,
+        0.3333333333333333
+      ],
+      "width": 418,
+      "height": 418,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/s-0-0.jpg",
+      "colorSha256": "92a5c3a36a8a0290f07ba47eeb8707eed89b1c79f240e86c2e886234c0e01cea",
+      "colorBytes": 25145
+    },
+    {
+      "id": "s-0-1",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.3333333333333333,
+        0,
+        0.6666666666666666,
+        0.3333333333333333
+      ],
+      "width": 418,
+      "height": 418,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/s-0-1.jpg",
+      "colorSha256": "e81c4fca29a50571001dbce31c2e0fc8c937faf5b29505d1671442c5850dc151",
+      "colorBytes": 31478
+    },
+    {
+      "id": "s-0-2",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.6666666666666666,
+        0,
+        1,
+        0.3333333333333333
+      ],
+      "width": 418,
+      "height": 418,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/s-0-2.jpg",
+      "colorSha256": "8688ef93f7c3882207763c22fbd5093b6c15548e6528a6e965448ea2453c16c7",
+      "colorBytes": 34219
+    },
+    {
+      "id": "s-1-0",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0,
+        0.3333333333333333,
+        0.3333333333333333,
+        0.6666666666666666
+      ],
+      "width": 418,
+      "height": 418,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/s-1-0.jpg",
+      "colorSha256": "54d8f2a3ba63867e2db07c4cc0275ea13c92cc94422b88f34713381aa2ec00a9",
+      "colorBytes": 28712
+    },
+    {
+      "id": "s-1-1",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.3333333333333333,
+        0.3333333333333333,
+        0.6666666666666666,
+        0.6666666666666666
+      ],
+      "width": 418,
+      "height": 418,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/s-1-1.jpg",
+      "colorSha256": "123afa4edaf92535bba0e9b738cc4bfa6293ed5c81576902fac4751874ebc8b8",
+      "colorBytes": 36101
+    },
+    {
+      "id": "s-1-2",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.6666666666666666,
+        0.3333333333333333,
+        1,
+        0.6666666666666666
+      ],
+      "width": 418,
+      "height": 418,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/s-1-2.jpg",
+      "colorSha256": "cf7b2c0287f3d8c1746b6ffce9fb86c22bdea69071d47d6401a1a3ab3f3bafee",
+      "colorBytes": 33828
+    },
+    {
+      "id": "s-2-0",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0,
+        0.6666666666666666,
+        0.3333333333333333,
+        1
+      ],
+      "width": 418,
+      "height": 418,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/s-2-0.jpg",
+      "colorSha256": "3b9b64c7495882c36b971409203e569dfba4f72a58984e6ac80aca2126474802",
+      "colorBytes": 33210
+    },
+    {
+      "id": "s-2-1",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.3333333333333333,
+        0.6666666666666666,
+        0.6666666666666666,
+        1
+      ],
+      "width": 418,
+      "height": 418,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/s-2-1.jpg",
+      "colorSha256": "8d9bdb091c2f85a9e22d2ae9247b15ae165d61dd209b9220c7be030207f84fca",
+      "colorBytes": 31293
+    },
+    {
+      "id": "s-2-2",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.6666666666666666,
+        0.6666666666666666,
+        1,
+        1
+      ],
+      "width": 418,
+      "height": 418,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/tethys/s-2-2.jpg",
+      "colorSha256": "08e9f0de6d16e02b5418d9f671e1cb1a2a647b153bd97ffae6bf114b6d7a99b3",
+      "colorBytes": 28579
+    }
+  ],
+  "totalBytes": 9434944,
+  "sourceWidth": 11520,
+  "sourceHeight": 5760,
+  "sourceBytes": 57056218,
+  "heightPolicy": "No measured DEM bundled in this detail pack; existing base shape and relief are not promoted into detail.",
+  "provenance": {
+    "sha256": "1b93ce08763a9e098b9176362b01eb818c48152abb6b6ad880376e44dffb2dba",
+    "source": {
+      "file": "tethys-usgs-full.tif",
+      "url": "https://planetarymaps.usgs.gov/mosaic/Tethys_Cassini_mosaic_global_293m.tif",
+      "sha256": "40723c3ebfaaa52a657827b37309bc84234811db1cf26a21d086e26aba2b3640",
+      "width": 11520,
+      "height": 5760,
+      "metersPerPixel": 292.50627432643,
+      "projectionRadiusMeters": 536300,
+      "referenceRadiusMeters": 531100,
+      "labelSha256": "8fa11c1ab3415e39cc3b15de5cb7993468e5e240c7860e11b03877a63f199e40",
+      "metadata": "https://astrogeology.usgs.gov/search/map/tethys_cassini_global_mosaic_293m",
+      "doi": "10.26033/hpv0-eh61"
+    },
+    "coordinates": {
+      "longitude": "east-positive -180..180",
+      "latitude": "planetocentric",
+      "projection": "equirectangular",
+      "northAtTop": true,
+      "pixelRegistration": "pixel-centered"
+    },
+    "normalization": "Native simple cylindrical north-up map, full globe -180..180 east-positive; no rotation, mirror, colorization, sharpening, or invented pixels. Projection reference radius is independent of the canonical JPL SI radius."
+  },
+  "processing": "Pixel-centered canonical east-positive imagery sampled bilinearly at native resolution (maximum 64 ppd); 512-pixel bounded JPEG tiles; 70-degree stereographic polar replacement, square equatorial ground spacing; little-endian uint16 scientific heights in lossless gzip. Polar imagery remains limited by native polar observations/fill."
+}

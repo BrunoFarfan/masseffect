@@ -1,0 +1,67 @@
+{
+  "terrainKind": "procedural",
+  "effectivePixelsPerDegree": 5.688888888888889,
+  "heightEffectivePixelsPerDegree": null,
+  "tiles": [
+    {
+      "id": "n-0-0",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "width": 222,
+      "height": 222,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/ariel/n-0-0.jpg",
+      "colorSha256": "d48a4bfa2c2e73d3596dc65edc6e58a30fa49b9b914b332a2d9c9586b09a88d4",
+      "colorBytes": 854
+    },
+    {
+      "id": "s-0-0",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "width": 222,
+      "height": 222,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/ariel/s-0-0.jpg",
+      "colorSha256": "452ddb007158b7c699f5c7f3b3cf8ba7bff04c647a2cfe8f7c0f303119e07726",
+      "colorBytes": 6063
+    }
+  ],
+  "totalBytes": 6917,
+  "sourceWidth": 2048,
+  "sourceHeight": 1024,
+  "sourceBytes": 40850,
+  "heightPolicy": "No measured DEM bundled in this detail pack; existing base shape and relief are not promoted into detail.",
+  "provenance": {
+    "citation": "NASA Uranus–Ariel 3-D resource, USGS mosaic using Voyager imagery; credit USGS/Tammy Becker and JPL/Caltech",
+    "source": {
+      "file": "ariel-voyager-texture.webp",
+      "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/3d/resources/image/uranus---ariel/preview.webp?w=2048",
+      "sha256": "f7b83b95e4f52502e3104e0a11c5ae9ae2bfd2ae78bb2b80bd0ad237a1ce10c4",
+      "dimensions": "2048x1024 WebP, 8-bit sRGB, 3-channel"
+    },
+    "sourceMetadata": "https://science.nasa.gov/3d-resources/uranus-ariel/",
+    "missionReference": "https://www.jpl.nasa.gov/images/pia00041-ariel-highest-resolution-color-picture/",
+    "coverage": "Voyager 2's mapped coverage is concentrated in the encountered southern hemisphere; the official texture's unmapped/low-confidence regions are retained rather than replaced with invented imagery.",
+    "license": "NASA/JPL/Caltech and USGS public mission imagery; retain attribution.",
+    "processing": "Pinned 2048x1024 NASA WebP; verified 8-bit sRGB 3-channel metadata; resized without reprojection to 512x256, 1024x512 and native 2048x1024 JPEG derivatives; color is never used to derive height.",
+    "orientationEvidence": "NASA labels this asset an image texture for 3D models, but the published source metadata does not specify prime meridian, east/west sign, or pole orientation. The script validates dimensions/channels and preserves the supplied pixel order without a flip or rotate; alignment is explicitly unverified.",
+    "proceduralHeight": "Seamless direction-vector field, little-endian uint16, height = -500 + sample x 1 m; bounded range is recorded per level; synthetic approximation only.",
+    "canonicalRadiusMeters": 578900,
+    "sourceReferenceRadiusMeters": null
+  },
+  "processing": "Pixel-centered canonical east-positive imagery sampled bilinearly at native resolution (maximum 64 ppd); 512-pixel bounded JPEG tiles; 70-degree stereographic polar replacement, square equatorial ground spacing; little-endian uint16 scientific heights in lossless gzip. Polar imagery remains limited by native polar observations/fill."
+}

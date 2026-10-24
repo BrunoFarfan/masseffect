@@ -34,6 +34,12 @@ above 70 degrees is lower resolution than the nominal global tile size.
 | Moon | NASA GSFC LOLA/LDEM global DEM | 64 pixels/degree | Native 64 ppd samples |
 | Mars | NASA PDS MGS MOLA MEGDR planetary radius | 64 pixels/degree | Native 64 ppd samples |
 
+The global packs supersede the former Andes (60 ppd), Himalaya (6 ppd),
+Tycho (64 ppd), Mare Orientale and Copernicus (16 ppd), and Valles Marineris
+and Hellas (16 ppd) regional assets. These seven redundant products are no
+longer generated or shipped. Olympus remains a native 128 ppd regional
+supplement because it provides finer measured samples than the Mars pack.
+
 All heights remain meters above each body's documented reference radius.
 Earth's EGM2008-referenced elevation is combined with ellipsoidal radius over
 the simulation's reference sphere; local geoid-undulation correction is not

@@ -4,7 +4,7 @@ import {
   isCanonicalSurfaceBody,
   surfaceFrame,
 } from "./surface-definition.js";
-import { sampleAssetHeight } from "./surface-math.js";
+import { sampleAssetHeight, uvFromLocalVector } from "./surface-math.js";
 import { intersectTerrain } from "./surface-ray.js";
 import { shapeRadius, shapeIntersection } from "./surface-shape.js";
 import { sub, dot, length, unit, clamp } from "./math.js";
@@ -33,19 +33,35 @@ export class Surfaces {
         // Optional desktop terrain pack. An absent pack is normal: prepared
         // global maps remain immediately usable and web builds stay small.
         const pack = await fetch("/assets/surfaces/terrain64/index.json")
-          .then((response) => response.ok ? response.json() : null)
+          .then((response) => (response.ok ? response.json() : null))
           .catch(() => null);
         if (pack?.schemaVersion === 1)
           for (const [id, grid] of Object.entries(pack.bodies || {}))
-            if (manifest.bodies?.[id]?.levels?.near && grid.pixelsPerDegree === 64)
+            if (
+              manifest.bodies?.[id]?.levels?.near &&
+              grid.pixelsPerDegree === 64
+            )
               manifest.bodies[id].levels.near.tileGrid = grid;
         const colorPack = await fetch("/assets/surfaces/color64/index.json")
-          .then((response) => response.ok ? response.json() : null)
+          .then((response) => (response.ok ? response.json() : null))
           .catch(() => null);
         if (colorPack?.schemaVersion === 1)
           for (const [id, grid] of Object.entries(colorPack.bodies || {}))
-            if (manifest.bodies?.[id]?.levels?.near && grid.pixelsPerDegree === 64)
+            if (
+              manifest.bodies?.[id]?.levels?.near &&
+              grid.pixelsPerDegree === 64
+            )
               manifest.bodies[id].levels.near.colorTileGrid = grid;
+        const detailPack = await fetch("/assets/surfaces/detail/index.json")
+          .then((response) => (response.ok ? response.json() : null))
+          .catch(() => null);
+        if (detailPack?.schemaVersion === 1)
+          for (const [id, pack] of Object.entries(detailPack.bodies || {}))
+            if (
+              manifest.bodies?.[id]?.levels?.near &&
+              Array.isArray(pack.tiles)
+            )
+              manifest.bodies[id].levels.near.detailTiles = pack.tiles;
         this.manifest = manifest;
         this.cache = new SurfaceAssetCache({
           manifest,
@@ -62,7 +78,15 @@ export class Surfaces {
       ((entry.color && asset.color === entry.color) ||
         (entry.region && asset.region === entry.region) ||
         (entry.colorRegion && asset.colorRegion === entry.colorRegion) ||
-        (entry.shape && asset.shape === entry.shape));
+        (entry.region && asset.fallbackRegion === entry.region) ||
+        (entry.colorRegion &&
+          asset.fallbackColorRegion === entry.colorRegion) ||
+        (entry.shape && asset.shape === entry.shape) ||
+        asset.detailTiles?.some(
+          (tile) =>
+            (tile.region === entry.region && entry.region) ||
+            (tile.colorRegion === entry.colorRegion && entry.colorRegion),
+        ));
     for (const [id, state] of this.states) {
       if (matches(state.asset)) this.states.delete(id);
       else if (matches(state.previousAsset)) {
@@ -95,36 +119,35 @@ export class Surfaces {
         dot(toCamera, surfaceAxes.north),
         dot(toCamera, surfaceAxes.east),
       ];
-      const surfaceUv = {
-        u: ((Math.atan2(localCamera[2], localCamera[0]) / (Math.PI * 2) + 0.5) % 1 + 1) % 1,
-        v: 0.5 - Math.asin(clamp(localCamera[1], -1, 1)) / Math.PI,
-      };
+      const surfaceUv = uvFromLocalVector(localCamera);
       // Prefer the surface beneath the center ray over the camera subpoint.
-      // At grazing angles those can be far apart, and only one regional DEM
-      // can be resident for a body at once. The subpoint still governs the
+      // At grazing angles those can be far apart. The subpoint governs the
       // finite-distance horizon test in the cache.
       let viewUv = null;
       const fromCenter = sub(camera.position, body.position);
       const ray = camera.forward;
       const b = dot(fromCenter, ray);
-      const discriminant = b * b - (dot(fromCenter, fromCenter) - body.radius * body.radius);
+      const discriminant =
+        b * b - (dot(fromCenter, fromCenter) - body.radius * body.radius);
       if (discriminant >= 0) {
         const travel = -b - Math.sqrt(discriminant);
         if (travel > 0) {
-          const hit = unit(fromCenter.map((value, i) => value + travel * ray[i]));
+          const hit = unit(
+            fromCenter.map((value, i) => value + travel * ray[i]),
+          );
           const localHit = [
             dot(hit, surfaceAxes.prime),
             dot(hit, surfaceAxes.north),
             dot(hit, surfaceAxes.east),
           ];
-          viewUv = {
-            u: ((Math.atan2(localHit[2], localHit[0]) / (Math.PI * 2) + 0.5) % 1 + 1) % 1,
-            v: 0.5 - Math.asin(clamp(localHit[1], -1, 1)) / Math.PI,
-          };
+          viewUv = uvFromLocalVector(localHit);
         }
       }
       const entry = this.cache.get(
-        body, pixels, now, surfaceUv,
+        body,
+        pixels,
+        now,
+        surfaceUv,
         Math.min(1, body.radius / Math.max(distance, body.radius)),
         viewUv,
       );
@@ -134,23 +157,36 @@ export class Surfaces {
         state = { level: null, asset: null, previousAsset: null, since: now };
         this.states.set(body.id, state);
       }
-      if (
+      const globalChanged =
         state.level !== entry.level ||
         state.asset?.color !== entry.color ||
-        state.asset?.shape !== entry.shape ||
+        state.asset?.height !== entry.height ||
+        state.asset?.shape !== entry.shape;
+      if (
+        globalChanged ||
         state.asset?.region !== entry.region ||
-        state.asset?.colorRegion !== entry.colorRegion
+        state.asset?.colorRegion !== entry.colorRegion ||
+        state.asset?.fallbackRegion !== entry.fallbackRegion ||
+        state.asset?.fallbackColorRegion !== entry.fallbackColorRegion ||
+        state.asset?.detailTiles !== entry.detailTiles
       ) {
-        state.previousAsset = state.asset;
+        // Tile arrivals fade independently. Preserve the currently running
+        // global LOD transition instead of promoting its unfinished target.
+        if (globalChanged) {
+          state.previousAsset = state.asset;
+          state.since = now;
+        }
         state.asset = {
           color: entry.color,
           height: entry.height,
           region: entry.region,
           colorRegion: entry.colorRegion,
+          fallbackRegion: entry.fallbackRegion,
+          fallbackColorRegion: entry.fallbackColorRegion,
           shape: entry.shape,
+          detailTiles: entry.detailTiles,
         };
         state.level = entry.level;
-        state.since = now;
       }
       state.blend = smooth((now - state.since) / 800);
       if (state.blend === 1) state.previousAsset = null;
@@ -188,7 +224,8 @@ export class Surfaces {
         distance - this.radiusAt(body, camera.position),
       );
       state.quality =
-        state.asset.region && groundAltitude < 25000
+        (state.asset.region || state.asset.detailTiles?.length) &&
+        groundAltitude < 25000
           ? {
               maxRayIterations: 256,
               resolutionScale: 0.85,
@@ -204,6 +241,7 @@ export class Surfaces {
           l.minElevationMeters || 0,
           l.region?.minElevationMeters || 0,
           l.tileGrid?.minElevationMeters || 0,
+          ...(l.detailTiles || []).map((tile) => tile.minElevationMeters || 0),
         ]),
       );
       state.maxElevationMeters = Math.max(
@@ -215,6 +253,7 @@ export class Surfaces {
           l.maxElevationMeters || 0,
           l.region?.maxElevationMeters || 0,
           l.tileGrid?.maxElevationMeters || 0,
+          ...(l.detailTiles || []).map((tile) => tile.maxElevationMeters || 0),
         ]),
       );
       state.loading = entry.loading;
@@ -245,8 +284,7 @@ export class Surfaces {
   }
   sample(state, direction) {
     const n = unit(direction);
-    const u = Math.atan2(n[2], n[0]) / (Math.PI * 2) + 0.5;
-    const v = 0.5 - Math.asin(clamp(n[1], -1, 1)) / Math.PI;
+    const { u, v } = uvFromLocalVector(n);
     const current = sampleAssetHeight(state.asset, u, v);
     const height = state.previousAsset
       ? sampleAssetHeight(state.previousAsset, u, v) * (1 - state.blend) +

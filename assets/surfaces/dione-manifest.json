@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "generatedBy": "scripts/prepare-saturn-moons.mjs",
+  "bodies": {
+    "dione": {
+      "body": "dione",
+      "referenceRadiusMeters": 561400,
+      "bodyrefSIradius": 561400,
+      "sourceType": "mapped-imagery-ellipsoid-only",
+      "baseRadiiMeters": [
+        563400,
+        559600,
+        561300
+      ],
+      "sourceOrganization": "NASA/JPL/Space Science Institute; USGS Astrogeology",
+      "coordinates": {
+        "longitude": "east-positive -180..180",
+        "latitude": "planetocentric",
+        "projection": "equirectangular",
+        "northAtTop": true,
+        "pixelRegistration": "pixel-centered"
+      },
+      "heightPolicy": "Ellipsoid only. Measured 2025 PDS SPC global radius grids exist, but were not integrated because archive downloads returned access challenges; no synthetic height or brightness-derived terrain is generated.",
+      "provenance": {
+        "source": {
+          "file": "dione-usgs-full.tif",
+          "url": "https://planetarymaps.usgs.gov/mosaic/Dione_Cassini_Voyager_mosaic_global_154m.tif",
+          "sha256": "5c5d796c02e3c99fde5dd034e01dd1f25905699a4885843aed445ded955e08b5",
+          "width": 23040,
+          "height": 11520,
+          "metersPerPixel": 153.53443263638,
+          "projectionRadiusMeters": 563000,
+          "referenceRadiusMeters": 561400,
+          "labelSha256": "9ebd3ab389c665a4ed3ae3285c7f16b68438e26b8ba18b5e7fe177cb76716a9e",
+          "metadata": "https://astrogeology.usgs.gov/search/map/dione_cassini_voyager_global_mosaic_154m",
+          "doi": "10.26033/bxx6-g543"
+        },
+        "sourceMetadata": "https://astrogeology.usgs.gov/search/map/dione_cassini_voyager_global_mosaic_154m",
+        "citation": "NASA Cassini ISS global dione map; Voyager gap fill; see source product metadata.",
+        "coverage": "Global mosaic footprint with spatially variable source image resolution and photometric seams; nominal map spacing does not imply uniform effective resolution.",
+        "license": "NASA/USGS public planetary imagery; retain mission and product attribution.",
+        "processing": "Native simple cylindrical north-up map, full globe -180..180 east-positive; no rotation, mirror, colorization, sharpening, or invented pixels. Projection reference radius is independent of the canonical JPL SI radius.",
+        "measuredTerrainCandidate": "https://doi.org/10.26033/bxx6-g543",
+        "terrainLimitation": "Ellipsoid only. Measured 2025 PDS SPC global radius grids exist, but were not integrated because archive downloads returned access challenges; no synthetic height or brightness-derived terrain is generated.",
+        "imagery": {
+          "sha256": "a79c3a636be53e7292d06e610b09839a18ddc02df9338d4e10f975555a812068",
+          "source": {
+            "file": "dione-usgs-full.tif",
+            "url": "https://planetarymaps.usgs.gov/mosaic/Dione_Cassini_Voyager_mosaic_global_154m.tif",
+            "sha256": "5c5d796c02e3c99fde5dd034e01dd1f25905699a4885843aed445ded955e08b5",
+            "width": 23040,
+            "height": 11520,
+            "metersPerPixel": 153.53443263638,
+            "projectionRadiusMeters": 563000,
+            "referenceRadiusMeters": 561400,
+            "labelSha256": "9ebd3ab389c665a4ed3ae3285c7f16b68438e26b8ba18b5e7fe177cb76716a9e",
+            "metadata": "https://astrogeology.usgs.gov/search/map/dione_cassini_voyager_global_mosaic_154m",
+            "doi": "10.26033/bxx6-g543"
+          },
+          "coordinates": {
+            "longitude": "east-positive -180..180",
+            "latitude": "planetocentric",
+            "projection": "equirectangular",
+            "northAtTop": true,
+            "pixelRegistration": "pixel-centered"
+          },
+          "normalization": "Native simple cylindrical north-up map, full globe -180..180 east-positive; no rotation, mirror, colorization, sharpening, or invented pixels. Projection reference radius is independent of the canonical JPL SI radius."
+        }
+      },
+      "levels": {
+        "preview": {
+          "color": "/assets/surfaces/dione-preview.jpg",
+          "width": 512,
+          "height": 256,
+          "colorSha256": "e6fe13858731147ac083db36d6ff179ee8b23bb020249791618fb0c4e3520b50"
+        },
+        "medium": {
+          "color": "/assets/surfaces/dione-medium.jpg",
+          "width": 1024,
+          "height": 512,
+          "colorSha256": "c1260f8a2dd52c715799f8e6b31d43848ebdc6a9abfe9bbebfe0f2cbc80ab1a2"
+        },
+        "near": {
+          "color": "/assets/surfaces/dione-near.jpg",
+          "width": 2048,
+          "height": 1024,
+          "colorSha256": "b9100255f81830b9f5e84854c6b3eb24ee9fdd76847c8062beb97b33fed2d280"
+        }
+      },
+      "colorType": "Mapped spacecraft imagery; see pinned source and display processing"
+    }
+  }
+}

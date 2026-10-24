@@ -28,11 +28,17 @@ test("surface manifest covers bounded Moon and Mars levels", async () => {
         checksum(await readFile(localAsset(level.color))),
         level.colorSha256,
       );
-      if (name !== "preview") {
+      {
         assert.ok(level.heightUrl);
         assert.ok(level.heightWidth && level.heightHeight);
-        assert.equal(level.heightWidth, level.width / 2);
-        assert.equal(level.heightHeight, level.height / 2);
+        assert.equal(
+          level.heightWidth,
+          name === "preview" ? level.width : level.width / 2,
+        );
+        assert.equal(
+          level.heightHeight,
+          name === "preview" ? level.height : level.height / 2,
+        );
         const bytes = await stat(localAsset(level.heightUrl));
         assert.equal(
           bytes.size,
@@ -63,7 +69,7 @@ test("surface manifest covers bounded Moon and Mars levels", async () => {
           assert.ok(min < -15000);
           assert.ok(max > 25000);
         }
-      } else assert.equal(level.heightUrl, undefined);
+      }
       for (const region of level.regions || []) {
         const regionBytes = await readFile(localAsset(region.heightUrl));
         assert.equal(
@@ -119,116 +125,29 @@ test("Venus keeps measured Magellan height while Uranus remains atmospheric", ()
   }
   assert.equal(manifest.bodies.uranus.atmosphericBands, false);
   assert.match(manifest.bodies.uranus.sourceType, /observed-atmosphere/);
-  assert.match(manifest.bodies.uranus.provenance.coverage, /unobserved southern cap/);
-  assert.ok(getSurfaceDefinition("venus").atmosphere.upperAltitudeMeters > 60000);
+  assert.match(
+    manifest.bodies.uranus.provenance.coverage,
+    /unobserved southern cap/,
+  );
+  assert.ok(
+    getSurfaceDefinition("venus").atmosphere.upperAltitudeMeters > 60000,
+  );
   assert.match(manifest.bodies.uranus.heightPolicy, /no solid terrain/);
   for (const level of Object.values(manifest.bodies.uranus.levels))
     assert.equal(level.heightUrl, undefined);
 });
 
-test("Earth near level carries native 60-arcsecond Andes relief", async () => {
-  const region = manifest.bodies.earth.levels.near.region;
-  assert.equal(region.name, "Andes ETOPO2022 60-arcsecond regional relief");
-  const geocentric = (latitude) =>
-    Math.atan(
-      (6356752.314245 ** 2 / 6378137 ** 2) *
-        Math.tan((latitude * Math.PI) / 180),
-    ) * (180 / Math.PI);
-  assert.deepEqual(region.uvBounds, [
-    (-75 + 180) / 360,
-    0.5 - geocentric(-20) / 180,
-    (-65 + 180) / 360,
-    0.5 - geocentric(-40) / 180,
-  ]);
-  const bytes = await readFile(localAsset(region.heightUrl));
-  assert.equal(bytes.length, 601 * 1201 * 2);
-  assert.equal(checksum(bytes), region.heightSha256);
-  let min = Infinity, max = -Infinity;
-  for (let i = 0; i < bytes.length; i += 2) {
-    const elevation = bytes.readUInt16LE(i) + region.heightOffsetMeters;
-    min = Math.min(min, elevation); max = Math.max(max, elevation);
+test("global terrain keeps only the higher-resolution Olympus regional supplement", () => {
+  for (const body of ["earth", "moon"]) {
+    assert.equal(manifest.bodies[body].levels.near.region, undefined);
+    assert.deepEqual(manifest.bodies[body].levels.near.regions || [], []);
   }
-  assert.equal(min, region.minElevationMeters);
-  assert.equal(max, region.maxElevationMeters);
-  assert.ok(max > 9000);
-});
-
-test("Earth Himalaya tile preserves native ETOPO samples and bounds", async () => {
-  const region = manifest.bodies.earth.levels.near.regions.find((tile) => tile.id === "himalaya");
-  assert.ok(region);
-  const geocentric = (latitude) => Math.atan((6356752.314245 ** 2 / 6378137 ** 2) * Math.tan(latitude * Math.PI / 180)) * 180 / Math.PI;
-  assert.deepEqual(region.uvBounds, [70 / 360 + 0.5, 0.5 - geocentric(35) / 180, 100 / 360 + 0.5, 0.5 - geocentric(25) / 180]);
-  const bytes = await readFile(localAsset(region.heightUrl));
-  assert.equal(bytes.length, 181 * 61 * 2);
-  assert.equal(checksum(bytes), region.heightSha256);
-  let min = Infinity, max = -Infinity;
-  for (let i = 0; i < bytes.length; i += 2) {
-    const elevation = bytes.readUInt16LE(i) + region.heightOffsetMeters;
-    min = Math.min(min, elevation); max = Math.max(max, elevation);
-  }
-  assert.equal(min, region.minElevationMeters);
-  assert.equal(max, region.maxElevationMeters);
-  assert.ok(max > 7000);
-});
-
-test("Tycho regional DEM preserves verified native LOLA samples and coverage", async () => {
-  const region = manifest.bodies.moon.levels.near.region;
-  const bytes = await readFile(localAsset(region.heightUrl));
-  assert.equal(bytes.length, 896 * 896 * 2);
-  assert.equal(checksum(bytes), region.heightSha256);
-  assert.deepEqual(region.uvBounds, [0.45, 0.7, 176 / 360, 140 / 180]);
-  let min = Infinity,
-    max = -Infinity;
-  for (let i = 0; i < bytes.length; i += 2) {
-    const h = bytes.readUInt16LE(i) * 0.5 - 10000;
-    min = Math.min(min, h);
-    max = Math.max(max, h);
-  }
-  assert.equal(min, -5387);
-  assert.equal(max, 2095.5);
-  assert.equal(region.minElevationMeters, min);
-  assert.equal(region.maxElevationMeters, max);
-  assert.match(
-    manifest.bodies.moon.provenance.sources[2].checksumScope,
-    /not full original/,
+  const mars = manifest.bodies.mars.levels.near;
+  assert.deepEqual(
+    mars.regions.map((region) => region.id),
+    ["olympus"],
   );
-});
-
-test("Mare Orientale LOLA16 tile is aligned to its wrapped longitude bounds", async () => {
-  const region = manifest.bodies.moon.levels.near.regions.find(
-    (tile) => tile.id === "mare-orientale",
-  );
-  assert.ok(region);
-  assert.deepEqual(region.uvBounds, [80 / 360, 80 / 180, 120 / 360, 120 / 180]);
-  const bytes = await readFile(localAsset(region.heightUrl));
-  assert.equal(bytes.length, 641 * 641 * 2);
-  assert.equal(checksum(bytes), region.heightSha256);
-  // Source fixtures from the verified LOLA16 TIFF at (1280,1280),
-  // (1600,1600), and (1920,1920). A shifted tile can have a valid checksum
-  // and elevation range of its own, but must fail these geographic samples.
-  assert.equal(bytes.readUInt16LE(0), 22173);
-  assert.equal(bytes.readUInt16LE((320 * 641 + 320) * 2), 22115);
-  assert.equal(bytes.readUInt16LE((640 * 641 + 640) * 2), 21058);
-});
-
-test("Copernicus and Hellas regional tiles are native verified DEM crops", async () => {
-  const copernicus = manifest.bodies.moon.levels.near.regions.find((tile) => tile.id === "copernicus");
-  const hellas = manifest.bodies.mars.levels.near.regions.find((tile) => tile.id === "hellas");
-  assert.ok(copernicus); assert.ok(hellas);
-  assert.deepEqual(copernicus.uvBounds, [-25 / 360 + 0.5, 75 / 180, -15 / 360 + 0.5, 85 / 180]);
-  assert.deepEqual(hellas.uvBounds, [60 / 360 + 0.5, 110 / 180, 90 / 360 + 0.5, 140 / 180]);
-  const inside = (bounds, longitude, latitude) => {
-    const u = (longitude + 180) / 360, v = (90 - latitude) / 180;
-    return bounds[0] <= u && u <= bounds[2] && bounds[1] <= v && v <= bounds[3];
-  };
-  assert.ok(inside(copernicus.uvBounds, -20.08, 9.62));
-  assert.ok(inside(hellas.uvBounds, 70.5, -42.4));
-  for (const [region, width, height] of [[copernicus, 161, 161], [hellas, 481, 481]]) {
-    const bytes = await readFile(localAsset(region.heightUrl));
-    assert.equal(bytes.length, width * height * 2);
-    assert.equal(checksum(bytes), region.heightSha256);
-    assert.ok(region.maxElevationMeters > region.minElevationMeters);
-  }
+  assert.deepEqual(mars.region, mars.regions[0]);
 });
 
 test("Olympus regional MOLA128 crop preserves exact tile bounds and radial conversion", async () => {

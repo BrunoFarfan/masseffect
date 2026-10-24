@@ -1,0 +1,3839 @@
+{
+  "terrainKind": "procedural",
+  "effectivePixelsPerDegree": 31.788888888888888,
+  "heightEffectivePixelsPerDegree": null,
+  "tiles": [
+    {
+      "id": "e-1-0",
+      "uvBounds": [
+        0,
+        0.08333333333333333,
+        0.043478260869565216,
+        0.16666666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-1-0.jpg",
+      "colorSha256": "e8e2175f45b49265e6a7147895823cb05258bff4f47ca28522f2ba36ff532294",
+      "colorBytes": 27658
+    },
+    {
+      "id": "e-1-1",
+      "uvBounds": [
+        0.043478260869565216,
+        0.08333333333333333,
+        0.08695652173913043,
+        0.16666666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-1-1.jpg",
+      "colorSha256": "c142cdb85fe7880c4ab5a166b3490ba880823189a9f341315f59be1dd5ba0425",
+      "colorBytes": 28170
+    },
+    {
+      "id": "e-1-2",
+      "uvBounds": [
+        0.08695652173913043,
+        0.08333333333333333,
+        0.13043478260869565,
+        0.16666666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-1-2.jpg",
+      "colorSha256": "e180eed5b031b8b7d33c242c8021d3979878f2a287e428111aa60652bb1e4777",
+      "colorBytes": 18301
+    },
+    {
+      "id": "e-1-3",
+      "uvBounds": [
+        0.13043478260869565,
+        0.08333333333333333,
+        0.17391304347826086,
+        0.16666666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-1-3.jpg",
+      "colorSha256": "2237f2fb52cc0e9ec93bf32dc123c8471cd9a9cffead2d38769bc6b3be3faaa2",
+      "colorBytes": 17073
+    },
+    {
+      "id": "e-1-4",
+      "uvBounds": [
+        0.17391304347826086,
+        0.08333333333333333,
+        0.21739130434782608,
+        0.16666666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-1-4.jpg",
+      "colorSha256": "10901b7166f426686c50ba9f84bbd1a5cbe153b657fe8cf455bc984493267862",
+      "colorBytes": 15513
+    },
+    {
+      "id": "e-1-5",
+      "uvBounds": [
+        0.21739130434782608,
+        0.08333333333333333,
+        0.2608695652173913,
+        0.16666666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-1-5.jpg",
+      "colorSha256": "45840011c504836fad7fcff6c71da80f0176f62129305917cb5e5d910a232f52",
+      "colorBytes": 14392
+    },
+    {
+      "id": "e-1-6",
+      "uvBounds": [
+        0.2608695652173913,
+        0.08333333333333333,
+        0.30434782608695654,
+        0.16666666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-1-6.jpg",
+      "colorSha256": "896de7503926c09192f6e0d71f8a734918bedb57f0c335f563b027348169bbf5",
+      "colorBytes": 14612
+    },
+    {
+      "id": "e-1-7",
+      "uvBounds": [
+        0.30434782608695654,
+        0.08333333333333333,
+        0.34782608695652173,
+        0.16666666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-1-7.jpg",
+      "colorSha256": "7267560ff3a14a1783a85cd565bc8e374562b6d214b1604cf7f62ed78ad210b7",
+      "colorBytes": 12908
+    },
+    {
+      "id": "e-1-8",
+      "uvBounds": [
+        0.34782608695652173,
+        0.08333333333333333,
+        0.391304347826087,
+        0.16666666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-1-8.jpg",
+      "colorSha256": "65b6f6f7c01eef51e8ae4b187d6121b57d5cc040379f7a8125efb3d5d37c1bec",
+      "colorBytes": 14574
+    },
+    {
+      "id": "e-1-9",
+      "uvBounds": [
+        0.391304347826087,
+        0.08333333333333333,
+        0.43478260869565216,
+        0.16666666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-1-9.jpg",
+      "colorSha256": "6e73d41fa15c48b76e923caf944c91be2caeb4111fc6a35b019d2fd08a1301f4",
+      "colorBytes": 21524
+    },
+    {
+      "id": "e-1-10",
+      "uvBounds": [
+        0.43478260869565216,
+        0.08333333333333333,
+        0.4782608695652174,
+        0.16666666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-1-10.jpg",
+      "colorSha256": "b22f8c896c8bd436a88e4bc52212b41f361d6381a4614d5ab4d19d511bb8ac88",
+      "colorBytes": 16400
+    },
+    {
+      "id": "e-1-11",
+      "uvBounds": [
+        0.4782608695652174,
+        0.08333333333333333,
+        0.5217391304347826,
+        0.16666666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-1-11.jpg",
+      "colorSha256": "d355dc2900f29d51fab0ee67db75df0b56689bd78ab4534ea47292467b0bae82",
+      "colorBytes": 10734
+    },
+    {
+      "id": "e-1-12",
+      "uvBounds": [
+        0.5217391304347826,
+        0.08333333333333333,
+        0.5652173913043478,
+        0.16666666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-1-12.jpg",
+      "colorSha256": "c9bc2d6d0bf7bb8ea32f5f909f098f742b2cb00322fd50303ae8a136807a212e",
+      "colorBytes": 9625
+    },
+    {
+      "id": "e-1-13",
+      "uvBounds": [
+        0.5652173913043478,
+        0.08333333333333333,
+        0.6086956521739131,
+        0.16666666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-1-13.jpg",
+      "colorSha256": "e6d361fd1e66688c33f3780d15137af3880d53811307326b7eacca0e6091efed",
+      "colorBytes": 11623
+    },
+    {
+      "id": "e-1-14",
+      "uvBounds": [
+        0.6086956521739131,
+        0.08333333333333333,
+        0.6521739130434783,
+        0.16666666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-1-14.jpg",
+      "colorSha256": "ed6949af196753a322ac70881320447761f7fb15ec01d3e655804cf27e381b98",
+      "colorBytes": 13096
+    },
+    {
+      "id": "e-1-15",
+      "uvBounds": [
+        0.6521739130434783,
+        0.08333333333333333,
+        0.6956521739130435,
+        0.16666666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-1-15.jpg",
+      "colorSha256": "466d3b62bb967a5e40d73cad25b7797f1637d4a15d1a304fd79de41938328246",
+      "colorBytes": 18140
+    },
+    {
+      "id": "e-1-16",
+      "uvBounds": [
+        0.6956521739130435,
+        0.08333333333333333,
+        0.7391304347826086,
+        0.16666666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-1-16.jpg",
+      "colorSha256": "9387e1f47ed10179d9ad106990ca2538579413ec76c2c59e860d523c8237f078",
+      "colorBytes": 25219
+    },
+    {
+      "id": "e-1-17",
+      "uvBounds": [
+        0.7391304347826086,
+        0.08333333333333333,
+        0.782608695652174,
+        0.16666666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-1-17.jpg",
+      "colorSha256": "9e7c7728c2a3086a14125975058c91e3e02357ae1745f896332f3cb8ee2b663f",
+      "colorBytes": 25483
+    },
+    {
+      "id": "e-1-18",
+      "uvBounds": [
+        0.782608695652174,
+        0.08333333333333333,
+        0.8260869565217391,
+        0.16666666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-1-18.jpg",
+      "colorSha256": "717d6e5d6530dcbb6c51b7fd17288c721abd8301cce65f8f51c0b42c0a456da2",
+      "colorBytes": 23129
+    },
+    {
+      "id": "e-1-19",
+      "uvBounds": [
+        0.8260869565217391,
+        0.08333333333333333,
+        0.8695652173913043,
+        0.16666666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-1-19.jpg",
+      "colorSha256": "5a30ba6ac8b57b82dc6a1d7d13da427d46f4e623cec72d377df0ab2107881092",
+      "colorBytes": 23546
+    },
+    {
+      "id": "e-1-20",
+      "uvBounds": [
+        0.8695652173913043,
+        0.08333333333333333,
+        0.9130434782608695,
+        0.16666666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-1-20.jpg",
+      "colorSha256": "ba74ec6d16dd597168c430f647c7a55d0a721fbabf0d0c3424f04ed0a8f63776",
+      "colorBytes": 21242
+    },
+    {
+      "id": "e-1-21",
+      "uvBounds": [
+        0.9130434782608695,
+        0.08333333333333333,
+        0.9565217391304348,
+        0.16666666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-1-21.jpg",
+      "colorSha256": "14afe69e316af4abe23c198ed3687bdeac8100b11573855008a9c576a5e785bf",
+      "colorBytes": 25117
+    },
+    {
+      "id": "e-1-22",
+      "uvBounds": [
+        0.9565217391304348,
+        0.08333333333333333,
+        1,
+        0.16666666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-1-22.jpg",
+      "colorSha256": "0eda8c804fc2ff654c8e550d141d69b7a3d66a063a30b17b7c5bd52401ee8ac3",
+      "colorBytes": 26709
+    },
+    {
+      "id": "e-2-0",
+      "uvBounds": [
+        0,
+        0.16666666666666666,
+        0.043478260869565216,
+        0.25
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-2-0.jpg",
+      "colorSha256": "cc7aefacdcd4da8315bf96a4e4aadef0d725b6081c1a04e8d6eb3c073797a3e2",
+      "colorBytes": 23567
+    },
+    {
+      "id": "e-2-1",
+      "uvBounds": [
+        0.043478260869565216,
+        0.16666666666666666,
+        0.08695652173913043,
+        0.25
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-2-1.jpg",
+      "colorSha256": "6894720bb0121755bdf9555f19ecd14a704b929218061496266d206b116f48ae",
+      "colorBytes": 30673
+    },
+    {
+      "id": "e-2-2",
+      "uvBounds": [
+        0.08695652173913043,
+        0.16666666666666666,
+        0.13043478260869565,
+        0.25
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-2-2.jpg",
+      "colorSha256": "3d154e02b324d367b6789704489ed7c9c10c0f6f6bd219991ff8e8a90731eb03",
+      "colorBytes": 27056
+    },
+    {
+      "id": "e-2-3",
+      "uvBounds": [
+        0.13043478260869565,
+        0.16666666666666666,
+        0.17391304347826086,
+        0.25
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-2-3.jpg",
+      "colorSha256": "dc1be817de948d8496ea70123882cb7418dcb217117e1c817334a54e8a55f737",
+      "colorBytes": 24866
+    },
+    {
+      "id": "e-2-4",
+      "uvBounds": [
+        0.17391304347826086,
+        0.16666666666666666,
+        0.21739130434782608,
+        0.25
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-2-4.jpg",
+      "colorSha256": "4fa808d1c2915770de38c0c8d95487c6c6f1d89ea960b2608dede8bf47cb2676",
+      "colorBytes": 22851
+    },
+    {
+      "id": "e-2-5",
+      "uvBounds": [
+        0.21739130434782608,
+        0.16666666666666666,
+        0.2608695652173913,
+        0.25
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-2-5.jpg",
+      "colorSha256": "e129738ffdb79abc26123913d94e3fe88046b800cfd7670cf32ac44f1539d8a6",
+      "colorBytes": 20820
+    },
+    {
+      "id": "e-2-6",
+      "uvBounds": [
+        0.2608695652173913,
+        0.16666666666666666,
+        0.30434782608695654,
+        0.25
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-2-6.jpg",
+      "colorSha256": "0541d09f9e4a8b1d28835f4d7740dbaca7107f07854027cfd73260a2aad27209",
+      "colorBytes": 20091
+    },
+    {
+      "id": "e-2-7",
+      "uvBounds": [
+        0.30434782608695654,
+        0.16666666666666666,
+        0.34782608695652173,
+        0.25
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-2-7.jpg",
+      "colorSha256": "19804ff36093dd6b7fe17c9bb034151bbdb2e0adb48e838b8ce57a3b90214c5f",
+      "colorBytes": 14985
+    },
+    {
+      "id": "e-2-8",
+      "uvBounds": [
+        0.34782608695652173,
+        0.16666666666666666,
+        0.391304347826087,
+        0.25
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-2-8.jpg",
+      "colorSha256": "77e0997fb609740fad24743ecf7759f34a4304bc86cf8d1bbc618c944f3474c2",
+      "colorBytes": 14504
+    },
+    {
+      "id": "e-2-9",
+      "uvBounds": [
+        0.391304347826087,
+        0.16666666666666666,
+        0.43478260869565216,
+        0.25
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-2-9.jpg",
+      "colorSha256": "8272d3e4e550098863ea8f622c0e40f0086e4317584204a96cb4c187480b3c20",
+      "colorBytes": 18330
+    },
+    {
+      "id": "e-2-10",
+      "uvBounds": [
+        0.43478260869565216,
+        0.16666666666666666,
+        0.4782608695652174,
+        0.25
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-2-10.jpg",
+      "colorSha256": "355b1308e52f22a4f892be496279c18583b975261385f1e21c1ee9fa7f8d9888",
+      "colorBytes": 15974
+    },
+    {
+      "id": "e-2-11",
+      "uvBounds": [
+        0.4782608695652174,
+        0.16666666666666666,
+        0.5217391304347826,
+        0.25
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-2-11.jpg",
+      "colorSha256": "6b562b8f8375267fddf77d0536ce94711f30a1a34d08c33687cf1048d1b07494",
+      "colorBytes": 14222
+    },
+    {
+      "id": "e-2-12",
+      "uvBounds": [
+        0.5217391304347826,
+        0.16666666666666666,
+        0.5652173913043478,
+        0.25
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-2-12.jpg",
+      "colorSha256": "0fb5ff9a0e7e05c4a1b33f688e6b7e39c5e626abefbbc336565ece25ca6fc107",
+      "colorBytes": 11176
+    },
+    {
+      "id": "e-2-13",
+      "uvBounds": [
+        0.5652173913043478,
+        0.16666666666666666,
+        0.6086956521739131,
+        0.25
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-2-13.jpg",
+      "colorSha256": "10b93e6f7a1ad9ea77a68b22e838c33a076c48193c49ca3f8d547b843be30eb1",
+      "colorBytes": 11015
+    },
+    {
+      "id": "e-2-14",
+      "uvBounds": [
+        0.6086956521739131,
+        0.16666666666666666,
+        0.6521739130434783,
+        0.25
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-2-14.jpg",
+      "colorSha256": "27df10ac2f3d0759176d963d6ba6d1a30bd62bc4f6333d2be6290bea40f08818",
+      "colorBytes": 12540
+    },
+    {
+      "id": "e-2-15",
+      "uvBounds": [
+        0.6521739130434783,
+        0.16666666666666666,
+        0.6956521739130435,
+        0.25
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-2-15.jpg",
+      "colorSha256": "20f8d1b1528d45d6f629dbd1cc9c28f8eb964ebfa6d8b2630f8291617f6013a8",
+      "colorBytes": 21114
+    },
+    {
+      "id": "e-2-16",
+      "uvBounds": [
+        0.6956521739130435,
+        0.16666666666666666,
+        0.7391304347826086,
+        0.25
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-2-16.jpg",
+      "colorSha256": "46f02bc61e8ab2359920f64e7d5c50b2b8e3312cf895323bc0049f25c3e19734",
+      "colorBytes": 31009
+    },
+    {
+      "id": "e-2-17",
+      "uvBounds": [
+        0.7391304347826086,
+        0.16666666666666666,
+        0.782608695652174,
+        0.25
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-2-17.jpg",
+      "colorSha256": "8df468d21761c6c6345bbd0b57cda90cdc2334a4a259424d354f17ee16fad1d8",
+      "colorBytes": 32132
+    },
+    {
+      "id": "e-2-18",
+      "uvBounds": [
+        0.782608695652174,
+        0.16666666666666666,
+        0.8260869565217391,
+        0.25
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-2-18.jpg",
+      "colorSha256": "e311aa32eb8003480b6da9917926f416c205443c2c04e9459df9044267bd4266",
+      "colorBytes": 29485
+    },
+    {
+      "id": "e-2-19",
+      "uvBounds": [
+        0.8260869565217391,
+        0.16666666666666666,
+        0.8695652173913043,
+        0.25
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-2-19.jpg",
+      "colorSha256": "0ee371530a6aef44ee103b2468b50ba120dd06d39cbfe4ea86968e484066953f",
+      "colorBytes": 24373
+    },
+    {
+      "id": "e-2-20",
+      "uvBounds": [
+        0.8695652173913043,
+        0.16666666666666666,
+        0.9130434782608695,
+        0.25
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-2-20.jpg",
+      "colorSha256": "c506ed59d824928cda71baa6ccec39259b35068f869f66b6b0f816581ef2032f",
+      "colorBytes": 26530
+    },
+    {
+      "id": "e-2-21",
+      "uvBounds": [
+        0.9130434782608695,
+        0.16666666666666666,
+        0.9565217391304348,
+        0.25
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-2-21.jpg",
+      "colorSha256": "9d369baef0d4f8c02a892e61aee3a195d447c527bad98c4d4c09dc0b333ae381",
+      "colorBytes": 29119
+    },
+    {
+      "id": "e-2-22",
+      "uvBounds": [
+        0.9565217391304348,
+        0.16666666666666666,
+        1,
+        0.25
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-2-22.jpg",
+      "colorSha256": "1586d20065a551240e62f19fb03ebab286ea18435ec94197d8a6970ca1accfb1",
+      "colorBytes": 28780
+    },
+    {
+      "id": "e-3-0",
+      "uvBounds": [
+        0,
+        0.25,
+        0.043478260869565216,
+        0.3333333333333333
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-3-0.jpg",
+      "colorSha256": "0b426e53b0004956352aeee723ac0520fab7517f578afa4e45e0c49b86ccc49a",
+      "colorBytes": 33382
+    },
+    {
+      "id": "e-3-1",
+      "uvBounds": [
+        0.043478260869565216,
+        0.25,
+        0.08695652173913043,
+        0.3333333333333333
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-3-1.jpg",
+      "colorSha256": "c868d5556a846ee15e2fdb0b2351c4e386fc72f3c0281c79fab262e6631150a8",
+      "colorBytes": 34994
+    },
+    {
+      "id": "e-3-2",
+      "uvBounds": [
+        0.08695652173913043,
+        0.25,
+        0.13043478260869565,
+        0.3333333333333333
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-3-2.jpg",
+      "colorSha256": "9f82d1805bc64b259994843a87460e1185bcb1da72886647c394909a88a14813",
+      "colorBytes": 29356
+    },
+    {
+      "id": "e-3-3",
+      "uvBounds": [
+        0.13043478260869565,
+        0.25,
+        0.17391304347826086,
+        0.3333333333333333
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-3-3.jpg",
+      "colorSha256": "45966a380857e3f22d6fad6c6e1ddace2087492d9e4242a52ea6b31766f210f7",
+      "colorBytes": 29983
+    },
+    {
+      "id": "e-3-4",
+      "uvBounds": [
+        0.17391304347826086,
+        0.25,
+        0.21739130434782608,
+        0.3333333333333333
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-3-4.jpg",
+      "colorSha256": "6fa6fac089e6a3aa9d7b4b87f9ee2a9642933df93b31d10fe9926636fecf59c3",
+      "colorBytes": 31116
+    },
+    {
+      "id": "e-3-5",
+      "uvBounds": [
+        0.21739130434782608,
+        0.25,
+        0.2608695652173913,
+        0.3333333333333333
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-3-5.jpg",
+      "colorSha256": "c49c78032e85b2b0ecdff6ad82ce049afd8c00fc1fcdf71de7a8a2a1673b1c99",
+      "colorBytes": 24071
+    },
+    {
+      "id": "e-3-6",
+      "uvBounds": [
+        0.2608695652173913,
+        0.25,
+        0.30434782608695654,
+        0.3333333333333333
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-3-6.jpg",
+      "colorSha256": "a112a422f3de12727e75115827fb9f4304df70ef4e3632616d235b675f21250c",
+      "colorBytes": 19143
+    },
+    {
+      "id": "e-3-7",
+      "uvBounds": [
+        0.30434782608695654,
+        0.25,
+        0.34782608695652173,
+        0.3333333333333333
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-3-7.jpg",
+      "colorSha256": "030257fafc2b4392324d0417d26509363c4ba5870a12e62fb3056e6763c28219",
+      "colorBytes": 14393
+    },
+    {
+      "id": "e-3-8",
+      "uvBounds": [
+        0.34782608695652173,
+        0.25,
+        0.391304347826087,
+        0.3333333333333333
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-3-8.jpg",
+      "colorSha256": "0dc70cf5326fe5cc4a211410073e2a43967d08736bc93083d9549e03e86042f2",
+      "colorBytes": 19225
+    },
+    {
+      "id": "e-3-9",
+      "uvBounds": [
+        0.391304347826087,
+        0.25,
+        0.43478260869565216,
+        0.3333333333333333
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-3-9.jpg",
+      "colorSha256": "42d8c61afc0eb3abd8db3b0de4cbdaede1815bb2f179aec10624a1ab9c6304f5",
+      "colorBytes": 18051
+    },
+    {
+      "id": "e-3-10",
+      "uvBounds": [
+        0.43478260869565216,
+        0.25,
+        0.4782608695652174,
+        0.3333333333333333
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-3-10.jpg",
+      "colorSha256": "86994de584b7a7cbfdc645f61a21628610dd4b93995893cc7482240bd0b48fc5",
+      "colorBytes": 16813
+    },
+    {
+      "id": "e-3-11",
+      "uvBounds": [
+        0.4782608695652174,
+        0.25,
+        0.5217391304347826,
+        0.3333333333333333
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-3-11.jpg",
+      "colorSha256": "d9e46db54ee186e6f339e964e5dd5c80c5bbc24cc11bcf74d01df421101f05e2",
+      "colorBytes": 19732
+    },
+    {
+      "id": "e-3-12",
+      "uvBounds": [
+        0.5217391304347826,
+        0.25,
+        0.5652173913043478,
+        0.3333333333333333
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-3-12.jpg",
+      "colorSha256": "8736f4feb315911989791c2640c8f1a47b4b898c6b0aa7d355d0e6b0fc775cf6",
+      "colorBytes": 16142
+    },
+    {
+      "id": "e-3-13",
+      "uvBounds": [
+        0.5652173913043478,
+        0.25,
+        0.6086956521739131,
+        0.3333333333333333
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-3-13.jpg",
+      "colorSha256": "84fdc8f354f950a388aa48da018b831927aa0e34711cd5b6cb6620cc92125e44",
+      "colorBytes": 16307
+    },
+    {
+      "id": "e-3-14",
+      "uvBounds": [
+        0.6086956521739131,
+        0.25,
+        0.6521739130434783,
+        0.3333333333333333
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-3-14.jpg",
+      "colorSha256": "153c63af240996aa2bfa46e03429d591cf6c4d8b6c29ce6816f5bb15114bf6a2",
+      "colorBytes": 15389
+    },
+    {
+      "id": "e-3-15",
+      "uvBounds": [
+        0.6521739130434783,
+        0.25,
+        0.6956521739130435,
+        0.3333333333333333
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-3-15.jpg",
+      "colorSha256": "f4fbd98881e656c4611bf16b7d109ac872c482da4733feb70695fddc17536633",
+      "colorBytes": 21556
+    },
+    {
+      "id": "e-3-16",
+      "uvBounds": [
+        0.6956521739130435,
+        0.25,
+        0.7391304347826086,
+        0.3333333333333333
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-3-16.jpg",
+      "colorSha256": "c636f5bcdee1f7005caa4df045f0749fe0366704e596a3f1cc1ab2194f940836",
+      "colorBytes": 32008
+    },
+    {
+      "id": "e-3-17",
+      "uvBounds": [
+        0.7391304347826086,
+        0.25,
+        0.782608695652174,
+        0.3333333333333333
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-3-17.jpg",
+      "colorSha256": "f33d17ad691259ccaee2f5a294c389c16c8c38d4c5dea1f685947619515ef370",
+      "colorBytes": 30713
+    },
+    {
+      "id": "e-3-18",
+      "uvBounds": [
+        0.782608695652174,
+        0.25,
+        0.8260869565217391,
+        0.3333333333333333
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-3-18.jpg",
+      "colorSha256": "60f283cf0bdc9b6b3cf7ffec8db49e814586b4b283ba14de727e48850a1259ef",
+      "colorBytes": 31614
+    },
+    {
+      "id": "e-3-19",
+      "uvBounds": [
+        0.8260869565217391,
+        0.25,
+        0.8695652173913043,
+        0.3333333333333333
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-3-19.jpg",
+      "colorSha256": "96f4d6c12aff89a4486a91466c8c67d2d5b8d4d69bc74881766985df40950eaf",
+      "colorBytes": 28081
+    },
+    {
+      "id": "e-3-20",
+      "uvBounds": [
+        0.8695652173913043,
+        0.25,
+        0.9130434782608695,
+        0.3333333333333333
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-3-20.jpg",
+      "colorSha256": "c66ecef26e8390b713fedcf14a908701e317a3e8500197adc53bd529acb5d856",
+      "colorBytes": 31636
+    },
+    {
+      "id": "e-3-21",
+      "uvBounds": [
+        0.9130434782608695,
+        0.25,
+        0.9565217391304348,
+        0.3333333333333333
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-3-21.jpg",
+      "colorSha256": "a15859e19a89cc56bd378396dcf64cb1ce7ca3a022f2be597ea3db07056f4115",
+      "colorBytes": 30703
+    },
+    {
+      "id": "e-3-22",
+      "uvBounds": [
+        0.9565217391304348,
+        0.25,
+        1,
+        0.3333333333333333
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-3-22.jpg",
+      "colorSha256": "3b7ba61d40d3f97cd223569f6467be961cff0f863a572e7e7ca91f4ea025bdff",
+      "colorBytes": 32320
+    },
+    {
+      "id": "e-4-0",
+      "uvBounds": [
+        0,
+        0.3333333333333333,
+        0.043478260869565216,
+        0.4166666666666667
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-4-0.jpg",
+      "colorSha256": "57e001b34f27a70d971906ba93d9b389a9dfd8291a0b3179f75c952ab5463d0c",
+      "colorBytes": 34216
+    },
+    {
+      "id": "e-4-1",
+      "uvBounds": [
+        0.043478260869565216,
+        0.3333333333333333,
+        0.08695652173913043,
+        0.4166666666666667
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-4-1.jpg",
+      "colorSha256": "304642e9c3db71c9e07148ed8889751a2847964bcc036cbbe9ffe07ddc27844c",
+      "colorBytes": 29266
+    },
+    {
+      "id": "e-4-2",
+      "uvBounds": [
+        0.08695652173913043,
+        0.3333333333333333,
+        0.13043478260869565,
+        0.4166666666666667
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-4-2.jpg",
+      "colorSha256": "ac8c3475d4767a99b287135c49cca063c38935eb41e4ac7678665220171fb891",
+      "colorBytes": 29318
+    },
+    {
+      "id": "e-4-3",
+      "uvBounds": [
+        0.13043478260869565,
+        0.3333333333333333,
+        0.17391304347826086,
+        0.4166666666666667
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-4-3.jpg",
+      "colorSha256": "e2f6346faf606df3eb07c6146648984428e99c3c40b816f09a1b6c1be5a1b501",
+      "colorBytes": 34313
+    },
+    {
+      "id": "e-4-4",
+      "uvBounds": [
+        0.17391304347826086,
+        0.3333333333333333,
+        0.21739130434782608,
+        0.4166666666666667
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-4-4.jpg",
+      "colorSha256": "01415f24efa8695ca79467b9819a219c86d75aa897dbc0909b18bfa2ff156fcd",
+      "colorBytes": 30895
+    },
+    {
+      "id": "e-4-5",
+      "uvBounds": [
+        0.21739130434782608,
+        0.3333333333333333,
+        0.2608695652173913,
+        0.4166666666666667
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-4-5.jpg",
+      "colorSha256": "eb0dbc86573a7f3d93214560fedf59df37de423a2b146061eecbb566b6050d9d",
+      "colorBytes": 26218
+    },
+    {
+      "id": "e-4-6",
+      "uvBounds": [
+        0.2608695652173913,
+        0.3333333333333333,
+        0.30434782608695654,
+        0.4166666666666667
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-4-6.jpg",
+      "colorSha256": "689ac331e07837db4b31d88d829360c0656c2d7ecba89b283550b2e516e28ae9",
+      "colorBytes": 21640
+    },
+    {
+      "id": "e-4-7",
+      "uvBounds": [
+        0.30434782608695654,
+        0.3333333333333333,
+        0.34782608695652173,
+        0.4166666666666667
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-4-7.jpg",
+      "colorSha256": "2c7eee96a399c38feecb9e59f5139701518e16f7a88685a08c229626a9dd95d7",
+      "colorBytes": 18097
+    },
+    {
+      "id": "e-4-8",
+      "uvBounds": [
+        0.34782608695652173,
+        0.3333333333333333,
+        0.391304347826087,
+        0.4166666666666667
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-4-8.jpg",
+      "colorSha256": "21a70682b1f4ccc1ee4854ebc31cd70e5f91b5564e7c1bb64360f49586d7b940",
+      "colorBytes": 22549
+    },
+    {
+      "id": "e-4-9",
+      "uvBounds": [
+        0.391304347826087,
+        0.3333333333333333,
+        0.43478260869565216,
+        0.4166666666666667
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-4-9.jpg",
+      "colorSha256": "46f02df5951d0ede0a606a2672b1f81c394c2bdcd152c735a4c3a7338952845f",
+      "colorBytes": 14966
+    },
+    {
+      "id": "e-4-10",
+      "uvBounds": [
+        0.43478260869565216,
+        0.3333333333333333,
+        0.4782608695652174,
+        0.4166666666666667
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-4-10.jpg",
+      "colorSha256": "84e1680d5b5c02bc35290c8f9df1be8576f1beb67dbe84d78459be66fd251354",
+      "colorBytes": 14285
+    },
+    {
+      "id": "e-4-11",
+      "uvBounds": [
+        0.4782608695652174,
+        0.3333333333333333,
+        0.5217391304347826,
+        0.4166666666666667
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-4-11.jpg",
+      "colorSha256": "df964bb8c12c7d680cc37267017a38fa1fbc6dd5ac36962e421e6b63958ac8de",
+      "colorBytes": 16845
+    },
+    {
+      "id": "e-4-12",
+      "uvBounds": [
+        0.5217391304347826,
+        0.3333333333333333,
+        0.5652173913043478,
+        0.4166666666666667
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-4-12.jpg",
+      "colorSha256": "14a889cbbd397eb76e04b65f064c90fafe22da3b1e7386b25f92a16d2f230093",
+      "colorBytes": 20764
+    },
+    {
+      "id": "e-4-13",
+      "uvBounds": [
+        0.5652173913043478,
+        0.3333333333333333,
+        0.6086956521739131,
+        0.4166666666666667
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-4-13.jpg",
+      "colorSha256": "650784a0889d1adb8fa79f6a31641552d8824e9ed3f49737fbff00c13b525ce3",
+      "colorBytes": 16253
+    },
+    {
+      "id": "e-4-14",
+      "uvBounds": [
+        0.6086956521739131,
+        0.3333333333333333,
+        0.6521739130434783,
+        0.4166666666666667
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-4-14.jpg",
+      "colorSha256": "4f7401ae33ea06cdb1419698693508930a8be721c448d950f7686b5872dda30a",
+      "colorBytes": 20474
+    },
+    {
+      "id": "e-4-15",
+      "uvBounds": [
+        0.6521739130434783,
+        0.3333333333333333,
+        0.6956521739130435,
+        0.4166666666666667
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-4-15.jpg",
+      "colorSha256": "f296b34f39b8abd32009923b4db3a40cd79cf353abcbd0effe4633f1bae40929",
+      "colorBytes": 23188
+    },
+    {
+      "id": "e-4-16",
+      "uvBounds": [
+        0.6956521739130435,
+        0.3333333333333333,
+        0.7391304347826086,
+        0.4166666666666667
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-4-16.jpg",
+      "colorSha256": "c0df46cedf642a8e8b01f36b8d150837616e4e9ec633181dc2601763af4a7c37",
+      "colorBytes": 28981
+    },
+    {
+      "id": "e-4-17",
+      "uvBounds": [
+        0.7391304347826086,
+        0.3333333333333333,
+        0.782608695652174,
+        0.4166666666666667
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-4-17.jpg",
+      "colorSha256": "84d80d222e72d1c24515bc83e1b129772f62eced24ee8e4989c4be386dceb0b2",
+      "colorBytes": 31541
+    },
+    {
+      "id": "e-4-18",
+      "uvBounds": [
+        0.782608695652174,
+        0.3333333333333333,
+        0.8260869565217391,
+        0.4166666666666667
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-4-18.jpg",
+      "colorSha256": "e43fe428da9583da71b1c406400531bc99fe64259bc8bc535a1afdf1a75bda85",
+      "colorBytes": 34213
+    },
+    {
+      "id": "e-4-19",
+      "uvBounds": [
+        0.8260869565217391,
+        0.3333333333333333,
+        0.8695652173913043,
+        0.4166666666666667
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-4-19.jpg",
+      "colorSha256": "7cf7af27461bc722190209afa15387edea0e04be5b6d32075723b842fe20138f",
+      "colorBytes": 37094
+    },
+    {
+      "id": "e-4-20",
+      "uvBounds": [
+        0.8695652173913043,
+        0.3333333333333333,
+        0.9130434782608695,
+        0.4166666666666667
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-4-20.jpg",
+      "colorSha256": "50a478c6515036899f1fe5102882988dea1e69208cf2166f82af000cf8c33f73",
+      "colorBytes": 28532
+    },
+    {
+      "id": "e-4-21",
+      "uvBounds": [
+        0.9130434782608695,
+        0.3333333333333333,
+        0.9565217391304348,
+        0.4166666666666667
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-4-21.jpg",
+      "colorSha256": "783ce4aaa430aaf41a6da07c37f0ac12d52a614fb45e8d0b611d807503db64b3",
+      "colorBytes": 31578
+    },
+    {
+      "id": "e-4-22",
+      "uvBounds": [
+        0.9565217391304348,
+        0.3333333333333333,
+        1,
+        0.4166666666666667
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-4-22.jpg",
+      "colorSha256": "90c6b03c52785b57ff0a8563dfe1e45a987ec3f9eeef6b09dffb467994336f0f",
+      "colorBytes": 34174
+    },
+    {
+      "id": "e-5-0",
+      "uvBounds": [
+        0,
+        0.4166666666666667,
+        0.043478260869565216,
+        0.5
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-5-0.jpg",
+      "colorSha256": "b96e3556c2b6c39a7fd4e4c97c8ee0ca00bc065842b64ae14e05c1f6712fb8bc",
+      "colorBytes": 27056
+    },
+    {
+      "id": "e-5-1",
+      "uvBounds": [
+        0.043478260869565216,
+        0.4166666666666667,
+        0.08695652173913043,
+        0.5
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-5-1.jpg",
+      "colorSha256": "9ad50fc497b0831d04cf5b0248056786c4cd6d7cd3cf007d0dbbe2ffb7106e2e",
+      "colorBytes": 21330
+    },
+    {
+      "id": "e-5-2",
+      "uvBounds": [
+        0.08695652173913043,
+        0.4166666666666667,
+        0.13043478260869565,
+        0.5
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-5-2.jpg",
+      "colorSha256": "67d3bf0e20afa004d6b58999a431c25e2e823975fe629bd8eeeb18ba74ee79f0",
+      "colorBytes": 21252
+    },
+    {
+      "id": "e-5-3",
+      "uvBounds": [
+        0.13043478260869565,
+        0.4166666666666667,
+        0.17391304347826086,
+        0.5
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-5-3.jpg",
+      "colorSha256": "d56abde8f43a64d18b7139272d1817c4674ec8a4d5c278d7de426884bd47ff2d",
+      "colorBytes": 24353
+    },
+    {
+      "id": "e-5-4",
+      "uvBounds": [
+        0.17391304347826086,
+        0.4166666666666667,
+        0.21739130434782608,
+        0.5
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-5-4.jpg",
+      "colorSha256": "de69e12d02a48f7210dcfa670f6bcb82e927c9ffdf047d493026b524d4fe0aac",
+      "colorBytes": 20635
+    },
+    {
+      "id": "e-5-5",
+      "uvBounds": [
+        0.21739130434782608,
+        0.4166666666666667,
+        0.2608695652173913,
+        0.5
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-5-5.jpg",
+      "colorSha256": "03c1a0dfdf1291a1677b33fe75de6361ef2be1e8b0a6b1790c9f80c2b2f94773",
+      "colorBytes": 20882
+    },
+    {
+      "id": "e-5-6",
+      "uvBounds": [
+        0.2608695652173913,
+        0.4166666666666667,
+        0.30434782608695654,
+        0.5
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-5-6.jpg",
+      "colorSha256": "848cde5784656ff69c9ca9ef6435a1066e337fa2517f1783cb93552684b7ab17",
+      "colorBytes": 21614
+    },
+    {
+      "id": "e-5-7",
+      "uvBounds": [
+        0.30434782608695654,
+        0.4166666666666667,
+        0.34782608695652173,
+        0.5
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-5-7.jpg",
+      "colorSha256": "6f4107283b5fafcf7095b9b64f30de16a0fcda0447c7d5500e1b8f7e0bef8744",
+      "colorBytes": 21352
+    },
+    {
+      "id": "e-5-8",
+      "uvBounds": [
+        0.34782608695652173,
+        0.4166666666666667,
+        0.391304347826087,
+        0.5
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-5-8.jpg",
+      "colorSha256": "11c86c2d9249e8520ff3f1232ada78df68a8e1dcc8df062573cc8068369aa2df",
+      "colorBytes": 19286
+    },
+    {
+      "id": "e-5-9",
+      "uvBounds": [
+        0.391304347826087,
+        0.4166666666666667,
+        0.43478260869565216,
+        0.5
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-5-9.jpg",
+      "colorSha256": "7cba0d55be1cb1e6813f5e7139260c148c22dc84a35181e9102866ed3e8b90e7",
+      "colorBytes": 19461
+    },
+    {
+      "id": "e-5-10",
+      "uvBounds": [
+        0.43478260869565216,
+        0.4166666666666667,
+        0.4782608695652174,
+        0.5
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-5-10.jpg",
+      "colorSha256": "6e2103ff97e5b6a205ba43c9e179259d5c0a27224d560c1a218e919ef72a178f",
+      "colorBytes": 22194
+    },
+    {
+      "id": "e-5-11",
+      "uvBounds": [
+        0.4782608695652174,
+        0.4166666666666667,
+        0.5217391304347826,
+        0.5
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-5-11.jpg",
+      "colorSha256": "909da98f8b253b40ad186be2dc88084f39d233e979a90d025bf0ad73bdf40780",
+      "colorBytes": 26461
+    },
+    {
+      "id": "e-5-12",
+      "uvBounds": [
+        0.5217391304347826,
+        0.4166666666666667,
+        0.5652173913043478,
+        0.5
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-5-12.jpg",
+      "colorSha256": "011bd4db03d2872eb32685c4f0118b40f035e7bebffb658ca5236669b2ab570f",
+      "colorBytes": 20793
+    },
+    {
+      "id": "e-5-13",
+      "uvBounds": [
+        0.5652173913043478,
+        0.4166666666666667,
+        0.6086956521739131,
+        0.5
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-5-13.jpg",
+      "colorSha256": "41bcc2f7385b2ce83df3f74525e7554cc3e394671659bed5aeb52584ebce6745",
+      "colorBytes": 16732
+    },
+    {
+      "id": "e-5-14",
+      "uvBounds": [
+        0.6086956521739131,
+        0.4166666666666667,
+        0.6521739130434783,
+        0.5
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-5-14.jpg",
+      "colorSha256": "967fbb713d5f6be93ece6957324004bc029d420d9b2d03b882938ebc4f026ee0",
+      "colorBytes": 16378
+    },
+    {
+      "id": "e-5-15",
+      "uvBounds": [
+        0.6521739130434783,
+        0.4166666666666667,
+        0.6956521739130435,
+        0.5
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-5-15.jpg",
+      "colorSha256": "d2db7ee2bb32f6f65948732375a7659718a8b811da228051d569e0809f92bbea",
+      "colorBytes": 17693
+    },
+    {
+      "id": "e-5-16",
+      "uvBounds": [
+        0.6956521739130435,
+        0.4166666666666667,
+        0.7391304347826086,
+        0.5
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-5-16.jpg",
+      "colorSha256": "80828044510b911bc318e65f02e23b085051f76bbf4ab9a3d8af973274c40e90",
+      "colorBytes": 26828
+    },
+    {
+      "id": "e-5-17",
+      "uvBounds": [
+        0.7391304347826086,
+        0.4166666666666667,
+        0.782608695652174,
+        0.5
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-5-17.jpg",
+      "colorSha256": "997c76394c2322497c8a95b36c8fe2ef37df5ceb2391ae7cde3af4eca791c39a",
+      "colorBytes": 25895
+    },
+    {
+      "id": "e-5-18",
+      "uvBounds": [
+        0.782608695652174,
+        0.4166666666666667,
+        0.8260869565217391,
+        0.5
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-5-18.jpg",
+      "colorSha256": "6945dc156c6db2b5f0d97789c38a7228fd5e19ff429cb294b556463d3b965e3e",
+      "colorBytes": 30839
+    },
+    {
+      "id": "e-5-19",
+      "uvBounds": [
+        0.8260869565217391,
+        0.4166666666666667,
+        0.8695652173913043,
+        0.5
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-5-19.jpg",
+      "colorSha256": "5a5d48fce42d21f06f442751db95069797e1f58ccef1b5cd64ced6ce74277a5d",
+      "colorBytes": 37631
+    },
+    {
+      "id": "e-5-20",
+      "uvBounds": [
+        0.8695652173913043,
+        0.4166666666666667,
+        0.9130434782608695,
+        0.5
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-5-20.jpg",
+      "colorSha256": "abd29aeffd2a1091082d3d08be4c1ee52750d1df82e17833a6b6a3517b55eb0f",
+      "colorBytes": 27988
+    },
+    {
+      "id": "e-5-21",
+      "uvBounds": [
+        0.9130434782608695,
+        0.4166666666666667,
+        0.9565217391304348,
+        0.5
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-5-21.jpg",
+      "colorSha256": "b0e6173dfd424bdc31e192930157481ee9d02ceba32fee402b9f087760dd46c6",
+      "colorBytes": 26177
+    },
+    {
+      "id": "e-5-22",
+      "uvBounds": [
+        0.9565217391304348,
+        0.4166666666666667,
+        1,
+        0.5
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-5-22.jpg",
+      "colorSha256": "2a6da02265900bd4edd02cc3fbf03cbf53a93ed9b041e9f5230459d15ffee97d",
+      "colorBytes": 26760
+    },
+    {
+      "id": "e-6-0",
+      "uvBounds": [
+        0,
+        0.5,
+        0.043478260869565216,
+        0.5833333333333334
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-6-0.jpg",
+      "colorSha256": "d783a57c98927238b53480f23ea12f8608fac7bebad28eb32c1955ef47f32f3d",
+      "colorBytes": 28608
+    },
+    {
+      "id": "e-6-1",
+      "uvBounds": [
+        0.043478260869565216,
+        0.5,
+        0.08695652173913043,
+        0.5833333333333334
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-6-1.jpg",
+      "colorSha256": "a0e3bc55458dbfc1b851d7667b2577d9c1a225eb03f8907d168ebd666a667dbd",
+      "colorBytes": 26617
+    },
+    {
+      "id": "e-6-2",
+      "uvBounds": [
+        0.08695652173913043,
+        0.5,
+        0.13043478260869565,
+        0.5833333333333334
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-6-2.jpg",
+      "colorSha256": "a753acc2ecce0f3eb86c66687af9415540aa550ffee0fc05a23253d60fee0dc7",
+      "colorBytes": 20594
+    },
+    {
+      "id": "e-6-3",
+      "uvBounds": [
+        0.13043478260869565,
+        0.5,
+        0.17391304347826086,
+        0.5833333333333334
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-6-3.jpg",
+      "colorSha256": "fbc5a0317e10859980131c317524a7f25ee0cdce5ba86d6a3e5d608dec5a58f7",
+      "colorBytes": 25465
+    },
+    {
+      "id": "e-6-4",
+      "uvBounds": [
+        0.17391304347826086,
+        0.5,
+        0.21739130434782608,
+        0.5833333333333334
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-6-4.jpg",
+      "colorSha256": "b95c5fe011ae7079bd72c9c67966c360833e83dac3329550ea3f99bfb824b569",
+      "colorBytes": 17553
+    },
+    {
+      "id": "e-6-5",
+      "uvBounds": [
+        0.21739130434782608,
+        0.5,
+        0.2608695652173913,
+        0.5833333333333334
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-6-5.jpg",
+      "colorSha256": "310843a322c840d3953a7e56806dd6e9cb2e5ee2e9bce61d0f0509aae31485ae",
+      "colorBytes": 19367
+    },
+    {
+      "id": "e-6-6",
+      "uvBounds": [
+        0.2608695652173913,
+        0.5,
+        0.30434782608695654,
+        0.5833333333333334
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-6-6.jpg",
+      "colorSha256": "518f80996bccac66004eb8520e3995e552705514b649f9bad4e453b0160f616a",
+      "colorBytes": 27089
+    },
+    {
+      "id": "e-6-7",
+      "uvBounds": [
+        0.30434782608695654,
+        0.5,
+        0.34782608695652173,
+        0.5833333333333334
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-6-7.jpg",
+      "colorSha256": "cdc97faa6ea41094020a108999a5da0fb413fb0b9bb14764174f0618ac2de425",
+      "colorBytes": 25444
+    },
+    {
+      "id": "e-6-8",
+      "uvBounds": [
+        0.34782608695652173,
+        0.5,
+        0.391304347826087,
+        0.5833333333333334
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-6-8.jpg",
+      "colorSha256": "ac24582214d223889f04b5b79fc1d1538100c779ad6187f6387d0a78aa0a6303",
+      "colorBytes": 31321
+    },
+    {
+      "id": "e-6-9",
+      "uvBounds": [
+        0.391304347826087,
+        0.5,
+        0.43478260869565216,
+        0.5833333333333334
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-6-9.jpg",
+      "colorSha256": "7d570806cc7e27829f23733a8ade00dc05a811875c12668009a2a525eeb23fd4",
+      "colorBytes": 33355
+    },
+    {
+      "id": "e-6-10",
+      "uvBounds": [
+        0.43478260869565216,
+        0.5,
+        0.4782608695652174,
+        0.5833333333333334
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-6-10.jpg",
+      "colorSha256": "b497a6a319845f40155062f7cc6bf554c368d2874c64dad2b1e40145f68e7d26",
+      "colorBytes": 25640
+    },
+    {
+      "id": "e-6-11",
+      "uvBounds": [
+        0.4782608695652174,
+        0.5,
+        0.5217391304347826,
+        0.5833333333333334
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-6-11.jpg",
+      "colorSha256": "fefcdc4cdb747635ef05e3d011a274914c57de14ba173cd5f3421e29291d5519",
+      "colorBytes": 28894
+    },
+    {
+      "id": "e-6-12",
+      "uvBounds": [
+        0.5217391304347826,
+        0.5,
+        0.5652173913043478,
+        0.5833333333333334
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-6-12.jpg",
+      "colorSha256": "308ea9535e44af6a77f5bd63257220cc6305c31086faf0c6cb33e8096ac4bcef",
+      "colorBytes": 28107
+    },
+    {
+      "id": "e-6-13",
+      "uvBounds": [
+        0.5652173913043478,
+        0.5,
+        0.6086956521739131,
+        0.5833333333333334
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-6-13.jpg",
+      "colorSha256": "4aac70e832c5364ee7667045cea836b4822a8e9f33899cea5ab0cc5b0dcd0480",
+      "colorBytes": 19066
+    },
+    {
+      "id": "e-6-14",
+      "uvBounds": [
+        0.6086956521739131,
+        0.5,
+        0.6521739130434783,
+        0.5833333333333334
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-6-14.jpg",
+      "colorSha256": "76e6c2d5a5c28f1e9c57c3eaeaef34a089fdc7e01c17b6a61fb91dbfb81eb7f0",
+      "colorBytes": 14585
+    },
+    {
+      "id": "e-6-15",
+      "uvBounds": [
+        0.6521739130434783,
+        0.5,
+        0.6956521739130435,
+        0.5833333333333334
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-6-15.jpg",
+      "colorSha256": "5caa0ec22a73a86994149c91d4482e1c86f16ab154ea8858a0e60991c8b4de4b",
+      "colorBytes": 21304
+    },
+    {
+      "id": "e-6-16",
+      "uvBounds": [
+        0.6956521739130435,
+        0.5,
+        0.7391304347826086,
+        0.5833333333333334
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-6-16.jpg",
+      "colorSha256": "68a9a34d6768fbcbd70a9dcec0cebe9b4e3280ce7cf064ad781b14e926c99dda",
+      "colorBytes": 32557
+    },
+    {
+      "id": "e-6-17",
+      "uvBounds": [
+        0.7391304347826086,
+        0.5,
+        0.782608695652174,
+        0.5833333333333334
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-6-17.jpg",
+      "colorSha256": "be2e68d88f891905733e74cbc2a0ff166d78d825a9b71952bb25a65582553f79",
+      "colorBytes": 27317
+    },
+    {
+      "id": "e-6-18",
+      "uvBounds": [
+        0.782608695652174,
+        0.5,
+        0.8260869565217391,
+        0.5833333333333334
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-6-18.jpg",
+      "colorSha256": "345789472726bf86fca2c8db515858c4940bd0af118adf46c9e534ff8a21ba28",
+      "colorBytes": 34605
+    },
+    {
+      "id": "e-6-19",
+      "uvBounds": [
+        0.8260869565217391,
+        0.5,
+        0.8695652173913043,
+        0.5833333333333334
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-6-19.jpg",
+      "colorSha256": "e4c4e3ce229be1aff5b23ed43b2dcfc88c07d568e9ec1f49148d1304055d758a",
+      "colorBytes": 42227
+    },
+    {
+      "id": "e-6-20",
+      "uvBounds": [
+        0.8695652173913043,
+        0.5,
+        0.9130434782608695,
+        0.5833333333333334
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-6-20.jpg",
+      "colorSha256": "0d05687fa93cb7604533093e61075c98635ced71715a730dbe1d2066181f80c4",
+      "colorBytes": 29321
+    },
+    {
+      "id": "e-6-21",
+      "uvBounds": [
+        0.9130434782608695,
+        0.5,
+        0.9565217391304348,
+        0.5833333333333334
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-6-21.jpg",
+      "colorSha256": "acb88ba79ed638b14d95839232303f7ad8c202e874462baba5e7e7b9f69c998e",
+      "colorBytes": 29874
+    },
+    {
+      "id": "e-6-22",
+      "uvBounds": [
+        0.9565217391304348,
+        0.5,
+        1,
+        0.5833333333333334
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-6-22.jpg",
+      "colorSha256": "bc654f42e81922a13ae9f5232e508e63eb786f6a7adb5967f0144209dcef5403",
+      "colorBytes": 25618
+    },
+    {
+      "id": "e-7-0",
+      "uvBounds": [
+        0,
+        0.5833333333333334,
+        0.043478260869565216,
+        0.6666666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-7-0.jpg",
+      "colorSha256": "0b31d81be30bd5a1c5dce0809ae12e029302c5aaf3caec8dd088d7aad791bc9a",
+      "colorBytes": 30800
+    },
+    {
+      "id": "e-7-1",
+      "uvBounds": [
+        0.043478260869565216,
+        0.5833333333333334,
+        0.08695652173913043,
+        0.6666666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-7-1.jpg",
+      "colorSha256": "a01c802c915875344293b40047c58cd56591613c0a0ef595df86b672a31b2641",
+      "colorBytes": 32502
+    },
+    {
+      "id": "e-7-2",
+      "uvBounds": [
+        0.08695652173913043,
+        0.5833333333333334,
+        0.13043478260869565,
+        0.6666666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-7-2.jpg",
+      "colorSha256": "359dabc57adc675f573103c778f8955d21bca7afacf3c3abe51644fd9f5d73bf",
+      "colorBytes": 32141
+    },
+    {
+      "id": "e-7-3",
+      "uvBounds": [
+        0.13043478260869565,
+        0.5833333333333334,
+        0.17391304347826086,
+        0.6666666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-7-3.jpg",
+      "colorSha256": "3f838344aa4b8bc54f3c77dd56854953b4ffce0d7d828211bb8342bfa5a7c3b3",
+      "colorBytes": 30423
+    },
+    {
+      "id": "e-7-4",
+      "uvBounds": [
+        0.17391304347826086,
+        0.5833333333333334,
+        0.21739130434782608,
+        0.6666666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-7-4.jpg",
+      "colorSha256": "585f34e1ef500b60eb3c5b8729ac7483e17ef5005f04d2ddd64decfa2d65de71",
+      "colorBytes": 22158
+    },
+    {
+      "id": "e-7-5",
+      "uvBounds": [
+        0.21739130434782608,
+        0.5833333333333334,
+        0.2608695652173913,
+        0.6666666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-7-5.jpg",
+      "colorSha256": "c2b60353f83423cc41ade0962fb35d12113ef4065f6f59c24e6b23035615e171",
+      "colorBytes": 19405
+    },
+    {
+      "id": "e-7-6",
+      "uvBounds": [
+        0.2608695652173913,
+        0.5833333333333334,
+        0.30434782608695654,
+        0.6666666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-7-6.jpg",
+      "colorSha256": "189f8a3a9cc5b7d788bd2db6fb5246f5763251386b962c1b3ce084c04e363308",
+      "colorBytes": 27660
+    },
+    {
+      "id": "e-7-7",
+      "uvBounds": [
+        0.30434782608695654,
+        0.5833333333333334,
+        0.34782608695652173,
+        0.6666666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-7-7.jpg",
+      "colorSha256": "6513ee0c8662ff646ebaf94f6d31d840d10b0347b33bc8fe0a2f4bd1f7636836",
+      "colorBytes": 27016
+    },
+    {
+      "id": "e-7-8",
+      "uvBounds": [
+        0.34782608695652173,
+        0.5833333333333334,
+        0.391304347826087,
+        0.6666666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-7-8.jpg",
+      "colorSha256": "d0e26166f1998f06c764c2c99539e7bde5bcdc883106658c525abb6a977f1e6e",
+      "colorBytes": 21117
+    },
+    {
+      "id": "e-7-9",
+      "uvBounds": [
+        0.391304347826087,
+        0.5833333333333334,
+        0.43478260869565216,
+        0.6666666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-7-9.jpg",
+      "colorSha256": "9c6e941b713c55f781c64bbddc2db274a9fdde23a116079d088a35454648c6f0",
+      "colorBytes": 19817
+    },
+    {
+      "id": "e-7-10",
+      "uvBounds": [
+        0.43478260869565216,
+        0.5833333333333334,
+        0.4782608695652174,
+        0.6666666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-7-10.jpg",
+      "colorSha256": "162c52f34623098ab998ca194a8b2dc8ad02648a9bef947e8f6f3bc2b5a6249c",
+      "colorBytes": 25881
+    },
+    {
+      "id": "e-7-11",
+      "uvBounds": [
+        0.4782608695652174,
+        0.5833333333333334,
+        0.5217391304347826,
+        0.6666666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-7-11.jpg",
+      "colorSha256": "bfae2d428d0dd2bcf6ad12eac14eb07c8792da8e87516860923fda45f96618f2",
+      "colorBytes": 28658
+    },
+    {
+      "id": "e-7-12",
+      "uvBounds": [
+        0.5217391304347826,
+        0.5833333333333334,
+        0.5652173913043478,
+        0.6666666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-7-12.jpg",
+      "colorSha256": "50796f1249eb488f14a8606a190bccd18ee39b07c49a260eb6d426b7ee38d509",
+      "colorBytes": 23256
+    },
+    {
+      "id": "e-7-13",
+      "uvBounds": [
+        0.5652173913043478,
+        0.5833333333333334,
+        0.6086956521739131,
+        0.6666666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-7-13.jpg",
+      "colorSha256": "bf6eec030832ab1fc7f2e4645b337bd565da9d90dc165f36704dbcf02e481082",
+      "colorBytes": 24682
+    },
+    {
+      "id": "e-7-14",
+      "uvBounds": [
+        0.6086956521739131,
+        0.5833333333333334,
+        0.6521739130434783,
+        0.6666666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-7-14.jpg",
+      "colorSha256": "9aee5401d9585ab46f468c99974370fd3196a5b314a8315fbd64e24ef634aba8",
+      "colorBytes": 17925
+    },
+    {
+      "id": "e-7-15",
+      "uvBounds": [
+        0.6521739130434783,
+        0.5833333333333334,
+        0.6956521739130435,
+        0.6666666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-7-15.jpg",
+      "colorSha256": "b246e57b1f5e5932f2991c37867d80af83e3da467ee8d8e67393b55764a11694",
+      "colorBytes": 21795
+    },
+    {
+      "id": "e-7-16",
+      "uvBounds": [
+        0.6956521739130435,
+        0.5833333333333334,
+        0.7391304347826086,
+        0.6666666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-7-16.jpg",
+      "colorSha256": "a4277cf191aba30274812c0ad3feadb7eebda0d1bf229282768cb56e147cef83",
+      "colorBytes": 29544
+    },
+    {
+      "id": "e-7-17",
+      "uvBounds": [
+        0.7391304347826086,
+        0.5833333333333334,
+        0.782608695652174,
+        0.6666666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-7-17.jpg",
+      "colorSha256": "a9ea747fcd23fe4a4ac807fe5b7356a4da65dcca6de695cb8c0bb61601d7d023",
+      "colorBytes": 33393
+    },
+    {
+      "id": "e-7-18",
+      "uvBounds": [
+        0.782608695652174,
+        0.5833333333333334,
+        0.8260869565217391,
+        0.6666666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-7-18.jpg",
+      "colorSha256": "e35b697ac951ac7ab8f75e807f2b7120e6ecc083031582cbfd8b883f56ba2027",
+      "colorBytes": 30813
+    },
+    {
+      "id": "e-7-19",
+      "uvBounds": [
+        0.8260869565217391,
+        0.5833333333333334,
+        0.8695652173913043,
+        0.6666666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-7-19.jpg",
+      "colorSha256": "488c79e2b364d7e8505c150d6e27014864b36b499c28f83fc9aedbc61cad4f13",
+      "colorBytes": 39068
+    },
+    {
+      "id": "e-7-20",
+      "uvBounds": [
+        0.8695652173913043,
+        0.5833333333333334,
+        0.9130434782608695,
+        0.6666666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-7-20.jpg",
+      "colorSha256": "d73c771480b4c993f7e1459ca8fd145e10cbb07281601a4f42aa8632906c5391",
+      "colorBytes": 36912
+    },
+    {
+      "id": "e-7-21",
+      "uvBounds": [
+        0.9130434782608695,
+        0.5833333333333334,
+        0.9565217391304348,
+        0.6666666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-7-21.jpg",
+      "colorSha256": "79d2618f95206c66e16a1e268a90989d590ff234e0eb6e9a7906baf5761e95fa",
+      "colorBytes": 37562
+    },
+    {
+      "id": "e-7-22",
+      "uvBounds": [
+        0.9565217391304348,
+        0.5833333333333334,
+        1,
+        0.6666666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-7-22.jpg",
+      "colorSha256": "d8de9e7c87e7050e14b67520eb95813dda368b4d57776e3faa3ff987ec659de5",
+      "colorBytes": 31718
+    },
+    {
+      "id": "e-8-0",
+      "uvBounds": [
+        0,
+        0.6666666666666666,
+        0.043478260869565216,
+        0.75
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-8-0.jpg",
+      "colorSha256": "830e3110652fd80e3ad908ef8f57ea4956cb3448381153facc5fbc1062e9cbff",
+      "colorBytes": 28991
+    },
+    {
+      "id": "e-8-1",
+      "uvBounds": [
+        0.043478260869565216,
+        0.6666666666666666,
+        0.08695652173913043,
+        0.75
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-8-1.jpg",
+      "colorSha256": "3dda92b3a63247c0a8102d3182df035baa184a680c1441acb0aa006ecd2c51e4",
+      "colorBytes": 32053
+    },
+    {
+      "id": "e-8-2",
+      "uvBounds": [
+        0.08695652173913043,
+        0.6666666666666666,
+        0.13043478260869565,
+        0.75
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-8-2.jpg",
+      "colorSha256": "6a827cf06bcb7c59d0eb6b37abc046cc37313afc8a8304f16a29ce5a964e6bec",
+      "colorBytes": 27979
+    },
+    {
+      "id": "e-8-3",
+      "uvBounds": [
+        0.13043478260869565,
+        0.6666666666666666,
+        0.17391304347826086,
+        0.75
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-8-3.jpg",
+      "colorSha256": "765da65d808936639af4c4aceb9dff08013df35aa03f5f73fedbe7a4ce6079cb",
+      "colorBytes": 33558
+    },
+    {
+      "id": "e-8-4",
+      "uvBounds": [
+        0.17391304347826086,
+        0.6666666666666666,
+        0.21739130434782608,
+        0.75
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-8-4.jpg",
+      "colorSha256": "f8f2281fe2e024218fe228defcc552990286c75a8a9551fee280efa72034ee85",
+      "colorBytes": 27787
+    },
+    {
+      "id": "e-8-5",
+      "uvBounds": [
+        0.21739130434782608,
+        0.6666666666666666,
+        0.2608695652173913,
+        0.75
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-8-5.jpg",
+      "colorSha256": "fb11d3672187d9fbe3cbcf8e56536c7b185976e9244626cc05db10b0922ae070",
+      "colorBytes": 31371
+    },
+    {
+      "id": "e-8-6",
+      "uvBounds": [
+        0.2608695652173913,
+        0.6666666666666666,
+        0.30434782608695654,
+        0.75
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-8-6.jpg",
+      "colorSha256": "09326129ded0bdb1389be74cca278595e708786f75f956f550d66cb06cd6e528",
+      "colorBytes": 19612
+    },
+    {
+      "id": "e-8-7",
+      "uvBounds": [
+        0.30434782608695654,
+        0.6666666666666666,
+        0.34782608695652173,
+        0.75
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-8-7.jpg",
+      "colorSha256": "f5bd8408eb01c6f92f8c5d697a03495d06f088235d3582f72ed7341739503a79",
+      "colorBytes": 20316
+    },
+    {
+      "id": "e-8-8",
+      "uvBounds": [
+        0.34782608695652173,
+        0.6666666666666666,
+        0.391304347826087,
+        0.75
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-8-8.jpg",
+      "colorSha256": "6db35505d24dc6f90c120cc0f7ee0186c1d129cc54d476c3051af8a8b76a822d",
+      "colorBytes": 16129
+    },
+    {
+      "id": "e-8-9",
+      "uvBounds": [
+        0.391304347826087,
+        0.6666666666666666,
+        0.43478260869565216,
+        0.75
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-8-9.jpg",
+      "colorSha256": "ff3ef0259b2e1d8899966806d749c2663ab3a616a0b2b66bf5d1b78caa4e8fca",
+      "colorBytes": 14059
+    },
+    {
+      "id": "e-8-10",
+      "uvBounds": [
+        0.43478260869565216,
+        0.6666666666666666,
+        0.4782608695652174,
+        0.75
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-8-10.jpg",
+      "colorSha256": "c3449cab0388adeec3e88c1249c83c999a0bf75d8d9c2b7a87e80a479353f1b0",
+      "colorBytes": 20448
+    },
+    {
+      "id": "e-8-11",
+      "uvBounds": [
+        0.4782608695652174,
+        0.6666666666666666,
+        0.5217391304347826,
+        0.75
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-8-11.jpg",
+      "colorSha256": "1f4afd7d8ad47ee84d5cb508d9da94e3c72258ec1a7ee4a617fbe4c0d6d7feb4",
+      "colorBytes": 18816
+    },
+    {
+      "id": "e-8-12",
+      "uvBounds": [
+        0.5217391304347826,
+        0.6666666666666666,
+        0.5652173913043478,
+        0.75
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-8-12.jpg",
+      "colorSha256": "1703fbdaf921ead6c5880356909332bbec0ea9f8bd89ffd13f54db40e6f25ebb",
+      "colorBytes": 19987
+    },
+    {
+      "id": "e-8-13",
+      "uvBounds": [
+        0.5652173913043478,
+        0.6666666666666666,
+        0.6086956521739131,
+        0.75
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-8-13.jpg",
+      "colorSha256": "3bf6c2299a777f59d0af545ecce8b0f8110f956930f080128a9cb72ea44f34ff",
+      "colorBytes": 20617
+    },
+    {
+      "id": "e-8-14",
+      "uvBounds": [
+        0.6086956521739131,
+        0.6666666666666666,
+        0.6521739130434783,
+        0.75
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-8-14.jpg",
+      "colorSha256": "75123fe03c0715e2352764411981b93841b8d36eeabeebb177385ebaf870358f",
+      "colorBytes": 18399
+    },
+    {
+      "id": "e-8-15",
+      "uvBounds": [
+        0.6521739130434783,
+        0.6666666666666666,
+        0.6956521739130435,
+        0.75
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-8-15.jpg",
+      "colorSha256": "ffeeb9c2d2b1ca9c41e061e46fd522769dc701925dea31a3d2e4a57435cb990e",
+      "colorBytes": 26878
+    },
+    {
+      "id": "e-8-16",
+      "uvBounds": [
+        0.6956521739130435,
+        0.6666666666666666,
+        0.7391304347826086,
+        0.75
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-8-16.jpg",
+      "colorSha256": "8776ce66dcbecbfda545e78f3f9d195dad97da0c986551381bb4e701c22991bb",
+      "colorBytes": 30559
+    },
+    {
+      "id": "e-8-17",
+      "uvBounds": [
+        0.7391304347826086,
+        0.6666666666666666,
+        0.782608695652174,
+        0.75
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-8-17.jpg",
+      "colorSha256": "3ed989080a860b8a657fc57f0d9211e50029aa90e36383f3ef98d7a6d0fcddbd",
+      "colorBytes": 28957
+    },
+    {
+      "id": "e-8-18",
+      "uvBounds": [
+        0.782608695652174,
+        0.6666666666666666,
+        0.8260869565217391,
+        0.75
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-8-18.jpg",
+      "colorSha256": "ed5ea5b77c4200c8505b41bb86e4b0c7866ca9fe1158856291d9df501b8f0b08",
+      "colorBytes": 28871
+    },
+    {
+      "id": "e-8-19",
+      "uvBounds": [
+        0.8260869565217391,
+        0.6666666666666666,
+        0.8695652173913043,
+        0.75
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-8-19.jpg",
+      "colorSha256": "cd7c834ce1a4c4ea3206a95d4f707e41deb9bce5a27f6a8754bd0bc4f98762b9",
+      "colorBytes": 36933
+    },
+    {
+      "id": "e-8-20",
+      "uvBounds": [
+        0.8695652173913043,
+        0.6666666666666666,
+        0.9130434782608695,
+        0.75
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-8-20.jpg",
+      "colorSha256": "a1180baece3013a6d498c5acf0f2cc2cb1d08be4e236efe2db1f063cb0cad68c",
+      "colorBytes": 30081
+    },
+    {
+      "id": "e-8-21",
+      "uvBounds": [
+        0.9130434782608695,
+        0.6666666666666666,
+        0.9565217391304348,
+        0.75
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-8-21.jpg",
+      "colorSha256": "6e039db1499cdb70bb000b9d8ca0729da14f0585ca71680b75732d11124eb265",
+      "colorBytes": 33545
+    },
+    {
+      "id": "e-8-22",
+      "uvBounds": [
+        0.9565217391304348,
+        0.6666666666666666,
+        1,
+        0.75
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-8-22.jpg",
+      "colorSha256": "030ac0fa1164b1d487356f157350c8ca13b76e9cca9372c0f58b696fd8632a85",
+      "colorBytes": 32444
+    },
+    {
+      "id": "e-9-0",
+      "uvBounds": [
+        0,
+        0.75,
+        0.043478260869565216,
+        0.8333333333333334
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-9-0.jpg",
+      "colorSha256": "e297fd47f57764a24097a2c8207c01f12e8f41ec23abfd4e8a30ba69d23be5f8",
+      "colorBytes": 28529
+    },
+    {
+      "id": "e-9-1",
+      "uvBounds": [
+        0.043478260869565216,
+        0.75,
+        0.08695652173913043,
+        0.8333333333333334
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-9-1.jpg",
+      "colorSha256": "3717226838ed4b27e0da8757da27d586b04a11da8fe86c21bdc419485d902dac",
+      "colorBytes": 29400
+    },
+    {
+      "id": "e-9-2",
+      "uvBounds": [
+        0.08695652173913043,
+        0.75,
+        0.13043478260869565,
+        0.8333333333333334
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-9-2.jpg",
+      "colorSha256": "6cb441bdc1ab15bd9711d3b057cadac928bf85a23c32d812b04c4f694c515010",
+      "colorBytes": 28778
+    },
+    {
+      "id": "e-9-3",
+      "uvBounds": [
+        0.13043478260869565,
+        0.75,
+        0.17391304347826086,
+        0.8333333333333334
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-9-3.jpg",
+      "colorSha256": "9d056dc0f2272cfebb1efeccef70518d3da9edf97d911275ef8dd5d6906793dd",
+      "colorBytes": 24426
+    },
+    {
+      "id": "e-9-4",
+      "uvBounds": [
+        0.17391304347826086,
+        0.75,
+        0.21739130434782608,
+        0.8333333333333334
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-9-4.jpg",
+      "colorSha256": "ec64db73694b7b7ed63ef68adcf413bb93d58d77daaf1928610b44f35f8b6ec2",
+      "colorBytes": 16889
+    },
+    {
+      "id": "e-9-5",
+      "uvBounds": [
+        0.21739130434782608,
+        0.75,
+        0.2608695652173913,
+        0.8333333333333334
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-9-5.jpg",
+      "colorSha256": "747da32a0758015f40c66615dc5722b29a528ad5f4cd30b1388f9d431251477d",
+      "colorBytes": 19490
+    },
+    {
+      "id": "e-9-6",
+      "uvBounds": [
+        0.2608695652173913,
+        0.75,
+        0.30434782608695654,
+        0.8333333333333334
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-9-6.jpg",
+      "colorSha256": "4c1de18250e1bfbdec62089cb78d2208ea731f1f08cdfc244dee26863b0b05ab",
+      "colorBytes": 16875
+    },
+    {
+      "id": "e-9-7",
+      "uvBounds": [
+        0.30434782608695654,
+        0.75,
+        0.34782608695652173,
+        0.8333333333333334
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-9-7.jpg",
+      "colorSha256": "2d2324b6c88211a422f28c1aea91c9ecae0c2a1031ed2c067f21f20dade26966",
+      "colorBytes": 17887
+    },
+    {
+      "id": "e-9-8",
+      "uvBounds": [
+        0.34782608695652173,
+        0.75,
+        0.391304347826087,
+        0.8333333333333334
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-9-8.jpg",
+      "colorSha256": "4b53f5e759b51a02877b8a2d8e94f4220a8b1fadfb3787506c74819295b5e975",
+      "colorBytes": 15484
+    },
+    {
+      "id": "e-9-9",
+      "uvBounds": [
+        0.391304347826087,
+        0.75,
+        0.43478260869565216,
+        0.8333333333333334
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-9-9.jpg",
+      "colorSha256": "a2801e4900005b03f0c9629a1f89c834774c300bf8362d72e84506e0bd5a2ff3",
+      "colorBytes": 14737
+    },
+    {
+      "id": "e-9-10",
+      "uvBounds": [
+        0.43478260869565216,
+        0.75,
+        0.4782608695652174,
+        0.8333333333333334
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-9-10.jpg",
+      "colorSha256": "bcc0654559efd06139ec5f8b0796b4cfff238b5f890b36869ef9be927d4f3f22",
+      "colorBytes": 19646
+    },
+    {
+      "id": "e-9-11",
+      "uvBounds": [
+        0.4782608695652174,
+        0.75,
+        0.5217391304347826,
+        0.8333333333333334
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-9-11.jpg",
+      "colorSha256": "3ba2e449abed14977c93db8d934fe2c571041ab588b1ff302e453d94e0a5a4f4",
+      "colorBytes": 14199
+    },
+    {
+      "id": "e-9-12",
+      "uvBounds": [
+        0.5217391304347826,
+        0.75,
+        0.5652173913043478,
+        0.8333333333333334
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-9-12.jpg",
+      "colorSha256": "e544c52ada5da17990d366589a04493526b6b5fd2395d36911cb8ba3ac23d774",
+      "colorBytes": 14896
+    },
+    {
+      "id": "e-9-13",
+      "uvBounds": [
+        0.5652173913043478,
+        0.75,
+        0.6086956521739131,
+        0.8333333333333334
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-9-13.jpg",
+      "colorSha256": "fb049a2344650510816c9fbd6732424515a2bad3e675b36880006a252bd1351f",
+      "colorBytes": 22507
+    },
+    {
+      "id": "e-9-14",
+      "uvBounds": [
+        0.6086956521739131,
+        0.75,
+        0.6521739130434783,
+        0.8333333333333334
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-9-14.jpg",
+      "colorSha256": "9f212ca30f2597d260f1833c2dcd133c520e51971c456d7cbc1f0f5d55d3295f",
+      "colorBytes": 17317
+    },
+    {
+      "id": "e-9-15",
+      "uvBounds": [
+        0.6521739130434783,
+        0.75,
+        0.6956521739130435,
+        0.8333333333333334
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-9-15.jpg",
+      "colorSha256": "494412444acbe8903258d818e79e8a75e86fe33e01e36ed9c00ed553871465fd",
+      "colorBytes": 22274
+    },
+    {
+      "id": "e-9-16",
+      "uvBounds": [
+        0.6956521739130435,
+        0.75,
+        0.7391304347826086,
+        0.8333333333333334
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-9-16.jpg",
+      "colorSha256": "9369616e895a624788e421c22f107ed835a6b06c2a5468dd4bda18e0a7bd7ba6",
+      "colorBytes": 25702
+    },
+    {
+      "id": "e-9-17",
+      "uvBounds": [
+        0.7391304347826086,
+        0.75,
+        0.782608695652174,
+        0.8333333333333334
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-9-17.jpg",
+      "colorSha256": "52581edcee2a05691385cd5fafb16dbd75bb1430cfc319920f694bc68db46984",
+      "colorBytes": 39799
+    },
+    {
+      "id": "e-9-18",
+      "uvBounds": [
+        0.782608695652174,
+        0.75,
+        0.8260869565217391,
+        0.8333333333333334
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-9-18.jpg",
+      "colorSha256": "b9ceda14964a131b7a14d5691c9e50f1718d7744cc73e3b61193cc6297283e65",
+      "colorBytes": 35795
+    },
+    {
+      "id": "e-9-19",
+      "uvBounds": [
+        0.8260869565217391,
+        0.75,
+        0.8695652173913043,
+        0.8333333333333334
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-9-19.jpg",
+      "colorSha256": "27a584b2297ea46646aafbdd1b24d067cf7904a5d2e348e40d6df1c4c0c5e082",
+      "colorBytes": 40179
+    },
+    {
+      "id": "e-9-20",
+      "uvBounds": [
+        0.8695652173913043,
+        0.75,
+        0.9130434782608695,
+        0.8333333333333334
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-9-20.jpg",
+      "colorSha256": "31df5022366f6e879fbd9cdb6141e9c1aa2bffc8120310df0bb3ef0b75f7d8c0",
+      "colorBytes": 34578
+    },
+    {
+      "id": "e-9-21",
+      "uvBounds": [
+        0.9130434782608695,
+        0.75,
+        0.9565217391304348,
+        0.8333333333333334
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-9-21.jpg",
+      "colorSha256": "368abc0d87d81ab818afbf931dad19fdd1cf42b7c9fa67656a8e1708dc28b8a5",
+      "colorBytes": 37320
+    },
+    {
+      "id": "e-9-22",
+      "uvBounds": [
+        0.9565217391304348,
+        0.75,
+        1,
+        0.8333333333333334
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-9-22.jpg",
+      "colorSha256": "419bacdf51516a604ca2c6b9b943621e736e8f087053e0665c2f300bbc0170af",
+      "colorBytes": 28824
+    },
+    {
+      "id": "e-10-0",
+      "uvBounds": [
+        0,
+        0.8333333333333334,
+        0.043478260869565216,
+        0.9166666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-10-0.jpg",
+      "colorSha256": "7e8079647ab7c87e0f2fbc4335282e2dfdba98e674c359cc87b35adc55a4ec3d",
+      "colorBytes": 29571
+    },
+    {
+      "id": "e-10-1",
+      "uvBounds": [
+        0.043478260869565216,
+        0.8333333333333334,
+        0.08695652173913043,
+        0.9166666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-10-1.jpg",
+      "colorSha256": "15a2a57f9a724a648f0ce71543942d6b6d662c99e13b521e40d14c863caa7b7d",
+      "colorBytes": 29939
+    },
+    {
+      "id": "e-10-2",
+      "uvBounds": [
+        0.08695652173913043,
+        0.8333333333333334,
+        0.13043478260869565,
+        0.9166666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-10-2.jpg",
+      "colorSha256": "2d656d27eeeddcd6351e2633df6802f77d63b31e553eb310b8bd754984fc19b9",
+      "colorBytes": 25920
+    },
+    {
+      "id": "e-10-3",
+      "uvBounds": [
+        0.13043478260869565,
+        0.8333333333333334,
+        0.17391304347826086,
+        0.9166666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-10-3.jpg",
+      "colorSha256": "49796225932827502e30dcf8a98d3dedb202c95f5aa591c79490fbebc350fd84",
+      "colorBytes": 22365
+    },
+    {
+      "id": "e-10-4",
+      "uvBounds": [
+        0.17391304347826086,
+        0.8333333333333334,
+        0.21739130434782608,
+        0.9166666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-10-4.jpg",
+      "colorSha256": "18a06f79312d53d758aff82547221627deff77a0b7dfcf9d9559dddfed4671db",
+      "colorBytes": 38239
+    },
+    {
+      "id": "e-10-5",
+      "uvBounds": [
+        0.21739130434782608,
+        0.8333333333333334,
+        0.2608695652173913,
+        0.9166666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-10-5.jpg",
+      "colorSha256": "d4a40be627c38d3f27eddd300b268fd67ce72f3420e102af7eff437211bc603e",
+      "colorBytes": 25309
+    },
+    {
+      "id": "e-10-6",
+      "uvBounds": [
+        0.2608695652173913,
+        0.8333333333333334,
+        0.30434782608695654,
+        0.9166666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-10-6.jpg",
+      "colorSha256": "ca40c2090db3b68d65379603e25739792e11a38e90a5dbd3d25f3367b85e5915",
+      "colorBytes": 22967
+    },
+    {
+      "id": "e-10-7",
+      "uvBounds": [
+        0.30434782608695654,
+        0.8333333333333334,
+        0.34782608695652173,
+        0.9166666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-10-7.jpg",
+      "colorSha256": "a80a33c2ed156542793ec0a1696b98a2d8b04bb84272bb39d7c72e428ffdaf55",
+      "colorBytes": 19809
+    },
+    {
+      "id": "e-10-8",
+      "uvBounds": [
+        0.34782608695652173,
+        0.8333333333333334,
+        0.391304347826087,
+        0.9166666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-10-8.jpg",
+      "colorSha256": "f2567e96bd30a3c2e2519289c583394b7e591f3780d91ed7b047be46a5a4fb79",
+      "colorBytes": 15166
+    },
+    {
+      "id": "e-10-9",
+      "uvBounds": [
+        0.391304347826087,
+        0.8333333333333334,
+        0.43478260869565216,
+        0.9166666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-10-9.jpg",
+      "colorSha256": "ade4871ffae910357fb292c3379f9fb902b8db5380dc14365214112da248e6b7",
+      "colorBytes": 16568
+    },
+    {
+      "id": "e-10-10",
+      "uvBounds": [
+        0.43478260869565216,
+        0.8333333333333334,
+        0.4782608695652174,
+        0.9166666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-10-10.jpg",
+      "colorSha256": "649194c6fc37c6cbd8414ddc5d8b29915cf466734019940ac7cf6e6f8cdf51ce",
+      "colorBytes": 14743
+    },
+    {
+      "id": "e-10-11",
+      "uvBounds": [
+        0.4782608695652174,
+        0.8333333333333334,
+        0.5217391304347826,
+        0.9166666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-10-11.jpg",
+      "colorSha256": "17a3a1769c5e0bd2e99e3d63701c57b4947c78f2fefed0186f71a3b6b8913a8b",
+      "colorBytes": 13090
+    },
+    {
+      "id": "e-10-12",
+      "uvBounds": [
+        0.5217391304347826,
+        0.8333333333333334,
+        0.5652173913043478,
+        0.9166666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-10-12.jpg",
+      "colorSha256": "5226c8badcb18aae55f16951682d46880316deaa061e9803b66bd2fac73a14aa",
+      "colorBytes": 14200
+    },
+    {
+      "id": "e-10-13",
+      "uvBounds": [
+        0.5652173913043478,
+        0.8333333333333334,
+        0.6086956521739131,
+        0.9166666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-10-13.jpg",
+      "colorSha256": "e5201c548ccea99866d1931202b7f76bb0f6b5bc77d0dd9f59571d05662feb21",
+      "colorBytes": 18659
+    },
+    {
+      "id": "e-10-14",
+      "uvBounds": [
+        0.6086956521739131,
+        0.8333333333333334,
+        0.6521739130434783,
+        0.9166666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-10-14.jpg",
+      "colorSha256": "566f51193a8cd98af7431de3890b6d7100302d081dbfe8e765ee4b38bada19ca",
+      "colorBytes": 33066
+    },
+    {
+      "id": "e-10-15",
+      "uvBounds": [
+        0.6521739130434783,
+        0.8333333333333334,
+        0.6956521739130435,
+        0.9166666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-10-15.jpg",
+      "colorSha256": "8ee888c0f4ad6f6870f20ec24e78b03ebfc959b87f374d06a82317c95e15f697",
+      "colorBytes": 19534
+    },
+    {
+      "id": "e-10-16",
+      "uvBounds": [
+        0.6956521739130435,
+        0.8333333333333334,
+        0.7391304347826086,
+        0.9166666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-10-16.jpg",
+      "colorSha256": "a442bb30cf18f4b2bd9055110d63baef6ec5495f74ab546aff9a897552d9d3c3",
+      "colorBytes": 15881
+    },
+    {
+      "id": "e-10-17",
+      "uvBounds": [
+        0.7391304347826086,
+        0.8333333333333334,
+        0.782608695652174,
+        0.9166666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-10-17.jpg",
+      "colorSha256": "88df36951b919c7e03f0f4dbab22d857241344368d97a9849322b9e82575f459",
+      "colorBytes": 29966
+    },
+    {
+      "id": "e-10-18",
+      "uvBounds": [
+        0.782608695652174,
+        0.8333333333333334,
+        0.8260869565217391,
+        0.9166666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-10-18.jpg",
+      "colorSha256": "301ac3c7f60353c929668c2682e3d61b02ad43d9ce97f857b51ed6969fd00f25",
+      "colorBytes": 42809
+    },
+    {
+      "id": "e-10-19",
+      "uvBounds": [
+        0.8260869565217391,
+        0.8333333333333334,
+        0.8695652173913043,
+        0.9166666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-10-19.jpg",
+      "colorSha256": "2991c2bb79fc91efded4ecc70bf2e304b6f0635358b28fde8ba0fd5c51697fc6",
+      "colorBytes": 37699
+    },
+    {
+      "id": "e-10-20",
+      "uvBounds": [
+        0.8695652173913043,
+        0.8333333333333334,
+        0.9130434782608695,
+        0.9166666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-10-20.jpg",
+      "colorSha256": "62dc5b7fc11596c3b145048aa012fd4a0fef2bd7e92727414218a14f7ad5c72a",
+      "colorBytes": 33705
+    },
+    {
+      "id": "e-10-21",
+      "uvBounds": [
+        0.9130434782608695,
+        0.8333333333333334,
+        0.9565217391304348,
+        0.9166666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-10-21.jpg",
+      "colorSha256": "d5937542addc1ac4aa4e653f56879caf2c79227ba494818e95a6751c355f0614",
+      "colorBytes": 34048
+    },
+    {
+      "id": "e-10-22",
+      "uvBounds": [
+        0.9565217391304348,
+        0.8333333333333334,
+        1,
+        0.9166666666666666
+      ],
+      "width": 497,
+      "height": 476,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/e-10-22.jpg",
+      "colorSha256": "d9a68d62a54f1443dba4c7dd99603975885b201df26afb3015b8f71a46868a5e",
+      "colorBytes": 29719
+    },
+    {
+      "id": "n-0-0",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0,
+        0,
+        0.3333333333333333,
+        0.3333333333333333
+      ],
+      "width": 415,
+      "height": 415,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/n-0-0.jpg",
+      "colorSha256": "244d92418bf15ada197d5a8d4f6221c83cb6f5a9cd4fa65153ab7d29f49e0e10",
+      "colorBytes": 21365
+    },
+    {
+      "id": "n-0-1",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.3333333333333333,
+        0,
+        0.6666666666666666,
+        0.3333333333333333
+      ],
+      "width": 415,
+      "height": 415,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/n-0-1.jpg",
+      "colorSha256": "b4706acbad483267b8c63b279a7c6cf0ae11047dda91709dc98893a7666adf36",
+      "colorBytes": 20631
+    },
+    {
+      "id": "n-0-2",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.6666666666666666,
+        0,
+        1,
+        0.3333333333333333
+      ],
+      "width": 415,
+      "height": 415,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/n-0-2.jpg",
+      "colorSha256": "14ddc3d47e35b585b9852cadedf36e458228e6c4c4154899587ac679afa6ea33",
+      "colorBytes": 14036
+    },
+    {
+      "id": "n-1-0",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0,
+        0.3333333333333333,
+        0.3333333333333333,
+        0.6666666666666666
+      ],
+      "width": 415,
+      "height": 415,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/n-1-0.jpg",
+      "colorSha256": "919e50d72bf860e7dfec39938c904aca863661450102d02a08b4d8dadd47ecb1",
+      "colorBytes": 22886
+    },
+    {
+      "id": "n-1-1",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.3333333333333333,
+        0.3333333333333333,
+        0.6666666666666666,
+        0.6666666666666666
+      ],
+      "width": 415,
+      "height": 415,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/n-1-1.jpg",
+      "colorSha256": "60a07b9dbe36876ed5ccbb872271c5f9131bcfbe19cde8e768f1cbbf9448056e",
+      "colorBytes": 17326
+    },
+    {
+      "id": "n-1-2",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.6666666666666666,
+        0.3333333333333333,
+        1,
+        0.6666666666666666
+      ],
+      "width": 415,
+      "height": 415,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/n-1-2.jpg",
+      "colorSha256": "835457a7212f077768e3a51c4d3d11d3c961b069cd78bc82e4322d1d26437ce1",
+      "colorBytes": 10650
+    },
+    {
+      "id": "n-2-0",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0,
+        0.6666666666666666,
+        0.3333333333333333,
+        1
+      ],
+      "width": 415,
+      "height": 415,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/n-2-0.jpg",
+      "colorSha256": "212160dd76681f91929c420d6d80297106955dd5d0ed77d2022964a43f6fa33b",
+      "colorBytes": 17572
+    },
+    {
+      "id": "n-2-1",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.3333333333333333,
+        0.6666666666666666,
+        0.6666666666666666,
+        1
+      ],
+      "width": 415,
+      "height": 415,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/n-2-1.jpg",
+      "colorSha256": "4820dabceca721d3b66eaad2e62c24523a05fc1d29bce31e6032908f806ae788",
+      "colorBytes": 17114
+    },
+    {
+      "id": "n-2-2",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.6666666666666666,
+        0.6666666666666666,
+        1,
+        1
+      ],
+      "width": 415,
+      "height": 415,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/n-2-2.jpg",
+      "colorSha256": "ab7eb974f71b00a02f24d0ac8bc2825b424fbc6fdd7c24588cc5615a51b8313a",
+      "colorBytes": 15805
+    },
+    {
+      "id": "s-0-0",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0,
+        0,
+        0.3333333333333333,
+        0.3333333333333333
+      ],
+      "width": 415,
+      "height": 415,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/s-0-0.jpg",
+      "colorSha256": "6a15a7f72d1266f3f2b3210f7c58ca3460c3d1f9ae14756c452ab43933f3e729",
+      "colorBytes": 33045
+    },
+    {
+      "id": "s-0-1",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.3333333333333333,
+        0,
+        0.6666666666666666,
+        0.3333333333333333
+      ],
+      "width": 415,
+      "height": 415,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/s-0-1.jpg",
+      "colorSha256": "9d3c939d3f3da4422ee5a0748b41b65c5ee12438cb0e631096f3bff1a0c372ec",
+      "colorBytes": 18464
+    },
+    {
+      "id": "s-0-2",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.6666666666666666,
+        0,
+        1,
+        0.3333333333333333
+      ],
+      "width": 415,
+      "height": 415,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/s-0-2.jpg",
+      "colorSha256": "63cef68221fc202020d74a5e0223e364700464537d8eb2e5c101c4896d5ec497",
+      "colorBytes": 26193
+    },
+    {
+      "id": "s-1-0",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0,
+        0.3333333333333333,
+        0.3333333333333333,
+        0.6666666666666666
+      ],
+      "width": 415,
+      "height": 415,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/s-1-0.jpg",
+      "colorSha256": "e365175404ddf4da60d3f45fa6b4a5d1c94345db866c499bbc12818f83d0e211",
+      "colorBytes": 31412
+    },
+    {
+      "id": "s-1-1",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.3333333333333333,
+        0.3333333333333333,
+        0.6666666666666666,
+        0.6666666666666666
+      ],
+      "width": 415,
+      "height": 415,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/s-1-1.jpg",
+      "colorSha256": "207ffb0346ca80ef3496c88feeab28848df7947222f9653937eb78db4b425873",
+      "colorBytes": 15975
+    },
+    {
+      "id": "s-1-2",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.6666666666666666,
+        0.3333333333333333,
+        1,
+        0.6666666666666666
+      ],
+      "width": 415,
+      "height": 415,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/s-1-2.jpg",
+      "colorSha256": "089625741c365c8f54179d9dc64b64e979b831e2aafb3961baedc866a8f0ef1e",
+      "colorBytes": 15532
+    },
+    {
+      "id": "s-2-0",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0,
+        0.6666666666666666,
+        0.3333333333333333,
+        1
+      ],
+      "width": 415,
+      "height": 415,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/s-2-0.jpg",
+      "colorSha256": "fd9d3e8c91276ff0504b39efb47f60d28c12e87ed10b720903f1f255d31a6c5e",
+      "colorBytes": 27038
+    },
+    {
+      "id": "s-2-1",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.3333333333333333,
+        0.6666666666666666,
+        0.6666666666666666,
+        1
+      ],
+      "width": 415,
+      "height": 415,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/s-2-1.jpg",
+      "colorSha256": "e251a30e174ab354891cf10674f45bec167de692e4eef0486c16f80a9bd61d18",
+      "colorBytes": 25360
+    },
+    {
+      "id": "s-2-2",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.6666666666666666,
+        0.6666666666666666,
+        1,
+        1
+      ],
+      "width": 415,
+      "height": 415,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/io/s-2-2.jpg",
+      "colorSha256": "7cca82414c43962cbe6160894c4dfee5a860812c7bef565c4fd1b022ecfaf179",
+      "colorBytes": 16539
+    }
+  ],
+  "totalBytes": 6028328,
+  "sourceWidth": 11444,
+  "sourceHeight": 5722,
+  "sourceBytes": 44797536,
+  "heightPolicy": "No measured DEM bundled in this detail pack; existing base shape and relief are not promoted into detail.",
+  "provenance": {
+    "sha256": "5d4dcb60e4f5b9bf505dc71b0b51d4ebafd99c7fd6074e6c8e84c24626ce1f70",
+    "width": 11444,
+    "height": 5722,
+    "source": {
+      "file": "io-usgs-color-1km.tif",
+      "sha256": "135f88cb645bfdb4e045b380971ab2ba14e230590c96c9c86cfe7310fda881ac",
+      "url": "https://planetarymaps.usgs.gov/mosaic/Io_GalileoSSI-Voyager_Global_Mosaic_ClrMerge_1km.tif",
+      "width": 11445,
+      "height": 5723,
+      "center": 0,
+      "west": true,
+      "citation": "NASA Galileo SSI / Voyager, USGS color-merged mosaic, 1 km grid; source detail varies 1–10 km, false color and baked illumination",
+      "bytes": 196637696
+    },
+    "georeferencing": {
+      "origin": [
+        -5723000,
+        2862000,
+        0
+      ],
+      "resolution": [
+        1000,
+        -1000,
+        0
+      ],
+      "keys": {
+        "GTModelTypeGeoKey": 1,
+        "GTRasterTypeGeoKey": 1,
+        "GTCitationGeoKey": "SimpleCylindrical Io",
+        "GeographicTypeGeoKey": 32767,
+        "GeogCitationGeoKey": "GCS Name = GCS_Io|Datum = D_Io|Ellipsoid = Io|Primem = Reference_Meridian|",
+        "GeogGeodeticDatumGeoKey": 32767,
+        "GeogAngularUnitsGeoKey": 9102,
+        "GeogEllipsoidGeoKey": 32767,
+        "GeogSemiMajorAxisGeoKey": 1821460,
+        "GeogSemiMinorAxisGeoKey": 1821460,
+        "GeogPrimeMeridianLongGeoKey": 0,
+        "ProjectedCSTypeGeoKey": 32767,
+        "ProjectionGeoKey": 32767,
+        "ProjCoordTransGeoKey": 17,
+        "ProjLinearUnitsGeoKey": 9001,
+        "ProjStdParallel1GeoKey": 0,
+        "ProjFalseEastingGeoKey": 0,
+        "ProjFalseNorthingGeoKey": 0,
+        "ProjCenterLongGeoKey": 0,
+        "ProjCenterLatGeoKey": 0
+      }
+    },
+    "displayStretch": null,
+    "normalization": "Pixel-centered planetocentric east-positive -180..180 north-up; source GeoTIFF origin/resolution and label longitude direction explicitly sampled; no height inferred. Source grid is downsampled at most to 64 ppd; display contrast is not calibrated albedo."
+  },
+  "processing": "Pixel-centered canonical east-positive imagery sampled bilinearly at native resolution (maximum 64 ppd); 512-pixel bounded JPEG tiles; 70-degree stereographic polar replacement, square equatorial ground spacing; little-endian uint16 scientific heights in lossless gzip. Polar imagery remains limited by native polar observations/fill."
+}

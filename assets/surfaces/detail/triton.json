@@ -1,0 +1,606 @@
+{
+  "terrainKind": "procedural",
+  "effectivePixelsPerDegree": 39.272222222222226,
+  "heightEffectivePixelsPerDegree": null,
+  "tiles": [
+    {
+      "id": "n-0-0",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0,
+        0,
+        0.25,
+        0.25
+      ],
+      "width": 384,
+      "height": 384,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/triton/n-0-0.jpg",
+      "colorSha256": "a675326c83dd0ba2d1ff3fa165c11aa61910f4c8c5e8697a5e2875a776d96e27",
+      "colorBytes": 1994
+    },
+    {
+      "id": "n-0-1",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.25,
+        0,
+        0.5,
+        0.25
+      ],
+      "width": 384,
+      "height": 384,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/triton/n-0-1.jpg",
+      "colorSha256": "a675326c83dd0ba2d1ff3fa165c11aa61910f4c8c5e8697a5e2875a776d96e27",
+      "colorBytes": 1994
+    },
+    {
+      "id": "n-0-2",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.5,
+        0,
+        0.75,
+        0.25
+      ],
+      "width": 384,
+      "height": 384,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/triton/n-0-2.jpg",
+      "colorSha256": "a675326c83dd0ba2d1ff3fa165c11aa61910f4c8c5e8697a5e2875a776d96e27",
+      "colorBytes": 1994
+    },
+    {
+      "id": "n-0-3",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.75,
+        0,
+        1,
+        0.25
+      ],
+      "width": 384,
+      "height": 384,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/triton/n-0-3.jpg",
+      "colorSha256": "a675326c83dd0ba2d1ff3fa165c11aa61910f4c8c5e8697a5e2875a776d96e27",
+      "colorBytes": 1994
+    },
+    {
+      "id": "n-1-0",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0,
+        0.25,
+        0.25,
+        0.5
+      ],
+      "width": 384,
+      "height": 384,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/triton/n-1-0.jpg",
+      "colorSha256": "a675326c83dd0ba2d1ff3fa165c11aa61910f4c8c5e8697a5e2875a776d96e27",
+      "colorBytes": 1994
+    },
+    {
+      "id": "n-1-1",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.25,
+        0.25,
+        0.5,
+        0.5
+      ],
+      "width": 384,
+      "height": 384,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/triton/n-1-1.jpg",
+      "colorSha256": "a675326c83dd0ba2d1ff3fa165c11aa61910f4c8c5e8697a5e2875a776d96e27",
+      "colorBytes": 1994
+    },
+    {
+      "id": "n-1-2",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.5,
+        0.25,
+        0.75,
+        0.5
+      ],
+      "width": 384,
+      "height": 384,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/triton/n-1-2.jpg",
+      "colorSha256": "a675326c83dd0ba2d1ff3fa165c11aa61910f4c8c5e8697a5e2875a776d96e27",
+      "colorBytes": 1994
+    },
+    {
+      "id": "n-1-3",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.75,
+        0.25,
+        1,
+        0.5
+      ],
+      "width": 384,
+      "height": 384,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/triton/n-1-3.jpg",
+      "colorSha256": "a675326c83dd0ba2d1ff3fa165c11aa61910f4c8c5e8697a5e2875a776d96e27",
+      "colorBytes": 1994
+    },
+    {
+      "id": "n-2-0",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0,
+        0.5,
+        0.25,
+        0.75
+      ],
+      "width": 384,
+      "height": 384,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/triton/n-2-0.jpg",
+      "colorSha256": "a675326c83dd0ba2d1ff3fa165c11aa61910f4c8c5e8697a5e2875a776d96e27",
+      "colorBytes": 1994
+    },
+    {
+      "id": "n-2-1",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.25,
+        0.5,
+        0.5,
+        0.75
+      ],
+      "width": 384,
+      "height": 384,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/triton/n-2-1.jpg",
+      "colorSha256": "a675326c83dd0ba2d1ff3fa165c11aa61910f4c8c5e8697a5e2875a776d96e27",
+      "colorBytes": 1994
+    },
+    {
+      "id": "n-2-2",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.5,
+        0.5,
+        0.75,
+        0.75
+      ],
+      "width": 384,
+      "height": 384,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/triton/n-2-2.jpg",
+      "colorSha256": "a675326c83dd0ba2d1ff3fa165c11aa61910f4c8c5e8697a5e2875a776d96e27",
+      "colorBytes": 1994
+    },
+    {
+      "id": "n-2-3",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.75,
+        0.5,
+        1,
+        0.75
+      ],
+      "width": 384,
+      "height": 384,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/triton/n-2-3.jpg",
+      "colorSha256": "a675326c83dd0ba2d1ff3fa165c11aa61910f4c8c5e8697a5e2875a776d96e27",
+      "colorBytes": 1994
+    },
+    {
+      "id": "n-3-0",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0,
+        0.75,
+        0.25,
+        1
+      ],
+      "width": 384,
+      "height": 384,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/triton/n-3-0.jpg",
+      "colorSha256": "a675326c83dd0ba2d1ff3fa165c11aa61910f4c8c5e8697a5e2875a776d96e27",
+      "colorBytes": 1994
+    },
+    {
+      "id": "n-3-1",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.25,
+        0.75,
+        0.5,
+        1
+      ],
+      "width": 384,
+      "height": 384,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/triton/n-3-1.jpg",
+      "colorSha256": "a675326c83dd0ba2d1ff3fa165c11aa61910f4c8c5e8697a5e2875a776d96e27",
+      "colorBytes": 1994
+    },
+    {
+      "id": "n-3-2",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.5,
+        0.75,
+        0.75,
+        1
+      ],
+      "width": 384,
+      "height": 384,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/triton/n-3-2.jpg",
+      "colorSha256": "a675326c83dd0ba2d1ff3fa165c11aa61910f4c8c5e8697a5e2875a776d96e27",
+      "colorBytes": 1994
+    },
+    {
+      "id": "n-3-3",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.75,
+        0.75,
+        1,
+        1
+      ],
+      "width": 384,
+      "height": 384,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/triton/n-3-3.jpg",
+      "colorSha256": "a675326c83dd0ba2d1ff3fa165c11aa61910f4c8c5e8697a5e2875a776d96e27",
+      "colorBytes": 1994
+    },
+    {
+      "id": "s-0-0",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0,
+        0,
+        0.25,
+        0.25
+      ],
+      "width": 384,
+      "height": 384,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/triton/s-0-0.jpg",
+      "colorSha256": "422e93e501fb780a131345cba55382458846a87d99cfc75f62e6f07a5b9ca265",
+      "colorBytes": 5637
+    },
+    {
+      "id": "s-0-1",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.25,
+        0,
+        0.5,
+        0.25
+      ],
+      "width": 384,
+      "height": 384,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/triton/s-0-1.jpg",
+      "colorSha256": "42cc7061b920f1e664db98626ca43905360823f66a7d6f4bb8c078dc6285e1d3",
+      "colorBytes": 7874
+    },
+    {
+      "id": "s-0-2",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.5,
+        0,
+        0.75,
+        0.25
+      ],
+      "width": 384,
+      "height": 384,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/triton/s-0-2.jpg",
+      "colorSha256": "d54cc3165dff627371427de07a5c9b4943a7bc88703fc0aee632465537c75aa9",
+      "colorBytes": 8832
+    },
+    {
+      "id": "s-0-3",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.75,
+        0,
+        1,
+        0.25
+      ],
+      "width": 384,
+      "height": 384,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/triton/s-0-3.jpg",
+      "colorSha256": "26223538f4d32b72e15118c4f394b7a8e72f7217e77cb37647e8e67e3534b1da",
+      "colorBytes": 10444
+    },
+    {
+      "id": "s-1-0",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0,
+        0.25,
+        0.25,
+        0.5
+      ],
+      "width": 384,
+      "height": 384,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/triton/s-1-0.jpg",
+      "colorSha256": "99f308d89efe9e812e00e6895283616e33910aebe326d647fa927956a68f5df7",
+      "colorBytes": 6490
+    },
+    {
+      "id": "s-1-1",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.25,
+        0.25,
+        0.5,
+        0.5
+      ],
+      "width": 384,
+      "height": 384,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/triton/s-1-1.jpg",
+      "colorSha256": "3ebcf9bd5f90d07d0785247be249456652054f1eea79b35a89b5087beed203ab",
+      "colorBytes": 8159
+    },
+    {
+      "id": "s-1-2",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.5,
+        0.25,
+        0.75,
+        0.5
+      ],
+      "width": 384,
+      "height": 384,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/triton/s-1-2.jpg",
+      "colorSha256": "49a51f78ef183ecf3d8cb685c77db14e3b82778a6f7da7bfc3ffd61b65625df5",
+      "colorBytes": 10375
+    },
+    {
+      "id": "s-1-3",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.75,
+        0.25,
+        1,
+        0.5
+      ],
+      "width": 384,
+      "height": 384,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/triton/s-1-3.jpg",
+      "colorSha256": "91ea67ef804685089b43fc879ece361b4c30cb05cdd0d49d1def92b69f1b44fe",
+      "colorBytes": 10223
+    },
+    {
+      "id": "s-2-0",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0,
+        0.5,
+        0.25,
+        0.75
+      ],
+      "width": 384,
+      "height": 384,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/triton/s-2-0.jpg",
+      "colorSha256": "1f021b9b02f89eeef849db0efb542b5d7722b4e3b17c6b8797fe8c8fa9a3fb27",
+      "colorBytes": 7516
+    },
+    {
+      "id": "s-2-1",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.25,
+        0.5,
+        0.5,
+        0.75
+      ],
+      "width": 384,
+      "height": 384,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/triton/s-2-1.jpg",
+      "colorSha256": "2dd924387d428aa646c4a173a5e8022997534e8b5b2b1eb0df3d7852282b238a",
+      "colorBytes": 7870
+    },
+    {
+      "id": "s-2-2",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.5,
+        0.5,
+        0.75,
+        0.75
+      ],
+      "width": 384,
+      "height": 384,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/triton/s-2-2.jpg",
+      "colorSha256": "e943653b208bffe777083aac9a6be09b4cd0c643f8332a635ad6c23238fcd169",
+      "colorBytes": 9398
+    },
+    {
+      "id": "s-2-3",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.75,
+        0.5,
+        1,
+        0.75
+      ],
+      "width": 384,
+      "height": 384,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/triton/s-2-3.jpg",
+      "colorSha256": "6f6a3aa8094aac78aa5dd2b2d755af6521cc84a2c4f7f6d5bdd04f7bf656e9c8",
+      "colorBytes": 9543
+    },
+    {
+      "id": "s-3-0",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0,
+        0.75,
+        0.25,
+        1
+      ],
+      "width": 384,
+      "height": 384,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/triton/s-3-0.jpg",
+      "colorSha256": "2427e6cfb8de735227c8dfab5b60c5a6d4d02db47099fcd88e9669cb01326f03",
+      "colorBytes": 10602
+    },
+    {
+      "id": "s-3-1",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.25,
+        0.75,
+        0.5,
+        1
+      ],
+      "width": 384,
+      "height": 384,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/triton/s-3-1.jpg",
+      "colorSha256": "4e945edcf918f0db35a9e1546cece24944154fc91ccd79c7251a85a8742db0a9",
+      "colorBytes": 7377
+    },
+    {
+      "id": "s-3-2",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.5,
+        0.75,
+        0.75,
+        1
+      ],
+      "width": 384,
+      "height": 384,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/triton/s-3-2.jpg",
+      "colorSha256": "9f4a9ad75e48359d3c6d848bdd437ca721b263dc72155998ac0dacff6e6d343d",
+      "colorBytes": 8128
+    },
+    {
+      "id": "s-3-3",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.75,
+        0.75,
+        1,
+        1
+      ],
+      "width": 384,
+      "height": 384,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/triton/s-3-3.jpg",
+      "colorSha256": "af78aba0f97065c47025d3242c08ca94f8747543ab7eb1d6b2979cf816117183",
+      "colorBytes": 9976
+    }
+  ],
+  "totalBytes": 170348,
+  "sourceWidth": 14138,
+  "sourceHeight": 7069,
+  "sourceBytes": 299994887,
+  "heightPolicy": "No measured DEM bundled in this detail pack; existing base shape and relief are not promoted into detail.",
+  "provenance": {
+    "citation": "Triton Voyager 2 Global Color Mosaic 600m, USGS Astrogeology / NASA JPL / Lunar and Planetary Institute",
+    "source": {
+      "file": "Triton_Voyager2_ClrMosaic_GlobalFill_600m.tif",
+      "url": "https://planetarymaps.usgs.gov/mosaic/Triton_Voyager2_ClrMosaic_GlobalFill_600m.tif",
+      "sha256": "f20ed332e85df469725629b81d3a73ad026897fe561ec59d6245d249a09507db",
+      "dimensions": "14138x7069 8-bit three-band GeoTIFF; 600 m/pixel"
+    },
+    "sourceMetadata": "https://astrogeology.usgs.gov/search/map/triton_voyager_2_global_color_mosaic_600m",
+    "coverage": "Global mapped color mosaic assembled from Voyager 2 imagery; gaps were filled by neighboring pixels in the official product and coverage is uneven, especially away from the encounter hemisphere.",
+    "license": "NASA/JPL/USGS/LPI public-domain planetary imagery; retain mission and product attribution.",
+    "processing": "Validated 14138x7069 8-bit RGB GeoTIFF metadata; source is already east-positive -180..180 equirectangular and north-up; Lanczos resize to 512/1024/2048; JPEG quality 88 with 4:4:4 chroma.",
+    "proceduralHeight": "Seamless deterministic 3D direction-vector field, little-endian uint16, height = -512 + sample x 1 m; not measured relief and not derived from image pixels.",
+    "canonicalRadiusMeters": 1352600,
+    "sourceMetadataRadiusMeters": 1350000,
+    "radiusDifferenceMeters": 2600
+  },
+  "processing": "Pixel-centered canonical east-positive imagery sampled bilinearly at native resolution (maximum 64 ppd); 512-pixel bounded JPEG tiles; 70-degree stereographic polar replacement, square equatorial ground spacing; little-endian uint16 scientific heights in lossless gzip. Polar imagery remains limited by native polar observations/fill."
+}

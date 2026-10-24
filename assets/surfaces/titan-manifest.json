@@ -39,7 +39,45 @@
     "interpolation": "Corlies radial-basis-function interpolation of sparse Cassini altimetry, SARtopo and stereophotogrammetry; global coverage does not imply global measurement",
     "sourceCoverage": "approximately 9% of Titan area directly constrained according to Corlies et al.; broad interpolated regions should not be read as resolved local relief",
     "processing": "Validated ISIS cube header and dimensions; sampled north-up east-positive grid with longitude seam wrap; bilinear resampling to 1024x512 and 2048x1024; uint16 little-endian at 0.05 m steps; JPEG appearance kept independent",
-    "noData": "Corlies interpolated grid contains finite values across the global raster; underlying sparse-measurement coverage remains explicitly qualified"
+    "noData": "Corlies interpolated grid contains finite values across the global raster; underlying sparse-measurement coverage remains explicitly qualified",
+    "imagery": {
+      "sha256": "cb1e4ee64fd800b88b03e76f29b619162ecfb71a541acf4036598a0cd5445ed9",
+      "width": 23040,
+      "height": 11520,
+      "source": {
+        "file": "titan-2026-global.png",
+        "sha256": "5b17af4c230f5f2434497d77621dbe6503458ac15d54557a946c1e1ca9562cb2",
+        "url": "https://www.sciencebase.gov/catalog/file/get/68a5107ad4be02198e361c35?f=__disk__40%2Ffc%2F6b%2F40fc6b3d12f9356149245c46522fc4aca6cb9d5f",
+        "labelFile": "titan-2026-global.lbl",
+        "labelUrl": "https://www.sciencebase.gov/catalog/file/get/68a5107ad4be02198e361c35?f=__disk__d5%2F4a%2F74%2Fd54a743860579c91705ea68578005e7b5caf8bbe",
+        "labelSha256": "77b1bf7c39ab7428b8e61b1dde12bbe9e9a9870ae644ed5ce03516680e2741f0",
+        "width": 23048,
+        "height": 11524,
+        "center": 180,
+        "west": false,
+        "citation": "Weller et al., USGS 2026 controlled Titan ISS 938 nm global mosaic, 702 m; DOI 10.5066/P14FAEKS. Full-resolution PNG display derivative; sharpening baked into source, not true RGB/albedo.",
+        "bytes": 73480116
+      },
+      "georeferencing": {
+        "origin": [
+          -8089848,
+          4044924,
+          0
+        ],
+        "resolution": [
+          702,
+          -702,
+          0
+        ],
+        "keys": {
+          "ProjCoordTransGeoKey": 17,
+          "ProjCenterLongGeoKey": 180,
+          "GeogSemiMajorAxisGeoKey": 2575000
+        }
+      },
+      "displayStretch": null,
+      "normalization": "Pixel-centered planetocentric east-positive -180..180 north-up; source GeoTIFF origin/resolution and label longitude direction explicitly sampled; no height inferred. Source grid is downsampled at most to 64 ppd; display contrast is not calibrated albedo."
+    }
   },
   "appearance": {
     "source": {
@@ -59,15 +97,21 @@
       "color": "/assets/surfaces/titan-preview.jpg",
       "width": 512,
       "height": 256,
-      "colorSha256": "a3509333cf670e9b63ada274ecf6846293efd051c588975cdb50351bd748475a",
-      "colorKind": "Cassini ISS 938-nm near-infrared mapped surface mosaic"
+      "colorSha256": "197f5c5ea6a8b8e56f88b5a25ee65bb1f03622501e4ab973b2f0240c42677d2e",
+      "heightUrl": "/assets/surfaces/titan-preview.height.bin",
+      "heightWidth": 512,
+      "heightHeight": 256,
+      "heightSha256": "20288b93eb623684406c3d22f376a8ec69222288e0d5e9abede30844fb25d1d5",
+      "heightOffsetMeters": -1800,
+      "heightScaleMeters": 0.05,
+      "minElevationMeters": -1581.7,
+      "maxElevationMeters": 744.75
     },
     "medium": {
       "color": "/assets/surfaces/titan-medium.jpg",
       "width": 1024,
       "height": 512,
-      "colorSha256": "93d7f4f4b1082d4486389537d98c79854dcd1fd66de6b80c08320c1290fe80be",
-      "colorKind": "Cassini ISS 938-nm near-infrared mapped surface mosaic",
+      "colorSha256": "1664852d98d7fe50a03f8e3b914ad5a1beef0e3f54aae2b9f89b3106febaf49f",
       "heightUrl": "/assets/surfaces/titan-medium.height.bin",
       "heightWidth": 1024,
       "heightHeight": 512,
@@ -86,8 +130,7 @@
       "color": "/assets/surfaces/titan-near.jpg",
       "width": 2048,
       "height": 1024,
-      "colorSha256": "4dd2f0b67152b71f301879f9b69970e25c0f3beea398497cb48c6be09496d48d",
-      "colorKind": "Cassini ISS 938-nm near-infrared mapped surface mosaic",
+      "colorSha256": "6b793e19a7b455cb01eff4002476ef799e1383419c484efea73cb0ead4790c51",
       "heightUrl": "/assets/surfaces/titan-near.height.bin",
       "heightWidth": 2048,
       "heightHeight": 1024,
@@ -102,5 +145,6 @@
         819.6270751953125
       ]
     }
-  }
+  },
+  "colorType": "Mapped spacecraft imagery; see pinned source and display processing"
 }

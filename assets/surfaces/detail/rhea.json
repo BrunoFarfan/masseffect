@@ -1,0 +1,1267 @@
+{
+  "terrainKind": "procedural",
+  "effectivePixelsPerDegree": 16.002777777777776,
+  "heightEffectivePixelsPerDegree": null,
+  "tiles": [
+    {
+      "id": "e-0-0",
+      "uvBounds": [
+        0,
+        0,
+        0.08333333333333333,
+        0.16666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-0-0.jpg",
+      "colorSha256": "b0694f5cfdcbc7aaa1d006fd5e77f47a43096ddad2b79deee0b0ee4fdbac2053",
+      "colorBytes": 5686
+    },
+    {
+      "id": "e-0-1",
+      "uvBounds": [
+        0.08333333333333333,
+        0,
+        0.16666666666666666,
+        0.16666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-0-1.jpg",
+      "colorSha256": "0f9aa78237d0436ce964542a2b8e663a81cb886dd95dc6ece77fb310897f3ab5",
+      "colorBytes": 7798
+    },
+    {
+      "id": "e-0-2",
+      "uvBounds": [
+        0.16666666666666666,
+        0,
+        0.25,
+        0.16666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-0-2.jpg",
+      "colorSha256": "1e0fcaf1e359addc10d75ba192793ee683fa1e29fce497f09732a2c7c22a4cf0",
+      "colorBytes": 8015
+    },
+    {
+      "id": "e-0-3",
+      "uvBounds": [
+        0.25,
+        0,
+        0.3333333333333333,
+        0.16666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-0-3.jpg",
+      "colorSha256": "0dea337e7f4ec277ffb0481bb6b2c55987cff75b07681d0a666919b5600e96f0",
+      "colorBytes": 12007
+    },
+    {
+      "id": "e-0-4",
+      "uvBounds": [
+        0.3333333333333333,
+        0,
+        0.4166666666666667,
+        0.16666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-0-4.jpg",
+      "colorSha256": "694986955cd81d65b91770f7ff3f0e1a5c9d3002ea133e4f5245281b64990d43",
+      "colorBytes": 13940
+    },
+    {
+      "id": "e-0-5",
+      "uvBounds": [
+        0.4166666666666667,
+        0,
+        0.5,
+        0.16666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-0-5.jpg",
+      "colorSha256": "6856f83eadab2e5be7dca3d11494ef954c1aa01a31f899eda83076f878bf7e60",
+      "colorBytes": 13745
+    },
+    {
+      "id": "e-0-6",
+      "uvBounds": [
+        0.5,
+        0,
+        0.5833333333333334,
+        0.16666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-0-6.jpg",
+      "colorSha256": "d68779babfdc8412c6dfc700f2a8eb1d874d4a311793d182401c1928d5c416fd",
+      "colorBytes": 14133
+    },
+    {
+      "id": "e-0-7",
+      "uvBounds": [
+        0.5833333333333334,
+        0,
+        0.6666666666666666,
+        0.16666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-0-7.jpg",
+      "colorSha256": "9f1ffef81594224c39172e12e2d793e6a2a50b9f9f9d9eaed9e06ae26098245f",
+      "colorBytes": 13682
+    },
+    {
+      "id": "e-0-8",
+      "uvBounds": [
+        0.6666666666666666,
+        0,
+        0.75,
+        0.16666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-0-8.jpg",
+      "colorSha256": "0f0fee31a8ec9e7171ba7cc3b498596ccdb5970c5900632278ce8a1ac9b9099a",
+      "colorBytes": 13572
+    },
+    {
+      "id": "e-0-9",
+      "uvBounds": [
+        0.75,
+        0,
+        0.8333333333333334,
+        0.16666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-0-9.jpg",
+      "colorSha256": "416f909f58e52729ca010f4449e8e7702dd22b1aef92c399845246499a6afed1",
+      "colorBytes": 12652
+    },
+    {
+      "id": "e-0-10",
+      "uvBounds": [
+        0.8333333333333334,
+        0,
+        0.9166666666666666,
+        0.16666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-0-10.jpg",
+      "colorSha256": "c7b338b8778044c07a81ecb6f62920b62ef9da1e66107faddb89391085a06d14",
+      "colorBytes": 8610
+    },
+    {
+      "id": "e-0-11",
+      "uvBounds": [
+        0.9166666666666666,
+        0,
+        1,
+        0.16666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-0-11.jpg",
+      "colorSha256": "0cc7f72f1c78a1ff70dbf34d3eeea85f76f7871bcbf711c8f80be79ce79c67d8",
+      "colorBytes": 8955
+    },
+    {
+      "id": "e-1-0",
+      "uvBounds": [
+        0,
+        0.16666666666666666,
+        0.08333333333333333,
+        0.3333333333333333
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-1-0.jpg",
+      "colorSha256": "d7776fa26698c51dad30188e3c9c2f7b71139fa818ffaa9eed7f103923e29dbc",
+      "colorBytes": 3150
+    },
+    {
+      "id": "e-1-1",
+      "uvBounds": [
+        0.08333333333333333,
+        0.16666666666666666,
+        0.16666666666666666,
+        0.3333333333333333
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-1-1.jpg",
+      "colorSha256": "ed4d58b37ef9c1e260d3219a2b5c17b0b5c56a5892f85f1213924c6fd9e4b3c9",
+      "colorBytes": 3187
+    },
+    {
+      "id": "e-1-2",
+      "uvBounds": [
+        0.16666666666666666,
+        0.16666666666666666,
+        0.25,
+        0.3333333333333333
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-1-2.jpg",
+      "colorSha256": "daa011e3a19581bc713c15a4d9dc05c2b0682f5673e76a1fdfdf7d94d5535eca",
+      "colorBytes": 3426
+    },
+    {
+      "id": "e-1-3",
+      "uvBounds": [
+        0.25,
+        0.16666666666666666,
+        0.3333333333333333,
+        0.3333333333333333
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-1-3.jpg",
+      "colorSha256": "80571157f3fbebc252eedb333ec3a61d55e0fdbabc15ab11dd1c3ed8d42dc8d0",
+      "colorBytes": 7811
+    },
+    {
+      "id": "e-1-4",
+      "uvBounds": [
+        0.3333333333333333,
+        0.16666666666666666,
+        0.4166666666666667,
+        0.3333333333333333
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-1-4.jpg",
+      "colorSha256": "c9b0e26854d2c97532fc8faf58f6c9bd56d6bd475374f0395f2eb6b5c71b78f8",
+      "colorBytes": 14013
+    },
+    {
+      "id": "e-1-5",
+      "uvBounds": [
+        0.4166666666666667,
+        0.16666666666666666,
+        0.5,
+        0.3333333333333333
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-1-5.jpg",
+      "colorSha256": "26e33ed0268eec5a0e29c9febc309c326171e7bca45df8779b2ea6a278654203",
+      "colorBytes": 14195
+    },
+    {
+      "id": "e-1-6",
+      "uvBounds": [
+        0.5,
+        0.16666666666666666,
+        0.5833333333333334,
+        0.3333333333333333
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-1-6.jpg",
+      "colorSha256": "def2d4eb457754351703b3a360e44b4f9390e3a3715c96d88a7db757fee133cd",
+      "colorBytes": 13228
+    },
+    {
+      "id": "e-1-7",
+      "uvBounds": [
+        0.5833333333333334,
+        0.16666666666666666,
+        0.6666666666666666,
+        0.3333333333333333
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-1-7.jpg",
+      "colorSha256": "b12966c0e510a3fec2536fcd5adaff62f638821b57228067b030a397379db470",
+      "colorBytes": 12189
+    },
+    {
+      "id": "e-1-8",
+      "uvBounds": [
+        0.6666666666666666,
+        0.16666666666666666,
+        0.75,
+        0.3333333333333333
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-1-8.jpg",
+      "colorSha256": "b669967d5918bde74061a6a9d2d1ee86a760f49509cde15e7c60bc21f454b0ca",
+      "colorBytes": 13930
+    },
+    {
+      "id": "e-1-9",
+      "uvBounds": [
+        0.75,
+        0.16666666666666666,
+        0.8333333333333334,
+        0.3333333333333333
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-1-9.jpg",
+      "colorSha256": "c5657242883452d2907e205b5c548ff5bf87064ad7bdc382319c65ef64d51c4a",
+      "colorBytes": 14189
+    },
+    {
+      "id": "e-1-10",
+      "uvBounds": [
+        0.8333333333333334,
+        0.16666666666666666,
+        0.9166666666666666,
+        0.3333333333333333
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-1-10.jpg",
+      "colorSha256": "1af55858fa886e0b9a050a451b01da2b25d727197dd6d8cd5a44aea390b21c80",
+      "colorBytes": 5500
+    },
+    {
+      "id": "e-1-11",
+      "uvBounds": [
+        0.9166666666666666,
+        0.16666666666666666,
+        1,
+        0.3333333333333333
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-1-11.jpg",
+      "colorSha256": "40c5b5bfc1ed79bd9e59454cac8d10c4fac753b4cdec205f550bd0717b1124d9",
+      "colorBytes": 3522
+    },
+    {
+      "id": "e-2-0",
+      "uvBounds": [
+        0,
+        0.3333333333333333,
+        0.08333333333333333,
+        0.5
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-2-0.jpg",
+      "colorSha256": "df439de9f5475687a97eec5df5240020f78d8b55d44bfb9214221b11a8042245",
+      "colorBytes": 3239
+    },
+    {
+      "id": "e-2-1",
+      "uvBounds": [
+        0.08333333333333333,
+        0.3333333333333333,
+        0.16666666666666666,
+        0.5
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-2-1.jpg",
+      "colorSha256": "9759ced5f45a2a996de0f8a9bdfdb1731323576ab4cdc90a5fee6a36c537eaf2",
+      "colorBytes": 3244
+    },
+    {
+      "id": "e-2-2",
+      "uvBounds": [
+        0.16666666666666666,
+        0.3333333333333333,
+        0.25,
+        0.5
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-2-2.jpg",
+      "colorSha256": "c76ed37146eec9c194ab6ef5337461e39a564fd4d763a5f10d1da56bbc57a093",
+      "colorBytes": 3387
+    },
+    {
+      "id": "e-2-3",
+      "uvBounds": [
+        0.25,
+        0.3333333333333333,
+        0.3333333333333333,
+        0.5
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-2-3.jpg",
+      "colorSha256": "afd0ef66af12c1104766f1af80e12f28ab302d7e3aee81645186ba9962298ba1",
+      "colorBytes": 6116
+    },
+    {
+      "id": "e-2-4",
+      "uvBounds": [
+        0.3333333333333333,
+        0.3333333333333333,
+        0.4166666666666667,
+        0.5
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-2-4.jpg",
+      "colorSha256": "1a6b713fbe38b21aae919aca91d5be795f0c5f8f47fd4756b5085fc751b2bc48",
+      "colorBytes": 11284
+    },
+    {
+      "id": "e-2-5",
+      "uvBounds": [
+        0.4166666666666667,
+        0.3333333333333333,
+        0.5,
+        0.5
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-2-5.jpg",
+      "colorSha256": "07749df5c7433cf6fafc5d97089cca4cbc66e64847770eccc870af2e32b16f13",
+      "colorBytes": 11016
+    },
+    {
+      "id": "e-2-6",
+      "uvBounds": [
+        0.5,
+        0.3333333333333333,
+        0.5833333333333334,
+        0.5
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-2-6.jpg",
+      "colorSha256": "9b6d4c5e724a538b0fc9c230a187255fc1fbb0fd2b053d3be264b47127bdb128",
+      "colorBytes": 10292
+    },
+    {
+      "id": "e-2-7",
+      "uvBounds": [
+        0.5833333333333334,
+        0.3333333333333333,
+        0.6666666666666666,
+        0.5
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-2-7.jpg",
+      "colorSha256": "eda4df926eff44702493615112e8743cd78a9c045559127cab96de47b92e8459",
+      "colorBytes": 7324
+    },
+    {
+      "id": "e-2-8",
+      "uvBounds": [
+        0.6666666666666666,
+        0.3333333333333333,
+        0.75,
+        0.5
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-2-8.jpg",
+      "colorSha256": "1aed556aa2f342689d8d3f8f579dfe160e12d4aeb598cb1a2073bb593a4c3cce",
+      "colorBytes": 11757
+    },
+    {
+      "id": "e-2-9",
+      "uvBounds": [
+        0.75,
+        0.3333333333333333,
+        0.8333333333333334,
+        0.5
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-2-9.jpg",
+      "colorSha256": "f51803ec3da8c13807c5744cac32b2d688c7767eac97a0ed3435cc5717553f94",
+      "colorBytes": 12851
+    },
+    {
+      "id": "e-2-10",
+      "uvBounds": [
+        0.8333333333333334,
+        0.3333333333333333,
+        0.9166666666666666,
+        0.5
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-2-10.jpg",
+      "colorSha256": "55e27a66899d85be35e322b778586a63990a339052ad5d2bdde6c75a23a5c268",
+      "colorBytes": 3862
+    },
+    {
+      "id": "e-2-11",
+      "uvBounds": [
+        0.9166666666666666,
+        0.3333333333333333,
+        1,
+        0.5
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-2-11.jpg",
+      "colorSha256": "7b9bb68fb0f8de879ff6609517363ac7c5fd9b8b435244495fb5e2037840ad14",
+      "colorBytes": 3240
+    },
+    {
+      "id": "e-3-0",
+      "uvBounds": [
+        0,
+        0.5,
+        0.08333333333333333,
+        0.6666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-3-0.jpg",
+      "colorSha256": "f189b5e71382aebac3ae2532cad6604b219335d2180f6de5b6216ec418d9b270",
+      "colorBytes": 3228
+    },
+    {
+      "id": "e-3-1",
+      "uvBounds": [
+        0.08333333333333333,
+        0.5,
+        0.16666666666666666,
+        0.6666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-3-1.jpg",
+      "colorSha256": "6f5c2e26be0a495af77e4317778bef2dd7ea19328675d99e5e3c44c5af3ad597",
+      "colorBytes": 3137
+    },
+    {
+      "id": "e-3-2",
+      "uvBounds": [
+        0.16666666666666666,
+        0.5,
+        0.25,
+        0.6666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-3-2.jpg",
+      "colorSha256": "8ec5e9d1fd089dcfd6f9a254827b8b1cd1c9da09b1354ea84e0b76235a1f31d9",
+      "colorBytes": 3515
+    },
+    {
+      "id": "e-3-3",
+      "uvBounds": [
+        0.25,
+        0.5,
+        0.3333333333333333,
+        0.6666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-3-3.jpg",
+      "colorSha256": "c1af6c00ef24fce8e1c4d9732e95f0959223748539d4572c52c8c80d450be619",
+      "colorBytes": 5231
+    },
+    {
+      "id": "e-3-4",
+      "uvBounds": [
+        0.3333333333333333,
+        0.5,
+        0.4166666666666667,
+        0.6666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-3-4.jpg",
+      "colorSha256": "685edb0c09217e2e5fa24e8d2b84d12aeff85c9e3b9ada125c64ae0bfa5c7184",
+      "colorBytes": 5042
+    },
+    {
+      "id": "e-3-5",
+      "uvBounds": [
+        0.4166666666666667,
+        0.5,
+        0.5,
+        0.6666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-3-5.jpg",
+      "colorSha256": "feacd7b3e74c2d0f4c71fc319e8116e12fb5488696028bbb06fdda3c80e41929",
+      "colorBytes": 8510
+    },
+    {
+      "id": "e-3-6",
+      "uvBounds": [
+        0.5,
+        0.5,
+        0.5833333333333334,
+        0.6666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-3-6.jpg",
+      "colorSha256": "d2aab329fa13c82dd888d810407c0de3687bd218492ecf6c9ae52d7c54a4f342",
+      "colorBytes": 6742
+    },
+    {
+      "id": "e-3-7",
+      "uvBounds": [
+        0.5833333333333334,
+        0.5,
+        0.6666666666666666,
+        0.6666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-3-7.jpg",
+      "colorSha256": "7bf786bc21911f725befee445e92d7351406ca59af88d09afb757293c6108218",
+      "colorBytes": 4667
+    },
+    {
+      "id": "e-3-8",
+      "uvBounds": [
+        0.6666666666666666,
+        0.5,
+        0.75,
+        0.6666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-3-8.jpg",
+      "colorSha256": "6c3083ada74babb559961b4cbcf025a80de6790789b6640a7caf09c084006479",
+      "colorBytes": 7955
+    },
+    {
+      "id": "e-3-9",
+      "uvBounds": [
+        0.75,
+        0.5,
+        0.8333333333333334,
+        0.6666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-3-9.jpg",
+      "colorSha256": "74ba321be322d283ff2b37a087332c01321c3bcec672976f1b50b38b5bef0297",
+      "colorBytes": 6371
+    },
+    {
+      "id": "e-3-10",
+      "uvBounds": [
+        0.8333333333333334,
+        0.5,
+        0.9166666666666666,
+        0.6666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-3-10.jpg",
+      "colorSha256": "53a0702793b688a3b5b912d37798bf51f3f97a6d918f207d1d24c13e128fcef6",
+      "colorBytes": 4767
+    },
+    {
+      "id": "e-3-11",
+      "uvBounds": [
+        0.9166666666666666,
+        0.5,
+        1,
+        0.6666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-3-11.jpg",
+      "colorSha256": "cd380a1a19e2dc9b91d251a24037b543b8ebf515a822d810ba4926895da62d92",
+      "colorBytes": 3262
+    },
+    {
+      "id": "e-4-0",
+      "uvBounds": [
+        0,
+        0.6666666666666666,
+        0.08333333333333333,
+        0.8333333333333334
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-4-0.jpg",
+      "colorSha256": "e7c6b8b9a0dec186c317a3e3577f867b51e2167b9a373e1186d615b6db96547e",
+      "colorBytes": 3389
+    },
+    {
+      "id": "e-4-1",
+      "uvBounds": [
+        0.08333333333333333,
+        0.6666666666666666,
+        0.16666666666666666,
+        0.8333333333333334
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-4-1.jpg",
+      "colorSha256": "04c626a5eec65eace0cd2d1aac995a89ea18fde124ace43893672accd91e3269",
+      "colorBytes": 3346
+    },
+    {
+      "id": "e-4-2",
+      "uvBounds": [
+        0.16666666666666666,
+        0.6666666666666666,
+        0.25,
+        0.8333333333333334
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-4-2.jpg",
+      "colorSha256": "ae4a503f4d9b71b001d6f401b2e66399ec20521d7661819d7e0dcdc628ef86ca",
+      "colorBytes": 3413
+    },
+    {
+      "id": "e-4-3",
+      "uvBounds": [
+        0.25,
+        0.6666666666666666,
+        0.3333333333333333,
+        0.8333333333333334
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-4-3.jpg",
+      "colorSha256": "b45811cc243978db13ea820c9d06dbb5861f4ed26b8a5c8e78d9f188902a86be",
+      "colorBytes": 3523
+    },
+    {
+      "id": "e-4-4",
+      "uvBounds": [
+        0.3333333333333333,
+        0.6666666666666666,
+        0.4166666666666667,
+        0.8333333333333334
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-4-4.jpg",
+      "colorSha256": "c94385af6b33e93a48709bb3062c9de8cb06a7333e19fdee55fb56cf161ef2a6",
+      "colorBytes": 4970
+    },
+    {
+      "id": "e-4-5",
+      "uvBounds": [
+        0.4166666666666667,
+        0.6666666666666666,
+        0.5,
+        0.8333333333333334
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-4-5.jpg",
+      "colorSha256": "f6fc2a5b13989295f771fee866dc42511d3660a84ed5990d0ddfb90141b5d0dc",
+      "colorBytes": 4865
+    },
+    {
+      "id": "e-4-6",
+      "uvBounds": [
+        0.5,
+        0.6666666666666666,
+        0.5833333333333334,
+        0.8333333333333334
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-4-6.jpg",
+      "colorSha256": "5218585a0121507779f6c5e1f60d8ea926e7f29fa55bfc965b7d7236af72b3f8",
+      "colorBytes": 4353
+    },
+    {
+      "id": "e-4-7",
+      "uvBounds": [
+        0.5833333333333334,
+        0.6666666666666666,
+        0.6666666666666666,
+        0.8333333333333334
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-4-7.jpg",
+      "colorSha256": "864b66de42bcd7407f29f49a09f2861c7216ef01fa717349c2b21240c54960a7",
+      "colorBytes": 4268
+    },
+    {
+      "id": "e-4-8",
+      "uvBounds": [
+        0.6666666666666666,
+        0.6666666666666666,
+        0.75,
+        0.8333333333333334
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-4-8.jpg",
+      "colorSha256": "fb01b28ff783a164439945fa4a6a357afcd5edef2d3e56c46eccb16c6d83c2bc",
+      "colorBytes": 5286
+    },
+    {
+      "id": "e-4-9",
+      "uvBounds": [
+        0.75,
+        0.6666666666666666,
+        0.8333333333333334,
+        0.8333333333333334
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-4-9.jpg",
+      "colorSha256": "9f8575c9efb1a75f7da980f718e63e4cb74f56da391222043eecc9c59297e87a",
+      "colorBytes": 4097
+    },
+    {
+      "id": "e-4-10",
+      "uvBounds": [
+        0.8333333333333334,
+        0.6666666666666666,
+        0.9166666666666666,
+        0.8333333333333334
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-4-10.jpg",
+      "colorSha256": "915a491bd4790c88b5c29c1859c2b13ef20f0c1857fb3fb31794414d34f06fcd",
+      "colorBytes": 6229
+    },
+    {
+      "id": "e-4-11",
+      "uvBounds": [
+        0.9166666666666666,
+        0.6666666666666666,
+        1,
+        0.8333333333333334
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-4-11.jpg",
+      "colorSha256": "0bcfdab537d8879a28c2190caacd0398c6ed1cd53c0eeb2f6c18b34818bf8277",
+      "colorBytes": 3384
+    },
+    {
+      "id": "e-5-0",
+      "uvBounds": [
+        0,
+        0.8333333333333334,
+        0.08333333333333333,
+        1
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-5-0.jpg",
+      "colorSha256": "d08be0f8cc078279b3299acaf228c4d3a03ddc7db10cd03f683d817ca3aea891",
+      "colorBytes": 7677
+    },
+    {
+      "id": "e-5-1",
+      "uvBounds": [
+        0.08333333333333333,
+        0.8333333333333334,
+        0.16666666666666666,
+        1
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-5-1.jpg",
+      "colorSha256": "483df993c0a034490cfface46914cd7edf584a408f6f899e7a6467449364ecc6",
+      "colorBytes": 5450
+    },
+    {
+      "id": "e-5-2",
+      "uvBounds": [
+        0.16666666666666666,
+        0.8333333333333334,
+        0.25,
+        1
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-5-2.jpg",
+      "colorSha256": "9db0ea192f318cebbefbed98e01a3e190d81aa1ed01c9bd7229b1855af9eb6fd",
+      "colorBytes": 4609
+    },
+    {
+      "id": "e-5-3",
+      "uvBounds": [
+        0.25,
+        0.8333333333333334,
+        0.3333333333333333,
+        1
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-5-3.jpg",
+      "colorSha256": "ea5d026bc5c8c2e4cc07d1ccdd57a2d50962e68eeed82adcc32509b3b8da70cf",
+      "colorBytes": 3835
+    },
+    {
+      "id": "e-5-4",
+      "uvBounds": [
+        0.3333333333333333,
+        0.8333333333333334,
+        0.4166666666666667,
+        1
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-5-4.jpg",
+      "colorSha256": "d55a019ef1eb0e5a10070091c9b33311417c54ca7b0af05cf4dfc67c7da08787",
+      "colorBytes": 5061
+    },
+    {
+      "id": "e-5-5",
+      "uvBounds": [
+        0.4166666666666667,
+        0.8333333333333334,
+        0.5,
+        1
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-5-5.jpg",
+      "colorSha256": "2d5a71973a6b83eeea6fd0f012408fd0579ad6052ca0a952b0cf992cb1c86483",
+      "colorBytes": 5481
+    },
+    {
+      "id": "e-5-6",
+      "uvBounds": [
+        0.5,
+        0.8333333333333334,
+        0.5833333333333334,
+        1
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-5-6.jpg",
+      "colorSha256": "ba3679288a894b1ebbdb98ce83ed8520261c959df0f413023bc05578e5986f29",
+      "colorBytes": 5248
+    },
+    {
+      "id": "e-5-7",
+      "uvBounds": [
+        0.5833333333333334,
+        0.8333333333333334,
+        0.6666666666666666,
+        1
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-5-7.jpg",
+      "colorSha256": "285195cce10ea86cb69bcfcb583226762bc30b3eb0853e7b6212b5a632e54ce0",
+      "colorBytes": 6630
+    },
+    {
+      "id": "e-5-8",
+      "uvBounds": [
+        0.6666666666666666,
+        0.8333333333333334,
+        0.75,
+        1
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-5-8.jpg",
+      "colorSha256": "2260ac2696d4878d19dcc60f457e2333392c684de33d42506aaac61443c77e65",
+      "colorBytes": 3149
+    },
+    {
+      "id": "e-5-9",
+      "uvBounds": [
+        0.75,
+        0.8333333333333334,
+        0.8333333333333334,
+        1
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-5-9.jpg",
+      "colorSha256": "37029e6e8bb0a449713c5cf7fa0689a3223fc7dca3ca95b1b0ff62d2ead195fc",
+      "colorBytes": 2966
+    },
+    {
+      "id": "e-5-10",
+      "uvBounds": [
+        0.8333333333333334,
+        0.8333333333333334,
+        0.9166666666666666,
+        1
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-5-10.jpg",
+      "colorSha256": "a3cd5a51be68bfadaae998ca641019fe7be3caef4da8507b7981ce7dddb55f7a",
+      "colorBytes": 4987
+    },
+    {
+      "id": "e-5-11",
+      "uvBounds": [
+        0.9166666666666666,
+        0.8333333333333334,
+        1,
+        1
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/e-5-11.jpg",
+      "colorSha256": "0ed1f85f68b3098b816ddb35be3a0604b6522e8e587f366fea62605e82ca9f6e",
+      "colorBytes": 7394
+    },
+    {
+      "id": "n-0-0",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0,
+        0,
+        0.5,
+        0.5
+      ],
+      "width": 313,
+      "height": 313,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/n-0-0.jpg",
+      "colorSha256": "87f4635a81fb9a07e7688599cc3686d68ad0a63e533d235b77b342345d06e5ac",
+      "colorBytes": 5546
+    },
+    {
+      "id": "n-0-1",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.5,
+        0,
+        1,
+        0.5
+      ],
+      "width": 313,
+      "height": 313,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/n-0-1.jpg",
+      "colorSha256": "df412fb44a9ae8b6363bec42a19925bb11ebdb6ad495f1fc9ec21d674b05debd",
+      "colorBytes": 8397
+    },
+    {
+      "id": "n-1-0",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0,
+        0.5,
+        0.5,
+        1
+      ],
+      "width": 313,
+      "height": 313,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/n-1-0.jpg",
+      "colorSha256": "3fb8b2a8e1f781b2675479c10563d7f89bd594e2510aad8862a82d0d05dffe5d",
+      "colorBytes": 4773
+    },
+    {
+      "id": "n-1-1",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.5,
+        0.5,
+        1,
+        1
+      ],
+      "width": 313,
+      "height": 313,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/n-1-1.jpg",
+      "colorSha256": "05c02f689ea1fbe45875d6794165b610071ad6050bedd9458c70315aada948c2",
+      "colorBytes": 8296
+    },
+    {
+      "id": "s-0-0",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0,
+        0,
+        0.5,
+        0.5
+      ],
+      "width": 313,
+      "height": 313,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/s-0-0.jpg",
+      "colorSha256": "08fdf3c0dba006a0a8fadc7a57b30b2a583947ebf8c50bfb24cea6a8757c812f",
+      "colorBytes": 2625
+    },
+    {
+      "id": "s-0-1",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.5,
+        0,
+        1,
+        0.5
+      ],
+      "width": 313,
+      "height": 313,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/s-0-1.jpg",
+      "colorSha256": "130abf97d98d0a8528f76e613cce9875644cc7d75c74d78f396aa1be9dd9cb96",
+      "colorBytes": 4146
+    },
+    {
+      "id": "s-1-0",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0,
+        0.5,
+        0.5,
+        1
+      ],
+      "width": 313,
+      "height": 313,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/s-1-0.jpg",
+      "colorSha256": "ccb8b9480499abdbcd015d8fc396de25a31d0fc187f8309a836430900052e079",
+      "colorBytes": 3827
+    },
+    {
+      "id": "s-1-1",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.5,
+        0.5,
+        1,
+        1
+      ],
+      "width": 313,
+      "height": 313,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/rhea/s-1-1.jpg",
+      "colorSha256": "e560811981a36e06516d5bca33a236044447817367f0feea45057db7434d0052",
+      "colorBytes": 3651
+    }
+  ],
+  "totalBytes": 546045,
+  "sourceWidth": 5761,
+  "sourceHeight": 2881,
+  "sourceBytes": 33218533,
+  "heightPolicy": "No measured DEM bundled in this detail pack; existing base shape and relief are not promoted into detail.",
+  "provenance": {
+    "citation": "USGS Astrogeology Science Center, Rhea Voyager Global Mosaic 833m; imagery from NASA Voyager 1",
+    "source": {
+      "file": "rhea-usgs-full.tif",
+      "url": "https://planetarymaps.usgs.gov/mosaic/Rhea_Voyager_mosaic_global_833m.tif",
+      "sha256": "80a9415eab73a1b7754dc7550e2483d03bfeb0bde70f7a0fe0ad8fe40fd998f5",
+      "dimensions": "5761x2881 signed 16-bit single-band GeoTIFF; 833.3947 m/pixel"
+    },
+    "sourceLabel": {
+      "file": "rhea-usgs-full.lbl",
+      "url": "https://planetarymaps.usgs.gov/mosaic/Rhea_Voyager_mosaic_global_833m.lbl",
+      "sha256": "10ceb9f81ad25866419d8dd08a367720c3fdffdc045f8591eca2427b3db1ef36",
+      "projection": "Sinusoidal",
+      "longitudeDirection": "PositiveWest",
+      "longitudeDomain": "-180..180",
+      "centerLongitude": 0,
+      "latitudeType": "Planetocentric",
+      "upperLeftCornerMeters": [
+        -2400593.43335,
+        1200505.06535
+      ],
+      "pixelResolutionMeters": 833.3947,
+      "sourceRadiusMeters": 764000
+    },
+    "sourceMetadata": "https://astrogeology.usgs.gov/search/map/rhea_voyager_global_mosaic_833m",
+    "coverage": "Global map mosaic assembled from 25 Voyager 1 images; mapped imagery, not a complete global DEM.",
+    "license": "USGS/NASA public-domain planetary imagery; retain product and mission attribution.",
+    "processing": "Validated signed-16-bit GeoTIFF dimensions, sample format, sinusoidal projection, origin, radius, and resolution; metadata-reprojected source positive-west sinusoidal samples to east-positive -180..180 planetocentric equirectangular north-up pixel centers; grayscale high byte preserved; JPEG quality 88.",
+    "proceduralHeight": "Seamless deterministic 3D direction-vector field, little-endian uint16, height = -256 + sample x 0.5 m; not measured relief and not derived from image pixels."
+  },
+  "processing": "Pixel-centered canonical east-positive imagery sampled bilinearly at native resolution (maximum 64 ppd); 512-pixel bounded JPEG tiles; 70-degree stereographic polar replacement, square equatorial ground spacing; little-endian uint16 scientific heights in lossless gzip. Polar imagery remains limited by native polar observations/fill."
+}

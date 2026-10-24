@@ -1,0 +1,67 @@
+{
+  "terrainKind": "procedural",
+  "effectivePixelsPerDegree": 5.688888888888889,
+  "heightEffectivePixelsPerDegree": null,
+  "tiles": [
+    {
+      "id": "n-0-0",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "width": 222,
+      "height": 222,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/umbriel/n-0-0.jpg",
+      "colorSha256": "d48a4bfa2c2e73d3596dc65edc6e58a30fa49b9b914b332a2d9c9586b09a88d4",
+      "colorBytes": 854
+    },
+    {
+      "id": "s-0-0",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "width": 222,
+      "height": 222,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/umbriel/s-0-0.jpg",
+      "colorSha256": "eb7702756b5fc5d3be6ff40b8775f379857af60e7d514cc6b5b5c3d92ffabb93",
+      "colorBytes": 4166
+    }
+  ],
+  "totalBytes": 5020,
+  "sourceWidth": 2048,
+  "sourceHeight": 1024,
+  "sourceBytes": 25508,
+  "heightPolicy": "No measured DEM bundled in this detail pack; existing base shape and relief are not promoted into detail.",
+  "provenance": {
+    "citation": "NASA Uranus–Umbriel 3-D resource, mosaicked with Voyager imagery; credit USGS/Tammy Becker and JPL/Caltech",
+    "source": {
+      "file": "umbriel-voyager-texture.webp",
+      "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/3d/resources/image/uranus---umbriel/preview.webp?w=2048",
+      "sha256": "bc38cae37204856e174bb8474e004f0a033ecec3fda001f4752bbd64c0c6511e",
+      "dimensions": "2048x1024 WebP, 8-bit sRGB, 3-channel"
+    },
+    "sourceMetadata": "https://science.nasa.gov/3d-resources/uranus-umbriel/",
+    "missionReference": "https://pds-imaging.jpl.nasa.gov/volumes/voyager.html",
+    "mapCatalog": "https://maps.jpl.nasa.gov/tmaps/",
+    "coverage": "Voyager 2 coverage is strongest in the southern hemisphere; unobserved or weakly constrained regions remain explicitly approximate and are not presented as measured mapping.",
+    "license": "NASA/JPL/Caltech and USGS public mission imagery; retain attribution.",
+    "processing": "Pinned 2048x1024 NASA WebP; resized without reprojection to 512x256, 1024x512 and native 2048x1024 JPEG derivatives; color is never used to derive height.",
+    "proceduralHeight": "Seamless direction-vector field, little-endian uint16, height = -120 + sample x 0.5 m; bounded range is recorded per level; synthetic approximation only.",
+    "canonicalRadiusMeters": 584700,
+    "sourceReferenceRadiusMeters": null
+  },
+  "processing": "Pixel-centered canonical east-positive imagery sampled bilinearly at native resolution (maximum 64 ppd); 512-pixel bounded JPEG tiles; 70-degree stereographic polar replacement, square equatorial ground spacing; little-endian uint16 scientific heights in lossless gzip. Polar imagery remains limited by native polar observations/fill."
+}

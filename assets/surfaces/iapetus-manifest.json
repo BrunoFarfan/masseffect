@@ -65,7 +65,15 @@
           "width": 512,
           "height": 256,
           "colorSha256": "bf2ec854151ac83cae8185d0959cf5b4fb84157cefccd2aa341579b9e0993ea1",
-          "colorKind": "USGS Cassini/Voyager grayscale mapped imagery"
+          "colorKind": "USGS Cassini/Voyager grayscale mapped imagery",
+          "heightUrl": "/assets/surfaces/iapetus-preview.height.bin",
+          "heightWidth": 512,
+          "heightHeight": 256,
+          "heightSha256": "abce81ab8c74d294dd9b402e276949c98ecfbcf0cef4209c1b958bf19c22845e",
+          "heightOffsetMeters": -256,
+          "heightScaleMeters": 0.5,
+          "minElevationMeters": -156,
+          "maxElevationMeters": 156
         },
         "medium": {
           "color": "/assets/surfaces/iapetus-medium.jpg",

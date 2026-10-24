@@ -57,7 +57,15 @@
           "color": "/assets/surfaces/callisto-preview.jpg",
           "width": 512,
           "height": 256,
-          "colorSha256": "524e2873cc634f7f6fe00b9e17d67fde111532fb33de391c96f01108eb08fe95"
+          "colorSha256": "524e2873cc634f7f6fe00b9e17d67fde111532fb33de391c96f01108eb08fe95",
+          "heightUrl": "/assets/surfaces/callisto-preview.height.bin",
+          "heightWidth": 512,
+          "heightHeight": 256,
+          "heightSha256": "94c2b9042e73fae99d6ed9ac9a2117797cbb7c9d769df7ca0289783eaf4426f3",
+          "heightOffsetMeters": -256,
+          "heightScaleMeters": 0.5,
+          "minElevationMeters": -106,
+          "maxElevationMeters": 106
         },
         "medium": {
           "color": "/assets/surfaces/callisto-medium.jpg",

@@ -28,7 +28,7 @@ Trails record actual motion, never predefined orbital ellipses. When inspecting 
 
 ## Physical model
 
-Every state and force calculation uses **meters, kilograms, seconds, m/s and m/s²**. G = 6.67430e-11 m³ kg⁻¹ s⁻². All bodies receive exact pairwise gravity. The 26-body starting system includes the Sun, eight planets and 17 moons. A 128-body cap keeps an approximate gravity tree unnecessary.
+Every state and force calculation uses **meters, kilograms, seconds, m/s and m/s²**. G = 6.67430e-11 m³ kg⁻¹ s⁻². All bodies receive exact pairwise gravity. The 29-body starting system includes the Sun, eight planets and 20 moons. A 128-body cap keeps an approximate gravity tree unnecessary.
 
 Velocity Verlet uses a maximum 1,800-second step, reduced by powers of two for close/fast encounters. At requested multipliers up to 3,600×, the maximum is one second for responsive low-speed playback. Neither mode chooses steps from render-frame debt: tests verify identical states at 30/60/120 FPS. The render clock, configured physics maximum and requested multiplier remain distinct. Adaptive steps lose strict symplecticity; this is a convincing sandbox, not a professional ephemeris. A frame work budget slows time under load, with no hidden-tab catch-up. The encounter step floor is about 0.007 seconds; extreme compact-object encounters are not high-precision models.
 
@@ -60,10 +60,13 @@ incomplete coverage, measured shape models and explicit approximations. To repro
 `just prepare-surfaces --download`; later `just prepare-surfaces` rebuilds offline
 from checksum-verified originals in ignored `output/surface-originals`. Originals
 are never deployed. The runtime lazily loads 512/1024/2048px color levels (Moon
-and Mars reach 4096px; low-resolution sources retain their native cap). Height
-remains bounded to 2048×1024 plus Tycho/Olympus regional tiles, with a 96 MiB
-decoded cache and evicts unused detailed maps. See the [surface development log](docs/surface-development.md)
+and Mars reach 4096px; low-resolution sources retain their native cap). Base height maps
+remain bounded to 2048×1024, supplemented by lazy global 64 ppd terrain and
+the higher-resolution 128 ppd Olympus regional tile. A 96 MiB decoded cache
+evicts unused detailed maps. See the [surface development log](docs/surface-development.md)
 for measured performance, strict evaluation scores and known close-range limits.
+
+The [three-level maps and polar tile system](docs/detail-maps.md) adds native-detail imagery and available scientific elevation for the budgeted bodies, with source limits preserved.
 
 The [64-pixel/degree terrain pack](docs/terrain64.md) adds global lazy elevation
 tiles for Earth, Moon and Mars. Prepared tiles and provenance indexes are

@@ -1,0 +1,1265 @@
+{
+  "terrainKind": "none",
+  "effectivePixelsPerDegree": 16,
+  "heightEffectivePixelsPerDegree": null,
+  "tiles": [
+    {
+      "id": "e-0-0",
+      "uvBounds": [
+        0,
+        0,
+        0.08333333333333333,
+        0.16666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-0-0.jpg",
+      "colorSha256": "d1de149a3007d47634098f7df732dfd9ef9404cf67a9a90ea39337805bb79cfe",
+      "colorBytes": 23187
+    },
+    {
+      "id": "e-0-1",
+      "uvBounds": [
+        0.08333333333333333,
+        0,
+        0.16666666666666666,
+        0.16666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-0-1.jpg",
+      "colorSha256": "d107b790f4e0d223df96a20e3832b4d62066c90999b93c2c151f6fc99d331343",
+      "colorBytes": 20749
+    },
+    {
+      "id": "e-0-2",
+      "uvBounds": [
+        0.16666666666666666,
+        0,
+        0.25,
+        0.16666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-0-2.jpg",
+      "colorSha256": "1b740972f1053a3407ad9ee3d720a0c52bfbabfc4a4eec6a2adfebbdc0ba5cad",
+      "colorBytes": 19230
+    },
+    {
+      "id": "e-0-3",
+      "uvBounds": [
+        0.25,
+        0,
+        0.3333333333333333,
+        0.16666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-0-3.jpg",
+      "colorSha256": "d45e9f8244dc00140b259eb3cb77b3036e3577f7a936e2930b0fb38e20c13308",
+      "colorBytes": 18611
+    },
+    {
+      "id": "e-0-4",
+      "uvBounds": [
+        0.3333333333333333,
+        0,
+        0.4166666666666667,
+        0.16666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-0-4.jpg",
+      "colorSha256": "c86cff9854edb7d2044f412fb0864434eda9ec1b46aa64378724571f6ea662a2",
+      "colorBytes": 18812
+    },
+    {
+      "id": "e-0-5",
+      "uvBounds": [
+        0.4166666666666667,
+        0,
+        0.5,
+        0.16666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-0-5.jpg",
+      "colorSha256": "2a95cb6f97fd632204524aee091056fd54a22a2a2dbcdd6d81a1e2015116ca3d",
+      "colorBytes": 20142
+    },
+    {
+      "id": "e-0-6",
+      "uvBounds": [
+        0.5,
+        0,
+        0.5833333333333334,
+        0.16666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-0-6.jpg",
+      "colorSha256": "1f4dd2a5178baee15d6ea2b51d3ac60d36065ca994eead92ca01b7110a638a3c",
+      "colorBytes": 18625
+    },
+    {
+      "id": "e-0-7",
+      "uvBounds": [
+        0.5833333333333334,
+        0,
+        0.6666666666666666,
+        0.16666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-0-7.jpg",
+      "colorSha256": "5635046634f08becf1701c145f5b1863f70af7e2946145015552f23de1cb4431",
+      "colorBytes": 19475
+    },
+    {
+      "id": "e-0-8",
+      "uvBounds": [
+        0.6666666666666666,
+        0,
+        0.75,
+        0.16666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-0-8.jpg",
+      "colorSha256": "ee61da9493abda3b5461caf560b0d5424766edb081808514772ca12ca228a9c3",
+      "colorBytes": 21745
+    },
+    {
+      "id": "e-0-9",
+      "uvBounds": [
+        0.75,
+        0,
+        0.8333333333333334,
+        0.16666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-0-9.jpg",
+      "colorSha256": "ef8b26fe16a45f93718d81c9ce5c3b5ed56ff9f599ac75759c1bc236dc6d9d9b",
+      "colorBytes": 23837
+    },
+    {
+      "id": "e-0-10",
+      "uvBounds": [
+        0.8333333333333334,
+        0,
+        0.9166666666666666,
+        0.16666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-0-10.jpg",
+      "colorSha256": "5897591920cfbcddf9cd6dbcd10ad45f1fcbd67270ed30e4ddcb877406773a5c",
+      "colorBytes": 24055
+    },
+    {
+      "id": "e-0-11",
+      "uvBounds": [
+        0.9166666666666666,
+        0,
+        1,
+        0.16666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-0-11.jpg",
+      "colorSha256": "4dcc1b20f7ad9f5155a75fb822af1196be17e6b5c6f255b7765c08f629a14c4e",
+      "colorBytes": 23639
+    },
+    {
+      "id": "e-1-0",
+      "uvBounds": [
+        0,
+        0.16666666666666666,
+        0.08333333333333333,
+        0.3333333333333333
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-1-0.jpg",
+      "colorSha256": "3fab4926fc7e834cf27a9d8c6cad161b6790a4c1ca3c8859184dc3d1febc0c1b",
+      "colorBytes": 30629
+    },
+    {
+      "id": "e-1-1",
+      "uvBounds": [
+        0.08333333333333333,
+        0.16666666666666666,
+        0.16666666666666666,
+        0.3333333333333333
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-1-1.jpg",
+      "colorSha256": "e06e160d77b3b16a214c4129c94daa4df3e0f5d94265693559623ff2f5c0ac46",
+      "colorBytes": 28957
+    },
+    {
+      "id": "e-1-2",
+      "uvBounds": [
+        0.16666666666666666,
+        0.16666666666666666,
+        0.25,
+        0.3333333333333333
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-1-2.jpg",
+      "colorSha256": "08dc9a79e90426ca65444c7db12a51bc48abc276670d335cce5b669b70d502af",
+      "colorBytes": 32974
+    },
+    {
+      "id": "e-1-3",
+      "uvBounds": [
+        0.25,
+        0.16666666666666666,
+        0.3333333333333333,
+        0.3333333333333333
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-1-3.jpg",
+      "colorSha256": "2c24bb9167ad265dedbac9d86912cb30b5c34a06d10566c229485d6e6d4ce1c8",
+      "colorBytes": 28716
+    },
+    {
+      "id": "e-1-4",
+      "uvBounds": [
+        0.3333333333333333,
+        0.16666666666666666,
+        0.4166666666666667,
+        0.3333333333333333
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-1-4.jpg",
+      "colorSha256": "1b5317b994f1447079e29388554be854b168f803e78a4f904266af58c7c0a790",
+      "colorBytes": 21204
+    },
+    {
+      "id": "e-1-5",
+      "uvBounds": [
+        0.4166666666666667,
+        0.16666666666666666,
+        0.5,
+        0.3333333333333333
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-1-5.jpg",
+      "colorSha256": "6d28dce1580c22e80216c62aa089270efd464c05a9328a61144e6889d18b11d8",
+      "colorBytes": 22410
+    },
+    {
+      "id": "e-1-6",
+      "uvBounds": [
+        0.5,
+        0.16666666666666666,
+        0.5833333333333334,
+        0.3333333333333333
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-1-6.jpg",
+      "colorSha256": "4c4fe166ddfd0d42a0dc7c71cdb2f873bbb831dcbf3f4f5a31b8bf107ead6334",
+      "colorBytes": 26548
+    },
+    {
+      "id": "e-1-7",
+      "uvBounds": [
+        0.5833333333333334,
+        0.16666666666666666,
+        0.6666666666666666,
+        0.3333333333333333
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-1-7.jpg",
+      "colorSha256": "6d2bb20a477a4394eac49cf2e09b7228736b2a93cae9779284636829d2bb9b37",
+      "colorBytes": 27569
+    },
+    {
+      "id": "e-1-8",
+      "uvBounds": [
+        0.6666666666666666,
+        0.16666666666666666,
+        0.75,
+        0.3333333333333333
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-1-8.jpg",
+      "colorSha256": "c37739e76285455420debd47fd38226d6afea237c630d0e72feed5e2e92fb634",
+      "colorBytes": 27909
+    },
+    {
+      "id": "e-1-9",
+      "uvBounds": [
+        0.75,
+        0.16666666666666666,
+        0.8333333333333334,
+        0.3333333333333333
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-1-9.jpg",
+      "colorSha256": "000d15557b06fa1bdd053a18f5e3950221b964384b453a1cbf4559501d153f3e",
+      "colorBytes": 30529
+    },
+    {
+      "id": "e-1-10",
+      "uvBounds": [
+        0.8333333333333334,
+        0.16666666666666666,
+        0.9166666666666666,
+        0.3333333333333333
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-1-10.jpg",
+      "colorSha256": "de9a63d5a87c00be20e95eb104e577a33be78babae4500c489b89e78a6e591ff",
+      "colorBytes": 32454
+    },
+    {
+      "id": "e-1-11",
+      "uvBounds": [
+        0.9166666666666666,
+        0.16666666666666666,
+        1,
+        0.3333333333333333
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-1-11.jpg",
+      "colorSha256": "dd9888cdef7898272a7e635432c8cccdecae07f2480a71e8151dd10f8589f429",
+      "colorBytes": 32603
+    },
+    {
+      "id": "e-2-0",
+      "uvBounds": [
+        0,
+        0.3333333333333333,
+        0.08333333333333333,
+        0.5
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-2-0.jpg",
+      "colorSha256": "7e52d37de287c64e82fe816fc47444ecc860f3fd87a383a7d3474c2844c8c81d",
+      "colorBytes": 34087
+    },
+    {
+      "id": "e-2-1",
+      "uvBounds": [
+        0.08333333333333333,
+        0.3333333333333333,
+        0.16666666666666666,
+        0.5
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-2-1.jpg",
+      "colorSha256": "7ad5c0738186214a49e256704b9bedadc950512a469f955cf87d6fe03465ccea",
+      "colorBytes": 32361
+    },
+    {
+      "id": "e-2-2",
+      "uvBounds": [
+        0.16666666666666666,
+        0.3333333333333333,
+        0.25,
+        0.5
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-2-2.jpg",
+      "colorSha256": "9a694b34d4eab0e2456aead6de275a75b860858ec8fef9bb098b81cd23174916",
+      "colorBytes": 36951
+    },
+    {
+      "id": "e-2-3",
+      "uvBounds": [
+        0.25,
+        0.3333333333333333,
+        0.3333333333333333,
+        0.5
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-2-3.jpg",
+      "colorSha256": "feac1bc6e422d215efa7a4ca5f7635e0f6f2445dfffb78f3826e64154258e5de",
+      "colorBytes": 29892
+    },
+    {
+      "id": "e-2-4",
+      "uvBounds": [
+        0.3333333333333333,
+        0.3333333333333333,
+        0.4166666666666667,
+        0.5
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-2-4.jpg",
+      "colorSha256": "5b8dd91adbbfb822913355e9fba353312b6855af06ad387dfbe57c9838b0f816",
+      "colorBytes": 23839
+    },
+    {
+      "id": "e-2-5",
+      "uvBounds": [
+        0.4166666666666667,
+        0.3333333333333333,
+        0.5,
+        0.5
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-2-5.jpg",
+      "colorSha256": "d087fb514f854d6da1b44ed3bbc0b8153537a41fb4652575e0a0f2a8923d6fd1",
+      "colorBytes": 31582
+    },
+    {
+      "id": "e-2-6",
+      "uvBounds": [
+        0.5,
+        0.3333333333333333,
+        0.5833333333333334,
+        0.5
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-2-6.jpg",
+      "colorSha256": "ca1f7a05ad8278789397adfcaab5797fd3987621e40d26efd991833babac497e",
+      "colorBytes": 39376
+    },
+    {
+      "id": "e-2-7",
+      "uvBounds": [
+        0.5833333333333334,
+        0.3333333333333333,
+        0.6666666666666666,
+        0.5
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-2-7.jpg",
+      "colorSha256": "da3dde68bb36f1c6870b5b9bbe569aba6f58c84e4289199e75330cb1eea268ef",
+      "colorBytes": 32201
+    },
+    {
+      "id": "e-2-8",
+      "uvBounds": [
+        0.6666666666666666,
+        0.3333333333333333,
+        0.75,
+        0.5
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-2-8.jpg",
+      "colorSha256": "fa3d22e3ab851cebec6db7ca0f520a6345f982d62846f643ba50f466a633d75d",
+      "colorBytes": 32944
+    },
+    {
+      "id": "e-2-9",
+      "uvBounds": [
+        0.75,
+        0.3333333333333333,
+        0.8333333333333334,
+        0.5
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-2-9.jpg",
+      "colorSha256": "b0f30c3e60e1c5d6570092231586854fe87c0fd890cd4d1f55946fbd1a2491cf",
+      "colorBytes": 33103
+    },
+    {
+      "id": "e-2-10",
+      "uvBounds": [
+        0.8333333333333334,
+        0.3333333333333333,
+        0.9166666666666666,
+        0.5
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-2-10.jpg",
+      "colorSha256": "5d5b54f3624ad7a5c2b1f5d7a4580a96a9d25b26f20bf4d02e412f71411496d8",
+      "colorBytes": 33485
+    },
+    {
+      "id": "e-2-11",
+      "uvBounds": [
+        0.9166666666666666,
+        0.3333333333333333,
+        1,
+        0.5
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-2-11.jpg",
+      "colorSha256": "3b5dbb3cb2a7db0f7c4e5f2a7fe566298357dfb90e2de18b9af24e9cddfb3d3e",
+      "colorBytes": 33992
+    },
+    {
+      "id": "e-3-0",
+      "uvBounds": [
+        0,
+        0.5,
+        0.08333333333333333,
+        0.6666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-3-0.jpg",
+      "colorSha256": "59e6edea26bca65d93c513e02f71d0324ea1a569e2e101785007fc59e308bde5",
+      "colorBytes": 33837
+    },
+    {
+      "id": "e-3-1",
+      "uvBounds": [
+        0.08333333333333333,
+        0.5,
+        0.16666666666666666,
+        0.6666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-3-1.jpg",
+      "colorSha256": "80ec64a91f2a39009a8b59e1ec598ed37e17f4923ba85d395e46baf176b5e373",
+      "colorBytes": 37919
+    },
+    {
+      "id": "e-3-2",
+      "uvBounds": [
+        0.16666666666666666,
+        0.5,
+        0.25,
+        0.6666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-3-2.jpg",
+      "colorSha256": "adc0cd89dcdba7241879906aa57dbaa4ae0bdd2d6f0c3f2ebdf1a15d8db6a105",
+      "colorBytes": 40182
+    },
+    {
+      "id": "e-3-3",
+      "uvBounds": [
+        0.25,
+        0.5,
+        0.3333333333333333,
+        0.6666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-3-3.jpg",
+      "colorSha256": "ea379770e59e977256f0902ff32a5309c6a114f1dfbbc0c54f8378a2d92e1f30",
+      "colorBytes": 31277
+    },
+    {
+      "id": "e-3-4",
+      "uvBounds": [
+        0.3333333333333333,
+        0.5,
+        0.4166666666666667,
+        0.6666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-3-4.jpg",
+      "colorSha256": "726233874ff128e1714687762d80238dd7f2c4f4c0abf2c1896d8813ee0d200e",
+      "colorBytes": 24390
+    },
+    {
+      "id": "e-3-5",
+      "uvBounds": [
+        0.4166666666666667,
+        0.5,
+        0.5,
+        0.6666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-3-5.jpg",
+      "colorSha256": "1b3d18bd6951cc80f47c5b52398c42c97e095e08e2bf7e1c918eeeb739164896",
+      "colorBytes": 37475
+    },
+    {
+      "id": "e-3-6",
+      "uvBounds": [
+        0.5,
+        0.5,
+        0.5833333333333334,
+        0.6666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-3-6.jpg",
+      "colorSha256": "42fa15371a12415a517658d5c982aa38a901157a1a316d6e52839af187674071",
+      "colorBytes": 37673
+    },
+    {
+      "id": "e-3-7",
+      "uvBounds": [
+        0.5833333333333334,
+        0.5,
+        0.6666666666666666,
+        0.6666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-3-7.jpg",
+      "colorSha256": "5d2c40065e6e1b94a4c34efcc8c9dc1ba35c3de686d18d5440367706361671bb",
+      "colorBytes": 31247
+    },
+    {
+      "id": "e-3-8",
+      "uvBounds": [
+        0.6666666666666666,
+        0.5,
+        0.75,
+        0.6666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-3-8.jpg",
+      "colorSha256": "15f609a67c9235cb18910e50b65a2e34c55143488f6e2aa19e9d88801d014811",
+      "colorBytes": 35189
+    },
+    {
+      "id": "e-3-9",
+      "uvBounds": [
+        0.75,
+        0.5,
+        0.8333333333333334,
+        0.6666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-3-9.jpg",
+      "colorSha256": "f5feaad5e32f90bb6f4e79b9537446687e862b4301d613b50bb0cde912e54fe5",
+      "colorBytes": 31347
+    },
+    {
+      "id": "e-3-10",
+      "uvBounds": [
+        0.8333333333333334,
+        0.5,
+        0.9166666666666666,
+        0.6666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-3-10.jpg",
+      "colorSha256": "793aa62ec78920a17529bbd1d60663b8857bef0143544629a445603c5f50c8de",
+      "colorBytes": 35464
+    },
+    {
+      "id": "e-3-11",
+      "uvBounds": [
+        0.9166666666666666,
+        0.5,
+        1,
+        0.6666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-3-11.jpg",
+      "colorSha256": "09887ff40272632fae98715fa557f13e9917f965050c0f29deb9d03faf150447",
+      "colorBytes": 34701
+    },
+    {
+      "id": "e-4-0",
+      "uvBounds": [
+        0,
+        0.6666666666666666,
+        0.08333333333333333,
+        0.8333333333333334
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-4-0.jpg",
+      "colorSha256": "2441fd88f7a4abae69bcea18587d81d8d835cd014d15d17eae98d92f568f293a",
+      "colorBytes": 32400
+    },
+    {
+      "id": "e-4-1",
+      "uvBounds": [
+        0.08333333333333333,
+        0.6666666666666666,
+        0.16666666666666666,
+        0.8333333333333334
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-4-1.jpg",
+      "colorSha256": "f62fbcf9ad144adbb963d186872649b420ed20481e9bb6b2e77435a9c1c5f4d7",
+      "colorBytes": 33710
+    },
+    {
+      "id": "e-4-2",
+      "uvBounds": [
+        0.16666666666666666,
+        0.6666666666666666,
+        0.25,
+        0.8333333333333334
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-4-2.jpg",
+      "colorSha256": "9b3c5381e95aa472b054c995698c08c871227906f9a6740e5607a3847edf8cb2",
+      "colorBytes": 35305
+    },
+    {
+      "id": "e-4-3",
+      "uvBounds": [
+        0.25,
+        0.6666666666666666,
+        0.3333333333333333,
+        0.8333333333333334
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-4-3.jpg",
+      "colorSha256": "2a6a21df1d0df6c81999eed8da5740229a928516c49398c6389ac4e5d5e58a9f",
+      "colorBytes": 24907
+    },
+    {
+      "id": "e-4-4",
+      "uvBounds": [
+        0.3333333333333333,
+        0.6666666666666666,
+        0.4166666666666667,
+        0.8333333333333334
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-4-4.jpg",
+      "colorSha256": "6bd96096811d73ffc60a17428ddd673e0a08e21618b3668783d51a55d53b9fc7",
+      "colorBytes": 24960
+    },
+    {
+      "id": "e-4-5",
+      "uvBounds": [
+        0.4166666666666667,
+        0.6666666666666666,
+        0.5,
+        0.8333333333333334
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-4-5.jpg",
+      "colorSha256": "59ee854333a2f7b17e26bef4feff73fe04cb8dca8e90a616d070593945206e2c",
+      "colorBytes": 26325
+    },
+    {
+      "id": "e-4-6",
+      "uvBounds": [
+        0.5,
+        0.6666666666666666,
+        0.5833333333333334,
+        0.8333333333333334
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-4-6.jpg",
+      "colorSha256": "708c488f02fe1436f3c3e1f1810f488a8d39d55a8183eec19d2447b3394d54d8",
+      "colorBytes": 27807
+    },
+    {
+      "id": "e-4-7",
+      "uvBounds": [
+        0.5833333333333334,
+        0.6666666666666666,
+        0.6666666666666666,
+        0.8333333333333334
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-4-7.jpg",
+      "colorSha256": "26cc1b4519e6c81fe520aced8e0b90208e61721e78c4c8df83a85b4153cb212a",
+      "colorBytes": 29561
+    },
+    {
+      "id": "e-4-8",
+      "uvBounds": [
+        0.6666666666666666,
+        0.6666666666666666,
+        0.75,
+        0.8333333333333334
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-4-8.jpg",
+      "colorSha256": "937eaa5d7a2361214c22bfde0534ddd99eacf30a8161d67825370c9af4a989bd",
+      "colorBytes": 30007
+    },
+    {
+      "id": "e-4-9",
+      "uvBounds": [
+        0.75,
+        0.6666666666666666,
+        0.8333333333333334,
+        0.8333333333333334
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-4-9.jpg",
+      "colorSha256": "6978aa9f2661acf546a3da971abecb84a94293922a18ef69caaa1ebde0f8fe6a",
+      "colorBytes": 22783
+    },
+    {
+      "id": "e-4-10",
+      "uvBounds": [
+        0.8333333333333334,
+        0.6666666666666666,
+        0.9166666666666666,
+        0.8333333333333334
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-4-10.jpg",
+      "colorSha256": "95cad39fc9f220c60534cad9e687bc56f081971731ccffaedbfad93a9830096c",
+      "colorBytes": 25287
+    },
+    {
+      "id": "e-4-11",
+      "uvBounds": [
+        0.9166666666666666,
+        0.6666666666666666,
+        1,
+        0.8333333333333334
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-4-11.jpg",
+      "colorSha256": "5af804a25453e75915ed44c43e1adb90c50a6c5b2418a461fadc62d3021280b5",
+      "colorBytes": 27144
+    },
+    {
+      "id": "e-5-0",
+      "uvBounds": [
+        0,
+        0.8333333333333334,
+        0.08333333333333333,
+        1
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-5-0.jpg",
+      "colorSha256": "7ddfd444e297cccec23072c14e1b05d3cda8a698c5bb14591987c77a99fc95a0",
+      "colorBytes": 22253
+    },
+    {
+      "id": "e-5-1",
+      "uvBounds": [
+        0.08333333333333333,
+        0.8333333333333334,
+        0.16666666666666666,
+        1
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-5-1.jpg",
+      "colorSha256": "3a12b0dfa5a5e84bf985b37b8b8e2a8bbe0c17688096c6b1c780992e2d318eb6",
+      "colorBytes": 23646
+    },
+    {
+      "id": "e-5-2",
+      "uvBounds": [
+        0.16666666666666666,
+        0.8333333333333334,
+        0.25,
+        1
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-5-2.jpg",
+      "colorSha256": "e2efa0a9337b7fbd391a149b49c6ec33a6cda54bdc3c6b0caa60c48e2147958a",
+      "colorBytes": 23028
+    },
+    {
+      "id": "e-5-3",
+      "uvBounds": [
+        0.25,
+        0.8333333333333334,
+        0.3333333333333333,
+        1
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-5-3.jpg",
+      "colorSha256": "81960bf7aa2e197914d6869f4fe8bd6097b3a377ed46c7815dc109bf9ba678ed",
+      "colorBytes": 20670
+    },
+    {
+      "id": "e-5-4",
+      "uvBounds": [
+        0.3333333333333333,
+        0.8333333333333334,
+        0.4166666666666667,
+        1
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-5-4.jpg",
+      "colorSha256": "6727f7cca8b0ba25dec04aafbee147c54435a6c83acbaf3bf354c76e1109fc4b",
+      "colorBytes": 22289
+    },
+    {
+      "id": "e-5-5",
+      "uvBounds": [
+        0.4166666666666667,
+        0.8333333333333334,
+        0.5,
+        1
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-5-5.jpg",
+      "colorSha256": "e25f0fa510a457e5f452bbaf4192e9099c66474f0360be83e74d8b1b21bbdb9e",
+      "colorBytes": 24084
+    },
+    {
+      "id": "e-5-6",
+      "uvBounds": [
+        0.5,
+        0.8333333333333334,
+        0.5833333333333334,
+        1
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-5-6.jpg",
+      "colorSha256": "5d3fc1baef475b69b1539812a44efde6875b0a125749c0e745b755802b58bbce",
+      "colorBytes": 23119
+    },
+    {
+      "id": "e-5-7",
+      "uvBounds": [
+        0.5833333333333334,
+        0.8333333333333334,
+        0.6666666666666666,
+        1
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-5-7.jpg",
+      "colorSha256": "b318ada81ce151ef52b48d1cb05b215dee59441ca4241241c38eb4a70bc73bc8",
+      "colorBytes": 22850
+    },
+    {
+      "id": "e-5-8",
+      "uvBounds": [
+        0.6666666666666666,
+        0.8333333333333334,
+        0.75,
+        1
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-5-8.jpg",
+      "colorSha256": "b3a44066e724597a2a74defe62d9a6b4c3c9a4b755dd2dd00dc5f33d84c81242",
+      "colorBytes": 23139
+    },
+    {
+      "id": "e-5-9",
+      "uvBounds": [
+        0.75,
+        0.8333333333333334,
+        0.8333333333333334,
+        1
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-5-9.jpg",
+      "colorSha256": "ecef9bdb539ebf37cd9df1a2fa1ee16c0da79e0c515f1b58c23f10a11abe0e4b",
+      "colorBytes": 21737
+    },
+    {
+      "id": "e-5-10",
+      "uvBounds": [
+        0.8333333333333334,
+        0.8333333333333334,
+        0.9166666666666666,
+        1
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-5-10.jpg",
+      "colorSha256": "af28e8b810e09a4239816605c43ee1ab70760dda58426e2880d4974b8adb03c4",
+      "colorBytes": 18135
+    },
+    {
+      "id": "e-5-11",
+      "uvBounds": [
+        0.9166666666666666,
+        0.8333333333333334,
+        1,
+        1
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/e-5-11.jpg",
+      "colorSha256": "cc6111835a2710cfe9e3a639bf8ee97e60424c4df08169e5ac8f2c7538227303",
+      "colorBytes": 20680
+    },
+    {
+      "id": "n-0-0",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0,
+        0,
+        0.5,
+        0.5
+      ],
+      "width": 313,
+      "height": 313,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/n-0-0.jpg",
+      "colorSha256": "77975d632318939d15f630a2cba31985f66844c85d7bb3fbbe90badbb04258ea",
+      "colorBytes": 18493
+    },
+    {
+      "id": "n-0-1",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.5,
+        0,
+        1,
+        0.5
+      ],
+      "width": 313,
+      "height": 313,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/n-0-1.jpg",
+      "colorSha256": "f194d86443f4c502b63af2e1da5a7da9e26acdd7f70fc3144ae999a44a471056",
+      "colorBytes": 16458
+    },
+    {
+      "id": "n-1-0",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0,
+        0.5,
+        0.5,
+        1
+      ],
+      "width": 313,
+      "height": 313,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/n-1-0.jpg",
+      "colorSha256": "145c80501176502056feb837555fd91071bfc6cc6ce319cb650d2b276dd9b41c",
+      "colorBytes": 16675
+    },
+    {
+      "id": "n-1-1",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.5,
+        0.5,
+        1,
+        1
+      ],
+      "width": 313,
+      "height": 313,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/n-1-1.jpg",
+      "colorSha256": "d4842f5da6a642f7cc864e94aa1a63a8622319ba80191d618124e38fe669a07a",
+      "colorBytes": 15028
+    },
+    {
+      "id": "s-0-0",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0,
+        0,
+        0.5,
+        0.5
+      ],
+      "width": 313,
+      "height": 313,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/s-0-0.jpg",
+      "colorSha256": "f6e6112adc84fffa62d7fb6e2de4bf1efdc1b637d0d6460bda2967441614b933",
+      "colorBytes": 15750
+    },
+    {
+      "id": "s-0-1",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.5,
+        0,
+        1,
+        0.5
+      ],
+      "width": 313,
+      "height": 313,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/s-0-1.jpg",
+      "colorSha256": "821484573b12cfa1c5ea38f85ae54bddc4a83d13d078b1c1b6af75e802013610",
+      "colorBytes": 18726
+    },
+    {
+      "id": "s-1-0",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0,
+        0.5,
+        0.5,
+        1
+      ],
+      "width": 313,
+      "height": 313,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/s-1-0.jpg",
+      "colorSha256": "b004450de9b3de26d401456837a634b8fa524419eb3d8ce328f136c87a6b0341",
+      "colorBytes": 18392
+    },
+    {
+      "id": "s-1-1",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.5,
+        0.5,
+        1,
+        1
+      ],
+      "width": 313,
+      "height": 313,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/mimas/s-1-1.jpg",
+      "colorSha256": "48c91fbeb348d83e85e9d4d01a8a4d4304d0d2042eb7298549f5d509eced02d7",
+      "colorBytes": 17159
+    }
+  ],
+  "totalBytes": 2141630,
+  "sourceWidth": 5760,
+  "sourceHeight": 2880,
+  "sourceBytes": 12677870,
+  "heightPolicy": "No measured DEM bundled in this detail pack; existing base shape and relief are not promoted into detail.",
+  "provenance": {
+    "sha256": "619c4524f3f3360494071a7fe4183507b1a16f44f396f367f505c27c5f0743ab",
+    "source": {
+      "file": "mimas-nasa-full.jpg",
+      "url": "https://d2pn8kiwq2w21t.cloudfront.net/original_images/jpegPIA17214.jpg",
+      "sha256": "f2d62eaa50c7864e303a13434738a7bc6db0e133f1f4b163c2506979800c1116",
+      "width": 5760,
+      "height": 2880,
+      "metersPerPixel": 216,
+      "projectionRadiusMeters": 198200,
+      "referenceRadiusMeters": 198200,
+      "metadata": "https://www.jpl.nasa.gov/images/pia17214-mimas-global-map-june-2017/",
+      "coordinateReference": {
+        "url": "https://planetarydata.jpl.nasa.gov/img/data/cassini/cassini_orbiter/coiss_3006_v3/data/images/SM_1M_0_0_SIMP.IMG",
+        "sha256": "beea77a709f49f35b6dfaf378b076971f4050badc190313c58b488819ffd2fc2",
+        "description": "Earlier PDS global map attached label: 5760x2880, 16ppd, center0, west180 at left to west-180 at right; zero projection rotation; spherical198.2km figure. Coordinate reference only, not imagery input."
+      },
+      "doi": "10.26033/y8wv-r303"
+    },
+    "coordinates": {
+      "longitude": "east-positive -180..180",
+      "latitude": "planetocentric",
+      "projection": "equirectangular",
+      "northAtTop": true,
+      "pixelRegistration": "pixel-centered"
+    },
+    "normalization": "Native simple cylindrical north-up map, full globe -180..180 east-positive; no rotation, mirror, colorization, sharpening, or invented pixels. Projection reference radius is independent of the canonical JPL SI radius."
+  },
+  "processing": "Pixel-centered canonical east-positive imagery sampled bilinearly at native resolution (maximum 64 ppd); 512-pixel bounded JPEG tiles; 70-degree stereographic polar replacement, square equatorial ground spacing; little-endian uint16 scientific heights in lossless gzip. Polar imagery remains limited by native polar observations/fill."
+}

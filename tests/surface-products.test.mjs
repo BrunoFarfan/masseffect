@@ -109,3 +109,37 @@ test("all canonical PCK frames remain finite orthonormal at past and future epoc
         }
     }
 });
+
+test("new Saturn moon maps retain native source provenance and explicit ellipsoid-only terrain", async () => {
+  for (const id of ["mimas", "tethys", "dione"]) {
+    const prepared = JSON.parse(
+      await readFile(
+        new URL(`../assets/surfaces/${id}-manifest.json`, import.meta.url),
+      ),
+    );
+    const body = prepared.bodies[id];
+    assert.equal(body.sourceType, "mapped-imagery-ellipsoid-only", id);
+    assert.match(body.heightPolicy, /Measured 2025 PDS SPC/, id);
+    assert.match(body.provenance.source.sha256, /^[a-f0-9]{64}$/, id);
+    assert.equal(body.coordinates.longitude, "east-positive -180..180", id);
+    assert.equal(body.coordinates.northAtTop, true, id);
+    assert.deepEqual(
+      Object.keys(body.levels),
+      ["preview", "medium", "near"],
+      id,
+    );
+    for (const [level, value] of Object.entries(body.levels)) {
+      assert.ok(
+        value.width <= body.provenance.source.width,
+        `${id}/${level} no upscaling`,
+      );
+      assert.equal(
+        value.heightUrl,
+        undefined,
+        `${id}/${level} no invented height`,
+      );
+      const bytes = await readFile(file(value.color));
+      assert.equal(hash(bytes), value.colorSha256, `${id}/${level} checksum`);
+    }
+  }
+});

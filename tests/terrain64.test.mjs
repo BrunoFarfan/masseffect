@@ -32,10 +32,18 @@ test("optional 64 ppd pack has complete, checksum-verified lazy tiles", { skip: 
       assert.equal(raw.length, width * height * 2);
     }
   }
-  const moonTile = gunzipSync(await readFile(resolve(pack, "moon/7-10.bin.gz")));
-  const tycho = await readFile(resolve(root, "assets/surfaces/moon-tycho.height.bin"));
-  const sample = moonTile.readUInt16LE(((8064 - 7168) * 1024 + (10368 - 10240)) * 2);
-  assert.equal(sample, tycho.readUInt16LE(0));
+  // Verified native LOLA64 samples at the former Tycho crop corners and
+  // center. These fixtures preserve geographic registration without relying
+  // on a second copy of the same elevation data.
+  for (const [y, x, expected] of [
+    [8064, 10368, 16196],
+    [8512, 10816, 13131],
+    [8959, 11263, 14482],
+  ]) {
+    const row = Math.floor(y / 1024), col = Math.floor(x / 1024);
+    const tile = gunzipSync(await readFile(resolve(pack, `moon/${row}-${col}.bin.gz`)));
+    assert.equal(tile.readUInt16LE(((y % 1024) * 1024 + x % 1024) * 2), expected);
+  }
   const marsTile = gunzipSync(await readFile(resolve(pack, "mars/4-2.bin.gz")));
   const olympus = await readFile(resolve(root, "assets/surfaces/mars-olympus.height.bin"));
   assert.equal(
