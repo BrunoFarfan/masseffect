@@ -35,6 +35,8 @@ export async function buildSite(destination, environment = "preview") {
     "robots.txt",
     "sitemap.xml",
     "assets/favicon.svg",
+    "assets/fonts/instrument-sans-variable.ttf",
+    "assets/fonts/OFL-Instrument-Sans.txt",
     "assets/apple-touch-icon.png",
     "assets/social-preview.png",
     ...modules.map((name) => `src/${name}`),

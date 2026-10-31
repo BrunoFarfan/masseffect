@@ -125,3 +125,24 @@ test("surface sweeps block tunneling and keep finite state after large diagonal 
   assert.ok(length(c.position) >= 6000002 - 1e-8);
   assert.ok(c.position[0] > 1e7);
 });
+
+test("camera overview state follows preset changes and clears on navigation", () => {
+  const c = new Camera();
+  assert.equal(c.overview, "inner");
+  c.update(0.1, [], new Set());
+  assert.equal(c.overview, "inner");
+  c.home(true, true);
+  c.update(0.1, [], new Set());
+  assert.equal(c.overview, "outer");
+  c.rotate(1, 0);
+  assert.equal(c.overview, null);
+  c.home();
+  c.travel(0.1);
+  assert.equal(c.overview, null);
+  c.home();
+  c.update(0.1, [], new Set(["KeyW"]));
+  assert.equal(c.overview, null);
+  c.home();
+  c.focus({ id: "test", radius: 1, position: [0, 0, 0] });
+  assert.equal(c.overview, null);
+});

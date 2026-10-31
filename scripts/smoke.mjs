@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import {
   originalAssetBytes,
+  publishedAssetMime,
   PUBLISHED_ASSET_PATH,
   LAZY_SURFACE_TILE_PATH,
   detailSmokeSamples,
@@ -33,30 +34,7 @@ for (const [file, hash] of Object.entries(release.files)) {
   if (LAZY_SURFACE_TILE_PATH.test(file)) continue;
   const asset = await get(`/${file}`);
   assert.equal(asset.status, 200, file);
-  assert.match(
-    asset.headers.get("content-type"),
-    file.endsWith(".js")
-      ? /javascript/
-      : file.endsWith(".css")
-        ? /text\/css/
-        : file.endsWith(".json")
-          ? /application\/json/
-          : file.endsWith(".bin")
-            ? /application\/octet-stream/
-            : file.endsWith(".jpg")
-              ? /image\/jpeg/
-              : file.endsWith(".webp")
-                ? /image\/webp/
-                : file.endsWith(".png")
-                  ? /image\/png/
-                  : file.endsWith(".svg")
-                    ? /image\/svg\+xml/
-                    : file.endsWith(".txt")
-                      ? /text\/plain/
-                      : file.endsWith(".xml")
-                        ? /(?:application|text)\/xml/
-                        : /text\/html/,
-  );
+  assert.match(asset.headers.get("content-type"), publishedAssetMime(file));
   assert.equal(
     createHash("sha256")
       .update(

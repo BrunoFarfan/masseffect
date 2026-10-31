@@ -140,10 +140,22 @@ function surfaceSites(id) {
 function inspect() {
   const b = sim.bodies.find((b) => b.id === selected),
     editing = !!modal();
+  for (const [id, overview, label] of [
+    ["home", "inner", "Sun & rocky planets"],
+    ["outer", "outer", "All eight planets"],
+  ]) {
+    const active = camera.overview === overview;
+    $(id).setAttribute("aria-pressed", String(active));
+    $(`${id}-status`).textContent = active ? "Current view" : label;
+  }
   const effective = sim.fragmentBudget.limit(fragmentLimit, sim.bodies.length);
   $("fragment-status").textContent =
     `Up to ${Math.min(fragmentLimit, effective)} per impact now · 128 bodies total. CPU, available slots and minimum fragment size can lower this. Existing debris is never removed to meet a budget.`;
   $("selection").hidden = !b;
+  $("details").setAttribute(
+    "aria-expanded",
+    String(!!b && !$("inspector").hidden),
+  );
   $("reverse").disabled = sim.time <= history.oldestTime;
   $("reverse").setAttribute("aria-pressed", reversing);
   $("forward").hidden = !reversing;
@@ -183,7 +195,9 @@ function inspect() {
           : "";
   $("running").title =
     `Requested ${Number($("speed").value) / 86400} days/s; achieved ${(actualRate / 86400).toFixed(2)}. Physics slows under load.`;
-  $("hint").textContent = locked() ? "Esc · Show controls" : "N · Fly freely";
+  $("hint").textContent = locked()
+    ? "WASD · Move   Esc · Controls"
+    : "Space · Play / pause";
   $("locator").hidden = true;
   if (b) {
     $("selected-name").textContent = b.name;
@@ -207,18 +221,19 @@ function inspect() {
         !!renderer.terrain.error ||
         !renderer.terrain.gl;
       $("detail-name").textContent = b.name;
+      $("surface-source").textContent = renderer.surfaces.description(b);
       $("properties").innerHTML = [
         ["Mass", `${b.mass.toExponential(2)} kg`],
         ["Radius", formatDistance(b.radius)],
-        ["Surface", renderer.surfaces.description(b)],
         ["Speed", `${(length(b.velocity) / 1000).toFixed(2)} km/s`],
         [
           "Rotation",
-          b.rotationModel === "period-matched"
-            ? `${(b.rotationPeriod / 86400).toFixed(2)} d · initial 1:1 spin/orbit`
-            : b.rotationPeriod === 0
-              ? "No axial spin"
+          b.rotationPeriod === 0
+            ? "No axial spin"
+            : b.rotationModel === "period-matched"
+              ? `${(b.rotationPeriod / 86400).toFixed(2)} d`
               : `${((b.rotationPeriod ?? 86400) / 3600).toFixed(2)} h`,
+          b.rotationModel === "period-matched" ? "Initial 1:1 spin/orbit" : "",
         ],
         ...(b.kind === "Star"
           ? [
@@ -230,12 +245,16 @@ function inspect() {
             ]
           : [
               [
-                "Equilibrium temp.",
+                "Temperature",
                 `${Math.round(equilibriumTemperature(b, sim.bodies)).toLocaleString()} K`,
+                "Radiative estimate",
               ],
             ]),
       ]
-        .map(([a, v]) => `<dt>${a}</dt><dd>${v}</dd>`)
+        .map(
+          ([a, v, note]) =>
+            `<dt>${a}</dt><dd>${v}${note ? `<small>${note}</small>` : ""}</dd>`,
+        )
         .join("");
     }
     const t = camera.locator(b.position, innerWidth, innerHeight);
@@ -342,12 +361,45 @@ function updateMouseSettings() {
 $("mouse-mode").onchange = updateMouseSettings;
 $("mouse-sensitivity").oninput = updateMouseSettings;
 $("begin").onclick = navigate;
+$("dismiss-welcome").onclick = () => {
+  $("welcome").hidden = true;
+};
 function open(id) {
   clearMovement();
   if (locked()) document.exitPointerLock();
   $(id).showModal();
   inspect();
 }
+function captureCreationCamera() {
+  return {
+    overview: camera.overview,
+    position: [...camera.position],
+    yaw: camera.yaw,
+    pitch: camera.pitch,
+    followId: camera.followId,
+    previousTarget: camera.previousTarget && [...camera.previousTarget],
+    transition: camera.transition && {
+      ...camera.transition,
+      start: [...camera.transition.start],
+      end: [...camera.transition.end],
+      target: [...camera.transition.target],
+    },
+    frameRotation: [...camera.frameRotation],
+    surface: camera.surface && {
+      ...camera.surface,
+      orientation: [...camera.surface.orientation],
+    },
+    surfaceBlockedId: camera.surfaceBlockedId,
+    motion: camera.motion && [...camera.motion],
+    wheelMotion: camera.wheelMotion,
+    leveling: camera.leveling && {
+      ...camera.leveling,
+      start: [...camera.leveling.start],
+    },
+  };
+}
+let creationCamera = null,
+  creationCommitted = false;
 function focus(close = false) {
   if (!selected)
     select(
@@ -477,6 +529,8 @@ $("welcome-explore").onclick = openSearch;
 $("settings").onclick = () => open("view-dialog");
 $("keybindings").onclick = () => open("keys-dialog");
 $("add").onclick = () => {
+  creationCamera = captureCreationCamera();
+  creationCommitted = false;
   prepareCreation();
   open("create-dialog");
 };
@@ -486,7 +540,10 @@ $("details").onclick = () => {
   $("inspector").hidden = !$("inspector").hidden;
   inspect();
 };
-$("close-details").onclick = () => ($("inspector").hidden = true);
+$("close-details").onclick = () => {
+  $("inspector").hidden = true;
+  inspect();
+};
 $("surface-relief").onchange = () => {
   renderer.surfaces.exaggeration = Number($("surface-relief").value);
 };
@@ -812,7 +869,12 @@ $("advanced").ontoggle = () => {
 };
 $("create-dialog").addEventListener("close", () => {
   options.preview = null;
+  if (!creationCommitted && creationCamera)
+    Object.assign(camera, creationCamera);
+  creationCamera = null;
+  creationCommitted = false;
 });
+$("creation-cancel").onclick = () => $("create-dialog").close();
 $("create-form").onsubmit = (e) => {
   e.preventDefault();
   if (sim.bodies.length >= MAX_BODIES) return;
@@ -851,6 +913,7 @@ $("create-form").onsubmit = (e) => {
       b.effectiveTemperature ** 4;
   b.id = "visitor-" + ++visitor;
   releaseBody(b);
+  creationCommitted = true;
   $("create-dialog").close();
 };
 canvas.onclick = (e) => {

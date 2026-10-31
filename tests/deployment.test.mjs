@@ -64,6 +64,8 @@ test("static build publishes only browser assets, hashes them and removes stale 
     const dist = join(temp, "dist");
     const first = await buildSite(dist);
     assert.equal(first.environment, "preview");
+    assert.ok(first.files["assets/fonts/instrument-sans-variable.ttf"]);
+    assert.ok(first.files["assets/fonts/OFL-Instrument-Sans.txt"]);
     assert.ok(first.files["assets/surfaces/mars-olympus.height.bin"]);
     for (const name of [
       "earth-andes",

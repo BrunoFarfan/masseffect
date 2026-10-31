@@ -3,7 +3,7 @@
 import assert from "node:assert/strict";
 
 export const PUBLISHED_ASSET_PATH =
-  /^(index\.html|style\.css|robots\.txt|sitemap\.xml|assets\/[a-z-]+\.(svg|png)|assets\/surfaces\/[a-z0-9_-]+(?:\.height)?\.(png|jpg|webp|bin|json)|assets\/surfaces\/(terrain64|color64)\/(index\.json|(earth|moon|mars)\/[0-9]+-[0-9]+\.(bin\.gz|jpg))|assets\/surfaces\/detail\/(index\.json|[a-z]+\/[a-z0-9_-]+\.(bin\.gz|jpg))|src\/[a-z-]+\.js)$/;
+  /^(index\.html|style\.css|robots\.txt|sitemap\.xml|assets\/[a-z-]+\.(svg|png)|assets\/surfaces\/[a-z0-9_-]+(?:\.height)?\.(png|jpg|webp|bin|json)|assets\/surfaces\/(terrain64|color64)\/(index\.json|(earth|moon|mars)\/[0-9]+-[0-9]+\.(bin\.gz|jpg))|assets\/surfaces\/detail\/(index\.json|[a-z]+\/[a-z0-9_-]+\.(bin\.gz|jpg))|assets\/fonts\/(instrument-sans-variable\.ttf|OFL-Instrument-Sans\.txt)|src\/[a-z-]+\.js)$/;
 export const LAZY_SURFACE_TILE_PATH =
   /^assets\/surfaces\/(?:(terrain64|color64)\/(earth|moon|mars)\/|detail\/[a-z]+\/)/;
 
@@ -46,4 +46,29 @@ export function originalAssetBytes(file, bytes, environment) {
   if (begin >= 0 && end > begin)
     return Buffer.from(text.slice(end + marker.length));
   return bytes;
+}
+
+export function publishedAssetMime(file) {
+  if (file.endsWith(".ttf")) return /font\/ttf/;
+  return file.endsWith(".js")
+    ? /javascript/
+    : file.endsWith(".css")
+      ? /text\/css/
+      : file.endsWith(".json")
+        ? /application\/json/
+        : file.endsWith(".bin")
+          ? /application\/octet-stream/
+          : file.endsWith(".jpg")
+            ? /image\/jpeg/
+            : file.endsWith(".webp")
+              ? /image\/webp/
+              : file.endsWith(".png")
+                ? /image\/png/
+                : file.endsWith(".svg")
+                  ? /image\/svg\+xml/
+                  : file.endsWith(".txt")
+                    ? /text\/plain/
+                    : file.endsWith(".xml")
+                      ? /(?:application|text)\/xml/
+                      : /text\/html/;
 }
