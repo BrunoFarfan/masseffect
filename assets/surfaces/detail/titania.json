@@ -1,0 +1,67 @@
+{
+  "terrainKind": "procedural",
+  "effectivePixelsPerDegree": 5.688888888888889,
+  "heightEffectivePixelsPerDegree": null,
+  "tiles": [
+    {
+      "id": "n-0-0",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "width": 222,
+      "height": 222,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/titania/n-0-0.jpg",
+      "colorSha256": "d48a4bfa2c2e73d3596dc65edc6e58a30fa49b9b914b332a2d9c9586b09a88d4",
+      "colorBytes": 854
+    },
+    {
+      "id": "s-0-0",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "width": 222,
+      "height": 222,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/titania/s-0-0.jpg",
+      "colorSha256": "2a64de8fa489e23db7988090cd7e2cdd9602b48274a3d870f08cd4a910b0b3d9",
+      "colorBytes": 8649
+    }
+  ],
+  "totalBytes": 9503,
+  "sourceWidth": 2048,
+  "sourceHeight": 1024,
+  "sourceBytes": 54854,
+  "heightPolicy": "No measured DEM bundled in this detail pack; existing base shape and relief are not promoted into detail.",
+  "provenance": {
+    "citation": "NASA Uranus–Titania 3-D resource, mosaicked with Voyager imagery; credit USGS/Tammy Becker and JPL/Caltech",
+    "source": {
+      "file": "titania-voyager-texture.webp",
+      "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/3d/resources/image/uranus---titania/preview.webp?w=2048",
+      "sha256": "4727f174719d0a6f047d285584b073c40c73c1d18412049d696dea3ebba86862",
+      "dimensions": "2048x1024 WebP, 8-bit sRGB, 3-channel"
+    },
+    "sourceMetadata": "https://science.nasa.gov/3d-resources/uranus-titania/",
+    "alignmentStatus": "The NASA visualization resource does not publish a cartographic geotransform or prime-meridian convention. Runtime adopts north-up east-positive lookup; absolute imagery alignment is unverified, not a scientific coordinate product.",
+    "missionReference": "https://www.jpl.nasa.gov/images/pia00036-titania-high-resolution-color-composite/",
+    "coverage": "Voyager 2 observed Titania's southern hemisphere; this official texture visibly retains unmapped/black northern coverage rather than inventing source imagery.",
+    "license": "NASA/JPL/Caltech and USGS public mission imagery; retain attribution.",
+    "processing": "Pinned 2048x1024 NASA WebP; resized without reprojection to 512x256, 1024x512 and native 2048x1024 JPEG derivatives; color is never used to derive height.",
+    "proceduralHeight": "Seamless direction-vector field, little-endian uint16, height = -160 + sample x 0.5 m; bounded range is recorded per level; synthetic approximation only.",
+    "canonicalRadiusMeters": 788900,
+    "sourceReferenceRadiusMeters": null
+  },
+  "processing": "Pixel-centered canonical east-positive imagery sampled bilinearly at native resolution (maximum 64 ppd); 512-pixel bounded JPEG tiles; 70-degree stereographic polar replacement, square equatorial ground spacing; little-endian uint16 scientific heights in lossless gzip. Polar imagery remains limited by native polar observations/fill."
+}

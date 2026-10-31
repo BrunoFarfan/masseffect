@@ -12,7 +12,12 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { createHash } from "node:crypto";
 import { buildSite } from "../scripts/build.mjs";
-import { originalAssetBytes } from "../scripts/published-asset.mjs";
+import {
+  originalAssetBytes,
+  PUBLISHED_ASSET_PATH,
+  LAZY_SURFACE_TILE_PATH,
+  detailSmokeSamples,
+} from "../scripts/published-asset.mjs";
 
 test("only the recognized production robots prefix is excluded from source hashing", () => {
   const original = Buffer.from("User-agent: *\nAllow: /\n");
@@ -59,7 +64,22 @@ test("static build publishes only browser assets, hashes them and removes stale 
     const dist = join(temp, "dist");
     const first = await buildSite(dist);
     assert.equal(first.environment, "preview");
-    assert.ok(Object.keys(first.files).length >= 1823);
+    assert.ok(first.files["assets/fonts/instrument-sans-variable.ttf"]);
+    assert.ok(first.files["assets/fonts/OFL-Instrument-Sans.txt"]);
+    assert.ok(first.files["assets/surfaces/mars-olympus.height.bin"]);
+    for (const name of [
+      "earth-andes",
+      "earth-himalaya",
+      "moon-tycho",
+      "moon-mare-orientale",
+      "moon-copernicus",
+      "mars-valles",
+      "mars-hellas",
+    ])
+      assert.equal(
+        first.files[`assets/surfaces/${name}.height.bin`],
+        undefined,
+      );
     for (const pack of ["terrain64", "color64"])
       for (const body of ["earth", "moon", "mars"])
         assert.ok(
@@ -76,6 +96,7 @@ test("static build publishes only browser assets, hashes them and removes stale 
       /cloudflareinsights/,
     );
     for (const [file, hash] of Object.entries(first.files)) {
+      assert.match(file, PUBLISHED_ASSET_PATH);
       assert.equal(
         createHash("sha256")
           .update(await readFile(join(dist, file)))
@@ -109,6 +130,44 @@ test("static build publishes only browser assets, hashes them and removes stale 
   } finally {
     await rm(temp, { recursive: true, force: true });
   }
+});
+
+test("detail smoke checks bind all tile hashes while sampling both poles and payloads", () => {
+  const tiles = [0, 1, -1].flatMap((pole) =>
+    ["a", "b"].map((id) => ({
+      pole,
+      colorUrl: `/assets/surfaces/detail/moon/p${pole === -1 ? "s" : pole}-${id}.jpg`,
+      colorSha256: "a".repeat(64),
+      heightUrl: `/assets/surfaces/detail/moon/p${pole === -1 ? "s" : pole}-${id}.bin.gz`,
+      heightSha256: "b".repeat(64),
+    })),
+  );
+  const index = { schemaVersion: 1, bodies: { moon: { tiles } } };
+  const files = Object.fromEntries(
+    tiles.flatMap((tile) =>
+      ["color", "height"].map((kind) => [
+        tile[`${kind}Url`].slice(1),
+        tile[`${kind}Sha256`],
+      ]),
+    ),
+  );
+  const samples = detailSmokeSamples(index, files);
+  assert.equal(samples.length, 6);
+  assert.ok(samples.every((file) => LAZY_SURFACE_TILE_PATH.test(file)));
+  assert.equal(
+    LAZY_SURFACE_TILE_PATH.test("assets/surfaces/detail/index.json"),
+    false,
+  );
+  const omitted = tiles.at(-1).heightUrl.slice(1);
+  assert.ok(!samples.includes(omitted));
+  assert.throws(
+    () => detailSmokeSamples(index, { ...files, [omitted]: "0".repeat(64) }),
+    /AssertionError/,
+  );
+  assert.doesNotMatch(
+    "assets/surfaces/detail/moon/../../secret.jpg",
+    PUBLISHED_ASSET_PATH,
+  );
 });
 
 test("sharing metadata is static, canonical and points to full-size local images", async () => {

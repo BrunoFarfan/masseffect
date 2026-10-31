@@ -31,3 +31,9 @@ The generated levels are `preview` 512×256, `medium` 1024×512, and `near`
 2048×1024. Their output hashes, dimensions, radial min/max, and validation
 samples for Everest, the Andes, and the Pacific are recorded in
 `assets/surfaces/earth-manifest.json`.
+
+Close-range relief uses the separate [lazy global terrain pack](terrain64.md),
+derived from native 60 ppd ETOPO data. It supersedes the former Andes and
+Himalaya regional crops, which are no longer generated or shipped. The
+bounded base-level preparer needs only the global stride CSV and Blue Marble
+image described above; regional CSV downloads are no longer required.

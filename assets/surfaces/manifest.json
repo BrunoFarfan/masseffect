@@ -30,25 +30,7 @@
             "url": "https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004720/ldem_16_uint.tif",
             "sha256": "45a2b32d56e81ed30db07fead8abc842b249b6511219d9ca2c53f81bc2dc5d62",
             "dimensions": "5760x2880 unsigned 16-bit TIFF",
-            "operations": "decode pinned uncompressed uint16 strip; area-average resize to 1024/2048; retain native 16 pixels/degree Mare Orientale (40x40 degrees) and Copernicus (10x10 degrees) crops; round to half-meter; little-endian uint16 export"
-          },
-          {
-            "url": "https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004720/ldem_64_uint.tif",
-            "sha256": "0939469ef9247e0f98c5a2107463882566b53f10fa8eba1e6aff9f322cf83dbf",
-            "checksumScope": "HTTP byte-range extraction, not full original TIFF",
-            "byteRange": [
-              371589128,
-              412876807
-            ],
-            "stripOffsetsSha256": "37b193b79c4d983e38b393fdb14c45fd7cea325281cea29bae1977a7a2f44c49",
-            "stripOffsetsByteRange": [
-              530887938,
-              530934017
-            ],
-            "dimensions": "23040x11520 original; 23040x896 extracted row band; 896x896 prepared crop",
-            "operations": "verify row strip offsets; extract rows8064..8959, columns10368..11263; no resampling; little-endian uint16 half-meter samples; blend outer8% into global LOLA at runtime",
-            "coverage": "east longitude -18..-4, planetocentric latitude -50..-36",
-            "citation": "NASA SVS CGI Moon Kit4720; LOLA science team; Ernie Wright(USRA), Noah Petro(NASA/GSFC)"
+            "operations": "decode pinned uncompressed uint16 strip; area-average resize to 1024/2048; round to half-meter; little-endian uint16 export"
           }
         ],
         "datum": "LOLA sphere radius 1,737,400 m; planetocentric east-positive cylindrical map"
@@ -58,7 +40,15 @@
           "width": 512,
           "height": 256,
           "color": "/assets/surfaces/moon-preview.jpg",
-          "colorSha256": "bc013e030da19185f5506fbfa8e6d0fcd5503c18982af5a30652060a92602384"
+          "colorSha256": "bc013e030da19185f5506fbfa8e6d0fcd5503c18982af5a30652060a92602384",
+          "heightUrl": "/assets/surfaces/moon-preview.height.bin",
+          "heightWidth": 512,
+          "heightHeight": 256,
+          "heightSha256": "84d61c0ac7f6b93aa631d11acdba469f96ed8c393c6078d64ba3bf74782195b4",
+          "heightOffsetMeters": -10000,
+          "heightScaleMeters": 0.5,
+          "minElevationMeters": -8438,
+          "maxElevationMeters": 9971
         },
         "medium": {
           "width": 2048,
@@ -86,85 +76,7 @@
           "heightOffsetMeters": -10000,
           "heightScaleMeters": 0.5,
           "minElevationMeters": -8697.5,
-          "maxElevationMeters": 10513,
-          "region": {
-            "id": "tycho",
-            "name": "Tycho LOLA64 regional relief",
-            "heightUrl": "/assets/surfaces/moon-tycho.height.bin",
-            "heightSha256": "2705ca243cdbb9cd866de43ce4c1f969976fe70e53969570cebd1226b927b3ad",
-            "width": 896,
-            "height": 896,
-            "heightScaleMeters": 0.5,
-            "heightOffsetMeters": -10000,
-            "uvBounds": [
-              0.45,
-              0.7,
-              0.4888888888888889,
-              0.7777777777777778
-            ],
-            "blendBorder": 0.08,
-            "minElevationMeters": -5387,
-            "maxElevationMeters": 2095.5
-          },
-          "regions": [
-            {
-              "id": "tycho",
-              "name": "Tycho LOLA64 regional relief",
-              "heightUrl": "/assets/surfaces/moon-tycho.height.bin",
-              "heightSha256": "2705ca243cdbb9cd866de43ce4c1f969976fe70e53969570cebd1226b927b3ad",
-              "width": 896,
-              "height": 896,
-              "heightScaleMeters": 0.5,
-              "heightOffsetMeters": -10000,
-              "uvBounds": [
-                0.45,
-                0.7,
-                0.4888888888888889,
-                0.7777777777777778
-              ],
-              "blendBorder": 0.08,
-              "minElevationMeters": -5387,
-              "maxElevationMeters": 2095.5
-            },
-            {
-              "id": "mare-orientale",
-              "name": "Mare Orientale LOLA16 regional relief",
-              "heightUrl": "/assets/surfaces/moon-mare-orientale.height.bin",
-              "heightSha256": "af249446721c99e83bc24a41a15864d4ebfca64cdde3854ba99458f74a3f4396",
-              "width": 641,
-              "height": 641,
-              "heightScaleMeters": 0.5,
-              "heightOffsetMeters": -10000,
-              "uvBounds": [
-                0.2222222222222222,
-                0.4444444444444444,
-                0.3333333333333333,
-                0.6666666666666666
-              ],
-              "blendBorder": 0.06,
-              "minElevationMeters": -4641,
-              "maxElevationMeters": 6348
-            },
-            {
-              "id": "copernicus",
-              "name": "Copernicus LOLA16 regional relief",
-              "heightUrl": "/assets/surfaces/moon-copernicus.height.bin",
-              "heightSha256": "71813835818f5fa419238c7df9496e6af750a55ad9c8cd17db5c49ae4d543a67",
-              "width": 161,
-              "height": 161,
-              "heightScaleMeters": 0.5,
-              "heightOffsetMeters": -10000,
-              "uvBounds": [
-                0.4305555555555556,
-                0.4166666666666667,
-                0.4583333333333333,
-                0.4722222222222222
-              ],
-              "blendBorder": 0.06,
-              "minElevationMeters": -3567,
-              "maxElevationMeters": 817.5
-            }
-          ]
+          "maxElevationMeters": 10513
         }
       }
     },
@@ -212,7 +124,7 @@
               88473599
             ],
             "checksumScope": "HTTP byte-range extraction, not full original tile",
-            "operations": "verify SignedMSB2 rows 2816..3839; extract columns 5376..6399 for Olympus, native 16 pixels/degree rows 1200..1680 columns 4640..5120 for Valles Marineris, and rows 1760..2240 columns 960..1440 for Hellas Planitia; convert radius offset 3396000 to canonical 3389500 radial elevation; little-endian uint16 export with -20000 m offset",
+            "operations": "verify SignedMSB2 rows 2816..3839; extract columns 5376..6399 for Olympus; convert radius offset 3396000 to canonical 3389500 radial elevation; little-endian uint16 export with -20000 m offset",
             "coverage": "planetocentric 222..230E, 14..22N; MOLA128 IAU2000_MARS"
           }
         ],
@@ -224,7 +136,15 @@
           "width": 512,
           "height": 256,
           "color": "/assets/surfaces/mars-preview.jpg",
-          "colorSha256": "5ede58403b2c719d4eec240b8c93256e0ea2d2ed41ff9fea899925793fa8d20c"
+          "colorSha256": "5ede58403b2c719d4eec240b8c93256e0ea2d2ed41ff9fea899925793fa8d20c",
+          "heightUrl": "/assets/surfaces/mars-preview.height.bin",
+          "heightWidth": 512,
+          "heightHeight": 256,
+          "heightSha256": "dd6ede3bd77250358f25dc9d71d2cf8a007213efe1af6584201bc3638cbc47b2",
+          "heightOffsetMeters": -20000,
+          "heightScaleMeters": 1,
+          "minElevationMeters": -16182,
+          "maxElevationMeters": 27337
         },
         "medium": {
           "width": 2048,
@@ -291,44 +211,6 @@
               "blendBorder": 0.08,
               "minElevationMeters": 2918,
               "maxElevationMeters": 27862
-            },
-            {
-              "id": "valles-marineris",
-              "name": "Valles Marineris MOLA16 regional relief",
-              "heightUrl": "/assets/surfaces/mars-valles.height.bin",
-              "heightSha256": "c0316d47268f2edd7d2ae0e63033170fb5fd519674cd9bc3fae0db29d77ba4ab",
-              "width": 481,
-              "height": 481,
-              "heightScaleMeters": 1,
-              "heightOffsetMeters": -20000,
-              "uvBounds": [
-                0.3055555555555556,
-                0.4166666666666667,
-                0.3888888888888889,
-                0.5833333333333334
-              ],
-              "blendBorder": 0.06,
-              "minElevationMeters": -633,
-              "maxElevationMeters": 12766
-            },
-            {
-              "id": "hellas",
-              "name": "Hellas Planitia MOLA16 regional relief",
-              "heightUrl": "/assets/surfaces/mars-hellas.height.bin",
-              "heightSha256": "2363108cac9ce1670854ddda7710755b51211b859691647b93a05c31bfd3108a",
-              "width": 481,
-              "height": 481,
-              "heightScaleMeters": 1,
-              "heightOffsetMeters": -20000,
-              "uvBounds": [
-                0.6666666666666666,
-                0.6111111111111112,
-                0.75,
-                0.7777777777777778
-              ],
-              "blendBorder": 0.06,
-              "minElevationMeters": -10684,
-              "maxElevationMeters": 7058
             }
           ]
         }
@@ -468,7 +350,15 @@
           "color": "/assets/surfaces/callisto-preview.jpg",
           "width": 512,
           "height": 256,
-          "colorSha256": "524e2873cc634f7f6fe00b9e17d67fde111532fb33de391c96f01108eb08fe95"
+          "colorSha256": "524e2873cc634f7f6fe00b9e17d67fde111532fb33de391c96f01108eb08fe95",
+          "heightUrl": "/assets/surfaces/callisto-preview.height.bin",
+          "heightWidth": 512,
+          "heightHeight": 256,
+          "heightSha256": "94c2b9042e73fae99d6ed9ac9a2117797cbb7c9d769df7ca0289783eaf4426f3",
+          "heightOffsetMeters": -256,
+          "heightScaleMeters": 0.5,
+          "minElevationMeters": -106,
+          "maxElevationMeters": 106
         },
         "medium": {
           "color": "/assets/surfaces/callisto-medium.jpg",
@@ -543,6 +433,95 @@
         }
       }
     },
+    "dione": {
+      "body": "dione",
+      "referenceRadiusMeters": 561400,
+      "bodyrefSIradius": 561400,
+      "sourceType": "mapped-imagery-ellipsoid-only",
+      "baseRadiiMeters": [
+        563400,
+        559600,
+        561300
+      ],
+      "sourceOrganization": "NASA/JPL/Space Science Institute; USGS Astrogeology",
+      "coordinates": {
+        "longitude": "east-positive -180..180",
+        "latitude": "planetocentric",
+        "projection": "equirectangular",
+        "northAtTop": true,
+        "pixelRegistration": "pixel-centered"
+      },
+      "heightPolicy": "Ellipsoid only. Measured 2025 PDS SPC global radius grids exist, but were not integrated because archive downloads returned access challenges; no synthetic height or brightness-derived terrain is generated.",
+      "provenance": {
+        "source": {
+          "file": "dione-usgs-full.tif",
+          "url": "https://planetarymaps.usgs.gov/mosaic/Dione_Cassini_Voyager_mosaic_global_154m.tif",
+          "sha256": "5c5d796c02e3c99fde5dd034e01dd1f25905699a4885843aed445ded955e08b5",
+          "width": 23040,
+          "height": 11520,
+          "metersPerPixel": 153.53443263638,
+          "projectionRadiusMeters": 563000,
+          "referenceRadiusMeters": 561400,
+          "labelSha256": "9ebd3ab389c665a4ed3ae3285c7f16b68438e26b8ba18b5e7fe177cb76716a9e",
+          "metadata": "https://astrogeology.usgs.gov/search/map/dione_cassini_voyager_global_mosaic_154m",
+          "doi": "10.26033/bxx6-g543"
+        },
+        "sourceMetadata": "https://astrogeology.usgs.gov/search/map/dione_cassini_voyager_global_mosaic_154m",
+        "citation": "NASA Cassini ISS global dione map; Voyager gap fill; see source product metadata.",
+        "coverage": "Global mosaic footprint with spatially variable source image resolution and photometric seams; nominal map spacing does not imply uniform effective resolution.",
+        "license": "NASA/USGS public planetary imagery; retain mission and product attribution.",
+        "processing": "Native simple cylindrical north-up map, full globe -180..180 east-positive; no rotation, mirror, colorization, sharpening, or invented pixels. Projection reference radius is independent of the canonical JPL SI radius.",
+        "measuredTerrainCandidate": "https://doi.org/10.26033/bxx6-g543",
+        "terrainLimitation": "Ellipsoid only. Measured 2025 PDS SPC global radius grids exist, but were not integrated because archive downloads returned access challenges; no synthetic height or brightness-derived terrain is generated.",
+        "imagery": {
+          "sha256": "a79c3a636be53e7292d06e610b09839a18ddc02df9338d4e10f975555a812068",
+          "source": {
+            "file": "dione-usgs-full.tif",
+            "url": "https://planetarymaps.usgs.gov/mosaic/Dione_Cassini_Voyager_mosaic_global_154m.tif",
+            "sha256": "5c5d796c02e3c99fde5dd034e01dd1f25905699a4885843aed445ded955e08b5",
+            "width": 23040,
+            "height": 11520,
+            "metersPerPixel": 153.53443263638,
+            "projectionRadiusMeters": 563000,
+            "referenceRadiusMeters": 561400,
+            "labelSha256": "9ebd3ab389c665a4ed3ae3285c7f16b68438e26b8ba18b5e7fe177cb76716a9e",
+            "metadata": "https://astrogeology.usgs.gov/search/map/dione_cassini_voyager_global_mosaic_154m",
+            "doi": "10.26033/bxx6-g543"
+          },
+          "coordinates": {
+            "longitude": "east-positive -180..180",
+            "latitude": "planetocentric",
+            "projection": "equirectangular",
+            "northAtTop": true,
+            "pixelRegistration": "pixel-centered"
+          },
+          "normalization": "Native simple cylindrical north-up map, full globe -180..180 east-positive; no rotation, mirror, colorization, sharpening, or invented pixels. Projection reference radius is independent of the canonical JPL SI radius."
+        }
+      },
+      "levels": {
+        "preview": {
+          "color": "/assets/surfaces/dione-preview.jpg",
+          "width": 512,
+          "height": 256,
+          "colorSha256": "e6fe13858731147ac083db36d6ff179ee8b23bb020249791618fb0c4e3520b50"
+        },
+        "medium": {
+          "color": "/assets/surfaces/dione-medium.jpg",
+          "width": 1024,
+          "height": 512,
+          "colorSha256": "c1260f8a2dd52c715799f8e6b31d43848ebdc6a9abfe9bbebfe0f2cbc80ab1a2"
+        },
+        "near": {
+          "color": "/assets/surfaces/dione-near.jpg",
+          "width": 2048,
+          "height": 1024,
+          "colorSha256": "b9100255f81830b9f5e84854c6b3eb24ee9fdd76847c8062beb97b33fed2d280"
+        }
+      },
+      "colorType": "Mapped spacecraft imagery; see pinned source and display processing",
+      "canonicalRadiusMeters": 561400,
+      "canonicalMassKg": 1.0954867177082242e+21
+    },
     "earth": {
       "schemaVersion": 1,
       "generatedBy": "scripts/prepare-earth-surface.mjs",
@@ -580,12 +559,6 @@
             "url": "https://assets.science.nasa.gov/content/dam/science/esd/eo/images/bmng/bmng-base/january/world.200401.3x5400x2700.jpg",
             "sha256": "99f5faad74efe985fbf1714c8be7296ca9999759a1215b65f99b7f1df278dde5",
             "dimensions": "5400×2700 RGB JPEG; Blue Marble Next Generation January 2004"
-          },
-          {
-            "file": "earth-etopo-andes-60s.csv",
-            "url": "https://oceanwatch.pifsc.noaa.gov/erddap/griddap/ETOPO_2022_v1_60s.csv?z[3000:1:4200][17100:1:17700]",
-            "sha256": "59e37f85bcdddb94bc0c018d50459f9f98d0123b64d10d6895ce544bbf7eb407",
-            "dimensions": "1201 latitude samples × 601 longitude samples at 60 arc-seconds; Andes 285..295E, -40..-20N"
           }
         ],
         "metadata": "/output/surface-originals/earth-etopo.das and /output/surface-originals/earth-color-source.html",
@@ -596,7 +569,7 @@
           "inverseFlattening": 298.257223563
         },
         "canonicalReference": "WGS84 ellipsoid radial surface relative to canonical simulation radius 6371000 m; z added as a bounded datum approximation.",
-        "processing": "Stream global and bounded regional CSVs; bilinear DEM sampling; geodetic-to-planetocentric latitude conversion; Blue Marble bilinear color sampling; JPEG quality 88; Andes regional tile retains native 60-arcsecond samples (601x1201), Himalaya tile retains native 1/6-degree ETOPO samples (181x61); little-endian uint16 heights at 1 m/sample with -30000 m offset; reject rather than clamp out-of-range elevations.",
+        "processing": "Stream global CSV; bilinear DEM sampling; geodetic-to-planetocentric latitude conversion; Blue Marble bilinear color sampling; JPEG quality 88; little-endian uint16 heights at 1 m/sample with -30000 m offset; reject rather than clamp out-of-range elevations.",
         "validationSamples": {
           "everest": 5539.120928466797,
           "andes": 5361.027662270793,
@@ -645,66 +618,7 @@
           "heightOffsetMeters": -30000,
           "heightScaleMeters": 1,
           "minElevationMeters": -19396,
-          "maxElevationMeters": 11798,
-          "region": {
-            "id": "andes",
-            "name": "Andes ETOPO2022 60-arcsecond regional relief",
-            "heightUrl": "/assets/surfaces/earth-andes.height.bin",
-            "heightSha256": "3815fdc492a6d768550cefc8864fd5ab3e6ee9fb06c1607b6b2a2149c14f69a4",
-            "width": 601,
-            "height": 1201,
-            "heightScaleMeters": 1,
-            "heightOffsetMeters": -30000,
-            "uvBounds": [
-              0.2916666666666667,
-              0.6104257214576313,
-              0.3194444444444444,
-              0.7211700586218157
-            ],
-            "blendBorder": 0.04,
-            "minElevationMeters": -5935,
-            "maxElevationMeters": 10239
-          },
-          "regions": [
-            {
-              "id": "andes",
-              "name": "Andes ETOPO2022 60-arcsecond regional relief",
-              "heightUrl": "/assets/surfaces/earth-andes.height.bin",
-              "heightSha256": "3815fdc492a6d768550cefc8864fd5ab3e6ee9fb06c1607b6b2a2149c14f69a4",
-              "width": 601,
-              "height": 1201,
-              "heightScaleMeters": 1,
-              "heightOffsetMeters": -30000,
-              "uvBounds": [
-                0.2916666666666667,
-                0.6104257214576313,
-                0.3194444444444444,
-                0.7211700586218157
-              ],
-              "blendBorder": 0.04,
-              "minElevationMeters": -5935,
-              "maxElevationMeters": 10239
-            },
-            {
-              "id": "himalaya",
-              "name": "Himalaya ETOPO2022 native regional relief",
-              "heightUrl": "/assets/surfaces/earth-himalaya.height.bin",
-              "heightSha256": "e6888dc24642b56d5007f574565c598a720ee2f6ec78ef952141a5596daddeda",
-              "width": 181,
-              "height": 61,
-              "heightScaleMeters": 1,
-              "heightOffsetMeters": -30000,
-              "uvBounds": [
-                0.6944444444444444,
-                0.30655895165362174,
-                0.7777777777777778,
-                0.36192826355288055
-              ],
-              "blendBorder": 0.06,
-              "minElevationMeters": 733,
-              "maxElevationMeters": 9111
-            }
-          ]
+          "maxElevationMeters": 11798
         }
       },
       "canonicalRadiusMeters": 6371000,
@@ -766,22 +680,83 @@
         },
         "runtimeDatum": "canonical spherical radius 252100 m",
         "processing": "Validated GeoTIFF tags/georeferencing; converted source km to metres; computed triaxial radial surface radius by pixel direction; shifted source 0..360 seam by half raster; encoded radial heights as uint16 little-endian at 0.5 m steps; filled NoData with reference triaxial ellipsoid (zero relief) and labeled it.",
-        "attribution": "USGS Astrogeology Science Center / NASA Cassini / Lunar and Planetary Institute; Schenk and McKinnon (2024); Thomas et al. (2016)"
+        "attribution": "USGS Astrogeology Science Center / NASA Cassini / Lunar and Planetary Institute; Schenk and McKinnon (2024); Thomas et al. (2016)",
+        "imagery": {
+          "sha256": "5350b716a77e7ece0d6ec939f60207053ed19bd52d391f979f8aa0765f333d2a",
+          "width": 16098,
+          "height": 8049,
+          "source": {
+            "file": "enceladus-mosaic-100m.tif",
+            "sha256": "1738c5cf8e856c7ae262d858261af0fbb32503a68a524884d36194afb23afcc5",
+            "url": "https://asc-astropedia.s3.us-west-2.amazonaws.com/Enceladus/Cassini/Enceladus_Cassini_mosaic_global_100m_schenk2024.tif",
+            "width": 16098,
+            "height": 8049,
+            "center": 180,
+            "west": false,
+            "citation": "Schenk and McKinnon (2024), Cassini ISS global mosaic, 100 m pixels; DOI 10.1016/j.icarus.2023.115827",
+            "bytes": 518340175
+          },
+          "georeferencing": {
+            "origin": [
+              -804900,
+              402500,
+              0
+            ],
+            "resolution": [
+              100,
+              -100,
+              0
+            ],
+            "keys": {
+              "GTModelTypeGeoKey": 1,
+              "GTRasterTypeGeoKey": 1,
+              "GTCitationGeoKey": "SimpleCylindrical Enceladus",
+              "GeographicTypeGeoKey": 32767,
+              "GeogCitationGeoKey": "GCS Name = GCS_Enceladus|Datum = D_Enceladus|Ellipsoid = Enceladus|Primem = Reference_Meridian|",
+              "GeogGeodeticDatumGeoKey": 32767,
+              "GeogAngularUnitsGeoKey": 9102,
+              "GeogEllipsoidGeoKey": 32767,
+              "GeogSemiMajorAxisGeoKey": 256200,
+              "GeogSemiMinorAxisGeoKey": 256200,
+              "GeogPrimeMeridianLongGeoKey": 0,
+              "ProjectedCSTypeGeoKey": 32767,
+              "ProjectionGeoKey": 32767,
+              "ProjCoordTransGeoKey": 17,
+              "ProjLinearUnitsGeoKey": 9001,
+              "ProjStdParallel1GeoKey": 0,
+              "ProjFalseEastingGeoKey": 0,
+              "ProjFalseNorthingGeoKey": 0,
+              "ProjCenterLongGeoKey": 180,
+              "ProjCenterLatGeoKey": 0
+            }
+          },
+          "displayStretch": [
+            7507.0537109375,
+            13537.8056640625
+          ],
+          "normalization": "Pixel-centered planetocentric east-positive -180..180 north-up; source GeoTIFF origin/resolution and label longitude direction explicitly sampled; no height inferred. Source grid is downsampled at most to 64 ppd; display contrast is not calibrated albedo."
+        }
       },
       "levels": {
         "preview": {
           "color": "/assets/surfaces/enceladus-preview.jpg",
           "width": 512,
           "height": 256,
-          "colorSha256": "e3d2b3e705ad7f69331c52c0a6f0aeb2a5fca405fdebb76323df718767ab7aa2",
-          "colorKind": "constant soft-ice fallback; no mapped color source was downloaded"
+          "colorSha256": "52c6df98d6ed8f348caf02c601049919eee191bfdd2d7bc188247d616e87bba7",
+          "heightUrl": "/assets/surfaces/enceladus-preview.height.bin",
+          "heightWidth": 512,
+          "heightHeight": 256,
+          "heightSha256": "bc8e692ca55347b50a1adce44233be8ebe6d7b60bed6b919bc821d40be3545f1",
+          "heightOffsetMeters": -5000,
+          "heightScaleMeters": 0.5,
+          "minElevationMeters": -4432.5,
+          "maxElevationMeters": 5198.5
         },
         "medium": {
           "color": "/assets/surfaces/enceladus-medium.jpg",
           "width": 1024,
           "height": 512,
-          "colorSha256": "f6284e192e783472be8316397d5c4520ecf17671208a80abc390e322fe21b390",
-          "colorKind": "constant soft-ice fallback; no mapped color source was downloaded",
+          "colorSha256": "ac634fe88deb9d292f608a3bb27062c790cbd68d5c0367682ba0050284635790",
           "heightUrl": "/assets/surfaces/enceladus-medium.height.bin",
           "heightWidth": 1024,
           "heightHeight": 512,
@@ -798,8 +773,7 @@
           "color": "/assets/surfaces/enceladus-near.jpg",
           "width": 2048,
           "height": 1024,
-          "colorSha256": "5f8c2992470d56625a24d61fb0fcb7c5d0ae7afcb10e0a5c2e4ed1b158a19868",
-          "colorKind": "constant soft-ice fallback; no mapped color source was downloaded",
+          "colorSha256": "7136d1517dfbf7273ce4700ebc1e0285c15ee33ff4a9c27bc900bbe46e524a6d",
           "heightUrl": "/assets/surfaces/enceladus-near.height.bin",
           "heightWidth": 2048,
           "heightHeight": 1024,
@@ -813,6 +787,7 @@
           "validSampleFraction": 0.9985356330871582
         }
       },
+      "colorType": "Mapped spacecraft imagery; see pinned source and display processing",
       "canonicalRadiusMeters": 252100,
       "canonicalMassKg": 108031853527710780000
     },
@@ -1060,7 +1035,15 @@
           "width": 512,
           "height": 256,
           "colorSha256": "bf2ec854151ac83cae8185d0959cf5b4fb84157cefccd2aa341579b9e0993ea1",
-          "colorKind": "USGS Cassini/Voyager grayscale mapped imagery"
+          "colorKind": "USGS Cassini/Voyager grayscale mapped imagery",
+          "heightUrl": "/assets/surfaces/iapetus-preview.height.bin",
+          "heightWidth": 512,
+          "heightHeight": 256,
+          "heightSha256": "abce81ab8c74d294dd9b402e276949c98ecfbcf0cef4209c1b958bf19c22845e",
+          "heightOffsetMeters": -256,
+          "heightScaleMeters": 0.5,
+          "minElevationMeters": -156,
+          "maxElevationMeters": 156
         },
         "medium": {
           "color": "/assets/surfaces/iapetus-medium.jpg",
@@ -1126,14 +1109,66 @@
         "license": "USGS/NASA public-domain planetary imagery; retain product and mission attribution.",
         "orientationReference": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/pck00011.tpc",
         "processing": "Pinned 1024px sample; decode; metadata-derived positive-west to east-positive horizontal flip; resize to 512 and 1024 only; JPEG quality 88.",
-        "proceduralHeight": "Deterministic sinusoidal synthetic field, 0.5 m encoding, -64..63.5 m range; not measured relief and not derived from image pixels."
+        "proceduralHeight": "Deterministic sinusoidal synthetic field, 0.5 m encoding, -64..63.5 m range; not measured relief and not derived from image pixels.",
+        "imagery": {
+          "sha256": "5d4dcb60e4f5b9bf505dc71b0b51d4ebafd99c7fd6074e6c8e84c24626ce1f70",
+          "width": 11444,
+          "height": 5722,
+          "source": {
+            "file": "io-usgs-color-1km.tif",
+            "sha256": "135f88cb645bfdb4e045b380971ab2ba14e230590c96c9c86cfe7310fda881ac",
+            "url": "https://planetarymaps.usgs.gov/mosaic/Io_GalileoSSI-Voyager_Global_Mosaic_ClrMerge_1km.tif",
+            "width": 11445,
+            "height": 5723,
+            "center": 0,
+            "west": true,
+            "citation": "NASA Galileo SSI / Voyager, USGS color-merged mosaic, 1 km grid; source detail varies 1–10 km, false color and baked illumination",
+            "bytes": 196637696
+          },
+          "georeferencing": {
+            "origin": [
+              -5723000,
+              2862000,
+              0
+            ],
+            "resolution": [
+              1000,
+              -1000,
+              0
+            ],
+            "keys": {
+              "GTModelTypeGeoKey": 1,
+              "GTRasterTypeGeoKey": 1,
+              "GTCitationGeoKey": "SimpleCylindrical Io",
+              "GeographicTypeGeoKey": 32767,
+              "GeogCitationGeoKey": "GCS Name = GCS_Io|Datum = D_Io|Ellipsoid = Io|Primem = Reference_Meridian|",
+              "GeogGeodeticDatumGeoKey": 32767,
+              "GeogAngularUnitsGeoKey": 9102,
+              "GeogEllipsoidGeoKey": 32767,
+              "GeogSemiMajorAxisGeoKey": 1821460,
+              "GeogSemiMinorAxisGeoKey": 1821460,
+              "GeogPrimeMeridianLongGeoKey": 0,
+              "ProjectedCSTypeGeoKey": 32767,
+              "ProjectionGeoKey": 32767,
+              "ProjCoordTransGeoKey": 17,
+              "ProjLinearUnitsGeoKey": 9001,
+              "ProjStdParallel1GeoKey": 0,
+              "ProjFalseEastingGeoKey": 0,
+              "ProjFalseNorthingGeoKey": 0,
+              "ProjCenterLongGeoKey": 0,
+              "ProjCenterLatGeoKey": 0
+            }
+          },
+          "displayStretch": null,
+          "normalization": "Pixel-centered planetocentric east-positive -180..180 north-up; source GeoTIFF origin/resolution and label longitude direction explicitly sampled; no height inferred. Source grid is downsampled at most to 64 ppd; display contrast is not calibrated albedo."
+        }
       },
       "levels": {
         "preview": {
           "color": "/assets/surfaces/io-preview.jpg",
           "width": 512,
           "height": 256,
-          "colorSha256": "d7be79202a0b9c229fde2dceafb7e6c80690b4171c8455f4eac760cabbcf120a",
+          "colorSha256": "589e621fcee38f36fb724da8f8a7d04ceeb15095c0544ac5681d6f6c2542b03f",
           "heightUrl": "/assets/surfaces/io-preview.height.bin",
           "heightWidth": 512,
           "heightHeight": 256,
@@ -1147,7 +1182,7 @@
           "color": "/assets/surfaces/io-medium.jpg",
           "width": 1024,
           "height": 512,
-          "colorSha256": "8b0fb0006f61f1ea1845857799ddd9f8ad954b4a1e3d46a528408385501e9228",
+          "colorSha256": "55774f1e857ed2291a22cebada247f6aa4faff1732e1ec590691fcad0fded2a4",
           "heightUrl": "/assets/surfaces/io-medium.height.bin",
           "heightWidth": 1024,
           "heightHeight": 512,
@@ -1159,9 +1194,9 @@
         },
         "near": {
           "color": "/assets/surfaces/io-near.jpg",
-          "width": 1024,
-          "height": 512,
-          "colorSha256": "8b0fb0006f61f1ea1845857799ddd9f8ad954b4a1e3d46a528408385501e9228",
+          "width": 2048,
+          "height": 1024,
+          "colorSha256": "e353bf2340e40cca4757eebc0e500810ad0e71478801948b98497b8037978dec",
           "heightUrl": "/assets/surfaces/io-near.height.bin",
           "heightWidth": 1024,
           "heightHeight": 512,
@@ -1172,6 +1207,7 @@
           "maxElevationMeters": 63.5
         }
       },
+      "colorType": "Mapped spacecraft imagery; see pinned source and display processing",
       "canonicalRadiusMeters": 1821490,
       "canonicalMassKg": 8.929648757173038e+22
     },
@@ -1249,21 +1285,73 @@
         "pixelRegistration": "area-centered",
         "sourceLongitude": "east-positive 0..360; output columns rotated 180 degrees"
       },
-      "colorType": "constant neutral fallback; not imagery",
+      "colorType": "Mapped spacecraft imagery; see pinned source and display processing",
       "provenance": {
         "url": "https://planetarymaps.usgs.gov/mosaic/Mercury_Messenger_USGS_DEM_Global_665m_v2.tif",
         "sha256": "defce776241dcaf44cb0f081ee508c17dbea28aa5a22880bf7a5e8c25f96cbea",
         "dimensions": "23040x11520 signed 16-bit GeoTIFF",
         "datum": "Mercury spherical radius 2439400 m; GDAL SCALE=0.5, OFFSET=0",
         "operations": "Verified GeoTIFF GeoKeys/origin/resolution; source 0..360 raster rotated to canonical -180..180; area-resampled signed samples exported as uint16 little-endian with scale 0.5 and offset -10000",
-        "attribution": "USGS Astrogeology Science Center / NASA MESSENGER MDIS"
+        "attribution": "USGS Astrogeology Science Center / NASA MESSENGER MDIS",
+        "imagery": {
+          "sha256": "17aa4dadf0777a0f930484bc22bc13d3f083b618d8f7bedfba28cebeabd4c65b",
+          "width": 23040,
+          "height": 11520,
+          "source": {
+            "file": "mercury-mosaic-250m.tif",
+            "sha256": "720938d9a403803b016e88d22d58cddbbf4fe8cb99f652c90f19b5a1bc946c76",
+            "url": "https://planetarymaps.usgs.gov/mosaic/Mercury_MESSENGER_mosaic_global_250m_2013.tif",
+            "width": 61324,
+            "height": 30662,
+            "center": 0,
+            "west": false,
+            "citation": "NASA MESSENGER MDIS / USGS global monochrome mosaic, May 2013, 250 m pixels",
+            "bytes": 1880562441
+          },
+          "georeferencing": {
+            "origin": [
+              -7665486.0747591,
+              3832743.0373795,
+              0
+            ],
+            "resolution": [
+              249.99954584695,
+              -249.99954584695,
+              0
+            ],
+            "keys": {
+              "GTModelTypeGeoKey": 1,
+              "GTRasterTypeGeoKey": 1,
+              "GTCitationGeoKey": "Equirectangular Mercury",
+              "GeographicTypeGeoKey": 32767,
+              "GeogCitationGeoKey": "GCS Name = GCS_Mercury|Datum = D_Mercury|Ellipsoid = Mercury_localRadius|Primem = Reference_Meridian|",
+              "GeogGeodeticDatumGeoKey": 32767,
+              "GeogAngularUnitsGeoKey": 9102,
+              "GeogEllipsoidGeoKey": 32767,
+              "GeogSemiMajorAxisGeoKey": 2440000,
+              "GeogSemiMinorAxisGeoKey": 2440000,
+              "GeogPrimeMeridianLongGeoKey": 0,
+              "ProjectedCSTypeGeoKey": 32767,
+              "ProjectionGeoKey": 32767,
+              "ProjCoordTransGeoKey": 17,
+              "ProjLinearUnitsGeoKey": 9001,
+              "ProjStdParallel1GeoKey": 0,
+              "ProjFalseEastingGeoKey": 0,
+              "ProjFalseNorthingGeoKey": 0,
+              "ProjCenterLongGeoKey": 0,
+              "ProjCenterLatGeoKey": 0
+            }
+          },
+          "displayStretch": null,
+          "normalization": "Pixel-centered planetocentric east-positive -180..180 north-up; source GeoTIFF origin/resolution and label longitude direction explicitly sampled; no height inferred. Source grid is downsampled at most to 64 ppd; display contrast is not calibrated albedo."
+        }
       },
       "levels": {
         "preview": {
           "width": 512,
           "height": 256,
           "color": "/assets/surfaces/mercury-preview.jpg",
-          "colorSha256": "24395718aa829f7632c8ac63c7db1a8f2db524fd34011e7e198464b76e136523",
+          "colorSha256": "06bbefc89d5b2ac3281dd4d8c8381ead9d751df71c05ab242138964ba73572fa",
           "heightUrl": "/assets/surfaces/mercury-preview.height.bin",
           "heightWidth": 512,
           "heightHeight": 256,
@@ -1277,7 +1365,7 @@
           "width": 1024,
           "height": 512,
           "color": "/assets/surfaces/mercury-medium.jpg",
-          "colorSha256": "b01496240c41bfb35f853948c28519daacfdfa1266dc84c4aebfd4d664d77545",
+          "colorSha256": "ce089236d427d301ac5c59248da83c4eb5daffe02df1a30a54402b0eb2e28533",
           "heightUrl": "/assets/surfaces/mercury-medium.height.bin",
           "heightWidth": 1024,
           "heightHeight": 512,
@@ -1291,7 +1379,7 @@
           "width": 2048,
           "height": 1024,
           "color": "/assets/surfaces/mercury-near.jpg",
-          "colorSha256": "9aeb8d2070de90fec183bcf1a018fb5309d7e99db2e7382c95d909cfc8f1db10",
+          "colorSha256": "f8d5a460ced12c0ec622d12273be9684e89acd04332ac4298daac74969bbe9f7",
           "heightUrl": "/assets/surfaces/mercury-near.height.bin",
           "heightWidth": 2048,
           "heightHeight": 1024,
@@ -1304,6 +1392,103 @@
       },
       "canonicalRadiusMeters": 2439400,
       "canonicalMassKg": 3.30103e+23
+    },
+    "mimas": {
+      "body": "mimas",
+      "referenceRadiusMeters": 198200,
+      "bodyrefSIradius": 198200,
+      "sourceType": "mapped-imagery-ellipsoid-only",
+      "baseRadiiMeters": [
+        207800,
+        190600,
+        196700
+      ],
+      "sourceOrganization": "NASA/JPL/Space Science Institute; USGS Astrogeology",
+      "coordinates": {
+        "longitude": "east-positive -180..180",
+        "latitude": "planetocentric",
+        "projection": "equirectangular",
+        "northAtTop": true,
+        "pixelRegistration": "pixel-centered"
+      },
+      "heightPolicy": "Ellipsoid only. Measured 2025 PDS SPC global radius grids exist, but were not integrated because archive downloads returned access challenges; no synthetic height or brightness-derived terrain is generated.",
+      "provenance": {
+        "source": {
+          "file": "mimas-nasa-full.jpg",
+          "url": "https://d2pn8kiwq2w21t.cloudfront.net/original_images/jpegPIA17214.jpg",
+          "sha256": "f2d62eaa50c7864e303a13434738a7bc6db0e133f1f4b163c2506979800c1116",
+          "width": 5760,
+          "height": 2880,
+          "metersPerPixel": 216,
+          "projectionRadiusMeters": 198200,
+          "referenceRadiusMeters": 198200,
+          "metadata": "https://www.jpl.nasa.gov/images/pia17214-mimas-global-map-june-2017/",
+          "coordinateReference": {
+            "url": "https://planetarydata.jpl.nasa.gov/img/data/cassini/cassini_orbiter/coiss_3006_v3/data/images/SM_1M_0_0_SIMP.IMG",
+            "sha256": "beea77a709f49f35b6dfaf378b076971f4050badc190313c58b488819ffd2fc2",
+            "description": "Earlier PDS global map attached label: 5760x2880, 16ppd, center0, west180 at left to west-180 at right; zero projection rotation; spherical198.2km figure. Coordinate reference only, not imagery input."
+          },
+          "doi": "10.26033/y8wv-r303"
+        },
+        "sourceMetadata": "https://www.jpl.nasa.gov/images/pia17214-mimas-global-map-june-2017/",
+        "citation": "NASA Cassini ISS global mimas map; see source product metadata.",
+        "coverage": "Global mosaic footprint with spatially variable source image resolution and photometric seams; nominal map spacing does not imply uniform effective resolution.",
+        "license": "NASA/USGS public planetary imagery; retain mission and product attribution.",
+        "processing": "Native simple cylindrical north-up map, full globe -180..180 east-positive; no rotation, mirror, colorization, sharpening, or invented pixels. Projection reference radius is independent of the canonical JPL SI radius.",
+        "measuredTerrainCandidate": "https://doi.org/10.26033/y8wv-r303",
+        "terrainLimitation": "Ellipsoid only. Measured 2025 PDS SPC global radius grids exist, but were not integrated because archive downloads returned access challenges; no synthetic height or brightness-derived terrain is generated.",
+        "imagery": {
+          "sha256": "619c4524f3f3360494071a7fe4183507b1a16f44f396f367f505c27c5f0743ab",
+          "source": {
+            "file": "mimas-nasa-full.jpg",
+            "url": "https://d2pn8kiwq2w21t.cloudfront.net/original_images/jpegPIA17214.jpg",
+            "sha256": "f2d62eaa50c7864e303a13434738a7bc6db0e133f1f4b163c2506979800c1116",
+            "width": 5760,
+            "height": 2880,
+            "metersPerPixel": 216,
+            "projectionRadiusMeters": 198200,
+            "referenceRadiusMeters": 198200,
+            "metadata": "https://www.jpl.nasa.gov/images/pia17214-mimas-global-map-june-2017/",
+            "coordinateReference": {
+              "url": "https://planetarydata.jpl.nasa.gov/img/data/cassini/cassini_orbiter/coiss_3006_v3/data/images/SM_1M_0_0_SIMP.IMG",
+              "sha256": "beea77a709f49f35b6dfaf378b076971f4050badc190313c58b488819ffd2fc2",
+              "description": "Earlier PDS global map attached label: 5760x2880, 16ppd, center0, west180 at left to west-180 at right; zero projection rotation; spherical198.2km figure. Coordinate reference only, not imagery input."
+            },
+            "doi": "10.26033/y8wv-r303"
+          },
+          "coordinates": {
+            "longitude": "east-positive -180..180",
+            "latitude": "planetocentric",
+            "projection": "equirectangular",
+            "northAtTop": true,
+            "pixelRegistration": "pixel-centered"
+          },
+          "normalization": "Native simple cylindrical north-up map, full globe -180..180 east-positive; no rotation, mirror, colorization, sharpening, or invented pixels. Projection reference radius is independent of the canonical JPL SI radius."
+        }
+      },
+      "levels": {
+        "preview": {
+          "color": "/assets/surfaces/mimas-preview.jpg",
+          "width": 512,
+          "height": 256,
+          "colorSha256": "6d6f390576924e63890e483f1970ccb534203d409bbedec9db585efd9b5a712a"
+        },
+        "medium": {
+          "color": "/assets/surfaces/mimas-medium.jpg",
+          "width": 1024,
+          "height": 512,
+          "colorSha256": "19e418925c71c230ca9c9b5a8a7d9e765fe9606b767e8547ae77c09b87ffa293"
+        },
+        "near": {
+          "color": "/assets/surfaces/mimas-near.jpg",
+          "width": 2048,
+          "height": 1024,
+          "colorSha256": "950032ced57207bd486bc69bb3313842db50e54d2f988dcd956ca15f86def4aa"
+        }
+      },
+      "colorType": "Mapped spacecraft imagery; see pinned source and display processing",
+      "canonicalRadiusMeters": 198200,
+      "canonicalMassKg": 37509401735013420000
     },
     "miranda": {
       "schemaVersion": 1,
@@ -1625,7 +1810,15 @@
           "width": 512,
           "height": 256,
           "colorSha256": "8734b2e61f0a6376db54bf618b3c5ff63442ccf63f67aeb68bcceb2d9c4c7cc1",
-          "colorKind": "USGS Voyager grayscale mapped imagery"
+          "colorKind": "USGS Voyager grayscale mapped imagery",
+          "heightUrl": "/assets/surfaces/rhea-preview.height.bin",
+          "heightWidth": 512,
+          "heightHeight": 256,
+          "heightSha256": "0ebaf8dffeebef66a1eb54c65821766e7e853fd10e847c07004454a0cf426588",
+          "heightOffsetMeters": -256,
+          "heightScaleMeters": 0.5,
+          "minElevationMeters": -142,
+          "maxElevationMeters": 142
         },
         "medium": {
           "color": "/assets/surfaces/rhea-medium.jpg",
@@ -1776,6 +1969,95 @@
       },
       "canonicalMassKg": 1.98847e+30
     },
+    "tethys": {
+      "body": "tethys",
+      "referenceRadiusMeters": 531100,
+      "bodyrefSIradius": 531100,
+      "sourceType": "mapped-imagery-ellipsoid-only",
+      "baseRadiiMeters": [
+        538400,
+        526300,
+        528300
+      ],
+      "sourceOrganization": "NASA/JPL/Space Science Institute; USGS Astrogeology",
+      "coordinates": {
+        "longitude": "east-positive -180..180",
+        "latitude": "planetocentric",
+        "projection": "equirectangular",
+        "northAtTop": true,
+        "pixelRegistration": "pixel-centered"
+      },
+      "heightPolicy": "Ellipsoid only. Measured 2025 PDS SPC global radius grids exist, but were not integrated because archive downloads returned access challenges; no synthetic height or brightness-derived terrain is generated.",
+      "provenance": {
+        "source": {
+          "file": "tethys-usgs-full.tif",
+          "url": "https://planetarymaps.usgs.gov/mosaic/Tethys_Cassini_mosaic_global_293m.tif",
+          "sha256": "40723c3ebfaaa52a657827b37309bc84234811db1cf26a21d086e26aba2b3640",
+          "width": 11520,
+          "height": 5760,
+          "metersPerPixel": 292.50627432643,
+          "projectionRadiusMeters": 536300,
+          "referenceRadiusMeters": 531100,
+          "labelSha256": "8fa11c1ab3415e39cc3b15de5cb7993468e5e240c7860e11b03877a63f199e40",
+          "metadata": "https://astrogeology.usgs.gov/search/map/tethys_cassini_global_mosaic_293m",
+          "doi": "10.26033/hpv0-eh61"
+        },
+        "sourceMetadata": "https://astrogeology.usgs.gov/search/map/tethys_cassini_global_mosaic_293m",
+        "citation": "NASA Cassini ISS global tethys map; see source product metadata.",
+        "coverage": "Global mosaic footprint with spatially variable source image resolution and photometric seams; nominal map spacing does not imply uniform effective resolution.",
+        "license": "NASA/USGS public planetary imagery; retain mission and product attribution.",
+        "processing": "Native simple cylindrical north-up map, full globe -180..180 east-positive; no rotation, mirror, colorization, sharpening, or invented pixels. Projection reference radius is independent of the canonical JPL SI radius.",
+        "measuredTerrainCandidate": "https://doi.org/10.26033/hpv0-eh61",
+        "terrainLimitation": "Ellipsoid only. Measured 2025 PDS SPC global radius grids exist, but were not integrated because archive downloads returned access challenges; no synthetic height or brightness-derived terrain is generated.",
+        "imagery": {
+          "sha256": "1b93ce08763a9e098b9176362b01eb818c48152abb6b6ad880376e44dffb2dba",
+          "source": {
+            "file": "tethys-usgs-full.tif",
+            "url": "https://planetarymaps.usgs.gov/mosaic/Tethys_Cassini_mosaic_global_293m.tif",
+            "sha256": "40723c3ebfaaa52a657827b37309bc84234811db1cf26a21d086e26aba2b3640",
+            "width": 11520,
+            "height": 5760,
+            "metersPerPixel": 292.50627432643,
+            "projectionRadiusMeters": 536300,
+            "referenceRadiusMeters": 531100,
+            "labelSha256": "8fa11c1ab3415e39cc3b15de5cb7993468e5e240c7860e11b03877a63f199e40",
+            "metadata": "https://astrogeology.usgs.gov/search/map/tethys_cassini_global_mosaic_293m",
+            "doi": "10.26033/hpv0-eh61"
+          },
+          "coordinates": {
+            "longitude": "east-positive -180..180",
+            "latitude": "planetocentric",
+            "projection": "equirectangular",
+            "northAtTop": true,
+            "pixelRegistration": "pixel-centered"
+          },
+          "normalization": "Native simple cylindrical north-up map, full globe -180..180 east-positive; no rotation, mirror, colorization, sharpening, or invented pixels. Projection reference radius is independent of the canonical JPL SI radius."
+        }
+      },
+      "levels": {
+        "preview": {
+          "color": "/assets/surfaces/tethys-preview.jpg",
+          "width": 512,
+          "height": 256,
+          "colorSha256": "8e5b110d247c48e7dd91b8f749c6330233a85cabc6f13cb24517b79fedcea3ae"
+        },
+        "medium": {
+          "color": "/assets/surfaces/tethys-medium.jpg",
+          "width": 1024,
+          "height": 512,
+          "colorSha256": "e0f254a0604ce0ebd1ae03f3402590c674b29977758b13c78c473b0a8ffbacb3"
+        },
+        "near": {
+          "color": "/assets/surfaces/tethys-near.jpg",
+          "width": 2048,
+          "height": 1024,
+          "colorSha256": "ec387d791e37f0a11fbd944922ea949e870e96cf74c73d49798486569bff85d7"
+        }
+      },
+      "colorType": "Mapped spacecraft imagery; see pinned source and display processing",
+      "canonicalRadiusMeters": 531100,
+      "canonicalMassKg": 617495917174834900000
+    },
     "titan": {
       "schemaVersion": 1,
       "generatedBy": "scripts/prepare-titan-surface.mjs",
@@ -1817,7 +2099,45 @@
         "interpolation": "Corlies radial-basis-function interpolation of sparse Cassini altimetry, SARtopo and stereophotogrammetry; global coverage does not imply global measurement",
         "sourceCoverage": "approximately 9% of Titan area directly constrained according to Corlies et al.; broad interpolated regions should not be read as resolved local relief",
         "processing": "Validated ISIS cube header and dimensions; sampled north-up east-positive grid with longitude seam wrap; bilinear resampling to 1024x512 and 2048x1024; uint16 little-endian at 0.05 m steps; JPEG appearance kept independent",
-        "noData": "Corlies interpolated grid contains finite values across the global raster; underlying sparse-measurement coverage remains explicitly qualified"
+        "noData": "Corlies interpolated grid contains finite values across the global raster; underlying sparse-measurement coverage remains explicitly qualified",
+        "imagery": {
+          "sha256": "cb1e4ee64fd800b88b03e76f29b619162ecfb71a541acf4036598a0cd5445ed9",
+          "width": 23040,
+          "height": 11520,
+          "source": {
+            "file": "titan-2026-global.png",
+            "sha256": "5b17af4c230f5f2434497d77621dbe6503458ac15d54557a946c1e1ca9562cb2",
+            "url": "https://www.sciencebase.gov/catalog/file/get/68a5107ad4be02198e361c35?f=__disk__40%2Ffc%2F6b%2F40fc6b3d12f9356149245c46522fc4aca6cb9d5f",
+            "labelFile": "titan-2026-global.lbl",
+            "labelUrl": "https://www.sciencebase.gov/catalog/file/get/68a5107ad4be02198e361c35?f=__disk__d5%2F4a%2F74%2Fd54a743860579c91705ea68578005e7b5caf8bbe",
+            "labelSha256": "77b1bf7c39ab7428b8e61b1dde12bbe9e9a9870ae644ed5ce03516680e2741f0",
+            "width": 23048,
+            "height": 11524,
+            "center": 180,
+            "west": false,
+            "citation": "Weller et al., USGS 2026 controlled Titan ISS 938 nm global mosaic, 702 m; DOI 10.5066/P14FAEKS. Full-resolution PNG display derivative; sharpening baked into source, not true RGB/albedo.",
+            "bytes": 73480116
+          },
+          "georeferencing": {
+            "origin": [
+              -8089848,
+              4044924,
+              0
+            ],
+            "resolution": [
+              702,
+              -702,
+              0
+            ],
+            "keys": {
+              "ProjCoordTransGeoKey": 17,
+              "ProjCenterLongGeoKey": 180,
+              "GeogSemiMajorAxisGeoKey": 2575000
+            }
+          },
+          "displayStretch": null,
+          "normalization": "Pixel-centered planetocentric east-positive -180..180 north-up; source GeoTIFF origin/resolution and label longitude direction explicitly sampled; no height inferred. Source grid is downsampled at most to 64 ppd; display contrast is not calibrated albedo."
+        }
       },
       "appearance": {
         "source": {
@@ -1837,15 +2157,21 @@
           "color": "/assets/surfaces/titan-preview.jpg",
           "width": 512,
           "height": 256,
-          "colorSha256": "a3509333cf670e9b63ada274ecf6846293efd051c588975cdb50351bd748475a",
-          "colorKind": "Cassini ISS 938-nm near-infrared mapped surface mosaic"
+          "colorSha256": "197f5c5ea6a8b8e56f88b5a25ee65bb1f03622501e4ab973b2f0240c42677d2e",
+          "heightUrl": "/assets/surfaces/titan-preview.height.bin",
+          "heightWidth": 512,
+          "heightHeight": 256,
+          "heightSha256": "20288b93eb623684406c3d22f376a8ec69222288e0d5e9abede30844fb25d1d5",
+          "heightOffsetMeters": -1800,
+          "heightScaleMeters": 0.05,
+          "minElevationMeters": -1581.7,
+          "maxElevationMeters": 744.75
         },
         "medium": {
           "color": "/assets/surfaces/titan-medium.jpg",
           "width": 1024,
           "height": 512,
-          "colorSha256": "93d7f4f4b1082d4486389537d98c79854dcd1fd66de6b80c08320c1290fe80be",
-          "colorKind": "Cassini ISS 938-nm near-infrared mapped surface mosaic",
+          "colorSha256": "1664852d98d7fe50a03f8e3b914ad5a1beef0e3f54aae2b9f89b3106febaf49f",
           "heightUrl": "/assets/surfaces/titan-medium.height.bin",
           "heightWidth": 1024,
           "heightHeight": 512,
@@ -1864,8 +2190,7 @@
           "color": "/assets/surfaces/titan-near.jpg",
           "width": 2048,
           "height": 1024,
-          "colorSha256": "4dd2f0b67152b71f301879f9b69970e25c0f3beea398497cb48c6be09496d48d",
-          "colorKind": "Cassini ISS 938-nm near-infrared mapped surface mosaic",
+          "colorSha256": "6b793e19a7b455cb01eff4002476ef799e1383419c484efea73cb0ead4790c51",
           "heightUrl": "/assets/surfaces/titan-near.height.bin",
           "heightWidth": 2048,
           "heightHeight": 1024,
@@ -1881,6 +2206,7 @@
           ]
         }
       },
+      "colorType": "Mapped spacecraft imagery; see pinned source and display processing",
       "canonicalRadiusMeters": 2574760,
       "canonicalMassKg": 1.3451803335181219e+23
     },

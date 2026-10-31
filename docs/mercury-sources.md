@@ -1,5 +1,7 @@
 # Mercury surface source
 
+The current delivery applies the pinned MESSENGER 250 m monochrome mosaic, downsampled at most to 64 ppd, through `prepare-map-imagery` and `prepare-map-levels`. Native-detail elevation and polar tiles are prepared separately by `prepare-detail-maps`. The older constant-color stage described below is an intermediate fallback, replaced by the final preparation pass. See [current delivery](detail-maps.md).
+
 The Mercury height levels are derived from the USGS Astrogeology / NASA
 MESSENGER global DEM:
 

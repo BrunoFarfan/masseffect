@@ -1,5 +1,7 @@
 # Titan surface sources
 
+The current appearance is the USGS 2026 controlled global ISS 938 nm mosaic at 702 m grid spacing, replacing PIA22770 in the final preparation pass. The full-resolution display PNG is registered with the release's pinned ISIS label. The separate Corlies 4 ppd terrain remains unchanged in scientific detail. See [current delivery](detail-maps.md).
+
 ## Terrain
 
 The bundled height field is the `topo_4PPD_interp.cub` product in the Corlies

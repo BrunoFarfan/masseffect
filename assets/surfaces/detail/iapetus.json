@@ -1,0 +1,1270 @@
+{
+  "terrainKind": "procedural",
+  "effectivePixelsPerDegree": 16,
+  "heightEffectivePixelsPerDegree": null,
+  "tiles": [
+    {
+      "id": "e-0-0",
+      "uvBounds": [
+        0,
+        0,
+        0.08333333333333333,
+        0.16666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-0-0.jpg",
+      "colorSha256": "e1f031bb90d8d2eca993b69007ef446122fc8101f5dcbad038e29677ed94663e",
+      "colorBytes": 23245
+    },
+    {
+      "id": "e-0-1",
+      "uvBounds": [
+        0.08333333333333333,
+        0,
+        0.16666666666666666,
+        0.16666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-0-1.jpg",
+      "colorSha256": "3fc828a03f05b2d65986e224f07e99d77624e90c8b64839c2719755560e2d7c7",
+      "colorBytes": 21081
+    },
+    {
+      "id": "e-0-2",
+      "uvBounds": [
+        0.16666666666666666,
+        0,
+        0.25,
+        0.16666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-0-2.jpg",
+      "colorSha256": "e3264ad8964091d5fa97b3cd6ea99f971cc6b334653d293f0ed2680dba963abd",
+      "colorBytes": 22942
+    },
+    {
+      "id": "e-0-3",
+      "uvBounds": [
+        0.25,
+        0,
+        0.3333333333333333,
+        0.16666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-0-3.jpg",
+      "colorSha256": "841f8368d614d4646e1d3cbe6a84cfc2be1fe0d7a251f5e3236b09641f258b7a",
+      "colorBytes": 25561
+    },
+    {
+      "id": "e-0-4",
+      "uvBounds": [
+        0.3333333333333333,
+        0,
+        0.4166666666666667,
+        0.16666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-0-4.jpg",
+      "colorSha256": "49664c58e769e8308515a1fcf5a4119c55a859bdabf6850fc8284d5626a9c49f",
+      "colorBytes": 26699
+    },
+    {
+      "id": "e-0-5",
+      "uvBounds": [
+        0.4166666666666667,
+        0,
+        0.5,
+        0.16666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-0-5.jpg",
+      "colorSha256": "09d6528b081de604351fd14e2a91c07c740d8258a08ee2b95a131b2491423ca8",
+      "colorBytes": 24377
+    },
+    {
+      "id": "e-0-6",
+      "uvBounds": [
+        0.5,
+        0,
+        0.5833333333333334,
+        0.16666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-0-6.jpg",
+      "colorSha256": "79c8c84703c5266fa87665b65159d77b50c8565c450653e7518c79c7d9c1f38b",
+      "colorBytes": 32762
+    },
+    {
+      "id": "e-0-7",
+      "uvBounds": [
+        0.5833333333333334,
+        0,
+        0.6666666666666666,
+        0.16666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-0-7.jpg",
+      "colorSha256": "26cdae31239618c37f9ae8b8ad6be7195427ce98400a84f28f1ef48906e55c81",
+      "colorBytes": 31896
+    },
+    {
+      "id": "e-0-8",
+      "uvBounds": [
+        0.6666666666666666,
+        0,
+        0.75,
+        0.16666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-0-8.jpg",
+      "colorSha256": "ce62d4cf621ef285cca1fb38137916b0fa9b57de2b25e42144fe095ba5b5d1d7",
+      "colorBytes": 43754
+    },
+    {
+      "id": "e-0-9",
+      "uvBounds": [
+        0.75,
+        0,
+        0.8333333333333334,
+        0.16666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-0-9.jpg",
+      "colorSha256": "16df6a0d4b32202c28757f84dcba9c0acfa7a4c33a875d551497c7431ce09f3a",
+      "colorBytes": 44704
+    },
+    {
+      "id": "e-0-10",
+      "uvBounds": [
+        0.8333333333333334,
+        0,
+        0.9166666666666666,
+        0.16666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-0-10.jpg",
+      "colorSha256": "d982066da63f3dfe509ffedd5b3c5b76a9639072ca4c1575ddfaaa294b967072",
+      "colorBytes": 38918
+    },
+    {
+      "id": "e-0-11",
+      "uvBounds": [
+        0.9166666666666666,
+        0,
+        1,
+        0.16666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-0-11.jpg",
+      "colorSha256": "966805088023666c21ebec1769f2d8a44f71075fed8a4c0c27626530870575d9",
+      "colorBytes": 30679
+    },
+    {
+      "id": "e-1-0",
+      "uvBounds": [
+        0,
+        0.16666666666666666,
+        0.08333333333333333,
+        0.3333333333333333
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-1-0.jpg",
+      "colorSha256": "534c52c24e1cd57cc4f265687b70ccd0c07c0080cb90cb7b848c38bca920cea1",
+      "colorBytes": 41166
+    },
+    {
+      "id": "e-1-1",
+      "uvBounds": [
+        0.08333333333333333,
+        0.16666666666666666,
+        0.16666666666666666,
+        0.3333333333333333
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-1-1.jpg",
+      "colorSha256": "425f4fff9cc7cfd57bed1050479d840867192be78590c3ac6b3f8100e73c5db0",
+      "colorBytes": 41703
+    },
+    {
+      "id": "e-1-2",
+      "uvBounds": [
+        0.16666666666666666,
+        0.16666666666666666,
+        0.25,
+        0.3333333333333333
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-1-2.jpg",
+      "colorSha256": "94a7394e5bf7ec9f01af4ddae427a34af77743d442bda4cff2ef5eac30d79619",
+      "colorBytes": 44252
+    },
+    {
+      "id": "e-1-3",
+      "uvBounds": [
+        0.25,
+        0.16666666666666666,
+        0.3333333333333333,
+        0.3333333333333333
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-1-3.jpg",
+      "colorSha256": "35024f10ff95557349edb999b0879da49fce078b36c1a37b4263103d64bb6580",
+      "colorBytes": 52584
+    },
+    {
+      "id": "e-1-4",
+      "uvBounds": [
+        0.3333333333333333,
+        0.16666666666666666,
+        0.4166666666666667,
+        0.3333333333333333
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-1-4.jpg",
+      "colorSha256": "6a878fe39eb031885ea0238d72611c5fd88015662a7fbe5c0d67dcf904a6e13d",
+      "colorBytes": 42085
+    },
+    {
+      "id": "e-1-5",
+      "uvBounds": [
+        0.4166666666666667,
+        0.16666666666666666,
+        0.5,
+        0.3333333333333333
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-1-5.jpg",
+      "colorSha256": "46622c1c03cc8ee51d93624ecc529368c9b86d37ec5ae189735ef2666629f81e",
+      "colorBytes": 48577
+    },
+    {
+      "id": "e-1-6",
+      "uvBounds": [
+        0.5,
+        0.16666666666666666,
+        0.5833333333333334,
+        0.3333333333333333
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-1-6.jpg",
+      "colorSha256": "7e18180aab888343297f5f5df683ff05ba19c28bdc7f9d69bfb5b37818e95ff0",
+      "colorBytes": 45915
+    },
+    {
+      "id": "e-1-7",
+      "uvBounds": [
+        0.5833333333333334,
+        0.16666666666666666,
+        0.6666666666666666,
+        0.3333333333333333
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-1-7.jpg",
+      "colorSha256": "74152eba0ffb38f36a391f40a159d7e0f61619a9077b5d29b789342a6e10f21e",
+      "colorBytes": 59554
+    },
+    {
+      "id": "e-1-8",
+      "uvBounds": [
+        0.6666666666666666,
+        0.16666666666666666,
+        0.75,
+        0.3333333333333333
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-1-8.jpg",
+      "colorSha256": "32493c832fbe7214209ec3aa08aab1bdc95c253587d3dd72fcf050c20fd21311",
+      "colorBytes": 68770
+    },
+    {
+      "id": "e-1-9",
+      "uvBounds": [
+        0.75,
+        0.16666666666666666,
+        0.8333333333333334,
+        0.3333333333333333
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-1-9.jpg",
+      "colorSha256": "8f591226a52f492a48a602a9377c501c2f08d94fd11952c5cb7da793a42fe195",
+      "colorBytes": 62722
+    },
+    {
+      "id": "e-1-10",
+      "uvBounds": [
+        0.8333333333333334,
+        0.16666666666666666,
+        0.9166666666666666,
+        0.3333333333333333
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-1-10.jpg",
+      "colorSha256": "e526141a77a6395ce4a8905a4435f4c77663e528450dd4c20c69c01554105fe9",
+      "colorBytes": 53079
+    },
+    {
+      "id": "e-1-11",
+      "uvBounds": [
+        0.9166666666666666,
+        0.16666666666666666,
+        1,
+        0.3333333333333333
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-1-11.jpg",
+      "colorSha256": "66d98f77fe786ce8b72093dd452fd07f05412cd9288a5dd89251ff5246356a2c",
+      "colorBytes": 47600
+    },
+    {
+      "id": "e-2-0",
+      "uvBounds": [
+        0,
+        0.3333333333333333,
+        0.08333333333333333,
+        0.5
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-2-0.jpg",
+      "colorSha256": "abb72702e8d8e4b6fa447c512ee92f951159e9bd0cdccf55e9d5c8e7910838f3",
+      "colorBytes": 45162
+    },
+    {
+      "id": "e-2-1",
+      "uvBounds": [
+        0.08333333333333333,
+        0.3333333333333333,
+        0.16666666666666666,
+        0.5
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-2-1.jpg",
+      "colorSha256": "3426a355c7ada22f98d788555b38a7994d72ae7f2d40dc60cdb37512292b60c9",
+      "colorBytes": 63198
+    },
+    {
+      "id": "e-2-2",
+      "uvBounds": [
+        0.16666666666666666,
+        0.3333333333333333,
+        0.25,
+        0.5
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-2-2.jpg",
+      "colorSha256": "a78af208adf0c7578fc2caa288d961be7b31cca9b5804025e0cebfc2986a1da0",
+      "colorBytes": 57510
+    },
+    {
+      "id": "e-2-3",
+      "uvBounds": [
+        0.25,
+        0.3333333333333333,
+        0.3333333333333333,
+        0.5
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-2-3.jpg",
+      "colorSha256": "bcde3b23473f112c7352194ba6c7fa2cd08362cfb21c8096a5626e6623b87d99",
+      "colorBytes": 58659
+    },
+    {
+      "id": "e-2-4",
+      "uvBounds": [
+        0.3333333333333333,
+        0.3333333333333333,
+        0.4166666666666667,
+        0.5
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-2-4.jpg",
+      "colorSha256": "b7f4b1d1751f04a04fa535310a1d82e65929043db61070005a1fbc4d1e4b5669",
+      "colorBytes": 60170
+    },
+    {
+      "id": "e-2-5",
+      "uvBounds": [
+        0.4166666666666667,
+        0.3333333333333333,
+        0.5,
+        0.5
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-2-5.jpg",
+      "colorSha256": "4365e65cacd58ced9a8c5d728da0814ec8021da1d4b684a6b6acb0157eaf59a0",
+      "colorBytes": 48673
+    },
+    {
+      "id": "e-2-6",
+      "uvBounds": [
+        0.5,
+        0.3333333333333333,
+        0.5833333333333334,
+        0.5
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-2-6.jpg",
+      "colorSha256": "fbeea38b66723978e0756a507f1eb177331034787869091c6a6edf2b10aa0165",
+      "colorBytes": 31883
+    },
+    {
+      "id": "e-2-7",
+      "uvBounds": [
+        0.5833333333333334,
+        0.3333333333333333,
+        0.6666666666666666,
+        0.5
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-2-7.jpg",
+      "colorSha256": "e1662f583996aca6b0cd21ef1509b351481ba40ed3287b93cd46d6c44f55f977",
+      "colorBytes": 57746
+    },
+    {
+      "id": "e-2-8",
+      "uvBounds": [
+        0.6666666666666666,
+        0.3333333333333333,
+        0.75,
+        0.5
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-2-8.jpg",
+      "colorSha256": "858ba56a9796a3106e74c090660a7af261b6bb8a91631cb326999772f04a4f08",
+      "colorBytes": 59978
+    },
+    {
+      "id": "e-2-9",
+      "uvBounds": [
+        0.75,
+        0.3333333333333333,
+        0.8333333333333334,
+        0.5
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-2-9.jpg",
+      "colorSha256": "1bd04f3b3de7fe869ab14611a8c5c24dcc57f9e414e1944247b6840cf549fd47",
+      "colorBytes": 56788
+    },
+    {
+      "id": "e-2-10",
+      "uvBounds": [
+        0.8333333333333334,
+        0.3333333333333333,
+        0.9166666666666666,
+        0.5
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-2-10.jpg",
+      "colorSha256": "b60da4fca5211fe9acb4188a0660b2b53715f97483b030c3b4a9be5046fcfe59",
+      "colorBytes": 45568
+    },
+    {
+      "id": "e-2-11",
+      "uvBounds": [
+        0.9166666666666666,
+        0.3333333333333333,
+        1,
+        0.5
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-2-11.jpg",
+      "colorSha256": "ef7d16a64aa2ebce4fe82a5f3b9788828f70e8526fc02314346075c21406f433",
+      "colorBytes": 37173
+    },
+    {
+      "id": "e-3-0",
+      "uvBounds": [
+        0,
+        0.5,
+        0.08333333333333333,
+        0.6666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-3-0.jpg",
+      "colorSha256": "6df522b28fe1757289b231ea4bec169db054666b8728a9c0f8ce0f36d488a5d2",
+      "colorBytes": 44327
+    },
+    {
+      "id": "e-3-1",
+      "uvBounds": [
+        0.08333333333333333,
+        0.5,
+        0.16666666666666666,
+        0.6666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-3-1.jpg",
+      "colorSha256": "17f502212b1741aff5229d8fd9b9786c30e8ab37af1e4da3c472bea4a2d15c2f",
+      "colorBytes": 65076
+    },
+    {
+      "id": "e-3-2",
+      "uvBounds": [
+        0.16666666666666666,
+        0.5,
+        0.25,
+        0.6666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-3-2.jpg",
+      "colorSha256": "e5bff239c01fda1977c0e34d0fd7caf7c65fb84cb4d21c95093e6aa83f02b118",
+      "colorBytes": 60875
+    },
+    {
+      "id": "e-3-3",
+      "uvBounds": [
+        0.25,
+        0.5,
+        0.3333333333333333,
+        0.6666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-3-3.jpg",
+      "colorSha256": "dd4aefa13b9b531dfc9b7a040980f90c029a435aad47e171a16f49d479addbd6",
+      "colorBytes": 58402
+    },
+    {
+      "id": "e-3-4",
+      "uvBounds": [
+        0.3333333333333333,
+        0.5,
+        0.4166666666666667,
+        0.6666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-3-4.jpg",
+      "colorSha256": "8e411c7cafcd2a005414b8ed1272d0f335c674a98805aa2e77e2d72513f979f3",
+      "colorBytes": 42019
+    },
+    {
+      "id": "e-3-5",
+      "uvBounds": [
+        0.4166666666666667,
+        0.5,
+        0.5,
+        0.6666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-3-5.jpg",
+      "colorSha256": "b6b148b43255be921ffc0531f24a6a98bc48def05120cd1bc935592579ba7be9",
+      "colorBytes": 29851
+    },
+    {
+      "id": "e-3-6",
+      "uvBounds": [
+        0.5,
+        0.5,
+        0.5833333333333334,
+        0.6666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-3-6.jpg",
+      "colorSha256": "ab1c5e7583760fc6bc7c6128cfbe8f0005917777a5dcace70fa3c03cda251b91",
+      "colorBytes": 35322
+    },
+    {
+      "id": "e-3-7",
+      "uvBounds": [
+        0.5833333333333334,
+        0.5,
+        0.6666666666666666,
+        0.6666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-3-7.jpg",
+      "colorSha256": "96b17d4b88c53e0345f8498c7564b152eb99726d3ec500509ce00d07a16994bd",
+      "colorBytes": 54002
+    },
+    {
+      "id": "e-3-8",
+      "uvBounds": [
+        0.6666666666666666,
+        0.5,
+        0.75,
+        0.6666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-3-8.jpg",
+      "colorSha256": "c2360eb69fa2073f4ab54359fbeea82eec0fa5aac50ba87c5762ff4b9dc92616",
+      "colorBytes": 52496
+    },
+    {
+      "id": "e-3-9",
+      "uvBounds": [
+        0.75,
+        0.5,
+        0.8333333333333334,
+        0.6666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-3-9.jpg",
+      "colorSha256": "9918cd5d661027ce159992a6485b5494b8dce695cb7b228ca2b3cf8c2610f87d",
+      "colorBytes": 52042
+    },
+    {
+      "id": "e-3-10",
+      "uvBounds": [
+        0.8333333333333334,
+        0.5,
+        0.9166666666666666,
+        0.6666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-3-10.jpg",
+      "colorSha256": "cbdfcafee225807abdb5069940a336c1e498c686f91d7a0deee2575a03e6142f",
+      "colorBytes": 41519
+    },
+    {
+      "id": "e-3-11",
+      "uvBounds": [
+        0.9166666666666666,
+        0.5,
+        1,
+        0.6666666666666666
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-3-11.jpg",
+      "colorSha256": "4cc4da35e8578c38f54688d114bd6f07b66967122ea5ce62d87890b1f590c854",
+      "colorBytes": 33463
+    },
+    {
+      "id": "e-4-0",
+      "uvBounds": [
+        0,
+        0.6666666666666666,
+        0.08333333333333333,
+        0.8333333333333334
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-4-0.jpg",
+      "colorSha256": "59ba2fc46a2f97bc5d2e34110f6ccd09190dad62eb722aad3e5823223bdb44ff",
+      "colorBytes": 45277
+    },
+    {
+      "id": "e-4-1",
+      "uvBounds": [
+        0.08333333333333333,
+        0.6666666666666666,
+        0.16666666666666666,
+        0.8333333333333334
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-4-1.jpg",
+      "colorSha256": "4d0901e40d93f8b67128e8f2b32a9d96d8ff8fa4a640d95285bd66ff243bd8e2",
+      "colorBytes": 45865
+    },
+    {
+      "id": "e-4-2",
+      "uvBounds": [
+        0.16666666666666666,
+        0.6666666666666666,
+        0.25,
+        0.8333333333333334
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-4-2.jpg",
+      "colorSha256": "8e63cf0edc85715042e6268e18c5d9117a6d1911e45d255d95a0d01f521062cf",
+      "colorBytes": 46789
+    },
+    {
+      "id": "e-4-3",
+      "uvBounds": [
+        0.25,
+        0.6666666666666666,
+        0.3333333333333333,
+        0.8333333333333334
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-4-3.jpg",
+      "colorSha256": "058bdbc5dccc47387db6104d2e806cdf850874d59b8399d98e10238f5bedb077",
+      "colorBytes": 53006
+    },
+    {
+      "id": "e-4-4",
+      "uvBounds": [
+        0.3333333333333333,
+        0.6666666666666666,
+        0.4166666666666667,
+        0.8333333333333334
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-4-4.jpg",
+      "colorSha256": "6e64ba3d787ebf6f952750d6a257459cd555c9ae859e1833cf85bce0e4e41d10",
+      "colorBytes": 25450
+    },
+    {
+      "id": "e-4-5",
+      "uvBounds": [
+        0.4166666666666667,
+        0.6666666666666666,
+        0.5,
+        0.8333333333333334
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-4-5.jpg",
+      "colorSha256": "f1d1295204dc2b366628830393302c8509189592a6c371745c561348a12effed",
+      "colorBytes": 26772
+    },
+    {
+      "id": "e-4-6",
+      "uvBounds": [
+        0.5,
+        0.6666666666666666,
+        0.5833333333333334,
+        0.8333333333333334
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-4-6.jpg",
+      "colorSha256": "c83813875702ccbe866fcc98cc6cd2acb54a8f575bbd1d5213c337011104875c",
+      "colorBytes": 24794
+    },
+    {
+      "id": "e-4-7",
+      "uvBounds": [
+        0.5833333333333334,
+        0.6666666666666666,
+        0.6666666666666666,
+        0.8333333333333334
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-4-7.jpg",
+      "colorSha256": "e37a85479e89fd0ec7aa2199a38d48e692a6fc1125c36bc742c1390fa1baeb5d",
+      "colorBytes": 32459
+    },
+    {
+      "id": "e-4-8",
+      "uvBounds": [
+        0.6666666666666666,
+        0.6666666666666666,
+        0.75,
+        0.8333333333333334
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-4-8.jpg",
+      "colorSha256": "bffc4971147f9bb425cb286c6b4fef8199d8a107ee159db32010f9822b19aead",
+      "colorBytes": 34520
+    },
+    {
+      "id": "e-4-9",
+      "uvBounds": [
+        0.75,
+        0.6666666666666666,
+        0.8333333333333334,
+        0.8333333333333334
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-4-9.jpg",
+      "colorSha256": "3be765176289d4385685a10fd8f042985851799c80308892bf7e6f7e77097e2e",
+      "colorBytes": 35816
+    },
+    {
+      "id": "e-4-10",
+      "uvBounds": [
+        0.8333333333333334,
+        0.6666666666666666,
+        0.9166666666666666,
+        0.8333333333333334
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-4-10.jpg",
+      "colorSha256": "c48ccdfd9e3325633f93ff96625055959d677dd5ee30ffaac432fbf0f3dd50ee",
+      "colorBytes": 31997
+    },
+    {
+      "id": "e-4-11",
+      "uvBounds": [
+        0.9166666666666666,
+        0.6666666666666666,
+        1,
+        0.8333333333333334
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-4-11.jpg",
+      "colorSha256": "24f079dad7760479d31c1fcd74862b6c77b71d49217e9f0a86380fd264c1971a",
+      "colorBytes": 43559
+    },
+    {
+      "id": "e-5-0",
+      "uvBounds": [
+        0,
+        0.8333333333333334,
+        0.08333333333333333,
+        1
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-5-0.jpg",
+      "colorSha256": "bfa4375578ca997cb438e191d2304f936edd388fb5c378e9f041ae53bc79455e",
+      "colorBytes": 34954
+    },
+    {
+      "id": "e-5-1",
+      "uvBounds": [
+        0.08333333333333333,
+        0.8333333333333334,
+        0.16666666666666666,
+        1
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-5-1.jpg",
+      "colorSha256": "58d92e09f716a0ae507d004a5e526e5a000c9f3541e789a971cf976f61bafc38",
+      "colorBytes": 34146
+    },
+    {
+      "id": "e-5-2",
+      "uvBounds": [
+        0.16666666666666666,
+        0.8333333333333334,
+        0.25,
+        1
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-5-2.jpg",
+      "colorSha256": "6e5b446042b3803f87bd5ea7d3abbb475241b98da61c69f293e4060eb168e445",
+      "colorBytes": 33295
+    },
+    {
+      "id": "e-5-3",
+      "uvBounds": [
+        0.25,
+        0.8333333333333334,
+        0.3333333333333333,
+        1
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-5-3.jpg",
+      "colorSha256": "2458d8214aeb062a8293bcabea49688c00768f68abe93d67af0fb8484d323b01",
+      "colorBytes": 32316
+    },
+    {
+      "id": "e-5-4",
+      "uvBounds": [
+        0.3333333333333333,
+        0.8333333333333334,
+        0.4166666666666667,
+        1
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-5-4.jpg",
+      "colorSha256": "92f45e57dbc6c91b39da904b72972d8aa0a9850aa28ae7f3163671cec42602d6",
+      "colorBytes": 22746
+    },
+    {
+      "id": "e-5-5",
+      "uvBounds": [
+        0.4166666666666667,
+        0.8333333333333334,
+        0.5,
+        1
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-5-5.jpg",
+      "colorSha256": "7eb9b28a4e8c373190b1cd8ea9fc8597f6320af847ed61052bf4e366058800ac",
+      "colorBytes": 19827
+    },
+    {
+      "id": "e-5-6",
+      "uvBounds": [
+        0.5,
+        0.8333333333333334,
+        0.5833333333333334,
+        1
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-5-6.jpg",
+      "colorSha256": "0e294ec2123b13bd36a81b6dfd31d859c6adacfd1e761480ff203aabccbc6ee0",
+      "colorBytes": 24579
+    },
+    {
+      "id": "e-5-7",
+      "uvBounds": [
+        0.5833333333333334,
+        0.8333333333333334,
+        0.6666666666666666,
+        1
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-5-7.jpg",
+      "colorSha256": "fc0ab3408069cc99f2669fd2cb88882cdcfa312aa2797887f019b5364fe10c60",
+      "colorBytes": 26739
+    },
+    {
+      "id": "e-5-8",
+      "uvBounds": [
+        0.6666666666666666,
+        0.8333333333333334,
+        0.75,
+        1
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-5-8.jpg",
+      "colorSha256": "557ba1c3259f7680fd226eba3b3a557446d4c7250312df4674e574782c55d7aa",
+      "colorBytes": 25143
+    },
+    {
+      "id": "e-5-9",
+      "uvBounds": [
+        0.75,
+        0.8333333333333334,
+        0.8333333333333334,
+        1
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-5-9.jpg",
+      "colorSha256": "0546e232deba8ef32e7bfa9285765d982a48078e364225459451a9c4979f917a",
+      "colorBytes": 25218
+    },
+    {
+      "id": "e-5-10",
+      "uvBounds": [
+        0.8333333333333334,
+        0.8333333333333334,
+        0.9166666666666666,
+        1
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-5-10.jpg",
+      "colorSha256": "fb9d1abbd7eace12a9ff267dac26a6c948b73b40e0e288268a32dddd871d6848",
+      "colorBytes": 22350
+    },
+    {
+      "id": "e-5-11",
+      "uvBounds": [
+        0.9166666666666666,
+        0.8333333333333334,
+        1,
+        1
+      ],
+      "width": 480,
+      "height": 480,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/e-5-11.jpg",
+      "colorSha256": "6fcc87edab3a0a042ccd555809a8548b64ef8e21e6702d98a36b152a22d1847b",
+      "colorBytes": 25968
+    },
+    {
+      "id": "n-0-0",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0,
+        0,
+        0.5,
+        0.5
+      ],
+      "width": 313,
+      "height": 313,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/n-0-0.jpg",
+      "colorSha256": "ccde77b0cd7be2d51d192278cc7db0e51196db36abf19b1e8f49b6f03b8e08cf",
+      "colorBytes": 23364
+    },
+    {
+      "id": "n-0-1",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.5,
+        0,
+        1,
+        0.5
+      ],
+      "width": 313,
+      "height": 313,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/n-0-1.jpg",
+      "colorSha256": "a5cc6d3a7804c89b587123e18ff77556a26f4c48c866184fd92a2e3b660a92f2",
+      "colorBytes": 21147
+    },
+    {
+      "id": "n-1-0",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0,
+        0.5,
+        0.5,
+        1
+      ],
+      "width": 313,
+      "height": 313,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/n-1-0.jpg",
+      "colorSha256": "3769afc04c3b1abaa7bc405d4ddbd66741c08024157062fe9fc0e0e72d1c6b60",
+      "colorBytes": 11002
+    },
+    {
+      "id": "n-1-1",
+      "projection": "polar-stereographic",
+      "pole": 1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.5,
+        0.5,
+        1,
+        1
+      ],
+      "width": 313,
+      "height": 313,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/n-1-1.jpg",
+      "colorSha256": "0218faa530f56b584f8f463402f1410824729a1e355328f4c3914525203e25e5",
+      "colorBytes": 16168
+    },
+    {
+      "id": "s-0-0",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0,
+        0,
+        0.5,
+        0.5
+      ],
+      "width": 313,
+      "height": 313,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/s-0-0.jpg",
+      "colorSha256": "2c7d2dde84c7c2e66a1ba3f2040a1fa12c57789ea51a97cbe3fdb9d55ed0deee",
+      "colorBytes": 14448
+    },
+    {
+      "id": "s-0-1",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.5,
+        0,
+        1,
+        0.5
+      ],
+      "width": 313,
+      "height": 313,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/s-0-1.jpg",
+      "colorSha256": "3859d50489774778617af2d9e1b8c4b2acc2c95b5486952cddc11f4bf7c24a41",
+      "colorBytes": 15721
+    },
+    {
+      "id": "s-1-0",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0,
+        0.5,
+        0.5,
+        1
+      ],
+      "width": 313,
+      "height": 313,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/s-1-0.jpg",
+      "colorSha256": "4e36dc68dcf3fea846d52e0d1454a3059ff062d2143e3bf39f4bb7775775b762",
+      "colorBytes": 21549
+    },
+    {
+      "id": "s-1-1",
+      "projection": "polar-stereographic",
+      "pole": -1,
+      "capLatitude": 70,
+      "uvBounds": [
+        0.5,
+        0.5,
+        1,
+        1
+      ],
+      "width": 313,
+      "height": 313,
+      "blendBorder": 0.025,
+      "colorUrl": "/assets/surfaces/detail/iapetus/s-1-1.jpg",
+      "colorSha256": "934612dcff00f76cb9823e571c003ccb916ce5259ba36d47559681da7a481666",
+      "colorBytes": 16157
+    }
+  ],
+  "totalBytes": 3079668,
+  "sourceWidth": 5760,
+  "sourceHeight": 2880,
+  "sourceBytes": 16612487,
+  "heightPolicy": "No measured DEM bundled in this detail pack; existing base shape and relief are not promoted into detail.",
+  "provenance": {
+    "citation": "USGS Astrogeology Science Center, Iapetus Cassini-Voyager Global Mosaic 803m; imagery from NASA Cassini and Voyager",
+    "source": {
+      "file": "iapetus-usgs-full.tif",
+      "url": "https://planetarymaps.usgs.gov/mosaic/Iapetus_Cassini_Voyager_mosaic_global_783m.tif",
+      "sha256": "eb8acdbed3af495102b6ec6d3efce1f03dc6bc39bb43323c23231ce590494d6e",
+      "dimensions": "5760x2880 unsigned 8-bit single-band GeoTIFF; 802.851456 m/pixel"
+    },
+    "sourceLabel": {
+      "file": "iapetus-usgs-full.lbl",
+      "url": "https://planetarymaps.usgs.gov/mosaic/Iapetus_Cassini_Voyager_mosaic_global_783m.lbl",
+      "sha256": "18bcb9ada17a7e44432a4535afcc027efb46c5e226be1b03caba5b49cfcc6abd",
+      "projection": "SimpleCylindrical",
+      "longitudeDirection": "PositiveWest",
+      "longitudeDomain": "-180..180",
+      "centerLongitude": 0,
+      "latitudeType": "Planetocentric",
+      "upperLeftCornerMeters": [
+        -2312212.193042,
+        1156106.096521
+      ],
+      "pixelResolutionMeters": 802.851456,
+      "sourceRadiusMeters": 736000
+    },
+    "sourceMetadata": "https://astrogeology.usgs.gov/search/map/iapetus_cassini_voyager_global_mosaic_803m",
+    "coverage": "Global mapped mosaic; poles are filled by Voyager imagery and coverage is not a global DEM.",
+    "license": "USGS/NASA public-domain planetary imagery; retain product and mission attribution.",
+    "processing": "Validated 5760x2880 unsigned-8-bit raster and ISIS label metadata; reversed source positive-west longitude into east-positive -180..180 using pixel-center seam wrap; north-up; Lanczos resize to 512/1024/2048; JPEG quality 88 with no legend or map decoration.",
+    "proceduralHeight": "Seamless deterministic 3D direction-vector field, little-endian uint16, height = -256 + sample x 0.5 m; not measured relief and not derived from image pixels.",
+    "canonicalRadiusMeters": 734300,
+    "sourceMetadataRadiusMeters": 736000,
+    "radiusDifferenceMeters": -1700
+  },
+  "processing": "Pixel-centered canonical east-positive imagery sampled bilinearly at native resolution (maximum 64 ppd); 512-pixel bounded JPEG tiles; 70-degree stereographic polar replacement, square equatorial ground spacing; little-endian uint16 scientific heights in lossless gzip. Polar imagery remains limited by native polar observations/fill."
+}

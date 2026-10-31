@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "generatedBy": "scripts/prepare-saturn-moons.mjs",
+  "bodies": {
+    "tethys": {
+      "body": "tethys",
+      "referenceRadiusMeters": 531100,
+      "bodyrefSIradius": 531100,
+      "sourceType": "mapped-imagery-ellipsoid-only",
+      "baseRadiiMeters": [
+        538400,
+        526300,
+        528300
+      ],
+      "sourceOrganization": "NASA/JPL/Space Science Institute; USGS Astrogeology",
+      "coordinates": {
+        "longitude": "east-positive -180..180",
+        "latitude": "planetocentric",
+        "projection": "equirectangular",
+        "northAtTop": true,
+        "pixelRegistration": "pixel-centered"
+      },
+      "heightPolicy": "Ellipsoid only. Measured 2025 PDS SPC global radius grids exist, but were not integrated because archive downloads returned access challenges; no synthetic height or brightness-derived terrain is generated.",
+      "provenance": {
+        "source": {
+          "file": "tethys-usgs-full.tif",
+          "url": "https://planetarymaps.usgs.gov/mosaic/Tethys_Cassini_mosaic_global_293m.tif",
+          "sha256": "40723c3ebfaaa52a657827b37309bc84234811db1cf26a21d086e26aba2b3640",
+          "width": 11520,
+          "height": 5760,
+          "metersPerPixel": 292.50627432643,
+          "projectionRadiusMeters": 536300,
+          "referenceRadiusMeters": 531100,
+          "labelSha256": "8fa11c1ab3415e39cc3b15de5cb7993468e5e240c7860e11b03877a63f199e40",
+          "metadata": "https://astrogeology.usgs.gov/search/map/tethys_cassini_global_mosaic_293m",
+          "doi": "10.26033/hpv0-eh61"
+        },
+        "sourceMetadata": "https://astrogeology.usgs.gov/search/map/tethys_cassini_global_mosaic_293m",
+        "citation": "NASA Cassini ISS global tethys map; see source product metadata.",
+        "coverage": "Global mosaic footprint with spatially variable source image resolution and photometric seams; nominal map spacing does not imply uniform effective resolution.",
+        "license": "NASA/USGS public planetary imagery; retain mission and product attribution.",
+        "processing": "Native simple cylindrical north-up map, full globe -180..180 east-positive; no rotation, mirror, colorization, sharpening, or invented pixels. Projection reference radius is independent of the canonical JPL SI radius.",
+        "measuredTerrainCandidate": "https://doi.org/10.26033/hpv0-eh61",
+        "terrainLimitation": "Ellipsoid only. Measured 2025 PDS SPC global radius grids exist, but were not integrated because archive downloads returned access challenges; no synthetic height or brightness-derived terrain is generated.",
+        "imagery": {
+          "sha256": "1b93ce08763a9e098b9176362b01eb818c48152abb6b6ad880376e44dffb2dba",
+          "source": {
+            "file": "tethys-usgs-full.tif",
+            "url": "https://planetarymaps.usgs.gov/mosaic/Tethys_Cassini_mosaic_global_293m.tif",
+            "sha256": "40723c3ebfaaa52a657827b37309bc84234811db1cf26a21d086e26aba2b3640",
+            "width": 11520,
+            "height": 5760,
+            "metersPerPixel": 292.50627432643,
+            "projectionRadiusMeters": 536300,
+            "referenceRadiusMeters": 531100,
+            "labelSha256": "8fa11c1ab3415e39cc3b15de5cb7993468e5e240c7860e11b03877a63f199e40",
+            "metadata": "https://astrogeology.usgs.gov/search/map/tethys_cassini_global_mosaic_293m",
+            "doi": "10.26033/hpv0-eh61"
+          },
+          "coordinates": {
+            "longitude": "east-positive -180..180",
+            "latitude": "planetocentric",
+            "projection": "equirectangular",
+            "northAtTop": true,
+            "pixelRegistration": "pixel-centered"
+          },
+          "normalization": "Native simple cylindrical north-up map, full globe -180..180 east-positive; no rotation, mirror, colorization, sharpening, or invented pixels. Projection reference radius is independent of the canonical JPL SI radius."
+        }
+      },
+      "levels": {
+        "preview": {
+          "color": "/assets/surfaces/tethys-preview.jpg",
+          "width": 512,
+          "height": 256,
+          "colorSha256": "8e5b110d247c48e7dd91b8f749c6330233a85cabc6f13cb24517b79fedcea3ae"
+        },
+        "medium": {
+          "color": "/assets/surfaces/tethys-medium.jpg",
+          "width": 1024,
+          "height": 512,
+          "colorSha256": "e0f254a0604ce0ebd1ae03f3402590c674b29977758b13c78c473b0a8ffbacb3"
+        },
+        "near": {
+          "color": "/assets/surfaces/tethys-near.jpg",
+          "width": 2048,
+          "height": 1024,
+          "colorSha256": "ec387d791e37f0a11fbd944922ea949e870e96cf74c73d49798486569bff85d7"
+        }
+      },
+      "colorType": "Mapped spacecraft imagery; see pinned source and display processing"
+    }
+  }
+}

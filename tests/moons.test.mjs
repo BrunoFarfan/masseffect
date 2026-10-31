@@ -8,8 +8,8 @@ import { sub, length, dot, cross } from "../src/math.js";
 test("canonical moons have SI near-circular relative states and no overlaps", () => {
   const bodies = solarSystem(),
     moons = bodies.filter((b) => b.kind === "Moon");
-  assert.equal(bodies.length, 26);
-  assert.equal(moons.length, 17);
+  assert.equal(bodies.length, 29);
+  assert.equal(moons.length, 20);
   assert.equal(new Set(bodies.map((b) => b.id)).size, bodies.length);
   assert.deepEqual(
     Object.fromEntries(
@@ -18,7 +18,7 @@ test("canonical moons have SI near-circular relative states and no overlaps", ()
         moons.filter((moon) => moon.parentId === id).length,
       ]),
     ),
-    { earth: 1, mars: 2, jupiter: 4, saturn: 4, uranus: 5, neptune: 1 },
+    { earth: 1, mars: 2, jupiter: 4, saturn: 7, uranus: 5, neptune: 1 },
   );
   for (const moon of moons) {
     const parent = bodies.find((b) => b.id === moon.parentId);
@@ -111,7 +111,7 @@ test("Triton is retrograde and Uranian regular moons use the tilted plane", () =
   assert.ok(Math.abs(h[1]) / length(h) < 0.2);
 });
 
-test("all 26 gravitating bodies remain stable through two Phobos periods", () => {
+test("all 29 gravitating bodies remain stable through two Phobos periods", () => {
   const bodies = solarSystem(),
     initialEnergy = energy(bodies);
   const initial = new Map(
@@ -135,7 +135,7 @@ test("all 26 gravitating bodies remain stable through two Phobos periods", () =>
     assert.equal(step(bodies, dt).length, 0);
     time += dt;
   }
-  assert.equal(bodies.length, 26);
+  assert.equal(bodies.length, 29);
   assert.ok(Math.abs((energy(bodies) - initialEnergy) / initialEnergy) < 1e-8);
   for (const moon of bodies.filter((b) => b.kind === "Moon")) {
     const parent = bodies.find((b) => b.id === moon.parentId);

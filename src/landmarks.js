@@ -106,6 +106,16 @@ export const SURFACE_LANDMARKS = Object.freeze({
   callisto: Object.freeze([
     Object.freeze({ name: "Valhalla", latitude: 14.7, longitude: -56 }),
   ]),
+  // Stable polar orientation references; no surveyed feature outlines implied.
+  mimas: Object.freeze([
+    Object.freeze({ name: "North pole", latitude: 90, longitude: 0 }),
+  ]),
+  tethys: Object.freeze([
+    Object.freeze({ name: "North pole", latitude: 90, longitude: 0 }),
+  ]),
+  dione: Object.freeze([
+    Object.freeze({ name: "North pole", latitude: 90, longitude: 0 }),
+  ]),
   titan: Object.freeze([
     Object.freeze({ name: "Xanadu", latitude: -15, longitude: -100 }),
   ]),

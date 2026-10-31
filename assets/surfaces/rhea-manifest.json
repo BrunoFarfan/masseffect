@@ -58,7 +58,15 @@
           "width": 512,
           "height": 256,
           "colorSha256": "8734b2e61f0a6376db54bf618b3c5ff63442ccf63f67aeb68bcceb2d9c4c7cc1",
-          "colorKind": "USGS Voyager grayscale mapped imagery"
+          "colorKind": "USGS Voyager grayscale mapped imagery",
+          "heightUrl": "/assets/surfaces/rhea-preview.height.bin",
+          "heightWidth": 512,
+          "heightHeight": 256,
+          "heightSha256": "0ebaf8dffeebef66a1eb54c65821766e7e853fd10e847c07004454a0cf426588",
+          "heightOffsetMeters": -256,
+          "heightScaleMeters": 0.5,
+          "minElevationMeters": -142,
+          "maxElevationMeters": 142
         },
         "medium": {
           "color": "/assets/surfaces/rhea-medium.jpg",

@@ -1,3 +1,4 @@
+import { detailLayers, detailTexel, detailEdges } from "./surface-math.js";
 import { sphereRasterBounds } from "./sphere.js";
 
 // A small, deliberately self-contained WebGL2 terrain pass. The public
@@ -8,7 +9,7 @@ import { sphereRasterBounds } from "./sphere.js";
 //   }, referenceRadiusMeters, exaggeration?, minElevationMeters?,
 //   maxElevationMeters?, transition?: number }
 // `frame` axes are world-unit vectors. Maps use u=atan2(east,prime) and
-// v=.5-asin(north)/PI; texture row zero is north. GPU positions are divided
+// v=.5-atan(north,length(prime,east))/PI; texture row zero is north. GPU positions are divided
 // by referenceRadiusMeters, while all physics and CPU inputs remain meters.
 
 const VERTEX = `#version 300 es
@@ -20,12 +21,12 @@ void main() {
   gl_Position = vec4(p * 2.0 - 1.0, 0.0, 1.0);
 }`;
 
-const FRAGMENT = `#version 300 es
+const FRAGMENT_TEMPLATE = `#version 300 es
 precision highp float;
 precision highp int;
 uniform vec2 uSize;
 uniform float uFocal, uOffsetX, uRadius, uPhysicalRadius, uExaggeration, uHeightScale, uDisplacement, uBlend, uHasPreviousHeight;
-uniform float uMicroDetail, uMaxRayIterations, uDisplayExposure;
+uniform float uMicroDetail, uMaxRayIterations, uDisplayExposure, uCellStep, uNormalStep;
 uniform float uAtmosphericBands;
 uniform vec3 uOrigin, uDirection, uRight, uUp;
 uniform vec3 uLight;
@@ -51,13 +52,21 @@ uniform ivec2 uRegionSize;
 uniform ivec2 uPreviousRegionSize;
 uniform vec4 uRegionBounds, uPreviousRegionBounds;
 uniform float uHasRegion, uHasPreviousRegion, uRegionBlendBorder;
+uniform int uCurrentHeightCount;
+uniform vec4 uCurrentHeightBounds[12], uCurrentHeightCells[12], uCurrentHeightParams[12], uCurrentHeightEdges[12];
+uniform int uPreviousHeightCount;
+uniform vec4 uPreviousHeightBounds[12], uPreviousHeightCells[12], uPreviousHeightParams[12], uPreviousHeightEdges[12];
+uniform int uCurrentColorCount;
+uniform vec4 uCurrentColorBounds[12], uCurrentColorCells[12], uCurrentColorParams[12], uCurrentColorEdges[12];
+uniform int uPreviousColorCount;
+uniform vec4 uPreviousColorBounds[12], uPreviousColorCells[12], uPreviousColorParams[12], uPreviousColorEdges[12];
 out vec4 outColor;
 
 float wrap01(float x) { return x - floor(x); }
 vec2 mapUv(vec3 p) {
   p = normalize(p);
   return vec2(wrap01((atan(p.z, p.x) + 3.14159265359) / 6.28318530718),
-             clamp(0.5 - asin(clamp(p.y, -1.0, 1.0)) / 3.14159265359, 0.0, 1.0));
+             clamp(0.5 - atan(p.y, length(p.xz)) / 3.14159265359, 0.0, 1.0));
 }
 float hAt(sampler2D tex, ivec2 q, ivec2 size) {
   q.x = (q.x % size.x + size.x) % size.x;
@@ -86,61 +95,97 @@ float regionalWeight(vec2 uv, vec4 bounds) {
   float edge = min(min(ru.x, ru.y), min(1.0 - ru.x, 1.0 - ru.y));
   return smoothstep(0.0, max(uRegionBlendBorder, 0.000001), edge);
 }
-vec3 layeredColor(sampler2D globalTex, sampler2D tileTex, vec4 bounds, float hasTile, vec2 uv) {
-  vec3 global = texture(globalTex, uv).rgb;
-  if (hasTile < 0.5 || uv.x < bounds.x || uv.y < bounds.y || uv.x > bounds.z || uv.y > bounds.w) return global;
-  vec2 localUv = (uv - bounds.xy) / max(bounds.zw - bounds.xy, vec2(0.000001));
-  float edge = min(min(localUv.x, localUv.y), min(1.0 - localUv.x, 1.0 - localUv.y));
-  float weight = smoothstep(0.0, max(uColorRegionBlendBorder, 0.000001), edge);
-  return mix(global, texture(tileTex, clamp(localUv, 0.0, 1.0)).rgb, weight);
+vec4 detailValue(sampler2D tex, vec3 p, int count,
+  vec4 bounds[12], vec4 cells[12], vec4 params[12], vec4 edges[12]) {
+  p=normalize(p);
+  vec3 value=vec3(0.0);
+  float remaining=1.0;
+  vec2 uv=vec2(-2.0);
+  // Front-to-back composition stops at an opaque tile. Pack ordering puts
+  // the center-ray tile first in this reverse traversal; curated DEMs retain
+  // priority above the pack and its legacy fallback.
+  for(int offset=0;offset<12;offset++) {
+    if(offset>=count) break;
+    int i=count-1-offset;
+    vec2 projected;
+    if(abs(params[i].x)>.5) {
+      if(params[i].x*p.y<=0.0) continue;
+      float denominator=(1.0+params[i].x*p.y)*params[i].y;
+      projected=vec2(.5+.5*p.x/denominator,.5-.5*p.z/denominator);
+    } else {
+      if(uv.x < -1.0) uv=mapUv(p);
+      projected=uv;
+    }
+    vec2 local=(projected-bounds[i].xy)/(bounds[i].zw-bounds[i].xy);
+    if(any(lessThan(local,vec2(0.0))) || any(greaterThan(local,vec2(1.0)))) continue;
+    vec4 distances=vec4(local,1.0-local);
+    float border=max(params[i].z,.000000001),weight=1.0;
+    for(int j=0;j<4;j++) weight=min(weight,mix(1.0,smoothstep(0.0,border,distances[j]),edges[i][j]));
+    if(abs(params[i].x)>.5) weight=min(weight,smoothstep(0.0,border,(.5-length(projected-vec2(.5)))/max(bounds[i].z-bounds[i].x,bounds[i].w-bounds[i].y)));
+    weight*=params[i].w;
+    if(weight<=0.0) continue;
+    vec2 xy=cells[i].xy+local*cells[i].zw-.5;
+    ivec2 q=ivec2(floor(xy)); vec2 f=fract(xy);
+    vec4 a=mix(texelFetch(tex,q,0),texelFetch(tex,q+ivec2(1,0),0),f.x);
+    vec4 b=mix(texelFetch(tex,q+ivec2(0,1),0),texelFetch(tex,q+ivec2(1,1),0),f.x);
+    value+=remaining*weight*mix(a,b,f.y).rgb;
+    remaining*=1.0-weight;
+    if(remaining<=0.0) return vec4(value,1.0);
+  }
+  return vec4(value,1.0-remaining);
 }
-float layeredHeight(sampler2D globalTex, ivec2 globalSize, sampler2D regionTex, ivec2 regionSize, vec4 bounds, float hasRegion, vec2 uv) {
-  float global = heightAtOne(globalTex, globalSize, uv);
-  if (hasRegion < 0.5 || uv.x < bounds.x || uv.y < bounds.y || uv.x > bounds.z || uv.y > bounds.w) return global;
-  return mix(global, heightAtRegion(regionTex, regionSize, uv, bounds), regionalWeight(uv, bounds));
+vec3 currentColor(vec3 p) {
+  vec4 detail=detailValue(uColorRegion,p,uCurrentColorCount,uCurrentColorBounds,uCurrentColorCells,uCurrentColorParams,uCurrentColorEdges);
+  if(detail.a>=1.0) return detail.rgb;
+  return detail.rgb+(1.0-detail.a)*texture(uColor,mapUv(p)).rgb;
 }
-float heightAtRaw(vec2 uv) {
-  if (uHasHeight < 0.5) return 0.0;
-  float current = layeredHeight(uHeight, uHeightSize, uRegion, uRegionSize, uRegionBounds, uHasRegion, uv);
-  if (uBlend >= 0.999999) return current * uHeightScale;
-  float previous = uHasPreviousHeight > 0.5 ? layeredHeight(uHeightPrev, uPreviousHeightSize, uPreviousRegion, uPreviousRegionSize, uPreviousRegionBounds, uHasPreviousRegion, uv) : 0.0;
-  return mix(previous, current, uBlend) * uHeightScale;
+vec3 previousColor(vec3 p) {
+  vec4 detail=detailValue(uPreviousColorRegion,p,uPreviousColorCount,uPreviousColorBounds,uPreviousColorCells,uPreviousColorParams,uPreviousColorEdges);
+  if(detail.a>=1.0) return detail.rgb;
+  return detail.rgb+(1.0-detail.a)*texture(uColorPrev,mapUv(p)).rgb;
 }
-float baseHeight(vec2 uv) {
+float heightAtRaw(vec3 p) {
+  if(uHasHeight<.5) return 0.0;
+  vec4 detail=detailValue(uRegion,p,uCurrentHeightCount,uCurrentHeightBounds,uCurrentHeightCells,uCurrentHeightParams,uCurrentHeightEdges);
+  float current=detail.r;
+  if(detail.a<1.0) current+=(1.0-detail.a)*heightAtOne(uHeight,uHeightSize,mapUv(p));
+  if(uBlend>=.999999) return current*uHeightScale;
+  float previous=0.0;
+  if(uHasPreviousHeight>.5) {
+    vec4 old=detailValue(uPreviousRegion,p,uPreviousHeightCount,uPreviousHeightBounds,uPreviousHeightCells,uPreviousHeightParams,uPreviousHeightEdges);
+    previous=old.r;
+    if(old.a<1.0) previous+=(1.0-old.a)*heightAtOne(uHeightPrev,uPreviousHeightSize,mapUv(p));
+  }
+  return mix(previous,current,uBlend)*uHeightScale;
+}
+float baseHeight(vec3 p) {
   if(all(equal(uBaseAxes,vec3(1.0)))) return 0.0;
-  float lon=(uv.x-.5)*6.28318530718, lat=(.5-uv.y)*3.14159265359;
-  vec3 radial=vec3(cos(lat)*cos(lon),sin(lat),cos(lat)*sin(lon));
-  return 1.0/length(radial/uBaseAxes)-uRadius;
+  return 1.0/length(normalize(p)/uBaseAxes)-uRadius;
 }
-float visualHeight(vec2 uv) {
-  float base=baseHeight(uv);
+float visualHeight(vec3 p) {
+  float base=baseHeight(p);
   if(uHasHeight<.5) return base;
-  float relief=(heightAtRaw(uv)-base)*uExaggeration;
+  float relief=(heightAtRaw(p)-base)*uExaggeration;
   return base+(uWater>.5?max(0.0,relief):relief);
 }
-float heightAt(vec2 uv) {
-  float base=baseHeight(uv);
-  return base+(visualHeight(uv)-base)*uDisplacement;
+float heightAt(vec3 p) {
+  float base=baseHeight(p);
+  return base+(visualHeight(p)-base)*uDisplacement;
 }
 float gap(vec3 p) {
-  vec2 uv = mapUv(p);
-  float h = heightAt(uv);
-  return length(p) - (uRadius + h);
+  return length(p) - (uRadius + heightAt(p));
 }
 vec3 topoNormal(vec3 p, float radius) {
-  vec3 radial = normalize(p);
-  if (uHasHeight < 0.5) return normalize(p/(uBaseAxes*uBaseAxes));
-  vec2 uv = mapUv(radial);
-  vec2 d = 1.0 / vec2(uHeightSize);
-  if (uHasRegion > 0.5 && uv.x >= uRegionBounds.x && uv.y >= uRegionBounds.y && uv.x <= uRegionBounds.z && uv.y <= uRegionBounds.w) d = (uRegionBounds.zw - uRegionBounds.xy) / vec2(uRegionSize);
-  else if (uHasPreviousRegion > 0.5 && uv.x >= uPreviousRegionBounds.x && uv.y >= uPreviousRegionBounds.y && uv.x <= uPreviousRegionBounds.z && uv.y <= uPreviousRegionBounds.w) d = (uPreviousRegionBounds.zw - uPreviousRegionBounds.xy) / vec2(uPreviousRegionSize);
-  float lon = (visualHeight(uv + vec2(d.x, 0.0)) - visualHeight(uv - vec2(d.x, 0.0))) * 0.5;
-  float lat = (visualHeight(uv + vec2(0.0, d.y)) - visualHeight(uv - vec2(0.0, d.y))) * 0.5;
-  float co = max(0.001, sqrt(max(0.0, 1.0 - radial.y * radial.y)));
-  vec3 east = length(radial.xz) > 0.00001 ? normalize(vec3(-radial.z, 0.0, radial.x)) : vec3(0.0,0.0,1.0);
-  vec3 north = normalize(cross(east, radial));
-  // v grows southward, hence the minus sign for the latitude slope.
-  return normalize(radial - east * lon / max(radius * co * 6.2831853 * d.x, 0.000001) + north * lat / max(radius * 3.14159265 * d.y, 0.000001));
+  vec3 radial=normalize(p);
+  if(uHasHeight<.5) return normalize(p/(uBaseAxes*uBaseAxes));
+  // Differentiate in an orthonormal tangent plane, never in longitude. The
+  // longitude metric vanishes at a pole and its texture derivative is singular.
+  vec3 tangent=normalize(cross(abs(radial.y)<.9?vec3(0,1,0):vec3(1,0,0),radial));
+  vec3 bitangent=normalize(cross(radial,tangent));
+  float stepAngle=uNormalStep;
+  float dx=(visualHeight(radial+tangent*stepAngle)-visualHeight(radial-tangent*stepAngle))/(2.0*radius*stepAngle);
+  float dy=(visualHeight(radial+bitangent*stepAngle)-visualHeight(radial-bitangent*stepAngle))/(2.0*radius*stepAngle);
+  return normalize(radial-tangent*dx-bitangent*dy);
 }
 float hash31(vec3 p) {
   p = fract(p * 0.1031); p += dot(p, p.yzx + 33.33);
@@ -210,16 +255,10 @@ void main() {
   // terminates tangential rays without pretending subpixel DEM detail exists.
   for (int i = 0; i < 256; i++) {
     if (found || t > end || float(i) >= uMaxRayIterations) break;
-    vec2 hitUv = mapUv(uOrigin + ray * t);
-    float cellStep = 3.14159265 / float(uHeightSize.y) * 0.25;
-    if (uHasRegion > 0.5 && regionalWeight(hitUv, uRegionBounds) > 0.0)
-      cellStep = min(cellStep, (uRegionBounds.w-uRegionBounds.y) / float(uRegionSize.y) * 3.14159265 * 0.75);
-    else if (uHasPreviousRegion > 0.5 && regionalWeight(hitUv, uPreviousRegionBounds) > 0.0)
-      cellStep = min(cellStep, (uPreviousRegionBounds.w-uPreviousRegionBounds.y) / float(uPreviousRegionSize.y) * 3.14159265 * 0.75);
     float g = gap(uOrigin + ray * t);
     float tolerance = max(0.15 * uHeightScale, t / uFocal * 0.18);
     if (g <= tolerance) { hit = t; found = true; break; }
-    float next = min(end, t + max(cellStep, g / 2.0));
+    float next = min(end, t + max(uCellStep, g / 2.0));
     if (next <= t) break;
     if (gap(uOrigin + ray * next) <= 0.0) {
       float lo = t, hi = next;
@@ -237,9 +276,8 @@ void main() {
   float diffuse = max(0.0, dot(normal, normalize(uLight - point)));
   float shade = uEmissive>.5 ? 1.0 : 0.12 + 0.88 * diffuse;
   vec2 colorUv = mapUv(point);
-  vec3 previousColor = layeredColor(uColorPrev, uPreviousColorRegion, uPreviousColorRegionBounds, uHasPreviousColorRegion, colorUv);
-  vec3 currentColor = layeredColor(uColor, uColorRegion, uColorRegionBounds, uHasColorRegion, colorUv);
-  vec3 srgb = mix(previousColor, currentColor, uBlend);
+  vec3 srgb=currentColor(point);
+  if(uBlend<.999999) srgb=mix(previousColor(point),srgb,uBlend);
   // Uranus has no solid terrain. This restrained, deterministic banding is
   // an atmospheric appearance layer applied only to products that opt in;
   // it never participates in height, clearance, or ray intersection.
@@ -265,6 +303,102 @@ void main() {
   outColor = vec4(color, uOpacity);
 }`;
 
+// Uniform arrays must stay in constant storage. Passing all four arrays as
+// GLSL function arguments can make ANGLE copy them into thread-local arrays
+// for every ray sample. Specialize the shared implementation at build time.
+function specializeDetailShader(source) {
+  const start=source.indexOf("vec4 detailValue(");
+  const end=source.indexOf("vec3 currentColor(",start);
+  const template=source.slice(start,end);
+  let implementations="";
+  for(const [prefix,texture] of [["CurrentHeight","uRegion"],["PreviousHeight","uPreviousRegion"],["CurrentColor","uColorRegion"],["PreviousColor","uPreviousColorRegion"]]) {
+    let implementation=template.replace(/vec4 detailValue\([\s\S]*?\) \{/,`vec4 detail${prefix}(vec3 p) {`);
+    for(const [word,replacement] of [["tex",texture],["count",`u${prefix}Count`],["bounds",`u${prefix}Bounds`],["cells",`u${prefix}Cells`],["params",`u${prefix}Params`],["edges",`u${prefix}Edges`]])
+      implementation=implementation.replace(new RegExp(`\\b${word}\\b`,"g"),replacement);
+    implementations+=implementation;
+    source=source.replaceAll(`detailValue(${texture},p,u${prefix}Count,u${prefix}Bounds,u${prefix}Cells,u${prefix}Params,u${prefix}Edges)`,`detail${prefix}(p)`);
+  }
+  return source.slice(0,start)+implementations+source.slice(end);
+}
+
+const FRAGMENT=specializeDetailShader(FRAGMENT_TEMPLATE);
+
+export function buildDetailAtlas(asset, kind = "region", metadataOnly = false) {
+  const layers = detailLayers(asset, kind),
+    channels = kind === "colorRegion" ? 4 : 1;
+  if (!layers.length) return null;
+  // Shelf packing avoids padding every 512px tile to a curated 1024px DEM.
+  const width = Math.max(
+    ...layers.map((layer) => layer.width + 2),
+    Math.min(
+      2056,
+      layers.reduce((sum, layer) => sum + layer.width + 2, 0),
+    ),
+  );
+  const positions = [];
+  let cursorX = 0,
+    cursorY = 0,
+    rowHeight = 0;
+  for (const layer of layers) {
+    if (cursorX + layer.width + 2 > width) {
+      cursorY += rowHeight;
+      cursorX = 0;
+      rowHeight = 0;
+    }
+    positions.push([cursorX + 1, cursorY + 1]);
+    cursorX += layer.width + 2;
+    rowHeight = Math.max(rowHeight, layer.height + 2);
+  }
+  const height = cursorY + rowHeight;
+  const data = metadataOnly
+    ? null
+    : channels === 4
+      ? new Uint8Array(width * height * 4)
+      : new Float32Array(width * height);
+  const bounds = new Float32Array(48),
+    cells = new Float32Array(48),
+    params = new Float32Array(48),
+    edges = new Float32Array(48);
+  layers.forEach((layer, i) => {
+    const [ox, oy] = positions[i];
+    bounds.set(layer.uvBounds, i * 4);
+    cells.set([ox, oy, layer.width, layer.height], i * 4);
+    params.set(
+      [
+        layer.projection === "polar-stereographic"
+          ? layer.pole === -1
+            ? -1
+            : 1
+          : 0,
+        Math.tan(((90 - (layer.capLatitude ?? 70)) * Math.PI) / 360),
+        layer.blendBorder ?? 0.025,
+        layer.detailBlend ?? 1,
+      ],
+      i * 4,
+    );
+    edges.set(detailEdges(layer, layers), i * 4);
+    if (data)
+      for (let y = -1; y <= layer.height; y++)
+        for (let x = -1; x <= layer.width; x++) {
+          const value = detailTexel(layers, layer, x, y, channels);
+          const offset = ((oy + y) * width + ox + x) * channels;
+          for (let c = 0; c < channels; c++) data[offset + c] = value[c];
+        }
+  });
+  return {
+    data,
+    width,
+    height,
+    count: layers.length,
+    bounds,
+    cells,
+    params,
+    edges,
+    layers,
+    channels,
+  };
+}
+
 function shaderError(gl, shader, label) {
   const log = gl.getShaderInfoLog(shader) || "";
   return `${label} shader: ${log}`.trim();
@@ -280,6 +414,8 @@ export class TerrainGPU {
     this.maxTextures = Math.max(1, maxTextures);
     this.quality = { maxRayIterations: 256, resolutionScale: 1, ...quality };
     this.cache = new Map();
+    this.atlases = new WeakMap();
+    this.budgetBytes = 128 * 1024 * 1024;
     this.error = null;
     this.lost = false;
     this.frame = 0;
@@ -357,6 +493,8 @@ export class TerrainGPU {
         "uAtmosphereOpacity",
         "uAtmosphericBands",
         "uMaxRayIterations",
+        "uCellStep",
+        "uNormalStep",
         "uOrigin",
         "uDirection",
         "uRight",
@@ -390,6 +528,16 @@ export class TerrainGPU {
         "uHasPreviousRegion",
         "uRegionBlendBorder",
       ];
+      for (const prefix of [
+        "CurrentHeight",
+        "PreviousHeight",
+        "CurrentColor",
+        "PreviousColor",
+      ]) {
+        names.push(`u${prefix}Count`);
+        for (const field of ["Bounds", "Cells", "Params", "Edges"])
+          names.push(`u${prefix}${field}`);
+      }
       this.uniforms = Object.fromEntries(
         names.map((name) => [name, gl.getUniformLocation(program, name)]),
       );
@@ -405,20 +553,158 @@ export class TerrainGPU {
     }
   }
 
+  _prepareEntry(bodyId, sources) {
+    const entry = this.cache.get(bodyId) || { gpu: {}, lastUsed: 0 };
+    // Global maps are large and unchanged when another small tile arrives.
+    // Keep their texture objects; release only replaced or unused slots.
+    for (const [kind, uploaded] of Object.entries(entry.gpu || {}))
+      if (uploaded && uploaded.source !== sources[kind]) {
+        this.gl.deleteTexture(uploaded.texture);
+        delete entry.gpu[kind];
+      }
+    Object.assign(entry, sources);
+    this.cache.set(bodyId, entry);
+    return entry;
+  }
+
+  _refreshAtlasGutters(texture, atlas) {
+    const gl = this.gl,
+      color = atlas.channels === 4,
+      channels = atlas.channels;
+    gl.bindTexture(gl.TEXTURE_2D, texture);
+    atlas.layers.forEach((layer, i) => {
+      const ox = atlas.cells[i * 4],
+        oy = atlas.cells[i * 4 + 1];
+      const strip = (x, y, w, h) => {
+        const pixels = color
+          ? new Uint8Array(w * h * channels)
+          : new Float32Array(w * h);
+        for (let row = 0; row < h; row++)
+          for (let col = 0; col < w; col++) {
+            const value = detailTexel(
+              atlas.layers,
+              layer,
+              x + col,
+              y + row,
+              channels,
+            );
+            for (let c = 0; c < channels; c++)
+              pixels[(row * w + col) * channels + c] = value[c];
+          }
+        gl.texSubImage2D(
+          gl.TEXTURE_2D,
+          0,
+          ox + x,
+          oy + y,
+          w,
+          h,
+          color ? gl.RGBA : gl.RED,
+          color ? gl.UNSIGNED_BYTE : gl.FLOAT,
+          pixels,
+        );
+      };
+      strip(-1, -1, layer.width + 2, 1);
+      strip(-1, layer.height, layer.width + 2, 1);
+      strip(-1, 0, 1, layer.height);
+      strip(layer.width, 0, 1, layer.height);
+    });
+  }
+
   _texture(entry, kind, source) {
     const gl = this.gl;
-    if (!source?.data || !source.width || !source.height) return null;
+    if ((!source?.data && !source?.layers) || !source.width || !source.height)
+      return null;
     entry.gpu ||= {};
-    if (entry.gpu[kind]?.source === source) return entry.gpu[kind].texture;
+    if (entry.gpu[kind]?.source === source) {
+      const uploaded = entry.gpu[kind];
+      if (
+        source.layers &&
+        (uploaded.fading ||
+          source.layers.some((layer) => (layer.detailBlend ?? 1) < 1))
+      ) {
+        this._refreshAtlasGutters(uploaded.texture, source);
+        uploaded.fading = source.layers.some(
+          (layer) => (layer.detailBlend ?? 1) < 1,
+        );
+      }
+      return uploaded.texture;
+    }
     if (entry.gpu[kind]) gl.deleteTexture(entry.gpu[kind].texture);
     const texture = gl.createTexture();
     gl.bindTexture(gl.TEXTURE_2D, texture);
     gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, false);
-    if (["color", "previousColor", "colorRegion", "previousColorRegion"].includes(kind)) {
+    if (source.layers) {
+      // Allocate only GPU atlas storage. Upload one tile and its shared-edge
+      // gutter at a time; never retain another decoded copy of the CPU pack.
+      const color = source.channels === 4;
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+      gl.texImage2D(
+        gl.TEXTURE_2D,
+        0,
+        color ? gl.RGBA8 : gl.R32F,
+        source.width,
+        source.height,
+        0,
+        color ? gl.RGBA : gl.RED,
+        color ? gl.UNSIGNED_BYTE : gl.FLOAT,
+        null,
+      );
+      source.layers.forEach((layer, i) => {
+        const w = layer.width + 2,
+          h = layer.height + 2,
+          channels = source.channels;
+        const staging = color
+          ? new Uint8Array(w * h * channels)
+          : new Float32Array(w * h);
+        for (let y = 0; y < layer.height; y++) {
+          const start = y * layer.width * channels;
+          staging.set(
+            layer.data.subarray(start, start + layer.width * channels),
+            ((y + 1) * w + 1) * channels,
+          );
+        }
+        const put = (x, y) => {
+          const value = detailTexel(source.layers, layer, x, y, channels),
+            offset = ((y + 1) * w + x + 1) * channels;
+          for (let c = 0; c < channels; c++) staging[offset + c] = value[c];
+        };
+        for (let x = -1; x <= layer.width; x++) {
+          put(x, -1);
+          put(x, layer.height);
+        }
+        for (let y = 0; y < layer.height; y++) {
+          put(-1, y);
+          put(layer.width, y);
+        }
+        gl.texSubImage2D(
+          gl.TEXTURE_2D,
+          0,
+          source.cells[i * 4] - 1,
+          source.cells[i * 4 + 1] - 1,
+          w,
+          h,
+          color ? gl.RGBA : gl.RED,
+          color ? gl.UNSIGNED_BYTE : gl.FLOAT,
+          staging,
+        );
+      });
+    } else if (
+      ["color", "previousColor", "colorRegion", "previousColorRegion"].includes(
+        kind,
+      )
+    ) {
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
-      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S,
-        kind === "color" || kind === "previousColor" ? gl.REPEAT : gl.CLAMP_TO_EDGE);
+      gl.texParameteri(
+        gl.TEXTURE_2D,
+        gl.TEXTURE_WRAP_S,
+        kind === "color" || kind === "previousColor"
+          ? gl.REPEAT
+          : gl.CLAMP_TO_EDGE,
+      );
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
       gl.texImage2D(
         gl.TEXTURE_2D,
@@ -453,6 +739,8 @@ export class TerrainGPU {
       source,
       width: source.width,
       height: source.height,
+      fading:
+        source.layers?.some((layer) => (layer.detailBlend ?? 1) < 1) || false,
     };
     return texture;
   }
@@ -473,15 +761,25 @@ export class TerrainGPU {
       return false;
     const radius = Number(state.referenceRadiusMeters || body.radius);
     if (!(radius > 0)) return false;
+    const atlases = (asset) => {
+      if (!this.atlases.has(asset))
+        this.atlases.set(asset, {
+          height: buildDetailAtlas(asset, "region", true),
+          color: buildDetailAtlas(asset, "colorRegion", true),
+        });
+      return this.atlases.get(asset);
+    };
+    const currentAtlas = atlases(state.asset);
     const color = state.asset.color,
       heightMap = state.asset.height,
-      region = state.asset.region,
-      colorRegion = state.asset.colorRegion;
+      region = currentAtlas.height,
+      colorRegion = currentAtlas.color;
     const previous = state.previousAsset || state.asset;
+    const previousAtlas = atlases(previous);
     const previousColor = previous?.color || color,
       previousHeight = previous?.height || null,
-      previousRegion = previous?.region || null,
-      previousColorRegion = previous?.colorRegion || null;
+      previousRegion = previousAtlas.height,
+      previousColorRegion = previousAtlas.color;
     if (!(color.data && color.width > 0 && color.height > 0)) return false;
     const displayW = Math.max(1, Math.floor(width)),
       displayH = Math.max(1, Math.floor(height));
@@ -540,35 +838,17 @@ export class TerrainGPU {
     );
     if (bounds.right <= bounds.left || bounds.bottom <= bounds.top)
       return false;
-    let entry = this.cache.get(body.id);
-    if (
-      !entry ||
-      entry.color !== color ||
-      entry.height !== heightMap ||
-      entry.region !== region ||
-      entry.colorRegion !== colorRegion ||
-      entry.previousColor !== previousColor ||
-      entry.previousHeight !== previousHeight ||
-      entry.previousRegion !== previousRegion ||
-      entry.previousColorRegion !== previousColorRegion
-    ) {
-      if (entry?.gpu && gl)
-        for (const texture of Object.values(entry.gpu))
-          gl.deleteTexture(texture?.texture);
-      entry = {
-        color,
-        height: heightMap,
-        region,
-        colorRegion,
-        previousColor,
-        previousHeight,
-        previousRegion,
-        previousColorRegion,
-        gpu: null,
-        lastUsed: 0,
-      };
-      this.cache.set(body.id, entry);
-    }
+    const entry = this._prepareEntry(body.id, {
+      color,
+      height: heightMap,
+      region,
+      colorRegion,
+      previousColor: previousColor === color ? null : previousColor,
+      previousHeight: previousHeight === heightMap ? null : previousHeight,
+      previousRegion: previousRegion === region ? null : previousRegion,
+      previousColorRegion:
+        previousColorRegion === colorRegion ? null : previousColorRegion,
+    });
     entry.lastUsed = ++this.frame;
     const colorTexture = this._texture(entry, "color", color),
       previousColorTexture =
@@ -585,10 +865,15 @@ export class TerrainGPU {
             ? this._texture(entry, "previousHeight", previousHeight)
             : null,
       regionTexture = region ? this._texture(entry, "region", region) : null,
-      colorRegionTexture = colorRegion ? this._texture(entry, "colorRegion", colorRegion) : null,
-      previousColorRegionTexture = previousColorRegion === colorRegion
-        ? colorRegionTexture
-        : previousColorRegion ? this._texture(entry, "previousColorRegion", previousColorRegion) : null,
+      colorRegionTexture = colorRegion
+        ? this._texture(entry, "colorRegion", colorRegion)
+        : null,
+      previousColorRegionTexture =
+        previousColorRegion === colorRegion
+          ? colorRegionTexture
+          : previousColorRegion
+            ? this._texture(entry, "previousColorRegion", previousColorRegion)
+            : null,
       previousRegionTexture =
         previousRegion === region
           ? regionTexture
@@ -622,6 +907,34 @@ export class TerrainGPU {
       gl.clearColor(0, 0, 0, 0);
       gl.clear(gl.COLOR_BUFFER_BIT);
       const u = this.uniforms;
+      // These depend only on resident descriptors, never on a ray sample.
+      let normalStep=Math.PI/(heightMap?.height || 1);
+      let cellStep=normalStep*.25;
+      for(const layer of region?.layers || []) {
+        const angular=layer.projection==="polar-stereographic"
+          ? 4*Math.tan((90-(layer.capLatitude??70))*Math.PI/360) : Math.PI;
+        const spacing=angular*(layer.uvBounds[3]-layer.uvBounds[1])/layer.height;
+        normalStep=Math.min(normalStep,spacing);
+        cellStep=Math.min(cellStep,spacing*.75);
+      }
+      gl.uniform1f(u.uNormalStep,Math.max(normalStep,1e-7));
+      gl.uniform1f(u.uCellStep,cellStep);
+      for (const [prefix, atlas] of [
+        ["CurrentHeight", region],
+        ["PreviousHeight", previousRegion],
+        ["CurrentColor", colorRegion],
+        ["PreviousColor", previousColorRegion],
+      ]) {
+        gl.uniform1i(u[`u${prefix}Count`], atlas?.count || 0);
+        if (atlas) {
+          atlas.layers.forEach((layer, index) => {
+            atlas.params[index * 4 + 3] = layer.detailBlend ?? 1;
+            atlas.edges.set(detailEdges(layer, atlas.layers), index * 4);
+          });
+          for (const field of ["Bounds", "Cells", "Params", "Edges"])
+            gl.uniform4fv(u[`u${prefix}${field}`], atlas[field.toLowerCase()]);
+        }
+      }
       gl.uniform2f(u.uSize, w, h);
       gl.uniform1f(u.uFocal, rasterFocal);
       gl.uniform1f(u.uOffsetX, offset * sx);
@@ -698,9 +1011,21 @@ export class TerrainGPU {
       gl.uniform1f(u.uHasRegion, regionTexture ? 1 : 0);
       gl.uniform1f(u.uHasPreviousRegion, previousRegionTexture ? 1 : 0);
       gl.uniform1f(u.uHasColorRegion, colorRegionTexture ? 1 : 0);
-      gl.uniform1f(u.uHasPreviousColorRegion, previousColorRegionTexture ? 1 : 0);
-      gl.uniform1f(u.uColorRegionBlendBorder, Math.max(0,
-        Number(colorRegion?.blendBorder ?? previousColorRegion?.blendBorder ?? 0.025)));
+      gl.uniform1f(
+        u.uHasPreviousColorRegion,
+        previousColorRegionTexture ? 1 : 0,
+      );
+      gl.uniform1f(
+        u.uColorRegionBlendBorder,
+        Math.max(
+          0,
+          Number(
+            colorRegion?.blendBorder ??
+              previousColorRegion?.blendBorder ??
+              0.025,
+          ),
+        ),
+      );
       gl.uniform1f(
         u.uRegionBlendBorder,
         Math.max(
@@ -742,7 +1067,10 @@ export class TerrainGPU {
       gl.bindTexture(gl.TEXTURE_2D, colorRegionTexture || colorTexture);
       gl.uniform1i(u.uColorRegion, 6);
       gl.activeTexture(gl.TEXTURE7);
-      gl.bindTexture(gl.TEXTURE_2D, previousColorRegionTexture || previousColorTexture);
+      gl.bindTexture(
+        gl.TEXTURE_2D,
+        previousColorRegionTexture || previousColorTexture,
+      );
       gl.uniform1i(u.uPreviousColorRegion, 7);
       gl.uniform2i(
         u.uHeightSize,
@@ -765,8 +1093,14 @@ export class TerrainGPU {
         u.uPreviousRegionBounds,
         ...(previousRegion?.uvBounds || [0, 0, 1, 1]),
       );
-      gl.uniform4f(u.uColorRegionBounds, ...(colorRegion?.uvBounds || [0, 0, 1, 1]));
-      gl.uniform4f(u.uPreviousColorRegionBounds, ...(previousColorRegion?.uvBounds || [0, 0, 1, 1]));
+      gl.uniform4f(
+        u.uColorRegionBounds,
+        ...(colorRegion?.uvBounds || [0, 0, 1, 1]),
+      );
+      gl.uniform4f(
+        u.uPreviousColorRegionBounds,
+        ...(previousColorRegion?.uvBounds || [0, 0, 1, 1]),
+      );
       gl.drawArrays(gl.TRIANGLES, 0, 3);
       gl.disable(gl.SCISSOR_TEST);
       ctx.drawImage(
@@ -793,7 +1127,10 @@ export class TerrainGPU {
       (a, b) => a[1].lastUsed - b[1].lastUsed,
     );
     const gl = this.gl;
-    while (victims.length > maxTextures) {
+    while (
+      victims.length > maxTextures ||
+      (victims.length > 1 && this.stats().memoryBytes > this.budgetBytes)
+    ) {
       const [key, item] = victims.shift();
       if (item.gpu)
         for (const texture of Object.values(item.gpu))

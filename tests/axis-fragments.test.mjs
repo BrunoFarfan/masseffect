@@ -10,7 +10,7 @@ import {
 } from "../src/rotation.js";
 import { dot, cross, sub, length, unit } from "../src/math.js";
 import { fragmentImpact, angularMomentum } from "../src/impacts.js";
-import { impactScenario } from "../src/impact-scenario.js";
+import { impactFixture } from "./helpers/scenarios.mjs";
 import { FragmentBudget } from "../src/fragment-budget.js";
 import { Simulation, step } from "../src/physics.js";
 import { History } from "../src/history.js";
@@ -81,7 +81,7 @@ test("F/G/H level the frame even if look, wheel or movement interrupts travel", 
 });
 test("4 through 64 fragments conserve mass, volume, COM, momentum and bounded spin without overlap", () => {
   for (const count of [4, 8, 16, 32, 64]) {
-    const { bodies: inputs } = impactScenario();
+    const { bodies: inputs } = impactFixture();
     inputs.forEach((b, i) => (b.position = [(i ? 1 : -1) * b.radius, 0, 0]));
     initializeRotations(inputs);
     const output = fragmentImpact(...inputs, {
@@ -134,7 +134,7 @@ test("4 through 64 fragments conserve mass, volume, COM, momentum and bounded sp
   }
 });
 test("larger impacts obey capacity and minimum mass; CPU budget only limits prospective debris", () => {
-  const inputs = impactScenario().bodies;
+  const inputs = impactFixture().bodies;
   assert.equal(
     fragmentImpact(...inputs, { bodyCount: 120, fragmentLimit: 64 }).length,
     8,
@@ -155,7 +155,7 @@ test("larger impacts obey capacity and minimum mass; CPU budget only limits pros
   assert.equal(budget.limit(64, 126), 4);
 });
 test("recorded rewind retains larger fragment outcomes and policy for reconstruction", () => {
-  const sim = new Simulation(impactScenario().bodies, { fragmentLimit: 32 }),
+  const sim = new Simulation(impactFixture().bodies, { fragmentLimit: 32 }),
     history = new History(sim);
   step(sim.bodies, 820, { fragmentLimit: 32 });
   sim.time = 820;

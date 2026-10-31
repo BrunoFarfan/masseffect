@@ -76,9 +76,9 @@ function randomStates(count, seed = 421) {
   }));
 }
 
-test("scalar force and step scans reproduce the canonical 26-body system", () => {
+test("scalar force and step scans reproduce the canonical 29-body system", () => {
   const bodies = solarSystem();
-  assert.equal(bodies.length, 26);
+  assert.equal(bodies.length, 29);
   assert.deepEqual(accelerations(bodies), referenceAccelerations(bodies));
   assert.equal(safeStep(bodies), referenceSafeStep(bodies));
 });
@@ -136,9 +136,9 @@ test("equal contact times preserve reference traversal order", () => {
   assert.equal(contact.b, bodies[2]);
 });
 
-test("report warmed reference/scalar scan timing ratios for 26 and 128 bodies", (t) => {
-  for (const count of [26, 128]) {
-    const bodies = count === 26 ? solarSystem() : randomStates(count);
+test("report warmed reference/scalar scan timing ratios for 29 and 128 bodies", (t) => {
+  for (const count of [29, 128]) {
+    const bodies = count === 29 ? solarSystem() : randomStates(count);
     for (const [name, reference, scalar] of [
       ["accelerations", referenceAccelerations, accelerations],
       ["safeStep", referenceSafeStep, safeStep],
@@ -148,7 +148,7 @@ test("report warmed reference/scalar scan timing ratios for 26 and 128 bodies", 
         reference(bodies, 1800);
         scalar(bodies, 1800);
       }
-      const iterations = count === 26 ? 600 : 60;
+      const iterations = count === 29 ? 600 : 60;
       const duration = (fn) => {
         const start = performance.now();
         for (let i = 0; i < iterations; i++) fn(bodies, 1800);

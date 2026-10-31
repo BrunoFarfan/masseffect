@@ -18,25 +18,11 @@ NASA asks users to credit NASA SVS, Ernie Wright (USRA), and Noah Petro (NASA
 GSFC), and notes that the color product is optimized for visualization rather
 than scientific analysis.
 
-The near Moon level also carries a **Tycho regional LOLA64 tile**, bounded to
-−18..−4° east longitude and −50..−36° planetocentric latitude. Its 896×896
-samples retain the native64 pixels/degree (about474m north/south spacing),
-not meter-scale geology. The pipeline fetches only rows8064..8959 of
-`ldem_64_uint.tif` via HTTP Range: bytes371589128..412876807 (41.3MB).
-It verifies all11520 strip offsets from the pinned TIFF strip table, then
-extracts columns10368..11263 without resampling. The range checksum is explicitly
-not represented as a checksum of the entire506MB TIFF. Prepared range is
-−5387..2095.5m, 1.6MB on disk and3.2MB decoded. An outer8% border blends into
-the global LOLA surface; GPU geometry/normals and camera clearance share it.
-Outside this rectangle the global terrain remains in use. Like other gridded
-LOLA products, the source includes interpolation between tracks.
-
-The near Moon level also carries a native LOLA16 Mare Orientale crop covering
-−100..−60° east longitude and −30..10° planetocentric latitude. Regional
-selection uses the camera surface UV and loads only the matching tile; the
-global near DEM remains the fallback during loading and outside regional
-coverage. A native LOLA16 Copernicus crop also covers −25..−15° east and
-5..15° planetocentric latitude (161×161 samples), encoded at 0.5 m/sample.
+Close-range Moon relief comes from the published lazy global 64 ppd LOLA
+pack documented in [terrain64.md](terrain64.md). It preserves the same native
+samples as the former Tycho crop and exceeds the former 16 ppd Mare Orientale
+and Copernicus crops, so those redundant regional products are no longer
+prepared or shipped. The bounded global near map remains the loading fallback.
 
 ## Mars
 
@@ -61,23 +47,20 @@ to the runtime convention, not an eyeballed image rotation. Source illumination,
 colorization and acquisition seams remain: this is imagery, not calibrated
 albedo. The earlier round-one height-tinted fallback has been replaced.
 
-The near Mars level retains the native MOLA128 Olympus crop and adds a native
-MOLA16 Valles Marineris crop covering −70..−40° longitude and −15..15° latitude.
-Only the tile containing the camera surface point is requested; global MOLA
-remains active until the regional asset is ready. A third native MOLA16 tile
-covers Hellas Planitia (60..90°E, 50..20°S), with 481×481 source samples and
-the same PDS radial datum conversion as the global height map.
+The near Mars level retains the native MOLA128 Olympus crop (222..230°E,
+14..22°N, 1024×1024 samples). Its 128 ppd resolution exceeds the lazy global
+64 ppd MOLA pack, so it remains a regional supplement. The former 16 ppd
+Valles Marineris and Hellas crops are superseded by that global pack and are
+no longer prepared or shipped. Global MOLA remains active until detailed
+terrain loads.
 
 ## Reproducibility and coordinates
 
-Earth's near level includes a bounded Andes tile covering 75..65°W and
-40..20°S. It is a 601×1201 native 60-arcsecond NOAA ETOPO extraction (not an
-upscaled global derivative), blended over a 4% border. The source query,
-checksum, dimensions, and processing are recorded in the Earth manifest; the
-prepared tile is about 1.4 MiB on disk and remains lazily loaded with the near
-LOD. The same verified ETOPO global extraction supplies a native 1/6-degree
-Himalaya tile (70..100°E, 25..35°N; 181×61 samples), preserving its measured
-source samples without upscaling.
+Earth's lazy global 64 ppd terrain derives from native 60 ppd ETOPO data.
+It replaces the former 60 ppd Andes and 6 ppd Himalaya regional products;
+resampling does not add measured detail. Those regional assets and their
+preparation inputs are no longer required. See [terrain64.md](terrain64.md)
+for each pack's sources, datum, checksums, and bounded loading behavior.
 
 The preparation script verifies SHA-256 before processing. `--download` fetches
 the originals and then rebuilds; `--rebuild` is offline and only accepts local
@@ -86,8 +69,8 @@ files with the recorded checksums. It decodes the source grids, resizes to
 and little-endian raw uint16 height maps for medium/near, and records ranges,
 operations, URLs, checksums, dimensions, and datums in `manifest.json`.
 Height dimensions are independent: 1024x512 medium and 2048x1024 near,
-with bounded native-resolution regional tiles where authoritative source data
-is available. The decoded CPU cache is capped at 96 MiB.
+with the higher-resolution Olympus regional supplement and lazy global
+64 ppd terrain packs for Earth, Moon, and Mars. The decoded CPU cache is capped at 96 MiB.
 
 Runtime coordinates are cylindrical: east-positive longitude and
 planetocentric latitude, with `u=(longitude+π)/(2π)` and
@@ -109,15 +92,24 @@ this approximation. There is no terrain height asset or claimed meteorology.
 
 ## Catalog of other requested bodies
 
+The [current three-level and polar-tile delivery](detail-maps.md) supersedes
+earlier constant-color and browse-image stages: Mercury and Enceladus now have
+independent mapped imagery; Io uses the full color-merged mosaic; Titan uses the
+controlled 2026 ISS mosaic. Dione, Mimas and Tethys are included with mapped
+appearance and explicit ellipsoid-only terrain.
+
+
 The catalog below was the research starting point. Prepared products now have
 per-body `*-sources.md` notes and `*-manifest.json` files; the combined runtime
 manifest is the authority for what actually ships. Coverage is not uniform:
 
 | Runtime bodies | Shipped representation |
 | --- | --- |
-| Moon, Mars | LROC/LOLA and Viking/MOLA, plus native regional Tycho/Mare Orientale and Olympus/Valles Marineris DEM crops |
+| Moon, Mars | LROC/LOLA and Viking/MOLA, lazy global 64 ppd terrain, plus the native 128 ppd Olympus DEM crop |
 | Earth | Blue Marble imagery and ETOPO relief; WGS84 sea-level ellipsoid, omitted geoid correction documented |
-| Mercury, Venus, Enceladus | MESSENGER, Magellan, Cassini measured DEMs; constant illustrative ground color, not measured albedo |
+| Mercury, Enceladus | MESSENGER/Cassini measured DEMs and independent mapped monochrome imagery |
+| Venus | Measured Magellan DEM; constant illustrative ground color |
+| Dione, Mimas, Tethys | Mapped Cassini imagery; measured PCK ellipsoid, no detailed elevation bundled |
 | Titan | Cassini ISS near-infrared appearance and Corlies 2017 sparse/interpolated topography, illustrative haze |
 | Phobos, Deimos | Simplified measured PDS Thomas shape meshes, illustrative material |
 | Io, Europa, Ganymede, Callisto, Rhea, Iapetus, Triton | Official mapped appearance and independent procedural relief, not DEMs |

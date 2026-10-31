@@ -1,4 +1,9 @@
 import {
+  projectDetail,
+  detailVector,
+  stabilizeGlobalPoles,
+} from "./surface-math.js";
+import {
   SURFACE_DEFINITIONS,
   getSurfaceDefinition,
   isCanonicalSurfaceBody,
@@ -58,7 +63,9 @@ async function defaultLoadHeight(url, descriptor) {
   if (!response.ok)
     throw new Error(`surface height ${response.status}: ${url}`);
   const buffer = url.endsWith(".gz")
-    ? await new Response(response.body.pipeThrough(new DecompressionStream("gzip"))).arrayBuffer()
+    ? await new Response(
+        response.body.pipeThrough(new DecompressionStream("gzip")),
+      ).arrayBuffer()
     : await response.arrayBuffer();
   const raw = new DataView(buffer);
   const width = descriptor.heightWidth ?? descriptor.width;
@@ -90,6 +97,7 @@ async function loadOptionalRegion(loadHeight, descriptor) {
       descriptor.region,
     );
     return {
+      ...descriptor.region,
       ...loaded,
       name: descriptor.region.name,
       uvBounds: descriptor.region.uvBounds,
@@ -117,17 +125,25 @@ function longitudeIntervals(u0, u1) {
   const width = ((span % 1) + 1) % 1;
   if (width === 0) return [[start, start]];
   const end = start + width;
-  return end <= 1 ? [[start, end]] : [[start, 1], [0, end - 1]];
+  return end <= 1
+    ? [[start, end]]
+    : [
+        [start, 1],
+        [0, end - 1],
+      ];
 }
 
 function closestLongitude(u, lo, hi) {
   const candidates = [lo, hi];
   if (u >= lo && u <= hi) candidates.push(u);
-  return candidates.reduce((best, value) => {
-    const wrapped = (((value - u + 0.5) % 1) + 1) % 1;
-    const distance = Math.abs(wrapped - 0.5);
-    return distance < best.distance ? { value, distance } : best;
-  }, { value: lo, distance: Infinity }).value;
+  return candidates.reduce(
+    (best, value) => {
+      const wrapped = (((value - u + 0.5) % 1) + 1) % 1;
+      const distance = Math.abs(wrapped - 0.5);
+      return distance < best.distance ? { value, distance } : best;
+    },
+    { value: lo, distance: Infinity },
+  ).value;
 }
 
 // Return the greatest dot product between the camera direction and a tile.
@@ -137,11 +153,62 @@ function regionVisibility(surfaceUv, region) {
   const bounds = region?.uvBounds;
   if (!bounds || bounds.length !== 4) return -Infinity;
   const [u0, v0, u1, v1] = bounds;
+  if (region.projection === "polar-stereographic") {
+    const camera = detailVector(surfaceUv.u, surfaceUv.v, {});
+    const projected = projectDetail(camera, region);
+    if (!projected) return -1;
+    const u = Math.max(u0, Math.min(u1, projected.u));
+    const v = Math.max(v0, Math.min(v1, projected.v));
+    const points = [
+      [u, v],
+      [u0, v0],
+      [u1, v0],
+      [u0, v1],
+      [u1, v1],
+      [(u0 + u1) / 2, (v0 + v1) / 2],
+    ];
+    const radius = Math.hypot(projected.u - 0.5, projected.v - 0.5);
+    if (radius > 0)
+      points.push([
+        0.5 + ((projected.u - 0.5) * 0.5) / radius,
+        0.5 + ((projected.v - 0.5) * 0.5) / radius,
+      ]);
+    // Include rectangle/cap-circle intersections. Square corners beyond the
+    // cap contain resampling padding and must not suppress legacy terrain.
+    for (const x of [u0, u1])
+      if (Math.abs(x - 0.5) <= 0.5) {
+        const dy = Math.sqrt(Math.max(0, 0.25 - (x - 0.5) ** 2));
+        points.push([x, 0.5 - dy], [x, 0.5 + dy]);
+      }
+    for (const y of [v0, v1])
+      if (Math.abs(y - 0.5) <= 0.5) {
+        const dx = Math.sqrt(Math.max(0, 0.25 - (y - 0.5) ** 2));
+        points.push([0.5 - dx, y], [0.5 + dx, y]);
+      }
+    let best = -Infinity;
+    for (const [x, y] of points) {
+      if (
+        x < u0 - 1e-12 ||
+        x > u1 + 1e-12 ||
+        y < v0 - 1e-12 ||
+        y > v1 + 1e-12 ||
+        Math.hypot(x - 0.5, y - 0.5) > 0.5 + 1e-12
+      )
+        continue;
+      const point = detailVector(x, y, region);
+      best = Math.max(
+        best,
+        point.reduce((sum, value, i) => sum + value * camera[i], 0),
+      );
+    }
+    return best;
+  }
   const cameraLat = (0.5 - clamp01(surfaceUv.v)) * Math.PI;
   const cameraU = ((surfaceUv.u % 1) + 1) % 1;
   const latA = (0.5 - clamp01(v0)) * Math.PI;
   const latB = (0.5 - clamp01(v1)) * Math.PI;
-  const latMin = Math.min(latA, latB), latMax = Math.max(latA, latB);
+  const latMin = Math.min(latA, latB),
+    latMax = Math.max(latA, latB);
   let best = -Infinity;
   for (const [lo, hi] of longitudeIntervals(u0, u1)) {
     const lonU = closestLongitude(cameraU, lo, hi);
@@ -201,24 +268,46 @@ export class SurfaceAssetCache {
 
   _tileDescriptor(grid, u, v, colorGrid = null) {
     if (!grid || grid.pixelsPerDegree !== 64 || !grid.baseUrl) return null;
-    const width = grid.width, height = grid.height, tile = grid.tilePixels;
+    const width = grid.width,
+      height = grid.height,
+      tile = grid.tilePixels;
     if (!(width === 23040 && height === 11520 && tile === 1024)) return null;
-    const col = Math.min(Math.ceil(width / tile) - 1, Math.floor((((u % 1) + 1) % 1) * width / tile));
-    const row = Math.min(Math.ceil(height / tile) - 1, Math.floor(Math.max(0, Math.min(1 - 1e-12, v)) * height / tile));
-    const x = col * tile, y = row * tile;
-    const regionWidth = Math.min(tile, width - x), regionHeight = Math.min(tile, height - y);
+    const col = Math.min(
+      Math.ceil(width / tile) - 1,
+      Math.floor(((((u % 1) + 1) % 1) * width) / tile),
+    );
+    const row = Math.min(
+      Math.ceil(height / tile) - 1,
+      Math.floor((Math.max(0, Math.min(1 - 1e-12, v)) * height) / tile),
+    );
+    const x = col * tile,
+      y = row * tile;
+    const regionWidth = Math.min(tile, width - x),
+      regionHeight = Math.min(tile, height - y);
     return {
       id: `tile-${row}-${col}`,
       name: `Global 64 ppd tile ${row}/${col}`,
       heightUrl: `${grid.baseUrl}/${row}-${col}.bin.gz`,
-      ...(colorGrid?.baseUrl && colorGrid.width === width && colorGrid.height === height && colorGrid.tilePixels === tile
-        ? { colorUrl: `${colorGrid.baseUrl}/${row}-${col}.jpg`, width: regionWidth, height: regionHeight }
+      ...(colorGrid?.baseUrl &&
+      colorGrid.width === width &&
+      colorGrid.height === height &&
+      colorGrid.tilePixels === tile
+        ? {
+            colorUrl: `${colorGrid.baseUrl}/${row}-${col}.jpg`,
+            width: regionWidth,
+            height: regionHeight,
+          }
         : {}),
       heightWidth: regionWidth,
       heightHeight: regionHeight,
       heightOffsetMeters: grid.heightOffsetMeters,
       heightScaleMeters: grid.heightScaleMeters,
-      uvBounds: [x / width, y / height, (x + regionWidth) / width, (y + regionHeight) / height],
+      uvBounds: [
+        x / width,
+        y / height,
+        (x + regionWidth) / width,
+        (y + regionHeight) / height,
+      ],
       minElevationMeters: grid.minElevationMeters,
       maxElevationMeters: grid.maxElevationMeters,
       blendBorder: 0.025,
@@ -227,19 +316,34 @@ export class SurfaceAssetCache {
 
   _colorTileDescriptor(grid, u, v) {
     if (!grid || grid.pixelsPerDegree !== 64 || !grid.baseUrl) return null;
-    const width = grid.width, height = grid.height, tile = grid.tilePixels;
+    const width = grid.width,
+      height = grid.height,
+      tile = grid.tilePixels;
     if (!(width === 23040 && height === 11520 && tile === 1024)) return null;
-    const col = Math.min(Math.ceil(width / tile) - 1, Math.floor((((u % 1) + 1) % 1) * width / tile));
-    const row = Math.min(Math.ceil(height / tile) - 1, Math.floor(Math.max(0, Math.min(1 - 1e-12, v)) * height / tile));
-    const x = col * tile, y = row * tile;
-    const regionWidth = Math.min(tile, width - x), regionHeight = Math.min(tile, height - y);
+    const col = Math.min(
+      Math.ceil(width / tile) - 1,
+      Math.floor(((((u % 1) + 1) % 1) * width) / tile),
+    );
+    const row = Math.min(
+      Math.ceil(height / tile) - 1,
+      Math.floor((Math.max(0, Math.min(1 - 1e-12, v)) * height) / tile),
+    );
+    const x = col * tile,
+      y = row * tile;
+    const regionWidth = Math.min(tile, width - x),
+      regionHeight = Math.min(tile, height - y);
     return {
       id: `tile-${row}-${col}`,
       name: `Global 64 ppd color tile ${row}/${col}`,
       colorUrl: `${grid.baseUrl}/${row}-${col}.jpg`,
       width: regionWidth,
       height: regionHeight,
-      uvBounds: [x / width, y / height, (x + regionWidth) / width, (y + regionHeight) / height],
+      uvBounds: [
+        x / width,
+        y / height,
+        (x + regionWidth) / width,
+        (y + regionHeight) / height,
+      ],
       blendBorder: 0.025,
     };
   }
@@ -285,7 +389,8 @@ export class SurfaceAssetCache {
     const regionDescriptor =
       regionId === "global"
         ? null
-        : descriptor?.regions?.find((region) => region.id === regionId) ||
+        : descriptor?.detailTiles?.find((region) => region.id === regionId) ||
+          descriptor?.regions?.find((region) => region.id === regionId) ||
           (descriptor?.region?.id === regionId ||
           descriptor?.region?.name === regionId
             ? descriptor.region
@@ -296,14 +401,30 @@ export class SurfaceAssetCache {
                 const grid = descriptor?.tileGrid;
                 const colorGrid = descriptor?.colorTileGrid;
                 return Number.isInteger(row) && Number.isInteger(col) && grid
-                  ? this._tileDescriptor(grid,
-                    (col * grid.tilePixels + Math.min(grid.tilePixels, grid.width - col * grid.tilePixels) / 2) / grid.width,
-                    (row * grid.tilePixels + Math.min(grid.tilePixels, grid.height - row * grid.tilePixels) / 2) / grid.height,
-                    colorGrid)
+                  ? this._tileDescriptor(
+                      grid,
+                      (col * grid.tilePixels +
+                        Math.min(
+                          grid.tilePixels,
+                          grid.width - col * grid.tilePixels,
+                        ) /
+                          2) /
+                        grid.width,
+                      (row * grid.tilePixels +
+                        Math.min(
+                          grid.tilePixels,
+                          grid.height - row * grid.tilePixels,
+                        ) /
+                          2) /
+                        grid.height,
+                      colorGrid,
+                    )
                   : Number.isInteger(row) && Number.isInteger(col) && colorGrid
-                    ? this._colorTileDescriptor(colorGrid,
-                      (col * colorGrid.tilePixels + 0.5) / colorGrid.width,
-                      (row * colorGrid.tilePixels + 0.5) / colorGrid.height)
+                    ? this._colorTileDescriptor(
+                        colorGrid,
+                        (col * colorGrid.tilePixels + 0.5) / colorGrid.width,
+                        (row * colorGrid.tilePixels + 0.5) / colorGrid.height,
+                      )
                     : null;
               })()
             : null);
@@ -322,6 +443,8 @@ export class SurfaceAssetCache {
         } else color = await this.loadImage(descriptor.color, descriptor);
         if (descriptor.heightUrl)
           height = await this.loadHeight(descriptor.heightUrl, descriptor);
+        stabilizeGlobalPoles(color, 4);
+        stabilizeGlobalPoles(height);
       } else {
         if (!regionDescriptor) throw new Error("Unknown surface region");
         const [loadedHeight, loadedColor] = await Promise.all([
@@ -329,18 +452,24 @@ export class SurfaceAssetCache {
             ? loadOptionalRegion(this.loadHeight, { region: regionDescriptor })
             : null,
           regionDescriptor.colorUrl
-            ? this.loadImage(regionDescriptor.colorUrl, regionDescriptor)
-                .catch((error) => ({ error: error instanceof Error ? error.message : String(error) }))
+            ? this.loadImage(regionDescriptor.colorUrl, regionDescriptor).catch(
+                (error) => ({
+                  error: error instanceof Error ? error.message : String(error),
+                }),
+              )
             : null,
         ]);
         region = loadedHeight;
         colorRegion = loadedColor?.data ? loadedColor : null;
         if (colorRegion) {
+          Object.assign(colorRegion, { ...regionDescriptor, ...colorRegion });
           colorRegion.uvBounds = regionDescriptor.uvBounds;
           colorRegion.blendBorder = regionDescriptor.blendBorder;
         }
         if (!region?.data && !colorRegion?.data)
-          throw new Error(region?.error || loadedColor?.error || "Empty surface region");
+          throw new Error(
+            region?.error || loadedColor?.error || "Empty surface region",
+          );
       }
       if (generation !== this.generation) {
         color?.dispose?.();
@@ -354,7 +483,8 @@ export class SurfaceAssetCache {
           ? shape.vertices.length * 3 * 8 + shape.indices.length * 8
           : (color?.bytes ?? 0)) +
         (height?.bytes ?? 0) +
-        (region?.bytes ?? 0) + (colorRegion?.bytes ?? 0);
+        (region?.bytes ?? 0) +
+        (colorRegion?.bytes ?? 0);
       const entry = {
         bodyId,
         level,
@@ -394,7 +524,9 @@ export class SurfaceAssetCache {
       );
       const victim = candidates[0];
       if (!victim) break;
-      this.entries.delete(this._key(victim.bodyId, victim.level, victim.regionId));
+      this.entries.delete(
+        this._key(victim.bodyId, victim.level, victim.regionId),
+      );
       this.usedBytes -= victim.bytes;
       this.onEvict(victim);
       victim.color?.dispose?.();
@@ -413,7 +545,14 @@ export class SurfaceAssetCache {
     return null;
   }
 
-  get(body, projectedRadiusPx = 0, now = Date.now(), surfaceUv = null, visibleDot = 0, viewUv = null) {
+  get(
+    body,
+    projectedRadiusPx = 0,
+    now = Date.now(),
+    surfaceUv = null,
+    visibleDot = 0,
+    viewUv = null,
+  ) {
     this.frame = now;
     const definition =
       this.manifest.bodies?.[body?.id] ?? getSurfaceDefinition(body);
@@ -439,23 +578,67 @@ export class SurfaceAssetCache {
     )
       this._enqueue(body.id, ORDER[i], "global");
     let regionalId = null;
+    let legacyId = null;
+    let detailIds = [];
     const nearDescriptor = definition.levels.near;
-    const regions = nearDescriptor?.regions ||
+    const regions =
+      nearDescriptor?.regions ||
       (nearDescriptor?.region ? [nearDescriptor.region] : []);
-    // At terrain scale choose a single nearby global tile directly by UV;
-    // never enqueue the entire pack. At higher altitude keep the coherent
-    // lower-resolution globe and its existing curated regional DEMs.
+    // Select a bounded footprint, ranked against the center ray and clipped
+    // by the finite-distance horizon. Legacy grids retain their UV lookup.
     // Measure against canonical radius with headroom for high terrain and
     // oblate Earth: a 15 km-above-ground camera can exceed R+0.01R.
-    if (target === "near" && surfaceUv && visibleDot > 0.975 && (nearDescriptor?.tileGrid || nearDescriptor?.colorTileGrid)) {
+    if (
+      target === "near" &&
+      surfaceUv &&
+      nearDescriptor?.detailTiles?.length &&
+      visibleDot > 0.9
+    ) {
+      detailIds = nearDescriptor.detailTiles
+        .map((tile, index) => ({
+          tile,
+          index,
+          visibility: regionVisibility(surfaceUv, tile),
+          score: regionVisibility(viewUv || surfaceUv, tile),
+        }))
+        .filter((item) => item.visibility >= visibleDot - 1e-9)
+        .sort(
+          (a, b) =>
+            b.score - a.score ||
+            b.visibility - a.visibility ||
+            a.index - b.index,
+        )
+        .slice(
+          0,
+          nearDescriptor.tileGrid ||
+            nearDescriptor.colorTileGrid ||
+            regions.length
+            ? 11
+            : 12,
+        )
+        .map(({ tile }) => tile.id).reverse();
+      for (const id of [...detailIds].reverse()) this._enqueue(body.id, "near", id);
+    }
+    if (
+      target === "near" &&
+      surfaceUv &&
+      visibleDot > 0.975 &&
+      (nearDescriptor?.tileGrid || nearDescriptor?.colorTileGrid)
+    ) {
       const uv = viewUv || surfaceUv;
       const tile = nearDescriptor.tileGrid
-        ? this._tileDescriptor(nearDescriptor.tileGrid, uv.u, uv.v, nearDescriptor.colorTileGrid)
+        ? this._tileDescriptor(
+            nearDescriptor.tileGrid,
+            uv.u,
+            uv.v,
+            nearDescriptor.colorTileGrid,
+          )
         : this._colorTileDescriptor(nearDescriptor.colorTileGrid, uv.u, uv.v);
       regionalId = tile?.id || null;
+      legacyId = regionalId;
       if (regionalId) this._enqueue(body.id, "near", regionalId);
     }
-    if (!regionalId && target === "near" && surfaceUv && regions.length) {
+    if (target === "near" && surfaceUv && regions.length) {
       const matching = regions
         .map((region, index) => ({
           region,
@@ -474,7 +657,11 @@ export class SurfaceAssetCache {
             (a.region.priority ?? 0) - (b.region.priority ?? 0) ||
             a.index - b.index,
         )[0]?.region;
-      if (matching) {
+      if (
+        matching &&
+        (!regionalId ||
+          regionVisibility(viewUv || surfaceUv, matching) >= 1 - 1e-10)
+      ) {
         regionalId = matching.id || matching.name;
         this._enqueue(body.id, "near", regionalId);
       }
@@ -487,28 +674,81 @@ export class SurfaceAssetCache {
         item.bodyId !== body.id ||
         item.level !== "near" ||
         item.regionId === "global" ||
-        item.regionId === regionalId,
+        item.regionId === regionalId ||
+        item.regionId === legacyId ||
+        detailIds.includes(item.regionId),
     );
     const regionalEntry = regionalId
       ? this.entries.get(this._key(body.id, target, regionalId))
       : null;
+    const legacyEntry = legacyId
+      ? this.entries.get(this._key(body.id, target, legacyId))
+      : null;
+    const selectedHeight = regionalEntry?.region || legacyEntry?.region || null;
+    const selectedColor =
+      regionalEntry?.colorRegion || legacyEntry?.colorRegion || null;
     // Regional color and height are optional layers over the stable global
     // map. Keep that fallback while tiles load or evict.
     const entry =
-      regionalEntry && globalEntry?.level === "near"
-        ? { ...globalEntry, region: regionalEntry.region, colorRegion: regionalEntry.colorRegion, regionId: regionalId }
+      (regionalEntry || legacyEntry) && globalEntry?.level === "near"
+        ? {
+            ...globalEntry,
+            region: selectedHeight,
+            colorRegion: selectedColor,
+            regionId: regionalId,
+            fallbackRegion:
+              legacyEntry?.region !== selectedHeight
+                ? legacyEntry?.region
+                : null,
+            fallbackColorRegion:
+              legacyEntry?.colorRegion !== selectedColor
+                ? legacyEntry?.colorRegion
+                : null,
+          }
         : globalEntry;
+    const detailEntries =
+      globalEntry?.level === "near"
+        ? detailIds
+            .map((id) => this.entries.get(this._key(body.id, "near", id)))
+            .filter(Boolean)
+        : [];
+    if (
+      globalEntry &&
+      (!globalEntry.detailTiles ||
+        globalEntry.detailTiles.length !== detailEntries.length ||
+        detailEntries.some(
+          (tile, index) => tile !== globalEntry.detailTiles[index],
+        ))
+    )
+      globalEntry.detailTiles = detailEntries;
+    for (const tile of new Set([
+      ...detailEntries,
+      regionalEntry,
+      legacyEntry,
+    ])) {
+      if (!tile) continue;
+      tile.lastUsed = now;
+      const blend = Math.max(0, Math.min(1, (now - tile.loadedAt) / 800));
+      if (tile.region) tile.region.detailBlend = blend;
+      if (tile.colorRegion) tile.colorRegion.detailBlend = blend;
+    }
     const loading =
       [...this.inFlight.keys()].some((key) => key.startsWith(`${body.id}:`)) ||
       this.queue.some((item) => item.bodyId === body.id);
-    const failed = this.failures.has(
-      this._key(body.id, target, regionalId || "global"),
-    );
+    const failed =
+      this.failures.has(this._key(body.id, target, regionalId || "global")) ||
+      detailIds.some((id) => this.failures.has(this._key(body.id, "near", id)));
     if (entry) {
       globalEntry.lastUsed = now;
       if (regionalEntry && entry.region === regionalEntry.region)
         regionalEntry.lastUsed = now;
-      return { ...entry, targetLevel: target, loading, failed };
+      return {
+        ...entry,
+        detailTiles: globalEntry.detailTiles,
+        targetLevel: target,
+        loading,
+        failed,
+      };
     }
     return {
       bodyId: body.id,

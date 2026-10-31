@@ -11,21 +11,73 @@
     "pixelRegistration": "area-centered",
     "sourceLongitude": "east-positive 0..360; output columns rotated 180 degrees"
   },
-  "colorType": "constant neutral fallback; not imagery",
+  "colorType": "Mapped spacecraft imagery; see pinned source and display processing",
   "provenance": {
     "url": "https://planetarymaps.usgs.gov/mosaic/Mercury_Messenger_USGS_DEM_Global_665m_v2.tif",
     "sha256": "defce776241dcaf44cb0f081ee508c17dbea28aa5a22880bf7a5e8c25f96cbea",
     "dimensions": "23040x11520 signed 16-bit GeoTIFF",
     "datum": "Mercury spherical radius 2439400 m; GDAL SCALE=0.5, OFFSET=0",
     "operations": "Verified GeoTIFF GeoKeys/origin/resolution; source 0..360 raster rotated to canonical -180..180; area-resampled signed samples exported as uint16 little-endian with scale 0.5 and offset -10000",
-    "attribution": "USGS Astrogeology Science Center / NASA MESSENGER MDIS"
+    "attribution": "USGS Astrogeology Science Center / NASA MESSENGER MDIS",
+    "imagery": {
+      "sha256": "17aa4dadf0777a0f930484bc22bc13d3f083b618d8f7bedfba28cebeabd4c65b",
+      "width": 23040,
+      "height": 11520,
+      "source": {
+        "file": "mercury-mosaic-250m.tif",
+        "sha256": "720938d9a403803b016e88d22d58cddbbf4fe8cb99f652c90f19b5a1bc946c76",
+        "url": "https://planetarymaps.usgs.gov/mosaic/Mercury_MESSENGER_mosaic_global_250m_2013.tif",
+        "width": 61324,
+        "height": 30662,
+        "center": 0,
+        "west": false,
+        "citation": "NASA MESSENGER MDIS / USGS global monochrome mosaic, May 2013, 250 m pixels",
+        "bytes": 1880562441
+      },
+      "georeferencing": {
+        "origin": [
+          -7665486.0747591,
+          3832743.0373795,
+          0
+        ],
+        "resolution": [
+          249.99954584695,
+          -249.99954584695,
+          0
+        ],
+        "keys": {
+          "GTModelTypeGeoKey": 1,
+          "GTRasterTypeGeoKey": 1,
+          "GTCitationGeoKey": "Equirectangular Mercury",
+          "GeographicTypeGeoKey": 32767,
+          "GeogCitationGeoKey": "GCS Name = GCS_Mercury|Datum = D_Mercury|Ellipsoid = Mercury_localRadius|Primem = Reference_Meridian|",
+          "GeogGeodeticDatumGeoKey": 32767,
+          "GeogAngularUnitsGeoKey": 9102,
+          "GeogEllipsoidGeoKey": 32767,
+          "GeogSemiMajorAxisGeoKey": 2440000,
+          "GeogSemiMinorAxisGeoKey": 2440000,
+          "GeogPrimeMeridianLongGeoKey": 0,
+          "ProjectedCSTypeGeoKey": 32767,
+          "ProjectionGeoKey": 32767,
+          "ProjCoordTransGeoKey": 17,
+          "ProjLinearUnitsGeoKey": 9001,
+          "ProjStdParallel1GeoKey": 0,
+          "ProjFalseEastingGeoKey": 0,
+          "ProjFalseNorthingGeoKey": 0,
+          "ProjCenterLongGeoKey": 0,
+          "ProjCenterLatGeoKey": 0
+        }
+      },
+      "displayStretch": null,
+      "normalization": "Pixel-centered planetocentric east-positive -180..180 north-up; source GeoTIFF origin/resolution and label longitude direction explicitly sampled; no height inferred. Source grid is downsampled at most to 64 ppd; display contrast is not calibrated albedo."
+    }
   },
   "levels": {
     "preview": {
       "width": 512,
       "height": 256,
       "color": "/assets/surfaces/mercury-preview.jpg",
-      "colorSha256": "24395718aa829f7632c8ac63c7db1a8f2db524fd34011e7e198464b76e136523",
+      "colorSha256": "06bbefc89d5b2ac3281dd4d8c8381ead9d751df71c05ab242138964ba73572fa",
       "heightUrl": "/assets/surfaces/mercury-preview.height.bin",
       "heightWidth": 512,
       "heightHeight": 256,
@@ -39,7 +91,7 @@
       "width": 1024,
       "height": 512,
       "color": "/assets/surfaces/mercury-medium.jpg",
-      "colorSha256": "b01496240c41bfb35f853948c28519daacfdfa1266dc84c4aebfd4d664d77545",
+      "colorSha256": "ce089236d427d301ac5c59248da83c4eb5daffe02df1a30a54402b0eb2e28533",
       "heightUrl": "/assets/surfaces/mercury-medium.height.bin",
       "heightWidth": 1024,
       "heightHeight": 512,
@@ -53,7 +105,7 @@
       "width": 2048,
       "height": 1024,
       "color": "/assets/surfaces/mercury-near.jpg",
-      "colorSha256": "9aeb8d2070de90fec183bcf1a018fb5309d7e99db2e7382c95d909cfc8f1db10",
+      "colorSha256": "f8d5a460ced12c0ec622d12273be9684e89acd04332ac4298daac74969bbe9f7",
       "heightUrl": "/assets/surfaces/mercury-near.height.bin",
       "heightWidth": 2048,
       "heightHeight": 1024,

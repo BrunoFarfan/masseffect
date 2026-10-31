@@ -26,14 +26,66 @@
     "license": "USGS/NASA public-domain planetary imagery; retain product and mission attribution.",
     "orientationReference": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/pck00011.tpc",
     "processing": "Pinned 1024px sample; decode; metadata-derived positive-west to east-positive horizontal flip; resize to 512 and 1024 only; JPEG quality 88.",
-    "proceduralHeight": "Deterministic sinusoidal synthetic field, 0.5 m encoding, -64..63.5 m range; not measured relief and not derived from image pixels."
+    "proceduralHeight": "Deterministic sinusoidal synthetic field, 0.5 m encoding, -64..63.5 m range; not measured relief and not derived from image pixels.",
+    "imagery": {
+      "sha256": "5d4dcb60e4f5b9bf505dc71b0b51d4ebafd99c7fd6074e6c8e84c24626ce1f70",
+      "width": 11444,
+      "height": 5722,
+      "source": {
+        "file": "io-usgs-color-1km.tif",
+        "sha256": "135f88cb645bfdb4e045b380971ab2ba14e230590c96c9c86cfe7310fda881ac",
+        "url": "https://planetarymaps.usgs.gov/mosaic/Io_GalileoSSI-Voyager_Global_Mosaic_ClrMerge_1km.tif",
+        "width": 11445,
+        "height": 5723,
+        "center": 0,
+        "west": true,
+        "citation": "NASA Galileo SSI / Voyager, USGS color-merged mosaic, 1 km grid; source detail varies 1–10 km, false color and baked illumination",
+        "bytes": 196637696
+      },
+      "georeferencing": {
+        "origin": [
+          -5723000,
+          2862000,
+          0
+        ],
+        "resolution": [
+          1000,
+          -1000,
+          0
+        ],
+        "keys": {
+          "GTModelTypeGeoKey": 1,
+          "GTRasterTypeGeoKey": 1,
+          "GTCitationGeoKey": "SimpleCylindrical Io",
+          "GeographicTypeGeoKey": 32767,
+          "GeogCitationGeoKey": "GCS Name = GCS_Io|Datum = D_Io|Ellipsoid = Io|Primem = Reference_Meridian|",
+          "GeogGeodeticDatumGeoKey": 32767,
+          "GeogAngularUnitsGeoKey": 9102,
+          "GeogEllipsoidGeoKey": 32767,
+          "GeogSemiMajorAxisGeoKey": 1821460,
+          "GeogSemiMinorAxisGeoKey": 1821460,
+          "GeogPrimeMeridianLongGeoKey": 0,
+          "ProjectedCSTypeGeoKey": 32767,
+          "ProjectionGeoKey": 32767,
+          "ProjCoordTransGeoKey": 17,
+          "ProjLinearUnitsGeoKey": 9001,
+          "ProjStdParallel1GeoKey": 0,
+          "ProjFalseEastingGeoKey": 0,
+          "ProjFalseNorthingGeoKey": 0,
+          "ProjCenterLongGeoKey": 0,
+          "ProjCenterLatGeoKey": 0
+        }
+      },
+      "displayStretch": null,
+      "normalization": "Pixel-centered planetocentric east-positive -180..180 north-up; source GeoTIFF origin/resolution and label longitude direction explicitly sampled; no height inferred. Source grid is downsampled at most to 64 ppd; display contrast is not calibrated albedo."
+    }
   },
   "levels": {
     "preview": {
       "color": "/assets/surfaces/io-preview.jpg",
       "width": 512,
       "height": 256,
-      "colorSha256": "d7be79202a0b9c229fde2dceafb7e6c80690b4171c8455f4eac760cabbcf120a",
+      "colorSha256": "589e621fcee38f36fb724da8f8a7d04ceeb15095c0544ac5681d6f6c2542b03f",
       "heightUrl": "/assets/surfaces/io-preview.height.bin",
       "heightWidth": 512,
       "heightHeight": 256,
@@ -47,7 +99,7 @@
       "color": "/assets/surfaces/io-medium.jpg",
       "width": 1024,
       "height": 512,
-      "colorSha256": "8b0fb0006f61f1ea1845857799ddd9f8ad954b4a1e3d46a528408385501e9228",
+      "colorSha256": "55774f1e857ed2291a22cebada247f6aa4faff1732e1ec590691fcad0fded2a4",
       "heightUrl": "/assets/surfaces/io-medium.height.bin",
       "heightWidth": 1024,
       "heightHeight": 512,
@@ -59,9 +111,9 @@
     },
     "near": {
       "color": "/assets/surfaces/io-near.jpg",
-      "width": 1024,
-      "height": 512,
-      "colorSha256": "8b0fb0006f61f1ea1845857799ddd9f8ad954b4a1e3d46a528408385501e9228",
+      "width": 2048,
+      "height": 1024,
+      "colorSha256": "e353bf2340e40cca4757eebc0e500810ad0e71478801948b98497b8037978dec",
       "heightUrl": "/assets/surfaces/io-near.height.bin",
       "heightWidth": 1024,
       "heightHeight": 512,
@@ -71,5 +123,6 @@
       "minElevationMeters": -64,
       "maxElevationMeters": 63.5
     }
-  }
+  },
+  "colorType": "Mapped spacecraft imagery; see pinned source and display processing"
 }

@@ -59,6 +59,7 @@ export class Camera {
     this.yaw = Math.atan2(d[0], -d[2]);
   }
   home(outer = false, animate = false) {
+    this.overview = outer ? "outer" : "inner";
     this.stop();
     this.levelFrame(animate);
     this.surfaceBlockedId = animate ? this.surface?.id || this.followId : null;
@@ -81,6 +82,7 @@ export class Camera {
     }
   }
   focus(body, bodies = null) {
+    this.overview = null;
     this.stop();
     this.levelFrame();
     this.surfaceBlockedId = this.surface?.id || this.followId;
@@ -103,6 +105,7 @@ export class Camera {
     this.previousTarget = [...body.position];
   }
   release() {
+    this.overview = null;
     this.stop();
     this.levelFrame();
     this.surfaceBlockedId = this.surface?.id || this.followId;
@@ -275,7 +278,10 @@ export class Camera {
     ])
       if (keys.has(key)) direction = add(direction, mul(axis, sign));
     const moving = length(direction) > 0;
-    if (moving) this.transition = null;
+    if (moving) {
+      this.overview = null;
+      this.transition = null;
+    }
     if (!this.transition && dt > 0) {
       // Smooth intent, not astronomical coordinates. Integrating the exponential
       // exactly keeps acceleration/braking consistent across render framerates.
@@ -315,6 +321,7 @@ export class Camera {
     );
   }
   travel(amount) {
+    if (amount) this.overview = null;
     this.transition = null;
     this.wheelMotion = clamp(this.wheelMotion + amount / 0.14, -6, 6);
   }
@@ -379,6 +386,7 @@ export class Camera {
     }
   }
   rotate(dx, dy) {
+    if (dx || dy) this.overview = null;
     this.transition = null;
     this.yaw -= dx * 0.002;
     this.pitch = clamp(

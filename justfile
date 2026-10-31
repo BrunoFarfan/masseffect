@@ -33,6 +33,19 @@ prepare-terrain64 body="" mode="--rebuild":
 prepare-color64 body="" mode="--rebuild":
     node scripts/prepare-color64.mjs {{body}} {{mode}}
 
+# Native imagery masters stay ignored; only prepared levels and tiles publish.
+prepare-map-imagery body="" mode="--rebuild":
+    node scripts/prepare-map-imagery.mjs {{body}} {{mode}}
+
+prepare-map-levels:
+    node scripts/prepare-map-levels.mjs --rebuild
+
+prepare-saturn-moons mode="--rebuild":
+    node scripts/prepare-saturn-moons.mjs {{mode}}
+
+prepare-detail-maps bodies="" mode="--rebuild":
+    node scripts/prepare-detail-maps.mjs {{mode}} {{if bodies == "" { "" } else { "--bodies=" + bodies }}}
+
 assemble-surfaces:
     node scripts/assemble-surfaces.mjs
 
@@ -41,3 +54,6 @@ check:
 
 format:
     npx --yes prettier@3.6.2 --write src scripts tests index.html style.css package.json README.md ITERATIONS.md EXPANSION.md
+
+format-files +files:
+    npx --yes prettier@3.6.2 --write {{files}}

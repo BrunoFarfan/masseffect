@@ -290,7 +290,7 @@ export class Renderer {
     }
     ctx.globalAlpha = 1;
     if (options.labels) {
-      ctx.font = '11px "Trebuchet MS", sans-serif';
+      ctx.font = '11px "Instrument Sans", sans-serif';
       const occupied = visible.map(({ p }) => ({
         x: p.x - p.radius - 3,
         y: p.y - p.radius - 3,
@@ -365,9 +365,13 @@ export class Renderer {
         ...(options.occlusions || []),
       ];
       let shown = 0;
-      for (const landmarkBody of nearbyLandmarkBodies(sim.bodies, camera.position)) {
+      for (const landmarkBody of nearbyLandmarkBodies(
+        sim.bodies,
+        camera.position,
+      )) {
         const landmarkState = this.surfaces.state(landmarkBody);
-        const landmarkFrame = landmarkState?.frame || surfaceFrame(landmarkBody, sim.time);
+        const landmarkFrame =
+          landmarkState?.frame || surfaceFrame(landmarkBody, sim.time);
         if (!landmarkFrame) continue;
         const sampleState = {
           ...landmarkState,
@@ -379,16 +383,37 @@ export class Renderer {
             : () => 0,
         };
         const cameraRadial = unit(sub(camera.position, landmarkBody.position));
-        const horizonDot = landmarkBody.radius /
-          Math.max(landmarkBody.radius, length(sub(camera.position, landmarkBody.position)));
+        const horizonDot =
+          landmarkBody.radius /
+          Math.max(
+            landmarkBody.radius,
+            length(sub(camera.position, landmarkBody.position)),
+          );
         const nearbySites = SURFACE_LANDMARKS[landmarkBody.id]
-          .map((site) => ({ site, point: landmarkPoint(landmarkBody, sampleState, site, 50) }))
-          .filter(({ point }) => point && dot(point.direction, cameraRadial) >= horizonDot - 0.02)
-          .map((entry) => ({ ...entry, screen: this.project(entry.point.position) }))
-          .filter(({ screen }) => screen && screen.x >= 0 && screen.x < w && screen.y >= 0 && screen.y < h)
-          .sort((a, b) =>
-            Math.hypot(a.screen.x - w / 2, a.screen.y - h / 2) -
-            Math.hypot(b.screen.x - w / 2, b.screen.y - h / 2),
+          .map((site) => ({
+            site,
+            point: landmarkPoint(landmarkBody, sampleState, site, 50),
+          }))
+          .filter(
+            ({ point }) =>
+              point && dot(point.direction, cameraRadial) >= horizonDot - 0.02,
+          )
+          .map((entry) => ({
+            ...entry,
+            screen: this.project(entry.point.position),
+          }))
+          .filter(
+            ({ screen }) =>
+              screen &&
+              screen.x >= 0 &&
+              screen.x < w &&
+              screen.y >= 0 &&
+              screen.y < h,
+          )
+          .sort(
+            (a, b) =>
+              Math.hypot(a.screen.x - w / 2, a.screen.y - h / 2) -
+              Math.hypot(b.screen.x - w / 2, b.screen.y - h / 2),
           );
         for (const { site, point } of nearbySites.slice(0, 16)) {
           if (
@@ -488,7 +513,7 @@ export class Renderer {
           );
           ctx.stroke();
         }
-        ctx.font = '12px "Trebuchet MS",sans-serif';
+        ctx.font = '12px "Instrument Sans",sans-serif';
         ctx.fillStyle = b.color;
         ctx.fillText(b.name + " · preview", p.x + 18, p.y - 16);
       }
@@ -504,6 +529,18 @@ export class Renderer {
       order = 10 ** Math.floor(Math.log10(meters)),
       nice = Math.floor(meters / order) * order;
     const pixels = (nice * (h * 0.95)) / depth;
+    // Keep the contextual ruler out of selection actions and history controls.
+    const ruler = { x: 28, y: h - 132, w: Math.max(240, pixels + 8), h: 34 };
+    if (
+      (options.occlusions || []).some(
+        (rect) =>
+          ruler.x < rect.x + rect.w &&
+          ruler.x + ruler.w > rect.x &&
+          ruler.y < rect.y + rect.h &&
+          ruler.y + ruler.h > rect.y,
+      )
+    )
+      return;
     ctx.strokeStyle = "#777f8966";
     ctx.beginPath();
     ctx.moveTo(32, h - 105);
@@ -513,7 +550,7 @@ export class Renderer {
     ctx.moveTo(32 + pixels, h - 108);
     ctx.lineTo(32 + pixels, h - 102);
     ctx.stroke();
-    ctx.font = '10px "Trebuchet MS",sans-serif';
+    ctx.font = '10px "Instrument Sans",sans-serif';
     ctx.fillStyle = "#8d95a0";
     ctx.fillText(
       `${formatDistance(nice)} · at ${selected ? sim.bodies.find((b) => b.id === selected)?.name : "Sun"}`,
@@ -534,13 +571,19 @@ export class Renderer {
     const scale = this.height * 0.95;
     const sx = (x - this.width / 2) / scale;
     const sy = (this.height / 2 - y) / scale;
-    const forward = camera.forward, right = camera.right, up = camera.up;
-    const direction = unit(forward.map((value, i) => value + sx * right[i] + sy * up[i]));
-    let nearest = Infinity, id = null;
+    const forward = camera.forward,
+      right = camera.right,
+      up = camera.up;
+    const direction = unit(
+      forward.map((value, i) => value + sx * right[i] + sy * up[i]),
+    );
+    let nearest = Infinity,
+      id = null;
     for (const body of this.pickBodies || []) {
       const offset = sub(camera.position, body.position);
       const along = dot(offset, direction);
-      const discriminant = along * along - (dot(offset, offset) - body.radius ** 2);
+      const discriminant =
+        along * along - (dot(offset, offset) - body.radius ** 2);
       if (discriminant < 0) continue;
       const near = -along - Math.sqrt(discriminant);
       const far = -along + Math.sqrt(discriminant);
